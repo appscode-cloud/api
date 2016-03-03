@@ -3,13 +3,13 @@ syntax = "proto3";
 package ssh;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 service SecureShell {
-  rpc SecureShellGet(SecureShellGetRequest) returns (SecureShellGetResponse) {
-	option (google.api.http) = {
-	  get: "/api/sshkey/v0"
-	};
+  rpc Get(SecureShellGetRequest) returns (SecureShellGetResponse) {
+	  option (google.api.http) = {
+	    get: "/api/sshkey/v0"
+	  };
   }
 }
 
@@ -24,7 +24,7 @@ message SecureShellGetRequest {
 
 // return phid ?
 message SecureShellGetResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   SSHKey ssh_key = 2;
   string instance_addr = 3;
   int32 instance_port = 4;

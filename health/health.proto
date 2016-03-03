@@ -3,19 +3,24 @@ syntax = "proto3";
 package health;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 
 service Health {
-  rpc Health(HealthRequest) returns (HealthResponse) {
+  rpc Status(dtypes.VoidRequest) returns (HealthResponse) {
     option (google.api.http) = {
       get : "/api/health"
     };
   }
 }
 
-message HealthRequest {}
-
 message HealthResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
+  repeated Version versions = 2;
+}
+
+message Version {
+  string version = 1;
+  string status = 2;
+  string message = 3;
 }

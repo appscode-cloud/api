@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package ci;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Master {
+  rpc Create(MasterCreateRequest) returns (MasterCreateResponse) {
+    option (google.api.http) = {
+      put: "/api/ci/v0/master"
+      body: "*"
+    };
+  }
+}
+
+message MasterCreateRequest {
+    string volume_id = 1;
+}
+
+message MasterCreateResponse {
+    dtypes.Status status = 1;
+}

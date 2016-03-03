@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package billing;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Subscriptions {
+  rpc Describe(SubscriptionDescribeRequest) returns (SubscriptionDescribeResponse) {
+    option (google.api.http) = {
+      get: "/api/billing/v0/subscription/{time}"
+    };
+  }
+
+  rpc Open(SubscriptionOpenRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/billing/v0/purchase/{product_type}/{object_phid}"
+      body: "*"
+    };
+  }
+
+  rpc Close(SubscriptionCloseRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/api/billing/v0/purchase/{product_type}/{object_phid}"
+    };
+  }
+}
+
+message SubscriptionDescribeRequest {
+  string time = 1;
+}
+
+message SubscriptionDescribeResponse {
+  dtypes.Status status = 1;
+  repeated Subscription subscriptions = 2;
+}
+
+message Subscription {
+  string author = 1;
+  string product_sku = 2;
+  string metadata = 3;
+  string date_started = 4;
+  string date_ended = 5;
+}
+
+message SubscriptionOpenRequest {
+  string product_type = 1;
+  string author_phid = 2;
+  string object_phid = 3;
+  string subscription_phid = 4;
+  string metadata = 5;
+}
+
+message SubscriptionCloseRequest {
+  string product_type = 1;
+  string object_phid = 2;
+}
