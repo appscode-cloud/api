@@ -22,12 +22,12 @@ message GearmanOperation {
   string phid = 1;
   GearmanOpType type = 2;
   oneof request {
-    ClusterCreateRequest cluster_create_request = 3;
-    ClusterResizeRequest cluster_resize_request = 4;
-    ClusterScaleRequest cluster_scale_request = 5;
-    ClusterDeleteRequest cluster_delete_request = 6;
-    CICreateSlaveRequest ci_create_slave_request = 7;
-    CISlaveOperationRequest ci_delete_slave_request = 10;
+    kubernetes.ClusterCreateRequest cluster_create_request = 3;
+    kubernetes.ClusterResizeRequest cluster_resize_request = 4;
+    kubernetes.ClusterScaleRequest cluster_scale_request = 5;
+    kubernetes.ClusterDeleteRequest cluster_delete_request = 6;
+    ci.CICreateSlaveRequest ci_create_slave_request = 7;
+    ci.CISlaveOperationRequest ci_delete_slave_request = 10;
   }
   Auth auth = 16;
   int64 request_time = 17;

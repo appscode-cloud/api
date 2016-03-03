@@ -3,7 +3,7 @@ syntax = "proto3";
 package api;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 service Monitoring {
   rpc MonitoringDashboardCreate(MonitoringDashboardRequest) returns (MonitoringDashboardResponse) {
@@ -21,7 +21,7 @@ message MonitoringDashboardRequest {
 }
 
 message MonitoringDashboardResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   string url = 2;
 }
 

@@ -3,7 +3,7 @@ syntax = "proto3";
 package authntication;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 service Authentication {
   // This rpc is used to check a valid user from other applications.
@@ -31,7 +31,7 @@ message UserAuthenticationRequest {
 }
 
 message UserAuthenticationResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
 }
 
 //Next Id 2
@@ -42,5 +42,5 @@ message PhabricatorTokenRequest {
 
 //Next Id 2
 message PhabricatorTokenResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
 }

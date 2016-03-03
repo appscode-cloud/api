@@ -3,7 +3,7 @@ syntax = "proto3";
 package alert;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 // alert service protobufs for clusters alerts.
 service Alert {
@@ -86,7 +86,7 @@ message AlertDeleteRequest {
 }
 
 message AlertListResponse {
-  comune.Status status = 1;
+  dtypes.Status status = 1;
   repeated AlertDetails alerts = 2;
 }
 
@@ -114,7 +114,7 @@ message AlertDetails {
 
 
 message AlertVoidResponse {
-    comune.Status status = 1;
+    dtypes.Status status = 1;
 }
 
 message AlertMatrix {

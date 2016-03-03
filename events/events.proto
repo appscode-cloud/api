@@ -3,7 +3,7 @@ syntax = "proto3";
 package events;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 service Events {
   rpc EventsConstruct(EventsRequest) returns (EventsResponse) {}
@@ -28,7 +28,7 @@ message EventsRequest {
 }
 
 message EventsResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   repeated EventHandler tasks = 2;
 }
 

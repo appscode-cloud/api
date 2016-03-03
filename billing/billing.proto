@@ -3,7 +3,7 @@ syntax = "proto3";
 package billing;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 service Billing {
   rpc BillingSubscriptionGet(BillingSubscriptionGetRequest) returns (BillingSubscriptionGetResponse) {
@@ -37,7 +37,7 @@ message BillingSubscriptionGetRequest {
 }
 
 message BillingSubscriptionGetResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   repeated BillingSubscription subscription = 2;
 }
 
@@ -67,10 +67,10 @@ message BillingChargeRequest {
 }
 
 message BillingChargeResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   double cost = 2;
 }
 
 message BillingVoidResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
 }

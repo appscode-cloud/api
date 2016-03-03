@@ -3,8 +3,7 @@ syntax = "proto3";
 package ci;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
-import "api/comune/operation.proto";
+import "api/dtypes/types.proto";
 import "api/ssh/ssh.proto";
 
 service CI {
@@ -73,7 +72,7 @@ service CI {
     };
   }
 
-  rpc CICreateSlave(CICreateSlaveRequest) returns (comune.LongRunningResponse) {
+  rpc CICreateSlave(CICreateSlaveRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
       put: "/api/ci/v0/slaves"
       body: "*"
@@ -86,7 +85,7 @@ service CI {
     };
   }
 
-  rpc CISlaveDelete(CISlaveOperationRequest) returns (comune.LongRunningResponse) {
+  rpc CISlaveDelete(CISlaveOperationRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
       delete: "/api/ci/v0/slaves/{name}"
     };
@@ -102,11 +101,11 @@ service CI {
 message CIVoidRequest {}
 
 message CICommonResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
 }
 
 message CIStatusResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   repeated CIStatusMessage node_list = 2;
 }
 
@@ -117,7 +116,7 @@ message CIBuildDescribeRequest {
 }
 
 message CIBuildDescribeResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   int64 build_number = 2;
   string job_name = 3;
   string base_url = 4;
@@ -135,13 +134,13 @@ message CIGetBuildsRequest {
 }
 
 message CIGetBuildsResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   string job_name = 2;
   repeated CIBuild builds = 3;
 }
 
 message CIJobsResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   repeated CIJob jobs = 2;
 }
 
@@ -150,7 +149,7 @@ message CIDescribeJobRequest {
 }
 
 message CIDescribeJobResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   string job_name = 2;
   string description = 3;
   string display_name = 4;
@@ -199,7 +198,7 @@ message CICreateMasterRequest {
 }
 
 message CICreateMasterResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
 }
 
 message CIStartupConfig {
@@ -243,7 +242,7 @@ message CISlaveOperationRequest {
 }
 
 message CISlaveDetailsResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   string name = 2;
   int64 executors = 3;
   string node_status = 4;
@@ -258,5 +257,5 @@ message CISlaveDetailsResponse {
 }
 
 message CISlaveOperationResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
 }

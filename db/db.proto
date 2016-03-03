@@ -3,7 +3,7 @@ syntax = "proto3";
 package db;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 service Db {
   rpc DbCreate(DbCreateRequest) returns (DbCommonResponse) {
@@ -113,11 +113,11 @@ message DbShowRequest {
 }
 
 message DbCommonResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
 }
 
 message DbShowResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   repeated DbPodSpecs pods = 2;
   string service_name = 3;
   string service_ip = 4;
@@ -134,7 +134,7 @@ message DbPodSpecs {
 message DbVoidRequest {}
 
 message DbListResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   repeated DbListInfo list = 2;
 }
 

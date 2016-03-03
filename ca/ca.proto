@@ -3,7 +3,7 @@ syntax = "proto3";
 package ca;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 service CA {
   rpc CACreateAuthority(CARequest) returns (CAResponse) {
@@ -27,7 +27,7 @@ message CARequest {
 }
 
 message CAResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   string phid = 2;
   bytes cert = 3;
   bytes key = 4;

@@ -3,32 +3,31 @@ syntax = "proto3";
 package kubernetes;
 
 import "google/api/annotations.proto";
-import "api/comune/operation.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 service Cluster {
-  rpc ClusterCreate(ClusterCreateRequest) returns (LongRunningResponse) {
+  rpc ClusterCreate(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
   	  post : "/api/clusters/v0"
       body: "*"
     };
   }
 
-  rpc ClusterResize(ClusterResizeRequest) returns (LongRunningResponse) {
+  rpc ClusterResize(ClusterResizeRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
   	  put : "/api/clusters/v0"
       body : "*"
      };
   }
 
-  rpc ClusterScale(ClusterScaleRequest) returns (LongRunningResponse) {
+  rpc ClusterScale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
   	  put : "/api/clusters/v0"
       body: "*"
     };
   }
 
-  rpc ClusterDelete(ClusterDeleteRequest) returns (LongRunningResponse) {
+  rpc ClusterDelete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
   	  delete : "/api/clusters/v0/{name}"
   	};
@@ -56,7 +55,7 @@ service Cluster {
 message ClusterVoidRequest { }
 
 message ClusterListResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   repeated ClusterDetails clusters = 2;
 }
 
@@ -107,7 +106,7 @@ message ClusterStartupScriptRequest {
 }
 
 message ClusterStartupScriptResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   string configuration = 2;
 }
 
@@ -116,6 +115,6 @@ message ClusterKubeConfigRequest {
 }
 
 message ClusterKubeConfigResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   string configuration = 2;
 }

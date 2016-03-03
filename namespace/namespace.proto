@@ -3,7 +3,7 @@ syntax = "proto3";
 package namespace;
 
 import "google/api/annotations.proto";
-import "api/comune/status.proto";
+import "api/dtypes/types.proto";
 
 service Namespace {
   rpc NamespaceCheck(NamespaceCheckRequest) returns (NamespaceCheckResponse) {
@@ -34,7 +34,7 @@ message NamespaceCheckRequest {
 }
 
 message NamespaceCheckResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
 }
 
 message NamespaceCreateRequest {
@@ -48,11 +48,11 @@ message NamespaceCreateRequest {
 }
 
 message NamespaceCreateResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
 }
 
 message NamespaceLogResponse {
- comune.Status status = 1;
+  dtypes.Status status = 1;
   repeated NamespaceLog logs = 2;
 }
 
