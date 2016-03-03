@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package comune;
+
+import "api/comune/status.proto";
+
+// Types for long running operation. usually called as jobs.
+
+// Available Next ID: 6
+message LongRunningResponse {
+  Status status = 1;
+  string type_id = 2;
+  string job_id = 3;
+  string job_type = 4;
+}

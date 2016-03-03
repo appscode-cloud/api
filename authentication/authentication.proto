@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package authntication;
+
+import "google/api/annotations.proto";
+import "api/comune/status.proto";
+
+service Authentication {
+  // This rpc is used to check a valid user from other applications.
+  rpc UserAuthentication(UserAuthenticationRequest) returns (UserAuthenticationResponse) {
+    option (google.api.http) = {
+      post : "/api/authn/v0"
+      body : "*"
+    };
+  }
+
+  // appctl used this to validates the user token with phabricator.
+  rpc PhabricatorTokenCheck(PhabricatorTokenRequest) returns (PhabricatorTokenResponse) {
+    option (google.api.http) = {
+      post: "/api/authn/v0/token"
+      body: "*"
+    };
+  }
+}
+
+//Next Id 4
+message UserAuthenticationRequest {
+  string namespace = 1;
+  string user_name = 2;
+  string password = 3;
+}
+
+message UserAuthenticationResponse {
+ comune.Status status = 1;
+}
+
+//Next Id 2
+message PhabricatorTokenRequest {
+  string namespace = 1;
+  string token = 2;
+}
+
+//Next Id 2
+message PhabricatorTokenResponse {
+ comune.Status status = 1;
+}

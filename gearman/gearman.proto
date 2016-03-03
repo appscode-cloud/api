@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package gearman;
+
+import "api/ci/ci.proto";
+import "api/kubernetes/kubernetes.proto";
+
+// Next Id: 11
+enum GearmanOpType {
+  UNKNOWN = 0;
+  CLUSTER_CREATE = 1;
+  CLUSTER_RESIZE = 2;
+  CLUSTER_SCALE = 3;
+  CLUSTER_DELETE = 4;
+  NAMESPACE_CREATE = 5;
+  SLAVE_CREATE = 6;
+  SLAVE_DELETE = 7;
+}
+
+// Next Id: 18
+message GearmanOperation {
+  string phid = 1;
+  GearmanOpType type = 2;
+  oneof request {
+    ClusterCreateRequest cluster_create_request = 3;
+    ClusterResizeRequest cluster_resize_request = 4;
+    ClusterScaleRequest cluster_scale_request = 5;
+    ClusterDeleteRequest cluster_delete_request = 6;
+    CICreateSlaveRequest ci_create_slave_request = 7;
+    CISlaveOperationRequest ci_delete_slave_request = 10;
+  }
+  Auth auth = 16;
+  int64 request_time = 17;
+}
+
+message Auth {
+  string namespace = 13;
+  string username = 14;
+  string token = 15;
+}

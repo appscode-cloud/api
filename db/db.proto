@@ -1,0 +1,152 @@
+syntax = "proto3";
+
+package db;
+
+import "google/api/annotations.proto";
+import "api/comune/status.proto";
+
+service Db {
+  rpc DbCreate(DbCreateRequest) returns (DbCommonResponse) {
+    option (google.api.http) = {
+      put : "/api/db/v0/{cluster_name}/{db_type}"
+      body : "*"
+    };
+  }
+
+  rpc DbDelete(DbDeleteRequest) returns (DbCommonResponse) {
+    option (google.api.http) = {
+      delete: "/api/db/v0/{cluster_name}/{db_type}/{db_name}"
+    };
+  }
+
+  rpc DbBackup(DbBackupRequest) returns (DbCommonResponse) {
+    option (google.api.http) = {
+      post: "/api/db/v0/{cluster_name}/backup/{db_type}"
+      body: "*"
+    };
+  }
+
+  rpc DbRestore(DbRestoreRequest) returns (DbCommonResponse) {
+    option (google.api.http) = {
+      put: "/api/db/v0/{cluster_name}/restore/{db_type}"
+      body: "*"
+    };
+  }
+
+
+  rpc DbShow(DbShowRequest) returns (DbShowResponse) {
+    option (google.api.http) = {
+      get: "/api/db/v0/{cluster_name}/{db_type}/{db_name}"
+    };
+  }
+
+  rpc DbPgAddSlave(DbPgAddSlaveRequest) returns (DbCommonResponse) {
+    option (google.api.http) = {
+      put: "/api/db/v0/{cluster_name}/pg/slave"
+      body: "*"
+    };
+  }
+
+  rpc DbList(DbVoidRequest) returns (DbListResponse) {
+    option (google.api.http) = {
+      get: "/api/db/v0"
+    };
+  }
+}
+
+
+message DbCreateRequest {
+  string db_type = 1;
+  string sku = 2;
+  string config = 3;
+  string cluster_name = 4;
+  string pv = 5;
+  int64 pv_size = 6;
+  int32 node = 7;
+  string db_name = 8;
+  string bucket_name = 9;
+  string credential = 10;
+  string region = 11;
+}
+
+message DbDeleteRequest {
+  string db_type = 1;
+  string db_name = 2;
+  string cluster_name = 3;
+}
+
+message DbPgAddSlaveRequest {
+  string cluster_name = 1;
+  string db_name = 2;
+  string config = 3;
+}
+
+message DbBackupRequest {
+  string cluster_name = 1;
+  string db_name = 2;
+  string db_type = 3;
+  string bucket_name = 4;
+  string secret_name = 5;
+  string credential = 6;
+  string region = 7;
+}
+
+message DbRestoreRequest {
+  string cluster_name = 1;
+  string db_name = 2;
+  string db_type = 3;
+  string pv = 4;
+  int64 pv_size = 5;
+  string config = 6;
+  int32 node = 7;
+  string snap_time = 8;
+  string bucket_name = 9;
+  string credential = 10;
+  string region = 11;
+  string secret_name = 12;
+}
+
+message DbShowRequest {
+  string cluster_name = 1;
+  string db_type = 2;
+  string db_name = 3;
+}
+
+message DbCommonResponse {
+ comune.Status status = 1;
+}
+
+message DbShowResponse {
+ comune.Status status = 1;
+  repeated DbPodSpecs pods = 2;
+  string service_name = 3;
+  string service_ip = 4;
+}
+
+message DbPodSpecs {
+  string name = 1;
+  string phase = 2;
+  string condition = 3;
+  string status = 4;
+  string type = 5;
+}
+
+message DbVoidRequest {}
+
+message DbListResponse {
+ comune.Status status = 1;
+  repeated DbListInfo list = 2;
+}
+
+message DbListInfo {
+  string phid = 1;
+  string kubernetes_phid = 2;
+  string kubernetes_service = 3;
+  string type = 4;
+  string sku = 5;
+  string archive_bucket = 6;
+  string archive_bucket_region = 7;
+  int32 auto_snapshot = 8;
+  int64 persistent_volume_size = 9;
+  string created = 10;
+}

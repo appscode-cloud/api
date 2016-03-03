@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package events;
+
+import "google/api/annotations.proto";
+import "api/comune/status.proto";
+
+service Events {
+  rpc EventsConstruct(EventsRequest) returns (EventsResponse) {}
+
+  rpc EventsDestroy(EventsRequest) returns (EventsResponse) {}
+}
+
+message EventsRequest {
+  string cluster_name = 1;
+  string kube_namespace = 2;
+  string kube_object_type = 3;
+  string kube_object_name = 4;
+  string event_type = 5;
+
+  message ObjectMeta {
+    repeated string service_name = 1;
+    string replication_controller_name = 2;
+    string pod_ip = 3;
+    map<string, string> labels = 4;
+  }
+  ObjectMeta metadata = 6;
+}
+
+message EventsResponse {
+ comune.Status status = 1;
+  repeated EventHandler tasks = 2;
+}
+
+message EventHandler {
+  string action = 1;
+  string receiver = 2;
+  string base = 3;
+  string suffix = 4;
+  string verb = 5;
+  bytes data = 6;
+}

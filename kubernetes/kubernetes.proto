@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+package kubernetes;
+
+import "google/api/annotations.proto";
+import "api/comune/operation.proto";
+import "api/comune/status.proto";
+
+service Cluster {
+  rpc ClusterCreate(ClusterCreateRequest) returns (LongRunningResponse) {
+  	option (google.api.http) = {
+  	  post : "/api/clusters/v0"
+      body: "*"
+    };
+  }
+
+  rpc ClusterResize(ClusterResizeRequest) returns (LongRunningResponse) {
+  	option (google.api.http) = {
+  	  put : "/api/clusters/v0"
+      body : "*"
+     };
+  }
+
+  rpc ClusterScale(ClusterScaleRequest) returns (LongRunningResponse) {
+  	option (google.api.http) = {
+  	  put : "/api/clusters/v0"
+      body: "*"
+    };
+  }
+
+  rpc ClusterDelete(ClusterDeleteRequest) returns (LongRunningResponse) {
+  	option (google.api.http) = {
+  	  delete : "/api/clusters/v0/{name}"
+  	};
+  }
+
+  rpc ClusterList(ClusterVoidRequest) returns (ClusterListResponse) {
+     option (google.api.http) = {
+       get : "/api/clusters/v0"
+     };
+  }
+
+  rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
+     option (google.api.http) = {
+       get : "/api/clusters/v0/startup-script/{role}"
+     };
+  }
+  rpc ClusterKubeConfig(ClusterKubeConfigRequest) returns (ClusterKubeConfigResponse) {
+     option (google.api.http) = {
+       get : "/api/clusters/v0/kubeconfig/{name}"
+     };
+  }
+}
+
+
+message ClusterVoidRequest { }
+
+message ClusterListResponse {
+ comune.Status status = 1;
+  repeated ClusterDetails clusters = 2;
+}
+
+message ClusterDetails {
+  string phid = 1;
+  string name = 2;
+  string provider = 3;
+  string zone = 4;
+  string region = 5;
+
+  string os = 6;
+
+  string graphana_url = 7;
+  string kibana_url = 8;
+  string icinga_url = 9;
+
+  int32 nodes = 10;
+  string created_at = 11;
+}
+
+message ClusterCreateRequest {
+  string name = 1;
+  string provider = 2;
+  string zone = 3;
+  string cloud_credential_phid = 4;
+  map<string, string> cloud_credential = 5;
+  map<string, int64> node_set = 6;
+  string saltbase_version = 7;
+}
+
+message ClusterResizeRequest {
+  string name = 1;
+  map<string, int64> node_set = 2;
+}
+
+message ClusterScaleRequest {
+  string name = 1;
+  map<string, int64> node_changes = 2;
+}
+
+message ClusterDeleteRequest {
+  string name = 1;
+  bool release_reserved_ip = 2;
+}
+
+message ClusterStartupScriptRequest {
+  string role = 1;
+}
+
+message ClusterStartupScriptResponse {
+ comune.Status status = 1;
+  string configuration = 2;
+}
+
+message ClusterKubeConfigRequest {
+  string name = 1;
+}
+
+message ClusterKubeConfigResponse {
+ comune.Status status = 1;
+  string configuration = 2;
+}

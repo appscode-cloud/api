@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+package alert;
+
+import "google/api/annotations.proto";
+import "api/comune/status.proto";
+
+// alert service protobufs for clusters alerts.
+service Alert {
+  rpc AlertNotificationPush(AlertSMSMailPushRequest) returns (AlertVoidResponse) {
+    option (google.api.http) = {
+      post : "/api/alert/v0/notifications"
+      body : "*"
+    };
+  }
+
+  rpc AlertCreate(AlertCreateUpdateReuquest) returns (AlertVoidResponse) {
+    option (google.api.http) = {
+      put: "/api/alert/v0/{cluster_name}/{kube_namespace}/{kube_object_type}/{kube_object_name}"
+      body: "*"
+    };
+  }
+
+  rpc AlertUpdate(AlertCreateUpdateReuquest) returns (AlertVoidResponse) {
+    option (google.api.http) = {
+      post: "/api/alert/v0/{cluster_name}/{kube_namespace}/{kube_object_type}/{kube_object_name}"
+      body: "*"
+    };
+  }
+
+  rpc AlertDelete(AlertDeleteRequest) returns (AlertVoidResponse) {
+    option (google.api.http) = {
+      delete: "/api/alert/v0/{cluster_name}/{kube_namespace}/{kube_object_type}/{kube_object_name}/{alert_phid}"
+    };
+  }
+
+  rpc AlertList(AlertGetRequest) returns (AlertListResponse) {
+    option (google.api.http) = {
+      get: "/api/alert/v0/{cluster_name}/{kube_namespace}/{kube_object_type}/{kube_object_name}"
+    };
+  }
+}
+
+message AlertSMSMailPushRequest {
+  string state_type = 1;
+  string state = 2;
+  string time = 3;
+  string service_output = 4;
+  string alert_phid = 5;
+  string host_name = 6;
+}
+
+message AlertCreateUpdateReuquest {
+  string alert_phid = 1;
+  string name = 2;
+  string cluster_name  = 3;
+  string kube_namespace  = 4;
+  string kube_object_type = 5;
+  string kube_object_name = 6;
+  string matrix_phid = 7;
+  AlertMatrix matrix_info  = 8;
+  string warning_condition = 9;
+  string critical_condition  = 10;
+  int64 check_interval = 11;
+  string warning_user = 12;
+  int32 warning_method = 13;
+  string critical_user  = 14;
+  int32 critical_method  = 15;
+  int64 alert_interval = 16;
+}
+
+
+message AlertGetRequest {
+  string cluster_name = 1;
+  string kube_object_name = 2;
+  string kube_namespace = 3;
+  string kube_object_type = 4;
+}
+
+message AlertDeleteRequest {
+  string cluster_name = 1;
+  string kube_object_name = 2;
+  string kube_namespace = 3;
+  string kube_object_type = 4;
+  string alert_phid = 5;
+}
+
+message AlertListResponse {
+  comune.Status status = 1;
+  repeated AlertDetails alerts = 2;
+}
+
+message AlertDetails {
+  string alert_phid = 1;
+  string name = 2;
+  string icinga_url = 3;
+  message AlertData {
+    AlertMatrix matrix = 1;
+    string warning_condition = 2;
+    string critical_condition = 3;
+  }
+
+  AlertData alert = 4;
+
+  string alert_user = 5;
+  string warning_method = 6;
+
+  string critical_user = 7;
+  string critical_method = 8;
+
+  int64 alert_interval = 9;
+  int64 refresh_interval = 10;
+}
+
+
+message AlertVoidResponse {
+    comune.Status status = 1;
+}
+
+message AlertMatrix {
+  string name = 1;
+  string check_command = 2;
+  map<string, string> query = 3;
+  string formula  = 4;
+}
