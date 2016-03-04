@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package billing;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Charge {
+  rpc Create(ChargeCreateRequest) returns (ChargeCreateResponse) {
+    option (google.api.http) = {
+      put: "/api/billing/v0/charge/{charge_type}"
+      body: "*"
+    };
+  }
+}
+
+message ChargeCreateRequest {
+  string charge_type = 1;
+}
+
+message ChargeCreateResponse {
+  dtypes.Status status = 1;
+  double cost = 2;
+}

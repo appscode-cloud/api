@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+package ci;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+import "api/ssh/ssh.proto";
+
+service Slaves {
+  rpc List(dtypes.VoidRequest) returns (SlaveListResponse) {
+    option (google.api.http) = {
+      get: "/api/ci/v0/slaves"
+    };
+  }
+
+  rpc Get(SlaveGetRequest) returns (SlaveDetailsResponse) {
+    option (google.api.http) = {
+      get: "/api/ci/v0/slaves/{name}"
+    };
+  }
+
+  rpc Create(SlaveCreateRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      put: "/api/ci/v0/slaves"
+      body: "*"
+    };
+  }
+
+  rpc Delete(SlaveDeleteRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      delete: "/api/ci/v0/slaves/{name}"
+    };
+  }
+
+  rpc Restart(SlaveRestartRequest) returns (SlaveRestartResponse) {
+    option (google.api.http) = {
+      get: "/api/ci/v0/slaves/{name}/reboot"
+    };
+  }
+}
+
+message SlaveListResponse {
+    dtypes.Status status = 1;
+    repeated Slave slaves = 2;
+}
+
+message Slave {
+    string name = 1;
+    string status = 2;
+}
+
+
+message SlaveCreateRequest {
+    int32 executors = 1;
+    string labels = 2;
+    string startup_script = 3;
+}
+
+message StartupConfig {
+    string provider = 1;
+    string oS = 2;
+    string jenkins_version = 3;
+    string saltbase_version = 4;
+    string role = 5;
+
+    string namespace = 6;
+    string labels = 7;
+    string master_addr = 8;
+    int32 executors = 9;
+    Secrets secrets = 10;
+}
+
+message Secrets {
+    string jenkins_user = 1;
+    string jenkins_token = 2;
+    ssh.SSHKey ssh_key = 3;
+    repeated DockerRepo docker_repos = 4;
+    MavenRepo maven_repo = 5;
+    // npm
+    // composer
+}
+
+message MavenRepo {
+    string url = 1;
+    string username = 2;
+    string password = 3;
+}
+
+message DockerRepo {
+    string url = 1;
+    string email = 2;
+    string auth = 3;
+}
+
+message SlaveGetRequest {
+    string name = 1;
+}
+
+message SlaveDetailsResponse {
+    dtypes.Status status = 1;
+    string name = 2;
+    int64 executors = 3;
+    string node_status = 4;
+    string offline_reason = 5;
+
+    string label = 6;
+    string provider = 7;
+    string sku = 8;
+    string startup_script = 9;
+
+    string created_at = 10;
+}
+
+message SlaveDeleteRequest {
+    string name = 1;
+}
+
+message SlaveRestartRequest {
+    string name = 1;
+}
+
+message SlaveRestartResponse {
+    dtypes.Status status = 1;
+}

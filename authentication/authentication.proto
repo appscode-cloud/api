@@ -7,15 +7,15 @@ import "api/dtypes/types.proto";
 
 service Authentication {
   // This rpc is used to check a valid user from other applications.
-  rpc UserAuthentication(UserAuthenticationRequest) returns (UserAuthenticationResponse) {
+  rpc User(ValidateRequest) returns (ValidateResponse) {
     option (google.api.http) = {
-      post : "/api/authn/v0"
+      post : "/api/authn/v0/user"
       body : "*"
     };
   }
 
   // appctl used this to validates the user token with phabricator.
-  rpc PhabricatorTokenCheck(PhabricatorTokenRequest) returns (PhabricatorTokenResponse) {
+  rpc Token(ValidateRequest) returns (ValidateRequest) {
     option (google.api.http) = {
       post: "/api/authn/v0/token"
       body: "*"
@@ -24,23 +24,12 @@ service Authentication {
 }
 
 //Next Id 4
-message UserAuthenticationRequest {
+message ValidateRequest {
   string namespace = 1;
-  string user_name = 2;
-  string password = 3;
+  string username = 2;
+  string secret = 3;
 }
 
-message UserAuthenticationResponse {
-  dtypes.Status status = 1;
-}
-
-//Next Id 2
-message PhabricatorTokenRequest {
-  string namespace = 1;
-  string token = 2;
-}
-
-//Next Id 2
-message PhabricatorTokenResponse {
+message ValidateResponse {
   dtypes.Status status = 1;
 }

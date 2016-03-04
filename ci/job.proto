@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package ci;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Jobs {
+  rpc List(dtypes.VoidRequest) returns (JobListResponse) {
+    option (google.api.http) = {
+      get: "/api/ci/v0/jobs"
+    };
+  }
+
+  rpc Get(JobGetRequest) returns (JobDetailsResponse) {
+    option (google.api.http) = {
+      get: "/api/ci/v0/jobs/{name}"
+    };
+  }
+
+  rpc Create(JobCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/ci/v0/jobs/{name}"
+      body: "*"
+    };
+  }
+
+  rpc Copy(JobCopyRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/api/ci/v0/jobs/{source}/{destination}"
+      body: "*"
+    };
+  }
+
+  rpc Build(JobBuildRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/ci/v0/jobs/{name}/build"
+      body: "*"
+    };
+  }
+
+  rpc Delete(JobDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/api/ci/v0/jobs/{name}"
+    };
+  }
+}
+
+message JobListResponse {
+  dtypes.Status status = 1;
+  repeated Job jobs = 2;
+}
+
+message CIBuildJobRequest {
+    string job_name = 1;
+    string param = 2;
+}
+
+message JobGetRequest {
+    string name = 1;
+}
+
+message JobDetailsResponse {
+    dtypes.Status status = 1;
+    string name = 2;
+    string description = 3;
+    string display_name = 4;
+    int64 build_count = 5;
+    string job_color = 6;
+    string builds_command = 7;
+}
+
+message CIDeleteJobRequest {
+    string job_name = 1;
+}
+
+message CICreateJobRequest {
+    string job_name = 1;
+    string shFile = 2;
+}
+
+message CICopyJobRequest {
+    string job_from = 1;
+    string job_to = 2;
+}
+
+message Job {
+    string job_name = 1;
+    string color = 2;
+}
