@@ -3,18 +3,16 @@
 // DO NOT EDIT!
 
 /*
-Package authntication is a generated protocol buffer package.
+Package authentication is a generated protocol buffer package.
 
 It is generated from these files:
 	authentication.proto
 
 It has these top-level messages:
-	UserAuthenticationRequest
-	UserAuthenticationResponse
-	PhabricatorTokenRequest
-	PhabricatorTokenResponse
+	ValidateRequest
+	ValidateResponse
 */
-package authntication
+package authentication
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
@@ -37,55 +35,27 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion1
 
 // Next Id 4
-type UserAuthenticationRequest struct {
+type ValidateRequest struct {
 	Namespace string `protobuf:"bytes,1,opt,name=namespace" json:"namespace,omitempty"`
-	UserName  string `protobuf:"bytes,2,opt,name=user_name" json:"user_name,omitempty"`
-	Password  string `protobuf:"bytes,3,opt,name=password" json:"password,omitempty"`
+	Username  string `protobuf:"bytes,2,opt,name=username" json:"username,omitempty"`
+	Secret    string `protobuf:"bytes,3,opt,name=secret" json:"secret,omitempty"`
 }
 
-func (m *UserAuthenticationRequest) Reset()                    { *m = UserAuthenticationRequest{} }
-func (m *UserAuthenticationRequest) String() string            { return proto.CompactTextString(m) }
-func (*UserAuthenticationRequest) ProtoMessage()               {}
-func (*UserAuthenticationRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (m *ValidateRequest) Reset()                    { *m = ValidateRequest{} }
+func (m *ValidateRequest) String() string            { return proto.CompactTextString(m) }
+func (*ValidateRequest) ProtoMessage()               {}
+func (*ValidateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
-type UserAuthenticationResponse struct {
+type ValidateResponse struct {
 	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 }
 
-func (m *UserAuthenticationResponse) Reset()                    { *m = UserAuthenticationResponse{} }
-func (m *UserAuthenticationResponse) String() string            { return proto.CompactTextString(m) }
-func (*UserAuthenticationResponse) ProtoMessage()               {}
-func (*UserAuthenticationResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+func (m *ValidateResponse) Reset()                    { *m = ValidateResponse{} }
+func (m *ValidateResponse) String() string            { return proto.CompactTextString(m) }
+func (*ValidateResponse) ProtoMessage()               {}
+func (*ValidateResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
-func (m *UserAuthenticationResponse) GetStatus() *dtypes.Status {
-	if m != nil {
-		return m.Status
-	}
-	return nil
-}
-
-// Next Id 2
-type PhabricatorTokenRequest struct {
-	Namespace string `protobuf:"bytes,1,opt,name=namespace" json:"namespace,omitempty"`
-	Token     string `protobuf:"bytes,2,opt,name=token" json:"token,omitempty"`
-}
-
-func (m *PhabricatorTokenRequest) Reset()                    { *m = PhabricatorTokenRequest{} }
-func (m *PhabricatorTokenRequest) String() string            { return proto.CompactTextString(m) }
-func (*PhabricatorTokenRequest) ProtoMessage()               {}
-func (*PhabricatorTokenRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
-
-// Next Id 2
-type PhabricatorTokenResponse struct {
-	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-}
-
-func (m *PhabricatorTokenResponse) Reset()                    { *m = PhabricatorTokenResponse{} }
-func (m *PhabricatorTokenResponse) String() string            { return proto.CompactTextString(m) }
-func (*PhabricatorTokenResponse) ProtoMessage()               {}
-func (*PhabricatorTokenResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
-
-func (m *PhabricatorTokenResponse) GetStatus() *dtypes.Status {
+func (m *ValidateResponse) GetStatus() *dtypes.Status {
 	if m != nil {
 		return m.Status
 	}
@@ -93,10 +63,8 @@ func (m *PhabricatorTokenResponse) GetStatus() *dtypes.Status {
 }
 
 func init() {
-	proto.RegisterType((*UserAuthenticationRequest)(nil), "authntication.UserAuthenticationRequest")
-	proto.RegisterType((*UserAuthenticationResponse)(nil), "authntication.UserAuthenticationResponse")
-	proto.RegisterType((*PhabricatorTokenRequest)(nil), "authntication.PhabricatorTokenRequest")
-	proto.RegisterType((*PhabricatorTokenResponse)(nil), "authntication.PhabricatorTokenResponse")
+	proto.RegisterType((*ValidateRequest)(nil), "authentication.ValidateRequest")
+	proto.RegisterType((*ValidateResponse)(nil), "authentication.ValidateResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -107,9 +75,9 @@ var _ grpc.ClientConn
 
 type AuthenticationClient interface {
 	// This rpc is used to check a valid user from other applications.
-	UserAuthentication(ctx context.Context, in *UserAuthenticationRequest, opts ...grpc.CallOption) (*UserAuthenticationResponse, error)
+	User(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*ValidateResponse, error)
 	// appctl used this to validates the user token with phabricator.
-	PhabricatorTokenCheck(ctx context.Context, in *PhabricatorTokenRequest, opts ...grpc.CallOption) (*PhabricatorTokenResponse, error)
+	Token(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*ValidateRequest, error)
 }
 
 type authenticationClient struct {
@@ -120,18 +88,18 @@ func NewAuthenticationClient(cc *grpc.ClientConn) AuthenticationClient {
 	return &authenticationClient{cc}
 }
 
-func (c *authenticationClient) UserAuthentication(ctx context.Context, in *UserAuthenticationRequest, opts ...grpc.CallOption) (*UserAuthenticationResponse, error) {
-	out := new(UserAuthenticationResponse)
-	err := grpc.Invoke(ctx, "/authntication.Authentication/UserAuthentication", in, out, c.cc, opts...)
+func (c *authenticationClient) User(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*ValidateResponse, error) {
+	out := new(ValidateResponse)
+	err := grpc.Invoke(ctx, "/authentication.Authentication/User", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authenticationClient) PhabricatorTokenCheck(ctx context.Context, in *PhabricatorTokenRequest, opts ...grpc.CallOption) (*PhabricatorTokenResponse, error) {
-	out := new(PhabricatorTokenResponse)
-	err := grpc.Invoke(ctx, "/authntication.Authentication/PhabricatorTokenCheck", in, out, c.cc, opts...)
+func (c *authenticationClient) Token(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*ValidateRequest, error) {
+	out := new(ValidateRequest)
+	err := grpc.Invoke(ctx, "/authentication.Authentication/Token", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -142,33 +110,33 @@ func (c *authenticationClient) PhabricatorTokenCheck(ctx context.Context, in *Ph
 
 type AuthenticationServer interface {
 	// This rpc is used to check a valid user from other applications.
-	UserAuthentication(context.Context, *UserAuthenticationRequest) (*UserAuthenticationResponse, error)
+	User(context.Context, *ValidateRequest) (*ValidateResponse, error)
 	// appctl used this to validates the user token with phabricator.
-	PhabricatorTokenCheck(context.Context, *PhabricatorTokenRequest) (*PhabricatorTokenResponse, error)
+	Token(context.Context, *ValidateRequest) (*ValidateRequest, error)
 }
 
 func RegisterAuthenticationServer(s *grpc.Server, srv AuthenticationServer) {
 	s.RegisterService(&_Authentication_serviceDesc, srv)
 }
 
-func _Authentication_UserAuthentication_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
-	in := new(UserAuthenticationRequest)
+func _Authentication_User_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+	in := new(ValidateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AuthenticationServer).UserAuthentication(ctx, in)
+	out, err := srv.(AuthenticationServer).User(ctx, in)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func _Authentication_PhabricatorTokenCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
-	in := new(PhabricatorTokenRequest)
+func _Authentication_Token_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+	in := new(ValidateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AuthenticationServer).PhabricatorTokenCheck(ctx, in)
+	out, err := srv.(AuthenticationServer).Token(ctx, in)
 	if err != nil {
 		return nil, err
 	}
@@ -176,41 +144,38 @@ func _Authentication_PhabricatorTokenCheck_Handler(srv interface{}, ctx context.
 }
 
 var _Authentication_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "authntication.Authentication",
+	ServiceName: "authentication.Authentication",
 	HandlerType: (*AuthenticationServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "UserAuthentication",
-			Handler:    _Authentication_UserAuthentication_Handler,
+			MethodName: "User",
+			Handler:    _Authentication_User_Handler,
 		},
 		{
-			MethodName: "PhabricatorTokenCheck",
-			Handler:    _Authentication_PhabricatorTokenCheck_Handler,
+			MethodName: "Token",
+			Handler:    _Authentication_Token_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{},
 }
 
 var fileDescriptor0 = []byte{
-	// 317 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x8c, 0x92, 0x3f, 0x4e, 0xc3, 0x30,
-	0x14, 0xc6, 0x95, 0x20, 0x2a, 0xfa, 0x50, 0x2a, 0x30, 0xff, 0x4c, 0x84, 0x2a, 0xe4, 0x01, 0x0a,
-	0x43, 0x82, 0xca, 0x56, 0x58, 0x10, 0x17, 0x40, 0x14, 0x66, 0xe4, 0xa6, 0x4f, 0x4d, 0x54, 0x88,
-	0x4d, 0xec, 0x80, 0x58, 0x61, 0x61, 0xe7, 0x04, 0x9c, 0x89, 0x2b, 0x70, 0x10, 0x62, 0x1b, 0x21,
-	0xa5, 0xa5, 0xd0, 0x25, 0xc3, 0x4f, 0xdf, 0x7b, 0xfe, 0xf9, 0x8b, 0x61, 0x9d, 0x97, 0x3a, 0xc5,
-	0x5c, 0x67, 0x09, 0xd7, 0x99, 0xc8, 0x23, 0x59, 0x08, 0x2d, 0x48, 0x60, 0xe8, 0x0f, 0x0c, 0x77,
-	0x46, 0x42, 0x8c, 0x6e, 0x31, 0xe6, 0x32, 0x8b, 0x79, 0x9e, 0x0b, 0x6d, 0xb1, 0x72, 0xe1, 0x70,
-	0xd3, 0xe0, 0xa1, 0x7e, 0x92, 0xa8, 0x62, 0xfb, 0x75, 0x9c, 0xf5, 0x61, 0xfb, 0x5a, 0x61, 0x71,
-	0x56, 0x3b, 0xe0, 0x12, 0xef, 0x4b, 0x54, 0x9a, 0xac, 0x42, 0x33, 0xe7, 0x77, 0xa8, 0x24, 0x4f,
-	0x90, 0x7a, 0xbb, 0x5e, 0xa7, 0x69, 0x50, 0x59, 0xe5, 0x6f, 0x0c, 0xa7, 0xbe, 0x45, 0x2b, 0xb0,
-	0x24, 0xb9, 0x52, 0x8f, 0xa2, 0x18, 0xd2, 0x05, 0x43, 0xd8, 0x29, 0x84, 0xbf, 0x2d, 0x55, 0xb2,
-	0xf2, 0x41, 0xd2, 0x86, 0x86, 0xaa, 0xe4, 0x4a, 0x65, 0x57, 0x2e, 0x77, 0x5b, 0x91, 0xf3, 0x8a,
-	0xfa, 0x96, 0xb2, 0x13, 0xd8, 0xba, 0x48, 0xf9, 0xa0, 0x30, 0x73, 0xa2, 0xb8, 0x12, 0x63, 0xfc,
-	0x4b, 0x28, 0x80, 0x45, 0x6d, 0x22, 0x4e, 0x86, 0xf5, 0x80, 0x4e, 0x0f, 0xcf, 0x77, 0x70, 0xf7,
-	0xdd, 0x87, 0x56, 0xdd, 0x99, 0xbc, 0x78, 0x40, 0xa6, 0xaf, 0x42, 0x3a, 0x51, 0xad, 0xfb, 0x68,
-	0x66, 0x85, 0xe1, 0xc1, 0x1c, 0x49, 0xa7, 0xc7, 0xe8, 0xf3, 0xc7, 0xe7, 0x9b, 0x4f, 0x58, 0xe0,
-	0x7e, 0xa1, 0x19, 0x8b, 0x1f, 0x8e, 0x7a, 0xde, 0x21, 0x79, 0xf5, 0x60, 0x63, 0xf2, 0x56, 0xe7,
-	0x29, 0x26, 0x63, 0xb2, 0x37, 0xb1, 0x7e, 0x46, 0x71, 0xe1, 0xfe, 0xbf, 0xb9, 0x6f, 0x89, 0xb6,
-	0x95, 0xa0, 0x6c, 0xad, 0x26, 0x11, 0xdb, 0x8a, 0x2b, 0x95, 0x41, 0xc3, 0x3e, 0x9b, 0xe3, 0xaf,
-	0x00, 0x00, 0x00, 0xff, 0xff, 0x3b, 0x7a, 0xb5, 0xcd, 0x93, 0x02, 0x00, 0x00,
+	// 269 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x84, 0x90, 0xcd, 0x4a, 0x03, 0x31,
+	0x10, 0xc7, 0xd9, 0xaa, 0xc5, 0x8e, 0xb0, 0xd6, 0x28, 0xba, 0x2c, 0x5a, 0x4b, 0x4e, 0xe2, 0x61,
+	0x23, 0xeb, 0xcd, 0x9b, 0x17, 0x1f, 0xc0, 0xaf, 0x7b, 0xdc, 0x0e, 0x6d, 0xb0, 0x26, 0x71, 0x33,
+	0x2b, 0x78, 0xf5, 0x15, 0x7c, 0x34, 0x5f, 0x41, 0xdf, 0xc3, 0x7c, 0x1c, 0x64, 0x0b, 0xd2, 0x4b,
+	0x20, 0x3f, 0xfe, 0xcc, 0x6f, 0xfe, 0x03, 0x07, 0xb2, 0xa3, 0x05, 0x6a, 0x52, 0x8d, 0x24, 0x65,
+	0x74, 0x65, 0x5b, 0x43, 0x86, 0xe5, 0x7d, 0x5a, 0x1e, 0xcf, 0x8d, 0x99, 0x2f, 0x51, 0x48, 0xab,
+	0x84, 0xd4, 0xda, 0x50, 0xc4, 0x2e, 0xa5, 0xcb, 0xc3, 0x80, 0x67, 0xf4, 0x6e, 0xd1, 0x89, 0xf8,
+	0x26, 0xce, 0x6f, 0x60, 0xf7, 0x51, 0x2e, 0xd5, 0x4c, 0x12, 0xde, 0xe2, 0x6b, 0x87, 0x8e, 0xd8,
+	0x1e, 0x8c, 0xb4, 0x7c, 0x41, 0x67, 0x65, 0x83, 0x45, 0x36, 0xcd, 0xce, 0x46, 0x6c, 0x0c, 0xdb,
+	0x9d, 0xc3, 0x36, 0xe0, 0x62, 0x10, 0x49, 0x0e, 0x43, 0x87, 0x4d, 0x8b, 0x54, 0x6c, 0x84, 0x3f,
+	0xaf, 0x61, 0xfc, 0x37, 0xc7, 0x59, 0x2f, 0x46, 0x36, 0xf1, 0x19, 0xbf, 0x45, 0xe7, 0xe2, 0x94,
+	0x9d, 0x3a, 0xaf, 0xd2, 0x02, 0xd5, 0x5d, 0xa4, 0xf5, 0x4f, 0x06, 0xf9, 0x75, 0xaf, 0x04, 0x5b,
+	0xc0, 0xe6, 0x83, 0x17, 0xb1, 0xd3, 0x6a, 0xa5, 0xf3, 0xca, 0x92, 0xe5, 0xf4, 0xff, 0x40, 0xb2,
+	0xf3, 0x93, 0x8f, 0xaf, 0xef, 0xcf, 0xc1, 0x11, 0x67, 0xe9, 0x22, 0x3e, 0xad, 0xc5, 0xdb, 0x85,
+	0x08, 0x3d, 0xae, 0xb2, 0x73, 0xa6, 0x60, 0xeb, 0xde, 0x3c, 0xa3, 0x5e, 0xaf, 0x5a, 0x17, 0xe0,
+	0x93, 0x68, 0x2a, 0xf8, 0x7e, 0xdf, 0x44, 0x61, 0xbc, 0x57, 0x3d, 0x0d, 0xe3, 0xa9, 0x2f, 0x7f,
+	0x03, 0x00, 0x00, 0xff, 0xff, 0x18, 0x55, 0x7e, 0x91, 0xc8, 0x01, 0x00, 0x00,
 }

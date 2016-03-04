@@ -14,6 +14,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/appscode/api/dtypes"
 	"github.com/gengo/grpc-gateway/runtime"
 	"github.com/gengo/grpc-gateway/utilities"
 	"github.com/golang/glog"
@@ -29,11 +30,11 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_Health_Health_0(ctx context.Context, client HealthClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq HealthRequest
+func request_Health_Status_0(ctx context.Context, client HealthClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq dtypes.VoidRequest
 	var metadata runtime.ServerMetadata
 
-	msg, err := client.Health(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Status(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -68,7 +69,7 @@ func RegisterHealthHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMu
 func RegisterHealthHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewHealthClient(conn)
 
-	mux.Handle("GET", pattern_Health_Health_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Health_Status_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -77,14 +78,14 @@ func RegisterHealthHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Health_Health_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Health_Status_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Health_Health_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Health_Status_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -92,9 +93,9 @@ func RegisterHealthHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 }
 
 var (
-	pattern_Health_Health_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "health"}, ""))
+	pattern_Health_Status_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "health"}, ""))
 )
 
 var (
-	forward_Health_Health_0 = runtime.ForwardResponseMessage
+	forward_Health_Status_0 = runtime.ForwardResponseMessage
 )

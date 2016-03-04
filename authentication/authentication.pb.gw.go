@@ -3,11 +3,11 @@
 // DO NOT EDIT!
 
 /*
-Package authntication is a reverse proxy.
+Package authentication is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package authntication
+package authentication
 
 import (
 	"encoding/json"
@@ -29,28 +29,28 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_Authentication_UserAuthentication_0(ctx context.Context, client AuthenticationClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq UserAuthenticationRequest
+func request_Authentication_User_0(ctx context.Context, client AuthenticationClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ValidateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.UserAuthentication(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.User(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Authentication_PhabricatorTokenCheck_0(ctx context.Context, client AuthenticationClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PhabricatorTokenRequest
+func request_Authentication_Token_0(ctx context.Context, client AuthenticationClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ValidateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.PhabricatorTokenCheck(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Token(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -85,7 +85,7 @@ func RegisterAuthenticationHandlerFromEndpoint(ctx context.Context, mux *runtime
 func RegisterAuthenticationHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewAuthenticationClient(conn)
 
-	mux.Handle("POST", pattern_Authentication_UserAuthentication_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Authentication_User_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -94,18 +94,18 @@ func RegisterAuthenticationHandler(ctx context.Context, mux *runtime.ServeMux, c
 				cancel()
 			}()
 		}
-		resp, md, err := request_Authentication_UserAuthentication_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Authentication_User_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Authentication_UserAuthentication_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Authentication_User_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Authentication_PhabricatorTokenCheck_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Authentication_Token_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -114,14 +114,14 @@ func RegisterAuthenticationHandler(ctx context.Context, mux *runtime.ServeMux, c
 				cancel()
 			}()
 		}
-		resp, md, err := request_Authentication_PhabricatorTokenCheck_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Authentication_Token_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Authentication_PhabricatorTokenCheck_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Authentication_Token_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -129,13 +129,13 @@ func RegisterAuthenticationHandler(ctx context.Context, mux *runtime.ServeMux, c
 }
 
 var (
-	pattern_Authentication_UserAuthentication_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "authn", "v0"}, ""))
+	pattern_Authentication_User_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "authn", "v0", "user"}, ""))
 
-	pattern_Authentication_PhabricatorTokenCheck_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "authn", "v0", "token"}, ""))
+	pattern_Authentication_Token_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "authn", "v0", "token"}, ""))
 )
 
 var (
-	forward_Authentication_UserAuthentication_0 = runtime.ForwardResponseMessage
+	forward_Authentication_User_0 = runtime.ForwardResponseMessage
 
-	forward_Authentication_PhabricatorTokenCheck_0 = runtime.ForwardResponseMessage
+	forward_Authentication_Token_0 = runtime.ForwardResponseMessage
 )

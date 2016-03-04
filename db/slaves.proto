@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package db;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Slaves {
+  rpc Add(SlaveAddRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/db/v0/slave/{cluster}"
+      body: "*"
+    };
+  }
+}
+
+message SlaveAddRequest {
+  string cluster = 1;
+  string name = 2;
+  string config = 3;
+}

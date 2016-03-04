@@ -5,28 +5,31 @@ package ca;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-service CA {
-  rpc CACreateAuthority(CARequest) returns (CAResponse) {
+service AuthorityCertificate {
+  rpc Create(CertificateCreateRequest) returns (CertificateCreateResponse) {
 	option (google.api.http) = {
 	  put: "/api/ca/v0/authority"
 	  body: "*"
 	};
   }
-  rpc CACreateClientCert(CARequest) returns (CAResponse) {
-	option (google.api.http) = {
-	  put: "/api/ca/v0/client"
-	  body: "*"
-	};
+}
+
+service ClientCertificate {
+  rpc Create(CertificateCreateRequest) returns (CertificateCreateResponse) {
+    option (google.api.http) = {
+      put: "/api/ca/v0/client"
+      body: "*"
+    };
   }
 }
 
 // Use specific requests for protos
-message CARequest {
-  string ca_name = 1;
+message CertificateCreateRequest {
+  string name = 1;
   string csr = 2;
 }
 
-message CAResponse {
+message CertificateCreateResponse {
   dtypes.Status status = 1;
   string phid = 2;
   bytes cert = 3;

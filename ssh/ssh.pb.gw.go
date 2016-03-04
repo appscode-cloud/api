@@ -30,18 +30,18 @@ var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
 var (
-	filter_SecureShell_SecureShellGet_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_SecureShell_Get_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_SecureShell_SecureShellGet_0(ctx context.Context, client SecureShellClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_SecureShell_Get_0(ctx context.Context, client SecureShellClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SecureShellGetRequest
 	var metadata runtime.ServerMetadata
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_SecureShell_SecureShellGet_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_SecureShell_Get_0); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.SecureShellGet(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Get(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -76,7 +76,7 @@ func RegisterSecureShellHandlerFromEndpoint(ctx context.Context, mux *runtime.Se
 func RegisterSecureShellHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewSecureShellClient(conn)
 
-	mux.Handle("GET", pattern_SecureShell_SecureShellGet_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_SecureShell_Get_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -85,14 +85,14 @@ func RegisterSecureShellHandler(ctx context.Context, mux *runtime.ServeMux, conn
 				cancel()
 			}()
 		}
-		resp, md, err := request_SecureShell_SecureShellGet_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_SecureShell_Get_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_SecureShell_SecureShellGet_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_SecureShell_Get_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -100,9 +100,9 @@ func RegisterSecureShellHandler(ctx context.Context, mux *runtime.ServeMux, conn
 }
 
 var (
-	pattern_SecureShell_SecureShellGet_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "sshkey", "v0"}, ""))
+	pattern_SecureShell_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "sshkey", "v0"}, ""))
 )
 
 var (
-	forward_SecureShell_SecureShellGet_0 = runtime.ForwardResponseMessage
+	forward_SecureShell_Get_0 = runtime.ForwardResponseMessage
 )

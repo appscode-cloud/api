@@ -192,3 +192,10 @@ message Any {
     // Must be valid serialized data of the above specified type.
     bytes value = 2;
 }
+
+// Void Requests and response to use with other types.
+message VoidRequest{}
+
+message VoidResponse {
+    Status status = 1;
+}

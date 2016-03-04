@@ -6,10 +6,10 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service SecureShell {
-  rpc SecureShellGet(SecureShellGetRequest) returns (SecureShellGetResponse) {
-	option (google.api.http) = {
-	  get: "/api/sshkey/v0"
-	};
+  rpc Get(SecureShellGetRequest) returns (SecureShellGetResponse) {
+	  option (google.api.http) = {
+	    get: "/api/sshkey/v0"
+	  };
   }
 }
 

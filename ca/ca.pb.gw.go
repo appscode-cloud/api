@@ -29,35 +29,35 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_CA_CACreateAuthority_0(ctx context.Context, client CAClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CARequest
+func request_AuthorityCertificate_Create_0(ctx context.Context, client AuthorityCertificateClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CertificateCreateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CACreateAuthority(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_CA_CACreateClientCert_0(ctx context.Context, client CAClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CARequest
+func request_ClientCertificate_Create_0(ctx context.Context, client ClientCertificateClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CertificateCreateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CACreateClientCert(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-// RegisterCAHandlerFromEndpoint is same as RegisterCAHandler but
+// RegisterAuthorityCertificateHandlerFromEndpoint is same as RegisterAuthorityCertificateHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterCAHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterAuthorityCertificateHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -77,15 +77,15 @@ func RegisterCAHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, e
 		}()
 	}()
 
-	return RegisterCAHandler(ctx, mux, conn)
+	return RegisterAuthorityCertificateHandler(ctx, mux, conn)
 }
 
-// RegisterCAHandler registers the http handlers for service CA to "mux".
+// RegisterAuthorityCertificateHandler registers the http handlers for service AuthorityCertificate to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterCAHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	client := NewCAClient(conn)
+func RegisterAuthorityCertificateHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	client := NewAuthorityCertificateClient(conn)
 
-	mux.Handle("PUT", pattern_CA_CACreateAuthority_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_AuthorityCertificate_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -94,34 +94,14 @@ func RegisterCAHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.Cl
 				cancel()
 			}()
 		}
-		resp, md, err := request_CA_CACreateAuthority_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_AuthorityCertificate_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_CA_CACreateAuthority_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("PUT", pattern_CA_CACreateClientCert_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
-		}
-		resp, md, err := request_CA_CACreateClientCert_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
-			return
-		}
-
-		forward_CA_CACreateClientCert_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AuthorityCertificate_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -129,13 +109,70 @@ func RegisterCAHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.Cl
 }
 
 var (
-	pattern_CA_CACreateAuthority_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ca", "v0", "authority"}, ""))
-
-	pattern_CA_CACreateClientCert_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ca", "v0", "client"}, ""))
+	pattern_AuthorityCertificate_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ca", "v0", "authority"}, ""))
 )
 
 var (
-	forward_CA_CACreateAuthority_0 = runtime.ForwardResponseMessage
+	forward_AuthorityCertificate_Create_0 = runtime.ForwardResponseMessage
+)
 
-	forward_CA_CACreateClientCert_0 = runtime.ForwardResponseMessage
+// RegisterClientCertificateHandlerFromEndpoint is same as RegisterClientCertificateHandler but
+// automatically dials to "endpoint" and closes the connection when "ctx" gets done.
+func RegisterClientCertificateHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+	conn, err := grpc.Dial(endpoint, opts...)
+	if err != nil {
+		return err
+	}
+	defer func() {
+		if err != nil {
+			if cerr := conn.Close(); cerr != nil {
+				glog.Errorf("Failed to close conn to %s: %v", endpoint, cerr)
+			}
+			return
+		}
+		go func() {
+			<-ctx.Done()
+			if cerr := conn.Close(); cerr != nil {
+				glog.Errorf("Failed to close conn to %s: %v", endpoint, cerr)
+			}
+		}()
+	}()
+
+	return RegisterClientCertificateHandler(ctx, mux, conn)
+}
+
+// RegisterClientCertificateHandler registers the http handlers for service ClientCertificate to "mux".
+// The handlers forward requests to the grpc endpoint over "conn".
+func RegisterClientCertificateHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	client := NewClientCertificateClient(conn)
+
+	mux.Handle("PUT", pattern_ClientCertificate_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		closeNotifier, ok := w.(http.CloseNotifier)
+		if ok {
+			go func() {
+				<-closeNotifier.CloseNotify()
+				cancel()
+			}()
+		}
+		resp, md, err := request_ClientCertificate_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, w, req, err)
+			return
+		}
+
+		forward_ClientCertificate_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	return nil
+}
+
+var (
+	pattern_ClientCertificate_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ca", "v0", "client"}, ""))
+)
+
+var (
+	forward_ClientCertificate_Create_0 = runtime.ForwardResponseMessage
 )

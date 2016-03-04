@@ -29,85 +29,21 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_Alert_AlertNotificationPush_0(ctx context.Context, client AlertClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AlertSMSMailPushRequest
+func request_Alerts_Notify_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq NotificationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.AlertNotificationPush(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Notify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Alert_AlertCreate_0(ctx context.Context, client AlertClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AlertCreateUpdateReuquest
-	var metadata runtime.ServerMetadata
-
-	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["cluster_name"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
-	}
-
-	protoReq.ClusterName, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
-	val, ok = pathParams["kube_namespace"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_namespace")
-	}
-
-	protoReq.KubeNamespace, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
-	val, ok = pathParams["kube_object_type"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_object_type")
-	}
-
-	protoReq.KubeObjectType, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
-	val, ok = pathParams["kube_object_name"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_object_name")
-	}
-
-	protoReq.KubeObjectName, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
-	msg, err := client.AlertCreate(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func request_Alert_AlertUpdate_0(ctx context.Context, client AlertClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AlertCreateUpdateReuquest
+func request_Alerts_Create_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CreateReuquest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -121,57 +57,121 @@ func request_Alert_AlertUpdate_0(ctx context.Context, client AlertClient, req *h
 		_   = err
 	)
 
-	val, ok = pathParams["cluster_name"]
+	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
-	protoReq.ClusterName, err = runtime.String(val)
+	protoReq.Cluster, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["kube_namespace"]
+	val, ok = pathParams["namespace"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_namespace")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
 	}
 
-	protoReq.KubeNamespace, err = runtime.String(val)
+	protoReq.Namespace, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["kube_object_type"]
+	val, ok = pathParams["object_type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_object_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_type")
 	}
 
-	protoReq.KubeObjectType, err = runtime.String(val)
+	protoReq.ObjectType, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["kube_object_name"]
+	val, ok = pathParams["object_name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_object_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_name")
 	}
 
-	protoReq.KubeObjectName, err = runtime.String(val)
+	protoReq.ObjectName, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	msg, err := client.AlertUpdate(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Alert_AlertDelete_0(ctx context.Context, client AlertClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AlertDeleteRequest
+func request_Alerts_Update_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdateReuquest
+	var metadata runtime.ServerMetadata
+
+	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["cluster"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+	}
+
+	protoReq.Cluster, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["namespace"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
+	}
+
+	protoReq.Namespace, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["object_type"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_type")
+	}
+
+	protoReq.ObjectType, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["object_name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_name")
+	}
+
+	protoReq.ObjectName, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	msg, err := client.Update(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func request_Alerts_Delete_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -181,68 +181,68 @@ func request_Alert_AlertDelete_0(ctx context.Context, client AlertClient, req *h
 		_   = err
 	)
 
-	val, ok = pathParams["cluster_name"]
+	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
-	protoReq.ClusterName, err = runtime.String(val)
+	protoReq.Cluster, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["kube_namespace"]
+	val, ok = pathParams["namespace"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_namespace")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
 	}
 
-	protoReq.KubeNamespace, err = runtime.String(val)
+	protoReq.Namespace, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["kube_object_type"]
+	val, ok = pathParams["object_type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_object_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_type")
 	}
 
-	protoReq.KubeObjectType, err = runtime.String(val)
+	protoReq.ObjectType, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["kube_object_name"]
+	val, ok = pathParams["object_name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_object_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_name")
 	}
 
-	protoReq.KubeObjectName, err = runtime.String(val)
+	protoReq.ObjectName, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["alert_phid"]
+	val, ok = pathParams["phid"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "alert_phid")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "phid")
 	}
 
-	protoReq.AlertPhid, err = runtime.String(val)
+	protoReq.Phid, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	msg, err := client.AlertDelete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Alert_AlertList_0(ctx context.Context, client AlertClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AlertGetRequest
+func request_Alerts_List_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -252,58 +252,58 @@ func request_Alert_AlertList_0(ctx context.Context, client AlertClient, req *htt
 		_   = err
 	)
 
-	val, ok = pathParams["cluster_name"]
+	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
-	protoReq.ClusterName, err = runtime.String(val)
+	protoReq.Cluster, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["kube_namespace"]
+	val, ok = pathParams["namespace"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_namespace")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
 	}
 
-	protoReq.KubeNamespace, err = runtime.String(val)
+	protoReq.Namespace, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["kube_object_type"]
+	val, ok = pathParams["object_type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_object_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_type")
 	}
 
-	protoReq.KubeObjectType, err = runtime.String(val)
+	protoReq.ObjectType, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["kube_object_name"]
+	val, ok = pathParams["object_name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_object_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_name")
 	}
 
-	protoReq.KubeObjectName, err = runtime.String(val)
+	protoReq.ObjectName, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	msg, err := client.AlertList(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-// RegisterAlertHandlerFromEndpoint is same as RegisterAlertHandler but
+// RegisterAlertsHandlerFromEndpoint is same as RegisterAlertsHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterAlertHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterAlertsHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -323,15 +323,15 @@ func RegisterAlertHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux
 		}()
 	}()
 
-	return RegisterAlertHandler(ctx, mux, conn)
+	return RegisterAlertsHandler(ctx, mux, conn)
 }
 
-// RegisterAlertHandler registers the http handlers for service Alert to "mux".
+// RegisterAlertsHandler registers the http handlers for service Alerts to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterAlertHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	client := NewAlertClient(conn)
+func RegisterAlertsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	client := NewAlertsClient(conn)
 
-	mux.Handle("POST", pattern_Alert_AlertNotificationPush_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Alerts_Notify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -340,18 +340,18 @@ func RegisterAlertHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 				cancel()
 			}()
 		}
-		resp, md, err := request_Alert_AlertNotificationPush_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Alerts_Notify_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Alert_AlertNotificationPush_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Alerts_Notify_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_Alert_AlertCreate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_Alerts_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -360,18 +360,18 @@ func RegisterAlertHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 				cancel()
 			}()
 		}
-		resp, md, err := request_Alert_AlertCreate_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Alerts_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Alert_AlertCreate_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Alerts_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Alert_AlertUpdate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Alerts_Update_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -380,18 +380,18 @@ func RegisterAlertHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 				cancel()
 			}()
 		}
-		resp, md, err := request_Alert_AlertUpdate_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Alerts_Update_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Alert_AlertUpdate_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Alerts_Update_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_Alert_AlertDelete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_Alerts_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -400,18 +400,18 @@ func RegisterAlertHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 				cancel()
 			}()
 		}
-		resp, md, err := request_Alert_AlertDelete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Alerts_Delete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Alert_AlertDelete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Alerts_Delete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Alert_AlertList_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Alerts_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -420,14 +420,14 @@ func RegisterAlertHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 				cancel()
 			}()
 		}
-		resp, md, err := request_Alert_AlertList_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Alerts_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Alert_AlertList_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Alerts_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -435,25 +435,25 @@ func RegisterAlertHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 }
 
 var (
-	pattern_Alert_AlertNotificationPush_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "alert", "v0", "notifications"}, ""))
+	pattern_Alerts_Notify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "alert", "v0", "notify"}, ""))
 
-	pattern_Alert_AlertCreate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "cluster_name", "kube_namespace", "kube_object_type", "kube_object_name"}, ""))
+	pattern_Alerts_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "cluster", "namespace", "object_type", "object_name"}, ""))
 
-	pattern_Alert_AlertUpdate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "cluster_name", "kube_namespace", "kube_object_type", "kube_object_name"}, ""))
+	pattern_Alerts_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "cluster", "namespace", "object_type", "object_name"}, ""))
 
-	pattern_Alert_AlertDelete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "alert", "v0", "cluster_name", "kube_namespace", "kube_object_type", "kube_object_name", "alert_phid"}, ""))
+	pattern_Alerts_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "alert", "v0", "cluster", "namespace", "object_type", "object_name", "phid"}, ""))
 
-	pattern_Alert_AlertList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "cluster_name", "kube_namespace", "kube_object_type", "kube_object_name"}, ""))
+	pattern_Alerts_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "cluster", "namespace", "object_type", "object_name"}, ""))
 )
 
 var (
-	forward_Alert_AlertNotificationPush_0 = runtime.ForwardResponseMessage
+	forward_Alerts_Notify_0 = runtime.ForwardResponseMessage
 
-	forward_Alert_AlertCreate_0 = runtime.ForwardResponseMessage
+	forward_Alerts_Create_0 = runtime.ForwardResponseMessage
 
-	forward_Alert_AlertUpdate_0 = runtime.ForwardResponseMessage
+	forward_Alerts_Update_0 = runtime.ForwardResponseMessage
 
-	forward_Alert_AlertDelete_0 = runtime.ForwardResponseMessage
+	forward_Alerts_Delete_0 = runtime.ForwardResponseMessage
 
-	forward_Alert_AlertList_0 = runtime.ForwardResponseMessage
+	forward_Alerts_List_0 = runtime.ForwardResponseMessage
 )

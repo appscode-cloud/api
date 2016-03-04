@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package ci;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Builds {
+  rpc Describe(BuildDescribeRequest) returns (BuildDescribeResponse) {
+    option (google.api.http) = {
+      get: "/api/ci/v0/builds/{job_name}/{number}"
+    };
+  }
+
+  rpc List(BuildListRequest) returns (BuildListResponse) {
+    option (google.api.http) = {
+      get: "/api/ci/v0/builds/{job_name}"
+    };
+  }
+}
+
+message BuildDescribeRequest {
+  string job_name = 1;
+  int64 number = 2;
+  string console = 3;
+}
+
+message BuildDescribeResponse {
+  dtypes.Status status = 1;
+  int64 build_number = 2;
+  string job_name = 3;
+  string base_url = 4;
+  string result = 5;
+  string console_output = 6;
+}
+
+message BuildListRequest {
+  string job_name = 1;
+}
+
+message BuildListResponse {
+  dtypes.Status status = 1;
+  string job_name = 2;
+  repeated Build builds = 3;
+}
+
+message Build {
+  int64 build_number = 1;
+  string result = 2;
+}

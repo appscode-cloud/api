@@ -5,61 +5,52 @@ package kubernetes;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-service Cluster {
-  rpc ClusterCreate(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
+service Clusters {
+  rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
+    option (google.api.http) = {
+      get : "/api/kubernetes/v0/clusters/{name}"
+    };
+  }
+
+  rpc Create(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
-  	  post : "/api/clusters/v0"
+  	  put: "/api/kubernetes/v0/clusters"
       body: "*"
     };
   }
 
-  rpc ClusterResize(ClusterResizeRequest) returns (dtypes.LongRunningResponse) {
+  rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
-  	  put : "/api/clusters/v0"
-      body : "*"
-     };
-  }
-
-  rpc ClusterScale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
-  	option (google.api.http) = {
-  	  put : "/api/clusters/v0"
+  	  post: "/api/kubernetes/v0/clusters"
       body: "*"
     };
   }
 
-  rpc ClusterDelete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
+  rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
-  	  delete : "/api/clusters/v0/{name}"
+  	  delete : "/api/kubernetes/v0/clusters/{name}"
   	};
   }
 
-  rpc ClusterList(ClusterVoidRequest) returns (ClusterListResponse) {
+  rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
      option (google.api.http) = {
-       get : "/api/clusters/v0"
+       get : "/api/kubernetes/v0/clusters"
      };
   }
 
   rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
      option (google.api.http) = {
-       get : "/api/clusters/v0/startup-script/{role}"
+       get : "/api/kubernetes/v0/clusters/startup-script/{role}"
      };
   }
-  rpc ClusterKubeConfig(ClusterKubeConfigRequest) returns (ClusterKubeConfigResponse) {
+  rpc Config(ClusterConfigRequest) returns (ClusterConfigResponse) {
      option (google.api.http) = {
-       get : "/api/clusters/v0/kubeconfig/{name}"
+       get : "/api/kubernetes/v0/clusters/config/{name}"
      };
   }
 }
 
-
-message ClusterVoidRequest { }
-
-message ClusterListResponse {
-  dtypes.Status status = 1;
-  repeated ClusterDetails clusters = 2;
-}
-
-message ClusterDetails {
+message Cluster {
   string phid = 1;
   string name = 2;
   string provider = 3;
@@ -76,6 +67,33 @@ message ClusterDetails {
   string created_at = 11;
 }
 
+
+message ClusterDescribeRequest {
+  string name = 1;
+}
+
+message ClusterDescribeResponse {
+  dtypes.Status status = 1;
+  Cluster cluster = 2;
+
+  message Specs {
+    int32 containers = 1;
+    int32 pods = 2;
+    int32 services = 3;
+    int32 rcs = 4;
+
+    int64 cpu_core = 5;
+    int64 total_memory = 6;
+  }
+  Specs specs = 3;
+}
+
+
+message ClusterListResponse {
+  dtypes.Status status = 1;
+  repeated Cluster clusters = 2;
+}
+
 message ClusterCreateRequest {
   string name = 1;
   string provider = 2;
@@ -84,11 +102,6 @@ message ClusterCreateRequest {
   map<string, string> cloud_credential = 5;
   map<string, int64> node_set = 6;
   string saltbase_version = 7;
-}
-
-message ClusterResizeRequest {
-  string name = 1;
-  map<string, int64> node_set = 2;
 }
 
 message ClusterScaleRequest {
@@ -110,11 +123,11 @@ message ClusterStartupScriptResponse {
   string configuration = 2;
 }
 
-message ClusterKubeConfigRequest {
+message ClusterConfigRequest {
   string name = 1;
 }
 
-message ClusterKubeConfigResponse {
+message ClusterConfigResponse {
   dtypes.Status status = 1;
   string configuration = 2;
 }

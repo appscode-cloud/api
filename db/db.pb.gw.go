@@ -14,6 +14,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/appscode/api/dtypes"
 	"github.com/gengo/grpc-gateway/runtime"
 	"github.com/gengo/grpc-gateway/utilities"
 	"github.com/golang/glog"
@@ -29,8 +30,8 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_Db_DbCreate_0(ctx context.Context, client DbClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DbCreateRequest
+func request_Databases_Create_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CreateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -44,35 +45,35 @@ func request_Db_DbCreate_0(ctx context.Context, client DbClient, req *http.Reque
 		_   = err
 	)
 
-	val, ok = pathParams["cluster_name"]
+	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
-	protoReq.ClusterName, err = runtime.String(val)
+	protoReq.Cluster, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["db_type"]
+	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "db_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
-	protoReq.DbType, err = runtime.String(val)
+	protoReq.Type, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	msg, err := client.DbCreate(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Db_DbDelete_0(ctx context.Context, client DbClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DbDeleteRequest
+func request_Databases_Delete_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -82,46 +83,46 @@ func request_Db_DbDelete_0(ctx context.Context, client DbClient, req *http.Reque
 		_   = err
 	)
 
-	val, ok = pathParams["cluster_name"]
+	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
-	protoReq.ClusterName, err = runtime.String(val)
+	protoReq.Cluster, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["db_type"]
+	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "db_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
-	protoReq.DbType, err = runtime.String(val)
+	protoReq.Type, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["db_name"]
+	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "db_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
-	protoReq.DbName, err = runtime.String(val)
+	protoReq.Name, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	msg, err := client.DbDelete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Db_DbBackup_0(ctx context.Context, client DbClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DbBackupRequest
+func request_Databases_Backup_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BackupRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -135,35 +136,35 @@ func request_Db_DbBackup_0(ctx context.Context, client DbClient, req *http.Reque
 		_   = err
 	)
 
-	val, ok = pathParams["cluster_name"]
+	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
-	protoReq.ClusterName, err = runtime.String(val)
+	protoReq.Cluster, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["db_type"]
+	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "db_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
-	protoReq.DbType, err = runtime.String(val)
+	protoReq.Type, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	msg, err := client.DbBackup(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Backup(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Db_DbRestore_0(ctx context.Context, client DbClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DbRestoreRequest
+func request_Databases_Restore_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq RestoreRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -177,35 +178,35 @@ func request_Db_DbRestore_0(ctx context.Context, client DbClient, req *http.Requ
 		_   = err
 	)
 
-	val, ok = pathParams["cluster_name"]
+	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
-	protoReq.ClusterName, err = runtime.String(val)
+	protoReq.Cluster, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["db_type"]
+	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "db_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
-	protoReq.DbType, err = runtime.String(val)
+	protoReq.Type, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	msg, err := client.DbRestore(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Restore(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Db_DbShow_0(ctx context.Context, client DbClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DbShowRequest
+func request_Databases_Describe_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DescribeRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -215,87 +216,56 @@ func request_Db_DbShow_0(ctx context.Context, client DbClient, req *http.Request
 		_   = err
 	)
 
-	val, ok = pathParams["cluster_name"]
+	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
-	protoReq.ClusterName, err = runtime.String(val)
+	protoReq.Cluster, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["db_type"]
+	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "db_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
-	protoReq.DbType, err = runtime.String(val)
+	protoReq.Type, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["db_name"]
+	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "db_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
-	protoReq.DbName, err = runtime.String(val)
+	protoReq.Name, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	msg, err := client.DbShow(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Describe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Db_DbPgAddSlave_0(ctx context.Context, client DbClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DbPgAddSlaveRequest
+func request_Databases_List_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq dtypes.VoidRequest
 	var metadata runtime.ServerMetadata
 
-	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["cluster_name"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
-	}
-
-	protoReq.ClusterName, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
-	msg, err := client.DbPgAddSlave(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Db_DbList_0(ctx context.Context, client DbClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DbVoidRequest
-	var metadata runtime.ServerMetadata
-
-	msg, err := client.DbList(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-// RegisterDbHandlerFromEndpoint is same as RegisterDbHandler but
+// RegisterDatabasesHandlerFromEndpoint is same as RegisterDatabasesHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterDbHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterDatabasesHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -315,15 +285,15 @@ func RegisterDbHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, e
 		}()
 	}()
 
-	return RegisterDbHandler(ctx, mux, conn)
+	return RegisterDatabasesHandler(ctx, mux, conn)
 }
 
-// RegisterDbHandler registers the http handlers for service Db to "mux".
+// RegisterDatabasesHandler registers the http handlers for service Databases to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterDbHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	client := NewDbClient(conn)
+func RegisterDatabasesHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	client := NewDatabasesClient(conn)
 
-	mux.Handle("PUT", pattern_Db_DbCreate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_Databases_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -332,18 +302,18 @@ func RegisterDbHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.Cl
 				cancel()
 			}()
 		}
-		resp, md, err := request_Db_DbCreate_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Databases_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Db_DbCreate_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Databases_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_Db_DbDelete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_Databases_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -352,18 +322,18 @@ func RegisterDbHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.Cl
 				cancel()
 			}()
 		}
-		resp, md, err := request_Db_DbDelete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Databases_Delete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Db_DbDelete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Databases_Delete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Db_DbBackup_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Databases_Backup_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -372,18 +342,18 @@ func RegisterDbHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.Cl
 				cancel()
 			}()
 		}
-		resp, md, err := request_Db_DbBackup_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Databases_Backup_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Db_DbBackup_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Databases_Backup_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_Db_DbRestore_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_Databases_Restore_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -392,18 +362,18 @@ func RegisterDbHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.Cl
 				cancel()
 			}()
 		}
-		resp, md, err := request_Db_DbRestore_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Databases_Restore_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Db_DbRestore_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Databases_Restore_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Db_DbShow_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Databases_Describe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -412,18 +382,18 @@ func RegisterDbHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.Cl
 				cancel()
 			}()
 		}
-		resp, md, err := request_Db_DbShow_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Databases_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Db_DbShow_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Databases_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_Db_DbPgAddSlave_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Databases_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -432,34 +402,14 @@ func RegisterDbHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.Cl
 				cancel()
 			}()
 		}
-		resp, md, err := request_Db_DbPgAddSlave_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Databases_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Db_DbPgAddSlave_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("GET", pattern_Db_DbList_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
-		}
-		resp, md, err := request_Db_DbList_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
-			return
-		}
-
-		forward_Db_DbList_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Databases_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -467,33 +417,29 @@ func RegisterDbHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.Cl
 }
 
 var (
-	pattern_Db_DbCreate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "db", "v0", "cluster_name", "db_type"}, ""))
+	pattern_Databases_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "db", "v0", "cluster", "type"}, ""))
 
-	pattern_Db_DbDelete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0", "cluster_name", "db_type", "db_name"}, ""))
+	pattern_Databases_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0", "cluster", "type", "name"}, ""))
 
-	pattern_Db_DbBackup_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0", "cluster_name", "backup", "db_type"}, ""))
+	pattern_Databases_Backup_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0", "backup", "cluster", "type"}, ""))
 
-	pattern_Db_DbRestore_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0", "cluster_name", "restore", "db_type"}, ""))
+	pattern_Databases_Restore_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0", "restore", "cluster", "type"}, ""))
 
-	pattern_Db_DbShow_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0", "cluster_name", "db_type", "db_name"}, ""))
+	pattern_Databases_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0", "cluster", "type", "name"}, ""))
 
-	pattern_Db_DbPgAddSlave_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"api", "db", "v0", "cluster_name", "pg", "slave"}, ""))
-
-	pattern_Db_DbList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "db", "v0"}, ""))
+	pattern_Databases_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "db", "v0"}, ""))
 )
 
 var (
-	forward_Db_DbCreate_0 = runtime.ForwardResponseMessage
+	forward_Databases_Create_0 = runtime.ForwardResponseMessage
 
-	forward_Db_DbDelete_0 = runtime.ForwardResponseMessage
+	forward_Databases_Delete_0 = runtime.ForwardResponseMessage
 
-	forward_Db_DbBackup_0 = runtime.ForwardResponseMessage
+	forward_Databases_Backup_0 = runtime.ForwardResponseMessage
 
-	forward_Db_DbRestore_0 = runtime.ForwardResponseMessage
+	forward_Databases_Restore_0 = runtime.ForwardResponseMessage
 
-	forward_Db_DbShow_0 = runtime.ForwardResponseMessage
+	forward_Databases_Describe_0 = runtime.ForwardResponseMessage
 
-	forward_Db_DbPgAddSlave_0 = runtime.ForwardResponseMessage
-
-	forward_Db_DbList_0 = runtime.ForwardResponseMessage
+	forward_Databases_List_0 = runtime.ForwardResponseMessage
 )
