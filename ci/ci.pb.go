@@ -44,7 +44,7 @@ import fmt "fmt"
 import math "math"
 import _ "github.com/gengo/grpc-gateway/third_party/googleapis/google/api"
 import dtypes "github.com/appscode/api/dtypes"
-import ssh "api/ssh"
+import ssh "github.com/appscode/api/ssh"
 
 import (
 	context "golang.org/x/net/context"

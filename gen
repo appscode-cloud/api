@@ -10,8 +10,8 @@ ROOT=$PWD
 ALIAS="Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,"
 ALIAS+="Mapi/dtypes/types.proto=github.com/appscode/api/dtypes,"
 ALIAS+="Mapi/ci/ci.proto=github.com/appscode/api/ci,"
-ALIAS+="Mapi/kubernetes/kubernetes.proto=github.com/appscode/api/kubernetes"
-
+ALIAS+="Mapi/kubernetes/kubernetes.proto=github.com/appscode/api/kubernetes,"
+ALIAS+="Mapi/ssh/ssh.proto=github.com/appscode/api/ssh"
 
 clean() {
 	rm -rf ./*/*.pb.go ./*/*.pb.gw.go
@@ -45,10 +45,15 @@ gen_proxy_protos() {
     done
 }
 
+compile() {
+    echo "compiling files"
+    go install ./...
+}
 gen_protos() {
     clean
     gen_server_protos
     gen_proxy_protos
+    compile
 }
 
 if [ $# -eq 0 ]; then
@@ -57,6 +62,9 @@ if [ $# -eq 0 ]; then
 fi
 
 case "$1" in
+    compile)
+        compile
+        ;;
 	server)
 		gen_server_protos
 		;;
@@ -69,7 +77,7 @@ case "$1" in
 	clean)
 	    clean
 	    ;;
-	*)  echo $"Usage: $0 {server|proxy|all|clean}"
+	*)  echo $"Usage: $0 {compile|server|proxy|all|clean}"
 		RETVAL=1
 		;;
 esac
