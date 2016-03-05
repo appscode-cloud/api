@@ -4,258 +4,47 @@ package ci;
 
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
-import "api/ssh/ssh.proto";
 
-service CI {
-    rpc CIStatus(CIVoidRequest) returns (CIStatusResponse) {
-        option (google.api.http) = {
-        get: "/api/ci/v0/slaves"
+service Builds {
+  rpc Describe(BuildDescribeRequest) returns (BuildDescribeResponse) {
+    option (google.api.http) = {
+      get: "/api/ci/v0/builds/{job_name}/{number}"
     };
+  }
+
+  rpc List(BuildListRequest) returns (BuildListResponse) {
+    option (google.api.http) = {
+      get: "/api/ci/v0/builds/{job_name}"
+    };
+  }
 }
 
-rpc CIDescribeBuild(CIBuildDescribeRequest) returns (CIBuildDescribeResponse) {
-option (google.api.http) = {
-get: "/api/ci/v0/jobs/{job_name}/builds/{build_number}"
-};
+message BuildDescribeRequest {
+  string job_name = 1;
+  int64 number = 2;
+  string console = 3;
 }
 
-rpc CIBuildJob(CIBuildJobRequest) returns (CICommonResponse) {
-option (google.api.http) = {
-put: "/api/ci/v0/jobs/{job_name}/builds"
-body: "*"
-};
+message BuildDescribeResponse {
+  dtypes.Status status = 1;
+  int64 build_number = 2;
+  string job_name = 3;
+  string base_url = 4;
+  string result = 5;
+  string console_output = 6;
 }
 
-rpc CIGetBuilds(CIGetBuildsRequest) returns (CIGetBuildsResponse) {
-option (google.api.http) = {
-get: "/api/ci/v0/jobs/{job_name}/builds"
-};
+message BuildListRequest {
+  string job_name = 1;
 }
 
-rpc CIGetJobs(CIVoidRequest) returns (CIJobsResponse) {
-option (google.api.http) = {
-get: "/api/ci/v0/jobs"
-};
+message BuildListResponse {
+  dtypes.Status status = 1;
+  string job_name = 2;
+  repeated Build builds = 3;
 }
 
-
-rpc CIDescribeJob(CIDescribeJobRequest) returns (CIDescribeJobResponse) {
-option (google.api.http) = {
-get: "/api/ci/v0/jobs/{job_name}"
-};
-}
-
-rpc CIDeleteJob(CIDeleteJobRequest) returns (CICommonResponse) {
-option (google.api.http) = {
-delete: "/api/ci/v0/jobs/{job_name}"
-};
-}
-
-rpc CICreateJob(CICreateJobRequest) returns (CICommonResponse) {
-option (google.api.http) = {
-put: "/api/ci/v0/jobs/{job_name}"
-body: "*"
-};
-}
-
-rpc CICopyJob(CICopyJobRequest) returns (CICommonResponse) {
-option (google.api.http) = {
-put: "/api/ci/v0/jobs/copy/{job_from}/{job_to}"
-body: "*"
-};
-}
-
-rpc CICreateMaster(CICreateMasterRequest) returns (CICreateMasterResponse) {
-option (google.api.http) = {
-put: "/api/ci/v0/master"
-body: "*"
-};
-}
-
-rpc CICreateSlave(CICreateSlaveRequest) returns (dtypes.LongRunningResponse) {
-option (google.api.http) = {
-put: "/api/ci/v0/slaves"
-body: "*"
-};
-}
-
-rpc CISlaveDetails(CISlaveOperationRequest) returns (CISlaveDetailsResponse) {
-option (google.api.http) = {
-get: "/api/ci/v0/slaves/{name}"
-};
-}
-
-rpc CISlaveDelete(CISlaveOperationRequest) returns (dtypes.LongRunningResponse) {
-option (google.api.http) = {
-delete: "/api/ci/v0/slaves/{name}"
-};
-}
-
-rpc CISlaveRestart(CISlaveOperationRequest) returns (CISlaveOperationResponse) {
-option (google.api.http) = {
-get: "/api/ci/v0/slaves/{name}/reboot"
-};
-}
-}
-
-message CIVoidRequest {}
-
-message CICommonResponse {
-    dtypes.Status status = 1;
-}
-
-message CIStatusResponse {
-    dtypes.Status status = 1;
-    repeated CIStatusMessage node_list = 2;
-}
-
-message CIBuildDescribeRequest {
-    string job_name = 1;
-    int64 build_number = 2;
-    string console = 3;
-}
-
-message CIBuildDescribeResponse {
-    dtypes.Status status = 1;
-    int64 build_number = 2;
-    string job_name = 3;
-    string base_url = 4;
-    string result = 5;
-    string console_output = 6;
-}
-
-message CIBuildJobRequest {
-    string job_name = 1;
-    string param = 2;
-}
-
-message CIGetBuildsRequest {
-    string job_name = 1;
-}
-
-message CIGetBuildsResponse {
-    dtypes.Status status = 1;
-    string job_name = 2;
-    repeated CIBuild builds = 3;
-}
-
-message CIJobsResponse {
-    dtypes.Status status = 1;
-    repeated CIJob jobs = 2;
-}
-
-message CIDescribeJobRequest {
-    string job_name = 1;
-}
-
-message CIDescribeJobResponse {
-    dtypes.Status status = 1;
-    string job_name = 2;
-    string description = 3;
-    string display_name = 4;
-    int64 build_count = 5;
-    string job_color = 6;
-    string builds_command = 7;
-}
-
-message CIDeleteJobRequest {
-    string job_name = 1;
-}
-
-message CICreateJobRequest {
-    string job_name = 1;
-    string shFile = 2;
-}
-
-message CICopyJobRequest {
-    string job_from = 1;
-    string job_to = 2;
-}
-
-message CIStatusMessage {
-    string node_name = 1;
-    string status = 2;
-}
-
-message CIBuild {
-    int64 build_number = 1;
-    string result = 2;
-}
-
-message CIJob {
-    string job_name = 1;
-    string color = 2;
-}
-
-message CICreateSlaveRequest {
-    int32 executors = 1;
-    string labels = 2;
-    string startup_script = 3;
-}
-
-message CICreateMasterRequest {
-    string volume_id = 1;
-}
-
-message CICreateMasterResponse {
-    dtypes.Status status = 1;
-}
-
-message CIStartupConfig {
-    string provider = 1;
-    string oS = 2;
-    string jenkins_version = 3;
-    string saltbase_version = 4;
-    string role = 5;
-
-    string namespace = 6;
-    string labels = 7;
-    string master_addr = 8;
-    int32 executors = 9;
-    CISecrets secrets = 10;
-}
-
-message CISecrets {
-    string jenkins_user = 1;
-    string jenkins_token = 2;
-    ssh.SSHKey ssh_key = 3;
-    repeated DockerRepo docker_repos = 4;
-    MavenRepo maven_repo = 5;
-    // npm
-    // composer
-}
-
-message MavenRepo {
-    string url = 1;
-    string username = 2;
-    string password = 3;
-}
-
-message DockerRepo {
-    string url = 1;
-    string email = 2;
-    string auth = 3;
-}
-
-message CISlaveOperationRequest {
-    string name = 1;
-}
-
-message CISlaveDetailsResponse {
-    dtypes.Status status = 1;
-    string name = 2;
-    int64 executors = 3;
-    string node_status = 4;
-    string offline_reason = 5;
-
-    string label = 6;
-    string provider = 7;
-    string sku = 8;
-    string startup_script = 9;
-
-    string created_at = 10;
-}
-
-message CISlaveOperationResponse {
-    dtypes.Status status = 1;
+message Build {
+  int64 build_number = 1;
+  string result = 2;
 }

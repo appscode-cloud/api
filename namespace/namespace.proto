@@ -6,57 +6,72 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Namespace {
-  rpc NamespaceCheck(NamespaceCheckRequest) returns (NamespaceCheckResponse) {
-	option (google.api.http) = {
-	  get : "/api/namespace/v0/{name}"
+  rpc Check(CheckRequest) returns (CheckResponse) {
+	  option (google.api.http) = {
+	    get : "/api/namespace/v0/{name}"
     };
   }
-  rpc NamespaceCreate(NamespaceCreateRequest) returns (NamespaceCreateResponse) {
-	option (google.api.http) = {
-	  post : "/api/namespace/v0/create"
-	  body : "*"
+
+  rpc Create(CreateRequest) returns (CreateResponse) {
+	  option (google.api.http) = {
+	    put: "/api/namespace/v0/{name}"
+	    body: "*"
     };
   }
-  rpc NamespaceStatus(NamespaceCheckRequest) returns (NamespaceCheckResponse) {
-	option (google.api.http) = {
-	  get: "/api/namespace/v0/status/{name}"
-	};
+
+  rpc Status(StatusRequest) returns (StatusResponse) {
+	  option (google.api.http) = {
+	    get: "/api/namespace/v0/status/{name}"
+	  };
   }
-  rpc NamespaceLogDetails(NamespaceCheckRequest) returns (NamespaceLogResponse) {
-	option (google.api.http) = {
-	  get: "/api/namespace/v0/log/{name}"
-	};
+
+  rpc Log(LogRequest) returns (LogResponse) {
+	  option (google.api.http) = {
+	    get: "/api/namespace/v0/log/{name}"
+	  };
   }
 }
 
-message NamespaceCheckRequest {
+message CheckRequest {
   string name = 1;
 }
 
-message NamespaceCheckResponse {
+message CheckResponse {
   dtypes.Status status = 1;
 }
 
-message NamespaceCreateRequest {
+message CreateRequest {
   string name = 1;
   string display_name = 2;
   string email = 3;
   string user_name = 4;
   string password = 5;
-  repeated string invitee_email = 6;
+  repeated string invite_email = 6;
   string user_ip = 7;
 }
 
-message NamespaceCreateResponse {
+message CreateResponse {
   dtypes.Status status = 1;
 }
 
-message NamespaceLogResponse {
-  dtypes.Status status = 1;
-  repeated NamespaceLog logs = 2;
+message LogRequest {
+  string name = 1;
 }
 
-message NamespaceLog {
+message LogResponse {
+  dtypes.Status status = 1;
+  repeated Log logs = 2;
+}
+
+message Log {
   string info = 1;
   string details = 2;
+}
+
+message StatusRequest {
+  string name = 1;
+}
+
+message StatusResponse {
+  dtypes.Status status = 1;
 }

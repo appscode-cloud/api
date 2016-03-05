@@ -2,39 +2,37 @@ syntax = "proto3";
 
 package gearman;
 
-import "api/ci/ci.proto";
+import "api/ci/slave.proto";
 import "api/kubernetes/kubernetes.proto";
 
 // Next Id: 11
 enum GearmanOpType {
   UNKNOWN = 0;
   CLUSTER_CREATE = 1;
-  CLUSTER_RESIZE = 2;
-  CLUSTER_SCALE = 3;
-  CLUSTER_DELETE = 4;
-  NAMESPACE_CREATE = 5;
-  SLAVE_CREATE = 6;
-  SLAVE_DELETE = 7;
+  CLUSTER_SCALE = 2;
+  CLUSTER_DELETE = 3;
+  NAMESPACE_CREATE = 4;
+  SLAVE_CREATE = 5;
+  SLAVE_DELETE = 6;
 }
 
-// Next Id: 18
+// Next Id: 10
 message GearmanOperation {
   string phid = 1;
   GearmanOpType type = 2;
   oneof request {
     kubernetes.ClusterCreateRequest cluster_create_request = 3;
-    kubernetes.ClusterResizeRequest cluster_resize_request = 4;
-    kubernetes.ClusterScaleRequest cluster_scale_request = 5;
-    kubernetes.ClusterDeleteRequest cluster_delete_request = 6;
-    ci.CICreateSlaveRequest ci_create_slave_request = 7;
-    ci.CISlaveOperationRequest ci_delete_slave_request = 10;
+    kubernetes.ClusterScaleRequest cluster_scale_request = 4;
+    kubernetes.ClusterDeleteRequest cluster_delete_request = 5;
+    ci.SlaveCreateRequest ci_slave_create_request = 6;
+    ci.SlaveDeleteRequest ci_slave_delete_request = 7;
   }
-  Auth auth = 16;
-  int64 request_time = 17;
+  Auth auth = 8;
+  int64 request_time = 9;
 }
 
 message Auth {
-  string namespace = 13;
-  string username = 14;
-  string token = 15;
+  string namespace = 1;
+  string username = 2;
+  string token = 3;
 }

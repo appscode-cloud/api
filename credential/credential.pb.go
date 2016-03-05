@@ -9,12 +9,11 @@ It is generated from these files:
 	credential.proto
 
 It has these top-level messages:
-	CloudCredentialCreateUpdateRequest
+	CloudCredentialCreateRequest
+	CloudCredentialUpdateRequest
 	CloudCredentialDeleteRequest
-	CloudCredentialListRequest
 	CloudCredentialListResponse
-	CloudCredentialCommonResponse
-	CloudCredentialInfo
+	CloudCredential
 */
 package credential
 
@@ -38,21 +37,36 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 const _ = proto.ProtoPackageIsVersion1
 
-type CloudCredentialCreateUpdateRequest struct {
-	Name       string            `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	Provider   string            `protobuf:"bytes,2,opt,name=provider" json:"provider,omitempty"`
-	Data       map[string]string `protobuf:"bytes,3,rep,name=data" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	ActionType string            `protobuf:"bytes,4,opt,name=action_type" json:"action_type,omitempty"`
+type CloudCredentialCreateRequest struct {
+	Name     string            `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Provider string            `protobuf:"bytes,2,opt,name=provider" json:"provider,omitempty"`
+	Data     map[string]string `protobuf:"bytes,3,rep,name=data" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 }
 
-func (m *CloudCredentialCreateUpdateRequest) Reset()         { *m = CloudCredentialCreateUpdateRequest{} }
-func (m *CloudCredentialCreateUpdateRequest) String() string { return proto.CompactTextString(m) }
-func (*CloudCredentialCreateUpdateRequest) ProtoMessage()    {}
-func (*CloudCredentialCreateUpdateRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor0, []int{0}
+func (m *CloudCredentialCreateRequest) Reset()                    { *m = CloudCredentialCreateRequest{} }
+func (m *CloudCredentialCreateRequest) String() string            { return proto.CompactTextString(m) }
+func (*CloudCredentialCreateRequest) ProtoMessage()               {}
+func (*CloudCredentialCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+
+func (m *CloudCredentialCreateRequest) GetData() map[string]string {
+	if m != nil {
+		return m.Data
+	}
+	return nil
 }
 
-func (m *CloudCredentialCreateUpdateRequest) GetData() map[string]string {
+type CloudCredentialUpdateRequest struct {
+	Name     string            `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Provider string            `protobuf:"bytes,2,opt,name=provider" json:"provider,omitempty"`
+	Data     map[string]string `protobuf:"bytes,3,rep,name=data" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+}
+
+func (m *CloudCredentialUpdateRequest) Reset()                    { *m = CloudCredentialUpdateRequest{} }
+func (m *CloudCredentialUpdateRequest) String() string            { return proto.CompactTextString(m) }
+func (*CloudCredentialUpdateRequest) ProtoMessage()               {}
+func (*CloudCredentialUpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+
+func (m *CloudCredentialUpdateRequest) GetData() map[string]string {
 	if m != nil {
 		return m.Data
 	}
@@ -66,19 +80,11 @@ type CloudCredentialDeleteRequest struct {
 func (m *CloudCredentialDeleteRequest) Reset()                    { *m = CloudCredentialDeleteRequest{} }
 func (m *CloudCredentialDeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*CloudCredentialDeleteRequest) ProtoMessage()               {}
-func (*CloudCredentialDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
-
-type CloudCredentialListRequest struct {
-}
-
-func (m *CloudCredentialListRequest) Reset()                    { *m = CloudCredentialListRequest{} }
-func (m *CloudCredentialListRequest) String() string            { return proto.CompactTextString(m) }
-func (*CloudCredentialListRequest) ProtoMessage()               {}
-func (*CloudCredentialListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+func (*CloudCredentialDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
 type CloudCredentialListResponse struct {
-	Status      *dtypes.Status         `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-	Credentials []*CloudCredentialInfo `protobuf:"bytes,2,rep,name=credentials" json:"credentials,omitempty"`
+	Status      *dtypes.Status     `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
+	Credentials []*CloudCredential `protobuf:"bytes,2,rep,name=credentials" json:"credentials,omitempty"`
 }
 
 func (m *CloudCredentialListResponse) Reset()                    { *m = CloudCredentialListResponse{} }
@@ -93,220 +99,201 @@ func (m *CloudCredentialListResponse) GetStatus() *dtypes.Status {
 	return nil
 }
 
-func (m *CloudCredentialListResponse) GetCredentials() []*CloudCredentialInfo {
+func (m *CloudCredentialListResponse) GetCredentials() []*CloudCredential {
 	if m != nil {
 		return m.Credentials
 	}
 	return nil
 }
 
-type CloudCredentialCommonResponse struct {
-	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-}
-
-func (m *CloudCredentialCommonResponse) Reset()                    { *m = CloudCredentialCommonResponse{} }
-func (m *CloudCredentialCommonResponse) String() string            { return proto.CompactTextString(m) }
-func (*CloudCredentialCommonResponse) ProtoMessage()               {}
-func (*CloudCredentialCommonResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
-
-func (m *CloudCredentialCommonResponse) GetStatus() *dtypes.Status {
-	if m != nil {
-		return m.Status
-	}
-	return nil
-}
-
-type CloudCredentialInfo struct {
+type CloudCredential struct {
 	Name        string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	Provider    string `protobuf:"bytes,2,opt,name=provider" json:"provider,omitempty"`
 	Information string `protobuf:"bytes,3,opt,name=information" json:"information,omitempty"`
 }
 
-func (m *CloudCredentialInfo) Reset()                    { *m = CloudCredentialInfo{} }
-func (m *CloudCredentialInfo) String() string            { return proto.CompactTextString(m) }
-func (*CloudCredentialInfo) ProtoMessage()               {}
-func (*CloudCredentialInfo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+func (m *CloudCredential) Reset()                    { *m = CloudCredential{} }
+func (m *CloudCredential) String() string            { return proto.CompactTextString(m) }
+func (*CloudCredential) ProtoMessage()               {}
+func (*CloudCredential) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
 func init() {
-	proto.RegisterType((*CloudCredentialCreateUpdateRequest)(nil), "credential.CloudCredentialCreateUpdateRequest")
+	proto.RegisterType((*CloudCredentialCreateRequest)(nil), "credential.CloudCredentialCreateRequest")
+	proto.RegisterType((*CloudCredentialUpdateRequest)(nil), "credential.CloudCredentialUpdateRequest")
 	proto.RegisterType((*CloudCredentialDeleteRequest)(nil), "credential.CloudCredentialDeleteRequest")
-	proto.RegisterType((*CloudCredentialListRequest)(nil), "credential.CloudCredentialListRequest")
 	proto.RegisterType((*CloudCredentialListResponse)(nil), "credential.CloudCredentialListResponse")
-	proto.RegisterType((*CloudCredentialCommonResponse)(nil), "credential.CloudCredentialCommonResponse")
-	proto.RegisterType((*CloudCredentialInfo)(nil), "credential.CloudCredentialInfo")
+	proto.RegisterType((*CloudCredential)(nil), "credential.CloudCredential")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
 var _ grpc.ClientConn
 
-// Client API for CloudCredential service
+// Client API for Cloud service
 
-type CloudCredentialClient interface {
-	CloudCredentialList(ctx context.Context, in *CloudCredentialListRequest, opts ...grpc.CallOption) (*CloudCredentialListResponse, error)
-	CloudCredentialCreate(ctx context.Context, in *CloudCredentialCreateUpdateRequest, opts ...grpc.CallOption) (*CloudCredentialCommonResponse, error)
-	CloudCredentialUpdate(ctx context.Context, in *CloudCredentialCreateUpdateRequest, opts ...grpc.CallOption) (*CloudCredentialCommonResponse, error)
-	CloudCredentialDelete(ctx context.Context, in *CloudCredentialDeleteRequest, opts ...grpc.CallOption) (*CloudCredentialCommonResponse, error)
+type CloudClient interface {
+	List(ctx context.Context, in *dtypes.VoidRequest, opts ...grpc.CallOption) (*CloudCredentialListResponse, error)
+	Create(ctx context.Context, in *CloudCredentialCreateRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
+	Update(ctx context.Context, in *CloudCredentialUpdateRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
+	Delete(ctx context.Context, in *CloudCredentialDeleteRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
 }
 
-type cloudCredentialClient struct {
+type cloudClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewCloudCredentialClient(cc *grpc.ClientConn) CloudCredentialClient {
-	return &cloudCredentialClient{cc}
+func NewCloudClient(cc *grpc.ClientConn) CloudClient {
+	return &cloudClient{cc}
 }
 
-func (c *cloudCredentialClient) CloudCredentialList(ctx context.Context, in *CloudCredentialListRequest, opts ...grpc.CallOption) (*CloudCredentialListResponse, error) {
+func (c *cloudClient) List(ctx context.Context, in *dtypes.VoidRequest, opts ...grpc.CallOption) (*CloudCredentialListResponse, error) {
 	out := new(CloudCredentialListResponse)
-	err := grpc.Invoke(ctx, "/credential.CloudCredential/CloudCredentialList", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/credential.Cloud/List", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cloudCredentialClient) CloudCredentialCreate(ctx context.Context, in *CloudCredentialCreateUpdateRequest, opts ...grpc.CallOption) (*CloudCredentialCommonResponse, error) {
-	out := new(CloudCredentialCommonResponse)
-	err := grpc.Invoke(ctx, "/credential.CloudCredential/CloudCredentialCreate", in, out, c.cc, opts...)
+func (c *cloudClient) Create(ctx context.Context, in *CloudCredentialCreateRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
+	out := new(dtypes.VoidResponse)
+	err := grpc.Invoke(ctx, "/credential.Cloud/Create", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cloudCredentialClient) CloudCredentialUpdate(ctx context.Context, in *CloudCredentialCreateUpdateRequest, opts ...grpc.CallOption) (*CloudCredentialCommonResponse, error) {
-	out := new(CloudCredentialCommonResponse)
-	err := grpc.Invoke(ctx, "/credential.CloudCredential/CloudCredentialUpdate", in, out, c.cc, opts...)
+func (c *cloudClient) Update(ctx context.Context, in *CloudCredentialUpdateRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
+	out := new(dtypes.VoidResponse)
+	err := grpc.Invoke(ctx, "/credential.Cloud/Update", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cloudCredentialClient) CloudCredentialDelete(ctx context.Context, in *CloudCredentialDeleteRequest, opts ...grpc.CallOption) (*CloudCredentialCommonResponse, error) {
-	out := new(CloudCredentialCommonResponse)
-	err := grpc.Invoke(ctx, "/credential.CloudCredential/CloudCredentialDelete", in, out, c.cc, opts...)
+func (c *cloudClient) Delete(ctx context.Context, in *CloudCredentialDeleteRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
+	out := new(dtypes.VoidResponse)
+	err := grpc.Invoke(ctx, "/credential.Cloud/Delete", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for CloudCredential service
+// Server API for Cloud service
 
-type CloudCredentialServer interface {
-	CloudCredentialList(context.Context, *CloudCredentialListRequest) (*CloudCredentialListResponse, error)
-	CloudCredentialCreate(context.Context, *CloudCredentialCreateUpdateRequest) (*CloudCredentialCommonResponse, error)
-	CloudCredentialUpdate(context.Context, *CloudCredentialCreateUpdateRequest) (*CloudCredentialCommonResponse, error)
-	CloudCredentialDelete(context.Context, *CloudCredentialDeleteRequest) (*CloudCredentialCommonResponse, error)
+type CloudServer interface {
+	List(context.Context, *dtypes.VoidRequest) (*CloudCredentialListResponse, error)
+	Create(context.Context, *CloudCredentialCreateRequest) (*dtypes.VoidResponse, error)
+	Update(context.Context, *CloudCredentialUpdateRequest) (*dtypes.VoidResponse, error)
+	Delete(context.Context, *CloudCredentialDeleteRequest) (*dtypes.VoidResponse, error)
 }
 
-func RegisterCloudCredentialServer(s *grpc.Server, srv CloudCredentialServer) {
-	s.RegisterService(&_CloudCredential_serviceDesc, srv)
+func RegisterCloudServer(s *grpc.Server, srv CloudServer) {
+	s.RegisterService(&_Cloud_serviceDesc, srv)
 }
 
-func _CloudCredential_CloudCredentialList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
-	in := new(CloudCredentialListRequest)
+func _Cloud_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+	in := new(dtypes.VoidRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CloudCredentialServer).CloudCredentialList(ctx, in)
+	out, err := srv.(CloudServer).List(ctx, in)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func _CloudCredential_CloudCredentialCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
-	in := new(CloudCredentialCreateUpdateRequest)
+func _Cloud_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+	in := new(CloudCredentialCreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CloudCredentialServer).CloudCredentialCreate(ctx, in)
+	out, err := srv.(CloudServer).Create(ctx, in)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func _CloudCredential_CloudCredentialUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
-	in := new(CloudCredentialCreateUpdateRequest)
+func _Cloud_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+	in := new(CloudCredentialUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CloudCredentialServer).CloudCredentialUpdate(ctx, in)
+	out, err := srv.(CloudServer).Update(ctx, in)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func _CloudCredential_CloudCredentialDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Cloud_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
 	in := new(CloudCredentialDeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CloudCredentialServer).CloudCredentialDelete(ctx, in)
+	out, err := srv.(CloudServer).Delete(ctx, in)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-var _CloudCredential_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "credential.CloudCredential",
-	HandlerType: (*CloudCredentialServer)(nil),
+var _Cloud_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "credential.Cloud",
+	HandlerType: (*CloudServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CloudCredentialList",
-			Handler:    _CloudCredential_CloudCredentialList_Handler,
+			MethodName: "List",
+			Handler:    _Cloud_List_Handler,
 		},
 		{
-			MethodName: "CloudCredentialCreate",
-			Handler:    _CloudCredential_CloudCredentialCreate_Handler,
+			MethodName: "Create",
+			Handler:    _Cloud_Create_Handler,
 		},
 		{
-			MethodName: "CloudCredentialUpdate",
-			Handler:    _CloudCredential_CloudCredentialUpdate_Handler,
+			MethodName: "Update",
+			Handler:    _Cloud_Update_Handler,
 		},
 		{
-			MethodName: "CloudCredentialDelete",
-			Handler:    _CloudCredential_CloudCredentialDelete_Handler,
+			MethodName: "Delete",
+			Handler:    _Cloud_Delete_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{},
 }
 
 var fileDescriptor0 = []byte{
-	// 456 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xbc, 0x94, 0xbf, 0xae, 0xd3, 0x30,
-	0x14, 0xc6, 0x95, 0x36, 0x5c, 0x71, 0x4f, 0xf8, 0x73, 0xe5, 0x2b, 0x50, 0xc8, 0x2d, 0xa5, 0x58,
-	0x08, 0x42, 0x41, 0x09, 0x2a, 0x0c, 0x55, 0x17, 0x86, 0x16, 0x24, 0x10, 0x13, 0x88, 0x19, 0x99,
-	0xc6, 0x54, 0x11, 0x89, 0x1d, 0x62, 0xa7, 0x52, 0x85, 0x58, 0xd8, 0x98, 0x91, 0x10, 0x4f, 0xc5,
-	0xc2, 0x2b, 0x30, 0xf2, 0x10, 0xd8, 0x4e, 0x45, 0xdb, 0x34, 0x4d, 0xe9, 0xc2, 0x62, 0x55, 0xa7,
-	0x9f, 0xbf, 0xf3, 0xf3, 0xe7, 0xe3, 0xc0, 0xc9, 0x34, 0xa7, 0x11, 0x65, 0x32, 0x26, 0x49, 0x90,
-	0xe5, 0x5c, 0x72, 0x04, 0xab, 0x8a, 0xd7, 0x99, 0x71, 0x3e, 0x4b, 0x68, 0x48, 0xb2, 0x38, 0x24,
-	0x8c, 0x71, 0x49, 0x64, 0xcc, 0x99, 0x28, 0x95, 0xde, 0x55, 0x5d, 0x8e, 0xe4, 0x22, 0xa3, 0x22,
-	0x34, 0x6b, 0x59, 0xc7, 0x3f, 0x2c, 0xc0, 0xe3, 0x84, 0x17, 0xd1, 0xf8, 0xaf, 0x93, 0xfa, 0x45,
-	0x24, 0x7d, 0x9d, 0x45, 0x6a, 0x7d, 0x49, 0x3f, 0x14, 0x54, 0x48, 0x74, 0x01, 0x6c, 0x46, 0x52,
-	0xea, 0x5a, 0x3d, 0xcb, 0x3f, 0x46, 0x27, 0x70, 0x5e, 0xed, 0x9e, 0xc7, 0x11, 0xcd, 0xdd, 0x96,
-	0xa9, 0x3c, 0x05, 0x5b, 0xc9, 0x89, 0xdb, 0xee, 0xb5, 0x7d, 0x67, 0x30, 0x0c, 0xd6, 0x48, 0xf7,
-	0xbb, 0x07, 0x13, 0xb5, 0xf5, 0x09, 0x93, 0xf9, 0x02, 0x9d, 0x82, 0x43, 0xa6, 0x9a, 0xfb, 0x8d,
-	0x86, 0x74, 0x6d, 0x6d, 0xee, 0xdd, 0x83, 0xe3, 0x95, 0xc2, 0x81, 0xf6, 0x7b, 0xba, 0x58, 0x82,
-	0x5c, 0x84, 0x73, 0x73, 0x92, 0x14, 0xb4, 0xa4, 0x18, 0xb5, 0x86, 0x16, 0xbe, 0x0f, 0x9d, 0x4a,
-	0xc7, 0x09, 0x4d, 0xe8, 0x8e, 0x93, 0xe0, 0x0e, 0x78, 0x15, 0xf5, 0x8b, 0x58, 0xc8, 0xa5, 0x16,
-	0x0b, 0x38, 0xab, 0xfd, 0x57, 0x64, 0x2a, 0x58, 0x8a, 0xba, 0x70, 0x24, 0x54, 0xca, 0x85, 0x30,
-	0x66, 0xce, 0xe0, 0x52, 0x50, 0x06, 0x1c, 0xbc, 0x32, 0x55, 0xf4, 0x08, 0x9c, 0x55, 0x0e, 0x42,
-	0x31, 0xea, 0x6c, 0x6e, 0x34, 0x64, 0xf3, 0x8c, 0xbd, 0xe3, 0xf8, 0x31, 0x5c, 0xaf, 0x46, 0xc6,
-	0xd3, 0x94, 0xb3, 0x7f, 0x6d, 0x8b, 0x9f, 0xc3, 0x69, 0x8d, 0xef, 0xde, 0x2b, 0x54, 0xd1, 0xc7,
-	0x4a, 0x97, 0xa7, 0x66, 0x6e, 0xd4, 0x4d, 0xaa, 0xe2, 0xe0, 0xb7, 0x0d, 0x97, 0x2b, 0x66, 0xe8,
-	0x8b, 0xb5, 0xd5, 0x40, 0xc7, 0x82, 0x6e, 0x37, 0x9c, 0x6c, 0x2d, 0x55, 0xef, 0xce, 0x5e, 0x5d,
-	0x79, 0x50, 0x7c, 0xf3, 0xf3, 0xcf, 0x5f, 0x5f, 0x5b, 0x67, 0xe8, 0x9a, 0x99, 0xe9, 0xb5, 0x28,
-	0xc3, 0xf9, 0x83, 0x70, 0xaa, 0x37, 0xa2, 0xef, 0x16, 0x5c, 0xa9, 0x1d, 0x30, 0x14, 0x1c, 0x36,
-	0x83, 0xde, 0xdd, 0x26, 0xfd, 0xc6, 0x05, 0xe0, 0x5b, 0x86, 0xab, 0xeb, 0xed, 0xe6, 0x1a, 0x59,
-	0xfd, 0x3a, 0xb4, 0xb2, 0xe3, 0x7f, 0x40, 0xc3, 0xcd, 0x68, 0xdf, 0xb6, 0xd1, 0xca, 0x47, 0x82,
-	0xfc, 0x86, 0x56, 0x1b, 0xef, 0xe8, 0x10, 0x28, 0xdf, 0x40, 0xe1, 0x7e, 0x6f, 0x27, 0x54, 0xf8,
-	0x51, 0x8f, 0xe6, 0xa7, 0xb7, 0x47, 0xe6, 0xa3, 0xf4, 0xf0, 0x4f, 0x00, 0x00, 0x00, 0xff, 0xff,
-	0x88, 0x15, 0x50, 0xec, 0xea, 0x04, 0x00, 0x00,
+	// 425 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x94, 0x4f, 0x6a, 0xdb, 0x40,
+	0x14, 0xc6, 0x91, 0x65, 0x8b, 0xfa, 0xa9, 0x7f, 0xcc, 0xb8, 0x14, 0x57, 0x36, 0xc6, 0x15, 0x85,
+	0x0a, 0xb7, 0x48, 0x46, 0xdd, 0x14, 0xaf, 0x0a, 0x76, 0xbb, 0xea, 0xca, 0xa5, 0xdd, 0x4f, 0xad,
+	0xa9, 0x11, 0x91, 0x67, 0x14, 0xcd, 0xc8, 0x60, 0x42, 0x36, 0xb9, 0x42, 0xce, 0x91, 0x5b, 0xe4,
+	0x06, 0xb9, 0x42, 0x0e, 0x92, 0xd1, 0xc8, 0xb1, 0x2d, 0x27, 0x52, 0x42, 0x20, 0x1b, 0x21, 0x7d,
+	0xbc, 0x79, 0xbf, 0xef, 0xcd, 0xfb, 0x10, 0xb4, 0xe6, 0x09, 0x09, 0x08, 0x15, 0x21, 0x8e, 0xdc,
+	0x38, 0x61, 0x82, 0x21, 0xd8, 0x29, 0x56, 0x6f, 0xc1, 0xd8, 0x22, 0x22, 0x1e, 0x8e, 0x43, 0x0f,
+	0x53, 0xca, 0x04, 0x16, 0x21, 0xa3, 0x3c, 0xaf, 0xb4, 0xde, 0x65, 0x72, 0x20, 0xd6, 0x31, 0xe1,
+	0x9e, 0x7a, 0xe6, 0xba, 0x7d, 0xa1, 0x41, 0x6f, 0x12, 0xb1, 0x34, 0x98, 0x6c, 0x3b, 0xc9, 0x37,
+	0x2c, 0xc8, 0x8c, 0x1c, 0xa7, 0x84, 0x0b, 0xf4, 0x12, 0xea, 0x14, 0x2f, 0x49, 0x47, 0x1b, 0x68,
+	0x4e, 0x13, 0xb5, 0xe0, 0x85, 0x3c, 0xb7, 0x0a, 0x03, 0x92, 0x74, 0x6a, 0x4a, 0xf9, 0x0e, 0xf5,
+	0x00, 0x0b, 0xdc, 0xd1, 0x07, 0xba, 0x63, 0xfa, 0xbe, 0xbb, 0xe7, 0xb1, 0xaa, 0xaf, 0x3b, 0x95,
+	0x87, 0x7e, 0x50, 0x91, 0xac, 0xad, 0xcf, 0xd0, 0xdc, 0x7e, 0x20, 0x13, 0xf4, 0x23, 0xb2, 0xde,
+	0xd0, 0x5e, 0x41, 0x63, 0x85, 0xa3, 0x94, 0xe4, 0xa8, 0x71, 0xed, 0x9b, 0x76, 0x9f, 0xdf, 0x3f,
+	0x71, 0xf0, 0x2c, 0x7e, 0x0b, 0x7d, 0x9f, 0xea, 0xf7, 0xcb, 0x1d, 0xbb, 0x53, 0x12, 0x91, 0x12,
+	0xbb, 0x36, 0x83, 0xee, 0x41, 0xf5, 0xaf, 0x90, 0x8b, 0x19, 0xe1, 0xb1, 0xdc, 0x24, 0x41, 0x7d,
+	0x30, 0xb8, 0x5c, 0x6b, 0xca, 0x55, 0xb9, 0xe9, 0xbf, 0x76, 0xf3, 0x8d, 0xba, 0xbf, 0x95, 0x8a,
+	0x46, 0x60, 0xee, 0xc6, 0xe1, 0xd2, 0x45, 0x36, 0x62, 0xb7, 0x62, 0x44, 0xfb, 0x27, 0xbc, 0x39,
+	0x90, 0x1e, 0xbc, 0xc0, 0x36, 0x98, 0x21, 0xfd, 0xcf, 0x92, 0xa5, 0xca, 0x97, 0xbc, 0x47, 0x29,
+	0xfa, 0x97, 0x3a, 0x34, 0x54, 0x23, 0xb4, 0x80, 0x7a, 0xe6, 0x19, 0xb5, 0x6f, 0xbd, 0xfd, 0x65,
+	0x61, 0xb0, 0x99, 0xd6, 0xfa, 0x54, 0xe1, 0x65, 0x7f, 0x52, 0xfb, 0xc3, 0xd9, 0xd5, 0xf5, 0x79,
+	0xad, 0x8b, 0xde, 0xab, 0x38, 0xef, 0x0d, 0xe5, 0xad, 0x46, 0xde, 0x5c, 0x81, 0x28, 0x18, 0x79,
+	0xa2, 0x90, 0xf3, 0xd8, 0xd0, 0x59, 0x6f, 0x8b, 0xa6, 0x36, 0xb0, 0x8f, 0x0a, 0xd6, 0xb7, 0xca,
+	0x61, 0x63, 0x6d, 0x98, 0xf1, 0xf2, 0x44, 0x54, 0xf2, 0x0a, 0xa1, 0xa9, 0xe6, 0xd9, 0xd5, 0xbc,
+	0x04, 0x8c, 0x3c, 0x2a, 0x95, 0xbc, 0x42, 0x9a, 0x4a, 0x78, 0x8e, 0xe2, 0xd9, 0xc3, 0x41, 0x29,
+	0xcf, 0x3b, 0xc9, 0x56, 0x7e, 0xfa, 0xcf, 0x50, 0x3f, 0x85, 0xaf, 0x37, 0x01, 0x00, 0x00, 0xff,
+	0xff, 0xa3, 0x9a, 0xd4, 0x25, 0x6a, 0x04, 0x00, 0x00,
 }

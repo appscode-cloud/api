@@ -195,6 +195,7 @@ message Any {
 
 // Void Requests and response to use with other types.
 message VoidRequest{}
+
 message VoidResponse {
     Status status = 1;
 }

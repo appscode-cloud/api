@@ -13,7 +13,7 @@ service Slaves {
     };
   }
 
-  rpc Get(SlaveGetRequest) returns (SlaveDetailsResponse) {
+  rpc Describe(SlaveDescribeRequest) returns (SlaveDescribeResponse) {
     option (google.api.http) = {
       get: "/api/ci/v0/slaves/{name}"
     };
@@ -92,11 +92,11 @@ message DockerRepo {
     string auth = 3;
 }
 
-message SlaveGetRequest {
+message SlaveDescribeRequest {
     string name = 1;
 }
 
-message SlaveDetailsResponse {
+message SlaveDescribeResponse {
     dtypes.Status status = 1;
     string name = 2;
     int64 executors = 3;

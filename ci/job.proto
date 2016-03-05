@@ -12,7 +12,7 @@ service Jobs {
     };
   }
 
-  rpc Get(JobGetRequest) returns (JobDetailsResponse) {
+  rpc Describe(JobDescribeRequest) returns (JobDescribeResponse) {
     option (google.api.http) = {
       get: "/api/ci/v0/jobs/{name}"
     };
@@ -51,16 +51,16 @@ message JobListResponse {
   repeated Job jobs = 2;
 }
 
-message CIBuildJobRequest {
-    string job_name = 1;
+message JobBuildRequest {
+    string name = 1;
     string param = 2;
 }
 
-message JobGetRequest {
+message JobDescribeRequest {
     string name = 1;
 }
 
-message JobDetailsResponse {
+message JobDescribeResponse {
     dtypes.Status status = 1;
     string name = 2;
     string description = 3;
@@ -70,18 +70,18 @@ message JobDetailsResponse {
     string builds_command = 7;
 }
 
-message CIDeleteJobRequest {
-    string job_name = 1;
+message JobDeleteRequest {
+    string name = 1;
 }
 
-message CICreateJobRequest {
-    string job_name = 1;
-    string shFile = 2;
+message JobCreateRequest {
+    string name = 1;
+    string sh_file = 2;
 }
 
-message CICopyJobRequest {
-    string job_from = 1;
-    string job_to = 2;
+message JobCopyRequest {
+    string source = 1;
+    string destination = 2;
 }
 
 message Job {

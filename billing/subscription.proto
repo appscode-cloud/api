@@ -6,7 +6,7 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Subscriptions {
-  rpc Get(SubscriptionGetRequest) returns (SubscriptionGetResponse) {
+  rpc Describe(SubscriptionDescribeRequest) returns (SubscriptionDescribeResponse) {
     option (google.api.http) = {
       get: "/api/billing/v0/subscription/{time}"
     };
@@ -26,11 +26,11 @@ service Subscriptions {
   }
 }
 
-message SubscriptionGetRequest {
+message SubscriptionDescribeRequest {
   string time = 1;
 }
 
-message SubscriptionGetResponse {
+message SubscriptionDescribeResponse {
   dtypes.Status status = 1;
   repeated Subscription subscriptions = 2;
 }
