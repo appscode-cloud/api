@@ -8,44 +8,44 @@ import "api/dtypes/types.proto";
 service Clusters {
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get : "/api/clusters/v0/{name}"
+      get : "/api/kubernetes/v0/clusters/{name}"
     };
   }
 
   rpc Create(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
-  	  put: "/api/clusters/v0"
+  	  put: "/api/kubernetes/v0/clusters"
       body: "*"
     };
   }
 
   rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
-  	  post: "/api/clusters/v0"
+  	  post: "/api/kubernetes/v0/clusters"
       body: "*"
     };
   }
 
   rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
-  	  delete : "/api/clusters/v0/{name}"
+  	  delete : "/api/kubernetes/v0/clusters/{name}"
   	};
   }
 
   rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
      option (google.api.http) = {
-       get : "/api/clusters/v0"
+       get : "/api/kubernetes/v0/clusters"
      };
   }
 
   rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
      option (google.api.http) = {
-       get : "/api/clusters/v0/startup-script/{role}"
+       get : "/api/kubernetes/v0/clusters/startup-script/{role}"
      };
   }
   rpc Config(ClusterConfigRequest) returns (ClusterConfigResponse) {
      option (google.api.http) = {
-       get : "/api/clusters/v0/config/{name}"
+       get : "/api/kubernetes/v0/clusters/config/{name}"
      };
   }
 }
