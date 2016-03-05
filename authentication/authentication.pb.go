@@ -12,7 +12,7 @@ It has these top-level messages:
 	ValidateRequest
 	ValidateResponse
 */
-package authntication
+package authentication
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

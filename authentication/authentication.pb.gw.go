@@ -7,7 +7,7 @@ Package authntication is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package authntication
+package authentication
 
 import (
 	"encoding/json"
