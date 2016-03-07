@@ -11,7 +11,8 @@ ALIAS="Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/g
 ALIAS+="Mapi/dtypes/types.proto=github.com/appscode/api/dtypes,"
 ALIAS+="Mapi/ci/slave.proto=github.com/appscode/api/ci,"
 ALIAS+="Mapi/kubernetes/clusters.proto=github.com/appscode/api/kubernetes,"
-ALIAS+="Mapi/ssh/ssh.proto=github.com/appscode/api/ssh"
+ALIAS+="Mapi/ssh/ssh.proto=github.com/appscode/api/ssh,"
+ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any"
 
 clean() {
 	rm -rf ./*/*.pb.go ./*/*.pb.gw.go

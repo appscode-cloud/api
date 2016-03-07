@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_Client_Nodes_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Nodes_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -56,7 +56,7 @@ func request_Client_Nodes_0(ctx context.Context, client ClientClient, req *http.
 
 }
 
-func request_Client_Secrets_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Secrets_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -83,7 +83,7 @@ func request_Client_Secrets_0(ctx context.Context, client ClientClient, req *htt
 
 }
 
-func request_Client_Jobs_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Jobs_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -110,7 +110,7 @@ func request_Client_Jobs_0(ctx context.Context, client ClientClient, req *http.R
 
 }
 
-func request_Client_Namespaces_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Namespaces_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -137,7 +137,7 @@ func request_Client_Namespaces_0(ctx context.Context, client ClientClient, req *
 
 }
 
-func request_Client_Pods_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Pods_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -164,7 +164,7 @@ func request_Client_Pods_0(ctx context.Context, client ClientClient, req *http.R
 
 }
 
-func request_Client_Services_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Services_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -191,7 +191,7 @@ func request_Client_Services_0(ctx context.Context, client ClientClient, req *ht
 
 }
 
-func request_Client_ReplicationControllers_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_ReplicationControllers_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -218,7 +218,7 @@ func request_Client_ReplicationControllers_0(ctx context.Context, client ClientC
 
 }
 
-func request_Client_Apps_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Apps_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -245,7 +245,7 @@ func request_Client_Apps_0(ctx context.Context, client ClientClient, req *http.R
 
 }
 
-func request_Client_App_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_App_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq AppDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -294,7 +294,7 @@ func request_Client_App_0(ctx context.Context, client ClientClient, req *http.Re
 
 }
 
-func request_Client_AppPods_0(ctx context.Context, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_AppPods_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq AppDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -343,9 +343,9 @@ func request_Client_AppPods_0(ctx context.Context, client ClientClient, req *htt
 
 }
 
-// RegisterClientHandlerFromEndpoint is same as RegisterClientHandler but
+// RegisterClientsHandlerFromEndpoint is same as RegisterClientsHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterClientHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterClientsHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -365,15 +365,15 @@ func RegisterClientHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMu
 		}()
 	}()
 
-	return RegisterClientHandler(ctx, mux, conn)
+	return RegisterClientsHandler(ctx, mux, conn)
 }
 
-// RegisterClientHandler registers the http handlers for service Client to "mux".
+// RegisterClientsHandler registers the http handlers for service Clients to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	client := NewClientClient(conn)
+func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	client := NewClientsClient(conn)
 
-	mux.Handle("GET", pattern_Client_Nodes_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_Nodes_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -382,18 +382,18 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_Nodes_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_Nodes_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_Nodes_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Nodes_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Client_Secrets_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_Secrets_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -402,18 +402,18 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_Secrets_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_Secrets_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_Secrets_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Secrets_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Client_Jobs_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_Jobs_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -422,18 +422,18 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_Jobs_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_Jobs_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_Jobs_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Jobs_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Client_Namespaces_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_Namespaces_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -442,18 +442,18 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_Namespaces_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_Namespaces_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_Namespaces_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Namespaces_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Client_Pods_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_Pods_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -462,18 +462,18 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_Pods_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_Pods_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_Pods_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Pods_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Client_Services_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_Services_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -482,18 +482,18 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_Services_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_Services_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_Services_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Services_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Client_ReplicationControllers_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_ReplicationControllers_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -502,18 +502,18 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_ReplicationControllers_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_ReplicationControllers_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_ReplicationControllers_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_ReplicationControllers_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Client_Apps_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_Apps_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -522,18 +522,18 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_Apps_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_Apps_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_Apps_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Apps_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Client_App_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_App_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -542,18 +542,18 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_App_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_App_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_App_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_App_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Client_AppPods_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_AppPods_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -562,14 +562,14 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				cancel()
 			}()
 		}
-		resp, md, err := request_Client_AppPods_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_AppPods_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Client_AppPods_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_AppPods_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -577,45 +577,45 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 }
 
 var (
-	pattern_Client_Nodes_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "nodes"}, ""))
+	pattern_Clients_Nodes_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "nodes"}, ""))
 
-	pattern_Client_Secrets_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "secrets"}, ""))
+	pattern_Clients_Secrets_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "secrets"}, ""))
 
-	pattern_Client_Jobs_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "jobs"}, ""))
+	pattern_Clients_Jobs_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "jobs"}, ""))
 
-	pattern_Client_Namespaces_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "namespaces"}, ""))
+	pattern_Clients_Namespaces_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "namespaces"}, ""))
 
-	pattern_Client_Pods_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "pods"}, ""))
+	pattern_Clients_Pods_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "pods"}, ""))
 
-	pattern_Client_Services_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "services"}, ""))
+	pattern_Clients_Services_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "services"}, ""))
 
-	pattern_Client_ReplicationControllers_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "rcs"}, ""))
+	pattern_Clients_ReplicationControllers_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "rcs"}, ""))
 
-	pattern_Client_Apps_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "apps"}, ""))
+	pattern_Clients_Apps_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0", "client", "cluster", "apps"}, ""))
 
-	pattern_Client_App_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0", "client", "cluster", "apps", "namespace", "name"}, ""))
+	pattern_Clients_App_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0", "client", "cluster", "apps", "namespace", "name"}, ""))
 
-	pattern_Client_AppPods_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"api", "kubernetes", "v0", "client", "cluster", "apps", "namespace", "name", "pods"}, ""))
+	pattern_Clients_AppPods_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"api", "kubernetes", "v0", "client", "cluster", "apps", "namespace", "name", "pods"}, ""))
 )
 
 var (
-	forward_Client_Nodes_0 = runtime.ForwardResponseMessage
+	forward_Clients_Nodes_0 = runtime.ForwardResponseMessage
 
-	forward_Client_Secrets_0 = runtime.ForwardResponseMessage
+	forward_Clients_Secrets_0 = runtime.ForwardResponseMessage
 
-	forward_Client_Jobs_0 = runtime.ForwardResponseMessage
+	forward_Clients_Jobs_0 = runtime.ForwardResponseMessage
 
-	forward_Client_Namespaces_0 = runtime.ForwardResponseMessage
+	forward_Clients_Namespaces_0 = runtime.ForwardResponseMessage
 
-	forward_Client_Pods_0 = runtime.ForwardResponseMessage
+	forward_Clients_Pods_0 = runtime.ForwardResponseMessage
 
-	forward_Client_Services_0 = runtime.ForwardResponseMessage
+	forward_Clients_Services_0 = runtime.ForwardResponseMessage
 
-	forward_Client_ReplicationControllers_0 = runtime.ForwardResponseMessage
+	forward_Clients_ReplicationControllers_0 = runtime.ForwardResponseMessage
 
-	forward_Client_Apps_0 = runtime.ForwardResponseMessage
+	forward_Clients_Apps_0 = runtime.ForwardResponseMessage
 
-	forward_Client_App_0 = runtime.ForwardResponseMessage
+	forward_Clients_App_0 = runtime.ForwardResponseMessage
 
-	forward_Client_AppPods_0 = runtime.ForwardResponseMessage
+	forward_Clients_AppPods_0 = runtime.ForwardResponseMessage
 )
