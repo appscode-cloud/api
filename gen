@@ -10,7 +10,7 @@ ROOT=$PWD
 ALIAS="Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,"
 ALIAS+="Mapi/dtypes/types.proto=github.com/appscode/api/dtypes,"
 ALIAS+="Mapi/ci/slave.proto=github.com/appscode/api/ci,"
-ALIAS+="Mapi/kubernetes/kubernetes.proto=github.com/appscode/api/kubernetes,"
+ALIAS+="Mapi/kubernetes/clusters.proto=github.com/appscode/api/kubernetes,"
 ALIAS+="Mapi/ssh/ssh.proto=github.com/appscode/api/ssh"
 
 clean() {
@@ -62,9 +62,9 @@ if [ $# -eq 0 ]; then
 fi
 
 case "$1" in
-    compile)
-        compile
-        ;;
+  compile)
+      compile
+      ;;
 	server)
 		gen_server_protos
 		;;

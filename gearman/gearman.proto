@@ -3,7 +3,7 @@ syntax = "proto3";
 package gearman;
 
 import "api/ci/slave.proto";
-import "api/kubernetes/kubernetes.proto";
+import "api/kubernetes/clusters.proto";
 
 // Next Id: 11
 enum GearmanOpType {

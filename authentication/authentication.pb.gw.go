@@ -3,7 +3,7 @@
 // DO NOT EDIT!
 
 /*
-Package authntication is a reverse proxy.
+Package authentication is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
