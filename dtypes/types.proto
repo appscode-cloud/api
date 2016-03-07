@@ -41,10 +41,10 @@ enum StatusCode {
     // Similar to HTTP status code 500
     INTERNAL = 6;
 
-    // External Server Refusus Connection or Sends Invalid Data.
+    // External Server Refuses Connection or Sends Invalid Data.
     EXTERNAL = 7;
 
-    // The response contails invalid arguments.
+    // The response contains invalid arguments.
     BAD_RESPONSE = 8;
 
     // Unknown error.

@@ -59,9 +59,9 @@ const (
 	// underlying system have been broken.
 	// Similar to HTTP status code 500
 	StatusCode_INTERNAL StatusCode = 6
-	// External Server Refusus Connection or Sends Invalid Data.
+	// External Server Refuses Connection or Sends Invalid Data.
 	StatusCode_EXTERNAL StatusCode = 7
-	// The response contails invalid arguments.
+	// The response contains invalid arguments.
 	StatusCode_BAD_RESPONSE StatusCode = 8
 	// Unknown error.
 	// Errors raised by APIs that do not return enough error information
