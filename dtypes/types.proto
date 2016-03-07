@@ -57,16 +57,24 @@ enum StatusCode {
 
 // The `Status` type defines an logical stats of the response message.
 // It contains 4 feilds.
-// code should be an enum value of [api.StatusCode] or an application
-// specific error code defined by application service. All OK response
-// will return [StatusCode.Ok](0). Other codes will marked as error
-// and treated as so. message is user faceing information targeted to
+// code should be a string of the enum value of [api.StatusCode]
+// or an application specific error code defined by application service.
+//
+// All OK response will return [StatusCode.Ok]("0"). Other codes will marked
+// as error and treated as so. message is user faceing information targeted to
 // user. It will display any information sends from server to users.
 // Both of success and errors can contains message for users.
 // Help Contains help url to display to user for further helping with
 // the tasks. Description field is of type `Any` to include the developer
 // faceing stacktrace of the request. Those will be logged in a file
 // that will help debug the issue in support mode if nessassry.
+
+// if an request was made and processed by the grpc api server
+// this will always sends back `http status code 200`.
+// no matter the if the request throws an error. error details
+// will always be set in the `Status` field. only if an
+// error returns from a request this means there are problems
+// with grpc server.
 
 // Next Id 5.
 message Status {

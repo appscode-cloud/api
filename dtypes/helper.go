@@ -9,11 +9,11 @@ import (
 )
 
 // Helper methods for status object.
-
 const (
 	StatusCodeOK string = "0"
 )
 
+// returns the status code string of the response status.
 func (s *Status) Status() string {
 	code, err := strconv.Atoi(s.Code)
 	if err != nil {
@@ -44,6 +44,8 @@ func (s *Status) ErrorMessage() string {
 	return s.Message
 }
 
+// Adds any proto message in the details field of the Status message.
+// This uses google.protobuf.any to to hold and retried data.
 func (a *Status) AddDetails(v ...proto.Message) {
 	if len(a.Details) == 0 {
 		a.Details = make([]*google_protobuf.Any, 0)
