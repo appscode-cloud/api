@@ -15,7 +15,7 @@ service Authentication {
   }
 
   // appctl used this to validates the user token with phabricator.
-  rpc Token(ValidateRequest) returns (ValidateRequest) {
+  rpc Token(ValidateRequest) returns (ValidateResponse) {
     option (google.api.http) = {
       post: "/api/authn/v0/token"
       body: "*"
