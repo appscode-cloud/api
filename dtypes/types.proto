@@ -9,7 +9,7 @@ import "google/protobuf/any.proto";
 // Application specific error codes will define as enum
 // in the application service.
 
-// Available Next Id 9.
+// Available Next Id 20.
 enum StatusCode {
     // Not an error. Returned on success.
     // Similar to HTTP Status code 2**.
@@ -52,6 +52,24 @@ enum StatusCode {
     // may be converted to this error.
     // Similar to HTTP status code 500
     UNKNOWN_ERROR = 9;
+
+
+
+    // Quota and payment related error codes.
+    // client request crossses the exisitng quta limits.
+    QUOTA_LIMIT_EXCEED = 10;
+
+    // no valid quta available
+    INVALID_QUOTA = 11;
+
+    // no payment informtaion avaible
+    PAYMENT_INFORMATION_UNAVAILABLE = 12;
+
+    // payment information not valid.
+    INVALID_PAYMENT_INFORMATION = 13;
+
+    // failed to transect the payment information
+    TRANSACTION_FAILED = 14;
 }
 
 
@@ -78,18 +96,20 @@ enum StatusCode {
 
 // Next Id 5.
 message Status {
-    // Response status code of type [api.StatusCode]
+    // Response status code
     string code = 1;
+    // Response status code string details.
+    string info = 2;
 
     // User facing message.
-    string message = 2;
+    string message = 3;
 
     // Optional. Help link if there is an error.
-    Help help = 3;
+    Help help = 4;
 
     // A list of messages that carry the error details.  There will be a
     // common set of message types for APIs to use.
-    repeated google.protobuf.Any details = 4;
+    repeated google.protobuf.Any details = 5;
 }
 
 

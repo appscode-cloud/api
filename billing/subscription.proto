@@ -6,22 +6,36 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Subscriptions {
+  rpc Create(SubscriptionCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/billing/v0/subscription"
+      body: "*"
+    };
+  }
+
   rpc Describe(SubscriptionDescribeRequest) returns (SubscriptionDescribeResponse) {
     option (google.api.http) = {
       get: "/api/billing/v0/subscription/{time}"
     };
   }
 
-  rpc Open(SubscriptionOpenRequest) returns (dtypes.VoidResponse) {
+  rpc Subscribe(SubscriptionOpenRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/api/billing/v0/purchase/{product_type}/{object_phid}"
+      put: "/api/billing/v0/subscription/{product_type}/{object_phid}"
       body: "*"
     };
   }
 
-  rpc Close(SubscriptionCloseRequest) returns (dtypes.VoidResponse) {
+  rpc UnSubscribe(SubscriptionCloseRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/api/billing/v0/purchase/{product_type}/{object_phid}"
+      delete: "/api/billing/v0/subscription/{product_type}/{object_phid}"
+    };
+  }
+
+  rpc Quota(SubscriptionQutaRequest) returns (SubscriptionQutaResponse) {
+    option (google.api.http) = {
+      post: "/api/billing/v0/subscription/quota"
+      body: "*"
     };
   }
 }
@@ -38,7 +52,7 @@ message SubscriptionDescribeResponse {
 message Subscription {
   string author = 1;
   string product_sku = 2;
-  string metadata = 3;
+  Quota quota = 3;
   string date_started = 4;
   string date_ended = 5;
 }
@@ -54,4 +68,66 @@ message SubscriptionOpenRequest {
 message SubscriptionCloseRequest {
   string product_type = 1;
   string object_phid = 2;
+}
+
+message SubscriptionCreateRequest {
+  string author_phid = 1;
+  string product_phid = 2;
+  string type = 3;
+}
+
+message Quota {
+  int64 user = 1;
+  PhabricatorQuota phabricator = 2;
+  ArtifactoryQuota artifact = 3;
+  ClusterQuota cluster = 4;
+  CIQuota ci = 5;
+  DBQuota db = 6;
+}
+
+message PhabricatorQuota {
+  int64 disk_size = 1;
+  int64 repository = 2;
+}
+
+message CIQuota {
+  int64 agent = 1;
+  int64 executors = 2;
+  int64 jobs = 3;
+}
+
+message ArtifactoryQuota {
+  int64 disk_size = 1;
+  int64 repository = 2;
+}
+
+message ClusterQuota {
+  int64 cluster = 1;
+  int64 nodes = 2;
+}
+
+message DBQuota {
+  int64 postgres = 1;
+  int64 elasticsearch = 2;
+  int64 influxdb = 3;
+}
+
+enum Resource {
+  USER = 0;
+  CLUSTER = 1;
+  NODE = 2;
+  DB = 3;
+  CI = 4;
+}
+
+message SubscriptionQutaRequest {
+  Resource resource = 1;
+  string subresource = 2;
+  string object_phid = 3;
+  int64 count = 5;
+}
+
+message SubscriptionQutaResponse {
+  dtypes.Status status = 1;
+  string subscription_phid = 3;
 }

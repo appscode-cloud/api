@@ -29,6 +29,19 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
+func request_Subscriptions_Create_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SubscriptionCreateRequest
+	var metadata runtime.ServerMetadata
+
+	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
 func request_Subscriptions_Describe_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SubscriptionDescribeRequest
 	var metadata runtime.ServerMetadata
@@ -56,7 +69,7 @@ func request_Subscriptions_Describe_0(ctx context.Context, client SubscriptionsC
 
 }
 
-func request_Subscriptions_Open_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Subscriptions_Subscribe_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SubscriptionOpenRequest
 	var metadata runtime.ServerMetadata
 
@@ -93,12 +106,12 @@ func request_Subscriptions_Open_0(ctx context.Context, client SubscriptionsClien
 		return nil, metadata, err
 	}
 
-	msg, err := client.Open(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Subscribe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Subscriptions_Close_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Subscriptions_UnSubscribe_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SubscriptionCloseRequest
 	var metadata runtime.ServerMetadata
 
@@ -131,7 +144,20 @@ func request_Subscriptions_Close_0(ctx context.Context, client SubscriptionsClie
 		return nil, metadata, err
 	}
 
-	msg, err := client.Close(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.UnSubscribe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func request_Subscriptions_Quota_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SubscriptionQutaRequest
+	var metadata runtime.ServerMetadata
+
+	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.Quota(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -166,6 +192,26 @@ func RegisterSubscriptionsHandlerFromEndpoint(ctx context.Context, mux *runtime.
 func RegisterSubscriptionsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewSubscriptionsClient(conn)
 
+	mux.Handle("PUT", pattern_Subscriptions_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		closeNotifier, ok := w.(http.CloseNotifier)
+		if ok {
+			go func() {
+				<-closeNotifier.CloseNotify()
+				cancel()
+			}()
+		}
+		resp, md, err := request_Subscriptions_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, w, req, err)
+			return
+		}
+
+		forward_Subscriptions_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("GET", pattern_Subscriptions_Describe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
@@ -186,7 +232,7 @@ func RegisterSubscriptionsHandler(ctx context.Context, mux *runtime.ServeMux, co
 
 	})
 
-	mux.Handle("PUT", pattern_Subscriptions_Open_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_Subscriptions_Subscribe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -195,18 +241,18 @@ func RegisterSubscriptionsHandler(ctx context.Context, mux *runtime.ServeMux, co
 				cancel()
 			}()
 		}
-		resp, md, err := request_Subscriptions_Open_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Subscriptions_Subscribe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Subscriptions_Open_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Subscriptions_Subscribe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_Subscriptions_Close_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_Subscriptions_UnSubscribe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -215,14 +261,34 @@ func RegisterSubscriptionsHandler(ctx context.Context, mux *runtime.ServeMux, co
 				cancel()
 			}()
 		}
-		resp, md, err := request_Subscriptions_Close_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Subscriptions_UnSubscribe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Subscriptions_Close_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Subscriptions_UnSubscribe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("POST", pattern_Subscriptions_Quota_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		closeNotifier, ok := w.(http.CloseNotifier)
+		if ok {
+			go func() {
+				<-closeNotifier.CloseNotify()
+				cancel()
+			}()
+		}
+		resp, md, err := request_Subscriptions_Quota_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, w, req, err)
+			return
+		}
+
+		forward_Subscriptions_Quota_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -230,17 +296,25 @@ func RegisterSubscriptionsHandler(ctx context.Context, mux *runtime.ServeMux, co
 }
 
 var (
+	pattern_Subscriptions_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "billing", "v0", "subscription"}, ""))
+
 	pattern_Subscriptions_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "billing", "v0", "subscription", "time"}, ""))
 
-	pattern_Subscriptions_Open_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "billing", "v0", "purchase", "product_type", "object_phid"}, ""))
+	pattern_Subscriptions_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "billing", "v0", "subscription", "product_type", "object_phid"}, ""))
 
-	pattern_Subscriptions_Close_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "billing", "v0", "purchase", "product_type", "object_phid"}, ""))
+	pattern_Subscriptions_UnSubscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "billing", "v0", "subscription", "product_type", "object_phid"}, ""))
+
+	pattern_Subscriptions_Quota_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "billing", "v0", "subscription", "quota"}, ""))
 )
 
 var (
+	forward_Subscriptions_Create_0 = runtime.ForwardResponseMessage
+
 	forward_Subscriptions_Describe_0 = runtime.ForwardResponseMessage
 
-	forward_Subscriptions_Open_0 = runtime.ForwardResponseMessage
+	forward_Subscriptions_Subscribe_0 = runtime.ForwardResponseMessage
 
-	forward_Subscriptions_Close_0 = runtime.ForwardResponseMessage
+	forward_Subscriptions_UnSubscribe_0 = runtime.ForwardResponseMessage
+
+	forward_Subscriptions_Quota_0 = runtime.ForwardResponseMessage
 )

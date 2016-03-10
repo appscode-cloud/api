@@ -20,5 +20,5 @@ message ChargeCalculetRequest {
 
 message ChargeCalculetResponse {
   dtypes.Status status = 1;
-  double cost = 2;
+  string cost_usd = 2;
 }
