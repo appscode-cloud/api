@@ -37,11 +37,11 @@ func (s *Status) IsErr() bool {
 }
 
 func (s *Status) Error() error {
-	return errors.New(s.Message)
+	return errors.New(s.Info)
 }
 
 func (s *Status) ErrorMessage() string {
-	return s.Message
+	return s.Info
 }
 
 // Adds any proto message in the details field of the Status message.
