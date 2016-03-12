@@ -34,7 +34,8 @@ message Request {
     string replication_controller = 3;
     string namespace = 4;
     string pod_ip = 5;
-    map<string, string> labels = 6;
+    string instance_id = 6;
+    map<string, string> labels = 7;
   }
   ObjectMeta metadata = 7;
 }
