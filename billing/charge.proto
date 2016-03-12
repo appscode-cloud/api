@@ -6,7 +6,7 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Charge {
-  rpc Calculet(ChargeCalculetRequest) returns (ChargeCalculetResponse) {
+  rpc Calculate(ChargeCalculateRequest) returns (ChargeCalculateResponse) {
     option (google.api.http) = {
       put: "/api/billing/v0/charge/{charge_type}"
       body: "*"
@@ -14,11 +14,12 @@ service Charge {
   }
 }
 
-message ChargeCalculetRequest {
+message ChargeCalculateRequest {
   string charge_type = 1;
 }
 
-message ChargeCalculetResponse {
+message ChargeCalculateResponse {
   dtypes.Status status = 1;
   string cost_usd = 2;
 }
+
