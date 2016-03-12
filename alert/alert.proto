@@ -120,7 +120,7 @@ message Alert {
 
   Specs spcs = 4;
 
-  string alert_user = 5;
+  string warning_user = 5;
   string warning_method = 6;
 
   string critical_user = 7;
