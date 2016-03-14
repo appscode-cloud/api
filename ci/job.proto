@@ -85,6 +85,6 @@ message JobCopyRequest {
 }
 
 message Job {
-    string job_name = 1;
+    string name = 1;
     string color = 2;
 }

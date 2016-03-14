@@ -6,7 +6,7 @@ import "api/ci/slave.proto";
 import "api/kubernetes/clusters.proto";
 
 // Next Id: 11
-enum GearmanOpType {
+enum OperationType {
   UNKNOWN = 0;
   CLUSTER_CREATE = 1;
   CLUSTER_SCALE = 2;
@@ -17,9 +17,9 @@ enum GearmanOpType {
 }
 
 // Next Id: 10
-message GearmanOperation {
+message Operation {
   string phid = 1;
-  GearmanOpType type = 2;
+  OperationType type = 2;
   oneof request {
     kubernetes.ClusterCreateRequest cluster_create_request = 3;
     kubernetes.ClusterScaleRequest cluster_scale_request = 4;
@@ -29,10 +29,15 @@ message GearmanOperation {
   }
   Auth auth = 8;
   int64 request_time = 9;
+  Metadata metadata = 10;
 }
 
 message Auth {
   string namespace = 1;
   string username = 2;
   string token = 3;
+}
+
+message Metadata {
+  string subscription_phid = 1;
 }
