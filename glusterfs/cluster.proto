@@ -37,7 +37,7 @@ service Clusters {
   }
 }
 
-message CLuster {
+message Cluster {
   string phid = 1;
   string name = 2;
   string kube_cluster = 3;
@@ -53,7 +53,7 @@ message ClusterListRequest {
 
 message ClusterListResponse {
   dtypes.Status status = 1;
-  repeated CLuster glusterfs = 2;
+  repeated Cluster glusterfs = 2;
 }
 
 message ClusterDescribeRequest {
