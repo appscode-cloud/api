@@ -43,6 +43,7 @@ service Clusters {
        get : "/api/kubernetes/v0/clusters/startup-script/{role}"
      };
   }
+
   rpc Config(ClusterConfigRequest) returns (ClusterConfigResponse) {
      option (google.api.http) = {
        get : "/api/kubernetes/v0/clusters/config/{name}"
