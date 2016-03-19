@@ -105,7 +105,6 @@ message ClusterCreateRequest {
   string saltbase_version = 7;
   string kube_starter_version = 8;
   string kube_version = 9;
-  string kube_saltbase_version = 10;
 }
 
 message ClusterScaleRequest {
