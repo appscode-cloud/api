@@ -103,6 +103,9 @@ message ClusterCreateRequest {
   map<string, string> cloud_credential = 5;
   map<string, int64> node_set = 6;
   string saltbase_version = 7;
+  string kube_starter_version = 8;
+  string kube_version = 9;
+  string kube_saltbase_version = 10;
 }
 
 message ClusterScaleRequest {
