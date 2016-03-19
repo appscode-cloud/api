@@ -49,11 +49,10 @@ message Slave {
     string status = 2;
 }
 
-
 message SlaveCreateRequest {
     int32 executors = 1;
     string labels = 2;
-    string startup_script = 3;
+    string user_startup_script = 3;
 }
 
 message StartupConfig {

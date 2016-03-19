@@ -40,10 +40,11 @@ service Clusters {
 
   rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
      option (google.api.http) = {
-       get : "/api/kubernetes/v0/clusters/startup-script/{role}"
+       get : "/api/kubernetes/v0/cluster-startup-script/{role}"
      };
   }
 
+  // TODO(sanjid): rename to ClientConfig
   rpc Config(ClusterConfigRequest) returns (ClusterConfigResponse) {
      option (google.api.http) = {
        get : "/api/kubernetes/v0/clusters/config/{name}"
