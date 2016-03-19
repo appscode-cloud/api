@@ -30,10 +30,6 @@ It has these top-level messages:
 	SlaveListResponse
 	Slave
 	SlaveCreateRequest
-	StartupConfig
-	Secrets
-	MavenRepo
-	DockerRepo
 	SlaveDescribeRequest
 	SlaveDescribeResponse
 	SlaveDeleteRequest

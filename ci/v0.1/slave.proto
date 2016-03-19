@@ -4,7 +4,6 @@ package ci;
 
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
-import "api/ssh/v0.1/ssh.proto";
 
 service Slaves {
   rpc List(dtypes.VoidRequest) returns (SlaveListResponse) {
@@ -53,42 +52,6 @@ message SlaveCreateRequest {
     int32 executors = 1;
     string labels = 2;
     string user_startup_script = 3;
-}
-
-message StartupConfig {
-    string provider = 1;
-    string oS = 2;
-    string jenkins_version = 3;
-    string saltbase_version = 4;
-    string role = 5;
-
-    string namespace = 6;
-    string labels = 7;
-    string master_addr = 8;
-    int32 executors = 9;
-    Secrets secrets = 10;
-}
-
-message Secrets {
-    string jenkins_user = 1;
-    string jenkins_token = 2;
-    ssh.SSHKey ssh_key = 3;
-    repeated DockerRepo docker_repos = 4;
-    MavenRepo maven_repo = 5;
-    // npm
-    // composer
-}
-
-message MavenRepo {
-    string url = 1;
-    string username = 2;
-    string password = 3;
-}
-
-message DockerRepo {
-    string url = 1;
-    string email = 2;
-    string auth = 3;
 }
 
 message SlaveDescribeRequest {
