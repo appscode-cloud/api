@@ -80,7 +80,7 @@ message Quota {
   int64 user = 1;
   PhabricatorQuota phabricator = 2;
   ArtifactoryQuota artifact = 3;
-  ClusterQuota cluster = 4;
+  ClusterQuota kube = 4;
   CIQuota ci = 5;
   DBQuota db = 6;
 }
