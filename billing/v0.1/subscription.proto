@@ -51,10 +51,11 @@ message SubscriptionDescribeResponse {
 
 message Subscription {
   string author = 1;
-  string product_sku = 2;
-  Quota quota = 3;
-  string date_started = 4;
-  string date_ended = 5;
+  string type = 2;
+  string product_sku = 3;
+  Quota quota = 4;
+  string date_started = 5;
+  string date_ended = 6;
 }
 
 message SubscriptionOpenRequest {
