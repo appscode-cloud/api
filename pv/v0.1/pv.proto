@@ -1,0 +1,146 @@
+syntax = "proto3";
+
+package api;
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+
+service PersistentVolume {
+
+  rpc List(PVListRequest) returns (PVListResponse) {
+    option (google.api.http) = {
+      get: "/api/pv/v0/{cluster}"
+    };
+  }
+
+  rpc Create(PVCreateRequest) returns (CommonResponse) {
+    option (google.api.http) = {
+      put: "/api/pv/v0/{cluster}/{name}"
+      body: "*"
+    };
+  }
+
+  rpc Delete(PVDeleteRequest) returns (CommonResponse) {
+    option (google.api.http) = {
+      delete: "/api/pv/v0/{cluster}/{identifier}/{provider}"
+    };
+  }
+
+  rpc PVRegister(PVRegisterRequest) returns (CommonResponse) {
+    option (google.api.http) = {
+      get: "/api/pv/v0/register/{cluster}/{name}/{provider}"
+    };
+  }
+
+    rpc PVUnregister(PVUnregisterRequest) returns (CommonResponse) {
+    option (google.api.http) = {
+      get: "/api/pv/v0/unregister/{cluster}/{pv_name}"
+    };
+  }
+
+  rpc PVCRegister(PVCRegisterRequest) returns (CommonResponse) {
+    option (google.api.http) = {
+      get: "/api/pv/v0/register/{cluster}/{name}/{provider}/{namespace}"
+    };
+  }
+
+  rpc PVCUnregister(PVCUnregisterRequest) returns (CommonResponse) {
+    option (google.api.http) = {
+      get: "/api/pv/v0/unregister/{cluster}/{pvc_name}/{namespace}"
+    };
+  }
+  }
+
+  message PVUnregisterRequest{
+  string cluster = 1;
+  string pv_name = 2;
+}
+
+message PVCUnregisterRequest{
+  string cluster = 1;
+  string namespace = 2;
+  string pvc_name = 3;
+}
+
+message PVCRegisterRequest{
+  string name=1;
+  string cluster=2;
+  string provider = 3;
+  string namespace = 4;
+}
+
+message PVRegisterRequest{
+  string provider = 1;
+  string cluster = 2;
+  string name = 3;
+}
+
+message PVDeleteRequest {
+  string identifier=1;
+  string provider =  2;
+  string cluster = 3;
+}
+
+message PVCreateRequest {
+  string name=1;
+  string zone =  2;
+  string disk_type = 3;
+  int64 size = 4;
+  string cluster = 5;
+  string provider = 6;
+}
+
+message CommonResponse{
+  dtypes.Status status = 1;
+}
+
+message PVListRequest {
+  string cluster=1;
+}
+
+message PVListResponse {
+  string  kube_name = 1;
+  repeated DataList data = 2;
+  dtypes.Status status = 3;
+  repeated GfsVolume glusterfs_volume=4;
+  repeated PV pv = 5;
+  repeated PVC pvc = 6;
+}
+
+message DataList{
+  string name = 1;
+  int64 size = 2;
+  string zone = 3;
+  string type = 4;
+  string status=5;
+  int64 iops = 6;
+  string snapshots = 7;
+  string aws_vol_id = 8;
+  int64 gce_vol_id = 9;
+  repeated string users = 10;
+  string kind = 11;
+}
+
+message GfsVolume {
+  string path = 1;
+  string endpoint = 2;
+  int64 replica = 3;
+   string master = 4;
+  repeated string ip= 5;
+}
+
+message PV{
+  string name = 1;
+  string king = 2;
+  map <string , string> label = 3;
+  int64 size = 4;
+  string status = 5;
+}
+
+message PVC{
+  string name = 1;
+  string kind = 2;
+  map <string , string> label = 3;
+  int64 size = 4;
+  string status = 5;
+}
