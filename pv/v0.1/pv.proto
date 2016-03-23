@@ -4,7 +4,6 @@ package api;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-
 service PersistentVolume {
 
   rpc List(PVListRequest) returns (PVListResponse) {
@@ -13,45 +12,45 @@ service PersistentVolume {
     };
   }
 
-  rpc Create(PVCreateRequest) returns (CommonResponse) {
+  rpc Create(PVCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/api/pv/v0/{cluster}/{name}"
       body: "*"
     };
   }
 
-  rpc Delete(PVDeleteRequest) returns (CommonResponse) {
+  rpc Delete(PVDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/api/pv/v0/{cluster}/{identifier}/{provider}"
     };
   }
 
-  rpc PVRegister(PVRegisterRequest) returns (CommonResponse) {
+  rpc PVRegister(PVRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0/register/{cluster}/{name}/{provider}"
     };
   }
 
-    rpc PVUnregister(PVUnregisterRequest) returns (CommonResponse) {
+   rpc PVUnregister(PVUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0/unregister/{cluster}/{pv_name}"
     };
   }
 
-  rpc PVCRegister(PVCRegisterRequest) returns (CommonResponse) {
+  rpc PVCRegister(PVCRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0/register/{cluster}/{name}/{provider}/{namespace}"
     };
   }
 
-  rpc PVCUnregister(PVCUnregisterRequest) returns (CommonResponse) {
+  rpc PVCUnregister(PVCUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0/unregister/{cluster}/{pvc_name}/{namespace}"
     };
   }
   }
 
-  message PVUnregisterRequest{
+message PVUnregisterRequest{
   string cluster = 1;
   string pv_name = 2;
 }
@@ -88,10 +87,6 @@ message PVCreateRequest {
   int64 size = 4;
   string cluster = 5;
   string provider = 6;
-}
-
-message CommonResponse{
-  dtypes.Status status = 1;
 }
 
 message PVListRequest {
