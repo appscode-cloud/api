@@ -16,27 +16,27 @@ service Alerts {
 
   rpc Create(CreateReuquest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/api/alert/v0/{cluster}/{namespace}/{object_type}/{object_name}"
+      put: "/api/alert/v0/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
       body: "*"
     };
   }
 
   rpc Update(UpdateReuquest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/api/alert/v0/{cluster}/{namespace}/{object_type}/{object_name}"
+      post: "/api/alert/v0/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
       body: "*"
     };
   }
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/api/alert/v0/{cluster}/{namespace}/{object_type}/{object_name}/{phid}"
+      delete: "/api/alert/v0/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}/{phid}"
     };
   }
 
   rpc List(ListRequest) returns (ListResponse) {
     option (google.api.http) = {
-      get: "/api/alert/v0/{cluster}/{namespace}/{object_type}/{object_name}"
+      get: "/api/alert/v0/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
     };
   }
 }
@@ -52,55 +52,48 @@ message NotificationRequest {
 
 message CreateReuquest {
   string name = 1;
-  string cluster = 2;
-  string namespace  = 3;
-  string object_type = 4;
-  string object_name = 5;
-  string matrix_phid = 6;
-  Matrix matrix = 7;
-  string warning_condition = 8;
-  string critical_condition  = 9;
-  int64 check_interval = 10;
-  string warning_user = 11;
-  int32 warning_method = 12;
-  string critical_user  = 13;
-  int32 critical_method  = 14;
-  int64 alert_interval = 15;
+  Spec spec = 2;
+  string matrix_phid = 3;
+  Matrix matrix = 4;
+  AlertSpec alert_spec = 5;
+  int64 check_interval = 6;
 }
 
 message UpdateReuquest {
   string phid = 1;
   string name = 2;
-  string cluster = 3;
-  string namespace  = 4;
-  string object_type = 5;
-  string object_name = 6;
-  string matrix_phid = 7;
-  Matrix matrix = 8;
-  string warning_condition = 9;
-  string critical_condition  = 10;
-  int64 check_interval = 11;
-  string warning_user = 12;
-  int32 warning_method = 13;
-  string critical_user  = 14;
-  int32 critical_method  = 15;
-  int64 alert_interval = 16;
+  Spec spec = 3;
+  string matrix_phid = 4;
+  Matrix matrix = 5;
+  AlertSpec alert_spec = 6;
+  int64 check_interval = 7;
+
 }
 
+message Spec {
+  string cluster = 2;
+  string namespace  = 3;
+  string object_type = 4;
+  string object_name = 5;
+}
+
+message AlertSpec {
+  string warning_condition = 1;
+  string critical_condition  = 2;
+  string warning_user = 4;
+  int32 warning_method = 5;
+  string critical_user  = 6;
+  int32 critical_method  = 7;
+  int64 alert_interval = 8;
+}
 
 message ListRequest {
-  string cluster = 1;
-  string object_name = 2;
-  string namespace = 3;
-  string object_type = 4;
+  Spec spec = 1;
 }
 
 message DeleteRequest {
-  string cluster = 1;
-  string object_name = 2;
-  string namespace = 3;
-  string object_type = 4;
-  string phid = 5;
+  string phid = 1;
+  Spec spec = 2;
 }
 
 message ListResponse {
@@ -112,22 +105,9 @@ message Alert {
   string phid = 1;
   string name = 2;
   string icinga_url = 3;
-  message Specs {
-    Matrix matrix = 1;
-    string warning_condition = 2;
-    string critical_condition = 3;
-  }
-
-  Specs spcs = 4;
-
-  string warning_user = 5;
-  string warning_method = 6;
-
-  string critical_user = 7;
-  string critical_method = 8;
-
-  int64 alert_interval = 9;
-  int64 refresh_interval = 10;
+  Matrix matrix = 4;
+  AlertSpec spec = 5;
+  int64 refresh_interval = 6;
 }
 
 message Matrix {
