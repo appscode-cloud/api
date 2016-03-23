@@ -8,44 +8,44 @@ service PersistentVolume {
 
   rpc List(PVListRequest) returns (PVListResponse) {
     option (google.api.http) = {
-      get: "/api/pv/v0/{cluster}"
+      get: "/api/pv/v0.1/{cluster}"
     };
   }
 
   rpc Create(PVCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/api/pv/v0/{cluster}/{name}"
+      put: "/api/pv/v0.1/{cluster}/{name}"
       body: "*"
     };
   }
 
   rpc Delete(PVDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/api/pv/v0/{cluster}/{identifier}/{provider}"
+      delete: "/api/pv/v0.1/{cluster}/{identifier}/{provider}"
     };
   }
 
   rpc PVRegister(PVRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      get: "/api/pv/v0/register/{cluster}/{name}/{provider}"
+      get: "/api/pv/v0.1/register/{cluster}/{name}/{provider}"
     };
   }
 
    rpc PVUnregister(PVUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      get: "/api/pv/v0/unregister/{cluster}/{pv_name}"
+      get: "/api/pv/v0.1/unregister/{cluster}/{pv_name}"
     };
   }
 
   rpc PVCRegister(PVCRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      get: "/api/pv/v0/register/{cluster}/{name}/{provider}/{namespace}"
+      get: "/api/pv/v0.1/register/{cluster}/{name}/{provider}/{namespace}"
     };
   }
 
   rpc PVCUnregister(PVCUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      get: "/api/pv/v0/unregister/{cluster}/{pvc_name}/{namespace}"
+      get: "/api/pv/v0.1/unregister/{cluster}/{pvc_name}/{namespace}"
     };
   }
   }

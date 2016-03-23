@@ -114,7 +114,7 @@ func RegisterDashboardHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 }
 
 var (
-	pattern_Dashboard_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "monitoring", "v0", "dashboard", "cluster"}, ""))
+	pattern_Dashboard_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "monitoring", "v0.1", "dashboard", "cluster"}, ""))
 )
 
 var (

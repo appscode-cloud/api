@@ -8,7 +8,7 @@ import "api/dtypes/types.proto";
 service SecureShell {
   rpc Get(SecureShellGetRequest) returns (SecureShellGetResponse) {
 	  option (google.api.http) = {
-	    get: "/api/sshkey/v0"
+	    get: "/api/sshkey/v0.1"
 	  };
   }
 }

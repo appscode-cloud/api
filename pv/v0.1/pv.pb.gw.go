@@ -517,19 +517,19 @@ func RegisterPersistentVolumeHandler(ctx context.Context, mux *runtime.ServeMux,
 }
 
 var (
-	pattern_PersistentVolume_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "pv", "v0", "cluster"}, ""))
+	pattern_PersistentVolume_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "pv", "v0.1", "cluster"}, ""))
 
-	pattern_PersistentVolume_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0", "cluster", "name"}, ""))
+	pattern_PersistentVolume_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0.1", "cluster", "name"}, ""))
 
-	pattern_PersistentVolume_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "cluster", "identifier", "provider"}, ""))
+	pattern_PersistentVolume_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0.1", "cluster", "identifier", "provider"}, ""))
 
-	pattern_PersistentVolume_PVRegister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "pv", "v0", "register", "cluster", "name", "provider"}, ""))
+	pattern_PersistentVolume_PVRegister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "pv", "v0.1", "register", "cluster", "name", "provider"}, ""))
 
-	pattern_PersistentVolume_PVUnregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "unregister", "cluster", "pv_name"}, ""))
+	pattern_PersistentVolume_PVUnregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0.1", "unregister", "cluster", "pv_name"}, ""))
 
-	pattern_PersistentVolume_PVCRegister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "pv", "v0", "register", "cluster", "name", "provider", "namespace"}, ""))
+	pattern_PersistentVolume_PVCRegister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "pv", "v0.1", "register", "cluster", "name", "provider", "namespace"}, ""))
 
-	pattern_PersistentVolume_PVCUnregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "pv", "v0", "unregister", "cluster", "pvc_name", "namespace"}, ""))
+	pattern_PersistentVolume_PVCUnregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "pv", "v0.1", "unregister", "cluster", "pvc_name", "namespace"}, ""))
 )
 
 var (

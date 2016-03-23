@@ -8,7 +8,7 @@ import "api/dtypes/types.proto";
 service Dashboard {
   rpc Create(DashboardCreateRequest) returns (DashboardCreateResponse) {
     option (google.api.http) = {
-      put: "/api/monitoring/v0/dashboard/{cluster}"
+      put: "/api/monitoring/v0.1/dashboard/{cluster}"
       body: "*"
     };
   }

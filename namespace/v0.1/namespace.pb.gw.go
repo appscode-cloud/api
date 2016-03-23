@@ -255,13 +255,13 @@ func RegisterNamespaceHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 }
 
 var (
-	pattern_Namespace_Check_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "namespace", "v0", "name"}, ""))
+	pattern_Namespace_Check_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "namespace", "v0.1", "name"}, ""))
 
-	pattern_Namespace_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "namespace", "v0", "name"}, ""))
+	pattern_Namespace_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "namespace", "v0.1", "name"}, ""))
 
-	pattern_Namespace_Status_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "namespace", "v0", "status", "name"}, ""))
+	pattern_Namespace_Status_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "namespace", "v0.1", "status", "name"}, ""))
 
-	pattern_Namespace_Log_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "namespace", "v0", "log", "name"}, ""))
+	pattern_Namespace_Log_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "namespace", "v0.1", "log", "name"}, ""))
 )
 
 var (
