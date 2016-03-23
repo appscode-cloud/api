@@ -57,45 +57,45 @@ func request_Alerts_Create_0(ctx context.Context, client AlertsClient, req *http
 		_   = err
 	)
 
-	val, ok = pathParams["cluster"]
+	val, ok = pathParams["spec.cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.cluster")
 	}
 
-	protoReq.Cluster, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.cluster", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["namespace"]
+	val, ok = pathParams["spec.namespace"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.namespace")
 	}
 
-	protoReq.Namespace, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.namespace", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["object_type"]
+	val, ok = pathParams["spec.object_type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.object_type")
 	}
 
-	protoReq.ObjectType, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.object_type", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["object_name"]
+	val, ok = pathParams["spec.object_name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.object_name")
 	}
 
-	protoReq.ObjectName, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.object_name", val)
 
 	if err != nil {
 		return nil, metadata, err
@@ -121,45 +121,45 @@ func request_Alerts_Update_0(ctx context.Context, client AlertsClient, req *http
 		_   = err
 	)
 
-	val, ok = pathParams["cluster"]
+	val, ok = pathParams["spec.cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.cluster")
 	}
 
-	protoReq.Cluster, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.cluster", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["namespace"]
+	val, ok = pathParams["spec.namespace"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.namespace")
 	}
 
-	protoReq.Namespace, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.namespace", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["object_type"]
+	val, ok = pathParams["spec.object_type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.object_type")
 	}
 
-	protoReq.ObjectType, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.object_type", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["object_name"]
+	val, ok = pathParams["spec.object_name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.object_name")
 	}
 
-	protoReq.ObjectName, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.object_name", val)
 
 	if err != nil {
 		return nil, metadata, err
@@ -169,6 +169,10 @@ func request_Alerts_Update_0(ctx context.Context, client AlertsClient, req *http
 	return msg, metadata, err
 
 }
+
+var (
+	filter_Alerts_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"spec": 0, "cluster": 1, "namespace": 2, "object_type": 3, "object_name": 4, "phid": 5}, Base: []int{1, 1, 1, 2, 3, 4, 5, 0, 0, 0, 0, 0}, Check: []int{0, 1, 2, 2, 2, 2, 1, 3, 4, 5, 6, 7}}
+)
 
 func request_Alerts_Delete_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteRequest
@@ -181,45 +185,45 @@ func request_Alerts_Delete_0(ctx context.Context, client AlertsClient, req *http
 		_   = err
 	)
 
-	val, ok = pathParams["cluster"]
+	val, ok = pathParams["spec.cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.cluster")
 	}
 
-	protoReq.Cluster, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.cluster", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["namespace"]
+	val, ok = pathParams["spec.namespace"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.namespace")
 	}
 
-	protoReq.Namespace, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.namespace", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["object_type"]
+	val, ok = pathParams["spec.object_type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.object_type")
 	}
 
-	protoReq.ObjectType, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.object_type", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["object_name"]
+	val, ok = pathParams["spec.object_name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.object_name")
 	}
 
-	protoReq.ObjectName, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.object_name", val)
 
 	if err != nil {
 		return nil, metadata, err
@@ -236,10 +240,18 @@ func request_Alerts_Delete_0(ctx context.Context, client AlertsClient, req *http
 		return nil, metadata, err
 	}
 
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Alerts_Delete_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
 	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
+
+var (
+	filter_Alerts_List_0 = &utilities.DoubleArray{Encoding: map[string]int{"spec": 0, "cluster": 1, "namespace": 2, "object_type": 3, "object_name": 4}, Base: []int{1, 1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 2, 2, 2, 2, 3, 4, 5, 6}}
+)
 
 func request_Alerts_List_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListRequest
@@ -252,48 +264,52 @@ func request_Alerts_List_0(ctx context.Context, client AlertsClient, req *http.R
 		_   = err
 	)
 
-	val, ok = pathParams["cluster"]
+	val, ok = pathParams["spec.cluster"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.cluster")
 	}
 
-	protoReq.Cluster, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.cluster", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["namespace"]
+	val, ok = pathParams["spec.namespace"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.namespace")
 	}
 
-	protoReq.Namespace, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.namespace", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["object_type"]
+	val, ok = pathParams["spec.object_type"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.object_type")
 	}
 
-	protoReq.ObjectType, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.object_type", val)
 
 	if err != nil {
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["object_name"]
+	val, ok = pathParams["spec.object_name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "spec.object_name")
 	}
 
-	protoReq.ObjectName, err = runtime.String(val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "spec.object_name", val)
 
 	if err != nil {
 		return nil, metadata, err
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Alerts_List_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -437,13 +453,13 @@ func RegisterAlertsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 var (
 	pattern_Alerts_Notify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "alert", "v0", "notify"}, ""))
 
-	pattern_Alerts_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "cluster", "namespace", "object_type", "object_name"}, ""))
+	pattern_Alerts_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
 
-	pattern_Alerts_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "cluster", "namespace", "object_type", "object_name"}, ""))
+	pattern_Alerts_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
 
-	pattern_Alerts_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "alert", "v0", "cluster", "namespace", "object_type", "object_name", "phid"}, ""))
+	pattern_Alerts_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "alert", "v0", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name", "phid"}, ""))
 
-	pattern_Alerts_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "cluster", "namespace", "object_type", "object_name"}, ""))
+	pattern_Alerts_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "alert", "v0", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
 )
 
 var (
