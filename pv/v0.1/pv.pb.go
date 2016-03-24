@@ -2,27 +2,7 @@
 // source: pv.proto
 // DO NOT EDIT!
 
-/*
-Package api is a generated protocol buffer package.
-
-It is generated from these files:
-	pv.proto
-
-It has these top-level messages:
-	PVUnregisterRequest
-	PVCUnregisterRequest
-	PVCRegisterRequest
-	PVRegisterRequest
-	PVDeleteRequest
-	PVCreateRequest
-	PVListRequest
-	PVListResponse
-	DataList
-	GfsVolume
-	PV
-	PVC
-*/
-package api
+package pv
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
@@ -40,78 +20,29 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the proto package it is being compiled against.
-const _ = proto.ProtoPackageIsVersion1
-
-type PVUnregisterRequest struct {
-	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
-	PvName  string `protobuf:"bytes,2,opt,name=pv_name,json=pvName" json:"pv_name,omitempty"`
-}
-
-func (m *PVUnregisterRequest) Reset()                    { *m = PVUnregisterRequest{} }
-func (m *PVUnregisterRequest) String() string            { return proto.CompactTextString(m) }
-func (*PVUnregisterRequest) ProtoMessage()               {}
-func (*PVUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
-
-type PVCUnregisterRequest struct {
-	Cluster   string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
-	Namespace string `protobuf:"bytes,2,opt,name=namespace" json:"namespace,omitempty"`
-	PvcName   string `protobuf:"bytes,3,opt,name=pvc_name,json=pvcName" json:"pvc_name,omitempty"`
-}
-
-func (m *PVCUnregisterRequest) Reset()                    { *m = PVCUnregisterRequest{} }
-func (m *PVCUnregisterRequest) String() string            { return proto.CompactTextString(m) }
-func (*PVCUnregisterRequest) ProtoMessage()               {}
-func (*PVCUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
-
-type PVCRegisterRequest struct {
-	Name      string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	Cluster   string `protobuf:"bytes,2,opt,name=cluster" json:"cluster,omitempty"`
-	Provider  string `protobuf:"bytes,3,opt,name=provider" json:"provider,omitempty"`
-	Namespace string `protobuf:"bytes,4,opt,name=namespace" json:"namespace,omitempty"`
-}
-
-func (m *PVCRegisterRequest) Reset()                    { *m = PVCRegisterRequest{} }
-func (m *PVCRegisterRequest) String() string            { return proto.CompactTextString(m) }
-func (*PVCRegisterRequest) ProtoMessage()               {}
-func (*PVCRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
-
 type PVRegisterRequest struct {
-	Provider string `protobuf:"bytes,1,opt,name=provider" json:"provider,omitempty"`
-	Cluster  string `protobuf:"bytes,2,opt,name=cluster" json:"cluster,omitempty"`
-	Name     string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
+	Cluster    string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
+	Name       string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Identifier string `protobuf:"bytes,3,opt,name=identifier" json:"identifier,omitempty"`
+	Provider   string `protobuf:"bytes,4,opt,name=provider" json:"provider,omitempty"`
+	Size       int64  `protobuf:"varint,5,opt,name=size" json:"size,omitempty"`
+	Path       string `protobuf:"bytes,6,opt,name=path" json:"path,omitempty"`
 }
 
 func (m *PVRegisterRequest) Reset()                    { *m = PVRegisterRequest{} }
 func (m *PVRegisterRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVRegisterRequest) ProtoMessage()               {}
-func (*PVRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (*PVRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
-type PVDeleteRequest struct {
-	Identifier string `protobuf:"bytes,1,opt,name=identifier" json:"identifier,omitempty"`
-	Provider   string `protobuf:"bytes,2,opt,name=provider" json:"provider,omitempty"`
-	Cluster    string `protobuf:"bytes,3,opt,name=cluster" json:"cluster,omitempty"`
+type PVUnregisterRequest struct {
+	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
+	Name    string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
 }
 
-func (m *PVDeleteRequest) Reset()                    { *m = PVDeleteRequest{} }
-func (m *PVDeleteRequest) String() string            { return proto.CompactTextString(m) }
-func (*PVDeleteRequest) ProtoMessage()               {}
-func (*PVDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
-
-type PVCreateRequest struct {
-	Name     string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	Zone     string `protobuf:"bytes,2,opt,name=zone" json:"zone,omitempty"`
-	DiskType string `protobuf:"bytes,3,opt,name=disk_type,json=diskType" json:"disk_type,omitempty"`
-	Size     int64  `protobuf:"varint,4,opt,name=size" json:"size,omitempty"`
-	Cluster  string `protobuf:"bytes,5,opt,name=cluster" json:"cluster,omitempty"`
-	Provider string `protobuf:"bytes,6,opt,name=provider" json:"provider,omitempty"`
-}
-
-func (m *PVCreateRequest) Reset()                    { *m = PVCreateRequest{} }
-func (m *PVCreateRequest) String() string            { return proto.CompactTextString(m) }
-func (*PVCreateRequest) ProtoMessage()               {}
-func (*PVCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+func (m *PVUnregisterRequest) Reset()                    { *m = PVUnregisterRequest{} }
+func (m *PVUnregisterRequest) String() string            { return proto.CompactTextString(m) }
+func (*PVUnregisterRequest) ProtoMessage()               {}
+func (*PVUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
 
 type PVListRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -120,28 +51,17 @@ type PVListRequest struct {
 func (m *PVListRequest) Reset()                    { *m = PVListRequest{} }
 func (m *PVListRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVListRequest) ProtoMessage()               {}
-func (*PVListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+func (*PVListRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
 
 type PVListResponse struct {
-	KubeName        string         `protobuf:"bytes,1,opt,name=kube_name,json=kubeName" json:"kube_name,omitempty"`
-	Data            []*DataList    `protobuf:"bytes,2,rep,name=data" json:"data,omitempty"`
-	Status          *dtypes.Status `protobuf:"bytes,3,opt,name=status" json:"status,omitempty"`
-	GlusterfsVolume []*GfsVolume   `protobuf:"bytes,4,rep,name=glusterfs_volume,json=glusterfsVolume" json:"glusterfs_volume,omitempty"`
-	Pv              []*PV          `protobuf:"bytes,5,rep,name=pv" json:"pv,omitempty"`
-	Pvc             []*PVC         `protobuf:"bytes,6,rep,name=pvc" json:"pvc,omitempty"`
+	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
+	List   []*PVList      `protobuf:"bytes,2,rep,name=list" json:"list,omitempty"`
 }
 
 func (m *PVListResponse) Reset()                    { *m = PVListResponse{} }
 func (m *PVListResponse) String() string            { return proto.CompactTextString(m) }
 func (*PVListResponse) ProtoMessage()               {}
-func (*PVListResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
-
-func (m *PVListResponse) GetData() []*DataList {
-	if m != nil {
-		return m.Data
-	}
-	return nil
-}
+func (*PVListResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
 
 func (m *PVListResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -150,112 +70,33 @@ func (m *PVListResponse) GetStatus() *dtypes.Status {
 	return nil
 }
 
-func (m *PVListResponse) GetGlusterfsVolume() []*GfsVolume {
+func (m *PVListResponse) GetList() []*PVList {
 	if m != nil {
-		return m.GlusterfsVolume
+		return m.List
 	}
 	return nil
 }
 
-func (m *PVListResponse) GetPv() []*PV {
-	if m != nil {
-		return m.Pv
-	}
-	return nil
+type PVList struct {
+	Name   string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Size   int64    `protobuf:"varint,2,opt,name=size" json:"size,omitempty"`
+	Status string   `protobuf:"bytes,3,opt,name=status" json:"status,omitempty"`
+	Volume string   `protobuf:"bytes,4,opt,name=volume" json:"volume,omitempty"`
+	Claim  string   `protobuf:"bytes,5,opt,name=claim" json:"claim,omitempty"`
+	Users  []string `protobuf:"bytes,6,rep,name=users" json:"users,omitempty"`
 }
 
-func (m *PVListResponse) GetPvc() []*PVC {
-	if m != nil {
-		return m.Pvc
-	}
-	return nil
-}
-
-type DataList struct {
-	Name      string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	Size      int64    `protobuf:"varint,2,opt,name=size" json:"size,omitempty"`
-	Zone      string   `protobuf:"bytes,3,opt,name=zone" json:"zone,omitempty"`
-	Type      string   `protobuf:"bytes,4,opt,name=type" json:"type,omitempty"`
-	Status    string   `protobuf:"bytes,5,opt,name=status" json:"status,omitempty"`
-	Iops      int64    `protobuf:"varint,6,opt,name=iops" json:"iops,omitempty"`
-	Snapshots string   `protobuf:"bytes,7,opt,name=snapshots" json:"snapshots,omitempty"`
-	AwsVolId  string   `protobuf:"bytes,8,opt,name=aws_vol_id,json=awsVolId" json:"aws_vol_id,omitempty"`
-	GceVolId  int64    `protobuf:"varint,9,opt,name=gce_vol_id,json=gceVolId" json:"gce_vol_id,omitempty"`
-	Users     []string `protobuf:"bytes,10,rep,name=users" json:"users,omitempty"`
-	Kind      string   `protobuf:"bytes,11,opt,name=kind" json:"kind,omitempty"`
-}
-
-func (m *DataList) Reset()                    { *m = DataList{} }
-func (m *DataList) String() string            { return proto.CompactTextString(m) }
-func (*DataList) ProtoMessage()               {}
-func (*DataList) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
-
-type GfsVolume struct {
-	Path     string   `protobuf:"bytes,1,opt,name=path" json:"path,omitempty"`
-	Endpoint string   `protobuf:"bytes,2,opt,name=endpoint" json:"endpoint,omitempty"`
-	Replica  int64    `protobuf:"varint,3,opt,name=replica" json:"replica,omitempty"`
-	Master   string   `protobuf:"bytes,4,opt,name=master" json:"master,omitempty"`
-	Ip       []string `protobuf:"bytes,5,rep,name=ip" json:"ip,omitempty"`
-}
-
-func (m *GfsVolume) Reset()                    { *m = GfsVolume{} }
-func (m *GfsVolume) String() string            { return proto.CompactTextString(m) }
-func (*GfsVolume) ProtoMessage()               {}
-func (*GfsVolume) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{9} }
-
-type PV struct {
-	Name   string            `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	King   string            `protobuf:"bytes,2,opt,name=king" json:"king,omitempty"`
-	Label  map[string]string `protobuf:"bytes,3,rep,name=label" json:"label,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Size   int64             `protobuf:"varint,4,opt,name=size" json:"size,omitempty"`
-	Status string            `protobuf:"bytes,5,opt,name=status" json:"status,omitempty"`
-}
-
-func (m *PV) Reset()                    { *m = PV{} }
-func (m *PV) String() string            { return proto.CompactTextString(m) }
-func (*PV) ProtoMessage()               {}
-func (*PV) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{10} }
-
-func (m *PV) GetLabel() map[string]string {
-	if m != nil {
-		return m.Label
-	}
-	return nil
-}
-
-type PVC struct {
-	Name   string            `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	Kind   string            `protobuf:"bytes,2,opt,name=kind" json:"kind,omitempty"`
-	Label  map[string]string `protobuf:"bytes,3,rep,name=label" json:"label,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Size   int64             `protobuf:"varint,4,opt,name=size" json:"size,omitempty"`
-	Status string            `protobuf:"bytes,5,opt,name=status" json:"status,omitempty"`
-}
-
-func (m *PVC) Reset()                    { *m = PVC{} }
-func (m *PVC) String() string            { return proto.CompactTextString(m) }
-func (*PVC) ProtoMessage()               {}
-func (*PVC) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{11} }
-
-func (m *PVC) GetLabel() map[string]string {
-	if m != nil {
-		return m.Label
-	}
-	return nil
-}
+func (m *PVList) Reset()                    { *m = PVList{} }
+func (m *PVList) String() string            { return proto.CompactTextString(m) }
+func (*PVList) ProtoMessage()               {}
+func (*PVList) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
 
 func init() {
-	proto.RegisterType((*PVUnregisterRequest)(nil), "api.PVUnregisterRequest")
-	proto.RegisterType((*PVCUnregisterRequest)(nil), "api.PVCUnregisterRequest")
-	proto.RegisterType((*PVCRegisterRequest)(nil), "api.PVCRegisterRequest")
-	proto.RegisterType((*PVRegisterRequest)(nil), "api.PVRegisterRequest")
-	proto.RegisterType((*PVDeleteRequest)(nil), "api.PVDeleteRequest")
-	proto.RegisterType((*PVCreateRequest)(nil), "api.PVCreateRequest")
-	proto.RegisterType((*PVListRequest)(nil), "api.PVListRequest")
-	proto.RegisterType((*PVListResponse)(nil), "api.PVListResponse")
-	proto.RegisterType((*DataList)(nil), "api.DataList")
-	proto.RegisterType((*GfsVolume)(nil), "api.GfsVolume")
-	proto.RegisterType((*PV)(nil), "api.PV")
-	proto.RegisterType((*PVC)(nil), "api.PVC")
+	proto.RegisterType((*PVRegisterRequest)(nil), "pv.PVRegisterRequest")
+	proto.RegisterType((*PVUnregisterRequest)(nil), "pv.PVUnregisterRequest")
+	proto.RegisterType((*PVListRequest)(nil), "pv.PVListRequest")
+	proto.RegisterType((*PVListResponse)(nil), "pv.PVListResponse")
+	proto.RegisterType((*PVList)(nil), "pv.PVList")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -265,13 +106,9 @@ var _ grpc.ClientConn
 // Client API for PersistentVolume service
 
 type PersistentVolumeClient interface {
-	List(ctx context.Context, in *PVListRequest, opts ...grpc.CallOption) (*PVListResponse, error)
-	Create(ctx context.Context, in *PVCreateRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
-	Delete(ctx context.Context, in *PVDeleteRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
+	PVList(ctx context.Context, in *PVListRequest, opts ...grpc.CallOption) (*PVListResponse, error)
 	PVRegister(ctx context.Context, in *PVRegisterRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
 	PVUnregister(ctx context.Context, in *PVUnregisterRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
-	PVCRegister(ctx context.Context, in *PVCRegisterRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
-	PVCUnregister(ctx context.Context, in *PVCUnregisterRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
 }
 
 type persistentVolumeClient struct {
@@ -282,27 +119,9 @@ func NewPersistentVolumeClient(cc *grpc.ClientConn) PersistentVolumeClient {
 	return &persistentVolumeClient{cc}
 }
 
-func (c *persistentVolumeClient) List(ctx context.Context, in *PVListRequest, opts ...grpc.CallOption) (*PVListResponse, error) {
+func (c *persistentVolumeClient) PVList(ctx context.Context, in *PVListRequest, opts ...grpc.CallOption) (*PVListResponse, error) {
 	out := new(PVListResponse)
-	err := grpc.Invoke(ctx, "/api.PersistentVolume/List", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *persistentVolumeClient) Create(ctx context.Context, in *PVCreateRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
-	out := new(dtypes.VoidResponse)
-	err := grpc.Invoke(ctx, "/api.PersistentVolume/Create", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *persistentVolumeClient) Delete(ctx context.Context, in *PVDeleteRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
-	out := new(dtypes.VoidResponse)
-	err := grpc.Invoke(ctx, "/api.PersistentVolume/Delete", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/pv.PersistentVolume/PVList", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -311,7 +130,7 @@ func (c *persistentVolumeClient) Delete(ctx context.Context, in *PVDeleteRequest
 
 func (c *persistentVolumeClient) PVRegister(ctx context.Context, in *PVRegisterRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
 	out := new(dtypes.VoidResponse)
-	err := grpc.Invoke(ctx, "/api.PersistentVolume/PVRegister", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/pv.PersistentVolume/PVRegister", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -320,25 +139,7 @@ func (c *persistentVolumeClient) PVRegister(ctx context.Context, in *PVRegisterR
 
 func (c *persistentVolumeClient) PVUnregister(ctx context.Context, in *PVUnregisterRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
 	out := new(dtypes.VoidResponse)
-	err := grpc.Invoke(ctx, "/api.PersistentVolume/PVUnregister", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *persistentVolumeClient) PVCRegister(ctx context.Context, in *PVCRegisterRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
-	out := new(dtypes.VoidResponse)
-	err := grpc.Invoke(ctx, "/api.PersistentVolume/PVCRegister", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *persistentVolumeClient) PVCUnregister(ctx context.Context, in *PVCUnregisterRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
-	out := new(dtypes.VoidResponse)
-	err := grpc.Invoke(ctx, "/api.PersistentVolume/PVCUnregister", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/pv.PersistentVolume/PVUnregister", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -348,49 +149,21 @@ func (c *persistentVolumeClient) PVCUnregister(ctx context.Context, in *PVCUnreg
 // Server API for PersistentVolume service
 
 type PersistentVolumeServer interface {
-	List(context.Context, *PVListRequest) (*PVListResponse, error)
-	Create(context.Context, *PVCreateRequest) (*dtypes.VoidResponse, error)
-	Delete(context.Context, *PVDeleteRequest) (*dtypes.VoidResponse, error)
+	PVList(context.Context, *PVListRequest) (*PVListResponse, error)
 	PVRegister(context.Context, *PVRegisterRequest) (*dtypes.VoidResponse, error)
 	PVUnregister(context.Context, *PVUnregisterRequest) (*dtypes.VoidResponse, error)
-	PVCRegister(context.Context, *PVCRegisterRequest) (*dtypes.VoidResponse, error)
-	PVCUnregister(context.Context, *PVCUnregisterRequest) (*dtypes.VoidResponse, error)
 }
 
 func RegisterPersistentVolumeServer(s *grpc.Server, srv PersistentVolumeServer) {
 	s.RegisterService(&_PersistentVolume_serviceDesc, srv)
 }
 
-func _PersistentVolume_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _PersistentVolume_PVList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
 	in := new(PVListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(PersistentVolumeServer).List(ctx, in)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func _PersistentVolume_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
-	in := new(PVCreateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	out, err := srv.(PersistentVolumeServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func _PersistentVolume_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
-	in := new(PVDeleteRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	out, err := srv.(PersistentVolumeServer).Delete(ctx, in)
+	out, err := srv.(PersistentVolumeServer).PVList(ctx, in)
 	if err != nil {
 		return nil, err
 	}
@@ -421,45 +194,13 @@ func _PersistentVolume_PVUnregister_Handler(srv interface{}, ctx context.Context
 	return out, nil
 }
 
-func _PersistentVolume_PVCRegister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
-	in := new(PVCRegisterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	out, err := srv.(PersistentVolumeServer).PVCRegister(ctx, in)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func _PersistentVolume_PVCUnregister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
-	in := new(PVCUnregisterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	out, err := srv.(PersistentVolumeServer).PVCUnregister(ctx, in)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 var _PersistentVolume_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "api.PersistentVolume",
+	ServiceName: "pv.PersistentVolume",
 	HandlerType: (*PersistentVolumeServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "List",
-			Handler:    _PersistentVolume_List_Handler,
-		},
-		{
-			MethodName: "Create",
-			Handler:    _PersistentVolume_Create_Handler,
-		},
-		{
-			MethodName: "Delete",
-			Handler:    _PersistentVolume_Delete_Handler,
+			MethodName: "PVList",
+			Handler:    _PersistentVolume_PVList_Handler,
 		},
 		{
 			MethodName: "PVRegister",
@@ -469,80 +210,38 @@ var _PersistentVolume_serviceDesc = grpc.ServiceDesc{
 			MethodName: "PVUnregister",
 			Handler:    _PersistentVolume_PVUnregister_Handler,
 		},
-		{
-			MethodName: "PVCRegister",
-			Handler:    _PersistentVolume_PVCRegister_Handler,
-		},
-		{
-			MethodName: "PVCUnregister",
-			Handler:    _PersistentVolume_PVCUnregister_Handler,
-		},
 	},
 	Streams: []grpc.StreamDesc{},
 }
 
-var fileDescriptor0 = []byte{
-	// 981 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xc4, 0x56, 0x5f, 0x6f, 0xdb, 0x54,
-	0x14, 0x97, 0xed, 0x36, 0x4d, 0x4e, 0x59, 0x57, 0x6e, 0xa3, 0x2e, 0xcb, 0x2a, 0x34, 0xfc, 0x30,
-	0xb5, 0x03, 0x25, 0xac, 0x20, 0x28, 0x43, 0xf0, 0xd2, 0x21, 0x40, 0x1a, 0x28, 0x32, 0x90, 0x27,
-	0x50, 0xe4, 0xc6, 0xb7, 0x99, 0x69, 0x6a, 0x7b, 0xb9, 0x8e, 0x51, 0x37, 0x22, 0x01, 0x8f, 0xbc,
-	0xf2, 0xc6, 0x13, 0x1f, 0x04, 0xf1, 0x25, 0xf8, 0x0a, 0x3c, 0xf0, 0x31, 0x38, 0xe7, 0x5c, 0x5f,
-	0xc7, 0xee, 0x62, 0x68, 0x9f, 0xf6, 0x12, 0x9d, 0x73, 0xee, 0xcd, 0xef, 0x77, 0xfe, 0xfb, 0x42,
-	0x33, 0xc9, 0x7a, 0xc9, 0x2c, 0x4e, 0x63, 0xe1, 0xf8, 0x49, 0xd8, 0xdd, 0x9b, 0xc4, 0xf1, 0x64,
-	0x2a, 0xfb, 0x28, 0xf7, 0xfd, 0x28, 0x8a, 0x53, 0x3f, 0x0d, 0xe3, 0x48, 0xe9, 0x2b, 0xdd, 0x5d,
-	0x32, 0x07, 0xe9, 0x45, 0x22, 0x55, 0x9f, 0x7f, 0xb5, 0xdd, 0xfd, 0x14, 0x76, 0x06, 0xc3, 0xaf,
-	0xa3, 0x99, 0x9c, 0x84, 0x2a, 0x95, 0x33, 0x4f, 0x3e, 0x9d, 0x4b, 0x95, 0x8a, 0x0e, 0x6c, 0x8c,
-	0xa7, 0x73, 0xb2, 0x74, 0xac, 0xbb, 0xd6, 0x7e, 0xcb, 0x33, 0xaa, 0xb8, 0x05, 0x1b, 0x49, 0x36,
-	0x8a, 0xfc, 0x73, 0xd9, 0xb1, 0xf9, 0xa4, 0x91, 0x64, 0x5f, 0xa0, 0xe6, 0x86, 0xd0, 0x1e, 0x0c,
-	0x8f, 0xaf, 0x03, 0xb5, 0x07, 0x2d, 0xc2, 0x51, 0x89, 0x3f, 0x36, 0x60, 0x4b, 0x83, 0xb8, 0x4d,
-	0x01, 0x8e, 0x35, 0x93, 0xa3, 0xff, 0x88, 0x3a, 0x53, 0xfd, 0x00, 0x02, 0xa9, 0xbc, 0x4b, 0x44,
-	0x02, 0xd6, 0xf8, 0xb2, 0x66, 0x61, 0xb9, 0x4c, 0x6e, 0x57, 0xc9, 0xbb, 0x08, 0x3f, 0x8b, 0xb3,
-	0x30, 0xc0, 0x23, 0x0d, 0x5f, 0xe8, 0x55, 0xc7, 0xd6, 0x2e, 0x39, 0xe6, 0x7e, 0x0b, 0xaf, 0x0e,
-	0x86, 0x97, 0xc9, 0xcb, 0x70, 0xd6, 0x25, 0xb8, 0x7a, 0x27, 0x8c, 0xcb, 0xce, 0xd2, 0x65, 0x77,
-	0x02, 0x37, 0x07, 0xc3, 0x47, 0x72, 0x2a, 0x53, 0x69, 0xc0, 0x5f, 0x03, 0x40, 0xa0, 0x28, 0x0d,
-	0x4f, 0xc3, 0x02, 0xbe, 0x64, 0xa9, 0x90, 0xdb, 0xf5, 0xe4, 0x4e, 0x85, 0xdc, 0xfd, 0xdd, 0x22,
-	0xa6, 0xe3, 0x99, 0xf4, 0x97, 0x4c, 0xab, 0x72, 0x88, 0xb6, 0x67, 0x71, 0x64, 0x2a, 0xc4, 0xb2,
-	0xb8, 0x03, 0xad, 0x20, 0x54, 0x67, 0x23, 0x6a, 0x25, 0x93, 0x3e, 0x32, 0x7c, 0x85, 0x3a, 0xfd,
-	0x41, 0x85, 0xcf, 0x74, 0xe6, 0x1c, 0x8f, 0xe5, 0xb2, 0x1b, 0xeb, 0xf5, 0x85, 0x68, 0x54, 0x9d,
-	0x77, 0x0f, 0xe0, 0xc6, 0x60, 0xf8, 0x18, 0x13, 0xfd, 0xbf, 0xcd, 0xe4, 0xfe, 0x63, 0xc1, 0x96,
-	0xb9, 0xab, 0x12, 0x6c, 0x7c, 0x76, 0xf2, 0x6c, 0x7e, 0x22, 0x47, 0xa5, 0x88, 0x9a, 0x64, 0xa0,
-	0x1e, 0x12, 0xaf, 0xc3, 0x5a, 0xe0, 0xa7, 0x3e, 0x46, 0xe5, 0xec, 0x6f, 0x1e, 0xde, 0xe8, 0xe1,
-	0x7c, 0xf4, 0x1e, 0xa1, 0x81, 0x11, 0xf8, 0x48, 0xdc, 0x83, 0x86, 0xc2, 0x29, 0x9a, 0x2b, 0x8e,
-	0x70, 0xf3, 0x70, 0xab, 0xa7, 0x07, 0xa8, 0xf7, 0x25, 0x5b, 0xbd, 0xfc, 0x54, 0xbc, 0x0f, 0xdb,
-	0x13, 0xed, 0xc5, 0xa9, 0x1a, 0x65, 0xf1, 0x74, 0x7e, 0x4e, 0xb1, 0x3b, 0xfc, 0x0f, 0x82, 0xfd,
-	0xe4, 0x54, 0x0d, 0xd9, 0xea, 0xdd, 0x2c, 0xee, 0x69, 0x03, 0x4e, 0x93, 0x9d, 0x64, 0x98, 0x11,
-	0xba, 0xbc, 0xc1, 0x97, 0xb1, 0xb5, 0xd0, 0x84, 0x59, 0x71, 0xb0, 0xdb, 0x31, 0x21, 0x74, 0xd2,
-	0xcc, 0x4f, 0x8e, 0x3d, 0x32, 0xba, 0xbf, 0xd8, 0xd0, 0x34, 0xae, 0xd6, 0x55, 0x8c, 0x0b, 0x60,
-	0x97, 0x0a, 0x60, 0xaa, 0xe8, 0x94, 0xaa, 0x88, 0x36, 0x2e, 0xa0, 0x6e, 0x71, 0x96, 0xc5, 0x6e,
-	0x11, 0xb4, 0xae, 0x93, 0x09, 0x12, 0xef, 0x86, 0x71, 0xa2, 0xb8, 0x44, 0x88, 0x49, 0x32, 0xcd,
-	0x89, 0x8a, 0xfc, 0x44, 0x3d, 0x89, 0x53, 0xd5, 0xd9, 0xd0, 0x73, 0x52, 0x18, 0xf0, 0x14, 0xfc,
-	0xef, 0x39, 0x21, 0xa3, 0x30, 0xe8, 0x34, 0x75, 0xfe, 0xd1, 0x82, 0xa1, 0x7f, 0x16, 0xd0, 0xe9,
-	0x64, 0x2c, 0xcd, 0x69, 0x8b, 0x51, 0x9b, 0x68, 0xd1, 0xa7, 0x6d, 0x58, 0x9f, 0x2b, 0x39, 0x53,
-	0x1d, 0xc0, 0x04, 0xb4, 0x3c, 0xad, 0x90, 0x0f, 0x67, 0x61, 0x14, 0x74, 0x36, 0xb5, 0xbf, 0x24,
-	0xbb, 0x0b, 0x68, 0x15, 0xf9, 0xa5, 0x0b, 0x89, 0x9f, 0x3e, 0x31, 0xc9, 0x20, 0x99, 0xfa, 0x4b,
-	0x46, 0x41, 0x12, 0x87, 0x51, 0x6a, 0x86, 0xc3, 0xe8, 0xd4, 0x4e, 0x33, 0x99, 0x4c, 0xc3, 0xb1,
-	0xcf, 0x79, 0x71, 0x3c, 0xa3, 0x52, 0x1a, 0xce, 0x7d, 0xee, 0x33, 0x9d, 0x9c, 0x5c, 0x13, 0x5b,
-	0x60, 0x87, 0x09, 0x17, 0xac, 0xe5, 0xa1, 0xe4, 0xfe, 0x61, 0x81, 0x3d, 0x18, 0xd6, 0x55, 0x01,
-	0x3d, 0x9c, 0x98, 0xb9, 0x21, 0x59, 0xec, 0xc3, 0xfa, 0xd4, 0x3f, 0x91, 0x53, 0xa4, 0xa3, 0xc2,
-	0x8a, 0xbc, 0xb0, 0xbd, 0xc7, 0x64, 0xfc, 0x38, 0x4a, 0x67, 0x17, 0x9e, 0xbe, 0xb0, 0x72, 0x88,
-	0x6a, 0x6a, 0xd3, 0x3d, 0x02, 0x58, 0x02, 0x88, 0x6d, 0x70, 0xce, 0xe4, 0x45, 0xee, 0x0a, 0x89,
-	0x94, 0xcd, 0xcc, 0x9f, 0xce, 0xcd, 0x08, 0x6b, 0xe5, 0xa1, 0x7d, 0x64, 0xb9, 0x7f, 0x5a, 0xe0,
-	0x60, 0x5f, 0xfd, 0x87, 0xff, 0x41, 0xc9, 0xff, 0x40, 0x1c, 0x54, 0xfd, 0xdf, 0x31, 0x8d, 0xf9,
-	0xb2, 0x02, 0x38, 0xfc, 0xad, 0x01, 0xdb, 0x03, 0xec, 0x0d, 0x5a, 0xc6, 0x51, 0x9a, 0xb7, 0xc1,
-	0xe7, 0xb0, 0xa6, 0x67, 0x23, 0x77, 0xaf, 0xb4, 0x41, 0xba, 0x3b, 0x15, 0x9b, 0xde, 0x14, 0xee,
-	0xde, 0xcf, 0x7f, 0xfd, 0xfd, 0xab, 0xbd, 0x2b, 0xda, 0xfc, 0xf5, 0x4c, 0xb2, 0x7e, 0xf6, 0x56,
-	0xff, 0x79, 0xbe, 0x59, 0x16, 0xe2, 0x1b, 0x68, 0xe8, 0x2d, 0x29, 0xda, 0x26, 0xde, 0xf2, 0xd2,
-	0xec, 0xb6, 0xcd, 0x5e, 0x18, 0xc6, 0x61, 0x50, 0x60, 0xde, 0x63, 0xcc, 0xbb, 0xdd, 0x3b, 0xab,
-	0x30, 0xfb, 0xcf, 0x29, 0xc5, 0x8b, 0x87, 0xd6, 0x7d, 0xf1, 0x1d, 0x34, 0xf4, 0xb6, 0x2f, 0xd0,
-	0x2b, 0xcb, 0xbf, 0x06, 0xfd, 0x1d, 0x46, 0xef, 0xdd, 0x7f, 0x73, 0x35, 0xfa, 0xf2, 0xe3, 0x80,
-	0x8a, 0x59, 0xa7, 0x0b, 0xa1, 0x00, 0x96, 0x9f, 0x2e, 0xb1, 0x6b, 0x16, 0x4e, 0xf5, 0x5b, 0x56,
-	0xc3, 0xf8, 0x1e, 0x33, 0x3e, 0x10, 0xfd, 0x12, 0xa3, 0xf9, 0xd6, 0xbf, 0x10, 0x58, 0x99, 0xf4,
-	0x29, 0xbc, 0x52, 0x7e, 0x62, 0x88, 0x4e, 0x4e, 0xfb, 0xc2, 0x53, 0xa1, 0x86, 0xf8, 0x01, 0x13,
-	0xbf, 0x21, 0x0e, 0x4a, 0xc4, 0xf3, 0x68, 0x15, 0x75, 0xfe, 0x30, 0x59, 0x88, 0x9f, 0x2c, 0xd8,
-	0x2c, 0xbd, 0x10, 0xc4, 0xad, 0x62, 0x81, 0x5e, 0x89, 0xf1, 0x98, 0x19, 0x3f, 0x14, 0x1f, 0x5c,
-	0x33, 0x54, 0x6d, 0xe1, 0x57, 0xc2, 0x42, 0xfc, 0x68, 0xd1, 0xc7, 0xab, 0xf4, 0x20, 0x12, 0xb7,
-	0x8d, 0x17, 0x57, 0x8d, 0xfc, 0x23, 0xf6, 0xe3, 0x48, 0xbc, 0x7b, 0x85, 0xc8, 0xf5, 0x4b, 0xa9,
-	0xe2, 0xc2, 0x49, 0x83, 0xdf, 0x78, 0x6f, 0xff, 0x1b, 0x00, 0x00, 0xff, 0xff, 0x6a, 0x9a, 0x01,
-	0x19, 0x2a, 0x0a, 0x00, 0x00,
+var fileDescriptor2 = []byte{
+	// 441 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xa4, 0x93, 0xcf, 0x8e, 0xd3, 0x30,
+	0x10, 0xc6, 0x95, 0xa4, 0x1b, 0xd8, 0x01, 0x56, 0xac, 0x29, 0x25, 0x0a, 0x0b, 0xaa, 0x82, 0x54,
+	0x41, 0x0f, 0x09, 0x2a, 0x37, 0xae, 0x5c, 0x41, 0x8a, 0x82, 0x88, 0xb8, 0xa6, 0xad, 0x29, 0x96,
+	0xd2, 0xd8, 0xc4, 0x4e, 0x24, 0xa8, 0x7a, 0xe1, 0xcc, 0x8d, 0x67, 0x40, 0xe2, 0x7d, 0x78, 0x05,
+	0x1e, 0x84, 0xb1, 0x9d, 0x84, 0x88, 0xbf, 0x87, 0xbd, 0x54, 0x9e, 0xcf, 0x9e, 0xef, 0x1b, 0xfd,
+	0x3a, 0x81, 0xab, 0xa2, 0x8d, 0x45, 0xcd, 0x15, 0x27, 0xae, 0x68, 0xc3, 0x8b, 0x1d, 0xe7, 0xbb,
+	0x92, 0x26, 0x85, 0x60, 0x49, 0x51, 0x55, 0x5c, 0x15, 0x8a, 0xf1, 0x4a, 0xda, 0x17, 0xe1, 0x4c,
+	0xcb, 0x5b, 0xf5, 0x5e, 0x50, 0x99, 0x98, 0x5f, 0xab, 0x47, 0x5f, 0x1c, 0x38, 0x4f, 0xf3, 0x8c,
+	0xee, 0x98, 0x54, 0xb4, 0xce, 0xe8, 0xbb, 0x86, 0x4a, 0x45, 0x02, 0xb8, 0xb2, 0x29, 0x1b, 0xad,
+	0x04, 0xce, 0xdc, 0x79, 0x78, 0x9a, 0xf5, 0x25, 0x21, 0x30, 0xa9, 0x8a, 0x3d, 0x0d, 0x5c, 0x23,
+	0x9b, 0x33, 0xb9, 0x0f, 0xc0, 0xb6, 0xb4, 0x52, 0xec, 0x0d, 0xc3, 0x06, 0xcf, 0xdc, 0x8c, 0x14,
+	0x12, 0xe2, 0xa4, 0x35, 0x6f, 0x51, 0xa9, 0x83, 0x89, 0xb9, 0x1d, 0x6a, 0xed, 0x27, 0xd9, 0x07,
+	0x1a, 0x9c, 0xa0, 0xee, 0x65, 0xe6, 0xac, 0x35, 0x51, 0xa8, 0xb7, 0x81, 0x6f, 0x33, 0xf4, 0x39,
+	0x7a, 0x06, 0xb7, 0xd2, 0xfc, 0x55, 0x55, 0x5f, 0x66, 0xd0, 0xe8, 0x11, 0xdc, 0x48, 0xf3, 0xe7,
+	0x68, 0xf0, 0xdf, 0xf6, 0xe8, 0x35, 0x9c, 0xf5, 0x4f, 0xa5, 0x40, 0x8c, 0x94, 0x2c, 0xc0, 0x97,
+	0xc8, 0xb4, 0x91, 0xe6, 0xe9, 0xb5, 0xd5, 0x59, 0x6c, 0x71, 0xc6, 0x2f, 0x8d, 0x9a, 0x75, 0xb7,
+	0x48, 0x63, 0x52, 0x62, 0x1f, 0x06, 0x7b, 0xf8, 0x0a, 0x62, 0xfc, 0x93, 0x3a, 0x27, 0xa3, 0x47,
+	0x9f, 0x1c, 0xf0, 0xad, 0x30, 0xcc, 0xe8, 0x8c, 0x60, 0xf6, 0x40, 0xdc, 0x11, 0x90, 0xd9, 0x10,
+	0x6d, 0xe1, 0xf6, 0x51, 0xa8, 0xb7, 0xbc, 0x6c, 0xd0, 0xc1, 0x62, 0xed, 0x2a, 0x32, 0x85, 0x93,
+	0x4d, 0x59, 0xb0, 0xbd, 0xa1, 0x7a, 0x9a, 0xd9, 0x42, 0xab, 0x8d, 0xa4, 0xb5, 0x44, 0xae, 0x9e,
+	0x56, 0x4d, 0xb1, 0xfa, 0xea, 0xc2, 0xcd, 0x14, 0x0f, 0x1a, 0x6b, 0xa5, 0x72, 0x6b, 0xf0, 0x62,
+	0x18, 0xf1, 0x7c, 0x34, 0xbf, 0x85, 0x16, 0x92, 0xb1, 0x64, 0xe1, 0x44, 0x17, 0x1f, 0xbf, 0x7d,
+	0xff, 0xec, 0xce, 0xc8, 0xd4, 0xac, 0x9f, 0x68, 0x93, 0xf6, 0x71, 0x72, 0xe8, 0x58, 0x1e, 0x49,
+	0x01, 0xf0, 0x73, 0xc7, 0xc8, 0x6d, 0xdb, 0xff, 0xcb, 0xce, 0x85, 0xd3, 0x9e, 0x67, 0xce, 0xd9,
+	0x76, 0x30, 0x5e, 0x18, 0xe3, 0x79, 0x78, 0xf7, 0x4f, 0xc6, 0xc9, 0x41, 0x23, 0x3b, 0x3e, 0x75,
+	0x96, 0x64, 0x0d, 0xd7, 0xc7, 0xfb, 0x41, 0xee, 0xd8, 0x90, 0xdf, 0x36, 0xe6, 0x2f, 0x31, 0x0f,
+	0x4c, 0xcc, 0xbd, 0xe5, 0xbf, 0x62, 0xd6, 0xbe, 0xf9, 0x64, 0x9e, 0xfc, 0x08, 0x00, 0x00, 0xff,
+	0xff, 0xfa, 0x3e, 0x49, 0x66, 0x78, 0x03, 0x00, 0x00,
 }
