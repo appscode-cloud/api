@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_Disk_DiskList_0(ctx context.Context, client DiskClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Disks_List_0(ctx context.Context, client DisksClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DiskListRequest
 	var metadata runtime.ServerMetadata
 
@@ -51,12 +51,12 @@ func request_Disk_DiskList_0(ctx context.Context, client DiskClient, req *http.R
 		return nil, metadata, err
 	}
 
-	msg, err := client.DiskList(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Disk_DiskCreate_0(ctx context.Context, client DiskClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Disks_Create_0(ctx context.Context, client DisksClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DiskCreateRequest
 	var metadata runtime.ServerMetadata
 
@@ -93,12 +93,12 @@ func request_Disk_DiskCreate_0(ctx context.Context, client DiskClient, req *http
 		return nil, metadata, err
 	}
 
-	msg, err := client.DiskCreate(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Disk_DiskDelete_0(ctx context.Context, client DiskClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Disks_Delete_0(ctx context.Context, client DisksClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DiskDeleteRequest
 	var metadata runtime.ServerMetadata
 
@@ -131,14 +131,14 @@ func request_Disk_DiskDelete_0(ctx context.Context, client DiskClient, req *http
 		return nil, metadata, err
 	}
 
-	msg, err := client.DiskDelete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-// RegisterDiskHandlerFromEndpoint is same as RegisterDiskHandler but
+// RegisterDisksHandlerFromEndpoint is same as RegisterDisksHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterDiskHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterDisksHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -158,15 +158,15 @@ func RegisterDiskHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux,
 		}()
 	}()
 
-	return RegisterDiskHandler(ctx, mux, conn)
+	return RegisterDisksHandler(ctx, mux, conn)
 }
 
-// RegisterDiskHandler registers the http handlers for service Disk to "mux".
+// RegisterDisksHandler registers the http handlers for service Disks to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterDiskHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	client := NewDiskClient(conn)
+func RegisterDisksHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	client := NewDisksClient(conn)
 
-	mux.Handle("GET", pattern_Disk_DiskList_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Disks_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -175,18 +175,18 @@ func RegisterDiskHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.
 				cancel()
 			}()
 		}
-		resp, md, err := request_Disk_DiskList_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Disks_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Disk_DiskList_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Disks_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_Disk_DiskCreate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_Disks_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -195,18 +195,18 @@ func RegisterDiskHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.
 				cancel()
 			}()
 		}
-		resp, md, err := request_Disk_DiskCreate_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Disks_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Disk_DiskCreate_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Disks_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_Disk_DiskDelete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_Disks_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -215,14 +215,14 @@ func RegisterDiskHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.
 				cancel()
 			}()
 		}
-		resp, md, err := request_Disk_DiskDelete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Disks_Delete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Disk_DiskDelete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Disks_Delete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -230,17 +230,17 @@ func RegisterDiskHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.
 }
 
 var (
-	pattern_Disk_DiskList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0", "disk", "cluster"}, ""))
+	pattern_Disks_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0", "disk", "cluster"}, ""))
 
-	pattern_Disk_DiskCreate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "disk", "cluster", "name"}, ""))
+	pattern_Disks_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "disk", "cluster", "name"}, ""))
 
-	pattern_Disk_DiskDelete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "disk", "cluster", "identifier"}, ""))
+	pattern_Disks_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "disk", "cluster", "identifier"}, ""))
 )
 
 var (
-	forward_Disk_DiskList_0 = runtime.ForwardResponseMessage
+	forward_Disks_List_0 = runtime.ForwardResponseMessage
 
-	forward_Disk_DiskCreate_0 = runtime.ForwardResponseMessage
+	forward_Disks_Create_0 = runtime.ForwardResponseMessage
 
-	forward_Disk_DiskDelete_0 = runtime.ForwardResponseMessage
+	forward_Disks_Delete_0 = runtime.ForwardResponseMessage
 )

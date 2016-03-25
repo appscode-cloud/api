@@ -6,20 +6,20 @@ import "api/dtypes/types.proto";
 
 service PersistentVolumeClaim {
 
-  rpc PVCList(PVCListRequest) returns (PVCListResponse) {
+  rpc List(PVCListRequest) returns (PVCListResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0/pvc/{cluster}"
     };
   }
 
-  rpc PVCRegister(PVCRegisterRequest) returns (dtypes.VoidResponse) {
+  rpc Register(PVCRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/api/pv/v0/pvc/{cluster}/{name}"
       body: "*"
     };
   }
 
-  rpc PVCUnregister(PVCUnregisterRequest) returns (dtypes.VoidResponse) {
+  rpc Unregister(PVCUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/api/pv/v0/pvc/{cluster}/{name}"
     };

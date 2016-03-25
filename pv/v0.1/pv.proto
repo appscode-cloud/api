@@ -6,20 +6,20 @@ import "api/dtypes/types.proto";
 
 service PersistentVolume {
 
-  rpc PVList(PVListRequest) returns (PVListResponse) {
+  rpc List(PVListRequest) returns (PVListResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0/{cluster}"
     };
   }
 
-  rpc PVRegister(PVRegisterRequest) returns (dtypes.VoidResponse) {
+  rpc Register(PVRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/api/pv/v0/{cluster}/{name}"
       body: "*"
     };
   }
 
-  rpc PVUnregister(PVUnregisterRequest) returns (dtypes.VoidResponse) {
+  rpc Unregister(PVUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/api/pv/v0/{cluster}/{name}"
     };

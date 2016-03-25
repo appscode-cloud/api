@@ -4,22 +4,22 @@ package pv;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-service Disk {
+service Disks {
 
-  rpc DiskList(DiskListRequest) returns (DiskListResponse) {
+  rpc List(DiskListRequest) returns (DiskListResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0/disk/{cluster}"
     };
   }
 
-  rpc DiskCreate(DiskCreateRequest) returns (dtypes.VoidResponse) {
+  rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/api/pv/v0/disk/{cluster}/{name}"
       body: "*"
     };
   }
 
-  rpc DiskDelete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
+  rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/api/pv/v0/disk/{cluster}/{identifier}"
     };
@@ -45,10 +45,10 @@ message DiskListRequest {
 message DiskListResponse {
   dtypes.Status status = 1;
   string  kube = 2;
-  repeated DataList data = 3;
+  repeated Disk disk = 3;
 }
 
-message DataList{
+message Disk{
   string name = 1;
   string id = 2;
   string provider = 3;
