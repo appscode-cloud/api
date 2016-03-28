@@ -1,11 +1,11 @@
 syntax = "proto3";
 
 package pv;
+
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-service PersistentVolume {
-
+service PersistentVolumes {
   rpc List(PVListRequest) returns (PVListResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0/{cluster}"
@@ -24,7 +24,7 @@ service PersistentVolume {
       delete: "/api/pv/v0/{cluster}/{name}"
     };
   }
-  }
+}
 
 message PVRegisterRequest {
   string cluster = 1;

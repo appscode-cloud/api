@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_PersistentVolumeClaim_List_0(ctx context.Context, client PersistentVolumeClaimClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_PersistentVolumeClaims_List_0(ctx context.Context, client PersistentVolumeClaimsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PVCListRequest
 	var metadata runtime.ServerMetadata
 
@@ -56,7 +56,7 @@ func request_PersistentVolumeClaim_List_0(ctx context.Context, client Persistent
 
 }
 
-func request_PersistentVolumeClaim_Register_0(ctx context.Context, client PersistentVolumeClaimClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_PersistentVolumeClaims_Register_0(ctx context.Context, client PersistentVolumeClaimsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PVCRegisterRequest
 	var metadata runtime.ServerMetadata
 
@@ -99,10 +99,10 @@ func request_PersistentVolumeClaim_Register_0(ctx context.Context, client Persis
 }
 
 var (
-	filter_PersistentVolumeClaim_Unregister_0 = &utilities.DoubleArray{Encoding: map[string]int{"cluster": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+	filter_PersistentVolumeClaims_Unregister_0 = &utilities.DoubleArray{Encoding: map[string]int{"cluster": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_PersistentVolumeClaim_Unregister_0(ctx context.Context, client PersistentVolumeClaimClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_PersistentVolumeClaims_Unregister_0(ctx context.Context, client PersistentVolumeClaimsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PVCUnregisterRequest
 	var metadata runtime.ServerMetadata
 
@@ -135,7 +135,7 @@ func request_PersistentVolumeClaim_Unregister_0(ctx context.Context, client Pers
 		return nil, metadata, err
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_PersistentVolumeClaim_Unregister_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_PersistentVolumeClaims_Unregister_0); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -144,9 +144,9 @@ func request_PersistentVolumeClaim_Unregister_0(ctx context.Context, client Pers
 
 }
 
-// RegisterPersistentVolumeClaimHandlerFromEndpoint is same as RegisterPersistentVolumeClaimHandler but
+// RegisterPersistentVolumeClaimsHandlerFromEndpoint is same as RegisterPersistentVolumeClaimsHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterPersistentVolumeClaimHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterPersistentVolumeClaimsHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -166,15 +166,15 @@ func RegisterPersistentVolumeClaimHandlerFromEndpoint(ctx context.Context, mux *
 		}()
 	}()
 
-	return RegisterPersistentVolumeClaimHandler(ctx, mux, conn)
+	return RegisterPersistentVolumeClaimsHandler(ctx, mux, conn)
 }
 
-// RegisterPersistentVolumeClaimHandler registers the http handlers for service PersistentVolumeClaim to "mux".
+// RegisterPersistentVolumeClaimsHandler registers the http handlers for service PersistentVolumeClaims to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterPersistentVolumeClaimHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	client := NewPersistentVolumeClaimClient(conn)
+func RegisterPersistentVolumeClaimsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	client := NewPersistentVolumeClaimsClient(conn)
 
-	mux.Handle("GET", pattern_PersistentVolumeClaim_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_PersistentVolumeClaims_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -183,18 +183,18 @@ func RegisterPersistentVolumeClaimHandler(ctx context.Context, mux *runtime.Serv
 				cancel()
 			}()
 		}
-		resp, md, err := request_PersistentVolumeClaim_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_PersistentVolumeClaims_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_PersistentVolumeClaim_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PersistentVolumeClaims_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_PersistentVolumeClaim_Register_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_PersistentVolumeClaims_Register_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -203,18 +203,18 @@ func RegisterPersistentVolumeClaimHandler(ctx context.Context, mux *runtime.Serv
 				cancel()
 			}()
 		}
-		resp, md, err := request_PersistentVolumeClaim_Register_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_PersistentVolumeClaims_Register_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_PersistentVolumeClaim_Register_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PersistentVolumeClaims_Register_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_PersistentVolumeClaim_Unregister_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_PersistentVolumeClaims_Unregister_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -223,14 +223,14 @@ func RegisterPersistentVolumeClaimHandler(ctx context.Context, mux *runtime.Serv
 				cancel()
 			}()
 		}
-		resp, md, err := request_PersistentVolumeClaim_Unregister_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_PersistentVolumeClaims_Unregister_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_PersistentVolumeClaim_Unregister_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PersistentVolumeClaims_Unregister_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -238,17 +238,17 @@ func RegisterPersistentVolumeClaimHandler(ctx context.Context, mux *runtime.Serv
 }
 
 var (
-	pattern_PersistentVolumeClaim_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0", "pvc", "cluster"}, ""))
+	pattern_PersistentVolumeClaims_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0", "pvc", "cluster"}, ""))
 
-	pattern_PersistentVolumeClaim_Register_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "pvc", "cluster", "name"}, ""))
+	pattern_PersistentVolumeClaims_Register_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "pvc", "cluster", "name"}, ""))
 
-	pattern_PersistentVolumeClaim_Unregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "pvc", "cluster", "name"}, ""))
+	pattern_PersistentVolumeClaims_Unregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0", "pvc", "cluster", "name"}, ""))
 )
 
 var (
-	forward_PersistentVolumeClaim_List_0 = runtime.ForwardResponseMessage
+	forward_PersistentVolumeClaims_List_0 = runtime.ForwardResponseMessage
 
-	forward_PersistentVolumeClaim_Register_0 = runtime.ForwardResponseMessage
+	forward_PersistentVolumeClaims_Register_0 = runtime.ForwardResponseMessage
 
-	forward_PersistentVolumeClaim_Unregister_0 = runtime.ForwardResponseMessage
+	forward_PersistentVolumeClaims_Unregister_0 = runtime.ForwardResponseMessage
 )
