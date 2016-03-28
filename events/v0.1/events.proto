@@ -8,14 +8,14 @@ import "api/dtypes/types.proto";
 service Events {
   rpc Constructive(Request) returns (Response) {
     option (google.api.http) = {
-      put: "/api/events/v0/construct"
+      put: "/api/events/v0.1/construct"
       body: "*"
     };
   }
 
   rpc Destructive(Request) returns (Response) {
     option (google.api.http) = {
-      put: "/api/events/v0/destruct"
+      put: "/api/events/v0.1/destruct"
       body: "*"
     };
   }

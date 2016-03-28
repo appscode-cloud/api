@@ -129,9 +129,9 @@ func RegisterEventsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 }
 
 var (
-	pattern_Events_Constructive_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "events", "v0", "construct"}, ""))
+	pattern_Events_Constructive_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "events", "v0.1", "construct"}, ""))
 
-	pattern_Events_Destructive_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "events", "v0", "destruct"}, ""))
+	pattern_Events_Destructive_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "events", "v0.1", "destruct"}, ""))
 )
 
 var (

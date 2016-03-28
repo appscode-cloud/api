@@ -9,7 +9,7 @@ service Authentication {
   // This rpc is used to check a valid user from other applications.
   rpc User(ValidateRequest) returns (ValidateResponse) {
     option (google.api.http) = {
-      post : "/api/authn/v0/user"
+      post : "/api/authn/v0.1/user"
       body : "*"
     };
   }
@@ -17,7 +17,7 @@ service Authentication {
   // appctl used this to validates the user token with phabricator.
   rpc Token(ValidateRequest) returns (ValidateResponse) {
     option (google.api.http) = {
-      post: "/api/authn/v0/token"
+      post: "/api/authn/v0.1/token"
       body: "*"
     };
   }
