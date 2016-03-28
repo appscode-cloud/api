@@ -8,7 +8,7 @@ import "api/dtypes/types.proto";
 service AuthorityCertificate {
   rpc Create(CertificateCreateRequest) returns (CertificateCreateResponse) {
 	option (google.api.http) = {
-	  put: "/api/ca/v0/authority"
+	  put: "/api/ca/v0.1/authority"
 	  body: "*"
 	};
   }
@@ -17,7 +17,7 @@ service AuthorityCertificate {
 service ClientCertificate {
   rpc Create(CertificateCreateRequest) returns (CertificateCreateResponse) {
     option (google.api.http) = {
-      put: "/api/ca/v0/client"
+      put: "/api/ca/v0.1/client"
       body: "*"
     };
   }

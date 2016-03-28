@@ -8,33 +8,33 @@ import "api/dtypes/types.proto";
 service Subscriptions {
   rpc Create(SubscriptionCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/api/billing/v0/subscription"
+      put: "/api/billing/v0.1/subscription"
       body: "*"
     };
   }
 
   rpc Describe(SubscriptionDescribeRequest) returns (SubscriptionDescribeResponse) {
     option (google.api.http) = {
-      get: "/api/billing/v0/subscription/{time}"
+      get: "/api/billing/v0.1/subscription/{time}"
     };
   }
 
   rpc Subscribe(SubscriptionOpenRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/api/billing/v0/subscription/{product_type}/{object_phid}"
+      put: "/api/billing/v0.1/subscription/{product_type}/{object_phid}"
       body: "*"
     };
   }
 
   rpc UnSubscribe(SubscriptionCloseRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/api/billing/v0/subscription/{product_type}/{object_phid}"
+      delete: "/api/billing/v0.1/subscription/{product_type}/{object_phid}"
     };
   }
 
   rpc Quota(SubscriptionQutaRequest) returns (SubscriptionQutaResponse) {
     option (google.api.http) = {
-      post: "/api/billing/v0/subscription/quota"
+      post: "/api/billing/v0.1/subscription/quota"
       body: "*"
     };
   }

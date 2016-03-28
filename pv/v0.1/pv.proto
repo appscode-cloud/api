@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package pv;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service PersistentVolumes {
+  rpc List(PVListRequest) returns (PVListResponse) {
+    option (google.api.http) = {
+      get: "/api/pv/v0.1/{cluster}"
+    };
+  }
+
+  rpc Register(PVRegisterRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/pv/v0.1/{cluster}/{name}"
+      body: "*"
+    };
+  }
+
+  rpc Unregister(PVUnregisterRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/api/pv/v0.1/{cluster}/{name}"
+    };
+  }
+}
+
+message PVRegisterRequest {
+  string cluster = 1;
+  string name = 2;
+  string identifier = 3;
+  string provider = 4;
+  int64 size = 5;
+  string path = 6;
+}
+
+message PVUnregisterRequest {
+  string cluster = 1;
+  string name = 2;
+}
+
+message PVListRequest {
+  string cluster=1;
+}
+
+message PVListResponse {
+  dtypes.Status status = 1;
+  repeated PV volumes = 2;
+}
+
+message PV {
+  string name = 1;
+  int64 size = 2;
+  string status = 3;
+  string volume = 4;
+  string claim = 5;
+  repeated string users = 6;
+}
