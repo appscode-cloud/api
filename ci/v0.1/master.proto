@@ -8,7 +8,7 @@ import "api/dtypes/types.proto";
 service Master {
   rpc Create(MasterCreateRequest) returns (MasterCreateResponse) {
     option (google.api.http) = {
-      put: "/api/ci/v0/master"
+      put: "/api/ci/v0.1/master"
       body: "*"
     };
   }
