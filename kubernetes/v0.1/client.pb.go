@@ -41,6 +41,7 @@ It has these top-level messages:
 	ClusterStartupScriptResponse
 	ClusterConfigRequest
 	ClusterConfigResponse
+	ClusterContainerRequest
 */
 package kubernetes
 

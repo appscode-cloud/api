@@ -1,27 +1,27 @@
 syntax = "proto3";
 
 package pv;
+
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service PersistentVolumeClaims {
-
   rpc List(PVCListRequest) returns (PVCListResponse) {
     option (google.api.http) = {
-      get: "/api/pv/v0/pvc/{cluster}"
+      get: "/api/pv/v0.1/pvc/{cluster}"
     };
   }
 
   rpc Register(PVCRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/api/pv/v0/pvc/{cluster}/{name}"
+      put: "/api/pv/v0.1/pvc/{cluster}/{name}"
       body: "*"
     };
   }
 
   rpc Unregister(PVCUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/api/pv/v0/pvc/{cluster}/{name}"
+      delete: "/api/pv/v0.1/pvc/{cluster}/{name}"
     };
   }
   }

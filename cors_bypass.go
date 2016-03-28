@@ -7,6 +7,7 @@ import (
 	db "github.com/appscode/api/db/v0.1"
 	kubernetes "github.com/appscode/api/kubernetes/v0.1"
 	namespace "github.com/appscode/api/namespace/v0.1"
+	pv "github.com/appscode/api/pv/v0.1"
 	"github.com/gengo/grpc-gateway/runtime"
 )
 
@@ -22,6 +23,6 @@ func Patterens() []runtime.Pattern {
 	ps = append(ps, kubernetes.Patterns()...)
 	ps = append(ps, db.Patterns()...)
 	ps = append(ps, ci.Patterns()...)
-
+	ps = append(ps, pv.Patterns()...)
 	return ps
 }

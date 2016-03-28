@@ -8,20 +8,20 @@ import "api/dtypes/types.proto";
 service PersistentVolumes {
   rpc List(PVListRequest) returns (PVListResponse) {
     option (google.api.http) = {
-      get: "/api/pv/v0/{cluster}"
+      get: "/api/pv/v0.1/{cluster}"
     };
   }
 
   rpc Register(PVRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/api/pv/v0/{cluster}/{name}"
+      put: "/api/pv/v0.1/{cluster}/{name}"
       body: "*"
     };
   }
 
   rpc Unregister(PVUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/api/pv/v0/{cluster}/{name}"
+      delete: "/api/pv/v0.1/{cluster}/{name}"
     };
   }
 }
@@ -46,10 +46,10 @@ message PVListRequest {
 
 message PVListResponse {
   dtypes.Status status = 1;
-  repeated PVList list = 2;
+  repeated PV volumes = 2;
 }
 
-message PVList{
+message PV {
   string name = 1;
   int64 size = 2;
   string status = 3;
