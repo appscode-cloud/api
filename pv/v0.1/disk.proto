@@ -12,6 +12,12 @@ service Disks {
     };
   }
 
+  rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
+    option (google.api.http) = {
+      get: "/api/pv/v0.1/disks/{cluster}/{name}"
+    };
+  }
+
   rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/api/pv/v0.1/disks/{cluster}/{name}"
@@ -52,7 +58,7 @@ message DiskListResponse {
 message Disk{
   string name = 1;
   string id = 2;
-  string provider = 3;
+  string plugin = 3;
   int64 size = 4;
   string type = 5;
   string zone = 6;
@@ -60,4 +66,33 @@ message Disk{
   repeated string users = 8;
   string kind = 9;
   string endpoint = 10;
+  PV pv = 11;
+  PVC pvc = 12;
+}
+
+message PV {
+  string name = 1;
+  int64 size = 2;
+  string status = 3;
+  string volume = 4;
+  string claim = 5;
+  repeated string users = 6;
+}
+
+message PVC{
+  string name = 1;
+  int64 size = 2;
+  string namespace = 3;
+  string status = 4;
+  string volume = 5;
+  repeated string users = 6;
+}
+
+message DiskDescribeRequest {
+  string cluster = 1;
+  string name = 2;
+}
+message DiskDescribeResponse {
+  dtypes.Status status = 1;
+  Disk disk = 2;
 }
