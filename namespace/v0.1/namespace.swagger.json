@@ -1,0 +1,285 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/namespace/v0.1/log/{name}": {
+      "get": {
+        "summary": "Namespace.Log",
+        "operationId": "Log",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/namespaceLogResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Namespace"
+        ]
+      }
+    },
+    "/api/namespace/v0.1/status/{name}": {
+      "get": {
+        "summary": "Namespace.Status",
+        "operationId": "Status",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/namespaceStatusResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Namespace"
+        ]
+      }
+    },
+    "/api/namespace/v0.1/{name}": {
+      "get": {
+        "summary": "Namespace.Check",
+        "operationId": "Check",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/namespaceCheckResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Namespace"
+        ]
+      },
+      "put": {
+        "summary": "Namespace.Create",
+        "operationId": "Create",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/namespaceCreateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/namespaceCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Namespace"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "namespaceCheckRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "namespaceCheckResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "namespaceCreateRequest": {
+      "properties": {
+        "display_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "string"
+        },
+        "invite_email": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "password": {
+          "type": "string",
+          "format": "string"
+        },
+        "user_ip": {
+          "type": "string",
+          "format": "string"
+        },
+        "user_name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "namespaceCreateResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "namespaceLog": {
+      "properties": {
+        "details": {
+          "type": "string",
+          "format": "string"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "namespaceLogRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "namespaceLogResponse": {
+      "properties": {
+        "logs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/namespaceLog"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "namespaceStatusRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "namespaceStatusResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}

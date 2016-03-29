@@ -1,0 +1,461 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/billing/v0.1/subscription": {
+      "put": {
+        "summary": "Subscriptions.Create",
+        "operationId": "Create",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/billingSubscriptionCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Subscriptions"
+        ]
+      }
+    },
+    "/api/billing/v0.1/subscription/quota": {
+      "post": {
+        "summary": "Subscriptions.Quota",
+        "operationId": "Quota",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/billingSubscriptionQutaResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/billingSubscriptionQutaRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Subscriptions"
+        ]
+      }
+    },
+    "/api/billing/v0.1/subscription/{product_type}/{object_phid}": {
+      "delete": {
+        "summary": "Subscriptions.UnSubscribe",
+        "operationId": "UnSubscribe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "product_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "object_phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Subscriptions"
+        ]
+      },
+      "put": {
+        "summary": "Subscriptions.Subscribe",
+        "operationId": "Subscribe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "product_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "object_phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/billingSubscriptionOpenRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Subscriptions"
+        ]
+      }
+    },
+    "/api/billing/v0.1/subscription/{time}": {
+      "get": {
+        "summary": "Subscriptions.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/billingSubscriptionDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "time",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Subscriptions"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "billingArtifactoryQuota": {
+      "properties": {
+        "disk_size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "repository": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "billingCIQuota": {
+      "properties": {
+        "agent": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "executors": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "jobs": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "billingClusterQuota": {
+      "properties": {
+        "cluster": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nodes": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "billingDBQuota": {
+      "properties": {
+        "elasticsearch": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "influxdb": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "postgres": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "billingPhabricatorQuota": {
+      "properties": {
+        "disk_size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "repository": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "billingQuota": {
+      "properties": {
+        "artifact": {
+          "$ref": "#/definitions/billingArtifactoryQuota"
+        },
+        "ci": {
+          "$ref": "#/definitions/billingCIQuota"
+        },
+        "db": {
+          "$ref": "#/definitions/billingDBQuota"
+        },
+        "kube": {
+          "$ref": "#/definitions/billingClusterQuota"
+        },
+        "phabricator": {
+          "$ref": "#/definitions/billingPhabricatorQuota"
+        },
+        "user": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "billingResource": {
+      "type": "string",
+      "enum": [
+        "USER",
+        "CLUSTER",
+        "NODE",
+        "DB",
+        "CI"
+      ],
+      "default": "USER"
+    },
+    "billingSubscription": {
+      "properties": {
+        "author": {
+          "type": "string",
+          "format": "string"
+        },
+        "date_ended": {
+          "type": "string",
+          "format": "string"
+        },
+        "date_started": {
+          "type": "string",
+          "format": "string"
+        },
+        "product_sku": {
+          "type": "string",
+          "format": "string"
+        },
+        "quota": {
+          "$ref": "#/definitions/billingQuota"
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingSubscriptionCloseRequest": {
+      "properties": {
+        "object_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "product_type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingSubscriptionCreateRequest": {
+      "properties": {
+        "author_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "product_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingSubscriptionDescribeRequest": {
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingSubscriptionDescribeResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/billingSubscription"
+          }
+        }
+      }
+    },
+    "billingSubscriptionOpenRequest": {
+      "properties": {
+        "author_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "metadata": {
+          "type": "string",
+          "format": "string"
+        },
+        "object_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "product_type": {
+          "type": "string",
+          "format": "string"
+        },
+        "subscription_phid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingSubscriptionQutaRequest": {
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "object_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "resource": {
+          "$ref": "#/definitions/billingResource"
+        },
+        "subresource": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingSubscriptionQutaResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "subscription_phid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}

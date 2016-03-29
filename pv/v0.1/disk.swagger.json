@@ -1,0 +1,285 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/pv/v0.1/disks/{cluster}": {
+      "get": {
+        "summary": "Disks.List",
+        "operationId": "List",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/pvDiskListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/api/pv/v0.1/disks/{cluster}/{identifier}": {
+      "delete": {
+        "summary": "Disks.Delete",
+        "operationId": "Delete",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/api/pv/v0.1/disks/{cluster}/{name}": {
+      "put": {
+        "summary": "Disks.Create",
+        "operationId": "Create",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pvDiskCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Disks"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "pvDisk": {
+      "properties": {
+        "endpoint": {
+          "type": "string",
+          "format": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "string"
+        },
+        "kind": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "provider": {
+          "type": "string",
+          "format": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string",
+          "format": "string"
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "zone": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "pvDiskCreateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "disk_type": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "zone": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "pvDiskDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "identifier": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "pvDiskListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "pvDiskListResponse": {
+      "properties": {
+        "disk": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pvDisk"
+          }
+        },
+        "kube": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    }
+  }
+}

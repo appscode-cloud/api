@@ -1,0 +1,323 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/ci/v0.1/slaves": {
+      "get": {
+        "summary": "Slaves.List",
+        "operationId": "List",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/ciSlaveListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Slaves"
+        ]
+      },
+      "put": {
+        "summary": "Slaves.Create",
+        "operationId": "Create",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ciSlaveCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Slaves"
+        ]
+      }
+    },
+    "/api/ci/v0.1/slaves/{name}": {
+      "get": {
+        "summary": "Slaves.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/ciSlaveDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Slaves"
+        ]
+      },
+      "delete": {
+        "summary": "Slaves.Delete",
+        "operationId": "Delete",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Slaves"
+        ]
+      }
+    },
+    "/api/ci/v0.1/slaves/{name}/reboot": {
+      "get": {
+        "summary": "Slaves.Restart",
+        "operationId": "Restart",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/ciSlaveRestartResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Slaves"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ciSlave": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciSlaveCreateRequest": {
+      "properties": {
+        "executors": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "labels": {
+          "type": "string",
+          "format": "string"
+        },
+        "user_startup_script": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciSlaveDeleteRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciSlaveDescribeRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciSlaveDescribeResponse": {
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "executors": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "label": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "node_status": {
+          "type": "string",
+          "format": "string"
+        },
+        "offline_reason": {
+          "type": "string",
+          "format": "string"
+        },
+        "provider": {
+          "type": "string",
+          "format": "string"
+        },
+        "sku": {
+          "type": "string",
+          "format": "string"
+        },
+        "startup_script": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "ciSlaveListResponse": {
+      "properties": {
+        "slaves": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ciSlave"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "ciSlaveRestartRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciSlaveRestartResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesLongRunningResponse": {
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "format": "string"
+        },
+        "job_type": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "type_id": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesVoidRequest": {},
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}

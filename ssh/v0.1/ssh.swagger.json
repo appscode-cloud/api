@@ -1,0 +1,149 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/sshkey/v0.1": {
+      "get": {
+        "summary": "SecureShell.Get",
+        "operationId": "Get",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/sshSecureShellGetResponse"
+            }
+          }
+        },
+        "tags": [
+          "SecureShell"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "sshSSHKey": {
+      "properties": {
+        "aws_fingerprint": {
+          "type": "string",
+          "format": "string"
+        },
+        "openssh_fingerprint": {
+          "type": "string",
+          "format": "string"
+        },
+        "private_key": {
+          "type": "string",
+          "format": "byte"
+        },
+        "public_key": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "sshSecureShellGetRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "cluster_namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "instance_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "jenkins_namespace": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "sshSecureShellGetResponse": {
+      "properties": {
+        "instance_addr": {
+          "type": "string",
+          "format": "string"
+        },
+        "instance_port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ssh_key": {
+          "$ref": "#/definitions/sshSSHKey"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "user": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    }
+  }
+}

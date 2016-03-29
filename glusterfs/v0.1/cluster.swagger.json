@@ -1,0 +1,310 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/glusterfs/v0.1/clusters/{kube_cluster}": {
+      "get": {
+        "summary": "Clusters.List",
+        "operationId": "List",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/glusterfsClusterListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "kube_cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clusters"
+        ]
+      },
+      "put": {
+        "summary": "Clusters.Create",
+        "operationId": "Create",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "kube_cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/glusterfsClusterCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/api/glusterfs/v0.1/clusters/{kube_cluster}/{name}": {
+      "get": {
+        "summary": "Clusters.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/glusterfsClusterDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "kube_cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clusters"
+        ]
+      },
+      "delete": {
+        "summary": "Clusters.Delete",
+        "operationId": "Delete",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "kube_cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clusters"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "glusterfsCluster": {
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "string"
+        },
+        "kube_cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "kube_namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "mood": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "replica": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "glusterfsClusterCreateRequest": {
+      "properties": {
+        "disks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "kube_cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "mood": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "node": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "glusterfsClusterDeleteRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "glusterfsClusterDescribeRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "glusterfsClusterDescribeResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "glusterfsClusterListRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "glusterfsClusterListResponse": {
+      "properties": {
+        "glusterfs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/glusterfsCluster"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}
