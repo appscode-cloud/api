@@ -32,6 +32,12 @@ service Clusters {
   	};
   }
 
+  rpc Update(ClusterUpdateRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+       get : "/api/kubernetes/v0.1/clusters/{name}"
+    };
+  }
+
   rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
      option (google.api.http) = {
        get : "/api/kubernetes/v0.1/clusters"
@@ -163,4 +169,8 @@ message ClusterInstance {
 message ClusterInstanceListResponse {
   dtypes.Status status = 1;
   repeated ClusterInstance instances = 2;
+}
+
+message ClusterUpdateRequest {
+    string name = 1;
 }
