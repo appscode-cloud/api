@@ -6,12 +6,11 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service PersistentVolumeClaims {
-//not working with pvc list now
- /* rpc List(PVCListRequest) returns (PVCListResponse) {
+  rpc List(PVCListRequest) returns (PVCListResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0.1/pvc/{cluster}"
     };
-  }*/
+  }
 
   rpc Register(PVCRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
@@ -39,17 +38,12 @@ message PVCUnregisterRequest {
   string name = 2;
   string namespace = 3;
 }
-/*
+
 message PVCListRequest {
   string cluster=1;
 }
 
-message PVCListResponse {
-  dtypes.Status status = 1;
-  repeated PVC pvc = 2;
-}
-
-message PVC{
+message PVCInfo{
   string name = 1;
   int64 size = 2;
   string namespace = 3;
@@ -57,4 +51,9 @@ message PVC{
   string volume = 5;
   repeated string users = 6;
 }
-*/
+
+message PVCListResponse {
+  dtypes.Status status = 1;
+  repeated PVCInfo pvc = 2;
+}
+

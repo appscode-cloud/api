@@ -89,6 +89,17 @@ func request_Disks_Describe_0(ctx context.Context, client DisksClient, req *http
 		return nil, metadata, err
 	}
 
+	val, ok = pathParams["plugin"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "plugin")
+	}
+
+	protoReq.Plugin, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
 	msg, err := client.Describe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -290,7 +301,7 @@ func RegisterDisksHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 var (
 	pattern_Disks_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0.1", "disks", "cluster"}, ""))
 
-	pattern_Disks_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0.1", "disks", "cluster", "name"}, ""))
+	pattern_Disks_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "pv", "v0.1", "disks", "cluster", "name", "plugin"}, ""))
 
 	pattern_Disks_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0.1", "disks", "cluster", "name"}, ""))
 

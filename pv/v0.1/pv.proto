@@ -6,14 +6,12 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service PersistentVolumes {
-
-//list of pv is nit needed for now
- /* rpc List(PVListRequest) returns (PVListResponse) {
+ rpc List(PVListRequest) returns (PVListResponse) {
     option (google.api.http) = {
       get: "/api/pv/v0.1/{cluster}"
     };
   }
-*/
+
   rpc Register(PVRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/api/pv/v0.1/{cluster}/{name}"
@@ -41,17 +39,12 @@ message PVUnregisterRequest {
   string cluster = 1;
   string name = 2;
 }
-/*
+
 message PVListRequest {
   string cluster=1;
 }
 
-message PVListResponse {
-  dtypes.Status status = 1;
-  repeated PV volumes = 2;
-}
-
-message PV {
+message PVInfo {
   string name = 1;
   int64 size = 2;
   string status = 3;
@@ -59,4 +52,8 @@ message PV {
   string claim = 5;
   repeated string users = 6;
 }
-*/
+
+message PVListResponse {
+  dtypes.Status status = 1;
+  repeated PVInfo pv = 2;
+}

@@ -29,6 +29,33 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
+func request_PersistentVolumeClaims_List_0(ctx context.Context, client PersistentVolumeClaimsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PVCListRequest
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["cluster"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+	}
+
+	protoReq.Cluster, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
 func request_PersistentVolumeClaims_Register_0(ctx context.Context, client PersistentVolumeClaimsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PVCRegisterRequest
 	var metadata runtime.ServerMetadata
@@ -147,6 +174,26 @@ func RegisterPersistentVolumeClaimsHandlerFromEndpoint(ctx context.Context, mux 
 func RegisterPersistentVolumeClaimsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewPersistentVolumeClaimsClient(conn)
 
+	mux.Handle("GET", pattern_PersistentVolumeClaims_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		closeNotifier, ok := w.(http.CloseNotifier)
+		if ok {
+			go func() {
+				<-closeNotifier.CloseNotify()
+				cancel()
+			}()
+		}
+		resp, md, err := request_PersistentVolumeClaims_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, w, req, err)
+			return
+		}
+
+		forward_PersistentVolumeClaims_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("PUT", pattern_PersistentVolumeClaims_Register_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
@@ -191,12 +238,16 @@ func RegisterPersistentVolumeClaimsHandler(ctx context.Context, mux *runtime.Ser
 }
 
 var (
+	pattern_PersistentVolumeClaims_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0.1", "pvc", "cluster"}, ""))
+
 	pattern_PersistentVolumeClaims_Register_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0.1", "pvc", "cluster", "name"}, ""))
 
 	pattern_PersistentVolumeClaims_Unregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0.1", "pvc", "cluster", "name"}, ""))
 )
 
 var (
+	forward_PersistentVolumeClaims_List_0 = runtime.ForwardResponseMessage
+
 	forward_PersistentVolumeClaims_Register_0 = runtime.ForwardResponseMessage
 
 	forward_PersistentVolumeClaims_Unregister_0 = runtime.ForwardResponseMessage

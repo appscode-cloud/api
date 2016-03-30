@@ -75,37 +75,6 @@
       }
     },
     "/api/pv/v0.1/disks/{cluster}/{name}": {
-      "get": {
-        "summary": "Disks.Describe",
-        "operationId": "Describe",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/pvDiskDescribeResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Disks"
-        ]
-      },
       "put": {
         "summary": "Disks.Create",
         "operationId": "Create",
@@ -139,6 +108,46 @@
             "schema": {
               "$ref": "#/definitions/pvDiskCreateRequest"
             }
+          }
+        ],
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/api/pv/v0.1/disks/{cluster}/{name}/{plugin}": {
+      "get": {
+        "summary": "Disks.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/pvDiskDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "plugin",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
           }
         ],
         "tags": [
@@ -296,6 +305,10 @@
         "name": {
           "type": "string",
           "format": "string"
+        },
+        "plugin": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -392,10 +405,6 @@
       "properties": {
         "disk": {
           "$ref": "#/definitions/pvDisk"
-        },
-        "position": {
-          "type": "integer",
-          "format": "int64"
         },
         "pv": {
           "$ref": "#/definitions/pvPV"

@@ -14,7 +14,7 @@ service Disks {
 
   rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
     option (google.api.http) = {
-      get: "/api/pv/v0.1/disks/{cluster}/{name}"
+      get: "/api/pv/v0.1/disks/{cluster}/{name}/{plugin}"
     };
   }
 
@@ -59,7 +59,6 @@ message Result{
   Disk disk = 1;
   PV pv = 2;
   PVC pvc = 3;
-  int64 position = 4;
 }
 
 message Disk{
@@ -94,7 +93,9 @@ message PVC{
 message DiskDescribeRequest {
   string cluster = 1;
   string name = 2;
+  string plugin = 3;
 }
+
 message DiskDescribeResponse {
   dtypes.Status status = 1;
   Result result = 2;
