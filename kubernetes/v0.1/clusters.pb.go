@@ -124,10 +124,8 @@ type ClusterCreateRequest struct {
 	Name                string            `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	Provider            string            `protobuf:"bytes,2,opt,name=provider" json:"provider,omitempty"`
 	Zone                string            `protobuf:"bytes,3,opt,name=zone" json:"zone,omitempty"`
-
 	CloudCredential     string            `protobuf:"bytes,4,opt,name=cloud_credential,json=cloudCredential" json:"cloud_credential,omitempty"`
 	CloudCredentialData map[string]string `protobuf:"bytes,5,rep,name=cloud_credential_data,json=cloudCredentialData" json:"cloud_credential_data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-
 	NodeSet             map[string]int64  `protobuf:"bytes,6,rep,name=node_set,json=nodeSet" json:"node_set,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	SaltbaseVersion     string            `protobuf:"bytes,7,opt,name=saltbase_version,json=saltbaseVersion" json:"saltbase_version,omitempty"`
 	KubeStarterVersion  string            `protobuf:"bytes,8,opt,name=kube_starter_version,json=kubeStarterVersion" json:"kube_starter_version,omitempty"`
@@ -484,7 +482,6 @@ var _Clusters_serviceDesc = grpc.ServiceDesc{
 }
 
 var fileDescriptor1 = []byte{
-
 	// 1079 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x56, 0x4f, 0x73, 0xdb, 0x44,
 	0x14, 0x1f, 0xd9, 0xb1, 0xe3, 0x3c, 0xa7, 0x69, 0x58, 0xa7, 0x41, 0x28, 0x2d, 0x6d, 0x45, 0x29,

@@ -15,32 +15,6 @@
     "application/json"
   ],
   "paths": {
-    "/api/pv/v0.1/{cluster}": {
-      "get": {
-        "summary": "PersistentVolumes.List",
-        "operationId": "List",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/pvPVListResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "PersistentVolumes"
-        ]
-      }
-    },
     "/api/pv/v0.1/{cluster}/{name}": {
       "delete": {
         "summary": "PersistentVolumes.Unregister",
@@ -168,58 +142,6 @@
         "value": {
           "type": "string",
           "format": "byte"
-        }
-      }
-    },
-    "pvPV": {
-      "properties": {
-        "claim": {
-          "type": "string",
-          "format": "string"
-        },
-        "name": {
-          "type": "string",
-          "format": "string"
-        },
-        "size": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "status": {
-          "type": "string",
-          "format": "string"
-        },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
-        },
-        "volume": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "pvPVListRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "pvPVListResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "volumes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/pvPV"
-          }
         }
       }
     },
