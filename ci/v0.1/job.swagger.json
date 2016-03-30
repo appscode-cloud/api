@@ -1,0 +1,360 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/ci/v0.1/jobs": {
+      "get": {
+        "summary": "Jobs.List",
+        "operationId": "List",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/ciJobListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Jobs"
+        ]
+      }
+    },
+    "/api/ci/v0.1/jobs/{name}": {
+      "get": {
+        "summary": "Jobs.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/ciJobDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Jobs"
+        ]
+      },
+      "delete": {
+        "summary": "Jobs.Delete",
+        "operationId": "Delete",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Jobs"
+        ]
+      },
+      "put": {
+        "summary": "Jobs.Create",
+        "operationId": "Create",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ciJobCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Jobs"
+        ]
+      }
+    },
+    "/api/ci/v0.1/jobs/{name}/build": {
+      "put": {
+        "summary": "Jobs.Build",
+        "operationId": "Build",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ciJobBuildRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Jobs"
+        ]
+      }
+    },
+    "/api/ci/v0.1/jobs/{source}/{destination}": {
+      "post": {
+        "summary": "Jobs.Copy",
+        "operationId": "Copy",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "source",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "destination",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ciJobCopyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Jobs"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ciJob": {
+      "properties": {
+        "color": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciJobBuildRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "param": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciJobCopyRequest": {
+      "properties": {
+        "destination": {
+          "type": "string",
+          "format": "string"
+        },
+        "source": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciJobCreateRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "sh_file": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciJobDeleteRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciJobDescribeRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciJobDescribeResponse": {
+      "properties": {
+        "build_count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "builds_command": {
+          "type": "string",
+          "format": "string"
+        },
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "display_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "job_color": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "ciJobListResponse": {
+      "properties": {
+        "jobs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ciJob"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesVoidRequest": {},
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}

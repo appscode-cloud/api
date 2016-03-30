@@ -40,6 +40,15 @@ gen_gateway_proto() {
          --grpc-gateway_out=logtostderr=true,${ALIAS}:. *.proto
 }
 
+gen_swagger_def() {
+  rm -rf *.swagger.json
+  protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src/github.com/appscode \
+         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/google/googleapis/google \
+         --swagger_out=logtostderr=true,${ALIAS}:. *.proto
+}
+
 gen_server_protos() {
 	echo "Generating server protobuf files"
     for d in */ ; do
@@ -69,6 +78,24 @@ gen_proxy_protos() {
           for dd in */ ; do
             pushd ${dd}
             gen_gateway_proto
+            popd
+          done
+        fi
+        popd
+    done
+}
+
+gen_swagger_defs() {
+    echo "Generating swagger api definition files"
+    for d in */ ; do
+        pushd ${d}
+        if [ -f *.proto ]; then
+          gen_swagger_def
+        fi
+         if [ -d */ ]; then
+          for dd in */ ; do
+            pushd ${dd}
+            gen_swagger_def
             popd
           done
         fi
@@ -106,10 +133,12 @@ compile() {
     echo "compiling files"
     go install ./...
 }
+
 gen_protos() {
     clean
     gen_server_protos
     gen_proxy_protos
+    gen_swagger_defs
     compile
 }
 

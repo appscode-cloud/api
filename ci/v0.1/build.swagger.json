@@ -1,0 +1,209 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/ci/v0.1/builds/{job_name}": {
+      "get": {
+        "summary": "Builds.List",
+        "operationId": "List",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/ciBuildListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "job_name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Builds"
+        ]
+      }
+    },
+    "/api/ci/v0.1/builds/{job_name}/{number}": {
+      "get": {
+        "summary": "Builds.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/ciBuildDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "job_name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "number",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Builds"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ciBuild": {
+      "properties": {
+        "build_number": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "result": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciBuildDescribeRequest": {
+      "properties": {
+        "console": {
+          "type": "string",
+          "format": "string"
+        },
+        "job_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "number": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "ciBuildDescribeResponse": {
+      "properties": {
+        "base_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "build_number": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "console_output": {
+          "type": "string",
+          "format": "string"
+        },
+        "job_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "result": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "ciBuildListRequest": {
+      "properties": {
+        "job_name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciBuildListResponse": {
+      "properties": {
+        "builds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ciBuild"
+          }
+        },
+        "job_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}

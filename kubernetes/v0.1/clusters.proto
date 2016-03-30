@@ -100,8 +100,8 @@ message ClusterCreateRequest {
   string name = 1;
   string provider = 2;
   string zone = 3;
-  string cloud_credential_phid = 4;
-  map<string, string> cloud_credential = 5;
+  string cloud_credential = 4;
+  map<string, string> cloud_credential_data = 5;
   map<string, int64> node_set = 6;
   string saltbase_version = 7;
   string kube_starter_version = 8;

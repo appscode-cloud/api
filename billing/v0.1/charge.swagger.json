@@ -1,0 +1,123 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/billing/v0.1/charge/{charge_type}": {
+      "put": {
+        "summary": "Charge.Calculate",
+        "operationId": "Calculate",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/billingChargeCalculateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "charge_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/billingChargeCalculateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Charge"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "billingChargeCalculateRequest": {
+      "properties": {
+        "charge_type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingChargeCalculateResponse": {
+      "properties": {
+        "cost_usd": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}

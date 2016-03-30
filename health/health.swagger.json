@@ -1,0 +1,125 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health.Status",
+        "operationId": "Status",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/healthResponse"
+            }
+          }
+        },
+        "tags": [
+          "Health"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesVoidRequest": {},
+    "healthResponse": {
+      "properties": {
+        "latest": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "versions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/healthVersion"
+          }
+        }
+      }
+    },
+    "healthVersion": {
+      "properties": {
+        "endpoint": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "type": "string",
+          "format": "string"
+        },
+        "version": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,855 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/kubernetes/v0.1/client/{cluster}/apps": {
+      "get": {
+        "summary": "Clients.Apps",
+        "operationId": "Apps",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesAppListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}": {
+      "get": {
+        "summary": "Clients.App",
+        "operationId": "App",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesAppDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "namespace",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}/pods": {
+      "get": {
+        "summary": "Clients.AppPods",
+        "operationId": "AppPods",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesPodListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "namespace",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/jobs": {
+      "get": {
+        "summary": "Clients.Jobs",
+        "operationId": "Jobs",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesJobListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/namespaces": {
+      "get": {
+        "summary": "Clients.Namespaces",
+        "operationId": "Namespaces",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesNamespaceListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/nodes": {
+      "get": {
+        "summary": "Clients.Nodes",
+        "operationId": "Nodes",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesNodeListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/pods": {
+      "get": {
+        "summary": "Clients.Pods",
+        "operationId": "Pods",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesPodListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/rcs": {
+      "get": {
+        "summary": "Clients.ReplicationControllers",
+        "operationId": "ReplicationControllers",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesReplicationControllerListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/secrets": {
+      "get": {
+        "summary": "Clients.Secrets",
+        "operationId": "Secrets",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesSecretListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/services": {
+      "get": {
+        "summary": "Clients.Services",
+        "operationId": "Services",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesServiceListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "NodeNodeCapacity": {
+      "properties": {
+        "cpu": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "memory": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pods": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "ServiceLoadBalancerIngress": {
+      "properties": {
+        "host_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "ip": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ServicePort": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "node_port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "protocol": {
+          "type": "string",
+          "format": "string"
+        },
+        "target_port": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesApp": {
+      "properties": {
+        "cluster_ip": {
+          "type": "string",
+          "format": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesAppDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesAppDescribeResponse": {
+      "properties": {
+        "app": {
+          "$ref": "#/definitions/kubernetesService"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesAppListResponse": {
+      "properties": {
+        "apps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesApp"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesClientRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesContainer": {
+      "properties": {
+        "commands": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "image": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesJob": {
+      "properties": {
+        "active": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "app": {
+          "type": "string",
+          "format": "string"
+        },
+        "completion_time": {
+          "type": "string",
+          "format": "string"
+        },
+        "completions": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "containers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesContainer"
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "failed": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "parallelism": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "string"
+        },
+        "succeeded": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "kubernetesJobListResponse": {
+      "properties": {
+        "jobs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesJob"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesNamespace": {
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "phase": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesNamespaceListResponse": {
+      "properties": {
+        "namespaces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesNamespace"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesNode": {
+      "properties": {
+        "capacity": {
+          "$ref": "#/definitions/NodeNodeCapacity"
+        },
+        "container_runtime": {
+          "type": "string",
+          "format": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "kernel_version": {
+          "type": "string",
+          "format": "string"
+        },
+        "kubelet_version": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "os_image": {
+          "type": "string",
+          "format": "string"
+        },
+        "provider_id": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesNodeListResponse": {
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesNode"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesPod": {
+      "properties": {
+        "app": {
+          "type": "string",
+          "format": "string"
+        },
+        "containers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesContainer"
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "node_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "phase": {
+          "type": "string",
+          "format": "string"
+        },
+        "service_account": {
+          "type": "string",
+          "format": "string"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesPodListResponse": {
+      "properties": {
+        "pods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesPod"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesReplicationController": {
+      "properties": {
+        "app": {
+          "type": "string",
+          "format": "string"
+        },
+        "containers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesContainer"
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "current_replicas": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "generation": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "observed_generation": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "replicas": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "kubernetesReplicationControllerListResponse": {
+      "properties": {
+        "replication_controllers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesReplicationController"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesSecret": {
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "resource_version": {
+          "type": "string",
+          "format": "string"
+        },
+        "secret_type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesSecretListResponse": {
+      "properties": {
+        "secrets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesSecret"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesService": {
+      "properties": {
+        "app": {
+          "type": "string",
+          "format": "string"
+        },
+        "cluster_ip": {
+          "type": "string",
+          "format": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "external_ips": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "loadbalancer_ingresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceLoadBalancerIngress"
+          }
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServicePort"
+          }
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesServiceListResponse": {
+      "properties": {
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesService"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}
