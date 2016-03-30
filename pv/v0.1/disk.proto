@@ -52,7 +52,14 @@ message DiskListRequest {
 message DiskListResponse {
   dtypes.Status status = 1;
   string  kube = 2;
-  repeated Disk disk = 3;
+  repeated Result result = 3;
+}
+
+message Result{
+  Disk disk = 1;
+  PV pv = 2;
+  PVC pvc = 3;
+  int64 position = 4;
 }
 
 message Disk{
@@ -66,17 +73,14 @@ message Disk{
   repeated string users = 8;
   string kind = 9;
   string endpoint = 10;
-  PV pv = 11;
-  PVC pvc = 12;
 }
 
 message PV {
   string name = 1;
   int64 size = 2;
   string status = 3;
-  string volume = 4;
-  string claim = 5;
-  repeated string users = 6;
+  string claim = 4;
+  repeated string users = 5;
 }
 
 message PVC{
@@ -84,8 +88,7 @@ message PVC{
   int64 size = 2;
   string namespace = 3;
   string status = 4;
-  string volume = 5;
-  repeated string users = 6;
+  repeated string users = 5;
 }
 
 message DiskDescribeRequest {
@@ -94,5 +97,5 @@ message DiskDescribeRequest {
 }
 message DiskDescribeResponse {
   dtypes.Status status = 1;
-  Disk disk = 2;
+  Result result = 2;
 }
