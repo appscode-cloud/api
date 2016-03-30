@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "pvPV": {
+      "properties": {
+        "claim": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "volume": {
+          "type": "string"
+        }
+      }
+    },
+    "pvPVListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        }
+      }
+    },
+    "pvPVListResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "volumes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pvPV"
+          }
+        }
+      }
+    },
+    "pvPVRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        }
+      }
+    },
+    "pvPVUnregisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

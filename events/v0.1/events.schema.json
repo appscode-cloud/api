@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "ObjectMetaLabelsEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "RequestObjectMeta": {
+      "properties": {
+        "instance_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ObjectMetaLabelsEntry"
+          }
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "pod_ip": {
+          "type": "string"
+        },
+        "replication_controller": {
+          "type": "string"
+        },
+        "service": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "eventsHandler": {
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "receiver": {
+          "type": "string"
+        },
+        "suffix": {
+          "type": "string"
+        },
+        "verb": {
+          "type": "string"
+        }
+      }
+    },
+    "eventsRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "kube_namespace": {
+          "type": "string"
+        },
+        "kube_object_name": {
+          "type": "string"
+        },
+        "kube_object_type": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/RequestObjectMeta"
+        }
+      }
+    },
+    "eventsResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/eventsHandler"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

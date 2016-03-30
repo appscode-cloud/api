@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "glusterfsVolume": {
+      "properties": {
+        "bricks": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "replica": {
+          "type": "integer"
+        }
+      }
+    },
+    "glusterfsVolumeCreateRequest": {
+      "properties": {
+        "glusterfs_cluster": {
+          "type": "string"
+        },
+        "kube_cluster": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        }
+      }
+    },
+    "glusterfsVolumeDeleteRequest": {
+      "properties": {
+        "glusterfs_cluster": {
+          "type": "string"
+        },
+        "kube_cluster": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        }
+      }
+    },
+    "glusterfsVolumeListRequest": {
+      "properties": {
+        "glusterfs_cluster": {
+          "type": "string"
+        },
+        "kube_cluster": {
+          "type": "string"
+        }
+      }
+    },
+    "glusterfsVolumeListResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "volumes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/glusterfsVolume"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

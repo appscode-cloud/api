@@ -16,11 +16,11 @@ import (
 
 	"github.com/gengo/grpc-gateway/runtime"
 	"github.com/gengo/grpc-gateway/utilities"
-	"github.com/golang/glog"
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/grpclog"
 )
 
 var _ codes.Code
@@ -173,14 +173,14 @@ func RegisterClustersHandlerFromEndpoint(ctx context.Context, mux *runtime.Serve
 	defer func() {
 		if err != nil {
 			if cerr := conn.Close(); cerr != nil {
-				glog.Errorf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 			return
 		}
 		go func() {
 			<-ctx.Done()
 			if cerr := conn.Close(); cerr != nil {
-				glog.Errorf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 		}()
 	}()
@@ -195,12 +195,15 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 
 	mux.Handle("GET", pattern_Clusters_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clusters_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -215,12 +218,15 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 
 	mux.Handle("GET", pattern_Clusters_Describe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clusters_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -235,12 +241,15 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 
 	mux.Handle("PUT", pattern_Clusters_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clusters_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -255,12 +264,15 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 
 	mux.Handle("DELETE", pattern_Clusters_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clusters_Delete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)

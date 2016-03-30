@@ -16,11 +16,11 @@ import (
 
 	"github.com/gengo/grpc-gateway/runtime"
 	"github.com/gengo/grpc-gateway/utilities"
-	"github.com/golang/glog"
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/grpclog"
 )
 
 var _ codes.Code
@@ -353,14 +353,14 @@ func RegisterClientsHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeM
 	defer func() {
 		if err != nil {
 			if cerr := conn.Close(); cerr != nil {
-				glog.Errorf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 			return
 		}
 		go func() {
 			<-ctx.Done()
 			if cerr := conn.Close(); cerr != nil {
-				glog.Errorf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 		}()
 	}()
@@ -375,12 +375,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_Nodes_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_Nodes_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -395,12 +398,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_Secrets_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_Secrets_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -415,12 +421,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_Jobs_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_Jobs_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -435,12 +444,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_Namespaces_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_Namespaces_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -455,12 +467,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_Pods_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_Pods_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -475,12 +490,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_Services_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_Services_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -495,12 +513,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_ReplicationControllers_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_ReplicationControllers_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -515,12 +536,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_Apps_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_Apps_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -535,12 +559,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_App_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_App_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -555,12 +582,15 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	mux.Handle("GET", pattern_Clients_AppPods_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
-		closeNotifier, ok := w.(http.CloseNotifier)
-		if ok {
-			go func() {
-				<-closeNotifier.CloseNotify()
-				cancel()
-			}()
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
 		}
 		resp, md, err := request_Clients_AppPods_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)

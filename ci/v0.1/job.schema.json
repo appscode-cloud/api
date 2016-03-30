@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "ciJob": {
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ciJobBuildRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "param": {
+          "type": "string"
+        }
+      }
+    },
+    "ciJobCopyRequest": {
+      "properties": {
+        "destination": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "ciJobCreateRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sh_file": {
+          "type": "string"
+        }
+      }
+    },
+    "ciJobDeleteRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ciJobDescribeRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ciJobDescribeResponse": {
+      "properties": {
+        "build_count": {
+          "type": "integer"
+        },
+        "builds_command": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "job_color": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "ciJobListResponse": {
+      "properties": {
+        "jobs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ciJob"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesVoidRequest": {},
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

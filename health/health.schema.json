@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesVoidRequest": {},
+    "healthResponse": {
+      "properties": {
+        "latest": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "versions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/healthVersion"
+          }
+        }
+      }
+    },
+    "healthVersion": {
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

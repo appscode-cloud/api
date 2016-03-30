@@ -1,0 +1,245 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "MatrixQueryEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "alertAlert": {
+      "properties": {
+        "icinga_url": {
+          "type": "string"
+        },
+        "matrix": {
+          "$ref": "#/definitions/alertMatrix"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "refresh_interval": {
+          "type": "integer"
+        },
+        "spec": {
+          "$ref": "#/definitions/alertAlertSpec"
+        }
+      }
+    },
+    "alertAlertSpec": {
+      "properties": {
+        "alert_interval": {
+          "type": "integer"
+        },
+        "critical_condition": {
+          "type": "string"
+        },
+        "critical_method": {
+          "type": "integer"
+        },
+        "critical_user": {
+          "type": "string"
+        },
+        "warning_condition": {
+          "type": "string"
+        },
+        "warning_method": {
+          "type": "integer"
+        },
+        "warning_user": {
+          "type": "string"
+        }
+      }
+    },
+    "alertCreateReuquest": {
+      "properties": {
+        "alert_spec": {
+          "$ref": "#/definitions/alertAlertSpec"
+        },
+        "check_interval": {
+          "type": "integer"
+        },
+        "matrix": {
+          "$ref": "#/definitions/alertMatrix"
+        },
+        "matrix_phid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
+        }
+      }
+    },
+    "alertDeleteRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
+        }
+      }
+    },
+    "alertListRequest": {
+      "properties": {
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
+        }
+      }
+    },
+    "alertListResponse": {
+      "properties": {
+        "alerts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/alertAlert"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "alertMatrix": {
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "formula": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "query": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MatrixQueryEntry"
+          }
+        }
+      }
+    },
+    "alertNotificationRequest": {
+      "properties": {
+        "alert_phid": {
+          "type": "string"
+        },
+        "host_name": {
+          "type": "string"
+        },
+        "service_output": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "state_type": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        }
+      }
+    },
+    "alertSpec": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "object_name": {
+          "type": "string"
+        },
+        "object_type": {
+          "type": "string"
+        }
+      }
+    },
+    "alertUpdateReuquest": {
+      "properties": {
+        "alert_spec": {
+          "$ref": "#/definitions/alertAlertSpec"
+        },
+        "check_interval": {
+          "type": "integer"
+        },
+        "matrix": {
+          "$ref": "#/definitions/alertMatrix"
+        },
+        "matrix_phid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

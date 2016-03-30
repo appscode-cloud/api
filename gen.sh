@@ -49,6 +49,15 @@ gen_swagger_def() {
          --swagger_out=logtostderr=true,${ALIAS}:. *.proto
 }
 
+gen_json_schema() {
+  rm -rf *.schema.json
+  protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src/github.com/appscode \
+         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/google/googleapis/google \
+         --json-schema_out=logtostderr=true,mode=merge,${ALIAS}:. *.proto
+}
+
 gen_server_protos() {
 	echo "Generating server protobuf files"
     for d in */ ; do
@@ -103,6 +112,24 @@ gen_swagger_defs() {
     done
 }
 
+gen_json_schemas() {
+    echo "Generating json schema"
+    for d in */ ; do
+        pushd ${d}
+        if [ -f *.proto ]; then
+          gen_json_schema
+        fi
+         if [ -d */ ]; then
+          for dd in */ ; do
+            pushd ${dd}
+            gen_json_schema
+            popd
+          done
+        fi
+        popd
+    done
+}
+
 gen_py() {
   rm -rf *.py
   protoc -I /usr/local/include -I . \
@@ -139,6 +166,7 @@ gen_protos() {
     gen_server_protos
     gen_proxy_protos
     gen_swagger_defs
+    gen_json_schemas
     compile
 }
 
@@ -157,6 +185,12 @@ case "$1" in
 	proxy)
 		gen_proxy_protos
 		;;
+	swagger)
+		gen_swagger_defs
+		;;
+	json-schema)
+		gen_json_schemas
+		;;
 	all)
 		gen_protos
 		;;
@@ -166,7 +200,7 @@ case "$1" in
 	py)
 	  gen_python_proto
 	  ;;
-	*)  echo $"Usage: $0 {compile|server|proxy|all|clean}"
+	*)  echo $"Usage: $0 {compile|server|proxy|swagger|json-schema|all|clean}"
 		RETVAL=1
 		;;
 esac
