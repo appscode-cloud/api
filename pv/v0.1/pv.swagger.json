@@ -229,6 +229,10 @@
           "type": "string",
           "format": "string"
         },
+        "endpoint": {
+          "type": "string",
+          "format": "string"
+        },
         "identifier": {
           "type": "string",
           "format": "string"
@@ -237,11 +241,7 @@
           "type": "string",
           "format": "string"
         },
-        "path": {
-          "type": "string",
-          "format": "string"
-        },
-        "provider": {
+        "plugin": {
           "type": "string",
           "format": "string"
         },

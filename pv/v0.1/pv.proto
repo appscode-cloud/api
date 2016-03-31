@@ -30,9 +30,9 @@ message PVRegisterRequest {
   string cluster = 1;
   string name = 2;
   string identifier = 3;
-  string provider = 4;
+  string plugin = 4;
   int64 size = 5;
-  string path = 6;
+  string endpoint = 6;
 }
 
 message PVUnregisterRequest {
