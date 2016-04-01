@@ -42,37 +42,6 @@
       }
     },
     "/api/pv/v0.1/pvc/{cluster}/{name}": {
-      "delete": {
-        "summary": "PersistentVolumeClaims.Unregister",
-        "operationId": "Unregister",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "PersistentVolumeClaims"
-        ]
-      },
       "put": {
         "summary": "PersistentVolumeClaims.Register",
         "operationId": "Register",
@@ -106,6 +75,46 @@
             "schema": {
               "$ref": "#/definitions/pvPVCRegisterRequest"
             }
+          }
+        ],
+        "tags": [
+          "PersistentVolumeClaims"
+        ]
+      }
+    },
+    "/api/pv/v0.1/pvc/{cluster}/{name}/{namespace}": {
+      "delete": {
+        "summary": "PersistentVolumeClaims.Unregister",
+        "operationId": "Unregister",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "namespace",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
           }
         ],
         "tags": [

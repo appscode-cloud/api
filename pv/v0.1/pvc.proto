@@ -21,7 +21,7 @@ service PersistentVolumeClaims {
 
   rpc Unregister(PVCUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/api/pv/v0.1/pvc/{cluster}/{name}"
+      delete: "/api/pv/v0.1/pvc/{cluster}/{name}/{namespace}"
     };
   }
   }
