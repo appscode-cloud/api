@@ -80,7 +80,8 @@ message PV {
   string status = 3;
   string claim = 4;
   string volume = 5;
-  repeated string users = 6;
+  string plugin = 6;
+  string type = 7;
 }
 
 message PVC{
@@ -99,5 +100,5 @@ message DiskDescribeRequest {
 
 message DiskDescribeResponse {
   dtypes.Status status = 1;
-  Result result = 2;
+  Disk disk = 2;
 }

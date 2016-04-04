@@ -314,8 +314,8 @@
     },
     "pvDiskDescribeResponse": {
       "properties": {
-        "result": {
-          "$ref": "#/definitions/pvResult"
+        "disk": {
+          "$ref": "#/definitions/pvDisk"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -357,6 +357,10 @@
           "type": "string",
           "format": "string"
         },
+        "plugin": {
+          "type": "string",
+          "format": "string"
+        },
         "size": {
           "type": "integer",
           "format": "int64"
@@ -365,12 +369,9 @@
           "type": "string",
           "format": "string"
         },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
+        "type": {
+          "type": "string",
+          "format": "string"
         },
         "volume": {
           "type": "string",
