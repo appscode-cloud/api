@@ -23,14 +23,14 @@ It has these top-level messages:
 	DiskDescribeResponse
 	PVCRegisterRequest
 	PVCUnregisterRequest
-	PVCListRequest
+	PVCDescribeRequest
 	PVCInfo
-	PVCListResponse
+	PVCDescribeResponse
 	PVRegisterRequest
 	PVUnregisterRequest
-	PVListRequest
+	PVDescribeRequest
 	PVInfo
-	PVListResponse
+	PVDescribeResponse
 */
 package pv
 

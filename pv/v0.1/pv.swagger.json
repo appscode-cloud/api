@@ -15,15 +15,15 @@
     "application/json"
   ],
   "paths": {
-    "/api/pv/v0.1/{cluster}": {
+    "/api/pv/v0.1/{cluster}/{name}": {
       "get": {
-        "summary": "PersistentVolumes.List",
-        "operationId": "List",
+        "summary": "PersistentVolumes.Describe",
+        "operationId": "Describe",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/pvPVListResponse"
+              "$ref": "#/definitions/pvPVDescribeResponse"
             }
           }
         },
@@ -34,14 +34,19 @@
             "required": true,
             "type": "string",
             "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
           }
         ],
         "tags": [
           "PersistentVolumes"
         ]
-      }
-    },
-    "/api/pv/v0.1/{cluster}/{name}": {
+      },
       "delete": {
         "summary": "PersistentVolumes.Unregister",
         "operationId": "Unregister",
@@ -171,6 +176,28 @@
         }
       }
     },
+    "pvPVDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "pvPVDescribeResponse": {
+      "properties": {
+        "pv": {
+          "$ref": "#/definitions/pvPVInfo"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "pvPVInfo": {
       "properties": {
         "claim": {
@@ -178,6 +205,10 @@
           "format": "string"
         },
         "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "plugin": {
           "type": "string",
           "format": "string"
         },
@@ -189,37 +220,9 @@
           "type": "string",
           "format": "string"
         },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
-        },
         "volume": {
           "type": "string",
           "format": "string"
-        }
-      }
-    },
-    "pvPVListRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "pvPVListResponse": {
-      "properties": {
-        "pv": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/pvPVInfo"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },

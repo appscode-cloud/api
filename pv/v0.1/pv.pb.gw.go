@@ -29,8 +29,8 @@ var _ = runtime.String
 var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_PersistentVolumes_List_0(ctx context.Context, client PersistentVolumesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PVListRequest
+func request_PersistentVolumes_Describe_0(ctx context.Context, client PersistentVolumesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PVDescribeRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -51,7 +51,18 @@ func request_PersistentVolumes_List_0(ctx context.Context, client PersistentVolu
 		return nil, metadata, err
 	}
 
-	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	val, ok = pathParams["name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+	}
+
+	protoReq.Name, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	msg, err := client.Describe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -166,7 +177,7 @@ func RegisterPersistentVolumesHandlerFromEndpoint(ctx context.Context, mux *runt
 func RegisterPersistentVolumesHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewPersistentVolumesClient(conn)
 
-	mux.Handle("GET", pattern_PersistentVolumes_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_PersistentVolumes_Describe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		closeNotifier, ok := w.(http.CloseNotifier)
 		if ok {
@@ -175,14 +186,14 @@ func RegisterPersistentVolumesHandler(ctx context.Context, mux *runtime.ServeMux
 				cancel()
 			}()
 		}
-		resp, md, err := request_PersistentVolumes_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_PersistentVolumes_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_PersistentVolumes_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PersistentVolumes_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -230,7 +241,7 @@ func RegisterPersistentVolumesHandler(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_PersistentVolumes_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "pv", "v0.1", "cluster"}, ""))
+	pattern_PersistentVolumes_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0.1", "cluster", "name"}, ""))
 
 	pattern_PersistentVolumes_Register_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0.1", "cluster", "name"}, ""))
 
@@ -238,7 +249,7 @@ var (
 )
 
 var (
-	forward_PersistentVolumes_List_0 = runtime.ForwardResponseMessage
+	forward_PersistentVolumes_Describe_0 = runtime.ForwardResponseMessage
 
 	forward_PersistentVolumes_Register_0 = runtime.ForwardResponseMessage
 

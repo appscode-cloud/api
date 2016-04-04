@@ -6,9 +6,9 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service PersistentVolumeClaims {
-  rpc List(PVCListRequest) returns (PVCListResponse) {
+  rpc Describe(PVCDescribeRequest) returns (PVCDescribeResponse) {
     option (google.api.http) = {
-      get: "/api/pv/v0.1/pvc/{cluster}"
+      get: "/api/pv/v0.1/pvc/{cluster}/{name}/{namespace}"
     };
   }
 
@@ -39,8 +39,10 @@ message PVCUnregisterRequest {
   string namespace = 3;
 }
 
-message PVCListRequest {
+message PVCDescribeRequest {
   string cluster=1;
+  string name =2;
+  string namespace = 3;
 }
 
 message PVCInfo{
@@ -52,8 +54,8 @@ message PVCInfo{
   repeated string users = 6;
 }
 
-message PVCListResponse {
+message PVCDescribeResponse {
   dtypes.Status status = 1;
-  repeated PVCInfo pvc = 2;
+  PVCInfo pvc = 2;
 }
 
