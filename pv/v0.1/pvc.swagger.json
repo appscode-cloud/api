@@ -220,6 +220,13 @@
     },
     "pvPVCInfo": {
       "properties": {
+        "accessmodes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
         "name": {
           "type": "string",
           "format": "string"
@@ -235,13 +242,6 @@
         "status": {
           "type": "string",
           "format": "string"
-        },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
         },
         "volume": {
           "type": "string",

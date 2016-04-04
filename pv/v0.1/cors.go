@@ -6,6 +6,7 @@ func Patterns() []runtime.Pattern {
 	patterns := make([]runtime.Pattern, 0)
 
 	patterns = append(patterns, pattern_Disks_List_0)
+	patterns = append(patterns, pattern_Disks_Describe_0)
 	patterns = append(patterns, pattern_Disks_Create_0)
 	patterns = append(patterns, pattern_Disks_Delete_0)
 
