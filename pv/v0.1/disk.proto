@@ -79,7 +79,8 @@ message PV {
   int64 size = 2;
   string status = 3;
   string claim = 4;
-  repeated string users = 5;
+  string volume = 5;
+  repeated string users = 6;
 }
 
 message PVC{
@@ -87,7 +88,7 @@ message PVC{
   int64 size = 2;
   string namespace = 3;
   string status = 4;
-  repeated string users = 5;
+  string volume = 5;
 }
 
 message DiskDescribeRequest {

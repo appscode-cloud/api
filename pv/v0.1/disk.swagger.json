@@ -371,6 +371,10 @@
             "type": "string",
             "format": "string"
           }
+        },
+        "volume": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -392,12 +396,9 @@
           "type": "string",
           "format": "string"
         },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
+        "volume": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
