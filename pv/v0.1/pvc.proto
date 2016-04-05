@@ -51,7 +51,7 @@ message PVCInfo{
   string namespace = 3;
   string status = 4;
   string volume = 5;
-  repeated string accessmodes = 6;
+  repeated string accessModes = 6;
 }
 
 message PVCDescribeResponse {

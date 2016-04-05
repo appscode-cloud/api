@@ -200,6 +200,13 @@
     },
     "pvPVInfo": {
       "properties": {
+        "accessModes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
         "claim": {
           "type": "string",
           "format": "string"

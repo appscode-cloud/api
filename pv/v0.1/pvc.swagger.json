@@ -220,7 +220,7 @@
     },
     "pvPVCInfo": {
       "properties": {
-        "accessmodes": {
+        "accessModes": {
           "type": "array",
           "items": {
             "type": "string",
