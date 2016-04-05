@@ -223,6 +223,10 @@
           "type": "string",
           "format": "string"
         },
+        "iops": {
+          "type": "integer",
+          "format": "int64"
+        },
         "kind": {
           "type": "string",
           "format": "string"

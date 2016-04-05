@@ -72,6 +72,7 @@ message Disk{
   repeated string users = 8;
   string kind = 9;
   string endpoint = 10;
+  int64 iops = 11;
 }
 
 message PV {
