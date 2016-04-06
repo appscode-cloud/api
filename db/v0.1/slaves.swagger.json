@@ -94,11 +94,11 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "message": {
+        "info": {
           "type": "string",
           "format": "string"
         },
-        "status": {
+        "message": {
           "type": "string",
           "format": "string"
         }

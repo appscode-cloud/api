@@ -45,10 +45,10 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "message": {
+        "info": {
           "type": "string"
         },
-        "status": {
+        "message": {
           "type": "string"
         }
       }
