@@ -50,8 +50,37 @@
         }
       }
     },
-    "pvPVCList": {
+    "pvPVCDescribeRequest": {
       "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      }
+    },
+    "pvPVCDescribeResponse": {
+      "properties": {
+        "pvc": {
+          "$ref": "#/definitions/pvPVCInfo"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "pvPVCInfo": {
+      "properties": {
+        "accessModes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "name": {
           "type": "string"
         },
@@ -64,34 +93,8 @@
         "status": {
           "type": "string"
         },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "volume": {
           "type": "string"
-        }
-      }
-    },
-    "pvPVCListRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        }
-      }
-    },
-    "pvPVCListResponse": {
-      "properties": {
-        "list": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/pvPVCList"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },
