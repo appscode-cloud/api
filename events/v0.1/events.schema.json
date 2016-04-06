@@ -69,7 +69,7 @@
         "message": {
           "type": "string"
         },
-        "status_code": {
+        "status": {
           "type": "string"
         }
       }

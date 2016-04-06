@@ -158,7 +158,7 @@
           "type": "string",
           "format": "string"
         },
-        "status_code": {
+        "status": {
           "type": "string",
           "format": "string"
         }
