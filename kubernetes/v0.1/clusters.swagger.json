@@ -296,11 +296,11 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "info": {
+        "message": {
           "type": "string",
           "format": "string"
         },
-        "message": {
+        "status_code": {
           "type": "string",
           "format": "string"
         }

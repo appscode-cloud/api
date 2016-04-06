@@ -29,7 +29,7 @@ func (s *Status) IsOK() bool {
 	return false
 }
 
-func (s *Status) IsErr() bool {
+func (s *Status) IsError() bool {
 	if s.Code != StatusCodeOK {
 		return true
 	}
@@ -37,11 +37,11 @@ func (s *Status) IsErr() bool {
 }
 
 func (s *Status) Error() error {
-	return errors.New(s.Info)
+	return errors.New(s.StatusCode)
 }
 
-func (s *Status) ErrorMessage() string {
-	return s.Info
+func (s *Status) StatusCode() string {
+	return s.StatusCode
 }
 
 // Adds any proto message in the details field of the Status message.

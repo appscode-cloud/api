@@ -224,10 +224,10 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "info": {
+        "message": {
           "type": "string"
         },
-        "message": {
+        "status_code": {
           "type": "string"
         }
       }
