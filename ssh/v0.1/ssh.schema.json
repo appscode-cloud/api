@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "sshSSHKey": {
+      "properties": {
+        "aws_fingerprint": {
+          "type": "string"
+        },
+        "openssh_fingerprint": {
+          "type": "string"
+        },
+        "private_key": {
+          "type": "string"
+        },
+        "public_key": {
+          "type": "string"
+        }
+      }
+    },
+    "sshSecureShellGetRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
+        },
+        "cluster_namespace": {
+          "type": "string"
+        },
+        "instance_name": {
+          "type": "string"
+        },
+        "jenkins_namespace": {
+          "type": "string"
+        }
+      }
+    },
+    "sshSecureShellGetResponse": {
+      "properties": {
+        "instance_addr": {
+          "type": "string"
+        },
+        "instance_port": {
+          "type": "integer"
+        },
+        "ssh_key": {
+          "$ref": "#/definitions/sshSSHKey"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "user": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

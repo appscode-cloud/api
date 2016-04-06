@@ -1,0 +1,268 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "dbBackupRequest": {
+      "properties": {
+        "bucket_name": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "secret_name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "dbCreateRequest": {
+      "properties": {
+        "bucket_name": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "config": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "node": {
+          "type": "integer"
+        },
+        "pv": {
+          "type": "string"
+        },
+        "pv_size": {
+          "type": "integer"
+        },
+        "region": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "dbDatabase": {
+      "properties": {
+        "archive_bucket": {
+          "type": "string"
+        },
+        "archive_bucket_region": {
+          "type": "string"
+        },
+        "auto_snapshot": {
+          "type": "integer"
+        },
+        "created": {
+          "type": "string"
+        },
+        "kubernetes_phid": {
+          "type": "string"
+        },
+        "kubernetes_service": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "pv_size": {
+          "type": "integer"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "dbDbPodSpecs": {
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "dbDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "dbDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "dbDescribeResponse": {
+      "properties": {
+        "pods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dbDbPodSpecs"
+          }
+        },
+        "service_ip": {
+          "type": "string"
+        },
+        "service_name": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dbListResponse": {
+      "properties": {
+        "databases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dbDatabase"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dbRestoreRequest": {
+      "properties": {
+        "bucket_name": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "config": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "node": {
+          "type": "integer"
+        },
+        "pv": {
+          "type": "string"
+        },
+        "pv_size": {
+          "type": "integer"
+        },
+        "region": {
+          "type": "string"
+        },
+        "secret_name": {
+          "type": "string"
+        },
+        "snap_time": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesVoidRequest": {},
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

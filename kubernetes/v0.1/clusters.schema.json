@@ -1,0 +1,280 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "ClusterCreateRequestCloudCredentialDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "ClusterCreateRequestNodeSetEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "integer"
+        }
+      }
+    },
+    "ClusterDescribeResponseSpecs": {
+      "properties": {
+        "containers": {
+          "type": "integer"
+        },
+        "cpu_core": {
+          "type": "integer"
+        },
+        "pods": {
+          "type": "integer"
+        },
+        "rcs": {
+          "type": "integer"
+        },
+        "services": {
+          "type": "integer"
+        },
+        "total_memory": {
+          "type": "integer"
+        }
+      }
+    },
+    "ClusterScaleRequestNodeChangesEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "integer"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesLongRunningResponse": {
+      "properties": {
+        "job_id": {
+          "type": "string"
+        },
+        "job_type": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "type_id": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesVoidRequest": {},
+    "kubernetesCluster": {
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "graphana_url": {
+          "type": "string"
+        },
+        "icinga_url": {
+          "type": "string"
+        },
+        "kibana_url": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodes": {
+          "type": "integer"
+        },
+        "os": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesClusterConfigRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesClusterConfigResponse": {
+      "properties": {
+        "configuration": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesClusterCreateRequest": {
+      "properties": {
+        "cloud_credential": {
+          "type": "string"
+        },
+        "cloud_credential_data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClusterCreateRequestCloudCredentialDataEntry"
+          }
+        },
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "kube_version": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "node_set": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClusterCreateRequestNodeSetEntry"
+          }
+        },
+        "provider": {
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesClusterDeleteRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "release_reserved_ip": {
+          "type": "boolean"
+        }
+      }
+    },
+    "kubernetesClusterDescribeRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesClusterDescribeResponse": {
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/kubernetesCluster"
+        },
+        "specs": {
+          "$ref": "#/definitions/ClusterDescribeResponseSpecs"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesClusterListResponse": {
+      "properties": {
+        "clusters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesCluster"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesClusterScaleRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "node_changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClusterScaleRequestNodeChangesEntry"
+          }
+        }
+      }
+    },
+    "kubernetesClusterStartupScriptRequest": {
+      "properties": {
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesClusterStartupScriptResponse": {
+      "properties": {
+        "configuration": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
