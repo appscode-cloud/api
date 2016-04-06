@@ -13,16 +13,8 @@ const (
 	StatusCodeOK string = "0"
 )
 
-func (s *Status) StatusCode() StatusCode {
-	code, err := strconv.Atoi(s.Code)
-	if err != nil {
-		code = int(StatusCode_BADREQUEST)
-	}
-	return StatusCode(code)
-}
-
 // returns the status code string of the response status.
-func (s *Status) StatusCodeString() string {
+func (s *Status) Status() string {
 	code, err := strconv.Atoi(s.Code)
 	if err != nil {
 		code = int(StatusCode_BADREQUEST)
@@ -37,7 +29,7 @@ func (s *Status) IsOK() bool {
 	return false
 }
 
-func (s *Status) IsError() bool {
+func (s *Status) IsErr() bool {
 	if s.Code != StatusCodeOK {
 		return true
 	}
@@ -45,11 +37,11 @@ func (s *Status) IsError() bool {
 }
 
 func (s *Status) Error() error {
-	return errors.New(s.Status)
+	return errors.New(s.Info)
 }
 
-func (s *Status) StatusString() string {
-	return s.Status
+func (s *Status) ErrorMessage() string {
+	return s.Info
 }
 
 // Adds any proto message in the details field of the Status message.
