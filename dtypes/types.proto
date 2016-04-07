@@ -15,61 +15,64 @@ enum StatusCode {
     // Similar to HTTP Status code 2**.
     OK = 0;
 
+    // Request Unsucesful
+    FAILED = 1;
+
     // The request does not have valid authentication credentials for the
     // operation. Similar to HTTP status code 401.
-    UNAUTHORIZED = 1;
+    UNAUTHORIZED = 2;
 
     // The request contains invalid arguments.
     // Similar to HTTP status code 400
-    BADREQUEST = 2;
+    BADREQUEST = 3;
 
     // The caller does not have permission to execute the specified
     // operation. Reserved For further use.
     // Similar to HTTP Status code 403
-    PERMISSION_DENIED = 3;
+    PERMISSION_DENIED = 4;
 
     // Requested entity not found.
     // Similar to HTTP status code 404
-    NOT_FOUND = 4;
+    NOT_FOUND = 5;
 
     // The operation is not implemented or is not supported/enabled
     // Similar to HTTP status code 501
-    UNIMPLEMENTED = 5;
+    UNIMPLEMENTED = 6;
 
     // Internal errors. This means that some invariants expected by the
     // underlying system have been broken.
     // Similar to HTTP status code 500
-    INTERNAL = 6;
+    INTERNAL = 7;
 
     // External Server Refuses Connection or Sends Invalid Data.
-    EXTERNAL = 7;
+    EXTERNAL = 8;
 
     // The response contains invalid arguments.
-    BAD_RESPONSE = 8;
+    BAD_RESPONSE = 9;
 
     // Unknown error.
     // Errors raised by APIs that do not return enough error information
     // may be converted to this error.
     // Similar to HTTP status code 500
-    UNKNOWN_ERROR = 9;
+    UNKNOWN_ERROR = 10;
 
 
 
     // Quota and payment related error codes.
     // client request crossses the exisitng quta limits.
-    QUOTA_LIMIT_EXCEED = 10;
+    QUOTA_LIMIT_EXCEED = 11;
 
     // no valid quta available
-    INVALID_QUOTA = 11;
+    INVALID_QUOTA = 12;
 
     // no payment informtaion avaible
-    PAYMENT_INFORMATION_UNAVAILABLE = 12;
+    PAYMENT_INFORMATION_UNAVAILABLE = 13;
 
     // payment information not valid.
-    INVALID_PAYMENT_INFORMATION = 13;
+    INVALID_PAYMENT_INFORMATION = 14;
 
     // failed to transect the payment information
-    TRANSACTION_FAILED = 14;
+    TRANSACTION_FAILED = 15;
 }
 
 
