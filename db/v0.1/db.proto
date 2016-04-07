@@ -26,6 +26,12 @@ service Databases {
     };
   }
 
+  rpc BackupList(BackupListRequest) returns (BackupListResponse) {
+    option (google.api.http) = {
+      get: "/api/db/v0.1/backup/list/{db_phid}"
+    };
+  }
+
   rpc Restore(RestoreRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/api/db/v0.1/restore/{cluster}/{type}"
@@ -50,15 +56,14 @@ service Databases {
 message CreateRequest {
   string type = 1;
   string sku = 2;
-  string config = 3;
+  string name = 3;
   string cluster = 4;
   string pv = 5;
   int64 pv_size = 6;
   int32 node = 7;
-  string name = 8;
+  string region = 8;
   string bucket_name = 9;
   string credential = 10;
-  string region = 11;
 }
 
 message DeleteRequest {
@@ -75,6 +80,8 @@ message BackupRequest {
   string secret_name = 5;
   string credential = 6;
   string region = 7;
+  string auth_secret_name = 8;
+  bool force = 9;
 }
 
 message RestoreRequest {
@@ -83,7 +90,7 @@ message RestoreRequest {
   string type = 3;
   string pv = 4;
   int64 pv_size = 5;
-  string config = 6;
+  string sku = 6;
   int32 node = 7;
   string snap_time = 8;
   string bucket_name = 9;
@@ -120,7 +127,7 @@ message ListResponse {
 
 message Database {
   string phid = 1;
-  string kubernetes_phid = 2;
+  string cluster_name = 2;
   string kubernetes_service = 3;
   string type = 4;
   string sku = 5;
@@ -129,4 +136,24 @@ message Database {
   int32 auto_snapshot = 8;
   int64 pv_size = 9;
   string created = 10;
+  string last_backup = 11;
+}
+
+message BackupListRequest {
+  string db_phid = 1;
+}
+
+message BackupListResponse {
+  dtypes.Status status = 1;
+  repeated Snapshot list = 2;
+}
+
+message Snapshot {
+  string name = 1;
+  string provider = 2;
+  string bucket = 3;
+  string region = 4;
+  string zone = 5;
+  string status = 6;
+  string created = 7;
 }

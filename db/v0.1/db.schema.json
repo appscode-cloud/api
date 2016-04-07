@@ -1,8 +1,31 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
+    "dbBackupListRequest": {
+      "properties": {
+        "db_phid": {
+          "type": "string"
+        }
+      }
+    },
+    "dbBackupListResponse": {
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dbSnapshot"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "dbBackupRequest": {
       "properties": {
+        "auth_secret_name": {
+          "type": "string"
+        },
         "bucket_name": {
           "type": "string"
         },
@@ -11,6 +34,9 @@
         },
         "credential": {
           "type": "string"
+        },
+        "force": {
+          "type": "boolean"
         },
         "name": {
           "type": "string"
@@ -32,9 +58,6 @@
           "type": "string"
         },
         "cluster": {
-          "type": "string"
-        },
-        "config": {
           "type": "string"
         },
         "credential": {
@@ -74,13 +97,16 @@
         "auto_snapshot": {
           "type": "integer"
         },
+        "cluster_name": {
+          "type": "string"
+        },
         "created": {
           "type": "string"
         },
-        "kubernetes_phid": {
+        "kubernetes_service": {
           "type": "string"
         },
-        "kubernetes_service": {
+        "last_backup": {
           "type": "string"
         },
         "phid": {
@@ -182,9 +208,6 @@
         "cluster": {
           "type": "string"
         },
-        "config": {
-          "type": "string"
-        },
         "credential": {
           "type": "string"
         },
@@ -206,10 +229,38 @@
         "secret_name": {
           "type": "string"
         },
+        "sku": {
+          "type": "string"
+        },
         "snap_time": {
           "type": "string"
         },
         "type": {
+          "type": "string"
+        }
+      }
+    },
+    "dbSnapshot": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "zone": {
           "type": "string"
         }
       }
