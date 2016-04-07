@@ -73,6 +73,9 @@ enum StatusCode {
 
     // failed to transect the payment information
     TRANSACTION_FAILED = 15;
+
+    // to give ARE_YOU_SURE option
+    ARE_YOU_SURE = 16;
 }
 
 
