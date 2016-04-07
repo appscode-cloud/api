@@ -58,13 +58,16 @@
         "id": {
           "type": "string"
         },
+        "iops": {
+          "type": "integer"
+        },
         "kind": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "provider": {
+        "plugin": {
           "type": "string"
         },
         "size": {
@@ -116,6 +119,29 @@
         }
       }
     },
+    "pvDiskDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "plugin": {
+          "type": "string"
+        }
+      }
+    },
+    "pvDiskDescribeResponse": {
+      "properties": {
+        "disk": {
+          "$ref": "#/definitions/pvDisk"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "pvDiskListRequest": {
       "properties": {
         "cluster": {
@@ -125,17 +151,74 @@
     },
     "pvDiskListResponse": {
       "properties": {
-        "disk": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/pvDisk"
-          }
-        },
         "kube": {
           "type": "string"
         },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pvResult"
+          }
+        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "pvPV": {
+      "properties": {
+        "claim": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "plugin": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        }
+      }
+    },
+    "pvPVC": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        }
+      }
+    },
+    "pvResult": {
+      "properties": {
+        "disk": {
+          "$ref": "#/definitions/pvDisk"
+        },
+        "pv": {
+          "$ref": "#/definitions/pvPV"
+        },
+        "pvc": {
+          "$ref": "#/definitions/pvPVC"
         }
       }
     }
