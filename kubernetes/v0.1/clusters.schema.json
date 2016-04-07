@@ -139,14 +139,14 @@
         }
       }
     },
-    "kubernetesClusterConfigRequest": {
+    "kubernetesClusterClientConfigRequest": {
       "properties": {
         "name": {
           "type": "string"
         }
       }
     },
-    "kubernetesClusterConfigResponse": {
+    "kubernetesClusterClientConfigResponse": {
       "properties": {
         "configuration": {
           "type": "string"
@@ -217,6 +217,51 @@
         },
         "specs": {
           "$ref": "#/definitions/ClusterDescribeResponseSpecs"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesClusterInstance": {
+      "properties": {
+        "external_id": {
+          "type": "string"
+        },
+        "external_ip": {
+          "type": "string"
+        },
+        "internal_ip": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesClusterInstanceListRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesClusterInstanceListResponse": {
+      "properties": {
+        "instances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesClusterInstance"
+          }
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"

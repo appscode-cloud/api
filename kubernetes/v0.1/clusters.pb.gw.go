@@ -154,8 +154,8 @@ func request_Clusters_StartupScript_0(ctx context.Context, client ClustersClient
 
 }
 
-func request_Clusters_Config_0(ctx context.Context, client ClustersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ClusterConfigRequest
+func request_Clusters_ClientConfig_0(ctx context.Context, client ClustersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ClusterClientConfigRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -176,7 +176,34 @@ func request_Clusters_Config_0(ctx context.Context, client ClustersClient, req *
 		return nil, metadata, err
 	}
 
-	msg, err := client.Config(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.ClientConfig(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func request_Clusters_Instances_0(ctx context.Context, client ClustersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ClusterInstanceListRequest
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["cluster_name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+	}
+
+	protoReq.ClusterName, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	msg, err := client.Instances(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -349,7 +376,7 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 
 	})
 
-	mux.Handle("GET", pattern_Clusters_Config_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clusters_ClientConfig_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -361,14 +388,37 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Clusters_Config_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clusters_ClientConfig_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clusters_Config_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clusters_ClientConfig_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_Clusters_Instances_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		resp, md, err := request_Clusters_Instances_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, w, req, err)
+			return
+		}
+
+		forward_Clusters_Instances_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -388,7 +438,9 @@ var (
 
 	pattern_Clusters_StartupScript_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "kubernetes", "v0.1", "cluster-startup-script", "role"}, ""))
 
-	pattern_Clusters_Config_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "kubernetes", "v0.1", "clusters", "config", "name"}, ""))
+	pattern_Clusters_ClientConfig_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0.1", "clusters", "name", "client-config"}, ""))
+
+	pattern_Clusters_Instances_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0.1", "clusters", "cluster_name", "instances"}, ""))
 )
 
 var (
@@ -404,5 +456,7 @@ var (
 
 	forward_Clusters_StartupScript_0 = runtime.ForwardResponseMessage
 
-	forward_Clusters_Config_0 = runtime.ForwardResponseMessage
+	forward_Clusters_ClientConfig_0 = runtime.ForwardResponseMessage
+
+	forward_Clusters_Instances_0 = runtime.ForwardResponseMessage
 )
