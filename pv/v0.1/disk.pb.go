@@ -7,8 +7,8 @@ Package pv is a generated protocol buffer package.
 
 It is generated from these files:
 	disk.proto
-	pvc.proto
 	pv.proto
+	pvc.proto
 
 It has these top-level messages:
 	DiskCreateRequest
@@ -21,16 +21,16 @@ It has these top-level messages:
 	PVC
 	DiskDescribeRequest
 	DiskDescribeResponse
-	PVCRegisterRequest
-	PVCUnregisterRequest
-	PVCDescribeRequest
-	PVCInfo
-	PVCDescribeResponse
 	PVRegisterRequest
 	PVUnregisterRequest
 	PVDescribeRequest
 	PVInfo
 	PVDescribeResponse
+	PVCRegisterRequest
+	PVCUnregisterRequest
+	PVCDescribeRequest
+	PVCInfo
+	PVCDescribeResponse
 */
 package pv
 

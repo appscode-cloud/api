@@ -39,9 +39,12 @@ It has these top-level messages:
 	ClusterDeleteRequest
 	ClusterStartupScriptRequest
 	ClusterStartupScriptResponse
-	ClusterConfigRequest
-	ClusterConfigResponse
-	ClusterContainerRequest
+	ClusterClientConfigRequest
+	ClusterClientConfigResponse
+	ClusterClientContainerRequest
+	ClusterInstanceListRequest
+	ClusterInstance
+	ClusterInstanceListResponse
 */
 package kubernetes
 
