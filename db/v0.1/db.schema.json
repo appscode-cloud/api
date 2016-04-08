@@ -3,7 +3,10 @@
   "definitions": {
     "dbBackupListRequest": {
       "properties": {
-        "db_phid": {
+        "phid": {
+          "type": "string"
+        },
+        "type": {
           "type": "string"
         }
       }

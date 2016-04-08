@@ -32,7 +32,7 @@
         ]
       }
     },
-    "/api/db/v0.1/backup/list/{db_phid}": {
+    "/api/db/v0.1/backup/list/{type}": {
       "get": {
         "summary": "Databases.BackupList",
         "operationId": "BackupList",
@@ -46,7 +46,7 @@
         },
         "parameters": [
           {
-            "name": "db_phid",
+            "name": "type",
             "in": "path",
             "required": true,
             "type": "string",
@@ -263,7 +263,11 @@
   "definitions": {
     "dbBackupListRequest": {
       "properties": {
-        "db_phid": {
+        "phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "type": {
           "type": "string",
           "format": "string"
         }
