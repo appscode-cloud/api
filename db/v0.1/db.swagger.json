@@ -32,7 +32,7 @@
         ]
       }
     },
-    "/api/db/v0.1/backup/list/{type}": {
+    "/api/db/v0.1/backup/list/{identifier}": {
       "get": {
         "summary": "Databases.BackupList",
         "operationId": "BackupList",
@@ -46,7 +46,7 @@
         },
         "parameters": [
           {
-            "name": "type",
+            "name": "identifier",
             "in": "path",
             "required": true,
             "type": "string",
@@ -263,11 +263,7 @@
   "definitions": {
     "dbBackupListRequest": {
       "properties": {
-        "phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "type": {
+        "identifier": {
           "type": "string",
           "format": "string"
         }
@@ -317,6 +313,10 @@
           "format": "string"
         },
         "secret_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "snapshot_name": {
           "type": "string",
           "format": "string"
         },
@@ -550,7 +550,7 @@
           "type": "string",
           "format": "string"
         },
-        "snap_time": {
+        "snapshot_name": {
           "type": "string",
           "format": "string"
         },

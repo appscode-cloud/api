@@ -3,10 +3,7 @@
   "definitions": {
     "dbBackupListRequest": {
       "properties": {
-        "phid": {
-          "type": "string"
-        },
-        "type": {
+        "identifier": {
           "type": "string"
         }
       }
@@ -48,6 +45,9 @@
           "type": "string"
         },
         "secret_name": {
+          "type": "string"
+        },
+        "snapshot_name": {
           "type": "string"
         },
         "type": {
@@ -235,7 +235,7 @@
         "sku": {
           "type": "string"
         },
-        "snap_time": {
+        "snapshot_name": {
           "type": "string"
         },
         "type": {

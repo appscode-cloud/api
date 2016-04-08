@@ -28,7 +28,7 @@ service Databases {
 
   rpc BackupList(BackupListRequest) returns (BackupListResponse) {
     option (google.api.http) = {
-      get: "/api/db/v0.1/backup/list/{type}"
+      get: "/api/db/v0.1/backup/list/{identifier}"
     };
   }
 
@@ -78,10 +78,11 @@ message BackupRequest {
   string type = 3;
   string bucket_name = 4;
   string secret_name = 5;
-  string credential = 6;
-  string region = 7;
-  string auth_secret_name = 8;
-  bool force = 9;
+  string snapshot_name = 6;
+  string credential = 7;
+  string region = 8;
+  string auth_secret_name = 9;
+  bool force = 10;
 }
 
 message RestoreRequest {
@@ -92,7 +93,7 @@ message RestoreRequest {
   int64 pv_size = 5;
   string sku = 6;
   int32 node = 7;
-  string snap_time = 8;
+  string snapshot_name = 8;
   string bucket_name = 9;
   string credential = 10;
   string region = 11;
@@ -140,8 +141,7 @@ message Database {
 }
 
 message BackupListRequest {
-  string phid = 1;
-  string type = 2;
+  string identifier = 1;
 
 }
 
