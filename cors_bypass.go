@@ -5,6 +5,7 @@ import (
 	ci "github.com/appscode/api/ci/v0.1"
 	credential "github.com/appscode/api/credential/v0.1"
 	db "github.com/appscode/api/db/v0.1"
+	glusterfs "github.com/appscode/api/glusterfs/v0.1"
 	kubernetes "github.com/appscode/api/kubernetes/v0.1"
 	namespace "github.com/appscode/api/namespace/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
@@ -24,5 +25,6 @@ func Patterens() []runtime.Pattern {
 	ps = append(ps, db.Patterns()...)
 	ps = append(ps, ci.Patterns()...)
 	ps = append(ps, pv.Patterns()...)
+	ps = append(ps, glusterfs.Patterns()...)
 	return ps
 }
