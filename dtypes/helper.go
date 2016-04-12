@@ -2,10 +2,11 @@ package dtypes
 
 import (
 	"errors"
+	"strconv"
+
 	"github.com/golang/glog"
 	"github.com/golang/protobuf/proto"
 	google_protobuf "github.com/golang/protobuf/ptypes/any"
-	"strconv"
 )
 
 // Helper methods for status object.
@@ -13,8 +14,16 @@ const (
 	StatusCodeOK string = "0"
 )
 
+func (s *Status) StatusCode() StatusCode {
+	code, err := strconv.Atoi(s.Code)
+	if err != nil {
+		code = int(StatusCode_BADREQUEST)
+	}
+	return StatusCode(code)
+}
+
 // returns the status code string of the response status.
-func (s *Status) Status() string {
+func (s *Status) StatusCodeString() string {
 	code, err := strconv.Atoi(s.Code)
 	if err != nil {
 		code = int(StatusCode_BADREQUEST)
@@ -29,7 +38,7 @@ func (s *Status) IsOK() bool {
 	return false
 }
 
-func (s *Status) IsErr() bool {
+func (s *Status) IsError() bool {
 	if s.Code != StatusCodeOK {
 		return true
 	}
@@ -37,11 +46,11 @@ func (s *Status) IsErr() bool {
 }
 
 func (s *Status) Error() error {
-	return errors.New(s.Info)
+	return errors.New(s.Status)
 }
 
-func (s *Status) ErrorMessage() string {
-	return s.Info
+func (s *Status) StatusString() string {
+	return s.Status
 }
 
 // Adds any proto message in the details field of the Status message.

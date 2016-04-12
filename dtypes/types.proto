@@ -108,7 +108,7 @@ message Status {
     // Response status code
     string code = 1;
     // Response status code string details.
-    string info = 2;
+    string status = 2;
 
     // User facing message.
     string message = 3;

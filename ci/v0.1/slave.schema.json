@@ -139,10 +139,10 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "info": {
+        "message": {
           "type": "string"
         },
-        "message": {
+        "status": {
           "type": "string"
         }
       }
