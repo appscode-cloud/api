@@ -266,6 +266,10 @@
         "db_phid": {
           "type": "string",
           "format": "string"
+        },
+        "identifier": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -313,6 +317,10 @@
           "format": "string"
         },
         "secret_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "snapshot_name": {
           "type": "string",
           "format": "string"
         },
@@ -547,6 +555,10 @@
           "format": "string"
         },
         "snap_time": {
+          "type": "string",
+          "format": "string"
+        },
+        "snapshot_name": {
           "type": "string",
           "format": "string"
         },

@@ -5,6 +5,9 @@
       "properties": {
         "db_phid": {
           "type": "string"
+        },
+        "identifier": {
+          "type": "string"
         }
       }
     },
@@ -45,6 +48,9 @@
           "type": "string"
         },
         "secret_name": {
+          "type": "string"
+        },
+        "snapshot_name": {
           "type": "string"
         },
         "type": {
@@ -233,6 +239,9 @@
           "type": "string"
         },
         "snap_time": {
+          "type": "string"
+        },
+        "snapshot_name": {
           "type": "string"
         },
         "type": {

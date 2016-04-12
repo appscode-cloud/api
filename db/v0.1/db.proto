@@ -82,6 +82,7 @@ message BackupRequest {
   string region = 7;
   string auth_secret_name = 8;
   bool force = 9;
+  string snapshot_name = 10;
 }
 
 message RestoreRequest {
@@ -97,6 +98,7 @@ message RestoreRequest {
   string credential = 10;
   string region = 11;
   string secret_name = 12;
+  string snapshot_name = 13;
 }
 
 message DescribeRequest {
