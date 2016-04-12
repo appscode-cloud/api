@@ -32,6 +32,12 @@ service Clusters {
   	};
   }
 
+  rpc Update(ClusterUpdateRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+       get : "/api/kubernetes/v0.1/clusters/{name}"
+    };
+  }
+
   rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
      option (google.api.http) = {
        get : "/api/kubernetes/v0.1/clusters"
@@ -44,10 +50,15 @@ service Clusters {
      };
   }
 
-  // TODO(sanjid): rename to ClientConfig
-  rpc Config(ClusterConfigRequest) returns (ClusterConfigResponse) {
+  rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
      option (google.api.http) = {
-       get : "/api/kubernetes/v0.1/clusters/config/{name}"
+       get : "/api/kubernetes/v0.1/clusters/{name}/client-config"
+     };
+  }
+
+  rpc Instances(ClusterInstanceListRequest) returns (ClusterInstanceListResponse) {
+     option (google.api.http) = {
+       get : "/api/kubernetes/v0.1/clusters/{cluster_name}/instances"
      };
   }
 }
@@ -127,16 +138,39 @@ message ClusterStartupScriptResponse {
   string configuration = 2;
 }
 
-message ClusterConfigRequest {
+message ClusterClientConfigRequest {
   string name = 1;
 }
 
-message ClusterConfigResponse {
+message ClusterClientConfigResponse {
   dtypes.Status status = 1;
   string configuration = 2;
 }
 
-message ClusterContainerRequest {
+message ClusterClientContainerRequest {
+  string name = 1;
+  string disk_name = 2;
+}
+
+message ClusterInstanceListRequest {
+  string cluster_name = 1;
+}
+
+message ClusterInstance {
+  string phid = 1;
+  string external_id = 2;
+  string name = 3;
+  string external_ip = 4;
+  string internal_ip = 5;
+  string role = 6;
+  string sku = 7;
+}
+
+message ClusterInstanceListResponse {
+  dtypes.Status status = 1;
+  repeated ClusterInstance instances = 2;
+}
+
+message ClusterUpdateRequest {
     string name = 1;
-    string disk_name = 2;
 }

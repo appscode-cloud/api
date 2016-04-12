@@ -32,6 +32,32 @@
         ]
       }
     },
+    "/api/db/v0.1/backup/list/{db_phid}": {
+      "get": {
+        "summary": "Databases.BackupList",
+        "operationId": "BackupList",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dbBackupListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "db_phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
     "/api/db/v0.1/backup/{cluster}/{type}": {
       "post": {
         "summary": "Databases.Backup",
@@ -235,8 +261,33 @@
     }
   },
   "definitions": {
+    "dbBackupListRequest": {
+      "properties": {
+        "db_phid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dbBackupListResponse": {
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dbSnapshot"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "dbBackupRequest": {
       "properties": {
+        "auth_secret_name": {
+          "type": "string",
+          "format": "string"
+        },
         "bucket_name": {
           "type": "string",
           "format": "string"
@@ -248,6 +299,10 @@
         "credential": {
           "type": "string",
           "format": "string"
+        },
+        "force": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "name": {
           "type": "string",
@@ -274,10 +329,6 @@
           "format": "string"
         },
         "cluster": {
-          "type": "string",
-          "format": "string"
-        },
-        "config": {
           "type": "string",
           "format": "string"
         },
@@ -329,15 +380,19 @@
           "type": "integer",
           "format": "int32"
         },
+        "cluster_name": {
+          "type": "string",
+          "format": "string"
+        },
         "created": {
           "type": "string",
           "format": "string"
         },
-        "kubernetes_phid": {
+        "kubernetes_service": {
           "type": "string",
           "format": "string"
         },
-        "kubernetes_service": {
+        "last_backup": {
           "type": "string",
           "format": "string"
         },
@@ -459,10 +514,6 @@
           "type": "string",
           "format": "string"
         },
-        "config": {
-          "type": "string",
-          "format": "string"
-        },
         "credential": {
           "type": "string",
           "format": "string"
@@ -491,11 +542,47 @@
           "type": "string",
           "format": "string"
         },
+        "sku": {
+          "type": "string",
+          "format": "string"
+        },
         "snap_time": {
           "type": "string",
           "format": "string"
         },
         "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dbSnapshot": {
+      "properties": {
+        "bucket": {
+          "type": "string",
+          "format": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "provider": {
+          "type": "string",
+          "format": "string"
+        },
+        "region": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "type": "string",
+          "format": "string"
+        },
+        "zone": {
           "type": "string",
           "format": "string"
         }
@@ -528,11 +615,11 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "message": {
+        "info": {
           "type": "string",
           "format": "string"
         },
-        "status": {
+        "message": {
           "type": "string",
           "format": "string"
         }

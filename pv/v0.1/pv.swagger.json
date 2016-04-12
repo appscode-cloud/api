@@ -15,15 +15,15 @@
     "application/json"
   ],
   "paths": {
-    "/api/pv/v0.1/{cluster}": {
+    "/api/pv/v0.1/{cluster}/{name}": {
       "get": {
-        "summary": "PersistentVolumes.List",
-        "operationId": "List",
+        "summary": "PersistentVolumes.Describe",
+        "operationId": "Describe",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/pvPVListResponse"
+              "$ref": "#/definitions/pvPVDescribeResponse"
             }
           }
         },
@@ -34,14 +34,19 @@
             "required": true,
             "type": "string",
             "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
           }
         ],
         "tags": [
           "PersistentVolumes"
         ]
-      }
-    },
-    "/api/pv/v0.1/{cluster}/{name}": {
+      },
       "delete": {
         "summary": "PersistentVolumes.Unregister",
         "operationId": "Unregister",
@@ -142,11 +147,11 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "message": {
+        "info": {
           "type": "string",
           "format": "string"
         },
-        "status": {
+        "message": {
           "type": "string",
           "format": "string"
         }
@@ -171,13 +176,46 @@
         }
       }
     },
-    "pvPV": {
+    "pvPVDescribeRequest": {
       "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "pvPVDescribeResponse": {
+      "properties": {
+        "pv": {
+          "$ref": "#/definitions/pvPVInfo"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "pvPVInfo": {
+      "properties": {
+        "accessModes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
         "claim": {
           "type": "string",
           "format": "string"
         },
         "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "plugin": {
           "type": "string",
           "format": "string"
         },
@@ -189,43 +227,19 @@
           "type": "string",
           "format": "string"
         },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
-        },
         "volume": {
           "type": "string",
           "format": "string"
         }
       }
     },
-    "pvPVListRequest": {
+    "pvPVRegisterRequest": {
       "properties": {
         "cluster": {
           "type": "string",
           "format": "string"
-        }
-      }
-    },
-    "pvPVListResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
         },
-        "volumes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/pvPV"
-          }
-        }
-      }
-    },
-    "pvPVRegisterRequest": {
-      "properties": {
-        "cluster": {
+        "endpoint": {
           "type": "string",
           "format": "string"
         },
@@ -237,11 +251,7 @@
           "type": "string",
           "format": "string"
         },
-        "path": {
-          "type": "string",
-          "format": "string"
-        },
-        "provider": {
+        "plugin": {
           "type": "string",
           "format": "string"
         },

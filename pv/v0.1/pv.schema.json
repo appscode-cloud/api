@@ -25,10 +25,10 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "message": {
+        "info": {
           "type": "string"
         },
-        "status": {
+        "message": {
           "type": "string"
         }
       }
@@ -50,12 +50,41 @@
         }
       }
     },
-    "pvPV": {
+    "pvPVDescribeRequest": {
       "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "pvPVDescribeResponse": {
+      "properties": {
+        "pv": {
+          "$ref": "#/definitions/pvPVInfo"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "pvPVInfo": {
+      "properties": {
+        "accessModes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "claim": {
           "type": "string"
         },
         "name": {
+          "type": "string"
+        },
+        "plugin": {
           "type": "string"
         },
         "size": {
@@ -64,34 +93,8 @@
         "status": {
           "type": "string"
         },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "volume": {
           "type": "string"
-        }
-      }
-    },
-    "pvPVListRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        }
-      }
-    },
-    "pvPVListResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "volumes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/pvPV"
-          }
         }
       }
     },
@@ -100,16 +103,16 @@
         "cluster": {
           "type": "string"
         },
+        "endpoint": {
+          "type": "string"
+        },
         "identifier": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "path": {
-          "type": "string"
-        },
-        "provider": {
+        "plugin": {
           "type": "string"
         },
         "size": {
