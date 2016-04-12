@@ -141,6 +141,7 @@ message Database {
 
 message BackupListRequest {
   string db_phid = 1;
+  string identifier = 2;
 }
 
 message BackupListResponse {
