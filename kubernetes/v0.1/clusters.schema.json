@@ -311,6 +311,13 @@
         }
       }
     },
+    "kubernetesClusterUpdateRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
     "protobufAny": {
       "properties": {
         "type_url": {

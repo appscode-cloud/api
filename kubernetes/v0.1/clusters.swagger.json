@@ -136,13 +136,13 @@
     },
     "/api/kubernetes/v0.1/clusters/{name}": {
       "get": {
-        "summary": "Clusters.Describe",
-        "operationId": "Describe",
+        "summary": "Clusters.Update",
+        "operationId": "Update",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/kubernetesClusterDescribeResponse"
+              "$ref": "#/definitions/dtypesLongRunningResponse"
             }
           }
         },
@@ -573,6 +573,14 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesClusterUpdateRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
