@@ -45,6 +45,7 @@ It has these top-level messages:
 	ClusterInstanceListRequest
 	ClusterInstance
 	ClusterInstanceListResponse
+	ClusterUpdateRequest
 */
 package kubernetes
 
