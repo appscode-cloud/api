@@ -3,10 +3,7 @@
   "definitions": {
     "dbBackupListRequest": {
       "properties": {
-        "identifier": {
-          "type": "string"
-        },
-        "identifier": {
+        "name": {
           "type": "string"
         }
       }
@@ -88,6 +85,9 @@
           "type": "string"
         },
         "type": {
+          "type": "string"
+        },
+        "version": {
           "type": "string"
         }
       }
@@ -241,10 +241,10 @@
         "snapshot_name": {
           "type": "string"
         },
-        "snapshot_name": {
+        "type": {
           "type": "string"
         },
-        "type": {
+        "version": {
           "type": "string"
         }
       }

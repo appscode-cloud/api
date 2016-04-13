@@ -64,6 +64,7 @@ message CreateRequest {
   string region = 8;
   string bucket_name = 9;
   string credential = 10;
+  string version = 11;
 }
 
 message DeleteRequest {
@@ -98,6 +99,7 @@ message RestoreRequest {
   string credential = 10;
   string region = 11;
   string secret_name = 12;
+  string version = 13;
 }
 
 message DescribeRequest {

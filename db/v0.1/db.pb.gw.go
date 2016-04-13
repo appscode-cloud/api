@@ -163,10 +163,6 @@ func request_Databases_Backup_0(ctx context.Context, client DatabasesClient, req
 
 }
 
-var (
-	filter_Databases_BackupList_0 = &utilities.DoubleArray{Encoding: map[string]int{"db_phid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
 func request_Databases_BackupList_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq BackupListRequest
 	var metadata runtime.ServerMetadata
@@ -178,19 +174,15 @@ func request_Databases_BackupList_0(ctx context.Context, client DatabasesClient,
 		_   = err
 	)
 
-	val, ok = pathParams["identifier"]
+	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "identifier")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
-	protoReq.Identifier, err = runtime.String(val)
+	protoReq.Name, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
-	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Databases_BackupList_0); err != nil {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.BackupList(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -499,7 +491,7 @@ var (
 
 	pattern_Databases_Backup_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0.1", "backup", "cluster", "type"}, ""))
 
-	pattern_Databases_BackupList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0.1", "backup", "list", "identifier"}, ""))
+	pattern_Databases_BackupList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0.1", "backup", "list", "name"}, ""))
 
 	pattern_Databases_Restore_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0.1", "restore", "cluster", "type"}, ""))
 
