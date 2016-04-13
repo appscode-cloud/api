@@ -15,7 +15,8 @@ service Master {
 }
 
 message MasterCreateRequest {
-    string volume_id = 1;
+    string cluster_name = 1;
+    string volume_id = 2;
 }
 
 message MasterCreateResponse {

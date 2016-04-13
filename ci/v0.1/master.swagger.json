@@ -46,6 +46,10 @@
   "definitions": {
     "ciMasterCreateRequest": {
       "properties": {
+        "cluster_name": {
+          "type": "string",
+          "format": "string"
+        },
         "volume_id": {
           "type": "string",
           "format": "string"
