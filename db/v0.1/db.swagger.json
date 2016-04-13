@@ -266,6 +266,10 @@
         "identifier": {
           "type": "string",
           "format": "string"
+        },
+        "identifier": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -547,6 +551,10 @@
           "format": "string"
         },
         "sku": {
+          "type": "string",
+          "format": "string"
+        },
+        "snapshot_name": {
           "type": "string",
           "format": "string"
         },

@@ -163,6 +163,10 @@ func request_Databases_Backup_0(ctx context.Context, client DatabasesClient, req
 
 }
 
+var (
+	filter_Databases_BackupList_0 = &utilities.DoubleArray{Encoding: map[string]int{"db_phid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+)
+
 func request_Databases_BackupList_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq BackupListRequest
 	var metadata runtime.ServerMetadata
@@ -183,6 +187,10 @@ func request_Databases_BackupList_0(ctx context.Context, client DatabasesClient,
 
 	if err != nil {
 		return nil, metadata, err
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Databases_BackupList_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.BackupList(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))

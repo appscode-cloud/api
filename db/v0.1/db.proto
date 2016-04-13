@@ -28,7 +28,7 @@ service Databases {
 
   rpc BackupList(BackupListRequest) returns (BackupListResponse) {
     option (google.api.http) = {
-      get: "/api/db/v0.1/backup/list/{identifier}"
+      get: "/api/db/v0.1/backup/list/{name}"
     };
   }
 
@@ -141,8 +141,7 @@ message Database {
 }
 
 message BackupListRequest {
-  string identifier = 1;
-
+  string name = 1;
 }
 
 message BackupListResponse {

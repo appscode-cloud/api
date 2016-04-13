@@ -14,6 +14,7 @@ enum OperationType {
   NAMESPACE_CREATE = 4;
   SLAVE_CREATE = 5;
   SLAVE_DELETE = 6;
+  CLUSTER_UPDATE = 7;
 }
 
 // Next Id: 10
@@ -26,6 +27,7 @@ message Operation {
     kubernetes.ClusterDeleteRequest cluster_delete_request = 5;
     ci.SlaveCreateRequest ci_slave_create_request = 6;
     ci.SlaveDeleteRequest ci_slave_delete_request = 7;
+    kubernetes.ClusterUpdateRequest cluster_update_request = 11;
   }
   Auth auth = 8;
   int64 request_time = 9;

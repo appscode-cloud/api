@@ -5,6 +5,9 @@
       "properties": {
         "identifier": {
           "type": "string"
+        },
+        "identifier": {
+          "type": "string"
         }
       }
     },
@@ -233,6 +236,9 @@
           "type": "string"
         },
         "sku": {
+          "type": "string"
+        },
+        "snapshot_name": {
           "type": "string"
         },
         "snapshot_name": {
