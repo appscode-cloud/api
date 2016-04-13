@@ -18,6 +18,20 @@
         }
       }
     },
+    "ciMasterDeleteRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
+        }
+      }
+    },
+    "ciMasterDeleteResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "dtypesHelp": {
       "properties": {
         "description": {

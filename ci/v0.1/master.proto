@@ -12,6 +12,13 @@ service Master {
       body: "*"
     };
   }
+
+  rpc Delete(MasterDeleteRequest) returns (MasterDeleteResponse) {
+    option (google.api.http) = {
+      put: "/api/ci/v0.1/master"
+      body: "*"
+    };
+  }
 }
 
 message MasterCreateRequest {
@@ -21,4 +28,12 @@ message MasterCreateRequest {
 
 message MasterCreateResponse {
     dtypes.Status status = 1;
+}
+
+message MasterDeleteRequest {
+  string cluster_name = 1;
+}
+
+message MasterDeleteResponse {
+  dtypes.Status status = 1;
 }
