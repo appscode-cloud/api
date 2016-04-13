@@ -26,9 +26,9 @@ service Databases {
     };
   }
 
-  rpc BackupList(BackupListRequest) returns (BackupListResponse) {
+  rpc SnapshotList(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
-      get: "/api/db/v0.1/backup/list/{name}"
+      get: "/api/db/v0.1/snapshots"
     };
   }
 
@@ -45,7 +45,7 @@ service Databases {
     };
   }
 
-  rpc List(dtypes.VoidRequest) returns (ListResponse) {
+  rpc List(ListRequest) returns (ListResponse) {
     option (google.api.http) = {
       get: "/api/db/v0.1"
     };
@@ -94,12 +94,13 @@ message RestoreRequest {
   int64 pv_size = 5;
   string sku = 6;
   int32 node = 7;
-  string snapshot_name = 8;
+  string snapshot_phid = 8;
   string bucket_name = 9;
   string credential = 10;
   string region = 11;
   string secret_name = 12;
   string version = 13;
+  bool force = 14;
 }
 
 message DescribeRequest {
@@ -123,6 +124,11 @@ message DbPodSpecs {
   string type = 5;
 }
 
+message ListRequest {
+  string phid = 1;
+}
+
+
 message ListResponse {
   dtypes.Status status = 1;
   repeated Database databases = 2;
@@ -132,21 +138,24 @@ message Database {
   string phid = 1;
   string cluster_name = 2;
   string kubernetes_service = 3;
-  string type = 4;
-  string sku = 5;
-  string archive_bucket = 6;
-  string archive_bucket_region = 7;
-  int32 auto_snapshot = 8;
-  int64 pv_size = 9;
-  string created = 10;
-  string last_backup = 11;
+  string namespace = 4;
+  string type = 5;
+  string sku = 6;
+  string version = 7;
+  string archive_bucket = 8;
+  string archive_bucket_region = 9;
+  int32 auto_snapshot = 10;
+  int64 pv_size = 11;
+  string created = 12;
+  string last_backup = 13;
 }
 
-message BackupListRequest {
-  string name = 1;
+message SnapshotListRequest {
+  string type = 1;
+  string phid = 2;
 }
 
-message BackupListResponse {
+message SnapshotListResponse {
   dtypes.Status status = 1;
   repeated Snapshot list = 2;
 }
@@ -158,5 +167,8 @@ message Snapshot {
   string region = 4;
   string zone = 5;
   string status = 6;
-  string created = 7;
+  string process = 7;
+  string restore_db = 8;
+  string restore_snap = 9;
+  string created = 10;
 }
