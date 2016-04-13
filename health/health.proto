@@ -20,13 +20,13 @@ message Response {
 }
 
 message Version {
-  string Name = 1;
-  string version = 2;
-  string status = 3;
-  string endpoint = 4;
-  string commit_hash = 5;
+  string version = 1;
+  string status = 2;
+  string endpoint = 3;
+  string commit_hash = 4;
 
   // Only development mode informations.
+  string Name = 5;
   string git_branch = 6;
   string git_tag = 7;
   string commit_timestamp = 8;
