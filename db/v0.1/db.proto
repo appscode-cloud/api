@@ -171,4 +171,6 @@ message Snapshot {
   string restore_db = 8;
   string restore_snap = 9;
   string created = 10;
+  string db_name = 11;
+  string db_cluster = 12;
 }

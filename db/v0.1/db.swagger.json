@@ -568,6 +568,14 @@
           "type": "string",
           "format": "string"
         },
+        "db_cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "db_name": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
           "type": "string",
           "format": "string"

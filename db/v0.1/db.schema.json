@@ -253,6 +253,12 @@
         "created": {
           "type": "string"
         },
+        "db_cluster": {
+          "type": "string"
+        },
+        "db_name": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
