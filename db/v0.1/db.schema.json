@@ -1,29 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "dbBackupListRequest": {
-      "properties": {
-        "db_phid": {
-          "type": "string"
-        },
-        "identifier": {
-          "type": "string"
-        }
-      }
-    },
-    "dbBackupListResponse": {
-      "properties": {
-        "list": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dbSnapshot"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
     "dbBackupRequest": {
       "properties": {
         "auth_secret_name": {
@@ -89,6 +66,9 @@
         },
         "type": {
           "type": "string"
+        },
+        "version": {
+          "type": "string"
         }
       }
     },
@@ -115,6 +95,9 @@
         "last_backup": {
           "type": "string"
         },
+        "namespace": {
+          "type": "string"
+        },
         "phid": {
           "type": "string"
         },
@@ -125,6 +108,9 @@
           "type": "string"
         },
         "type": {
+          "type": "string"
+        },
+        "version": {
           "type": "string"
         }
       }
@@ -193,6 +179,13 @@
         }
       }
     },
+    "dbListRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      }
+    },
     "dbListResponse": {
       "properties": {
         "databases": {
@@ -217,6 +210,9 @@
         "credential": {
           "type": "string"
         },
+        "force": {
+          "type": "boolean"
+        },
         "name": {
           "type": "string"
         },
@@ -238,13 +234,13 @@
         "sku": {
           "type": "string"
         },
-        "snap_time": {
-          "type": "string"
-        },
-        "snapshot_name": {
+        "snapshot_phid": {
           "type": "string"
         },
         "type": {
+          "type": "string"
+        },
+        "version": {
           "type": "string"
         }
       }
@@ -260,10 +256,19 @@
         "name": {
           "type": "string"
         },
+        "process": {
+          "type": "string"
+        },
         "provider": {
           "type": "string"
         },
         "region": {
+          "type": "string"
+        },
+        "restore_db": {
+          "type": "string"
+        },
+        "restore_snap": {
           "type": "string"
         },
         "status": {
@@ -271,6 +276,29 @@
         },
         "zone": {
           "type": "string"
+        }
+      }
+    },
+    "dbSnapshotListRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "dbSnapshotListResponse": {
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dbSnapshot"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },
@@ -306,7 +334,6 @@
         }
       }
     },
-    "dtypesVoidRequest": {},
     "dtypesVoidResponse": {
       "properties": {
         "status": {

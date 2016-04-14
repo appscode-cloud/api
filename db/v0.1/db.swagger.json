@@ -32,32 +32,6 @@
         ]
       }
     },
-    "/api/db/v0.1/backup/list/{db_phid}": {
-      "get": {
-        "summary": "Databases.BackupList",
-        "operationId": "BackupList",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dbBackupListResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "db_phid",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Databases"
-        ]
-      }
-    },
     "/api/db/v0.1/backup/{cluster}/{type}": {
       "post": {
         "summary": "Databases.Backup",
@@ -135,6 +109,23 @@
             }
           }
         ],
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
+    "/api/db/v0.1/snapshots": {
+      "get": {
+        "summary": "Databases.SnapshotList",
+        "operationId": "SnapshotList",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dbSnapshotListResponse"
+            }
+          }
+        },
         "tags": [
           "Databases"
         ]
@@ -261,31 +252,6 @@
     }
   },
   "definitions": {
-    "dbBackupListRequest": {
-      "properties": {
-        "db_phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "identifier": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "dbBackupListResponse": {
-      "properties": {
-        "list": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dbSnapshot"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
     "dbBackupRequest": {
       "properties": {
         "auth_secret_name": {
@@ -371,6 +337,10 @@
         "type": {
           "type": "string",
           "format": "string"
+        },
+        "version": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -404,6 +374,10 @@
           "type": "string",
           "format": "string"
         },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
         "phid": {
           "type": "string",
           "format": "string"
@@ -417,6 +391,10 @@
           "format": "string"
         },
         "type": {
+          "type": "string",
+          "format": "string"
+        },
+        "version": {
           "type": "string",
           "format": "string"
         }
@@ -499,6 +477,14 @@
         }
       }
     },
+    "dbListRequest": {
+      "properties": {
+        "phid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
     "dbListResponse": {
       "properties": {
         "databases": {
@@ -525,6 +511,10 @@
         "credential": {
           "type": "string",
           "format": "string"
+        },
+        "force": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "name": {
           "type": "string",
@@ -554,15 +544,15 @@
           "type": "string",
           "format": "string"
         },
-        "snap_time": {
-          "type": "string",
-          "format": "string"
-        },
-        "snapshot_name": {
+        "snapshot_phid": {
           "type": "string",
           "format": "string"
         },
         "type": {
+          "type": "string",
+          "format": "string"
+        },
+        "version": {
           "type": "string",
           "format": "string"
         }
@@ -582,11 +572,23 @@
           "type": "string",
           "format": "string"
         },
+        "process": {
+          "type": "string",
+          "format": "string"
+        },
         "provider": {
           "type": "string",
           "format": "string"
         },
         "region": {
+          "type": "string",
+          "format": "string"
+        },
+        "restore_db": {
+          "type": "string",
+          "format": "string"
+        },
+        "restore_snap": {
           "type": "string",
           "format": "string"
         },
@@ -597,6 +599,31 @@
         "zone": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "dbSnapshotListRequest": {
+      "properties": {
+        "phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dbSnapshotListResponse": {
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dbSnapshot"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },
@@ -637,7 +664,6 @@
         }
       }
     },
-    "dtypesVoidRequest": {},
     "dtypesVoidResponse": {
       "properties": {
         "status": {
