@@ -3,12 +3,29 @@
   "definitions": {
     "ciMasterCreateRequest": {
       "properties": {
+        "cluster_name": {
+          "type": "string"
+        },
         "volume_id": {
           "type": "string"
         }
       }
     },
     "ciMasterCreateResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "ciMasterDeleteRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
+        }
+      }
+    },
+    "ciMasterDeleteResponse": {
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"

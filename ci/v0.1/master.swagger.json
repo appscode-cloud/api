@@ -17,13 +17,13 @@
   "paths": {
     "/api/ci/v0.1/master": {
       "put": {
-        "summary": "Master.Create",
-        "operationId": "Create",
+        "summary": "Master.Delete",
+        "operationId": "Delete",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/ciMasterCreateResponse"
+              "$ref": "#/definitions/ciMasterDeleteResponse"
             }
           }
         },
@@ -33,7 +33,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ciMasterCreateRequest"
+              "$ref": "#/definitions/ciMasterDeleteRequest"
             }
           }
         ],
@@ -46,6 +46,10 @@
   "definitions": {
     "ciMasterCreateRequest": {
       "properties": {
+        "cluster_name": {
+          "type": "string",
+          "format": "string"
+        },
         "volume_id": {
           "type": "string",
           "format": "string"
@@ -53,6 +57,21 @@
       }
     },
     "ciMasterCreateResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "ciMasterDeleteRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ciMasterDeleteResponse": {
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
