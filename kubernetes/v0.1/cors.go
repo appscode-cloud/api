@@ -21,6 +21,8 @@ func Patterns() []runtime.Pattern {
 	patterns = append(patterns, pattern_Clients_Apps_0)
 	patterns = append(patterns, pattern_Clients_App_0)
 	patterns = append(patterns, pattern_Clients_AppPods_0)
+	patterns = append(patterns, pattern_Clients_ConfigMaps_0)
+	patterns = append(patterns, pattern_Clients_ConfigMapDescribe_0)
 
 	return patterns
 }
