@@ -18,6 +18,6 @@ message BucketListRequest {
 }
 
 message BucketListResponse {
-  repeated string name = 1;
-  dtypes.Status status = 2;
+  dtypes.Status status = 1;
+  repeated string name = 2;
 }
