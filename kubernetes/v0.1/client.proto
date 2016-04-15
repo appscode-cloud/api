@@ -78,8 +78,6 @@ service Clients {
     };
   }
 
-
-
 }
 
 
@@ -291,5 +289,4 @@ message ConfigMapDescribeResponse {
   string cluster = 4;
   string created_time = 5;
   map <string, string> data = 6;
-
 }
