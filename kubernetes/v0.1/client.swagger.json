@@ -121,6 +121,32 @@
         ]
       }
     },
+    "/api/kubernetes/v0.1/client/{cluster}/configmaps": {
+      "get": {
+        "summary": "Clients.ConfigMaps",
+        "operationId": "ConfigMaps",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesConfigMapListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
     "/api/kubernetes/v0.1/client/{cluster}/jobs": {
       "get": {
         "summary": "Clients.Jobs",
@@ -462,6 +488,20 @@
         "cluster": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "kubernetesConfigMapListResponse": {
+      "properties": {
+        "map": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },

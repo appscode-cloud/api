@@ -137,6 +137,19 @@
         }
       }
     },
+    "kubernetesConfigMapListResponse": {
+      "properties": {
+        "map": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "kubernetesContainer": {
       "properties": {
         "commands": {
