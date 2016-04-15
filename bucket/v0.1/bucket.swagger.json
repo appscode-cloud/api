@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/buckets/v0.1/{cloud}": {
+    "/api/buckets/v0.1": {
       "get": {
         "summary": "Buckets.List",
         "operationId": "List",
@@ -27,15 +27,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "cloudCredential",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
         "tags": [
           "Buckets"
         ]
