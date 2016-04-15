@@ -147,6 +147,46 @@
         ]
       }
     },
+    "/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}": {
+      "get": {
+        "summary": "Clients.ConfigMapDescribe",
+        "operationId": "ConfigMapDescribe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesConfigMapDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "namespace",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
     "/api/kubernetes/v0.1/client/{cluster}/jobs": {
       "get": {
         "summary": "Clients.Jobs",
@@ -331,6 +371,18 @@
     }
   },
   "definitions": {
+    "ConfigMapDescribeResponseDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
     "NodeNodeCapacity": {
       "properties": {
         "cpu": {
@@ -491,13 +543,57 @@
         }
       }
     },
-    "kubernetesConfigMapListResponse": {
+    "kubernetesConfigMapDescribeRequest": {
       "properties": {
-        "map": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesConfigMapDescribeResponse": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "created_time": {
+          "type": "string",
+          "format": "string"
+        },
+        "data": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "string"
+            "$ref": "#/definitions/ConfigMapDescribeResponseDataEntry"
+          }
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesConfigMapListResponse": {
+      "properties": {
+        "config_map": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesMapInformation"
           }
         },
         "status": {
@@ -588,6 +684,30 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesMapInformation": {
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "data": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "map": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "resource_version": {
+          "type": "string",
+          "format": "string"
         }
       }
     },

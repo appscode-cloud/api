@@ -370,6 +370,55 @@ func request_Clients_ConfigMaps_0(ctx context.Context, client ClientsClient, req
 
 }
 
+func request_Clients_ConfigMapDescribe_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ConfigMapDescribeRequest
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["cluster"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+	}
+
+	protoReq.Cluster, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["namespace"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
+	}
+
+	protoReq.Namespace, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+	}
+
+	protoReq.Name, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	msg, err := client.ConfigMapDescribe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
 // RegisterClientsHandlerFromEndpoint is same as RegisterClientsHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
 func RegisterClientsHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
@@ -653,6 +702,29 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	})
 
+	mux.Handle("GET", pattern_Clients_ConfigMapDescribe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		resp, md, err := request_Clients_ConfigMapDescribe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, w, req, err)
+			return
+		}
+
+		forward_Clients_ConfigMapDescribe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	return nil
 }
 
@@ -678,6 +750,8 @@ var (
 	pattern_Clients_AppPods_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "apps", "namespace", "name", "pods"}, ""))
 
 	pattern_Clients_ConfigMaps_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "configmaps"}, ""))
+
+	pattern_Clients_ConfigMapDescribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "configmaps", "namespace", "name"}, ""))
 )
 
 var (
@@ -702,4 +776,6 @@ var (
 	forward_Clients_AppPods_0 = runtime.ForwardResponseMessage
 
 	forward_Clients_ConfigMaps_0 = runtime.ForwardResponseMessage
+
+	forward_Clients_ConfigMapDescribe_0 = runtime.ForwardResponseMessage
 )

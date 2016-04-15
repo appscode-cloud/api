@@ -72,6 +72,14 @@ service Clients {
     };
   }
 
+  rpc ConfigMapDescribe(ConfigMapDescribeRequest) returns (ConfigMapDescribeResponse) {
+    option (google.api.http) = {
+      get : "/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}"
+    };
+  }
+
+
+
 }
 
 
@@ -259,5 +267,29 @@ message ReplicationController {
 
 message ConfigMapListResponse {
   dtypes.Status status = 1;
-  repeated string map = 2;
+  repeated MapInformation config_map = 2;
+}
+
+message MapInformation {
+  string map = 1;
+  string namespace = 2;
+  int64 data = 3;
+  string created_at = 4;
+  string resource_version = 5;
+}
+
+message ConfigMapDescribeRequest {
+  string cluster = 1;
+  string name = 2;
+  string namespace = 3;
+}
+
+message ConfigMapDescribeResponse {
+  dtypes.Status status = 1;
+  string name = 2;
+  string namespace = 3;
+  string cluster = 4;
+  string created_time = 5;
+  map <string, string> data = 6;
+
 }
