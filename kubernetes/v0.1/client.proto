@@ -78,6 +78,12 @@ service Clients {
     };
   }
 
+  rpc SecretDescribe(SecretDescribeRequest) returns (SecretDescribeResponse) {
+    option (google.api.http) = {
+      get : "/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}"
+    };
+  }
+
 }
 
 
@@ -289,4 +295,21 @@ message ConfigMapDescribeResponse {
   string cluster = 4;
   string created_time = 5;
   map <string, string> data = 6;
+}
+
+message SecretDescribeRequest {
+  string cluster = 1;
+  string name = 2;
+  string namespace = 3;
+}
+
+message SecretDescribeResponse {
+  dtypes.Status status = 1;
+  string cluster = 2;
+  string name = 3;
+  string namespace = 4;
+  string created_at = 5;
+  string resource_version = 6;
+  string type = 7;
+  map <string, string> data = 8;
 }
