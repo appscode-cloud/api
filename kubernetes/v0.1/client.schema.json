@@ -275,10 +275,7 @@
         "created_at": {
           "type": "string"
         },
-        "data": {
-          "type": "integer"
-        },
-        "map": {
+        "name": {
           "type": "string"
         },
         "namespace": {
@@ -286,6 +283,9 @@
         },
         "resource_version": {
           "type": "string"
+        },
+        "size": {
+          "type": "integer"
         }
       }
     },

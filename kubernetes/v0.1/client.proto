@@ -72,15 +72,15 @@ service Clients {
     };
   }
 
-  rpc ConfigMapDescribe(ConfigMapDescribeRequest) returns (ConfigMapDescribeResponse) {
+  rpc ConfigMap(ConfigMapDescribeRequest) returns (ConfigMapDescribeResponse) {
     option (google.api.http) = {
-      get : "/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}"
+      get : "/api/kubernetes/v0.1/client/{cluster}/namespace/{namespace}/configmaps/{name}"
     };
   }
 
-  rpc SecretDescribe(SecretDescribeRequest) returns (SecretDescribeResponse) {
+  rpc Secret(SecretDescribeRequest) returns (SecretDescribeResponse) {
     option (google.api.http) = {
-      get : "/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}"
+      get : "/api/kubernetes/v0.1/client/{cluster}/namespace/{namespace}/secrets/{name}"
     };
   }
 
@@ -275,9 +275,9 @@ message ConfigMapListResponse {
 }
 
 message MapInformation {
-  string map = 1;
+  string name = 1;
   string namespace = 2;
-  int64 data = 3;
+  int64 size = 3;
   string created_at = 4;
   string resource_version = 5;
 }

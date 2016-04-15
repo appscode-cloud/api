@@ -147,10 +147,36 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}": {
+    "/api/kubernetes/v0.1/client/{cluster}/jobs": {
       "get": {
-        "summary": "Clients.ConfigMapDescribe",
-        "operationId": "ConfigMapDescribe",
+        "summary": "Clients.Jobs",
+        "operationId": "Jobs",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesJobListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/namespace/{namespace}/configmaps/{name}": {
+      "get": {
+        "summary": "Clients.ConfigMap",
+        "operationId": "ConfigMap",
         "responses": {
           "default": {
             "description": "Description",
@@ -187,21 +213,35 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/jobs": {
+    "/api/kubernetes/v0.1/client/{cluster}/namespace/{namespace}/secrets/{name}": {
       "get": {
-        "summary": "Clients.Jobs",
-        "operationId": "Jobs",
+        "summary": "Clients.Secret",
+        "operationId": "Secret",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/kubernetesJobListResponse"
+              "$ref": "#/definitions/kubernetesSecretDescribeResponse"
             }
           }
         },
         "parameters": [
           {
             "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "namespace",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
             "in": "path",
             "required": true,
             "type": "string",
@@ -332,46 +372,6 @@
         "parameters": [
           {
             "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Clients"
-        ]
-      }
-    },
-    "/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}": {
-      "get": {
-        "summary": "Clients.SecretDescribe",
-        "operationId": "SecretDescribe",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/kubernetesSecretDescribeResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "namespace",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
             "in": "path",
             "required": true,
             "type": "string",
@@ -733,11 +733,7 @@
           "type": "string",
           "format": "string"
         },
-        "data": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "map": {
+        "name": {
           "type": "string",
           "format": "string"
         },
@@ -748,6 +744,10 @@
         "resource_version": {
           "type": "string",
           "format": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },

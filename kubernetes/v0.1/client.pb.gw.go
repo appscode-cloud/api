@@ -370,7 +370,7 @@ func request_Clients_ConfigMaps_0(ctx context.Context, client ClientsClient, req
 
 }
 
-func request_Clients_ConfigMapDescribe_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_ConfigMap_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ConfigMapDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -414,12 +414,12 @@ func request_Clients_ConfigMapDescribe_0(ctx context.Context, client ClientsClie
 		return nil, metadata, err
 	}
 
-	msg, err := client.ConfigMapDescribe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.ConfigMap(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Clients_SecretDescribe_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Secret_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SecretDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -463,7 +463,7 @@ func request_Clients_SecretDescribe_0(ctx context.Context, client ClientsClient,
 		return nil, metadata, err
 	}
 
-	msg, err := client.SecretDescribe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Secret(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -751,7 +751,7 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	})
 
-	mux.Handle("GET", pattern_Clients_ConfigMapDescribe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_ConfigMap_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -763,18 +763,18 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Clients_ConfigMapDescribe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_ConfigMap_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_ConfigMapDescribe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_ConfigMap_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Clients_SecretDescribe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Clients_Secret_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -786,14 +786,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Clients_SecretDescribe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Clients_Secret_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_SecretDescribe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Secret_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -823,9 +823,9 @@ var (
 
 	pattern_Clients_ConfigMaps_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "configmaps"}, ""))
 
-	pattern_Clients_ConfigMapDescribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "configmaps", "namespace", "name"}, ""))
+	pattern_Clients_ConfigMap_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "namespace", "configmaps", "name"}, ""))
 
-	pattern_Clients_SecretDescribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "secrets", "namespace", "name"}, ""))
+	pattern_Clients_Secret_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "namespace", "secrets", "name"}, ""))
 )
 
 var (
@@ -851,7 +851,7 @@ var (
 
 	forward_Clients_ConfigMaps_0 = runtime.ForwardResponseMessage
 
-	forward_Clients_ConfigMapDescribe_0 = runtime.ForwardResponseMessage
+	forward_Clients_ConfigMap_0 = runtime.ForwardResponseMessage
 
-	forward_Clients_SecretDescribe_0 = runtime.ForwardResponseMessage
+	forward_Clients_Secret_0 = runtime.ForwardResponseMessage
 )
