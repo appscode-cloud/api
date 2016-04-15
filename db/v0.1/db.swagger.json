@@ -114,7 +114,7 @@
         ]
       }
     },
-    "/api/db/v0.1/snapshots": {
+    "/api/db/v0.1/snapshots/{name}": {
       "get": {
         "summary": "Databases.SnapshotList",
         "operationId": "SnapshotList",
@@ -126,6 +126,48 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
+    "/api/db/v0.1/{cluster}/{name}": {
+      "get": {
+        "summary": "Databases.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dbDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
         "tags": [
           "Databases"
         ]
@@ -173,44 +215,6 @@
       }
     },
     "/api/db/v0.1/{cluster}/{type}/{name}": {
-      "get": {
-        "summary": "Databases.Describe",
-        "operationId": "Describe",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dbDescribeResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "type",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Databases"
-        ]
-      },
       "delete": {
         "summary": "Databases.Delete",
         "operationId": "Delete",
@@ -310,6 +314,14 @@
           "type": "string",
           "format": "string"
         },
+        "gfs_disk": {
+          "type": "string",
+          "format": "string"
+        },
+        "gfs_endpoint": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
           "type": "string",
           "format": "string"
@@ -400,30 +412,6 @@
         }
       }
     },
-    "dbDbPodSpecs": {
-      "properties": {
-        "condition": {
-          "type": "string",
-          "format": "string"
-        },
-        "name": {
-          "type": "string",
-          "format": "string"
-        },
-        "phase": {
-          "type": "string",
-          "format": "string"
-        },
-        "status": {
-          "type": "string",
-          "format": "string"
-        },
-        "type": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
     "dbDeleteRequest": {
       "properties": {
         "cluster": {
@@ -449,37 +437,46 @@
         "name": {
           "type": "string",
           "format": "string"
-        },
-        "type": {
-          "type": "string",
-          "format": "string"
         }
       }
     },
     "dbDescribeResponse": {
       "properties": {
-        "pods": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dbDbPodSpecs"
-          }
+        "auto_snapshot": {
+          "type": "integer",
+          "format": "int32"
         },
-        "service_ip": {
+        "cluster": {
           "type": "string",
           "format": "string"
         },
-        "service_name": {
+        "created": {
+          "type": "string",
+          "format": "string"
+        },
+        "kube": {
+          "$ref": "#/definitions/dbkubeInfo"
+        },
+        "last_backup": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "sku": {
           "type": "string",
           "format": "string"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dbListRequest": {
-      "properties": {
-        "phid": {
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        },
+        "version": {
           "type": "string",
           "format": "string"
         }
@@ -568,6 +565,14 @@
           "type": "string",
           "format": "string"
         },
+        "db_cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "db_name": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
           "type": "string",
           "format": "string"
@@ -604,11 +609,7 @@
     },
     "dbSnapshotListRequest": {
       "properties": {
-        "phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "type": {
+        "name": {
           "type": "string",
           "format": "string"
         }
@@ -624,6 +625,22 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dbkubeInfo": {
+      "properties": {
+        "pods": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rc": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "svc": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -664,6 +681,7 @@
         }
       }
     },
+    "dtypesVoidRequest": {},
     "dtypesVoidResponse": {
       "properties": {
         "status": {

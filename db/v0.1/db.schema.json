@@ -46,6 +46,12 @@
         "credential": {
           "type": "string"
         },
+        "gfs_disk": {
+          "type": "string"
+        },
+        "gfs_endpoint": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -115,25 +121,6 @@
         }
       }
     },
-    "dbDbPodSpecs": {
-      "properties": {
-        "condition": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "phase": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      }
-    },
     "dbDeleteRequest": {
       "properties": {
         "cluster": {
@@ -154,34 +141,39 @@
         },
         "name": {
           "type": "string"
-        },
-        "type": {
-          "type": "string"
         }
       }
     },
     "dbDescribeResponse": {
       "properties": {
-        "pods": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dbDbPodSpecs"
-          }
+        "auto_snapshot": {
+          "type": "integer"
         },
-        "service_ip": {
+        "cluster": {
           "type": "string"
         },
-        "service_name": {
+        "created": {
+          "type": "string"
+        },
+        "kube": {
+          "$ref": "#/definitions/dbkubeInfo"
+        },
+        "last_backup": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "sku": {
           "type": "string"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dbListRequest": {
-      "properties": {
-        "phid": {
+        },
+        "type": {
+          "type": "string"
+        },
+        "version": {
           "type": "string"
         }
       }
@@ -253,6 +245,12 @@
         "created": {
           "type": "string"
         },
+        "db_cluster": {
+          "type": "string"
+        },
+        "db_name": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -281,10 +279,7 @@
     },
     "dbSnapshotListRequest": {
       "properties": {
-        "phid": {
-          "type": "string"
-        },
-        "type": {
+        "name": {
           "type": "string"
         }
       }
@@ -299,6 +294,19 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dbkubeInfo": {
+      "properties": {
+        "pods": {
+          "type": "integer"
+        },
+        "rc": {
+          "type": "integer"
+        },
+        "svc": {
+          "type": "integer"
         }
       }
     },
@@ -334,6 +342,7 @@
         }
       }
     },
+    "dtypesVoidRequest": {},
     "dtypesVoidResponse": {
       "properties": {
         "status": {
