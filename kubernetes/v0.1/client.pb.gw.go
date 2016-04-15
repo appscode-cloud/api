@@ -823,9 +823,9 @@ var (
 
 	pattern_Clients_ConfigMaps_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "configmaps"}, ""))
 
-	pattern_Clients_ConfigMap_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "namespace", "configmaps", "name"}, ""))
+	pattern_Clients_ConfigMap_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "configmaps", "namespace", "name"}, ""))
 
-	pattern_Clients_Secret_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "namespace", "secrets", "name"}, ""))
+	pattern_Clients_Secret_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "kubernetes", "v0.1", "client", "cluster", "secrets", "namespace", "name"}, ""))
 )
 
 var (

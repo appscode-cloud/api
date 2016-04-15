@@ -74,13 +74,13 @@ service Clients {
 
   rpc ConfigMap(ConfigMapDescribeRequest) returns (ConfigMapDescribeResponse) {
     option (google.api.http) = {
-      get : "/api/kubernetes/v0.1/client/{cluster}/namespace/{namespace}/configmaps/{name}"
+      get : "/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}"
     };
   }
 
   rpc Secret(SecretDescribeRequest) returns (SecretDescribeResponse) {
     option (google.api.http) = {
-      get : "/api/kubernetes/v0.1/client/{cluster}/namespace/{namespace}/secrets/{name}"
+      get : "/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}"
     };
   }
 
