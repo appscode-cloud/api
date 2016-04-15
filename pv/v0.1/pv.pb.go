@@ -32,7 +32,7 @@ type PVRegisterRequest struct {
 func (m *PVRegisterRequest) Reset()                    { *m = PVRegisterRequest{} }
 func (m *PVRegisterRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVRegisterRequest) ProtoMessage()               {}
-func (*PVRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (*PVRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
 type PVUnregisterRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -42,7 +42,7 @@ type PVUnregisterRequest struct {
 func (m *PVUnregisterRequest) Reset()                    { *m = PVUnregisterRequest{} }
 func (m *PVUnregisterRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVUnregisterRequest) ProtoMessage()               {}
-func (*PVUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (*PVUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
 
 type PVDescribeRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -52,7 +52,7 @@ type PVDescribeRequest struct {
 func (m *PVDescribeRequest) Reset()                    { *m = PVDescribeRequest{} }
 func (m *PVDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVDescribeRequest) ProtoMessage()               {}
-func (*PVDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+func (*PVDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
 
 type PVInfo struct {
 	Name        string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
@@ -67,7 +67,7 @@ type PVInfo struct {
 func (m *PVInfo) Reset()                    { *m = PVInfo{} }
 func (m *PVInfo) String() string            { return proto.CompactTextString(m) }
 func (*PVInfo) ProtoMessage()               {}
-func (*PVInfo) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+func (*PVInfo) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
 
 type PVDescribeResponse struct {
 	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -77,7 +77,7 @@ type PVDescribeResponse struct {
 func (m *PVDescribeResponse) Reset()                    { *m = PVDescribeResponse{} }
 func (m *PVDescribeResponse) String() string            { return proto.CompactTextString(m) }
 func (*PVDescribeResponse) ProtoMessage()               {}
-func (*PVDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
+func (*PVDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
 
 func (m *PVDescribeResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -220,7 +220,7 @@ var _PersistentVolumes_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
-var fileDescriptor2 = []byte{
+var fileDescriptor1 = []byte{
 	// 466 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xa4, 0x53, 0xcd, 0x8a, 0xd4, 0x40,
 	0x10, 0x26, 0x99, 0xdd, 0xec, 0x6c, 0x0d, 0x08, 0xb6, 0xeb, 0x18, 0x82, 0x3f, 0x43, 0x40, 0x59,
