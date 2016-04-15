@@ -1,0 +1,118 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/buckets/v0.1/{cloud}": {
+      "get": {
+        "summary": "Buckets.List",
+        "operationId": "List",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/bucketBucketListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cloudCredential",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Buckets"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "bucketBucketListRequest": {
+      "properties": {
+        "cloudCredential": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "bucketBucketListResponse": {
+      "properties": {
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string",
+          "format": "string"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}
