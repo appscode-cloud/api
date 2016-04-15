@@ -27,6 +27,8 @@ It has these top-level messages:
 	Job
 	MasterCreateRequest
 	MasterCreateResponse
+	MasterDeleteRequest
+	MasterDeleteResponse
 	SlaveListResponse
 	Slave
 	SlaveCreateRequest

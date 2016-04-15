@@ -36,26 +36,35 @@
     "dtypesVoidRequest": {},
     "healthResponse": {
       "properties": {
-        "latest": {
-          "type": "string"
-        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         },
-        "versions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/healthVersion"
-          }
+        "version": {
+          "$ref": "#/definitions/healthVersion"
         }
       }
     },
     "healthVersion": {
       "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "build_timestamp": {
+          "type": "string"
+        },
+        "commit_hash": {
+          "type": "string"
+        },
+        "commit_timestamp": {
+          "type": "string"
+        },
         "endpoint": {
           "type": "string"
         },
-        "message": {
+        "git_branch": {
+          "type": "string"
+        },
+        "git_tag": {
           "type": "string"
         },
         "status": {
