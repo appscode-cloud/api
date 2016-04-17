@@ -3,11 +3,11 @@
 // DO NOT EDIT!
 
 /*
-Package events is a reverse proxy.
+Package kubernetes is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package events
+package kubernetes
 
 import (
 	"encoding/json"
@@ -30,7 +30,7 @@ var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
 func request_Events_Constructive_0(ctx context.Context, client EventsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq Request
+	var protoReq EventRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -43,7 +43,7 @@ func request_Events_Constructive_0(ctx context.Context, client EventsClient, req
 }
 
 func request_Events_Destructive_0(ctx context.Context, client EventsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq Request
+	var protoReq EventRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
