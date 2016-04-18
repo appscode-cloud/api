@@ -164,6 +164,9 @@
         "name": {
           "type": "string"
         },
+        "phid": {
+          "type": "string"
+        },
         "sku": {
           "type": "string"
         },

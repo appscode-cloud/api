@@ -113,14 +113,15 @@ message DescribeRequest {
 message DescribeResponse {
   dtypes.Status status = 1;
   string name = 2;
-  string cluster = 3;
-  string type = 4;
-  string sku = 5;
-  string version = 6;
-  int32 auto_snapshot = 7;
-  string last_backup = 8;
-  kubeInfo kube = 9;
-  string created = 10;
+  string phid = 3;
+  string cluster = 4;
+  string type = 5;
+  string sku = 6;
+  string version = 7;
+  int32 auto_snapshot = 8;
+  string last_backup = 9;
+  kubeInfo kube = 10;
+  string created = 11;
 }
 
 message kubeInfo {
