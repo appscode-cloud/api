@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package bucket;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Buckets {
+  rpc List(BucketListRequest) returns (BucketListResponse) {
+    option (google.api.http) = {
+      get: "/api/buckets/v0.1/{cloudCredential}"
+    };
+  }
+}
+
+message BucketListRequest {
+  string cloudCredential = 1;
+}
+message BucketListResponse {
+  repeated string name = 1;
+  dtypes.Status status = 2;
+}
+
+
+
+
