@@ -17,7 +17,8 @@ service Dashboard {
 message DashboardCreateRequest {
   string type = 1;
   string cluster_name = 2;
-  string pod = 3;
+  string object_name = 3;
+  string namespace = 4;
 }
 
 message DashboardCreateResponse {
