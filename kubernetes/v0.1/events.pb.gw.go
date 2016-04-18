@@ -3,11 +3,11 @@
 // DO NOT EDIT!
 
 /*
-Package events is a reverse proxy.
+Package kubernetes is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package events
+package kubernetes
 
 import (
 	"encoding/json"
@@ -30,11 +30,29 @@ var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
 func request_Events_Constructive_0(ctx context.Context, client EventsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq Request
+	var protoReq EventRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["cluster_name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+	}
+
+	protoReq.ClusterName, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
 	}
 
 	msg, err := client.Constructive(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -43,11 +61,29 @@ func request_Events_Constructive_0(ctx context.Context, client EventsClient, req
 }
 
 func request_Events_Destructive_0(ctx context.Context, client EventsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq Request
+	var protoReq EventRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["cluster_name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster_name")
+	}
+
+	protoReq.ClusterName, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
 	}
 
 	msg, err := client.Destructive(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -135,9 +171,9 @@ func RegisterEventsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 }
 
 var (
-	pattern_Events_Constructive_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "events", "v0.1", "construct"}, ""))
+	pattern_Events_Constructive_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"api", "kubernetes", "v0.1", "clusters", "cluster_name", "events", "construct"}, ""))
 
-	pattern_Events_Destructive_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "events", "v0.1", "destruct"}, ""))
+	pattern_Events_Destructive_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"api", "kubernetes", "v0.1", "clusters", "cluster_name", "events", "destruct"}, ""))
 )
 
 var (
