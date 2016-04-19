@@ -166,6 +166,8 @@ message Pod {
   string phase = 8;
   string start_time = 9;
   string message = 10;
+
+  map<string, string> links = 11;
 }
 
 message Container {
@@ -214,6 +216,7 @@ message AppDescribeRequest {
 message AppDescribeResponse {
   dtypes.Status status = 1;
   Service app = 2;
+  map<string, string> links = 7;
 }
 
 message AppListResponse {

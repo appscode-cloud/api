@@ -72,12 +72,10 @@ message Cluster {
 
   string os = 6;
 
-  string graphana_url = 7;
-  string kibana_url = 8;
-  string icinga_url = 9;
+  map<string, string> links = 7;
 
-  int32 nodes = 10;
-  string created_at = 11;
+  int32 nodes = 8;
+  string created_at = 9;
 }
 
 

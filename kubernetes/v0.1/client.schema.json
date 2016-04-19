@@ -112,8 +112,24 @@
         "app": {
           "$ref": "#/definitions/kubernetesService"
         },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesAppDescribeResponseLinksEntry"
+          }
+        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesAppDescribeResponseLinksEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
         }
       }
     },
@@ -290,6 +306,12 @@
         "created_at": {
           "type": "string"
         },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesPodLinksEntry"
+          }
+        },
         "message": {
           "type": "string"
         },
@@ -309,6 +331,16 @@
           "type": "string"
         },
         "start_time": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesPodLinksEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
           "type": "string"
         }
       }
