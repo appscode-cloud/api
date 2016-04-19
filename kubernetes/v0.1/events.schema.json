@@ -1,17 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "ObjectMetaLabelsEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
-    "RequestObjectMeta": {
+    "EventRequestObjectMeta": {
       "properties": {
         "instance_id": {
           "type": "string"
@@ -39,6 +29,38 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "EventResponseHandler": {
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "receiver": {
+          "type": "string"
+        },
+        "suffix": {
+          "type": "string"
+        },
+        "verb": {
+          "type": "string"
+        }
+      }
+    },
+    "ObjectMetaLabelsEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
         }
       }
     },
@@ -74,29 +96,7 @@
         }
       }
     },
-    "eventsHandler": {
-      "properties": {
-        "action": {
-          "type": "string"
-        },
-        "base": {
-          "type": "string"
-        },
-        "data": {
-          "type": "string"
-        },
-        "receiver": {
-          "type": "string"
-        },
-        "suffix": {
-          "type": "string"
-        },
-        "verb": {
-          "type": "string"
-        }
-      }
-    },
-    "eventsRequest": {
+    "kubernetesEventRequest": {
       "properties": {
         "cluster_name": {
           "type": "string"
@@ -114,11 +114,11 @@
           "type": "string"
         },
         "metadata": {
-          "$ref": "#/definitions/RequestObjectMeta"
+          "$ref": "#/definitions/EventRequestObjectMeta"
         }
       }
     },
-    "eventsResponse": {
+    "kubernetesEventResponse": {
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -126,7 +126,7 @@
         "tasks": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/eventsHandler"
+            "$ref": "#/definitions/EventResponseHandler"
           }
         }
       }

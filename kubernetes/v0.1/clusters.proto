@@ -172,5 +172,8 @@ message ClusterInstanceListResponse {
 }
 
 message ClusterUpdateRequest {
-    string name = 1;
+  string name = 1;
+  string saltbase_version = 2;
+  string kube_starter_version = 3;
+  string kube_version = 4;
 }

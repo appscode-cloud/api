@@ -15,64 +15,42 @@
     "application/json"
   ],
   "paths": {
-    "/api/ci/v0.1/master": {
-      "put": {
-        "summary": "Master.Delete",
-        "operationId": "Delete",
+    "/api/buckets/v0.1": {
+      "get": {
+        "summary": "Buckets.List",
+        "operationId": "List",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/ciMasterDeleteResponse"
+              "$ref": "#/definitions/bucketBucketListResponse"
             }
           }
         },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ciMasterDeleteRequest"
-            }
-          }
-        ],
         "tags": [
-          "Master"
+          "Buckets"
         ]
       }
     }
   },
   "definitions": {
-    "ciMasterCreateRequest": {
+    "bucketBucketListRequest": {
       "properties": {
-        "cluster_name": {
+        "cloud_credential": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "bucketBucketListResponse": {
+      "properties": {
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
         },
-        "volume_id": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciMasterCreateResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciMasterDeleteRequest": {
-      "properties": {
-        "cluster_name": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciMasterDeleteResponse": {
-      "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
@@ -105,11 +83,11 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "message": {
+        "info": {
           "type": "string",
           "format": "string"
         },
-        "status": {
+        "message": {
           "type": "string",
           "format": "string"
         }

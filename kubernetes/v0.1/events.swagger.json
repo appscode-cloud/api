@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/events/v0.1/construct": {
+    "/api/kubernetes/v0.1/clusters/{cluster_name}/events/construct": {
       "put": {
         "summary": "Events.Constructive",
         "operationId": "Constructive",
@@ -23,17 +23,24 @@
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/eventsResponse"
+              "$ref": "#/definitions/kubernetesEventResponse"
             }
           }
         },
         "parameters": [
           {
+            "name": "cluster_name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/eventsRequest"
+              "$ref": "#/definitions/kubernetesEventRequest"
             }
           }
         ],
@@ -42,7 +49,7 @@
         ]
       }
     },
-    "/api/events/v0.1/destruct": {
+    "/api/kubernetes/v0.1/clusters/{cluster_name}/events/destruct": {
       "put": {
         "summary": "Events.Destructive",
         "operationId": "Destructive",
@@ -50,17 +57,24 @@
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/eventsResponse"
+              "$ref": "#/definitions/kubernetesEventResponse"
             }
           }
         },
         "parameters": [
           {
+            "name": "cluster_name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/eventsRequest"
+              "$ref": "#/definitions/kubernetesEventRequest"
             }
           }
         ],
@@ -71,19 +85,7 @@
     }
   },
   "definitions": {
-    "ObjectMetaLabelsEntry": {
-      "properties": {
-        "key": {
-          "type": "string",
-          "format": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "RequestObjectMeta": {
+    "EventRequestObjectMeta": {
       "properties": {
         "instance_id": {
           "type": "string",
@@ -117,6 +119,46 @@
             "type": "string",
             "format": "string"
           }
+        }
+      }
+    },
+    "EventResponseHandler": {
+      "properties": {
+        "action": {
+          "type": "string",
+          "format": "string"
+        },
+        "base": {
+          "type": "string",
+          "format": "string"
+        },
+        "data": {
+          "type": "string",
+          "format": "byte"
+        },
+        "receiver": {
+          "type": "string",
+          "format": "string"
+        },
+        "suffix": {
+          "type": "string",
+          "format": "string"
+        },
+        "verb": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "ObjectMetaLabelsEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -157,35 +199,7 @@
         }
       }
     },
-    "eventsHandler": {
-      "properties": {
-        "action": {
-          "type": "string",
-          "format": "string"
-        },
-        "base": {
-          "type": "string",
-          "format": "string"
-        },
-        "data": {
-          "type": "string",
-          "format": "byte"
-        },
-        "receiver": {
-          "type": "string",
-          "format": "string"
-        },
-        "suffix": {
-          "type": "string",
-          "format": "string"
-        },
-        "verb": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "eventsRequest": {
+    "kubernetesEventRequest": {
       "properties": {
         "cluster_name": {
           "type": "string",
@@ -208,11 +222,11 @@
           "format": "string"
         },
         "metadata": {
-          "$ref": "#/definitions/RequestObjectMeta"
+          "$ref": "#/definitions/EventRequestObjectMeta"
         }
       }
     },
-    "eventsResponse": {
+    "kubernetesEventResponse": {
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -220,7 +234,7 @@
         "tasks": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/eventsHandler"
+            "$ref": "#/definitions/EventResponseHandler"
           }
         }
       }

@@ -149,11 +149,19 @@
     },
     "ciSlaveCreateRequest": {
       "properties": {
+        "ci_starter_version": {
+          "type": "string",
+          "format": "string"
+        },
         "executors": {
           "type": "integer",
           "format": "int32"
         },
         "labels": {
+          "type": "string",
+          "format": "string"
+        },
+        "saltbase_version": {
           "type": "string",
           "format": "string"
         },

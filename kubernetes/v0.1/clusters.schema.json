@@ -313,7 +313,16 @@
     },
     "kubernetesClusterUpdateRequest": {
       "properties": {
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "kube_version": {
+          "type": "string"
+        },
         "name": {
+          "type": "string"
+        },
+        "saltbase_version": {
           "type": "string"
         }
       }

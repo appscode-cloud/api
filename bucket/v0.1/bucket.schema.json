@@ -1,32 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "ciMasterCreateRequest": {
+    "bucketBucketListRequest": {
       "properties": {
-        "cluster_name": {
+        "cloud_credential": {
           "type": "string"
+        }
+      }
+    },
+    "bucketBucketListResponse": {
+      "properties": {
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
-        "volume_id": {
-          "type": "string"
-        }
-      }
-    },
-    "ciMasterCreateResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciMasterDeleteRequest": {
-      "properties": {
-        "cluster_name": {
-          "type": "string"
-        }
-      }
-    },
-    "ciMasterDeleteResponse": {
-      "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
@@ -56,10 +45,10 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "message": {
+        "info": {
           "type": "string"
         },
-        "status": {
+        "message": {
           "type": "string"
         }
       }

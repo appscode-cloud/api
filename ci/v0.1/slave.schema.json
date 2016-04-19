@@ -13,10 +13,16 @@
     },
     "ciSlaveCreateRequest": {
       "properties": {
+        "ci_starter_version": {
+          "type": "string"
+        },
         "executors": {
           "type": "integer"
         },
         "labels": {
+          "type": "string"
+        },
+        "saltbase_version": {
           "type": "string"
         },
         "user_startup_script": {

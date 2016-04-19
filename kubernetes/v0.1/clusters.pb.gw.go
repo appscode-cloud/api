@@ -118,6 +118,10 @@ func request_Clusters_Delete_0(ctx context.Context, client ClustersClient, req *
 
 }
 
+var (
+	filter_Clusters_Update_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+)
+
 func request_Clusters_Update_0(ctx context.Context, client ClustersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClusterUpdateRequest
 	var metadata runtime.ServerMetadata
@@ -138,6 +142,10 @@ func request_Clusters_Update_0(ctx context.Context, client ClustersClient, req *
 
 	if err != nil {
 		return nil, metadata, err
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Clusters_Update_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Update(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
