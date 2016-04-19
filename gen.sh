@@ -156,6 +156,33 @@ gen_python_protos() {
     done
 }
 
+gen_php() {
+  rm -rf *.php
+  protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src/github.com/appscode \
+         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/google/googleapis/google \
+         --plugin=protoc-gen-php="$(which protoc-gen-php)" \
+         --php_out=':.' *.proto
+}
+
+gen_php_protos() {
+  for d in */ ; do
+        pushd ${d}
+        if [ -f *.proto ]; then
+          gen_php
+        fi
+        if [ -d */ ]; then
+          for dd in */ ; do
+            pushd ${dd}
+            gen_php
+            popd
+          done
+        fi
+        popd
+    done
+}
+
 compile() {
     echo "compiling files"
     go install ./...
@@ -167,7 +194,8 @@ gen_protos() {
     gen_proxy_protos
     gen_swagger_defs
     gen_json_schemas
-    gen_python_protos
+    # gen_python_protos
+    # gen_php_protos
     compile
 }
 
@@ -200,6 +228,9 @@ case "$1" in
 	  ;;
 	py)
 	  gen_python_protos
+	  ;;
+	php)
+	  gen_php_protos
 	  ;;
 	*)  echo $"Usage: $0 {compile|server|proxy|swagger|json-schema|all|clean}"
 		RETVAL=1
