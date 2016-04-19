@@ -137,6 +137,67 @@
         }
       }
     },
+    "kubernetesConfigMapDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesConfigMapDescribeResponse": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "created_time": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesConfigMapDescribeResponseDataEntry"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesConfigMapDescribeResponseDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesConfigMapListResponse": {
+      "properties": {
+        "config_map": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesMapInformation"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "kubernetesContainer": {
       "properties": {
         "commands": {
@@ -206,6 +267,25 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesMapInformation": {
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "resource_version": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
         }
       }
     },
@@ -388,6 +468,60 @@
           "type": "string"
         },
         "secret_type": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesSecretDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesSecretDescribeResponse": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesSecretDescribeResponseDataEntry"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "resource_version": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "kubernetesSecretDescribeResponseDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
           "type": "string"
         }
       }

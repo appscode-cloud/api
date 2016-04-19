@@ -3,7 +3,7 @@
   "definitions": {
     "bucketBucketListRequest": {
       "properties": {
-        "cloudCredential": {
+        "cloud_credential": {
           "type": "string"
         }
       }
