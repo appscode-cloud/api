@@ -271,10 +271,10 @@ message ReplicationController {
 
 message ConfigMapListResponse {
   dtypes.Status status = 1;
-  repeated MapInformation config_map = 2;
+  repeated ConfigMap config_map = 2;
 }
 
-message MapInformation {
+message ConfigMap {
   string name = 1;
   string namespace = 2;
   int64 size = 3;
