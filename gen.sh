@@ -139,7 +139,7 @@ gen_py() {
          --python_out=plugins=grpc,${ALIAS}:. *.proto
 }
 
-gen_python_proto() {
+gen_python_protos() {
   for d in */ ; do
         pushd ${d}
         if [ -f *.proto ]; then
@@ -167,6 +167,7 @@ gen_protos() {
     gen_proxy_protos
     gen_swagger_defs
     gen_json_schemas
+    gen_python_protos
     compile
 }
 
@@ -198,7 +199,7 @@ case "$1" in
 	  clean
 	  ;;
 	py)
-	  gen_python_proto
+	  gen_python_protos
 	  ;;
 	*)  echo $"Usage: $0 {compile|server|proxy|swagger|json-schema|all|clean}"
 		RETVAL=1
