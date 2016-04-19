@@ -37,24 +37,6 @@ func request_Dashboard_Create_0(ctx context.Context, client DashboardClient, req
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["cluster"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
-	}
-
-	protoReq.Cluster, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
 	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -117,7 +99,7 @@ func RegisterDashboardHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 }
 
 var (
-	pattern_Dashboard_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "monitoring", "v0.1", "dashboard", "cluster"}, ""))
+	pattern_Dashboard_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "monitoring", "v0.1", "dashboard"}, ""))
 )
 
 var (

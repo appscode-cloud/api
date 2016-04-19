@@ -545,8 +545,26 @@
         "app": {
           "$ref": "#/definitions/kubernetesService"
         },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesAppDescribeResponseLinksEntry"
+          }
+        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesAppDescribeResponseLinksEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -844,6 +862,12 @@
           "type": "string",
           "format": "string"
         },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesPodLinksEntry"
+          }
+        },
         "message": {
           "type": "string",
           "format": "string"
@@ -869,6 +893,18 @@
           "format": "string"
         },
         "start_time": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesPodLinksEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
           "type": "string",
           "format": "string"
         }
