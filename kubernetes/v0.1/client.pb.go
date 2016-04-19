@@ -8,6 +8,7 @@ Package kubernetes is a generated protocol buffer package.
 It is generated from these files:
 	client.proto
 	clusters.proto
+	events.proto
 
 It has these top-level messages:
 	ClientRequest
@@ -52,6 +53,8 @@ It has these top-level messages:
 	ClusterInstance
 	ClusterInstanceListResponse
 	ClusterUpdateRequest
+	EventRequest
+	EventResponse
 */
 package kubernetes
 
