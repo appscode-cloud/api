@@ -137,6 +137,25 @@
         }
       }
     },
+    "kubernetesConfigMap": {
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "resource_version": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        }
+      }
+    },
     "kubernetesConfigMapDescribeRequest": {
       "properties": {
         "cluster": {
@@ -190,7 +209,7 @@
         "config_map": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/kubernetesMapInformation"
+            "$ref": "#/definitions/kubernetesConfigMap"
           }
         },
         "status": {
@@ -267,25 +286,6 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "kubernetesMapInformation": {
-      "properties": {
-        "created_at": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "resource_version": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
         }
       }
     },
