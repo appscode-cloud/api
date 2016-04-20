@@ -1,0 +1,1 @@
+../datto/protobuf-php/protoc-gen-php.php
