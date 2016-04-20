@@ -6,10 +6,10 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service TLSCertificate {
-  rpc Create() returns () {
+  /*rpc Create() returns () {
     option (google.api.http) = {
       put: "/api/certificate/v0.1/tls"
       body: "*"
     };
-  }
+  }*/
 }

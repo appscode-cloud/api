@@ -3,11 +3,11 @@
 // DO NOT EDIT!
 
 /*
-Package ca is a reverse proxy.
+Package certificate is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package ca
+package certificate
 
 import (
 	"encoding/json"
@@ -112,7 +112,7 @@ func RegisterAuthorityCertificateHandler(ctx context.Context, mux *runtime.Serve
 }
 
 var (
-	pattern_AuthorityCertificate_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ca", "v0.1", "authority"}, ""))
+	pattern_AuthorityCertificate_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "certificate", "v0.1", "authority"}, ""))
 )
 
 var (
@@ -176,7 +176,7 @@ func RegisterClientCertificateHandler(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_ClientCertificate_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ca", "v0.1", "client"}, ""))
+	pattern_ClientCertificate_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "certificate", "v0.1", "client"}, ""))
 )
 
 var (
