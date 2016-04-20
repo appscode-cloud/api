@@ -121,6 +121,72 @@
         ]
       }
     },
+    "/api/kubernetes/v0.1/client/{cluster}/configmaps": {
+      "get": {
+        "summary": "Clients.ConfigMaps",
+        "operationId": "ConfigMaps",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesConfigMapListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}": {
+      "get": {
+        "summary": "Clients.ConfigMap",
+        "operationId": "ConfigMap",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesConfigMapDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "namespace",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
     "/api/kubernetes/v0.1/client/{cluster}/jobs": {
       "get": {
         "summary": "Clients.Jobs",
@@ -266,6 +332,46 @@
         "parameters": [
           {
             "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}": {
+      "get": {
+        "summary": "Clients.Secret",
+        "operationId": "Secret",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesSecretDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "namespace",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
             "in": "path",
             "required": true,
             "type": "string",
@@ -439,8 +545,26 @@
         "app": {
           "$ref": "#/definitions/kubernetesService"
         },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesAppDescribeResponseLinksEntry"
+          }
+        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesAppDescribeResponseLinksEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -462,6 +586,100 @@
         "cluster": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "kubernetesConfigMap": {
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "resource_version": {
+          "type": "string",
+          "format": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "kubernetesConfigMapDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesConfigMapDescribeResponse": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "created_time": {
+          "type": "string",
+          "format": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesConfigMapDescribeResponseDataEntry"
+          }
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesConfigMapDescribeResponseDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesConfigMapListResponse": {
+      "properties": {
+        "config_map": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesConfigMap"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },
@@ -644,6 +862,12 @@
           "type": "string",
           "format": "string"
         },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesPodLinksEntry"
+          }
+        },
         "message": {
           "type": "string",
           "format": "string"
@@ -669,6 +893,18 @@
           "format": "string"
         },
         "start_time": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesPodLinksEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
           "type": "string",
           "format": "string"
         }
@@ -761,6 +997,71 @@
           "format": "string"
         },
         "secret_type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesSecretDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesSecretDescribeResponse": {
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesSecretDescribeResponseDataEntry"
+          }
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "resource_version": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesSecretDescribeResponseDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
           "type": "string",
           "format": "string"
         }

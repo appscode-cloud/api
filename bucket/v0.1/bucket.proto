@@ -14,7 +14,7 @@ service Buckets {
 }
 
 message BucketListRequest {
-  string cloudCredential = 1;
+  string cloud_credential = 1;
 }
 
 message BucketListResponse {

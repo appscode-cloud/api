@@ -65,6 +65,25 @@ service Clients {
       get : "/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}/pods"
     };
   }
+
+  rpc ConfigMaps(ClientRequest) returns (ConfigMapListResponse) {
+    option (google.api.http) = {
+      get : "/api/kubernetes/v0.1/client/{cluster}/configmaps"
+    };
+  }
+
+  rpc ConfigMap(ConfigMapDescribeRequest) returns (ConfigMapDescribeResponse) {
+    option (google.api.http) = {
+      get : "/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}"
+    };
+  }
+
+  rpc Secret(SecretDescribeRequest) returns (SecretDescribeResponse) {
+    option (google.api.http) = {
+      get : "/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}"
+    };
+  }
+
 }
 
 
@@ -166,6 +185,8 @@ message Pod {
   string phase = 8;
   string start_time = 9;
   string message = 10;
+
+  map<string, string> links = 11;
 }
 
 message Container {
@@ -214,6 +235,7 @@ message AppDescribeRequest {
 message AppDescribeResponse {
   dtypes.Status status = 1;
   Service app = 2;
+  map<string, string> links = 7;
 }
 
 message AppListResponse {
@@ -248,4 +270,49 @@ message ReplicationController {
   int64 observed_generation = 8;
 
   repeated Container containers = 9;
+}
+
+message ConfigMapListResponse {
+  dtypes.Status status = 1;
+  repeated ConfigMap config_map = 2;
+}
+
+message ConfigMap {
+  string name = 1;
+  string namespace = 2;
+  int64 size = 3;
+  string created_at = 4;
+  string resource_version = 5;
+}
+
+message ConfigMapDescribeRequest {
+  string cluster = 1;
+  string name = 2;
+  string namespace = 3;
+}
+
+message ConfigMapDescribeResponse {
+  dtypes.Status status = 1;
+  string name = 2;
+  string namespace = 3;
+  string cluster = 4;
+  string created_time = 5;
+  map <string, string> data = 6;
+}
+
+message SecretDescribeRequest {
+  string cluster = 1;
+  string name = 2;
+  string namespace = 3;
+}
+
+message SecretDescribeResponse {
+  dtypes.Status status = 1;
+  string cluster = 2;
+  string name = 3;
+  string namespace = 4;
+  string created_at = 5;
+  string resource_version = 6;
+  string type = 7;
+  map <string, string> data = 8;
 }

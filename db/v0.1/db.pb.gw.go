@@ -14,6 +14,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/appscode/api/dtypes"
 	"github.com/gengo/grpc-gateway/runtime"
 	"github.com/gengo/grpc-gateway/utilities"
 	"github.com/golang/protobuf/proto"
@@ -162,16 +163,26 @@ func request_Databases_Backup_0(ctx context.Context, client DatabasesClient, req
 
 }
 
-var (
-	filter_Databases_SnapshotList_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
 func request_Databases_SnapshotList_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SnapshotListRequest
 	var metadata runtime.ServerMetadata
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Databases_SnapshotList_0); err != nil {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+	}
+
+	protoReq.Name, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
 	}
 
 	msg, err := client.SnapshotList(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -243,17 +254,6 @@ func request_Databases_Describe_0(ctx context.Context, client DatabasesClient, r
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["type"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
-	}
-
-	protoReq.Type, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
 	val, ok = pathParams["name"]
 	if !ok {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
@@ -270,17 +270,9 @@ func request_Databases_Describe_0(ctx context.Context, client DatabasesClient, r
 
 }
 
-var (
-	filter_Databases_List_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
 func request_Databases_List_0(ctx context.Context, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListRequest
+	var protoReq dtypes.VoidRequest
 	var metadata runtime.ServerMetadata
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Databases_List_0); err != nil {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
-	}
 
 	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -488,11 +480,11 @@ var (
 
 	pattern_Databases_Backup_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0.1", "backup", "cluster", "type"}, ""))
 
-	pattern_Databases_SnapshotList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "db", "v0.1", "snapshots"}, ""))
+	pattern_Databases_SnapshotList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "db", "v0.1", "snapshots", "name"}, ""))
 
 	pattern_Databases_Restore_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0.1", "restore", "cluster", "type"}, ""))
 
-	pattern_Databases_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "db", "v0.1", "cluster", "type", "name"}, ""))
+	pattern_Databases_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "db", "v0.1", "cluster", "name"}, ""))
 
 	pattern_Databases_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "db", "v0.1"}, ""))
 )
