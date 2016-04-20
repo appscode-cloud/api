@@ -32,6 +32,7 @@ It has these top-level messages:
 	SlaveListResponse
 	Slave
 	SlaveCreateRequest
+	PortInfo
 	SlaveDescribeRequest
 	SlaveDescribeResponse
 	SlaveDeleteRequest
