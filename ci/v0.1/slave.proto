@@ -54,6 +54,12 @@ message SlaveCreateRequest {
     string user_startup_script = 3;
     string saltbase_version = 4;
     string ci_starter_version = 5;
+    repeated PortInfo ports = 6;
+}
+
+message PortInfo {
+    string protocol = 1;
+    int32 port = 2;
 }
 
 message SlaveDescribeRequest {
