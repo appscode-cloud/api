@@ -67,6 +67,9 @@
         "password": {
           "type": "string"
         },
+        "subscription_type": {
+          "type": "string"
+        },
         "user_ip": {
           "type": "string"
         },
