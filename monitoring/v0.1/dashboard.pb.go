@@ -74,7 +74,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Dashboard service
 
@@ -109,16 +109,22 @@ func RegisterDashboardServer(s *grpc.Server, srv DashboardServer) {
 	s.RegisterService(&_Dashboard_serviceDesc, srv)
 }
 
-func _Dashboard_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Dashboard_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DashboardCreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(DashboardServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(DashboardServer).Create(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/monitoring.Dashboard/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DashboardServer).Create(ctx, req.(*DashboardCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Dashboard_serviceDesc = grpc.ServiceDesc{

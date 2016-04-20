@@ -32,7 +32,7 @@ type PVRegisterRequest struct {
 func (m *PVRegisterRequest) Reset()                    { *m = PVRegisterRequest{} }
 func (m *PVRegisterRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVRegisterRequest) ProtoMessage()               {}
-func (*PVRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (*PVRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
 type PVUnregisterRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -42,7 +42,7 @@ type PVUnregisterRequest struct {
 func (m *PVUnregisterRequest) Reset()                    { *m = PVUnregisterRequest{} }
 func (m *PVUnregisterRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVUnregisterRequest) ProtoMessage()               {}
-func (*PVUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (*PVUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
 
 type PVDescribeRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -52,7 +52,7 @@ type PVDescribeRequest struct {
 func (m *PVDescribeRequest) Reset()                    { *m = PVDescribeRequest{} }
 func (m *PVDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVDescribeRequest) ProtoMessage()               {}
-func (*PVDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+func (*PVDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
 
 type PVInfo struct {
 	Name        string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
@@ -67,7 +67,7 @@ type PVInfo struct {
 func (m *PVInfo) Reset()                    { *m = PVInfo{} }
 func (m *PVInfo) String() string            { return proto.CompactTextString(m) }
 func (*PVInfo) ProtoMessage()               {}
-func (*PVInfo) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+func (*PVInfo) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
 
 type PVDescribeResponse struct {
 	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -77,7 +77,7 @@ type PVDescribeResponse struct {
 func (m *PVDescribeResponse) Reset()                    { *m = PVDescribeResponse{} }
 func (m *PVDescribeResponse) String() string            { return proto.CompactTextString(m) }
 func (*PVDescribeResponse) ProtoMessage()               {}
-func (*PVDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
+func (*PVDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
 
 func (m *PVDescribeResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -107,7 +107,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for PersistentVolumes service
 
@@ -164,40 +164,58 @@ func RegisterPersistentVolumesServer(s *grpc.Server, srv PersistentVolumesServer
 	s.RegisterService(&_PersistentVolumes_serviceDesc, srv)
 }
 
-func _PersistentVolumes_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _PersistentVolumes_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PVDescribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(PersistentVolumesServer).Describe(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(PersistentVolumesServer).Describe(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.PersistentVolumes/Describe",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PersistentVolumesServer).Describe(ctx, req.(*PVDescribeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _PersistentVolumes_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _PersistentVolumes_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PVRegisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(PersistentVolumesServer).Register(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(PersistentVolumesServer).Register(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.PersistentVolumes/Register",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PersistentVolumesServer).Register(ctx, req.(*PVRegisterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _PersistentVolumes_Unregister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _PersistentVolumes_Unregister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PVUnregisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(PersistentVolumesServer).Unregister(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(PersistentVolumesServer).Unregister(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.PersistentVolumes/Unregister",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PersistentVolumesServer).Unregister(ctx, req.(*PVUnregisterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _PersistentVolumes_serviceDesc = grpc.ServiceDesc{
@@ -220,7 +238,7 @@ var _PersistentVolumes_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
-var fileDescriptor2 = []byte{
+var fileDescriptor1 = []byte{
 	// 466 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xa4, 0x53, 0xcd, 0x8a, 0xd4, 0x40,
 	0x10, 0x26, 0x99, 0xdd, 0xec, 0x6c, 0x0d, 0x08, 0xb6, 0xeb, 0x18, 0x82, 0x3f, 0x43, 0x40, 0x59,
