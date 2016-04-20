@@ -107,14 +107,11 @@
         "created_at": {
           "type": "string"
         },
-        "graphana_url": {
-          "type": "string"
-        },
-        "icinga_url": {
-          "type": "string"
-        },
-        "kibana_url": {
-          "type": "string"
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesClusterLinksEntry"
+          }
         },
         "name": {
           "type": "string"
@@ -265,6 +262,16 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesClusterLinksEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
         }
       }
     },

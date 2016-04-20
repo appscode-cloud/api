@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/monitoring/v0.1/dashboard/{cluster}": {
+    "/api/monitoring/v0.1/dashboard": {
       "put": {
         "summary": "Dashboard.Create",
         "operationId": "Create",
@@ -28,13 +28,6 @@
           }
         },
         "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
           {
             "name": "body",
             "in": "body",
@@ -90,11 +83,15 @@
     },
     "monitoringDashboardCreateRequest": {
       "properties": {
-        "cluster": {
+        "cluster_name": {
           "type": "string",
           "format": "string"
         },
-        "pod": {
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "object_name": {
           "type": "string",
           "format": "string"
         },

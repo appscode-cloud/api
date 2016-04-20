@@ -35,10 +35,13 @@
     },
     "monitoringDashboardCreateRequest": {
       "properties": {
-        "cluster": {
+        "cluster_name": {
           "type": "string"
         },
-        "pod": {
+        "namespace": {
+          "type": "string"
+        },
+        "object_name": {
           "type": "string"
         },
         "type": {

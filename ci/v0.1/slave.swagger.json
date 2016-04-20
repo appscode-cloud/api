@@ -135,6 +135,18 @@
     }
   },
   "definitions": {
+    "ciPortInfo": {
+      "properties": {
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "protocol": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
     "ciSlave": {
       "properties": {
         "name": {
@@ -160,6 +172,12 @@
         "labels": {
           "type": "string",
           "format": "string"
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ciPortInfo"
+          }
         },
         "saltbase_version": {
           "type": "string",

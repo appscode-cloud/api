@@ -545,8 +545,26 @@
         "app": {
           "$ref": "#/definitions/kubernetesService"
         },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesAppDescribeResponseLinksEntry"
+          }
+        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "kubernetesAppDescribeResponseLinksEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -568,6 +586,30 @@
         "cluster": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "kubernetesConfigMap": {
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "resource_version": {
+          "type": "string",
+          "format": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -633,7 +675,7 @@
         "config_map": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/kubernetesMapInformation"
+            "$ref": "#/definitions/kubernetesConfigMap"
           }
         },
         "status": {
@@ -724,30 +766,6 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "kubernetesMapInformation": {
-      "properties": {
-        "created_at": {
-          "type": "string",
-          "format": "string"
-        },
-        "name": {
-          "type": "string",
-          "format": "string"
-        },
-        "namespace": {
-          "type": "string",
-          "format": "string"
-        },
-        "resource_version": {
-          "type": "string",
-          "format": "string"
-        },
-        "size": {
-          "type": "integer",
-          "format": "int64"
         }
       }
     },
@@ -844,6 +862,12 @@
           "type": "string",
           "format": "string"
         },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/kubernetesPodLinksEntry"
+          }
+        },
         "message": {
           "type": "string",
           "format": "string"
@@ -869,6 +893,18 @@
           "format": "string"
         },
         "start_time": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "kubernetesPodLinksEntry": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
           "type": "string",
           "format": "string"
         }

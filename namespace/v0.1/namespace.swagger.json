@@ -204,6 +204,10 @@
           "type": "string",
           "format": "string"
         },
+        "subscription_type": {
+          "type": "string",
+          "format": "string"
+        },
         "user_ip": {
           "type": "string",
           "format": "string"
