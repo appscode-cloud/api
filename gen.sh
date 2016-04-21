@@ -50,7 +50,6 @@ gen_swagger_def() {
 }
 
 gen_json_schema() {
-  rm -rf *.schema.json
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
          -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
