@@ -131,7 +131,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Cloud service
 
@@ -199,52 +199,76 @@ func RegisterCloudServer(s *grpc.Server, srv CloudServer) {
 	s.RegisterService(&_Cloud_serviceDesc, srv)
 }
 
-func _Cloud_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Cloud_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(dtypes.VoidRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CloudServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(CloudServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/credential.Cloud/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudServer).List(ctx, req.(*dtypes.VoidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Cloud_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Cloud_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CloudCredentialCreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CloudServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(CloudServer).Create(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/credential.Cloud/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudServer).Create(ctx, req.(*CloudCredentialCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Cloud_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Cloud_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CloudCredentialUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CloudServer).Update(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(CloudServer).Update(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/credential.Cloud/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudServer).Update(ctx, req.(*CloudCredentialUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Cloud_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Cloud_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CloudCredentialDeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(CloudServer).Delete(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(CloudServer).Delete(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/credential.Cloud/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudServer).Delete(ctx, req.(*CloudCredentialDeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Cloud_serviceDesc = grpc.ServiceDesc{

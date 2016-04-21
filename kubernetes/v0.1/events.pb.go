@@ -114,7 +114,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Events service
 
@@ -160,28 +160,40 @@ func RegisterEventsServer(s *grpc.Server, srv EventsServer) {
 	s.RegisterService(&_Events_serviceDesc, srv)
 }
 
-func _Events_Constructive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Events_Constructive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EventRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(EventsServer).Constructive(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(EventsServer).Constructive(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Events/Constructive",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventsServer).Constructive(ctx, req.(*EventRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Events_Destructive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Events_Destructive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EventRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(EventsServer).Destructive(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(EventsServer).Destructive(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Events/Destructive",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventsServer).Destructive(ctx, req.(*EventRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Events_serviceDesc = grpc.ServiceDesc{

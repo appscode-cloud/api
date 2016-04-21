@@ -158,7 +158,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Clusters service
 
@@ -236,52 +236,76 @@ func RegisterClustersServer(s *grpc.Server, srv ClustersServer) {
 	s.RegisterService(&_Clusters_serviceDesc, srv)
 }
 
-func _Clusters_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/glusterfs.Clusters/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).List(ctx, req.(*ClusterListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterDescribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).Describe(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).Describe(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/glusterfs.Clusters/Describe",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).Describe(ctx, req.(*ClusterDescribeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterCreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).Create(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/glusterfs.Clusters/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).Create(ctx, req.(*ClusterCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterDeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).Delete(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).Delete(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/glusterfs.Clusters/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).Delete(ctx, req.(*ClusterDeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Clusters_serviceDesc = grpc.ServiceDesc{

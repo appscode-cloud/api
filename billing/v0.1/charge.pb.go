@@ -86,7 +86,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Charge service
 
@@ -121,16 +121,22 @@ func RegisterChargeServer(s *grpc.Server, srv ChargeServer) {
 	s.RegisterService(&_Charge_serviceDesc, srv)
 }
 
-func _Charge_Calculate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Charge_Calculate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ChargeCalculateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ChargeServer).Calculate(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ChargeServer).Calculate(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/billing.Charge/Calculate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChargeServer).Calculate(ctx, req.(*ChargeCalculateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Charge_serviceDesc = grpc.ServiceDesc{

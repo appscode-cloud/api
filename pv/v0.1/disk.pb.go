@@ -7,8 +7,8 @@ Package pv is a generated protocol buffer package.
 
 It is generated from these files:
 	disk.proto
-	pvc.proto
 	pv.proto
+	pvc.proto
 
 It has these top-level messages:
 	DiskCreateRequest
@@ -21,16 +21,16 @@ It has these top-level messages:
 	PVC
 	DiskDescribeRequest
 	DiskDescribeResponse
-	PVCRegisterRequest
-	PVCUnregisterRequest
-	PVCDescribeRequest
-	PVCInfo
-	PVCDescribeResponse
 	PVRegisterRequest
 	PVUnregisterRequest
 	PVDescribeRequest
 	PVInfo
 	PVDescribeResponse
+	PVCRegisterRequest
+	PVCUnregisterRequest
+	PVCDescribeRequest
+	PVCInfo
+	PVCDescribeResponse
 */
 package pv
 
@@ -244,7 +244,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Disks service
 
@@ -312,52 +312,76 @@ func RegisterDisksServer(s *grpc.Server, srv DisksServer) {
 	s.RegisterService(&_Disks_serviceDesc, srv)
 }
 
-func _Disks_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Disks_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DiskListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(DisksServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(DisksServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.Disks/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DisksServer).List(ctx, req.(*DiskListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Disks_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Disks_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DiskDescribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(DisksServer).Describe(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(DisksServer).Describe(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.Disks/Describe",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DisksServer).Describe(ctx, req.(*DiskDescribeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Disks_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Disks_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DiskCreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(DisksServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(DisksServer).Create(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.Disks/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DisksServer).Create(ctx, req.(*DiskCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Disks_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Disks_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DiskDeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(DisksServer).Delete(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(DisksServer).Delete(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.Disks/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DisksServer).Delete(ctx, req.(*DiskDeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Disks_serviceDesc = grpc.ServiceDesc{

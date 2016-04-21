@@ -331,7 +331,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Clusters service
 
@@ -454,112 +454,166 @@ func RegisterClustersServer(s *grpc.Server, srv ClustersServer) {
 	s.RegisterService(&_Clusters_serviceDesc, srv)
 }
 
-func _Clusters_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterDescribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).Describe(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).Describe(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Clusters/Describe",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).Describe(ctx, req.(*ClusterDescribeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterCreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).Create(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Clusters/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).Create(ctx, req.(*ClusterCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_Scale_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_Scale_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterScaleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).Scale(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).Scale(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Clusters/Scale",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).Scale(ctx, req.(*ClusterScaleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterDeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).Delete(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).Delete(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Clusters/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).Delete(ctx, req.(*ClusterDeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).Update(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).Update(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Clusters/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).Update(ctx, req.(*ClusterUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(dtypes.VoidRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Clusters/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).List(ctx, req.(*dtypes.VoidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_StartupScript_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_StartupScript_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterStartupScriptRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).StartupScript(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).StartupScript(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Clusters/StartupScript",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).StartupScript(ctx, req.(*ClusterStartupScriptRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_ClientConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_ClientConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterClientConfigRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).ClientConfig(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).ClientConfig(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Clusters/ClientConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).ClientConfig(ctx, req.(*ClusterClientConfigRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Clusters_Instances_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Clusters_Instances_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClusterInstanceListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(ClustersServer).Instances(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(ClustersServer).Instances(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kubernetes.Clusters/Instances",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClustersServer).Instances(ctx, req.(*ClusterInstanceListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Clusters_serviceDesc = grpc.ServiceDesc{

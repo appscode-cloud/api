@@ -141,7 +141,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Jobs service
 
@@ -231,76 +231,112 @@ func RegisterJobsServer(s *grpc.Server, srv JobsServer) {
 	s.RegisterService(&_Jobs_serviceDesc, srv)
 }
 
-func _Jobs_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Jobs_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(dtypes.VoidRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(JobsServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(JobsServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Jobs/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JobsServer).List(ctx, req.(*dtypes.VoidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Jobs_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Jobs_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JobDescribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(JobsServer).Describe(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(JobsServer).Describe(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Jobs/Describe",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JobsServer).Describe(ctx, req.(*JobDescribeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Jobs_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Jobs_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JobCreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(JobsServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(JobsServer).Create(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Jobs/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JobsServer).Create(ctx, req.(*JobCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Jobs_Copy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Jobs_Copy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JobCopyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(JobsServer).Copy(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(JobsServer).Copy(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Jobs/Copy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JobsServer).Copy(ctx, req.(*JobCopyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Jobs_Build_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Jobs_Build_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JobBuildRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(JobsServer).Build(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(JobsServer).Build(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Jobs/Build",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JobsServer).Build(ctx, req.(*JobBuildRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Jobs_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Jobs_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JobDeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(JobsServer).Delete(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(JobsServer).Delete(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Jobs/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JobsServer).Delete(ctx, req.(*JobDeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Jobs_serviceDesc = grpc.ServiceDesc{

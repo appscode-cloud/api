@@ -184,7 +184,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Namespace service
 
@@ -252,52 +252,76 @@ func RegisterNamespaceServer(s *grpc.Server, srv NamespaceServer) {
 	s.RegisterService(&_Namespace_serviceDesc, srv)
 }
 
-func _Namespace_Check_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Namespace_Check_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CheckRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(NamespaceServer).Check(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(NamespaceServer).Check(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/namespace.Namespace/Check",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NamespaceServer).Check(ctx, req.(*CheckRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Namespace_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Namespace_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(NamespaceServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(NamespaceServer).Create(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/namespace.Namespace/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NamespaceServer).Create(ctx, req.(*CreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Namespace_Status_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Namespace_Status_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(NamespaceServer).Status(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(NamespaceServer).Status(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/namespace.Namespace/Status",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NamespaceServer).Status(ctx, req.(*StatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Namespace_Log_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Namespace_Log_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(LogRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(NamespaceServer).Log(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(NamespaceServer).Log(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/namespace.Namespace/Log",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NamespaceServer).Log(ctx, req.(*LogRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Namespace_serviceDesc = grpc.ServiceDesc{

@@ -277,7 +277,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Alerts service
 
@@ -356,64 +356,94 @@ func RegisterAlertsServer(s *grpc.Server, srv AlertsServer) {
 	s.RegisterService(&_Alerts_serviceDesc, srv)
 }
 
-func _Alerts_Notify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Alerts_Notify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(NotificationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AlertsServer).Notify(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AlertsServer).Notify(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/alert.Alerts/Notify",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AlertsServer).Notify(ctx, req.(*NotificationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Alerts_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Alerts_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateReuquest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AlertsServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AlertsServer).Create(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/alert.Alerts/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AlertsServer).Create(ctx, req.(*CreateReuquest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Alerts_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Alerts_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateReuquest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AlertsServer).Update(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AlertsServer).Update(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/alert.Alerts/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AlertsServer).Update(ctx, req.(*UpdateReuquest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Alerts_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Alerts_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AlertsServer).Delete(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AlertsServer).Delete(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/alert.Alerts/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AlertsServer).Delete(ctx, req.(*DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Alerts_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Alerts_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(AlertsServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(AlertsServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/alert.Alerts/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AlertsServer).List(ctx, req.(*ListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Alerts_serviceDesc = grpc.ServiceDesc{
