@@ -63,6 +63,7 @@ message TLSCertificate {
   string cert = 8;
   string key = 9;
   int32 version = 10;
+  string serial_number = 11;
 }
 
 message TLSCertificateCreateRequest {
