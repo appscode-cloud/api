@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/certificate/v0.1/authority": {
+    "/api/ca/v0.1/authority": {
       "put": {
         "summary": "AuthorityCertificate.Create",
         "operationId": "Create",
@@ -23,7 +23,7 @@
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/certificateCertificateCreateResponse"
+              "$ref": "#/definitions/caCertificateCreateResponse"
             }
           }
         },
@@ -33,7 +33,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/certificateCertificateCreateRequest"
+              "$ref": "#/definitions/caCertificateCreateRequest"
             }
           }
         ],
@@ -42,7 +42,7 @@
         ]
       }
     },
-    "/api/certificate/v0.1/client": {
+    "/api/ca/v0.1/client": {
       "put": {
         "summary": "ClientCertificate.Create",
         "operationId": "Create",
@@ -50,7 +50,7 @@
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/certificateCertificateCreateResponse"
+              "$ref": "#/definitions/caCertificateCreateResponse"
             }
           }
         },
@@ -60,7 +60,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/certificateCertificateCreateRequest"
+              "$ref": "#/definitions/caCertificateCreateRequest"
             }
           }
         ],
@@ -71,7 +71,7 @@
     }
   },
   "definitions": {
-    "certificateCertificateCreateRequest": {
+    "caCertificateCreateRequest": {
       "type": "object",
       "properties": {
         "csr": {
@@ -84,7 +84,7 @@
         }
       }
     },
-    "certificateCertificateCreateResponse": {
+    "caCertificateCreateResponse": {
       "type": "object",
       "properties": {
         "cert": {
