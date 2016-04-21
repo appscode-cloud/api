@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "certificateTLSCertificate": {
-      "type": "object",
       "properties": {
         "cert": {
           "type": "string"
@@ -26,10 +25,13 @@
           "type": "string"
         },
         "sans": {
-          "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "type": "array"
+        },
+        "serial_number": {
+          "type": "string"
         },
         "valid_from": {
           "type": "string"
@@ -37,10 +39,10 @@
         "version": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "certificateTLSCertificateCreateRequest": {
-      "type": "object",
       "properties": {
         "cert_data": {
           "type": "string"
@@ -51,18 +53,18 @@
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "certificateTLSCertificateDeleteRequest": {
-      "type": "object",
       "properties": {
         "cert": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "certificateTLSCertificateDeployRequest": {
-      "type": "object",
       "properties": {
         "cert": {
           "type": "string"
@@ -76,18 +78,18 @@
         "secret_name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "certificateTLSCertificateDescribeRequest": {
-      "type": "object",
       "properties": {
         "cert": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "certificateTLSCertificateDescribeResponse": {
-      "type": "object",
       "properties": {
         "certificate": {
           "$ref": "#/definitions/certificateTLSCertificate"
@@ -95,24 +97,24 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "certificateTLSCertificateListResponse": {
-      "type": "object",
       "properties": {
         "certificates": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/certificateTLSCertificate"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -120,19 +122,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -143,21 +145,21 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesVoidRequest": {
       "type": "object"
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -165,7 +167,8 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

@@ -32,6 +32,37 @@
       },
       "type": "object"
     },
+    "certificateCertificateCreateRequest": {
+      "properties": {
+        "csr": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateCertificateCreateResponse": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "root": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
     "dtypesHelp": {
       "properties": {
         "description": {

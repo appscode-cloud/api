@@ -157,6 +157,10 @@
             "format": "string"
           }
         },
+        "serial_number": {
+          "type": "string",
+          "format": "string"
+        },
         "valid_from": {
           "type": "string",
           "format": "string"
