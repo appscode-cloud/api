@@ -342,6 +342,10 @@
           "type": "string",
           "format": "string"
         },
+        "set_password": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "sku": {
           "type": "string",
           "format": "string"

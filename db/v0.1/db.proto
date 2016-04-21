@@ -67,6 +67,7 @@ message CreateRequest {
   string version = 11;
   string gfs_endpoint = 12;
   string gfs_disk = 13;
+  bool set_password = 14;
 }
 
 message DeleteRequest {
