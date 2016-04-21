@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/kubernetes/v0.1/clusters/{cluster_name}/events/construct": {
+    "/api/kubernetes/v0.1/events/{cluster_name}/construct": {
       "put": {
         "summary": "Events.Constructive",
         "operationId": "Constructive",
@@ -49,7 +49,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/clusters/{cluster_name}/events/destruct": {
+    "/api/kubernetes/v0.1/events/{cluster_name}/destruct": {
       "put": {
         "summary": "Events.Destructive",
         "operationId": "Destructive",
