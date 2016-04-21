@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -12,6 +13,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -34,11 +36,15 @@
       }
     },
     "monitoringDashboardCreateRequest": {
+      "type": "object",
       "properties": {
-        "cluster": {
+        "cluster_name": {
           "type": "string"
         },
-        "pod": {
+        "namespace": {
+          "type": "string"
+        },
+        "object_name": {
           "type": "string"
         },
         "type": {
@@ -47,6 +53,7 @@
       }
     },
     "monitoringDashboardCreateResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -57,6 +64,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

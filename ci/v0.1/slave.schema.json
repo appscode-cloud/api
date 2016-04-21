@@ -1,7 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
+    "ciPortInfo": {
+      "type": "object",
+      "properties": {
+        "port": {
+          "type": "integer"
+        },
+        "protocol": {
+          "type": "string"
+        }
+      }
+    },
     "ciSlave": {
+      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -12,6 +24,7 @@
       }
     },
     "ciSlaveCreateRequest": {
+      "type": "object",
       "properties": {
         "ci_starter_version": {
           "type": "string"
@@ -22,6 +35,12 @@
         "labels": {
           "type": "string"
         },
+        "ports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ciPortInfo"
+          }
+        },
         "saltbase_version": {
           "type": "string"
         },
@@ -31,6 +50,7 @@
       }
     },
     "ciSlaveDeleteRequest": {
+      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -38,6 +58,7 @@
       }
     },
     "ciSlaveDescribeRequest": {
+      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -45,6 +66,7 @@
       }
     },
     "ciSlaveDescribeResponse": {
+      "type": "object",
       "properties": {
         "created_at": {
           "type": "string"
@@ -79,6 +101,7 @@
       }
     },
     "ciSlaveListResponse": {
+      "type": "object",
       "properties": {
         "slaves": {
           "type": "array",
@@ -92,6 +115,7 @@
       }
     },
     "ciSlaveRestartRequest": {
+      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -99,6 +123,7 @@
       }
     },
     "ciSlaveRestartResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -106,6 +131,7 @@
       }
     },
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -116,6 +142,7 @@
       }
     },
     "dtypesLongRunningResponse": {
+      "type": "object",
       "properties": {
         "job_id": {
           "type": "string"
@@ -132,6 +159,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -153,8 +181,11 @@
         }
       }
     },
-    "dtypesVoidRequest": {},
+    "dtypesVoidRequest": {
+      "type": "object"
+    },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

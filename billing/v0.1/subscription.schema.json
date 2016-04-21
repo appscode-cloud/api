@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "billingArtifactoryQuota": {
+      "type": "object",
       "properties": {
         "disk_size": {
           "type": "integer"
@@ -12,6 +13,7 @@
       }
     },
     "billingCIQuota": {
+      "type": "object",
       "properties": {
         "agent": {
           "type": "integer"
@@ -25,6 +27,7 @@
       }
     },
     "billingClusterQuota": {
+      "type": "object",
       "properties": {
         "cluster": {
           "type": "integer"
@@ -35,6 +38,7 @@
       }
     },
     "billingDBQuota": {
+      "type": "object",
       "properties": {
         "elasticsearch": {
           "type": "integer"
@@ -48,6 +52,7 @@
       }
     },
     "billingPhabricatorQuota": {
+      "type": "object",
       "properties": {
         "disk_size": {
           "type": "integer"
@@ -58,6 +63,7 @@
       }
     },
     "billingQuota": {
+      "type": "object",
       "properties": {
         "artifact": {
           "$ref": "#/definitions/billingArtifactoryQuota"
@@ -91,6 +97,7 @@
       "default": "USER"
     },
     "billingSubscription": {
+      "type": "object",
       "properties": {
         "author": {
           "type": "string"
@@ -113,6 +120,7 @@
       }
     },
     "billingSubscriptionCloseRequest": {
+      "type": "object",
       "properties": {
         "object_phid": {
           "type": "string"
@@ -123,6 +131,7 @@
       }
     },
     "billingSubscriptionCreateRequest": {
+      "type": "object",
       "properties": {
         "author_phid": {
           "type": "string"
@@ -136,6 +145,7 @@
       }
     },
     "billingSubscriptionDescribeRequest": {
+      "type": "object",
       "properties": {
         "time": {
           "type": "string"
@@ -143,6 +153,7 @@
       }
     },
     "billingSubscriptionDescribeResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -156,6 +167,7 @@
       }
     },
     "billingSubscriptionOpenRequest": {
+      "type": "object",
       "properties": {
         "author_phid": {
           "type": "string"
@@ -175,6 +187,7 @@
       }
     },
     "billingSubscriptionQutaRequest": {
+      "type": "object",
       "properties": {
         "count": {
           "type": "integer"
@@ -191,6 +204,7 @@
       }
     },
     "billingSubscriptionQutaResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -201,6 +215,7 @@
       }
     },
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -211,6 +226,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -233,6 +249,7 @@
       }
     },
     "dtypesVoidResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -240,6 +257,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

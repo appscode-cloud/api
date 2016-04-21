@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "EventRequestObjectMeta": {
+      "type": "object",
       "properties": {
         "instance_id": {
           "type": "string"
@@ -33,6 +34,7 @@
       }
     },
     "EventResponseHandler": {
+      "type": "object",
       "properties": {
         "action": {
           "type": "string"
@@ -55,6 +57,7 @@
       }
     },
     "ObjectMetaLabelsEntry": {
+      "type": "object",
       "properties": {
         "key": {
           "type": "string"
@@ -65,6 +68,7 @@
       }
     },
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -75,6 +79,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -97,6 +102,7 @@
       }
     },
     "kubernetesEventRequest": {
+      "type": "object",
       "properties": {
         "cluster_name": {
           "type": "string"
@@ -119,6 +125,7 @@
       }
     },
     "kubernetesEventResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -132,6 +139,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
