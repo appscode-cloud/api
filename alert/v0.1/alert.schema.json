@@ -1,5 +1,54 @@
 {
   "definitions":{
+    "alertAlertSpec":{
+      "properties":{
+        "alert_interval":{
+          "type":"integer"
+        },
+        "critical_condition":{
+          "type":"string"
+        },
+        "critical_method":{
+          "type":"integer"
+        },
+        "critical_user":{
+          "type":"string"
+        },
+        "warning_condition":{
+          "type":"string"
+        },
+        "warning_method":{
+          "type":"integer"
+        },
+        "warning_user":{
+          "type":"string"
+        }
+      },
+      "type":"object"
+    },
+    "alertCreateRequest":{
+      "properties":{
+        "alert_spec":{
+          "$ref":"#/definitions/alertAlertSpec"
+        },
+        "check_interval":{
+          "type":"integer"
+        },
+        "matrix":{
+          "$ref":"#/definitions/alertMatrix"
+        },
+        "matrix_phid":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "spec":{
+          "$ref":"#/definitions/alertSpec"
+        }
+      },
+      "type":"object"
+    },
     "alertDeleteRequest":{
       "properties":{
         "phid":{
@@ -15,6 +64,26 @@
       "properties":{
         "spec":{
           "$ref":"#/definitions/alertSpec"
+        }
+      },
+      "type":"object"
+    },
+    "alertMatrix":{
+      "properties":{
+        "command":{
+          "type":"string"
+        },
+        "formula":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "query":{
+          "items":{
+            "$ref":"#/definitions/MatrixQueryEntry"
+          },
+          "type":"array"
         }
       },
       "type":"object"
@@ -55,6 +124,32 @@
         },
         "object_type":{
           "type":"string"
+        }
+      },
+      "type":"object"
+    },
+    "alertUpdateRequest":{
+      "properties":{
+        "alert_spec":{
+          "$ref":"#/definitions/alertAlertSpec"
+        },
+        "check_interval":{
+          "type":"integer"
+        },
+        "matrix":{
+          "$ref":"#/definitions/alertMatrix"
+        },
+        "matrix_phid":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "phid":{
+          "type":"string"
+        },
+        "spec":{
+          "$ref":"#/definitions/alertSpec"
         }
       },
       "type":"object"
