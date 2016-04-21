@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "dbSlaveAddRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -13,10 +12,10 @@
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -24,19 +23,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -47,18 +46,18 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -66,7 +65,8 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

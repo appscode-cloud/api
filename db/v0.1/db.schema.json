@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "dbBackupRequest": {
-      "type": "object",
       "properties": {
         "auth_secret_name": {
           "type": "string"
@@ -34,10 +33,10 @@
         "type": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbCreateRequest": {
-      "type": "object",
       "properties": {
         "bucket_name": {
           "type": "string"
@@ -78,10 +77,10 @@
         "version": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbDatabase": {
-      "type": "object",
       "properties": {
         "archive_bucket": {
           "type": "string"
@@ -122,10 +121,10 @@
         "version": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbDeleteRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -136,10 +135,10 @@
         "type": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -147,10 +146,10 @@
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbDescribeResponse": {
-      "type": "object",
       "properties": {
         "auto_snapshot": {
           "type": "integer"
@@ -185,24 +184,24 @@
         "version": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbListResponse": {
-      "type": "object",
       "properties": {
         "databases": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/dbDatabase"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "dbRestoreRequest": {
-      "type": "object",
       "properties": {
         "bucket_name": {
           "type": "string"
@@ -246,10 +245,10 @@
         "version": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbSnapshot": {
-      "type": "object",
       "properties": {
         "bucket": {
           "type": "string"
@@ -287,32 +286,32 @@
         "zone": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbSnapshotListRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbSnapshotListResponse": {
-      "type": "object",
       "properties": {
         "list": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/dbSnapshot"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "dbkubeInfo": {
-      "type": "object",
       "properties": {
         "pods": {
           "type": "integer"
@@ -323,10 +322,10 @@
         "svc": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -334,19 +333,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -357,21 +356,21 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesVoidRequest": {
       "type": "object"
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -379,7 +378,8 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

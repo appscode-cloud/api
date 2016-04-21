@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "ciJob": {
-      "type": "object",
       "properties": {
         "color": {
           "type": "string"
@@ -10,10 +9,10 @@
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobBuildRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -21,10 +20,10 @@
         "param": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobCopyRequest": {
-      "type": "object",
       "properties": {
         "destination": {
           "type": "string"
@@ -32,10 +31,10 @@
         "source": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobCreateRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -43,26 +42,26 @@
         "sh_file": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobDeleteRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobDescribeRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobDescribeResponse": {
-      "type": "object",
       "properties": {
         "build_count": {
           "type": "integer"
@@ -85,24 +84,24 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobListResponse": {
-      "type": "object",
       "properties": {
         "jobs": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ciJob"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -110,19 +109,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -133,21 +132,21 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesVoidRequest": {
       "type": "object"
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -155,7 +154,8 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }
