@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "ciBuild": {
-      "type": "object",
       "properties": {
         "build_number": {
           "type": "integer"
@@ -13,7 +12,6 @@
       }
     },
     "ciBuildDescribeRequest": {
-      "type": "object",
       "properties": {
         "console": {
           "type": "string"
@@ -27,7 +25,6 @@
       }
     },
     "ciBuildDescribeResponse": {
-      "type": "object",
       "properties": {
         "base_url": {
           "type": "string"
@@ -50,7 +47,6 @@
       }
     },
     "ciBuildListRequest": {
-      "type": "object",
       "properties": {
         "job_name": {
           "type": "string"
@@ -58,7 +54,6 @@
       }
     },
     "ciBuildListResponse": {
-      "type": "object",
       "properties": {
         "builds": {
           "type": "array",
@@ -75,7 +70,6 @@
       }
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -86,7 +80,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -109,7 +102,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

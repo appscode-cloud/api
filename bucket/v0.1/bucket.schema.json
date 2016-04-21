@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "bucketBucketListRequest": {
-      "type": "object",
       "properties": {
         "cloud_credential": {
           "type": "string"
@@ -10,7 +9,6 @@
       }
     },
     "bucketBucketListResponse": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "array",
@@ -24,7 +22,6 @@
       }
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -35,7 +32,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -58,7 +54,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

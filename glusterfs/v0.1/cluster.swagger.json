@@ -140,7 +140,6 @@
   },
   "definitions": {
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -153,7 +152,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -179,7 +177,6 @@
       }
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -187,7 +184,6 @@
       }
     },
     "glusterfsCluster": {
-      "type": "object",
       "properties": {
         "created": {
           "type": "string",
@@ -220,7 +216,6 @@
       }
     },
     "glusterfsClusterCreateRequest": {
-      "type": "object",
       "properties": {
         "disks": {
           "type": "array",
@@ -248,7 +243,6 @@
       }
     },
     "glusterfsClusterDeleteRequest": {
-      "type": "object",
       "properties": {
         "kube_cluster": {
           "type": "string",
@@ -261,7 +255,6 @@
       }
     },
     "glusterfsClusterDescribeRequest": {
-      "type": "object",
       "properties": {
         "kube_cluster": {
           "type": "string",
@@ -274,7 +267,6 @@
       }
     },
     "glusterfsClusterDescribeResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -282,7 +274,6 @@
       }
     },
     "glusterfsClusterListRequest": {
-      "type": "object",
       "properties": {
         "kube_cluster": {
           "type": "string",
@@ -291,7 +282,6 @@
       }
     },
     "glusterfsClusterListResponse": {
-      "type": "object",
       "properties": {
         "glusterfs": {
           "type": "array",
@@ -305,7 +295,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",

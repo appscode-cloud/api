@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "caCertificateCreateRequest": {
-      "type": "object",
       "properties": {
         "csr": {
           "type": "string"
@@ -13,7 +12,6 @@
       }
     },
     "caCertificateCreateResponse": {
-      "type": "object",
       "properties": {
         "cert": {
           "type": "string"
@@ -33,7 +31,6 @@
       }
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -44,7 +41,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -67,7 +63,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

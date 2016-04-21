@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -13,7 +12,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -35,11 +33,8 @@
         }
       }
     },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
+    "dtypesVoidRequest": {},
     "healthResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -50,7 +45,6 @@
       }
     },
     "healthVersion": {
-      "type": "object",
       "properties": {
         "Name": {
           "type": "string"
@@ -82,7 +76,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "ciJob": {
-      "type": "object",
       "properties": {
         "color": {
           "type": "string"
@@ -13,7 +12,6 @@
       }
     },
     "ciJobBuildRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -24,7 +22,6 @@
       }
     },
     "ciJobCopyRequest": {
-      "type": "object",
       "properties": {
         "destination": {
           "type": "string"
@@ -35,7 +32,6 @@
       }
     },
     "ciJobCreateRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -46,7 +42,6 @@
       }
     },
     "ciJobDeleteRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -54,7 +49,6 @@
       }
     },
     "ciJobDescribeRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -62,7 +56,6 @@
       }
     },
     "ciJobDescribeResponse": {
-      "type": "object",
       "properties": {
         "build_count": {
           "type": "integer"
@@ -88,7 +81,6 @@
       }
     },
     "ciJobListResponse": {
-      "type": "object",
       "properties": {
         "jobs": {
           "type": "array",
@@ -102,7 +94,6 @@
       }
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -113,7 +104,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -135,11 +125,8 @@
         }
       }
     },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
+    "dtypesVoidRequest": {},
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -147,7 +134,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

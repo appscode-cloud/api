@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -13,7 +12,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -36,7 +34,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -47,7 +44,6 @@
       }
     },
     "sshSSHKey": {
-      "type": "object",
       "properties": {
         "aws_fingerprint": {
           "type": "string"
@@ -64,7 +60,6 @@
       }
     },
     "sshSecureShellGetRequest": {
-      "type": "object",
       "properties": {
         "cluster_name": {
           "type": "string"
@@ -81,7 +76,6 @@
       }
     },
     "sshSecureShellGetResponse": {
-      "type": "object",
       "properties": {
         "instance_addr": {
           "type": "string"

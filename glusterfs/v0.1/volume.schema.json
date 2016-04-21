@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -13,7 +12,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -36,7 +34,6 @@
       }
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -44,7 +41,6 @@
       }
     },
     "glusterfsVolume": {
-      "type": "object",
       "properties": {
         "bricks": {
           "type": "string"
@@ -61,7 +57,6 @@
       }
     },
     "glusterfsVolumeCreateRequest": {
-      "type": "object",
       "properties": {
         "glusterfs_cluster": {
           "type": "string"
@@ -75,7 +70,6 @@
       }
     },
     "glusterfsVolumeDeleteRequest": {
-      "type": "object",
       "properties": {
         "glusterfs_cluster": {
           "type": "string"
@@ -89,7 +83,6 @@
       }
     },
     "glusterfsVolumeListRequest": {
-      "type": "object",
       "properties": {
         "glusterfs_cluster": {
           "type": "string"
@@ -100,7 +93,6 @@
       }
     },
     "glusterfsVolumeListResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -114,7 +106,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

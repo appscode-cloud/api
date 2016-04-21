@@ -257,7 +257,6 @@
   },
   "definitions": {
     "dbBackupRequest": {
-      "type": "object",
       "properties": {
         "auth_secret_name": {
           "type": "string",
@@ -302,7 +301,6 @@
       }
     },
     "dbCreateRequest": {
-      "type": "object",
       "properties": {
         "bucket_name": {
           "type": "string",
@@ -363,7 +361,6 @@
       }
     },
     "dbDatabase": {
-      "type": "object",
       "properties": {
         "archive_bucket": {
           "type": "string",
@@ -420,7 +417,6 @@
       }
     },
     "dbDeleteRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -437,7 +433,6 @@
       }
     },
     "dbDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -450,7 +445,6 @@
       }
     },
     "dbDescribeResponse": {
-      "type": "object",
       "properties": {
         "auto_snapshot": {
           "type": "integer",
@@ -497,7 +491,6 @@
       }
     },
     "dbListResponse": {
-      "type": "object",
       "properties": {
         "databases": {
           "type": "array",
@@ -511,7 +504,6 @@
       }
     },
     "dbRestoreRequest": {
-      "type": "object",
       "properties": {
         "bucket_name": {
           "type": "string",
@@ -572,7 +564,6 @@
       }
     },
     "dbSnapshot": {
-      "type": "object",
       "properties": {
         "bucket": {
           "type": "string",
@@ -625,7 +616,6 @@
       }
     },
     "dbSnapshotListRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string",
@@ -634,7 +624,6 @@
       }
     },
     "dbSnapshotListResponse": {
-      "type": "object",
       "properties": {
         "list": {
           "type": "array",
@@ -648,7 +637,6 @@
       }
     },
     "dbkubeInfo": {
-      "type": "object",
       "properties": {
         "pods": {
           "type": "integer",
@@ -665,7 +653,6 @@
       }
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -678,7 +665,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -703,11 +689,8 @@
         }
       }
     },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
+    "dtypesVoidRequest": {},
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -715,7 +698,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",
