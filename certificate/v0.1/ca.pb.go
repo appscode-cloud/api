@@ -122,7 +122,7 @@ func _AuthorityCertificate_Create_Handler(srv interface{}, ctx context.Context, 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ca.AuthorityCertificate/Create",
+		FullMethod: "/certificate.AuthorityCertificate/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthorityCertificateServer).Create(ctx, req.(*CertificateCreateRequest))
@@ -185,7 +185,7 @@ func _ClientCertificate_Create_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ca.ClientCertificate/Create",
+		FullMethod: "/certificate.ClientCertificate/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ClientCertificateServer).Create(ctx, req.(*CertificateCreateRequest))

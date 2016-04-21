@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "billingChargeCalculateRequest": {
+      "type": "object",
       "properties": {
         "charge_type": {
           "type": "string"
@@ -9,6 +10,7 @@
       }
     },
     "billingChargeCalculateResponse": {
+      "type": "object",
       "properties": {
         "cost_usd": {
           "type": "string"
@@ -19,6 +21,7 @@
       }
     },
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -29,6 +32,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -51,6 +55,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

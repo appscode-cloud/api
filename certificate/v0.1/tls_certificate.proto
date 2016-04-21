@@ -5,11 +5,36 @@ package certificate;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-service TLSCertificate {
+service TLSCertificates {
   /*rpc Create() returns () {
     option (google.api.http) = {
       put: "/api/certificate/v0.1/tls"
       body: "*"
     };
   }*/
+}
+
+message TLSCertificateListResponse {
+  dtypes.Status status = 1;
+  repeated TLSCertificate certificates = 2;
+}
+
+message TLSCertificateDescribeRequest {
+
+}
+
+message TLSCertificate {
+  string phid = 1;
+  string common_name = 2;
+  string issued_by = 3;
+  string valid_from = 4;
+  string expire_date = 5;
+
+  // those feilds will not included into list response.
+  // only describe response will include the underlying
+  // feilds.
+  repeated string sans = 6;
+  string cert = 7;
+  string key = 8;
+  int32 version = 9;
 }
