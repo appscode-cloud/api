@@ -49,8 +49,8 @@ gen_swagger_def() {
          --swagger_out=logtostderr=true,${ALIAS}:. *.proto
 }
 
+# DO NOT DELETE prior schema, since they might contain hand written changes.
 gen_json_schema() {
-  rm -rf *.schema.json
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
          -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \

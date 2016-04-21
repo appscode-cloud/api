@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "ciPortInfo": {
-      "type": "object",
       "properties": {
         "port": {
           "type": "integer"
@@ -10,10 +9,10 @@
         "protocol": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlave": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -21,10 +20,10 @@
         "status": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveCreateRequest": {
-      "type": "object",
       "properties": {
         "ci_starter_version": {
           "type": "string"
@@ -36,10 +35,10 @@
           "type": "string"
         },
         "ports": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ciPortInfo"
-          }
+          },
+          "type": "array"
         },
         "saltbase_version": {
           "type": "string"
@@ -47,26 +46,26 @@
         "user_startup_script": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveDeleteRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveDescribeRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveDescribeResponse": {
-      "type": "object",
       "properties": {
         "created_at": {
           "type": "string"
@@ -98,40 +97,40 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveListResponse": {
-      "type": "object",
       "properties": {
         "slaves": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ciSlave"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveRestartRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveRestartResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -139,10 +138,10 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesLongRunningResponse": {
-      "type": "object",
       "properties": {
         "job_id": {
           "type": "string"
@@ -156,19 +155,19 @@
         "type_id": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -179,13 +178,13 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesVoidRequest": {
       "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -193,7 +192,8 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

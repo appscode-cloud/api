@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "MatrixQueryEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string"
@@ -10,10 +9,10 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "alertAlert": {
-      "type": "object",
       "properties": {
         "icinga_url": {
           "type": "string"
@@ -33,10 +32,10 @@
         "spec": {
           "$ref": "#/definitions/alertAlertSpec"
         }
-      }
+      },
+      "type": "object"
     },
     "alertAlertSpec": {
-      "type": "object",
       "properties": {
         "alert_interval": {
           "type": "integer"
@@ -59,10 +58,10 @@
         "warning_user": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "alertCreateReuquest": {
-      "type": "object",
       "properties": {
         "alert_spec": {
           "$ref": "#/definitions/alertAlertSpec"
@@ -82,10 +81,10 @@
         "spec": {
           "$ref": "#/definitions/alertSpec"
         }
-      }
+      },
+      "type": "object"
     },
     "alertDeleteRequest": {
-      "type": "object",
       "properties": {
         "phid": {
           "type": "string"
@@ -93,32 +92,32 @@
         "spec": {
           "$ref": "#/definitions/alertSpec"
         }
-      }
+      },
+      "type": "object"
     },
     "alertListRequest": {
-      "type": "object",
       "properties": {
         "spec": {
           "$ref": "#/definitions/alertSpec"
         }
-      }
+      },
+      "type": "object"
     },
     "alertListResponse": {
-      "type": "object",
       "properties": {
         "alerts": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/alertAlert"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "alertMatrix": {
-      "type": "object",
       "properties": {
         "command": {
           "type": "string"
@@ -130,15 +129,15 @@
           "type": "string"
         },
         "query": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/MatrixQueryEntry"
-          }
+          },
+          "type": "array"
         }
-      }
+      },
+      "type": "object"
     },
     "alertNotificationRequest": {
-      "type": "object",
       "properties": {
         "alert_phid": {
           "type": "string"
@@ -158,10 +157,10 @@
         "time": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "alertSpec": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -175,10 +174,10 @@
         "object_type": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "alertUpdateReuquest": {
-      "type": "object",
       "properties": {
         "alert_spec": {
           "$ref": "#/definitions/alertAlertSpec"
@@ -201,10 +200,10 @@
         "spec": {
           "$ref": "#/definitions/alertSpec"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -212,19 +211,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -235,18 +234,18 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -254,7 +253,8 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

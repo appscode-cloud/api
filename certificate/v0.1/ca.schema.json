@@ -1,8 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "certificateCertificateCreateRequest": {
-      "type": "object",
+    "caCertificateCreateRequest": {
       "properties": {
         "csr": {
           "type": "string"
@@ -10,10 +9,10 @@
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
-    "certificateCertificateCreateResponse": {
-      "type": "object",
+    "caCertificateCreateResponse": {
       "properties": {
         "cert": {
           "type": "string"
@@ -30,10 +29,10 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -41,19 +40,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -64,10 +63,10 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -75,7 +74,8 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

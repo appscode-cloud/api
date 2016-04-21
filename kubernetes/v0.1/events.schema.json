@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "EventRequestObjectMeta": {
-      "type": "object",
       "properties": {
         "instance_id": {
           "type": "string"
@@ -11,10 +10,10 @@
           "type": "string"
         },
         "labels": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ObjectMetaLabelsEntry"
-          }
+          },
+          "type": "array"
         },
         "namespace": {
           "type": "string"
@@ -26,15 +25,15 @@
           "type": "string"
         },
         "service": {
-          "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "type": "array"
         }
-      }
+      },
+      "type": "object"
     },
     "EventResponseHandler": {
-      "type": "object",
       "properties": {
         "action": {
           "type": "string"
@@ -54,10 +53,10 @@
         "verb": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ObjectMetaLabelsEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string"
@@ -65,10 +64,10 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -76,19 +75,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -99,10 +98,10 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesEventRequest": {
-      "type": "object",
       "properties": {
         "cluster_name": {
           "type": "string"
@@ -122,24 +121,24 @@
         "metadata": {
           "$ref": "#/definitions/EventRequestObjectMeta"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesEventResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         },
         "tasks": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/EventResponseHandler"
-          }
+          },
+          "type": "array"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -147,7 +146,8 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

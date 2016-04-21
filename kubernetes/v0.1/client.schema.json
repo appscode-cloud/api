@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "NodeNodeCapacity": {
-      "type": "object",
       "properties": {
         "cpu": {
           "type": "integer"
@@ -13,10 +12,10 @@
         "pods": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "ServiceLoadBalancerIngress": {
-      "type": "object",
       "properties": {
         "host_name": {
           "type": "string"
@@ -24,10 +23,10 @@
         "ip": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ServicePort": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -44,10 +43,10 @@
         "target_port": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -55,19 +54,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -78,10 +77,10 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesApp": {
-      "type": "object",
       "properties": {
         "cluster_ip": {
           "type": "string"
@@ -98,10 +97,10 @@
         "type": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesAppDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -112,27 +111,27 @@
         "namespace": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesAppDescribeResponse": {
-      "type": "object",
       "properties": {
         "app": {
           "$ref": "#/definitions/kubernetesService"
         },
         "links": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesAppDescribeResponseLinksEntry"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesAppDescribeResponseLinksEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string"
@@ -140,32 +139,32 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesAppListResponse": {
-      "type": "object",
       "properties": {
         "apps": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesApp"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesClientRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesConfigMap": {
-      "type": "object",
       "properties": {
         "created_at": {
           "type": "string"
@@ -182,10 +181,10 @@
         "size": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesConfigMapDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -196,10 +195,10 @@
         "namespace": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesConfigMapDescribeResponse": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -208,10 +207,10 @@
           "type": "string"
         },
         "data": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesConfigMapDescribeResponseDataEntry"
-          }
+          },
+          "type": "array"
         },
         "name": {
           "type": "string"
@@ -222,10 +221,10 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesConfigMapDescribeResponseDataEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string"
@@ -233,30 +232,30 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesConfigMapListResponse": {
-      "type": "object",
       "properties": {
         "config_map": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesConfigMap"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesContainer": {
-      "type": "object",
       "properties": {
         "commands": {
-          "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "type": "array"
         },
         "image": {
           "type": "string"
@@ -264,10 +263,10 @@
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesJob": {
-      "type": "object",
       "properties": {
         "active": {
           "type": "integer"
@@ -282,10 +281,10 @@
           "type": "integer"
         },
         "containers": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesContainer"
-          }
+          },
+          "type": "array"
         },
         "created_at": {
           "type": "string"
@@ -308,24 +307,24 @@
         "succeeded": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesJobListResponse": {
-      "type": "object",
       "properties": {
         "jobs": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesJob"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesNamespace": {
-      "type": "object",
       "properties": {
         "created_at": {
           "type": "string"
@@ -336,24 +335,24 @@
         "phase": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesNamespaceListResponse": {
-      "type": "object",
       "properties": {
         "namespaces": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesNamespace"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesNode": {
-      "type": "object",
       "properties": {
         "capacity": {
           "$ref": "#/definitions/NodeNodeCapacity"
@@ -379,42 +378,42 @@
         "provider_id": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesNodeListResponse": {
-      "type": "object",
       "properties": {
         "nodes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesNode"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesPod": {
-      "type": "object",
       "properties": {
         "app": {
           "type": "string"
         },
         "containers": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesContainer"
-          }
+          },
+          "type": "array"
         },
         "created_at": {
           "type": "string"
         },
         "links": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesPodLinksEntry"
-          }
+          },
+          "type": "array"
         },
         "message": {
           "type": "string"
@@ -437,10 +436,10 @@
         "start_time": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesPodLinksEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string"
@@ -448,33 +447,33 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesPodListResponse": {
-      "type": "object",
       "properties": {
         "pods": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesPod"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesReplicationController": {
-      "type": "object",
       "properties": {
         "app": {
           "type": "string"
         },
         "containers": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesContainer"
-          }
+          },
+          "type": "array"
         },
         "created_at": {
           "type": "string"
@@ -497,24 +496,24 @@
         "replicas": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesReplicationControllerListResponse": {
-      "type": "object",
       "properties": {
         "replication_controllers": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesReplicationController"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesSecret": {
-      "type": "object",
       "properties": {
         "created_at": {
           "type": "string"
@@ -531,10 +530,10 @@
         "secret_type": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesSecretDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -545,10 +544,10 @@
         "namespace": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesSecretDescribeResponse": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -557,10 +556,10 @@
           "type": "string"
         },
         "data": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesSecretDescribeResponseDataEntry"
-          }
+          },
+          "type": "array"
         },
         "name": {
           "type": "string"
@@ -577,10 +576,10 @@
         "type": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesSecretDescribeResponseDataEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string"
@@ -588,24 +587,24 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesSecretListResponse": {
-      "type": "object",
       "properties": {
         "secrets": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesSecret"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesService": {
-      "type": "object",
       "properties": {
         "app": {
           "type": "string"
@@ -617,16 +616,16 @@
           "type": "string"
         },
         "external_ips": {
-          "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "type": "array"
         },
         "loadbalancer_ingresses": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceLoadBalancerIngress"
-          }
+          },
+          "type": "array"
         },
         "name": {
           "type": "string"
@@ -635,32 +634,32 @@
           "type": "string"
         },
         "ports": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ServicePort"
-          }
+          },
+          "type": "array"
         },
         "type": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "kubernetesServiceListResponse": {
-      "type": "object",
       "properties": {
         "services": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/kubernetesService"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -668,7 +667,8 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

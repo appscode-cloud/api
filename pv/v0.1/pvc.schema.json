@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -10,19 +9,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -33,18 +32,18 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -52,10 +51,10 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVCDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -66,10 +65,10 @@
         "namespace": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVCDescribeResponse": {
-      "type": "object",
       "properties": {
         "pvc": {
           "$ref": "#/definitions/pvPVCInfo"
@@ -77,16 +76,16 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVCInfo": {
-      "type": "object",
       "properties": {
         "accessModes": {
-          "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "type": "array"
         },
         "name": {
           "type": "string"
@@ -103,10 +102,10 @@
         "volume": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVCRegisterRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -120,10 +119,10 @@
         "size": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVCUnregisterRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -134,7 +133,8 @@
         "namespace": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -10,19 +9,19 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
         },
         "details": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp"
@@ -33,18 +32,18 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"
@@ -52,10 +51,10 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -63,10 +62,10 @@
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVDescribeResponse": {
-      "type": "object",
       "properties": {
         "pv": {
           "$ref": "#/definitions/pvPVInfo"
@@ -74,16 +73,16 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVInfo": {
-      "type": "object",
       "properties": {
         "accessModes": {
-          "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "type": "array"
         },
         "claim": {
           "type": "string"
@@ -103,10 +102,10 @@
         "volume": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVRegisterRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -126,10 +125,10 @@
         "size": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVUnregisterRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string"
@@ -137,7 +136,8 @@
         "name": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }
