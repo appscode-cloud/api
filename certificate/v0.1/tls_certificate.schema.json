@@ -19,6 +19,9 @@
         "key": {
           "type": "string"
         },
+        "name": {
+          "type": "string"
+        },
         "phid": {
           "type": "string"
         },
@@ -39,10 +42,10 @@
     "certificateTLSCertificateCreateRequest": {
       "type": "object",
       "properties": {
-        "cert": {
+        "cert_data": {
           "type": "string"
         },
-        "key": {
+        "key_data": {
           "type": "string"
         },
         "name": {

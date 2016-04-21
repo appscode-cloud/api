@@ -142,6 +142,10 @@
           "type": "string",
           "format": "string"
         },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
         "phid": {
           "type": "string",
           "format": "string"
@@ -166,11 +170,11 @@
     "certificateTLSCertificateCreateRequest": {
       "type": "object",
       "properties": {
-        "cert": {
+        "cert_data": {
           "type": "string",
           "format": "string"
         },
-        "key": {
+        "key_data": {
           "type": "string",
           "format": "string"
         },

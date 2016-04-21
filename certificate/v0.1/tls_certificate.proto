@@ -50,24 +50,25 @@ message TLSCertificateDescribeResponse {
 
 message TLSCertificate {
   string phid = 1;
-  string common_name = 2;
-  string issued_by = 3;
-  string valid_from = 4;
-  string expire_date = 5;
+  string name = 2;
+  string common_name = 3;
+  string issued_by = 4;
+  string valid_from = 5;
+  string expire_date = 6;
 
   // those feilds will not included into list response.
   // only describe response will include the underlying
   // feilds.
-  repeated string sans = 6;
-  string cert = 7;
-  string key = 8;
-  int32 version = 9;
+  repeated string sans = 7;
+  string cert = 8;
+  string key = 9;
+  int32 version = 10;
 }
 
 message TLSCertificateCreateRequest {
   string name = 1;
-  string cert = 2;
-  string key = 3;
+  string cert_data = 2;
+  string key_data = 3;
 }
 
 message TLSCertificateDeleteRequest {
