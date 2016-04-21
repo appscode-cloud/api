@@ -1,102 +1,5 @@
 {
   "definitions":{
-    "billingArtifactoryQuota":{
-      "properties":{
-        "disk_size":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "repository":{
-          "format":"int64",
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
-    "billingCIQuota":{
-      "properties":{
-        "agent":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "executors":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "jobs":{
-          "format":"int64",
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
-    "billingClusterQuota":{
-      "properties":{
-        "cluster":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "nodes":{
-          "format":"int64",
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
-    "billingDBQuota":{
-      "properties":{
-        "elasticsearch":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "influxdb":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "postgres":{
-          "format":"int64",
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
-    "billingPhabricatorQuota":{
-      "properties":{
-        "disk_size":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "repository":{
-          "format":"int64",
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
-    "billingQuota":{
-      "properties":{
-        "artifact":{
-          "$ref":"#/definitions/billingArtifactoryQuota"
-        },
-        "ci":{
-          "$ref":"#/definitions/billingCIQuota"
-        },
-        "db":{
-          "$ref":"#/definitions/billingDBQuota"
-        },
-        "kube":{
-          "$ref":"#/definitions/billingClusterQuota"
-        },
-        "phabricator":{
-          "$ref":"#/definitions/billingPhabricatorQuota"
-        },
-        "user":{
-          "format":"int64",
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
     "billingResource":{
       "default":"USER",
       "enum":[
@@ -108,42 +11,12 @@
       ],
       "type":"string"
     },
-    "billingSubscription":{
-      "properties":{
-        "author":{
-          "format":"string",
-          "type":"string"
-        },
-        "date_ended":{
-          "format":"string",
-          "type":"string"
-        },
-        "date_started":{
-          "format":"string",
-          "type":"string"
-        },
-        "product_sku":{
-          "format":"string",
-          "type":"string"
-        },
-        "quota":{
-          "$ref":"#/definitions/billingQuota"
-        },
-        "type":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
     "billingSubscriptionCloseRequest":{
       "properties":{
         "object_phid":{
-          "format":"string",
           "type":"string"
         },
         "product_type":{
-          "format":"string",
           "type":"string"
         }
       },
@@ -152,15 +25,12 @@
     "billingSubscriptionCreateRequest":{
       "properties":{
         "author_phid":{
-          "format":"string",
           "type":"string"
         },
         "product_phid":{
-          "format":"string",
           "type":"string"
         },
         "type":{
-          "format":"string",
           "type":"string"
         }
       },
@@ -169,22 +39,7 @@
     "billingSubscriptionDescribeRequest":{
       "properties":{
         "time":{
-          "format":"string",
           "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "billingSubscriptionDescribeResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        },
-        "subscriptions":{
-          "items":{
-            "$ref":"#/definitions/billingSubscription"
-          },
-          "type":"array"
         }
       },
       "type":"object"
@@ -192,23 +47,18 @@
     "billingSubscriptionOpenRequest":{
       "properties":{
         "author_phid":{
-          "format":"string",
           "type":"string"
         },
         "metadata":{
-          "format":"string",
           "type":"string"
         },
         "object_phid":{
-          "format":"string",
           "type":"string"
         },
         "product_type":{
-          "format":"string",
           "type":"string"
         },
         "subscription_phid":{
-          "format":"string",
           "type":"string"
         }
       },
@@ -217,90 +67,15 @@
     "billingSubscriptionQutaRequest":{
       "properties":{
         "count":{
-          "format":"int64",
           "type":"integer"
         },
         "object_phid":{
-          "format":"string",
           "type":"string"
         },
         "resource":{
           "$ref":"#/definitions/billingResource"
         },
         "subresource":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "billingSubscriptionQutaResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        },
-        "subscription_phid":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesHelp":{
-      "properties":{
-        "description":{
-          "format":"string",
-          "type":"string"
-        },
-        "url":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesStatus":{
-      "properties":{
-        "code":{
-          "format":"string",
-          "type":"string"
-        },
-        "details":{
-          "items":{
-            "$ref":"#/definitions/protobufAny"
-          },
-          "type":"array"
-        },
-        "help":{
-          "$ref":"#/definitions/dtypesHelp"
-        },
-        "info":{
-          "format":"string",
-          "type":"string"
-        },
-        "message":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesVoidResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "protobufAny":{
-      "properties":{
-        "type_url":{
-          "format":"string",
-          "type":"string"
-        },
-        "value":{
-          "format":"byte",
           "type":"string"
         }
       },

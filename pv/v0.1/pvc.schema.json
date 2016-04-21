@@ -1,120 +1,14 @@
 {
   "definitions":{
-    "dtypesHelp":{
-      "properties":{
-        "description":{
-          "format":"string",
-          "type":"string"
-        },
-        "url":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesStatus":{
-      "properties":{
-        "code":{
-          "format":"string",
-          "type":"string"
-        },
-        "details":{
-          "items":{
-            "$ref":"#/definitions/protobufAny"
-          },
-          "type":"array"
-        },
-        "help":{
-          "$ref":"#/definitions/dtypesHelp"
-        },
-        "info":{
-          "format":"string",
-          "type":"string"
-        },
-        "message":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesVoidResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "protobufAny":{
-      "properties":{
-        "type_url":{
-          "format":"string",
-          "type":"string"
-        },
-        "value":{
-          "format":"byte",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
     "pvPVCDescribeRequest":{
       "properties":{
         "cluster":{
-          "format":"string",
           "type":"string"
         },
         "name":{
-          "format":"string",
           "type":"string"
         },
         "namespace":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "pvPVCDescribeResponse":{
-      "properties":{
-        "pvc":{
-          "$ref":"#/definitions/pvPVCInfo"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "pvPVCInfo":{
-      "properties":{
-        "accessModes":{
-          "items":{
-            "format":"string",
-            "type":"string"
-          },
-          "type":"array"
-        },
-        "name":{
-          "format":"string",
-          "type":"string"
-        },
-        "namespace":{
-          "format":"string",
-          "type":"string"
-        },
-        "size":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "status":{
-          "format":"string",
-          "type":"string"
-        },
-        "volume":{
-          "format":"string",
           "type":"string"
         }
       },
@@ -123,19 +17,15 @@
     "pvPVCRegisterRequest":{
       "properties":{
         "cluster":{
-          "format":"string",
           "type":"string"
         },
         "name":{
-          "format":"string",
           "type":"string"
         },
         "namespace":{
-          "format":"string",
           "type":"string"
         },
         "size":{
-          "format":"int64",
           "type":"integer"
         }
       },
@@ -144,15 +34,12 @@
     "pvPVCUnregisterRequest":{
       "properties":{
         "cluster":{
-          "format":"string",
           "type":"string"
         },
         "name":{
-          "format":"string",
           "type":"string"
         },
         "namespace":{
-          "format":"string",
           "type":"string"
         }
       },

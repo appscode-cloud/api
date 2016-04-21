@@ -1,120 +1,11 @@
 {
   "definitions":{
-    "dtypesHelp":{
-      "properties":{
-        "description":{
-          "format":"string",
-          "type":"string"
-        },
-        "url":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesStatus":{
-      "properties":{
-        "code":{
-          "format":"string",
-          "type":"string"
-        },
-        "details":{
-          "items":{
-            "$ref":"#/definitions/protobufAny"
-          },
-          "type":"array"
-        },
-        "help":{
-          "$ref":"#/definitions/dtypesHelp"
-        },
-        "info":{
-          "format":"string",
-          "type":"string"
-        },
-        "message":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesVoidResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "protobufAny":{
-      "properties":{
-        "type_url":{
-          "format":"string",
-          "type":"string"
-        },
-        "value":{
-          "format":"byte",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
     "pvPVDescribeRequest":{
       "properties":{
         "cluster":{
-          "format":"string",
           "type":"string"
         },
         "name":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "pvPVDescribeResponse":{
-      "properties":{
-        "pv":{
-          "$ref":"#/definitions/pvPVInfo"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "pvPVInfo":{
-      "properties":{
-        "accessModes":{
-          "items":{
-            "format":"string",
-            "type":"string"
-          },
-          "type":"array"
-        },
-        "claim":{
-          "format":"string",
-          "type":"string"
-        },
-        "name":{
-          "format":"string",
-          "type":"string"
-        },
-        "plugin":{
-          "format":"string",
-          "type":"string"
-        },
-        "size":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "status":{
-          "format":"string",
-          "type":"string"
-        },
-        "volume":{
-          "format":"string",
           "type":"string"
         }
       },
@@ -123,27 +14,21 @@
     "pvPVRegisterRequest":{
       "properties":{
         "cluster":{
-          "format":"string",
           "type":"string"
         },
         "endpoint":{
-          "format":"string",
           "type":"string"
         },
         "identifier":{
-          "format":"string",
           "type":"string"
         },
         "name":{
-          "format":"string",
           "type":"string"
         },
         "plugin":{
-          "format":"string",
           "type":"string"
         },
         "size":{
-          "format":"int64",
           "type":"integer"
         }
       },
@@ -152,11 +37,9 @@
     "pvPVUnregisterRequest":{
       "properties":{
         "cluster":{
-          "format":"string",
           "type":"string"
         },
         "name":{
-          "format":"string",
           "type":"string"
         }
       },

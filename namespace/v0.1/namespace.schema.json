@@ -1,57 +1,9 @@
 {
   "definitions":{
-    "dtypesHelp":{
-      "properties":{
-        "description":{
-          "format":"string",
-          "type":"string"
-        },
-        "url":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesStatus":{
-      "properties":{
-        "code":{
-          "format":"string",
-          "type":"string"
-        },
-        "details":{
-          "items":{
-            "$ref":"#/definitions/protobufAny"
-          },
-          "type":"array"
-        },
-        "help":{
-          "$ref":"#/definitions/dtypesHelp"
-        },
-        "info":{
-          "format":"string",
-          "type":"string"
-        },
-        "message":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
     "namespaceCheckRequest":{
       "properties":{
         "name":{
-          "format":"string",
           "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "namespaceCheckResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
         }
       },
       "type":"object"
@@ -59,11 +11,9 @@
     "namespaceCreateRequest":{
       "properties":{
         "display_name":{
-          "format":"string",
           "type":"string"
         },
         "email":{
-          "format":"string",
           "type":"string"
         },
         "invite_email":{
@@ -74,44 +24,18 @@
           "type":"array"
         },
         "name":{
-          "format":"string",
           "type":"string"
         },
         "password":{
-          "format":"string",
           "type":"string"
         },
         "subscription_type":{
-          "format":"string",
           "type":"string"
         },
         "user_ip":{
-          "format":"string",
           "type":"string"
         },
         "user_name":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "namespaceCreateResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "namespaceLog":{
-      "properties":{
-        "details":{
-          "format":"string",
-          "type":"string"
-        },
-        "info":{
-          "format":"string",
           "type":"string"
         }
       },
@@ -120,22 +44,7 @@
     "namespaceLogRequest":{
       "properties":{
         "name":{
-          "format":"string",
           "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "namespaceLogResponse":{
-      "properties":{
-        "logs":{
-          "items":{
-            "$ref":"#/definitions/namespaceLog"
-          },
-          "type":"array"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
         }
       },
       "type":"object"
@@ -143,28 +52,6 @@
     "namespaceStatusRequest":{
       "properties":{
         "name":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "namespaceStatusResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "protobufAny":{
-      "properties":{
-        "type_url":{
-          "format":"string",
-          "type":"string"
-        },
-        "value":{
-          "format":"byte",
           "type":"string"
         }
       },

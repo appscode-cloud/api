@@ -1,43 +1,14 @@
 {
   "definitions":{
-    "ciPortInfo":{
-      "properties":{
-        "port":{
-          "format":"int32",
-          "type":"integer"
-        },
-        "protocol":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "ciSlave":{
-      "properties":{
-        "name":{
-          "format":"string",
-          "type":"string"
-        },
-        "status":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
     "ciSlaveCreateRequest":{
       "properties":{
         "ci_starter_version":{
-          "format":"string",
           "type":"string"
         },
         "executors":{
-          "format":"int32",
           "type":"integer"
         },
         "labels":{
-          "format":"string",
           "type":"string"
         },
         "ports":{
@@ -47,11 +18,9 @@
           "type":"array"
         },
         "saltbase_version":{
-          "format":"string",
           "type":"string"
         },
         "user_startup_script":{
-          "format":"string",
           "type":"string"
         }
       },
@@ -60,7 +29,6 @@
     "ciSlaveDeleteRequest":{
       "properties":{
         "name":{
-          "format":"string",
           "type":"string"
         }
       },
@@ -69,66 +37,7 @@
     "ciSlaveDescribeRequest":{
       "properties":{
         "name":{
-          "format":"string",
           "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "ciSlaveDescribeResponse":{
-      "properties":{
-        "created_at":{
-          "format":"string",
-          "type":"string"
-        },
-        "executors":{
-          "format":"int64",
-          "type":"integer"
-        },
-        "label":{
-          "format":"string",
-          "type":"string"
-        },
-        "name":{
-          "format":"string",
-          "type":"string"
-        },
-        "node_status":{
-          "format":"string",
-          "type":"string"
-        },
-        "offline_reason":{
-          "format":"string",
-          "type":"string"
-        },
-        "provider":{
-          "format":"string",
-          "type":"string"
-        },
-        "sku":{
-          "format":"string",
-          "type":"string"
-        },
-        "startup_script":{
-          "format":"string",
-          "type":"string"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "ciSlaveListResponse":{
-      "properties":{
-        "slaves":{
-          "items":{
-            "$ref":"#/definitions/ciSlave"
-          },
-          "type":"array"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
         }
       },
       "type":"object"
@@ -136,93 +45,12 @@
     "ciSlaveRestartRequest":{
       "properties":{
         "name":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "ciSlaveRestartResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesHelp":{
-      "properties":{
-        "description":{
-          "format":"string",
-          "type":"string"
-        },
-        "url":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesLongRunningResponse":{
-      "properties":{
-        "job_id":{
-          "format":"string",
-          "type":"string"
-        },
-        "job_type":{
-          "format":"string",
-          "type":"string"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        },
-        "type_id":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesStatus":{
-      "properties":{
-        "code":{
-          "format":"string",
-          "type":"string"
-        },
-        "details":{
-          "items":{
-            "$ref":"#/definitions/protobufAny"
-          },
-          "type":"array"
-        },
-        "help":{
-          "$ref":"#/definitions/dtypesHelp"
-        },
-        "info":{
-          "format":"string",
-          "type":"string"
-        },
-        "message":{
-          "format":"string",
           "type":"string"
         }
       },
       "type":"object"
     },
     "dtypesVoidRequest":{
-      "type":"object"
-    },
-    "protobufAny":{
-      "properties":{
-        "type_url":{
-          "format":"string",
-          "type":"string"
-        },
-        "value":{
-          "format":"byte",
-          "type":"string"
-        }
-      },
       "type":"object"
     }
   }

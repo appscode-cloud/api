@@ -133,7 +133,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/alertUpdateReuquest"
+              "$ref": "#/definitions/alertUpdateRequest"
             }
           }
         ],
@@ -186,7 +186,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/alertCreateReuquest"
+              "$ref": "#/definitions/alertCreateRequest"
             }
           }
         ],
@@ -324,7 +324,7 @@
         }
       }
     },
-    "alertCreateReuquest": {
+    "alertCreateRequest": {
       "type": "object",
       "properties": {
         "alert_spec": {
@@ -457,7 +457,7 @@
         }
       }
     },
-    "alertUpdateReuquest": {
+    "alertUpdateRequest": {
       "type": "object",
       "properties": {
         "alert_spec": {

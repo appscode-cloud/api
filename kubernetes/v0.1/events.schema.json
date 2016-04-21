@@ -3,11 +3,9 @@
     "EventRequestObjectMeta":{
       "properties":{
         "instance_id":{
-          "format":"string",
           "type":"string"
         },
         "kind":{
-          "format":"string",
           "type":"string"
         },
         "labels":{
@@ -17,15 +15,12 @@
           "type":"array"
         },
         "namespace":{
-          "format":"string",
           "type":"string"
         },
         "pod_ip":{
-          "format":"string",
           "type":"string"
         },
         "replication_controller":{
-          "format":"string",
           "type":"string"
         },
         "service":{
@@ -38,138 +33,25 @@
       },
       "type":"object"
     },
-    "EventResponseHandler":{
-      "properties":{
-        "action":{
-          "format":"string",
-          "type":"string"
-        },
-        "base":{
-          "format":"string",
-          "type":"string"
-        },
-        "data":{
-          "format":"byte",
-          "type":"string"
-        },
-        "receiver":{
-          "format":"string",
-          "type":"string"
-        },
-        "suffix":{
-          "format":"string",
-          "type":"string"
-        },
-        "verb":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "ObjectMetaLabelsEntry":{
-      "properties":{
-        "key":{
-          "format":"string",
-          "type":"string"
-        },
-        "value":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesHelp":{
-      "properties":{
-        "description":{
-          "format":"string",
-          "type":"string"
-        },
-        "url":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesStatus":{
-      "properties":{
-        "code":{
-          "format":"string",
-          "type":"string"
-        },
-        "details":{
-          "items":{
-            "$ref":"#/definitions/protobufAny"
-          },
-          "type":"array"
-        },
-        "help":{
-          "$ref":"#/definitions/dtypesHelp"
-        },
-        "info":{
-          "format":"string",
-          "type":"string"
-        },
-        "message":{
-          "format":"string",
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
     "kubernetesEventRequest":{
       "properties":{
         "cluster_name":{
-          "format":"string",
           "type":"string"
         },
         "event_type":{
-          "format":"string",
           "type":"string"
         },
         "kube_namespace":{
-          "format":"string",
           "type":"string"
         },
         "kube_object_name":{
-          "format":"string",
           "type":"string"
         },
         "kube_object_type":{
-          "format":"string",
           "type":"string"
         },
         "metadata":{
           "$ref":"#/definitions/EventRequestObjectMeta"
-        }
-      },
-      "type":"object"
-    },
-    "kubernetesEventResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        },
-        "tasks":{
-          "items":{
-            "$ref":"#/definitions/EventResponseHandler"
-          },
-          "type":"array"
-        }
-      },
-      "type":"object"
-    },
-    "protobufAny":{
-      "properties":{
-        "type_url":{
-          "format":"string",
-          "type":"string"
-        },
-        "value":{
-          "format":"byte",
-          "type":"string"
         }
       },
       "type":"object"

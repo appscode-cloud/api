@@ -43,7 +43,7 @@ func request_Alerts_Notify_0(ctx context.Context, client AlertsClient, req *http
 }
 
 func request_Alerts_Create_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CreateReuquest
+	var protoReq CreateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -107,7 +107,7 @@ func request_Alerts_Create_0(ctx context.Context, client AlertsClient, req *http
 }
 
 func request_Alerts_Update_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq UpdateReuquest
+	var protoReq UpdateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
