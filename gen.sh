@@ -193,7 +193,7 @@ gen_protos() {
     gen_server_protos
     gen_proxy_protos
     gen_swagger_defs
-    gen_json_schemas
+    # gen_json_schemas
     # gen_python_protos
     # gen_php_protos
     compile
