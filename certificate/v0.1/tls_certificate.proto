@@ -6,12 +6,36 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service TLSCertificates {
-  /*rpc Create() returns () {
+  rpc List(dtypes.VoidRequest) returns (TLSCertificateListResponse) {
+    option (google.api.http) = {
+      get: "/api/certificate/v0.1/tls"
+    };
+  }
+  rpc Describe(TLSCertificateDescribeRequest) returns (TLSCertificateDescribeResponse) {
+    option (google.api.http) = {
+      get: "/api/certificate/v0.1/tls/{cert}"
+    };
+  }
+
+  rpc Create(TLSCertificateCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/api/certificate/v0.1/tls"
       body: "*"
     };
-  }*/
+  }
+
+  rpc Delete(TLSCertificateDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      get: "/api/certificate/v0.1/tls/{cert}"
+    };
+  }
+
+  rpc Deploy(TLSCertificateDeployRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/certificate/v0.1/tls/{cert}/deploy"
+      body: "*"
+    };
+  }
 }
 
 message TLSCertificateListResponse {
@@ -19,8 +43,9 @@ message TLSCertificateListResponse {
   repeated TLSCertificate certificates = 2;
 }
 
-message TLSCertificateDescribeRequest {
-
+message TLSCertificateDescribeResponse {
+  dtypes.Status status = 1;
+  TLSCertificate certificate = 2;
 }
 
 message TLSCertificate {
@@ -37,4 +62,25 @@ message TLSCertificate {
   string cert = 7;
   string key = 8;
   int32 version = 9;
+}
+
+message TLSCertificateCreateRequest {
+  string name = 1;
+  string cert = 2;
+  string key = 3;
+}
+
+message TLSCertificateDeleteRequest {
+  string cert = 1;
+}
+
+message TLSCertificateDescribeRequest {
+  string cert = 1;
+}
+
+message TLSCertificateDeployRequest {
+  string cert = 1;
+  string secret_name = 2;
+  string cluster_name = 3;
+  string namespace = 4;
 }

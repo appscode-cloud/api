@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "caCertificateCreateRequest": {
+    "certificateCertificateCreateRequest": {
       "type": "object",
       "properties": {
         "csr": {
@@ -12,7 +12,7 @@
         }
       }
     },
-    "caCertificateCreateResponse": {
+    "certificateCertificateCreateResponse": {
       "type": "object",
       "properties": {
         "cert": {

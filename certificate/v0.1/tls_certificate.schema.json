@@ -1,4 +1,168 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {}
+  "definitions": {
+    "certificateTLSCertificate": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string"
+        },
+        "common_name": {
+          "type": "string"
+        },
+        "expire_date": {
+          "type": "string"
+        },
+        "issued_by": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "sans": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "valid_from": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer"
+        }
+      }
+    },
+    "certificateTLSCertificateCreateRequest": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "certificateTLSCertificateDeleteRequest": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string"
+        }
+      }
+    },
+    "certificateTLSCertificateDeployRequest": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string"
+        },
+        "cluster_name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "secret_name": {
+          "type": "string"
+        }
+      }
+    },
+    "certificateTLSCertificateDescribeRequest": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string"
+        }
+      }
+    },
+    "certificateTLSCertificateDescribeResponse": {
+      "type": "object",
+      "properties": {
+        "certificate": {
+          "$ref": "#/definitions/certificateTLSCertificate"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateTLSCertificateListResponse": {
+      "type": "object",
+      "properties": {
+        "certificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/certificateTLSCertificate"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "info": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "dtypesVoidRequest": {
+      "type": "object"
+    },
+    "dtypesVoidResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
 }
