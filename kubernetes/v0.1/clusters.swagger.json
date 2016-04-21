@@ -136,8 +136,32 @@
     },
     "/api/kubernetes/v0.1/clusters/{name}": {
       "get": {
-        "summary": "Clusters.Update",
-        "operationId": "Update",
+        "summary": "Clusters.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesClusterDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Clusters"
+        ]
+      },
+      "delete": {
+        "summary": "Clusters.Delete",
+        "operationId": "Delete",
         "responses": {
           "default": {
             "description": "Description",
@@ -159,9 +183,9 @@
           "Clusters"
         ]
       },
-      "delete": {
-        "summary": "Clusters.Delete",
-        "operationId": "Delete",
+      "post": {
+        "summary": "Clusters.Update",
+        "operationId": "Update",
         "responses": {
           "default": {
             "description": "Description",

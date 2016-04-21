@@ -34,7 +34,7 @@ service Clusters {
 
   rpc Update(ClusterUpdateRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-       get : "/api/kubernetes/v0.1/clusters/{name}"
+       post : "/api/kubernetes/v0.1/clusters/{name}"
     };
   }
 
