@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "ciMasterCreateRequest": {
+      "type": "object",
       "properties": {
         "cluster_name": {
           "type": "string"
@@ -12,6 +13,7 @@
       }
     },
     "ciMasterCreateResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -19,6 +21,7 @@
       }
     },
     "ciMasterDeleteRequest": {
+      "type": "object",
       "properties": {
         "cluster_name": {
           "type": "string"
@@ -26,6 +29,7 @@
       }
     },
     "ciMasterDeleteResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -33,6 +37,7 @@
       }
     },
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string"
@@ -43,6 +48,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -65,6 +71,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string"

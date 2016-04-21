@@ -128,6 +128,7 @@
   },
   "definitions": {
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -140,6 +141,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -165,6 +167,7 @@
       }
     },
     "namespaceCheckRequest": {
+      "type": "object",
       "properties": {
         "name": {
           "type": "string",
@@ -173,6 +176,7 @@
       }
     },
     "namespaceCheckResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -180,6 +184,7 @@
       }
     },
     "namespaceCreateRequest": {
+      "type": "object",
       "properties": {
         "display_name": {
           "type": "string",
@@ -219,6 +224,7 @@
       }
     },
     "namespaceCreateResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -226,6 +232,7 @@
       }
     },
     "namespaceLog": {
+      "type": "object",
       "properties": {
         "details": {
           "type": "string",
@@ -238,6 +245,7 @@
       }
     },
     "namespaceLogRequest": {
+      "type": "object",
       "properties": {
         "name": {
           "type": "string",
@@ -246,6 +254,7 @@
       }
     },
     "namespaceLogResponse": {
+      "type": "object",
       "properties": {
         "logs": {
           "type": "array",
@@ -259,6 +268,7 @@
       }
     },
     "namespaceStatusRequest": {
+      "type": "object",
       "properties": {
         "name": {
           "type": "string",
@@ -267,6 +277,7 @@
       }
     },
     "namespaceStatusResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -274,6 +285,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",
