@@ -59,6 +59,30 @@
     },
     "/api/certificate/v0.1/tls/{cert}": {
       "get": {
+        "summary": "TLSCertificates.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/certificateTLSCertificateDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cert",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "TLSCertificates"
+        ]
+      },
+      "delete": {
         "summary": "TLSCertificates.Delete",
         "operationId": "Delete",
         "responses": {
