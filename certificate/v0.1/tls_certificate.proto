@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package certificate;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service TLSCertificates {
+  rpc List(dtypes.VoidRequest) returns (TLSCertificateListResponse) {
+    option (google.api.http) = {
+      get: "/api/certificate/v0.1/tls"
+    };
+  }
+  rpc Describe(TLSCertificateDescribeRequest) returns (TLSCertificateDescribeResponse) {
+    option (google.api.http) = {
+      get: "/api/certificate/v0.1/tls/{cert}"
+    };
+  }
+
+  rpc Create(TLSCertificateCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/certificate/v0.1/tls"
+      body: "*"
+    };
+  }
+
+  rpc Delete(TLSCertificateDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/api/certificate/v0.1/tls/{cert}"
+    };
+  }
+
+  rpc Deploy(TLSCertificateDeployRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/certificate/v0.1/tls/{cert}/deploy"
+      body: "*"
+    };
+  }
+}
+
+message TLSCertificateListResponse {
+  dtypes.Status status = 1;
+  repeated TLSCertificate certificates = 2;
+}
+
+message TLSCertificateDescribeResponse {
+  dtypes.Status status = 1;
+  TLSCertificate certificate = 2;
+}
+
+message TLSCertificate {
+  string phid = 1;
+  string name = 2;
+  string common_name = 3;
+  string issued_by = 4;
+  string valid_from = 5;
+  string expire_date = 6;
+
+  // those feilds will not included into list response.
+  // only describe response will include the underlying
+  // feilds.
+  repeated string sans = 7;
+  string cert = 8;
+  string key = 9;
+  int32 version = 10;
+  string serial_number = 11;
+}
+
+message TLSCertificateCreateRequest {
+  string name = 1;
+  string cert_data = 2;
+  string key_data = 3;
+}
+
+message TLSCertificateDeleteRequest {
+  string cert = 1;
+}
+
+message TLSCertificateDescribeRequest {
+  string cert = 1;
+}
+
+message TLSCertificateDeployRequest {
+  string cert = 1;
+  string secret_name = 2;
+  string cluster_name = 3;
+  string namespace = 4;
+}

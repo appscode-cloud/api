@@ -1,271 +1,85 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "billingArtifactoryQuota": {
-      "type": "object",
-      "properties": {
-        "disk_size": {
-          "type": "integer"
-        },
-        "repository": {
-          "type": "integer"
-        }
-      }
-    },
-    "billingCIQuota": {
-      "type": "object",
-      "properties": {
-        "agent": {
-          "type": "integer"
-        },
-        "executors": {
-          "type": "integer"
-        },
-        "jobs": {
-          "type": "integer"
-        }
-      }
-    },
-    "billingClusterQuota": {
-      "type": "object",
-      "properties": {
-        "cluster": {
-          "type": "integer"
-        },
-        "nodes": {
-          "type": "integer"
-        }
-      }
-    },
-    "billingDBQuota": {
-      "type": "object",
-      "properties": {
-        "elasticsearch": {
-          "type": "integer"
-        },
-        "influxdb": {
-          "type": "integer"
-        },
-        "postgres": {
-          "type": "integer"
-        }
-      }
-    },
-    "billingPhabricatorQuota": {
-      "type": "object",
-      "properties": {
-        "disk_size": {
-          "type": "integer"
-        },
-        "repository": {
-          "type": "integer"
-        }
-      }
-    },
-    "billingQuota": {
-      "type": "object",
-      "properties": {
-        "artifact": {
-          "$ref": "#/definitions/billingArtifactoryQuota"
-        },
-        "ci": {
-          "$ref": "#/definitions/billingCIQuota"
-        },
-        "db": {
-          "$ref": "#/definitions/billingDBQuota"
-        },
-        "kube": {
-          "$ref": "#/definitions/billingClusterQuota"
-        },
-        "phabricator": {
-          "$ref": "#/definitions/billingPhabricatorQuota"
-        },
-        "user": {
-          "type": "integer"
-        }
-      }
-    },
-    "billingResource": {
-      "type": "string",
-      "enum": [
+  "definitions":{
+    "billingResource":{
+      "default":"USER",
+      "enum":[
         "USER",
         "CLUSTER",
         "NODE",
         "DB",
         "CI"
       ],
-      "default": "USER"
+      "type":"string"
     },
-    "billingSubscription": {
-      "type": "object",
-      "properties": {
-        "author": {
-          "type": "string"
+    "billingSubscriptionCloseRequest":{
+      "properties":{
+        "object_phid":{
+          "type":"string"
         },
-        "date_ended": {
-          "type": "string"
-        },
-        "date_started": {
-          "type": "string"
-        },
-        "product_sku": {
-          "type": "string"
-        },
-        "quota": {
-          "$ref": "#/definitions/billingQuota"
-        },
-        "type": {
-          "type": "string"
+        "product_type":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "billingSubscriptionCloseRequest": {
-      "type": "object",
-      "properties": {
-        "object_phid": {
-          "type": "string"
+    "billingSubscriptionCreateRequest":{
+      "properties":{
+        "author_phid":{
+          "type":"string"
         },
-        "product_type": {
-          "type": "string"
+        "product_phid":{
+          "type":"string"
+        },
+        "type":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "billingSubscriptionCreateRequest": {
-      "type": "object",
-      "properties": {
-        "author_phid": {
-          "type": "string"
-        },
-        "product_phid": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
+    "billingSubscriptionDescribeRequest":{
+      "properties":{
+        "time":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "billingSubscriptionDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "time": {
-          "type": "string"
+    "billingSubscriptionOpenRequest":{
+      "properties":{
+        "author_phid":{
+          "type":"string"
+        },
+        "metadata":{
+          "type":"string"
+        },
+        "object_phid":{
+          "type":"string"
+        },
+        "product_type":{
+          "type":"string"
+        },
+        "subscription_phid":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "billingSubscriptionDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+    "billingSubscriptionQutaRequest":{
+      "properties":{
+        "count":{
+          "type":"integer"
         },
-        "subscriptions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/billingSubscription"
-          }
+        "object_phid":{
+          "type":"string"
+        },
+        "resource":{
+          "$ref":"#/definitions/billingResource"
+        },
+        "subresource":{
+          "type":"string"
         }
-      }
-    },
-    "billingSubscriptionOpenRequest": {
-      "type": "object",
-      "properties": {
-        "author_phid": {
-          "type": "string"
-        },
-        "metadata": {
-          "type": "string"
-        },
-        "object_phid": {
-          "type": "string"
-        },
-        "product_type": {
-          "type": "string"
-        },
-        "subscription_phid": {
-          "type": "string"
-        }
-      }
-    },
-    "billingSubscriptionQutaRequest": {
-      "type": "object",
-      "properties": {
-        "count": {
-          "type": "integer"
-        },
-        "object_phid": {
-          "type": "string"
-        },
-        "resource": {
-          "$ref": "#/definitions/billingResource"
-        },
-        "subresource": {
-          "type": "string"
-        }
-      }
-    },
-    "billingSubscriptionQutaResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "subscription_phid": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesVoidResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+      },
+      "type":"object"
     }
   }
 }

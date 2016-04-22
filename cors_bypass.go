@@ -2,6 +2,8 @@ package api
 
 import (
 	alert "github.com/appscode/api/alert/v0.1"
+	bucket "github.com/appscode/api/bucket/v0.1"
+	certificate "github.com/appscode/api/certificate/v0.1"
 	ci "github.com/appscode/api/ci/v0.1"
 	credential "github.com/appscode/api/credential/v0.1"
 	db "github.com/appscode/api/db/v0.1"
@@ -9,7 +11,6 @@ import (
 	kubernetes "github.com/appscode/api/kubernetes/v0.1"
 	namespace "github.com/appscode/api/namespace/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
-	bucket "github.com/appscode/api/bucket/v0.1"
 	"github.com/gengo/grpc-gateway/runtime"
 )
 
@@ -28,5 +29,6 @@ func Patterens() []runtime.Pattern {
 	ps = append(ps, pv.Patterns()...)
 	ps = append(ps, glusterfs.Patterns()...)
 	ps = append(ps, bucket.Patterns()...)
+	ps = append(ps, certificate.Patterns()...)
 	return ps
 }

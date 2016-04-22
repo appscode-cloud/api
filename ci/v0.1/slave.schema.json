@@ -1,199 +1,68 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "ciPortInfo": {
-      "type": "object",
-      "properties": {
-        "port": {
-          "type": "integer"
+  "definitions":{
+    "ciPortInfo":{
+      "properties":{
+        "port":{
+          "type":"integer"
         },
-        "protocol": {
-          "type": "string"
+        "protocol":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciSlave": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
+    "ciSlaveCreateRequest":{
+      "properties":{
+        "ci_starter_version":{
+          "type":"string"
         },
-        "status": {
-          "type": "string"
+        "executors":{
+          "type":"integer"
+        },
+        "labels":{
+          "type":"string"
+        },
+        "ports":{
+          "items":{
+            "$ref":"#/definitions/ciPortInfo"
+          },
+          "type":"array"
+        },
+        "saltbase_version":{
+          "type":"string"
+        },
+        "user_startup_script":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciSlaveCreateRequest": {
-      "type": "object",
-      "properties": {
-        "ci_starter_version": {
-          "type": "string"
-        },
-        "executors": {
-          "type": "integer"
-        },
-        "labels": {
-          "type": "string"
-        },
-        "ports": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ciPortInfo"
-          }
-        },
-        "saltbase_version": {
-          "type": "string"
-        },
-        "user_startup_script": {
-          "type": "string"
+    "ciSlaveDeleteRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciSlaveDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
+    "ciSlaveDescribeRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciSlaveDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
+    "ciSlaveRestartRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciSlaveDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "created_at": {
-          "type": "string"
-        },
-        "executors": {
-          "type": "integer"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "node_status": {
-          "type": "string"
-        },
-        "offline_reason": {
-          "type": "string"
-        },
-        "provider": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "startup_script": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciSlaveListResponse": {
-      "type": "object",
-      "properties": {
-        "slaves": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ciSlave"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciSlaveRestartRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "ciSlaveRestartResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesLongRunningResponse": {
-      "type": "object",
-      "properties": {
-        "job_id": {
-          "type": "string"
-        },
-        "job_type": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "type_id": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+    "dtypesVoidRequest":{
+      "type":"object"
     }
   }
 }

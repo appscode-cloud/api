@@ -1,240 +1,57 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
+  "definitions":{
+    "pvDiskCreateRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         },
-        "url": {
-          "type": "string"
+        "disk_type":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "size":{
+          "type":"integer"
+        },
+        "zone":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
+    "pvDiskDeleteRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
+        "identifier":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesVoidResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+    "pvDiskDescribeRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "plugin":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
+    "pvDiskListRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         }
-      }
-    },
-    "pvDisk": {
-      "type": "object",
-      "properties": {
-        "endpoint": {
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        },
-        "iops": {
-          "type": "integer"
-        },
-        "kind": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "plugin": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "zone": {
-          "type": "string"
-        }
-      }
-    },
-    "pvDiskCreateRequest": {
-      "type": "object",
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "disk_type": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        },
-        "zone": {
-          "type": "string"
-        }
-      }
-    },
-    "pvDiskDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "identifier": {
-          "type": "string"
-        }
-      }
-    },
-    "pvDiskDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "plugin": {
-          "type": "string"
-        }
-      }
-    },
-    "pvDiskDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "disk": {
-          "$ref": "#/definitions/pvDisk"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "pvDiskListRequest": {
-      "type": "object",
-      "properties": {
-        "cluster": {
-          "type": "string"
-        }
-      }
-    },
-    "pvDiskListResponse": {
-      "type": "object",
-      "properties": {
-        "kube": {
-          "type": "string"
-        },
-        "result": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/pvResult"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "pvPV": {
-      "type": "object",
-      "properties": {
-        "claim": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "plugin": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "volume": {
-          "type": "string"
-        }
-      }
-    },
-    "pvPVC": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "string"
-        },
-        "volume": {
-          "type": "string"
-        }
-      }
-    },
-    "pvResult": {
-      "type": "object",
-      "properties": {
-        "disk": {
-          "$ref": "#/definitions/pvDisk"
-        },
-        "pv": {
-          "$ref": "#/definitions/pvPV"
-        },
-        "pvc": {
-          "$ref": "#/definitions/pvPVC"
-        }
-      }
+      },
+      "type":"object"
     }
   }
 }

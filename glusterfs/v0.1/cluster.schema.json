@@ -1,159 +1,58 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
+  "definitions":{
+    "glusterfsClusterCreateRequest":{
+      "properties":{
+        "disks":{
+          "items":{
+            "format":"string",
+            "type":"string"
+          },
+          "type":"array"
         },
-        "url": {
-          "type": "string"
+        "kube_cluster":{
+          "type":"string"
+        },
+        "mood":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "node":{
+          "type":"integer"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
+    "glusterfsClusterDeleteRequest":{
+      "properties":{
+        "kube_cluster":{
+          "type":"string"
         },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesVoidResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+    "glusterfsClusterDescribeRequest":{
+      "properties":{
+        "kube_cluster":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "glusterfsCluster": {
-      "type": "object",
-      "properties": {
-        "created": {
-          "type": "string"
-        },
-        "kube_cluster": {
-          "type": "string"
-        },
-        "kube_namespace": {
-          "type": "string"
-        },
-        "mood": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "replica": {
-          "type": "integer"
+    "glusterfsClusterListRequest":{
+      "properties":{
+        "kube_cluster":{
+          "type":"string"
         }
-      }
-    },
-    "glusterfsClusterCreateRequest": {
-      "type": "object",
-      "properties": {
-        "disks": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "kube_cluster": {
-          "type": "string"
-        },
-        "mood": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "node": {
-          "type": "integer"
-        }
-      }
-    },
-    "glusterfsClusterDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "kube_cluster": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "glusterfsClusterDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "kube_cluster": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "glusterfsClusterDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "glusterfsClusterListRequest": {
-      "type": "object",
-      "properties": {
-        "kube_cluster": {
-          "type": "string"
-        }
-      }
-    },
-    "glusterfsClusterListResponse": {
-      "type": "object",
-      "properties": {
-        "glusterfs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/glusterfsCluster"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+      },
+      "type":"object"
     }
   }
 }

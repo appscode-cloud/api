@@ -1,128 +1,43 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
+  "definitions":{
+    "glusterfsVolumeCreateRequest":{
+      "properties":{
+        "glusterfs_cluster":{
+          "type":"string"
         },
-        "url": {
-          "type": "string"
+        "kube_cluster":{
+          "type":"string"
+        },
+        "volume":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
+    "glusterfsVolumeDeleteRequest":{
+      "properties":{
+        "glusterfs_cluster":{
+          "type":"string"
         },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
+        "kube_cluster":{
+          "type":"string"
         },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
+        "volume":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesVoidResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+    "glusterfsVolumeListRequest":{
+      "properties":{
+        "glusterfs_cluster":{
+          "type":"string"
+        },
+        "kube_cluster":{
+          "type":"string"
         }
-      }
-    },
-    "glusterfsVolume": {
-      "type": "object",
-      "properties": {
-        "bricks": {
-          "type": "string"
-        },
-        "endpoint": {
-          "type": "string"
-        },
-        "path": {
-          "type": "string"
-        },
-        "replica": {
-          "type": "integer"
-        }
-      }
-    },
-    "glusterfsVolumeCreateRequest": {
-      "type": "object",
-      "properties": {
-        "glusterfs_cluster": {
-          "type": "string"
-        },
-        "kube_cluster": {
-          "type": "string"
-        },
-        "volume": {
-          "type": "string"
-        }
-      }
-    },
-    "glusterfsVolumeDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "glusterfs_cluster": {
-          "type": "string"
-        },
-        "kube_cluster": {
-          "type": "string"
-        },
-        "volume": {
-          "type": "string"
-        }
-      }
-    },
-    "glusterfsVolumeListRequest": {
-      "type": "object",
-      "properties": {
-        "glusterfs_cluster": {
-          "type": "string"
-        },
-        "kube_cluster": {
-          "type": "string"
-        }
-      }
-    },
-    "glusterfsVolumeListResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "volumes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/glusterfsVolume"
-          }
-        }
-      }
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+      },
+      "type":"object"
     }
   }
 }

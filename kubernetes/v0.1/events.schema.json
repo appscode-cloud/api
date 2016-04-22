@@ -1,153 +1,71 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "EventRequestObjectMeta": {
-      "type": "object",
-      "properties": {
-        "instance_id": {
-          "type": "string"
+  "definitions":{
+    "EventRequestObjectMeta":{
+      "properties":{
+        "instance_id":{
+          "type":"string"
         },
-        "kind": {
-          "type": "string"
+        "kind":{
+          "type":"string"
         },
-        "labels": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ObjectMetaLabelsEntry"
-          }
+        "labels":{
+          "items":{
+            "$ref":"#/definitions/ObjectMetaLabelsEntry"
+          },
+          "type":"array"
         },
-        "namespace": {
-          "type": "string"
+        "namespace":{
+          "type":"string"
         },
-        "pod_ip": {
-          "type": "string"
+        "pod_ip":{
+          "type":"string"
         },
-        "replication_controller": {
-          "type": "string"
+        "replication_controller":{
+          "type":"string"
         },
-        "service": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "service":{
+          "items":{
+            "format":"string",
+            "type":"string"
+          },
+          "type":"array"
         }
-      }
+      },
+      "type":"object"
     },
-    "EventResponseHandler": {
-      "type": "object",
-      "properties": {
-        "action": {
-          "type": "string"
+    "ObjectMetaLabelsEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
         },
-        "base": {
-          "type": "string"
-        },
-        "data": {
-          "type": "string"
-        },
-        "receiver": {
-          "type": "string"
-        },
-        "suffix": {
-          "type": "string"
-        },
-        "verb": {
-          "type": "string"
+        "value":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ObjectMetaLabelsEntry": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string"
+    "kubernetesEventRequest":{
+      "properties":{
+        "cluster_name":{
+          "type":"string"
         },
-        "value": {
-          "type": "string"
+        "event_type":{
+          "type":"string"
+        },
+        "kube_namespace":{
+          "type":"string"
+        },
+        "kube_object_name":{
+          "type":"string"
+        },
+        "kube_object_type":{
+          "type":"string"
+        },
+        "metadata":{
+          "$ref":"#/definitions/EventRequestObjectMeta"
         }
-      }
-    },
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "kubernetesEventRequest": {
-      "type": "object",
-      "properties": {
-        "cluster_name": {
-          "type": "string"
-        },
-        "event_type": {
-          "type": "string"
-        },
-        "kube_namespace": {
-          "type": "string"
-        },
-        "kube_object_name": {
-          "type": "string"
-        },
-        "kube_object_type": {
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/EventRequestObjectMeta"
-        }
-      }
-    },
-    "kubernetesEventResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "tasks": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EventResponseHandler"
-          }
-        }
-      }
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+      },
+      "type":"object"
     }
   }
 }

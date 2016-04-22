@@ -14,14 +14,14 @@ service Alerts {
     };
   }
 
-  rpc Create(CreateReuquest) returns (dtypes.VoidResponse) {
+  rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
       body: "*"
     };
   }
 
-  rpc Update(UpdateReuquest) returns (dtypes.VoidResponse) {
+  rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post: "/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
       body: "*"
@@ -50,7 +50,7 @@ message NotificationRequest {
   string host_name = 6;
 }
 
-message CreateReuquest {
+message CreateRequest {
   string name = 1;
   Spec spec = 2;
   string matrix_phid = 3;
@@ -59,7 +59,7 @@ message CreateReuquest {
   int64 check_interval = 6;
 }
 
-message UpdateReuquest {
+message UpdateRequest {
   string phid = 1;
   string name = 2;
   Spec spec = 3;

@@ -1,73 +1,71 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "dbBackupRequest": {
-      "type": "object",
-      "properties": {
-        "auth_secret_name": {
-          "type": "string"
+  "definitions":{
+    "dbBackupRequest":{
+      "properties":{
+        "auth_secret_name":{
+          "type":"string"
         },
-        "bucket_name": {
-          "type": "string"
+        "bucket_name":{
+          "type":"string"
         },
-        "cluster": {
-          "type": "string"
+        "cluster":{
+          "type":"string"
         },
-        "credential": {
-          "type": "string"
+        "credential":{
+          "type":"string"
         },
-        "force": {
-          "type": "boolean"
+        "force":{
+          "type":"boolean"
         },
-        "name": {
-          "type": "string"
+        "name":{
+          "type":"string"
         },
-        "region": {
-          "type": "string"
+        "region":{
+          "type":"string"
         },
-        "secret_name": {
-          "type": "string"
+        "secret_name":{
+          "type":"string"
         },
-        "snapshot_name": {
-          "type": "string"
+        "snapshot_name":{
+          "type":"string"
         },
-        "type": {
-          "type": "string"
+        "type":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dbCreateRequest": {
-      "type": "object",
-      "properties": {
-        "bucket_name": {
-          "type": "string"
+    "dbCreateRequest":{
+      "properties":{
+        "bucket_name":{
+          "type":"string"
         },
-        "cluster": {
-          "type": "string"
+        "cluster":{
+          "type":"string"
         },
-        "credential": {
-          "type": "string"
+        "credential":{
+          "type":"string"
         },
-        "gfs_disk": {
-          "type": "string"
+        "gfs_disk":{
+          "type":"string"
         },
-        "gfs_endpoint": {
-          "type": "string"
+        "gfs_endpoint":{
+          "type":"string"
         },
-        "name": {
-          "type": "string"
+        "name":{
+          "type":"string"
         },
-        "node": {
-          "type": "integer"
+        "node":{
+          "type":"integer"
         },
-        "pv": {
-          "type": "string"
+        "pv":{
+          "type":"string"
         },
-        "pv_size": {
-          "type": "integer"
+        "pv_size":{
+          "type":"integer"
         },
-        "region": {
-          "type": "string"
+        "region":{
+          "type":"string"
         },
         "set_password": {
           "type": "boolean"
@@ -75,22 +73,22 @@
         "sku": {
           "type": "string"
         },
-        "type": {
-          "type": "string"
+        "type":{
+          "type":"string"
         },
-        "version": {
-          "type": "string"
+        "version":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dbDatabase": {
-      "type": "object",
-      "properties": {
-        "archive_bucket": {
-          "type": "string"
+    "dbDeleteRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         },
-        "archive_bucket_region": {
-          "type": "string"
+        "name":{
+          "type":"string"
         },
         "auto_snapshot": {
           "type": "integer"
@@ -205,60 +203,24 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type":"object"
     },
-    "dbRestoreRequest": {
-      "type": "object",
-      "properties": {
-        "bucket_name": {
-          "type": "string"
+    "dbDescribeRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         },
-        "cluster": {
-          "type": "string"
-        },
-        "credential": {
-          "type": "string"
-        },
-        "force": {
-          "type": "boolean"
-        },
-        "name": {
-          "type": "string"
-        },
-        "node": {
-          "type": "integer"
-        },
-        "pv": {
-          "type": "string"
-        },
-        "pv_size": {
-          "type": "integer"
-        },
-        "region": {
-          "type": "string"
-        },
-        "secret_name": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "snapshot_phid": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dbSnapshot": {
-      "type": "object",
-      "properties": {
-        "bucket": {
-          "type": "string"
+    "dbRestoreRequest":{
+      "properties":{
+        "bucket_name":{
+          "type":"string"
         },
         "cloud_cred": {
           "type": "string"
@@ -266,14 +228,14 @@
         "created": {
           "type": "string"
         },
-        "db_cluster": {
-          "type": "string"
+        "credential":{
+          "type":"string"
         },
-        "db_name": {
-          "type": "string"
+        "force":{
+          "type":"boolean"
         },
-        "name": {
-          "type": "string"
+        "name":{
+          "type":"string"
         },
         "phid": {
           "type": "string"
@@ -281,117 +243,43 @@
         "process": {
           "type": "string"
         },
-        "provider": {
-          "type": "string"
+        "pv":{
+          "type":"string"
         },
-        "region": {
-          "type": "string"
+        "pv_size":{
+          "type":"integer"
         },
-        "restore_db": {
-          "type": "string"
+        "region":{
+          "type":"string"
         },
-        "restore_snap": {
-          "type": "string"
+        "secret_name":{
+          "type":"string"
         },
-        "status": {
-          "type": "string"
+        "sku":{
+          "type":"string"
         },
-        "zone": {
-          "type": "string"
+        "snapshot_phid":{
+          "type":"string"
+        },
+        "type":{
+          "type":"string"
+        },
+        "version":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dbSnapshotListRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
+    "dbSnapshotListRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dbSnapshotListResponse": {
-      "type": "object",
-      "properties": {
-        "list": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dbSnapshot"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dbkubeInfo": {
-      "type": "object",
-      "properties": {
-        "pods": {
-          "type": "integer"
-        },
-        "rc": {
-          "type": "integer"
-        },
-        "svc": {
-          "type": "integer"
-        }
-      }
-    },
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
-    "dtypesVoidResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+    "dtypesVoidRequest":{
+      "type":"object"
     }
   }
 }

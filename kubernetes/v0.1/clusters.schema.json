@@ -1,374 +1,152 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "ClusterCreateRequestCloudCredentialDataEntry": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string"
+  "definitions":{
+    "ClusterCreateRequestCloudCredentialDataEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
         },
-        "value": {
-          "type": "string"
+        "value":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ClusterCreateRequestNodeSetEntry": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string"
+    "ClusterCreateRequestNodeSetEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
         },
-        "value": {
-          "type": "integer"
+        "value":{
+          "type":"integer"
         }
-      }
+      },
+      "type":"object"
     },
-    "ClusterDescribeResponseSpecs": {
-      "type": "object",
-      "properties": {
-        "containers": {
-          "type": "integer"
+    "ClusterScaleRequestNodeChangesEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
         },
-        "cpu_core": {
-          "type": "integer"
-        },
-        "pods": {
-          "type": "integer"
-        },
-        "rcs": {
-          "type": "integer"
-        },
-        "services": {
-          "type": "integer"
-        },
-        "total_memory": {
-          "type": "integer"
+        "value":{
+          "type":"integer"
         }
-      }
+      },
+      "type":"object"
     },
-    "ClusterScaleRequestNodeChangesEntry": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "integer"
+    "dtypesVoidRequest":{
+      "type":"object"
+    },
+    "kubernetesClusterClientConfigRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
+    "kubernetesClusterCreateRequest":{
+      "properties":{
+        "cloud_credential":{
+          "type":"string"
         },
-        "url": {
-          "type": "string"
+        "cloud_credential_data":{
+          "items":{
+            "$ref":"#/definitions/ClusterCreateRequestCloudCredentialDataEntry"
+          },
+          "type":"array"
+        },
+        "kube_starter_version":{
+          "type":"string"
+        },
+        "kube_version":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "node_set":{
+          "items":{
+            "$ref":"#/definitions/ClusterCreateRequestNodeSetEntry"
+          },
+          "type":"array"
+        },
+        "provider":{
+          "type":"string"
+        },
+        "saltbase_version":{
+          "type":"string"
+        },
+        "zone":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesLongRunningResponse": {
-      "type": "object",
-      "properties": {
-        "job_id": {
-          "type": "string"
+    "kubernetesClusterDeleteRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         },
-        "job_type": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "type_id": {
-          "type": "string"
+        "release_reserved_ip":{
+          "type":"boolean"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
+    "kubernetesClusterDescribeRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
-    "kubernetesCluster": {
-      "type": "object",
-      "properties": {
-        "created_at": {
-          "type": "string"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/kubernetesClusterLinksEntry"
-          }
-        },
-        "name": {
-          "type": "string"
-        },
-        "nodes": {
-          "type": "integer"
-        },
-        "os": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "provider": {
-          "type": "string"
-        },
-        "region": {
-          "type": "string"
-        },
-        "zone": {
-          "type": "string"
+    "kubernetesClusterInstanceListRequest":{
+      "properties":{
+        "cluster_name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "kubernetesClusterClientConfigRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
+    "kubernetesClusterScaleRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
+        },
+        "node_changes":{
+          "items":{
+            "$ref":"#/definitions/ClusterScaleRequestNodeChangesEntry"
+          },
+          "type":"array"
         }
-      }
+      },
+      "type":"object"
     },
-    "kubernetesClusterClientConfigResponse": {
-      "type": "object",
-      "properties": {
-        "configuration": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+    "kubernetesClusterStartupScriptRequest":{
+      "properties":{
+        "role":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "kubernetesClusterCreateRequest": {
-      "type": "object",
-      "properties": {
-        "cloud_credential": {
-          "type": "string"
+    "kubernetesClusterUpdateRequest":{
+      "properties":{
+        "kube_starter_version":{
+          "type":"string"
         },
-        "cloud_credential_data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ClusterCreateRequestCloudCredentialDataEntry"
-          }
+        "kube_version":{
+          "type":"string"
         },
-        "kube_starter_version": {
-          "type": "string"
+        "name":{
+          "type":"string"
         },
-        "kube_version": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "node_set": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ClusterCreateRequestNodeSetEntry"
-          }
-        },
-        "provider": {
-          "type": "string"
-        },
-        "saltbase_version": {
-          "type": "string"
-        },
-        "zone": {
-          "type": "string"
+        "saltbase_version":{
+          "type":"string"
         }
-      }
-    },
-    "kubernetesClusterDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "release_reserved_ip": {
-          "type": "boolean"
-        }
-      }
-    },
-    "kubernetesClusterDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "kubernetesClusterDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "cluster": {
-          "$ref": "#/definitions/kubernetesCluster"
-        },
-        "specs": {
-          "$ref": "#/definitions/ClusterDescribeResponseSpecs"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "kubernetesClusterInstance": {
-      "type": "object",
-      "properties": {
-        "external_id": {
-          "type": "string"
-        },
-        "external_ip": {
-          "type": "string"
-        },
-        "internal_ip": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "role": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        }
-      }
-    },
-    "kubernetesClusterInstanceListRequest": {
-      "type": "object",
-      "properties": {
-        "cluster_name": {
-          "type": "string"
-        }
-      }
-    },
-    "kubernetesClusterInstanceListResponse": {
-      "type": "object",
-      "properties": {
-        "instances": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/kubernetesClusterInstance"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "kubernetesClusterLinksEntry": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
-    "kubernetesClusterListResponse": {
-      "type": "object",
-      "properties": {
-        "clusters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/kubernetesCluster"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "kubernetesClusterScaleRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "node_changes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ClusterScaleRequestNodeChangesEntry"
-          }
-        }
-      }
-    },
-    "kubernetesClusterStartupScriptRequest": {
-      "type": "object",
-      "properties": {
-        "role": {
-          "type": "string"
-        }
-      }
-    },
-    "kubernetesClusterStartupScriptResponse": {
-      "type": "object",
-      "properties": {
-        "configuration": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "kubernetesClusterUpdateRequest": {
-      "type": "object",
-      "properties": {
-        "kube_starter_version": {
-          "type": "string"
-        },
-        "kube_version": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "saltbase_version": {
-          "type": "string"
-        }
-      }
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+      },
+      "type":"object"
     }
   }
 }

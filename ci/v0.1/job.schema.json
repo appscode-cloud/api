@@ -1,161 +1,56 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "ciJob": {
-      "type": "object",
-      "properties": {
-        "color": {
-          "type": "string"
+  "definitions":{
+    "ciJobBuildRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         },
-        "name": {
-          "type": "string"
+        "param":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciJobBuildRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
+    "ciJobCopyRequest":{
+      "properties":{
+        "destination":{
+          "type":"string"
         },
-        "param": {
-          "type": "string"
+        "source":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciJobCopyRequest": {
-      "type": "object",
-      "properties": {
-        "destination": {
-          "type": "string"
+    "ciJobCreateRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         },
-        "source": {
-          "type": "string"
+        "sh_file":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciJobCreateRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "sh_file": {
-          "type": "string"
+    "ciJobDeleteRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciJobDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
+    "ciJobDescribeRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
-      }
+      },
+      "type":"object"
     },
-    "ciJobDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "ciJobDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "build_count": {
-          "type": "integer"
-        },
-        "builds_command": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "display_name": {
-          "type": "string"
-        },
-        "job_color": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciJobListResponse": {
-      "type": "object",
-      "properties": {
-        "jobs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ciJob"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
-    "dtypesVoidResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+    "dtypesVoidRequest":{
+      "type":"object"
     }
   }
 }
