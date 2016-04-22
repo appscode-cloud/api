@@ -1,112 +1,111 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "caCertificateCreateRequest": {
-      "properties": {
-        "csr": {
-          "type": "string"
+  "definitions":{
+    "caCertificateCreateRequest":{
+      "properties":{
+        "csr":{
+          "type":"string"
         },
-        "name": {
-          "type": "string"
+        "name":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "caCertificateCreateResponse": {
-      "properties": {
-        "cert": {
-          "type": "string"
+    "caCertificateCreateResponse":{
+      "properties":{
+        "cert":{
+          "type":"string"
         },
-        "key": {
-          "type": "string"
+        "key":{
+          "type":"string"
         },
-        "phid": {
-          "type": "string"
+        "phid":{
+          "type":"string"
         },
-        "root": {
-          "type": "string"
+        "root":{
+          "type":"string"
         },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+        "status":{
+          "$ref":"#/definitions/dtypesStatus"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "certificateCertificateCreateRequest": {
-      "properties": {
-        "csr": {
-          "type": "string"
+    "certificateCertificateCreateRequest":{
+      "properties":{
+        "csr":{
+          "type":"string"
         },
-        "name": {
-          "type": "string"
+        "name":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "certificateCertificateCreateResponse": {
-      "properties": {
-        "cert": {
-          "type": "string"
+    "certificateCertificateCreateResponse":{
+      "properties":{
+        "cert":{
+          "type":"string"
         },
-        "key": {
-          "type": "string"
+        "key":{
+          "type":"string"
         },
-        "phid": {
-          "type": "string"
+        "phid":{
+          "type":"string"
         },
-        "root": {
-          "type": "string"
+        "root":{
+          "type":"string"
         },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+        "status":{
+          "$ref":"#/definitions/dtypesStatus"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
+    "dtypesHelp":{
+      "properties":{
+        "description":{
+          "type":"string"
         },
-        "url": {
-          "type": "string"
+        "url":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
+    "dtypesStatus":{
+      "properties":{
+        "code":{
+          "type":"string"
         },
-        "details": {
-          "items": {
-            "$ref": "#/definitions/protobufAny"
+        "details":{
+          "items":{
+            "$ref":"#/definitions/protobufAny"
           },
-          "type": "array"
+          "type":"array"
         },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
+        "help":{
+          "$ref":"#/definitions/dtypesHelp"
         },
-        "info": {
-          "type": "string"
+        "info":{
+          "type":"string"
         },
-        "message": {
-          "type": "string"
+        "message":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
+    "protobufAny":{
+      "properties":{
+        "type_url":{
+          "type":"string"
         },
-        "value": {
-          "type": "string"
+        "value":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     }
   }
 }
