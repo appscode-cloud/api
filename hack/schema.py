@@ -91,14 +91,11 @@ def generate_json_schema():
             swagger = os.path.join(root, filename)
             schema = os.path.join(root, filename.replace('.swagger.', '.schema.'))
             print schema
-            defs = {}
+            defs = swagger_defs(read_json(swagger)['definitions'])
             if os.path.exists(schema):
-                defs = read_json(schema)['definitions']
-            defs.update(swagger_defs(read_json(swagger)['definitions']))
+                defs.update(read_json(schema)['definitions'])
             write_json({'definitions': defs}, schema)
 
-
-# def dep_defs(defs)
 
 def schema_go(pkg, defs):
     result = {}
@@ -207,7 +204,7 @@ def apply_naming_policy():
                             'auth_secret_name',
                             'cloud_credential'
                         ]:
-                            print '====>>>>'
+                            print '====>>>> ' + p
                             if 'maxLength' not in v:
                                 v['maxLength'] = 63
                             if 'pattern' not in v:
@@ -221,8 +218,8 @@ if __name__ == "__main__":
         # http://stackoverflow.com/a/817296
         globals()[sys.argv[1]](*sys.argv[2:])
     else:
-        call('find . | grep schema.json | xargs rm')
+        # call('find . | grep schema.json | xargs rm')
         call('find . | grep schema.go | xargs rm')
         generate_json_schema()
-        apply_naming_policy()
+        # apply_naming_policy()
         generate_go_schema()
