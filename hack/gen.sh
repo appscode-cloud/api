@@ -18,8 +18,8 @@ clean() {
 	rm -rf ./*/*/*.pb.go ./*/*/*.pb.gw.go
 	rm -rf ./**/*.pb.go ./**/*.pb.gw.go
 
-	rm -rf ./*/*/*.py ./*/*/*.py
-	rm -rf ./**/*.py ./**/*.py
+	#rm -rf ./*/*/*.py
+	#rm -rf ./**/*.py
 }
 
 gen_proto() {
