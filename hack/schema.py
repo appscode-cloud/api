@@ -198,8 +198,15 @@ def apply_naming_policy():
             for key, defs in content['definitions'].iteritems():
                 if 'properties' in defs:
                     for p, v in defs['properties'].iteritems():
-                        if p in ['cluster_name', 'namespace', 'name', 'bucket_name', 'secret_name', 'snapshot_name',
-                                 'auth_secret_name']:
+                        if p in [
+                            'cluster_name',
+                            'namespace', 'name',
+                            'bucket_name',
+                            'secret_name',
+                            'snapshot_name',
+                            'auth_secret_name',
+                            'cloud_credential'
+                        ]:
                             print '====>>>>'
                             if 'maxLength' not in v:
                                 v['maxLength'] = 63
