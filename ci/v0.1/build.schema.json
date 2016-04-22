@@ -1,26 +1,26 @@
 {
-  "definitions":{
-    "ciBuildDescribeRequest":{
-      "properties":{
-        "console":{
-          "type":"string"
+  "definitions": {
+    "ciBuildDescribeRequest": {
+      "properties": {
+        "console": {
+          "type": "string"
         },
-        "job_name":{
-          "type":"string"
+        "job_name": {
+          "type": "string"
         },
-        "number":{
-          "type":"integer"
+        "number": {
+          "type": "integer"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciBuildListRequest":{
-      "properties":{
-        "job_name":{
-          "type":"string"
+    "ciBuildListRequest": {
+      "properties": {
+        "job_name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

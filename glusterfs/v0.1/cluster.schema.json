@@ -1,57 +1,57 @@
 {
-  "definitions":{
-    "glusterfsClusterCreateRequest":{
-      "properties":{
-        "disks":{
-          "items":{
-            "type":"string"
+  "definitions": {
+    "glusterfsClusterCreateRequest": {
+      "properties": {
+        "disks": {
+          "items": {
+            "type": "string"
           },
-          "type":"array"
+          "type": "array"
         },
-        "kube_cluster":{
-          "type":"string"
+        "kube_cluster": {
+          "type": "string"
         },
-        "mood":{
-          "type":"string"
+        "mood": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "node":{
-          "type":"integer"
+        "node": {
+          "type": "integer"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "glusterfsClusterDeleteRequest":{
-      "properties":{
-        "kube_cluster":{
-          "type":"string"
+    "glusterfsClusterDeleteRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "glusterfsClusterDescribeRequest":{
-      "properties":{
-        "kube_cluster":{
-          "type":"string"
+    "glusterfsClusterDescribeRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "glusterfsClusterListRequest":{
-      "properties":{
-        "kube_cluster":{
-          "type":"string"
+    "glusterfsClusterListRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

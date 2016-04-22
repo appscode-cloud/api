@@ -1,85 +1,85 @@
 {
-  "definitions":{
-    "billingResource":{
-      "default":"USER",
-      "enum":[
+  "definitions": {
+    "billingResource": {
+      "default": "USER",
+      "enum": [
         "USER",
         "CLUSTER",
         "NODE",
         "DB",
         "CI"
       ],
-      "type":"string"
+      "type": "string"
     },
-    "billingSubscriptionCloseRequest":{
-      "properties":{
-        "object_phid":{
-          "type":"string"
+    "billingSubscriptionCloseRequest": {
+      "properties": {
+        "object_phid": {
+          "type": "string"
         },
-        "product_type":{
-          "type":"string"
+        "product_type": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "billingSubscriptionCreateRequest":{
-      "properties":{
-        "author_phid":{
-          "type":"string"
+    "billingSubscriptionCreateRequest": {
+      "properties": {
+        "author_phid": {
+          "type": "string"
         },
-        "product_phid":{
-          "type":"string"
+        "product_phid": {
+          "type": "string"
         },
-        "type":{
-          "type":"string"
+        "type": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "billingSubscriptionDescribeRequest":{
-      "properties":{
-        "time":{
-          "type":"string"
+    "billingSubscriptionDescribeRequest": {
+      "properties": {
+        "time": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "billingSubscriptionOpenRequest":{
-      "properties":{
-        "author_phid":{
-          "type":"string"
+    "billingSubscriptionOpenRequest": {
+      "properties": {
+        "author_phid": {
+          "type": "string"
         },
-        "metadata":{
-          "type":"string"
+        "metadata": {
+          "type": "string"
         },
-        "object_phid":{
-          "type":"string"
+        "object_phid": {
+          "type": "string"
         },
-        "product_type":{
-          "type":"string"
+        "product_type": {
+          "type": "string"
         },
-        "subscription_phid":{
-          "type":"string"
+        "subscription_phid": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "billingSubscriptionQutaRequest":{
-      "properties":{
-        "count":{
-          "type":"integer"
+    "billingSubscriptionQutaRequest": {
+      "properties": {
+        "count": {
+          "type": "integer"
         },
-        "object_phid":{
-          "type":"string"
+        "object_phid": {
+          "type": "string"
         },
-        "resource":{
-          "$ref":"#/definitions/billingResource"
+        "resource": {
+          "$ref": "#/definitions/billingResource"
         },
-        "subresource":{
-          "type":"string"
+        "subresource": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

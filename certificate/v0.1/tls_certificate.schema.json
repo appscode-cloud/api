@@ -1,54 +1,54 @@
 {
-  "definitions":{
-    "certificateTLSCertificateCreateRequest":{
-      "properties":{
-        "cert_data":{
-          "type":"string"
+  "definitions": {
+    "certificateTLSCertificateCreateRequest": {
+      "properties": {
+        "cert_data": {
+          "type": "string"
         },
-        "key_data":{
-          "type":"string"
+        "key_data": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "certificateTLSCertificateDeleteRequest":{
-      "properties":{
-        "cert":{
-          "type":"string"
+    "certificateTLSCertificateDeleteRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "certificateTLSCertificateDeployRequest":{
-      "properties":{
-        "cert":{
-          "type":"string"
+    "certificateTLSCertificateDeployRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
         },
-        "cluster_name":{
-          "type":"string"
+        "cluster_name": {
+          "type": "string"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "type": "string"
         },
-        "secret_name":{
-          "type":"string"
+        "secret_name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "certificateTLSCertificateDescribeRequest":{
-      "properties":{
-        "cert":{
-          "type":"string"
+    "certificateTLSCertificateDescribeRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "dtypesVoidRequest":{
-      "type":"object"
+    "dtypesVoidRequest": {
+      "type": "object"
     }
   }
 }

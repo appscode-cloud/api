@@ -1,15 +1,15 @@
 {
-  "definitions":{
-    "certificateCertificateCreateRequest":{
-      "properties":{
-        "csr":{
-          "type":"string"
+  "definitions": {
+    "certificateCertificateCreateRequest": {
+      "properties": {
+        "csr": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

@@ -1,12 +1,12 @@
 {
-  "definitions":{
-    "billingChargeCalculateRequest":{
-      "properties":{
-        "charge_type":{
-          "type":"string"
+  "definitions": {
+    "billingChargeCalculateRequest": {
+      "properties": {
+        "charge_type": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

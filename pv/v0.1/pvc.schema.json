@@ -1,49 +1,49 @@
 {
-  "definitions":{
-    "pvPVCDescribeRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+  "definitions": {
+    "pvPVCDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "pvPVCRegisterRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+    "pvPVCRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "type": "string"
         },
-        "size":{
-          "type":"integer"
+        "size": {
+          "type": "integer"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "pvPVCUnregisterRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+    "pvPVCUnregisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

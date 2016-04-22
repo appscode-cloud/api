@@ -1,49 +1,49 @@
 {
-  "definitions":{
-    "pvPVDescribeRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+  "definitions": {
+    "pvPVDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "pvPVRegisterRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+    "pvPVRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "endpoint":{
-          "type":"string"
+        "endpoint": {
+          "type": "string"
         },
-        "identifier":{
-          "type":"string"
+        "identifier": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "plugin":{
-          "type":"string"
+        "plugin": {
+          "type": "string"
         },
-        "size":{
-          "type":"integer"
+        "size": {
+          "type": "integer"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "pvPVUnregisterRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+    "pvPVUnregisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }
