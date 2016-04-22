@@ -80,6 +80,17 @@ func init() {
 	}
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "definitions":{
+    "MatrixQueryEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
+        },
+        "value":{
+          "type":"string"
+        }
+      },
+      "type":"object"
+    },
     "alertAlertSpec":{
       "properties":{
         "alert_interval":{
@@ -197,6 +208,17 @@ func init() {
 	}
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "definitions":{
+    "MatrixQueryEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
+        },
+        "value":{
+          "type":"string"
+        }
+      },
+      "type":"object"
+    },
     "alertAlertSpec":{
       "properties":{
         "alert_interval":{

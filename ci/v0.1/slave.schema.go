@@ -9,8 +9,8 @@ import (
 
 var slaveDeleteRequestSchema *gojsonschema.Schema
 var slaveRestartRequestSchema *gojsonschema.Schema
-var slaveCreateRequestSchema *gojsonschema.Schema
 var slaveDescribeRequestSchema *gojsonschema.Schema
+var slaveCreateRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
@@ -36,7 +36,31 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	slaveDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "properties":{
+    "name":{
+      "type":"string"
+    }
+  },
+  "type":"object"
+}`))
+	if err != nil {
+		log.Fatal(err)
+	}
 	slaveCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "definitions":{
+    "ciPortInfo":{
+      "properties":{
+        "port":{
+          "type":"integer"
+        },
+        "protocol":{
+          "type":"string"
+        }
+      },
+      "type":"object"
+    }
+  },
   "properties":{
     "ci_starter_version":{
       "type":"string"
@@ -65,17 +89,6 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	slaveDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "properties":{
-    "name":{
-      "type":"string"
-    }
-  },
-  "type":"object"
-}`))
-	if err != nil {
-		log.Fatal(err)
-	}
 }
 
 func (m *SlaveDeleteRequest) InValid() (*gojsonschema.Result, error) {
@@ -84,9 +97,9 @@ func (m *SlaveDeleteRequest) InValid() (*gojsonschema.Result, error) {
 func (m *SlaveRestartRequest) InValid() (*gojsonschema.Result, error) {
 	return slaveRestartRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *SlaveCreateRequest) InValid() (*gojsonschema.Result, error) {
-	return slaveCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
 func (m *SlaveDescribeRequest) InValid() (*gojsonschema.Result, error) {
 	return slaveDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *SlaveCreateRequest) InValid() (*gojsonschema.Result, error) {
+	return slaveCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

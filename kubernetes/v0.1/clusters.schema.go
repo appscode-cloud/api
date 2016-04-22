@@ -30,6 +30,19 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterScaleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "definitions":{
+    "ClusterScaleRequestNodeChangesEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
+        },
+        "value":{
+          "type":"integer"
+        }
+      },
+      "type":"object"
+    }
+  },
   "properties":{
     "name":{
       "type":"string"
@@ -103,6 +116,30 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "definitions":{
+    "ClusterCreateRequestCloudCredentialDataEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
+        },
+        "value":{
+          "type":"string"
+        }
+      },
+      "type":"object"
+    },
+    "ClusterCreateRequestNodeSetEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
+        },
+        "value":{
+          "type":"integer"
+        }
+      },
+      "type":"object"
+    }
+  },
   "properties":{
     "cloud_credential":{
       "type":"string"

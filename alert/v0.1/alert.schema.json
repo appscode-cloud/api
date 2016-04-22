@@ -1,5 +1,16 @@
 {
   "definitions":{
+    "MatrixQueryEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
+        },
+        "value":{
+          "type":"string"
+        }
+      },
+      "type":"object"
+    },
     "alertAlertSpec":{
       "properties":{
         "alert_interval":{

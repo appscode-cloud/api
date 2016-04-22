@@ -33,6 +33,17 @@
       },
       "type":"object"
     },
+    "ObjectMetaLabelsEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
+        },
+        "value":{
+          "type":"string"
+        }
+      },
+      "type":"object"
+    },
     "kubernetesEventRequest":{
       "properties":{
         "cluster_name":{

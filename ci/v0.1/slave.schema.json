@@ -1,5 +1,16 @@
 {
   "definitions":{
+    "ciPortInfo":{
+      "properties":{
+        "port":{
+          "type":"integer"
+        },
+        "protocol":{
+          "type":"string"
+        }
+      },
+      "type":"object"
+    },
     "ciSlaveCreateRequest":{
       "properties":{
         "ci_starter_version":{

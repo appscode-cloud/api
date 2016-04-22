@@ -45,6 +45,17 @@ func init() {
         }
       },
       "type":"object"
+    },
+    "ObjectMetaLabelsEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
+        },
+        "value":{
+          "type":"string"
+        }
+      },
+      "type":"object"
     }
   },
   "properties":{
