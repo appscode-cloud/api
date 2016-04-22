@@ -1,260 +1,169 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "MatrixQueryEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
+  "definitions":{
+    "MatrixQueryEntry":{
+      "properties":{
+        "key":{
+          "type":"string"
         },
-        "value": {
-          "type": "string"
+        "value":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "alertAlert": {
-      "properties": {
-        "icinga_url": {
-          "type": "string"
+    "alertAlertSpec":{
+      "properties":{
+        "alert_interval":{
+          "type":"integer"
         },
-        "matrix": {
-          "$ref": "#/definitions/alertMatrix"
+        "critical_condition":{
+          "type":"string"
         },
-        "name": {
-          "type": "string"
+        "critical_method":{
+          "type":"integer"
         },
-        "phid": {
-          "type": "string"
+        "critical_user":{
+          "type":"string"
         },
-        "refresh_interval": {
-          "type": "integer"
+        "warning_condition":{
+          "type":"string"
         },
-        "spec": {
-          "$ref": "#/definitions/alertAlertSpec"
+        "warning_method":{
+          "type":"integer"
+        },
+        "warning_user":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "alertAlertSpec": {
-      "properties": {
-        "alert_interval": {
-          "type": "integer"
+    "alertCreateRequest":{
+      "properties":{
+        "alert_spec":{
+          "$ref":"#/definitions/alertAlertSpec"
         },
-        "critical_condition": {
-          "type": "string"
+        "check_interval":{
+          "type":"integer"
         },
-        "critical_method": {
-          "type": "integer"
+        "matrix":{
+          "$ref":"#/definitions/alertMatrix"
         },
-        "critical_user": {
-          "type": "string"
+        "matrix_phid":{
+          "type":"string"
         },
-        "warning_condition": {
-          "type": "string"
+        "name":{
+          "type":"string"
         },
-        "warning_method": {
-          "type": "integer"
-        },
-        "warning_user": {
-          "type": "string"
+        "spec":{
+          "$ref":"#/definitions/alertSpec"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "alertCreateReuquest": {
-      "properties": {
-        "alert_spec": {
-          "$ref": "#/definitions/alertAlertSpec"
+    "alertDeleteRequest":{
+      "properties":{
+        "phid":{
+          "type":"string"
         },
-        "check_interval": {
-          "type": "integer"
-        },
-        "matrix": {
-          "$ref": "#/definitions/alertMatrix"
-        },
-        "matrix_phid": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "spec": {
-          "$ref": "#/definitions/alertSpec"
+        "spec":{
+          "$ref":"#/definitions/alertSpec"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "alertDeleteRequest": {
-      "properties": {
-        "phid": {
-          "type": "string"
+    "alertListRequest":{
+      "properties":{
+        "spec":{
+          "$ref":"#/definitions/alertSpec"
+        }
+      },
+      "type":"object"
+    },
+    "alertMatrix":{
+      "properties":{
+        "command":{
+          "type":"string"
         },
-        "spec": {
-          "$ref": "#/definitions/alertSpec"
-        }
-      },
-      "type": "object"
-    },
-    "alertListRequest": {
-      "properties": {
-        "spec": {
-          "$ref": "#/definitions/alertSpec"
-        }
-      },
-      "type": "object"
-    },
-    "alertListResponse": {
-      "properties": {
-        "alerts": {
-          "items": {
-            "$ref": "#/definitions/alertAlert"
+        "formula":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "query":{
+          "items":{
+            "$ref":"#/definitions/MatrixQueryEntry"
           },
-          "type": "array"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "type":"array"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "alertMatrix": {
-      "properties": {
-        "command": {
-          "type": "string"
+    "alertNotificationRequest":{
+      "properties":{
+        "alert_phid":{
+          "type":"string"
         },
-        "formula": {
-          "type": "string"
+        "host_name":{
+          "type":"string"
         },
-        "name": {
-          "type": "string"
+        "service_output":{
+          "type":"string"
         },
-        "query": {
-          "items": {
-            "$ref": "#/definitions/MatrixQueryEntry"
-          },
-          "type": "array"
+        "state":{
+          "type":"string"
+        },
+        "state_type":{
+          "type":"string"
+        },
+        "time":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "alertNotificationRequest": {
-      "properties": {
-        "alert_phid": {
-          "type": "string"
+    "alertSpec":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         },
-        "host_name": {
-          "type": "string"
+        "namespace":{
+          "type":"string"
         },
-        "service_output": {
-          "type": "string"
+        "object_name":{
+          "type":"string"
         },
-        "state": {
-          "type": "string"
-        },
-        "state_type": {
-          "type": "string"
-        },
-        "time": {
-          "type": "string"
+        "object_type":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "alertSpec": {
-      "properties": {
-        "cluster": {
-          "type": "string"
+    "alertUpdateRequest":{
+      "properties":{
+        "alert_spec":{
+          "$ref":"#/definitions/alertAlertSpec"
         },
-        "namespace": {
-          "type": "string"
+        "check_interval":{
+          "type":"integer"
         },
-        "object_name": {
-          "type": "string"
+        "matrix":{
+          "$ref":"#/definitions/alertMatrix"
         },
-        "object_type": {
-          "type": "string"
+        "matrix_phid":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "phid":{
+          "type":"string"
+        },
+        "spec":{
+          "$ref":"#/definitions/alertSpec"
         }
       },
-      "type": "object"
-    },
-    "alertUpdateReuquest": {
-      "properties": {
-        "alert_spec": {
-          "$ref": "#/definitions/alertAlertSpec"
-        },
-        "check_interval": {
-          "type": "integer"
-        },
-        "matrix": {
-          "$ref": "#/definitions/alertMatrix"
-        },
-        "matrix_phid": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "spec": {
-          "$ref": "#/definitions/alertSpec"
-        }
-      },
-      "type": "object"
-    },
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "type": "array"
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
+      "type":"object"
     }
   }
 }

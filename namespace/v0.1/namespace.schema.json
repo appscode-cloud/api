@@ -1,155 +1,61 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
+  "definitions":{
+    "namespaceCheckRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
+    "namespaceCreateRequest":{
+      "properties":{
+        "display_name":{
+          "type":"string"
         },
-        "details": {
-          "items": {
-            "$ref": "#/definitions/protobufAny"
+        "email":{
+          "type":"string"
+        },
+        "invite_email":{
+          "items":{
+            "format":"string",
+            "type":"string"
           },
-          "type": "array"
+          "type":"array"
         },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
+        "name":{
+          "type":"string"
         },
-        "info": {
-          "type": "string"
+        "password":{
+          "type":"string"
         },
-        "message": {
-          "type": "string"
+        "subscription_type":{
+          "type":"string"
+        },
+        "user_ip":{
+          "type":"string"
+        },
+        "user_name":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "namespaceCheckRequest": {
-      "properties": {
-        "name": {
-          "type": "string"
+    "namespaceLogRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "namespaceCheckResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+    "namespaceStatusRequest":{
+      "properties":{
+        "name":{
+          "type":"string"
         }
       },
-      "type": "object"
-    },
-    "namespaceCreateRequest": {
-      "properties": {
-        "display_name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "invite_email": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "name": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "subscription_type": {
-          "type": "string"
-        },
-        "user_ip": {
-          "type": "string"
-        },
-        "user_name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "namespaceCreateResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "namespaceLog": {
-      "properties": {
-        "details": {
-          "type": "string"
-        },
-        "info": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "namespaceLogRequest": {
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "namespaceLogResponse": {
-      "properties": {
-        "logs": {
-          "items": {
-            "$ref": "#/definitions/namespaceLog"
-          },
-          "type": "array"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "namespaceStatusRequest": {
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "namespaceStatusResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
+      "type":"object"
     }
   }
 }

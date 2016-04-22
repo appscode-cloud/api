@@ -1,143 +1,49 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
+  "definitions":{
+    "pvPVDescribeRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         },
-        "url": {
-          "type": "string"
+        "name":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
+    "pvPVRegisterRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         },
-        "details": {
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "type": "array"
+        "endpoint":{
+          "type":"string"
         },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
+        "identifier":{
+          "type":"string"
         },
-        "info": {
-          "type": "string"
+        "name":{
+          "type":"string"
         },
-        "message": {
-          "type": "string"
+        "plugin":{
+          "type":"string"
+        },
+        "size":{
+          "type":"integer"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+    "pvPVUnregisterRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
         }
       },
-      "type": "object"
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVDescribeRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVDescribeResponse": {
-      "properties": {
-        "pv": {
-          "$ref": "#/definitions/pvPVInfo"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVInfo": {
-      "properties": {
-        "accessModes": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "claim": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "plugin": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "string"
-        },
-        "volume": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVRegisterRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "endpoint": {
-          "type": "string"
-        },
-        "identifier": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "plugin": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVUnregisterRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
+      "type":"object"
     }
   }
 }

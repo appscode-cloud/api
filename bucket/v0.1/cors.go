@@ -1,6 +1,5 @@
 package bucket
 
-
 import "github.com/gengo/grpc-gateway/runtime"
 
 func Patterns() []runtime.Pattern {

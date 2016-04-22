@@ -1,4 +1,18 @@
-{
+package kubernetes
+
+import (
+	"github.com/xeipuuv/gojsonschema"
+	"log"
+)
+
+// Auto-generated. DO NOT EDIT.
+
+var eventRequestSchema *gojsonschema.Schema
+
+func init() {
+	var err error
+	eventRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "EventRequestObjectMeta":{
       "properties":{
@@ -43,29 +57,35 @@
         }
       },
       "type":"object"
-    },
-    "kubernetesEventRequest":{
-      "properties":{
-        "cluster_name":{
-          "type":"string"
-        },
-        "event_type":{
-          "type":"string"
-        },
-        "kube_namespace":{
-          "type":"string"
-        },
-        "kube_object_name":{
-          "type":"string"
-        },
-        "kube_object_type":{
-          "type":"string"
-        },
-        "metadata":{
-          "$ref":"#/definitions/EventRequestObjectMeta"
-        }
-      },
-      "type":"object"
     }
-  }
+  },
+  "properties":{
+    "cluster_name":{
+      "type":"string"
+    },
+    "event_type":{
+      "type":"string"
+    },
+    "kube_namespace":{
+      "type":"string"
+    },
+    "kube_object_name":{
+      "type":"string"
+    },
+    "kube_object_type":{
+      "type":"string"
+    },
+    "metadata":{
+      "$ref":"#/definitions/EventRequestObjectMeta"
+    }
+  },
+  "type":"object"
+}`))
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func (m *EventRequest) InValid() (*gojsonschema.Result, error) {
+	return eventRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

@@ -1,72 +1,18 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "authenticationValidateRequest": {
-      "properties": {
-        "namespace": {
-          "type": "string"
+  "definitions":{
+    "authenticationValidateRequest":{
+      "properties":{
+        "namespace":{
+          "type":"string"
         },
-        "secret": {
-          "type": "string"
+        "secret":{
+          "type":"string"
         },
-        "username": {
-          "type": "string"
+        "username":{
+          "type":"string"
         }
       },
-      "type": "object"
-    },
-    "authenticationValidateResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "type": "array"
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
+      "type":"object"
     }
   }
 }

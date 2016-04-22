@@ -1,85 +1,23 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "ciMasterCreateRequest": {
-      "properties": {
-        "cluster_name": {
-          "type": "string"
+  "definitions":{
+    "ciMasterCreateRequest":{
+      "properties":{
+        "cluster_name":{
+          "type":"string"
         },
-        "volume_id": {
-          "type": "string"
+        "volume_id":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "ciMasterCreateResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+    "ciMasterDeleteRequest":{
+      "properties":{
+        "cluster_name":{
+          "type":"string"
         }
       },
-      "type": "object"
-    },
-    "ciMasterDeleteRequest": {
-      "properties": {
-        "cluster_name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ciMasterDeleteResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "type": "array"
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
+      "type":"object"
     }
   }
 }

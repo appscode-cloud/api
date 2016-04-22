@@ -1,140 +1,49 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
+  "definitions":{
+    "pvPVCDescribeRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         },
-        "url": {
-          "type": "string"
+        "name":{
+          "type":"string"
+        },
+        "namespace":{
+          "type":"string"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
+    "pvPVCRegisterRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
         },
-        "details": {
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "type": "array"
+        "name":{
+          "type":"string"
         },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
+        "namespace":{
+          "type":"string"
         },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
+        "size":{
+          "type":"integer"
         }
       },
-      "type": "object"
+      "type":"object"
     },
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+    "pvPVCUnregisterRequest":{
+      "properties":{
+        "cluster":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        },
+        "namespace":{
+          "type":"string"
         }
       },
-      "type": "object"
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVCDescribeRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVCDescribeResponse": {
-      "properties": {
-        "pvc": {
-          "$ref": "#/definitions/pvPVCInfo"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVCInfo": {
-      "properties": {
-        "accessModes": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "string"
-        },
-        "volume": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVCRegisterRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "pvPVCUnregisterRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        }
-      },
-      "type": "object"
+      "type":"object"
     }
   }
 }

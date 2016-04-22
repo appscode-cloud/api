@@ -1,78 +1,21 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
+  "definitions":{
+    "monitoringDashboardCreateRequest":{
+      "properties":{
+        "cluster_name":{
+          "type":"string"
         },
-        "url": {
-          "type": "string"
+        "namespace":{
+          "type":"string"
+        },
+        "object_name":{
+          "type":"string"
+        },
+        "type":{
+          "type":"string"
         }
       },
-      "type": "object"
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "type": "array"
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "info": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "monitoringDashboardCreateRequest": {
-      "properties": {
-        "cluster_name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "object_name": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "monitoringDashboardCreateResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "url": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
+      "type":"object"
     }
   }
 }
