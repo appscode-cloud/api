@@ -26,7 +26,7 @@ service TLSCertificates {
 
   rpc Delete(TLSCertificateDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      get: "/api/certificate/v0.1/tls/{cert}"
+      delete: "/api/certificate/v0.1/tls/{cert}"
     };
   }
 
