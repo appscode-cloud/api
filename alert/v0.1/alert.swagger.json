@@ -252,6 +252,7 @@
   },
   "definitions": {
     "MatrixQueryEntry": {
+      "type": "object",
       "properties": {
         "key": {
           "type": "string",
@@ -264,6 +265,7 @@
       }
     },
     "alertAlert": {
+      "type": "object",
       "properties": {
         "icinga_url": {
           "type": "string",
@@ -290,6 +292,7 @@
       }
     },
     "alertAlertSpec": {
+      "type": "object",
       "properties": {
         "alert_interval": {
           "type": "integer",
@@ -322,6 +325,7 @@
       }
     },
     "alertCreateReuquest": {
+      "type": "object",
       "properties": {
         "alert_spec": {
           "$ref": "#/definitions/alertAlertSpec"
@@ -347,6 +351,7 @@
       }
     },
     "alertDeleteRequest": {
+      "type": "object",
       "properties": {
         "phid": {
           "type": "string",
@@ -358,6 +363,7 @@
       }
     },
     "alertListRequest": {
+      "type": "object",
       "properties": {
         "spec": {
           "$ref": "#/definitions/alertSpec"
@@ -365,6 +371,7 @@
       }
     },
     "alertListResponse": {
+      "type": "object",
       "properties": {
         "alerts": {
           "type": "array",
@@ -378,6 +385,7 @@
       }
     },
     "alertMatrix": {
+      "type": "object",
       "properties": {
         "command": {
           "type": "string",
@@ -400,6 +408,7 @@
       }
     },
     "alertNotificationRequest": {
+      "type": "object",
       "properties": {
         "alert_phid": {
           "type": "string",
@@ -428,6 +437,7 @@
       }
     },
     "alertSpec": {
+      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -448,6 +458,7 @@
       }
     },
     "alertUpdateReuquest": {
+      "type": "object",
       "properties": {
         "alert_spec": {
           "$ref": "#/definitions/alertAlertSpec"
@@ -477,6 +488,7 @@
       }
     },
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -489,6 +501,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -514,6 +527,7 @@
       }
     },
     "dtypesVoidResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -521,6 +535,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",
