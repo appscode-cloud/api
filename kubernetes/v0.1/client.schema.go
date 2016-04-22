@@ -2,7 +2,7 @@ package kubernetes
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	"log"
+	// "log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -30,7 +30,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	configMapDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -48,7 +48,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	appDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -66,7 +66,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	clientRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -78,7 +78,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 }
 

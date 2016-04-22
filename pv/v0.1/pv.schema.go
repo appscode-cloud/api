@@ -2,7 +2,7 @@ package pv
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	"log"
+	// "log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -26,7 +26,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	pVDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -41,7 +41,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	pVRegisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -68,7 +68,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 }
 

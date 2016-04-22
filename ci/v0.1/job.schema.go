@@ -2,7 +2,7 @@ package ci
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	"log"
+	// "log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -25,7 +25,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	jobDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -37,7 +37,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	jobCopyRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -52,7 +52,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	jobCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -67,7 +67,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	jobBuildRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -82,7 +82,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 }
 

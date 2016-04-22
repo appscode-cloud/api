@@ -2,7 +2,7 @@ package certificate
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	"log"
+	// "log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -30,7 +30,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	tLSCertificateDeployRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -51,7 +51,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	tLSCertificateDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -63,7 +63,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	tLSCertificateDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -75,19 +75,19 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 }
 
-func (m *TLSCertificateCreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *TLSCertificateCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return tLSCertificateCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *TLSCertificateDeployRequest) InValid() (*gojsonschema.Result, error) {
+func (m *TLSCertificateDeployRequest) IsValid() (*gojsonschema.Result, error) {
 	return tLSCertificateDeployRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *TLSCertificateDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *TLSCertificateDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return tLSCertificateDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *TLSCertificateDeleteRequest) InValid() (*gojsonschema.Result, error) {
+func (m *TLSCertificateDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return tLSCertificateDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

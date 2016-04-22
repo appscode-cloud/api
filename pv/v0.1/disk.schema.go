@@ -2,7 +2,7 @@ package pv
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	"log"
+	// "log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -30,7 +30,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	diskDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -45,7 +45,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	diskListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -57,7 +57,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 	diskCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -81,7 +81,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
 	}
 }
 
