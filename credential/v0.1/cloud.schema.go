@@ -2,7 +2,7 @@ package credential
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -14,84 +14,90 @@ var cloudCredentialCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	cloudCredentialUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "definitions":{
-    "credentialCloudCredentialUpdateRequestDataEntry":{
-      "properties":{
-        "key":{
-          "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "credentialCloudCredentialUpdateRequestDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
         },
-        "value":{
-          "type":"string"
+        "value": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   },
-  "properties":{
-    "data":{
-      "items":{
-        "$ref":"#/definitions/credentialCloudCredentialUpdateRequestDataEntry"
+  "properties": {
+    "data": {
+      "items": {
+        "$ref": "#/definitions/credentialCloudCredentialUpdateRequestDataEntry"
       },
-      "type":"array"
+      "type": "array"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "type": "string"
     },
-    "provider":{
-      "type":"string"
+    "provider": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	cloudCredentialDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	cloudCredentialCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "definitions":{
-    "credentialCloudCredentialCreateRequestDataEntry":{
-      "properties":{
-        "key":{
-          "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "credentialCloudCredentialCreateRequestDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
         },
-        "value":{
-          "type":"string"
+        "value": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   },
-  "properties":{
-    "data":{
-      "items":{
-        "$ref":"#/definitions/credentialCloudCredentialCreateRequestDataEntry"
+  "properties": {
+    "data": {
+      "items": {
+        "$ref": "#/definitions/credentialCloudCredentialCreateRequestDataEntry"
       },
-      "type":"array"
+      "type": "array"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "type": "string"
     },
-    "provider":{
-      "type":"string"
+    "provider": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 

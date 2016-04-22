@@ -1,169 +1,177 @@
 {
-  "definitions":{
-    "MatrixQueryEntry":{
-      "properties":{
-        "key":{
-          "type":"string"
+  "definitions": {
+    "MatrixQueryEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
         },
-        "value":{
-          "type":"string"
+        "value": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "alertAlertSpec":{
-      "properties":{
-        "alert_interval":{
-          "type":"integer"
+    "alertAlertSpec": {
+      "properties": {
+        "alert_interval": {
+          "type": "integer"
         },
-        "critical_condition":{
-          "type":"string"
+        "critical_condition": {
+          "type": "string"
         },
-        "critical_method":{
-          "type":"integer"
+        "critical_method": {
+          "type": "integer"
         },
-        "critical_user":{
-          "type":"string"
+        "critical_user": {
+          "type": "string"
         },
-        "warning_condition":{
-          "type":"string"
+        "warning_condition": {
+          "type": "string"
         },
-        "warning_method":{
-          "type":"integer"
+        "warning_method": {
+          "type": "integer"
         },
-        "warning_user":{
-          "type":"string"
+        "warning_user": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "alertCreateRequest":{
-      "properties":{
-        "alert_spec":{
-          "$ref":"#/definitions/alertAlertSpec"
+    "alertCreateRequest": {
+      "properties": {
+        "alert_spec": {
+          "$ref": "#/definitions/alertAlertSpec"
         },
-        "check_interval":{
-          "type":"integer"
+        "check_interval": {
+          "type": "integer"
         },
-        "matrix":{
-          "$ref":"#/definitions/alertMatrix"
+        "matrix": {
+          "$ref": "#/definitions/alertMatrix"
         },
-        "matrix_phid":{
-          "type":"string"
+        "matrix_phid": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         },
-        "spec":{
-          "$ref":"#/definitions/alertSpec"
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "alertDeleteRequest":{
-      "properties":{
-        "phid":{
-          "type":"string"
+    "alertDeleteRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
         },
-        "spec":{
-          "$ref":"#/definitions/alertSpec"
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "alertListRequest":{
-      "properties":{
-        "spec":{
-          "$ref":"#/definitions/alertSpec"
+    "alertListRequest": {
+      "properties": {
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "alertMatrix":{
-      "properties":{
-        "command":{
-          "type":"string"
+    "alertMatrix": {
+      "properties": {
+        "command": {
+          "type": "string"
         },
-        "formula":{
-          "type":"string"
+        "formula": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         },
-        "query":{
-          "items":{
-            "$ref":"#/definitions/MatrixQueryEntry"
+        "query": {
+          "items": {
+            "$ref": "#/definitions/MatrixQueryEntry"
           },
-          "type":"array"
+          "type": "array"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "alertNotificationRequest":{
-      "properties":{
-        "alert_phid":{
-          "type":"string"
+    "alertNotificationRequest": {
+      "properties": {
+        "alert_phid": {
+          "type": "string"
         },
-        "host_name":{
-          "type":"string"
+        "host_name": {
+          "type": "string"
         },
-        "service_output":{
-          "type":"string"
+        "service_output": {
+          "type": "string"
         },
-        "state":{
-          "type":"string"
+        "state": {
+          "type": "string"
         },
-        "state_type":{
-          "type":"string"
+        "state_type": {
+          "type": "string"
         },
-        "time":{
-          "type":"string"
+        "time": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "alertSpec":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+    "alertSpec": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         },
-        "object_name":{
-          "type":"string"
+        "object_name": {
+          "type": "string"
         },
-        "object_type":{
-          "type":"string"
+        "object_type": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "alertUpdateRequest":{
-      "properties":{
-        "alert_spec":{
-          "$ref":"#/definitions/alertAlertSpec"
+    "alertUpdateRequest": {
+      "properties": {
+        "alert_spec": {
+          "$ref": "#/definitions/alertAlertSpec"
         },
-        "check_interval":{
-          "type":"integer"
+        "check_interval": {
+          "type": "integer"
         },
-        "matrix":{
-          "$ref":"#/definitions/alertMatrix"
+        "matrix": {
+          "$ref": "#/definitions/alertMatrix"
         },
-        "matrix_phid":{
-          "type":"string"
+        "matrix_phid": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         },
-        "phid":{
-          "type":"string"
+        "phid": {
+          "type": "string"
         },
-        "spec":{
-          "$ref":"#/definitions/alertSpec"
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

@@ -1,56 +1,64 @@
 {
-  "definitions":{
-    "ciJobBuildRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+  "definitions": {
+    "ciJobBuildRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         },
-        "param":{
-          "type":"string"
+        "param": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciJobCopyRequest":{
-      "properties":{
-        "destination":{
-          "type":"string"
+    "ciJobCopyRequest": {
+      "properties": {
+        "destination": {
+          "type": "string"
         },
-        "source":{
-          "type":"string"
+        "source": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciJobCreateRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "ciJobCreateRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         },
-        "sh_file":{
-          "type":"string"
+        "sh_file": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciJobDeleteRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "ciJobDeleteRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciJobDescribeRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "ciJobDescribeRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "dtypesVoidRequest":{
-      "type":"object"
+    "dtypesVoidRequest": {
+      "type": "object"
     }
   }
 }

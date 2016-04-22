@@ -2,7 +2,7 @@ package glusterfs
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -14,55 +14,55 @@ var volumeDeleteRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	volumeListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "glusterfs_cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "glusterfs_cluster": {
+      "type": "string"
     },
-    "kube_cluster":{
-      "type":"string"
+    "kube_cluster": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	volumeCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "glusterfs_cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "glusterfs_cluster": {
+      "type": "string"
     },
-    "kube_cluster":{
-      "type":"string"
+    "kube_cluster": {
+      "type": "string"
     },
-    "volume":{
-      "type":"string"
+    "volume": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	volumeDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "glusterfs_cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "glusterfs_cluster": {
+      "type": "string"
     },
-    "kube_cluster":{
-      "type":"string"
+    "kube_cluster": {
+      "type": "string"
     },
-    "volume":{
-      "type":"string"
+    "volume": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 

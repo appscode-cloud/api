@@ -1,173 +1,62 @@
 {
-  "definitions":{
-    "certificateTLSCertificate":{
-      "properties":{
-        "cert":{
-          "type":"string"
+  "definitions": {
+    "certificateTLSCertificateCreateRequest": {
+      "properties": {
+        "cert_data": {
+          "type": "string"
         },
-        "common_name":{
-          "type":"string"
+        "key_data": {
+          "type": "string"
         },
-        "expire_date":{
-          "type":"string"
-        },
-        "issued_by":{
-          "type":"string"
-        },
-        "key":{
-          "type":"string"
-        },
-        "name":{
-          "type":"string"
-        },
-        "phid":{
-          "type":"string"
-        },
-        "sans":{
-          "items":{
-            "type":"string"
-          },
-          "type":"array"
-        },
-        "serial_number":{
-          "type":"string"
-        },
-        "valid_from":{
-          "type":"string"
-        },
-        "version":{
-          "type":"integer"
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "certificateTLSCertificateCreateRequest":{
-      "properties":{
-        "cert_data":{
-          "type":"string"
-        },
-        "key_data":{
-          "type":"string"
-        },
-        "name":{
-          "type":"string"
+    "certificateTLSCertificateDeleteRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "certificateTLSCertificateDeleteRequest":{
-      "properties":{
-        "cert":{
-          "type":"string"
+    "certificateTLSCertificateDeployRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        },
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        },
+        "secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "certificateTLSCertificateDeployRequest":{
-      "properties":{
-        "cert":{
-          "type":"string"
-        },
-        "cluster_name":{
-          "type":"string"
-        },
-        "namespace":{
-          "type":"string"
-        },
-        "secret_name":{
-          "type":"string"
+    "certificateTLSCertificateDescribeRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "certificateTLSCertificateDescribeRequest":{
-      "properties":{
-        "cert":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "certificateTLSCertificateDescribeResponse":{
-      "properties":{
-        "certificate":{
-          "$ref":"#/definitions/certificateTLSCertificate"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "certificateTLSCertificateListResponse":{
-      "properties":{
-        "certificates":{
-          "items":{
-            "$ref":"#/definitions/certificateTLSCertificate"
-          },
-          "type":"array"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesHelp":{
-      "properties":{
-        "description":{
-          "type":"string"
-        },
-        "url":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesStatus":{
-      "properties":{
-        "code":{
-          "type":"string"
-        },
-        "details":{
-          "items":{
-            "$ref":"#/definitions/protobufAny"
-          },
-          "type":"array"
-        },
-        "help":{
-          "$ref":"#/definitions/dtypesHelp"
-        },
-        "info":{
-          "type":"string"
-        },
-        "message":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesVoidRequest":{
-      "type":"object"
-    },
-    "dtypesVoidResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "protobufAny":{
-      "properties":{
-        "type_url":{
-          "type":"string"
-        },
-        "value":{
-          "type":"string"
-        }
-      },
-      "type":"object"
+    "dtypesVoidRequest": {
+      "type": "object"
     }
   }
 }

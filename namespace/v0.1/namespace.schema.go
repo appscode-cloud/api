@@ -2,7 +2,7 @@ package namespace
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -15,77 +15,84 @@ var logRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	statusRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "display_name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "display_name": {
+      "type": "string"
     },
-    "email":{
-      "type":"string"
+    "email": {
+      "type": "string"
     },
-    "invite_email":{
-      "items":{
-        "format":"string",
-        "type":"string"
+    "invite_email": {
+      "items": {
+        "type": "string"
       },
-      "type":"array"
+      "type": "array"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "type": "string"
     },
-    "password":{
-      "type":"string"
+    "password": {
+      "type": "string"
     },
-    "subscription_type":{
-      "type":"string"
+    "subscription_type": {
+      "type": "string"
     },
-    "user_ip":{
-      "type":"string"
+    "user_ip": {
+      "type": "string"
     },
-    "user_name":{
-      "type":"string"
+    "user_name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	checkRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	logRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 

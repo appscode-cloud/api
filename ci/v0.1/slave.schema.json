@@ -1,68 +1,74 @@
 {
-  "definitions":{
-    "ciPortInfo":{
-      "properties":{
-        "port":{
-          "type":"integer"
+  "definitions": {
+    "ciPortInfo": {
+      "properties": {
+        "port": {
+          "type": "integer"
         },
-        "protocol":{
-          "type":"string"
+        "protocol": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciSlaveCreateRequest":{
-      "properties":{
-        "ci_starter_version":{
-          "type":"string"
+    "ciSlaveCreateRequest": {
+      "properties": {
+        "ci_starter_version": {
+          "type": "string"
         },
-        "executors":{
-          "type":"integer"
+        "executors": {
+          "type": "integer"
         },
-        "labels":{
-          "type":"string"
+        "labels": {
+          "type": "string"
         },
-        "ports":{
-          "items":{
-            "$ref":"#/definitions/ciPortInfo"
+        "ports": {
+          "items": {
+            "$ref": "#/definitions/ciPortInfo"
           },
-          "type":"array"
+          "type": "array"
         },
-        "saltbase_version":{
-          "type":"string"
+        "saltbase_version": {
+          "type": "string"
         },
-        "user_startup_script":{
-          "type":"string"
+        "user_startup_script": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciSlaveDeleteRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "ciSlaveDeleteRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciSlaveDescribeRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "ciSlaveDescribeRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciSlaveRestartRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "ciSlaveRestartRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "dtypesVoidRequest":{
-      "type":"object"
+    "dtypesVoidRequest": {
+      "type": "object"
     }
   }
 }

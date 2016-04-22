@@ -2,7 +2,7 @@ package ssh
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -12,25 +12,27 @@ var secureShellGetRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	secureShellGetRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "cluster_name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "type": "string"
     },
-    "cluster_namespace":{
-      "type":"string"
+    "cluster_namespace": {
+      "type": "string"
     },
-    "instance_name":{
-      "type":"string"
+    "instance_name": {
+      "type": "string"
     },
-    "jenkins_namespace":{
-      "type":"string"
+    "jenkins_namespace": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 

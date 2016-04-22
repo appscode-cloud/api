@@ -2,7 +2,7 @@ package billing
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -12,16 +12,16 @@ var chargeCalculateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	chargeCalculateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "charge_type":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "charge_type": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 

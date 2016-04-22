@@ -1,71 +1,74 @@
 {
-  "definitions":{
-    "EventRequestObjectMeta":{
-      "properties":{
-        "instance_id":{
-          "type":"string"
+  "definitions": {
+    "EventRequestObjectMeta": {
+      "properties": {
+        "instance_id": {
+          "type": "string"
         },
-        "kind":{
-          "type":"string"
+        "kind": {
+          "type": "string"
         },
-        "labels":{
-          "items":{
-            "$ref":"#/definitions/ObjectMetaLabelsEntry"
+        "labels": {
+          "items": {
+            "$ref": "#/definitions/ObjectMetaLabelsEntry"
           },
-          "type":"array"
+          "type": "array"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         },
-        "pod_ip":{
-          "type":"string"
+        "pod_ip": {
+          "type": "string"
         },
-        "replication_controller":{
-          "type":"string"
+        "replication_controller": {
+          "type": "string"
         },
-        "service":{
-          "items":{
-            "format":"string",
-            "type":"string"
+        "service": {
+          "items": {
+            "type": "string"
           },
-          "type":"array"
+          "type": "array"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ObjectMetaLabelsEntry":{
-      "properties":{
-        "key":{
-          "type":"string"
+    "ObjectMetaLabelsEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
         },
-        "value":{
-          "type":"string"
+        "value": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "kubernetesEventRequest":{
-      "properties":{
-        "cluster_name":{
-          "type":"string"
+    "kubernetesEventRequest": {
+      "properties": {
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         },
-        "event_type":{
-          "type":"string"
+        "event_type": {
+          "type": "string"
         },
-        "kube_namespace":{
-          "type":"string"
+        "kube_namespace": {
+          "type": "string"
         },
-        "kube_object_name":{
-          "type":"string"
+        "kube_object_name": {
+          "type": "string"
         },
-        "kube_object_type":{
-          "type":"string"
+        "kube_object_type": {
+          "type": "string"
         },
-        "metadata":{
-          "$ref":"#/definitions/EventRequestObjectMeta"
+        "metadata": {
+          "$ref": "#/definitions/EventRequestObjectMeta"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

@@ -1,18 +1,20 @@
 {
-  "definitions":{
-    "authenticationValidateRequest":{
-      "properties":{
-        "namespace":{
-          "type":"string"
+  "definitions": {
+    "authenticationValidateRequest": {
+      "properties": {
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
         },
-        "secret":{
-          "type":"string"
+        "secret": {
+          "type": "string"
         },
-        "username":{
-          "type":"string"
+        "username": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }
