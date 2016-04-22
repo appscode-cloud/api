@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var deleteRequestSchema *gojsonschema.Schema
 var describeRequestSchema *gojsonschema.Schema
 var backupRequestSchema *gojsonschema.Schema

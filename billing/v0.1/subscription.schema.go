@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var subscriptionCloseRequestSchema *gojsonschema.Schema
 var subscriptionQutaRequestSchema *gojsonschema.Schema
 var subscriptionCreateRequestSchema *gojsonschema.Schema

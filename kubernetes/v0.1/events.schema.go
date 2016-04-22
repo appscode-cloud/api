@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var eventRequestSchema *gojsonschema.Schema
 
 func init() {

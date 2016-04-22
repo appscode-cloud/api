@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var slaveAddRequestSchema *gojsonschema.Schema
 
 func init() {

@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var bucketListRequestSchema *gojsonschema.Schema
 
 func init() {

@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var secretDescribeRequestSchema *gojsonschema.Schema
 var configMapDescribeRequestSchema *gojsonschema.Schema
 var appDescribeRequestSchema *gojsonschema.Schema

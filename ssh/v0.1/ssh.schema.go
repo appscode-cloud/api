@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var secureShellGetRequestSchema *gojsonschema.Schema
 
 func init() {

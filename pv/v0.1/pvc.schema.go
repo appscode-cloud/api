@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var pVCUnregisterRequestSchema *gojsonschema.Schema
 var pVCRegisterRequestSchema *gojsonschema.Schema
 var pVCDescribeRequestSchema *gojsonschema.Schema

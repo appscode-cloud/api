@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var cloudCredentialUpdateRequestSchema *gojsonschema.Schema
 var cloudCredentialDeleteRequestSchema *gojsonschema.Schema
 var cloudCredentialCreateRequestSchema *gojsonschema.Schema

@@ -5,6 +5,8 @@ import (
 	"log"
 )
 
+// Auto-generated. DO NOT EDIT.
+
 var diskDescribeRequestSchema *gojsonschema.Schema
 var diskDeleteRequestSchema *gojsonschema.Schema
 var diskListRequestSchema *gojsonschema.Schema
