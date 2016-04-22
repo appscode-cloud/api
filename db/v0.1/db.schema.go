@@ -23,6 +23,8 @@ func init() {
       "type": "string"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "type": {
@@ -41,6 +43,8 @@ func init() {
       "type": "string"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -53,9 +57,13 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "auth_secret_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "bucket_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "cluster": {
@@ -68,15 +76,21 @@ func init() {
       "type": "boolean"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "region": {
       "type": "string"
     },
     "secret_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "snapshot_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "type": {
@@ -92,6 +106,8 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "bucket_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "cluster": {
@@ -107,6 +123,8 @@ func init() {
       "type": "string"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "node": {
@@ -140,6 +158,8 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -152,6 +172,8 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "bucket_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "cluster": {
@@ -164,6 +186,8 @@ func init() {
       "type": "boolean"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "node": {
@@ -179,6 +203,8 @@ func init() {
       "type": "string"
     },
     "secret_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "sku": {
