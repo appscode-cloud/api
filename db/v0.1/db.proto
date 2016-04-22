@@ -67,6 +67,7 @@ message CreateRequest {
   string version = 11;
   string gfs_endpoint = 12;
   string gfs_disk = 13;
+  bool set_password = 14;
 }
 
 message DeleteRequest {
@@ -121,7 +122,8 @@ message DescribeResponse {
   int32 auto_snapshot = 8;
   string last_backup = 9;
   kubeInfo kube = 10;
-  string created = 11;
+  string db_status = 11;
+  string created = 12;
 }
 
 message kubeInfo {
@@ -164,15 +166,17 @@ message SnapshotListResponse {
 
 message Snapshot {
   string name = 1;
-  string db_name = 2;
-  string db_cluster = 3;
-  string provider = 4;
-  string bucket = 5;
-  string region = 6;
-  string zone = 7;
-  string status = 8;
-  string process = 9;
-  string restore_db = 10;
-  string restore_snap = 11;
-  string created = 12;
+  string phid = 2;
+  string db_name = 3;
+  string db_cluster = 4;
+  string provider = 5;
+  string cloud_cred = 6;
+  string bucket = 7;
+  string region = 8;
+  string zone = 9;
+  string status = 10;
+  string process = 11;
+  string restore_db = 12;
+  string restore_snap = 13;
+  string created = 14;
 }

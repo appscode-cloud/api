@@ -139,6 +139,9 @@ func init() {
     "region": {
       "type": "string"
     },
+    "set_password": {
+      "type": "boolean"
+    },
     "sku": {
       "type": "string"
     },

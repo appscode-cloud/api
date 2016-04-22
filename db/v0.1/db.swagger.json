@@ -344,6 +344,10 @@
           "type": "string",
           "format": "string"
         },
+        "set_password": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "sku": {
           "type": "string",
           "format": "string"
@@ -457,6 +461,10 @@
           "format": "string"
         },
         "created": {
+          "type": "string",
+          "format": "string"
+        },
+        "db_status": {
           "type": "string",
           "format": "string"
         },
@@ -574,6 +582,10 @@
           "type": "string",
           "format": "string"
         },
+        "cloud_cred": {
+          "type": "string",
+          "format": "string"
+        },
         "created": {
           "type": "string",
           "format": "string"
@@ -587,6 +599,10 @@
           "format": "string"
         },
         "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "phid": {
           "type": "string",
           "format": "string"
         },
