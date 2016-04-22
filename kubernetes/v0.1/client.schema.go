@@ -15,6 +15,7 @@ var clientRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	secretDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -32,6 +33,7 @@ func init() {
 		log.Fatal(err)
 	}
 	configMapDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -49,6 +51,7 @@ func init() {
 		log.Fatal(err)
 	}
 	appDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -66,6 +69,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clientRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"

@@ -13,6 +13,7 @@ var buildDescribeRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	buildListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "job_name":{
       "type":"string"
@@ -24,6 +25,7 @@ func init() {
 		log.Fatal(err)
 	}
 	buildDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "console":{
       "type":"string"

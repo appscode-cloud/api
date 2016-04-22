@@ -15,6 +15,7 @@ var slaveCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	slaveDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -26,6 +27,7 @@ func init() {
 		log.Fatal(err)
 	}
 	slaveRestartRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -37,6 +39,7 @@ func init() {
 		log.Fatal(err)
 	}
 	slaveDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -48,6 +51,7 @@ func init() {
 		log.Fatal(err)
 	}
 	slaveCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "ciPortInfo":{
       "properties":{

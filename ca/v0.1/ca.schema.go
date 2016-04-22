@@ -12,6 +12,7 @@ var certificateCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	certificateCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "csr":{
       "type":"string"

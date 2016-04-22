@@ -16,6 +16,7 @@ var updateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	listRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "alertSpec":{
       "properties":{
@@ -46,6 +47,7 @@ func init() {
 		log.Fatal(err)
 	}
 	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "alertSpec":{
       "properties":{
@@ -79,6 +81,7 @@ func init() {
 		log.Fatal(err)
 	}
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "MatrixQueryEntry":{
       "properties":{
@@ -181,6 +184,7 @@ func init() {
 		log.Fatal(err)
 	}
 	notificationRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "alert_phid":{
       "type":"string"
@@ -207,6 +211,7 @@ func init() {
 		log.Fatal(err)
 	}
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "MatrixQueryEntry":{
       "properties":{

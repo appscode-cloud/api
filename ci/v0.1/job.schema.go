@@ -16,6 +16,7 @@ var jobBuildRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	jobDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -27,6 +28,7 @@ func init() {
 		log.Fatal(err)
 	}
 	jobDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -38,6 +40,7 @@ func init() {
 		log.Fatal(err)
 	}
 	jobCopyRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "destination":{
       "type":"string"
@@ -52,6 +55,7 @@ func init() {
 		log.Fatal(err)
 	}
 	jobCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -66,6 +70,7 @@ func init() {
 		log.Fatal(err)
 	}
 	jobBuildRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"

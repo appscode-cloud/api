@@ -15,6 +15,7 @@ var diskCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	diskDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -32,6 +33,7 @@ func init() {
 		log.Fatal(err)
 	}
 	diskDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -46,6 +48,7 @@ func init() {
 		log.Fatal(err)
 	}
 	diskListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -57,6 +60,7 @@ func init() {
 		log.Fatal(err)
 	}
 	diskCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"

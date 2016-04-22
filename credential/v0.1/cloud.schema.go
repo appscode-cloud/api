@@ -14,6 +14,7 @@ var cloudCredentialCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	cloudCredentialUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "credentialCloudCredentialUpdateRequestDataEntry":{
       "properties":{
@@ -47,6 +48,7 @@ func init() {
 		log.Fatal(err)
 	}
 	cloudCredentialDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -58,6 +60,7 @@ func init() {
 		log.Fatal(err)
 	}
 	cloudCredentialCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "credentialCloudCredentialCreateRequestDataEntry":{
       "properties":{

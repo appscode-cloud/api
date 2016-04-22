@@ -16,6 +16,7 @@ var subscriptionOpenRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	subscriptionCloseRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "object_phid":{
       "type":"string"
@@ -30,6 +31,7 @@ func init() {
 		log.Fatal(err)
 	}
 	subscriptionQutaRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "billingResource":{
       "default":"USER",
@@ -63,6 +65,7 @@ func init() {
 		log.Fatal(err)
 	}
 	subscriptionCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "author_phid":{
       "type":"string"
@@ -80,6 +83,7 @@ func init() {
 		log.Fatal(err)
 	}
 	subscriptionDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "time":{
       "type":"string"
@@ -91,6 +95,7 @@ func init() {
 		log.Fatal(err)
 	}
 	subscriptionOpenRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "author_phid":{
       "type":"string"

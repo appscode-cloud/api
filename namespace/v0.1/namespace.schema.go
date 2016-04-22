@@ -15,6 +15,7 @@ var logRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	statusRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -26,6 +27,7 @@ func init() {
 		log.Fatal(err)
 	}
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "display_name":{
       "type":"string"
@@ -62,6 +64,7 @@ func init() {
 		log.Fatal(err)
 	}
 	checkRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -73,6 +76,7 @@ func init() {
 		log.Fatal(err)
 	}
 	logRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"

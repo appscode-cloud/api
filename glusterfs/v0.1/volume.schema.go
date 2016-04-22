@@ -14,6 +14,7 @@ var volumeDeleteRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	volumeListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "glusterfs_cluster":{
       "type":"string"
@@ -28,6 +29,7 @@ func init() {
 		log.Fatal(err)
 	}
 	volumeCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "glusterfs_cluster":{
       "type":"string"
@@ -45,6 +47,7 @@ func init() {
 		log.Fatal(err)
 	}
 	volumeDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "glusterfs_cluster":{
       "type":"string"

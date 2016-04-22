@@ -15,6 +15,7 @@ var clusterCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "kube_cluster":{
       "type":"string"
@@ -29,6 +30,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "kube_cluster":{
       "type":"string"
@@ -40,6 +42,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "kube_cluster":{
       "type":"string"
@@ -54,6 +57,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "disks":{
       "items":{

@@ -14,6 +14,7 @@ var pVRegisterRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	pVUnregisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -28,6 +29,7 @@ func init() {
 		log.Fatal(err)
 	}
 	pVDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -42,6 +44,7 @@ func init() {
 		log.Fatal(err)
 	}
 	pVRegisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"

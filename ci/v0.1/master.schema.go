@@ -13,6 +13,7 @@ var masterCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	masterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster_name":{
       "type":"string"
@@ -24,6 +25,7 @@ func init() {
 		log.Fatal(err)
 	}
 	masterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster_name":{
       "type":"string"

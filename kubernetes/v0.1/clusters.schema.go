@@ -19,6 +19,7 @@ var clusterClientConfigRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	clusterInstanceListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster_name":{
       "type":"string"
@@ -30,6 +31,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterScaleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "ClusterScaleRequestNodeChangesEntry":{
       "properties":{
@@ -60,6 +62,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "kube_starter_version":{
       "type":"string"
@@ -80,6 +83,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -94,6 +98,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -105,6 +110,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterStartupScriptRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "role":{
       "type":"string"
@@ -116,6 +122,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "ClusterCreateRequestCloudCredentialDataEntry":{
       "properties":{
@@ -181,6 +188,7 @@ func init() {
 		log.Fatal(err)
 	}
 	clusterClientConfigRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"

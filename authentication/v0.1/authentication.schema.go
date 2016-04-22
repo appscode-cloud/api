@@ -12,6 +12,7 @@ var validateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	validateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "namespace":{
       "type":"string"

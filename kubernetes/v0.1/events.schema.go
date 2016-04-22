@@ -12,6 +12,7 @@ var eventRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	eventRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
     "EventRequestObjectMeta":{
       "properties":{

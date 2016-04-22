@@ -17,6 +17,7 @@ var restoreRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -34,6 +35,7 @@ func init() {
 		log.Fatal(err)
 	}
 	describeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "cluster":{
       "type":"string"
@@ -48,6 +50,7 @@ func init() {
 		log.Fatal(err)
 	}
 	backupRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "auth_secret_name":{
       "type":"string"
@@ -86,6 +89,7 @@ func init() {
 		log.Fatal(err)
 	}
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "bucket_name":{
       "type":"string"
@@ -133,6 +137,7 @@ func init() {
 		log.Fatal(err)
 	}
 	snapshotListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "name":{
       "type":"string"
@@ -144,6 +149,7 @@ func init() {
 		log.Fatal(err)
 	}
 	restoreRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "bucket_name":{
       "type":"string"
