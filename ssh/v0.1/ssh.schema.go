@@ -12,22 +12,22 @@ var secureShellGetRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	secureShellGetRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "cluster_name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster_name": {
+      "type": "string"
     },
-    "cluster_namespace":{
-      "type":"string"
+    "cluster_namespace": {
+      "type": "string"
     },
-    "instance_name":{
-      "type":"string"
+    "instance_name": {
+      "type": "string"
     },
-    "jenkins_namespace":{
-      "type":"string"
+    "jenkins_namespace": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)

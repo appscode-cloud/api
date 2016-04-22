@@ -19,182 +19,182 @@ var clusterClientConfigRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	clusterInstanceListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "cluster_name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster_name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterScaleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "definitions":{
-    "ClusterScaleRequestNodeChangesEntry":{
-      "properties":{
-        "key":{
-          "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "ClusterScaleRequestNodeChangesEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
         },
-        "value":{
-          "type":"integer"
+        "value": {
+          "type": "integer"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   },
-  "properties":{
-    "name":{
-      "type":"string"
+  "properties": {
+    "name": {
+      "type": "string"
     },
-    "node_changes":{
-      "items":{
-        "$ref":"#/definitions/ClusterScaleRequestNodeChangesEntry"
+    "node_changes": {
+      "items": {
+        "$ref": "#/definitions/ClusterScaleRequestNodeChangesEntry"
       },
-      "type":"array"
+      "type": "array"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "kube_starter_version":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "kube_starter_version": {
+      "type": "string"
     },
-    "kube_version":{
-      "type":"string"
+    "kube_version": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     },
-    "saltbase_version":{
-      "type":"string"
+    "saltbase_version": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "type": "string"
     },
-    "release_reserved_ip":{
-      "type":"boolean"
+    "release_reserved_ip": {
+      "type": "boolean"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterStartupScriptRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "role":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "role": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "definitions":{
-    "ClusterCreateRequestCloudCredentialDataEntry":{
-      "properties":{
-        "key":{
-          "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "ClusterCreateRequestCloudCredentialDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
         },
-        "value":{
-          "type":"string"
+        "value": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ClusterCreateRequestNodeSetEntry":{
-      "properties":{
-        "key":{
-          "type":"string"
+    "ClusterCreateRequestNodeSetEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
         },
-        "value":{
-          "type":"integer"
+        "value": {
+          "type": "integer"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   },
-  "properties":{
-    "cloud_credential":{
-      "type":"string"
+  "properties": {
+    "cloud_credential": {
+      "type": "string"
     },
-    "cloud_credential_data":{
-      "items":{
-        "$ref":"#/definitions/ClusterCreateRequestCloudCredentialDataEntry"
+    "cloud_credential_data": {
+      "items": {
+        "$ref": "#/definitions/ClusterCreateRequestCloudCredentialDataEntry"
       },
-      "type":"array"
+      "type": "array"
     },
-    "kube_starter_version":{
-      "type":"string"
+    "kube_starter_version": {
+      "type": "string"
     },
-    "kube_version":{
-      "type":"string"
+    "kube_version": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     },
-    "node_set":{
-      "items":{
-        "$ref":"#/definitions/ClusterCreateRequestNodeSetEntry"
+    "node_set": {
+      "items": {
+        "$ref": "#/definitions/ClusterCreateRequestNodeSetEntry"
       },
-      "type":"array"
+      "type": "array"
     },
-    "provider":{
-      "type":"string"
+    "provider": {
+      "type": "string"
     },
-    "saltbase_version":{
-      "type":"string"
+    "saltbase_version": {
+      "type": "string"
     },
-    "zone":{
-      "type":"string"
+    "zone": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterClientConfigRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)

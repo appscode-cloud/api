@@ -15,70 +15,70 @@ var clusterCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "kube_cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "kube_cluster": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "kube_cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "kube_cluster": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "kube_cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "kube_cluster": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "disks":{
-      "items":{
-        "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "disks": {
+      "items": {
+        "type": "string"
       },
-      "type":"array"
+      "type": "array"
     },
-    "kube_cluster":{
-      "type":"string"
+    "kube_cluster": {
+      "type": "string"
     },
-    "mood":{
-      "type":"string"
+    "mood": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     },
-    "node":{
-      "type":"integer"
+    "node": {
+      "type": "integer"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)

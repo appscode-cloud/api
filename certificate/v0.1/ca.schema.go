@@ -12,16 +12,16 @@ var certificateCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	certificateCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "csr":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "csr": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)

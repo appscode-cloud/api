@@ -14,58 +14,58 @@ var pVRegisterRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	pVUnregisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	pVDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	pVRegisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
     },
-    "endpoint":{
-      "type":"string"
+    "endpoint": {
+      "type": "string"
     },
-    "identifier":{
-      "type":"string"
+    "identifier": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     },
-    "plugin":{
-      "type":"string"
+    "plugin": {
+      "type": "string"
     },
-    "size":{
-      "type":"integer"
+    "size": {
+      "type": "integer"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)

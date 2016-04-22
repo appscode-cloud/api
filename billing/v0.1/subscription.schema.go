@@ -16,104 +16,104 @@ var subscriptionOpenRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	subscriptionCloseRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "object_phid":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "object_phid": {
+      "type": "string"
     },
-    "product_type":{
-      "type":"string"
+    "product_type": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	subscriptionQutaRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "definitions":{
-    "billingResource":{
-      "default":"USER",
-      "enum":[
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "billingResource": {
+      "default": "USER",
+      "enum": [
         "USER",
         "CLUSTER",
         "NODE",
         "DB",
         "CI"
       ],
-      "type":"string"
+      "type": "string"
     }
   },
-  "properties":{
-    "count":{
-      "type":"integer"
+  "properties": {
+    "count": {
+      "type": "integer"
     },
-    "object_phid":{
-      "type":"string"
+    "object_phid": {
+      "type": "string"
     },
-    "resource":{
-      "$ref":"#/definitions/billingResource"
+    "resource": {
+      "$ref": "#/definitions/billingResource"
     },
-    "subresource":{
-      "type":"string"
+    "subresource": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	subscriptionCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "author_phid":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "author_phid": {
+      "type": "string"
     },
-    "product_phid":{
-      "type":"string"
+    "product_phid": {
+      "type": "string"
     },
-    "type":{
-      "type":"string"
+    "type": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	subscriptionDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "time":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "time": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 	subscriptionOpenRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "author_phid":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "author_phid": {
+      "type": "string"
     },
-    "metadata":{
-      "type":"string"
+    "metadata": {
+      "type": "string"
     },
-    "object_phid":{
-      "type":"string"
+    "object_phid": {
+      "type": "string"
     },
-    "product_type":{
-      "type":"string"
+    "product_type": {
+      "type": "string"
     },
-    "subscription_phid":{
-      "type":"string"
+    "subscription_phid": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)

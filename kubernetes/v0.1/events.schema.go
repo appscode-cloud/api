@@ -12,73 +12,73 @@ var eventRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	eventRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "definitions":{
-    "EventRequestObjectMeta":{
-      "properties":{
-        "instance_id":{
-          "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "EventRequestObjectMeta": {
+      "properties": {
+        "instance_id": {
+          "type": "string"
         },
-        "kind":{
-          "type":"string"
+        "kind": {
+          "type": "string"
         },
-        "labels":{
-          "items":{
-            "$ref":"#/definitions/ObjectMetaLabelsEntry"
+        "labels": {
+          "items": {
+            "$ref": "#/definitions/ObjectMetaLabelsEntry"
           },
-          "type":"array"
+          "type": "array"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "type": "string"
         },
-        "pod_ip":{
-          "type":"string"
+        "pod_ip": {
+          "type": "string"
         },
-        "replication_controller":{
-          "type":"string"
+        "replication_controller": {
+          "type": "string"
         },
-        "service":{
-          "items":{
-            "type":"string"
+        "service": {
+          "items": {
+            "type": "string"
           },
-          "type":"array"
+          "type": "array"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ObjectMetaLabelsEntry":{
-      "properties":{
-        "key":{
-          "type":"string"
+    "ObjectMetaLabelsEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
         },
-        "value":{
-          "type":"string"
+        "value": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   },
-  "properties":{
-    "cluster_name":{
-      "type":"string"
+  "properties": {
+    "cluster_name": {
+      "type": "string"
     },
-    "event_type":{
-      "type":"string"
+    "event_type": {
+      "type": "string"
     },
-    "kube_namespace":{
-      "type":"string"
+    "kube_namespace": {
+      "type": "string"
     },
-    "kube_object_name":{
-      "type":"string"
+    "kube_object_name": {
+      "type": "string"
     },
-    "kube_object_type":{
-      "type":"string"
+    "kube_object_type": {
+      "type": "string"
     },
-    "metadata":{
-      "$ref":"#/definitions/EventRequestObjectMeta"
+    "metadata": {
+      "$ref": "#/definitions/EventRequestObjectMeta"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)

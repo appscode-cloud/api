@@ -12,22 +12,22 @@ var dashboardCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	dashboardCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "cluster_name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster_name": {
+      "type": "string"
     },
-    "namespace":{
-      "type":"string"
+    "namespace": {
+      "type": "string"
     },
-    "object_name":{
-      "type":"string"
+    "object_name": {
+      "type": "string"
     },
-    "type":{
-      "type":"string"
+    "type": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
