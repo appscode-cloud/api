@@ -1,46 +1,5 @@
 {
   "definitions":{
-    "certificateTLSCertificate":{
-      "properties":{
-        "cert":{
-          "type":"string"
-        },
-        "common_name":{
-          "type":"string"
-        },
-        "expire_date":{
-          "type":"string"
-        },
-        "issued_by":{
-          "type":"string"
-        },
-        "key":{
-          "type":"string"
-        },
-        "name":{
-          "type":"string"
-        },
-        "phid":{
-          "type":"string"
-        },
-        "sans":{
-          "items":{
-            "type":"string"
-          },
-          "type":"array"
-        },
-        "serial_number":{
-          "type":"string"
-        },
-        "valid_from":{
-          "type":"string"
-        },
-        "version":{
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
     "certificateTLSCertificateCreateRequest":{
       "properties":{
         "cert_data":{
@@ -88,85 +47,7 @@
       },
       "type":"object"
     },
-    "certificateTLSCertificateDescribeResponse":{
-      "properties":{
-        "certificate":{
-          "$ref":"#/definitions/certificateTLSCertificate"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "certificateTLSCertificateListResponse":{
-      "properties":{
-        "certificates":{
-          "items":{
-            "$ref":"#/definitions/certificateTLSCertificate"
-          },
-          "type":"array"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesHelp":{
-      "properties":{
-        "description":{
-          "type":"string"
-        },
-        "url":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesStatus":{
-      "properties":{
-        "code":{
-          "type":"string"
-        },
-        "details":{
-          "items":{
-            "$ref":"#/definitions/protobufAny"
-          },
-          "type":"array"
-        },
-        "help":{
-          "$ref":"#/definitions/dtypesHelp"
-        },
-        "info":{
-          "type":"string"
-        },
-        "message":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
     "dtypesVoidRequest":{
-      "type":"object"
-    },
-    "dtypesVoidResponse":{
-      "properties":{
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "protobufAny":{
-      "properties":{
-        "type_url":{
-          "type":"string"
-        },
-        "value":{
-          "type":"string"
-        }
-      },
       "type":"object"
     }
   }

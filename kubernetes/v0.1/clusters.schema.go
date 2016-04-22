@@ -2,7 +2,7 @@ package kubernetes
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -28,7 +28,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterScaleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -59,7 +59,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -80,7 +80,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -95,7 +95,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -107,7 +107,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterStartupScriptRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -119,7 +119,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -185,7 +185,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterClientConfigRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -197,7 +197,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 

@@ -2,7 +2,7 @@ package alert
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -44,7 +44,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -78,7 +78,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -181,7 +181,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	notificationRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -208,7 +208,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -314,7 +314,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 

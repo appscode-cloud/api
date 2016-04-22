@@ -2,7 +2,7 @@ package certificate
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -30,7 +30,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	tLSCertificateDeployRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -51,7 +51,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	tLSCertificateDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -63,7 +63,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	tLSCertificateDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -75,7 +75,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 

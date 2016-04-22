@@ -2,7 +2,7 @@ package glusterfs
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -27,7 +27,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -39,7 +39,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
@@ -54,14 +54,13 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema":"http://json-schema.org/draft-04/schema#",
   "properties":{
     "disks":{
       "items":{
-        "format":"string",
         "type":"string"
       },
       "type":"array"
@@ -82,7 +81,7 @@ func init() {
   "type":"object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 

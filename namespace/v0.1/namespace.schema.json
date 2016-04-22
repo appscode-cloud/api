@@ -18,7 +18,6 @@
         },
         "invite_email":{
           "items":{
-            "format":"string",
             "type":"string"
           },
           "type":"array"

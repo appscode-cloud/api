@@ -1,107 +1,11 @@
 {
   "definitions":{
-    "caCertificateCreateRequest":{
-      "properties":{
-        "csr":{
-          "type":"string"
-        },
-        "name":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "caCertificateCreateResponse":{
-      "properties":{
-        "cert":{
-          "type":"string"
-        },
-        "key":{
-          "type":"string"
-        },
-        "phid":{
-          "type":"string"
-        },
-        "root":{
-          "type":"string"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
     "certificateCertificateCreateRequest":{
       "properties":{
         "csr":{
           "type":"string"
         },
         "name":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "certificateCertificateCreateResponse":{
-      "properties":{
-        "cert":{
-          "type":"string"
-        },
-        "key":{
-          "type":"string"
-        },
-        "phid":{
-          "type":"string"
-        },
-        "root":{
-          "type":"string"
-        },
-        "status":{
-          "$ref":"#/definitions/dtypesStatus"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesHelp":{
-      "properties":{
-        "description":{
-          "type":"string"
-        },
-        "url":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "dtypesStatus":{
-      "properties":{
-        "code":{
-          "type":"string"
-        },
-        "details":{
-          "items":{
-            "$ref":"#/definitions/protobufAny"
-          },
-          "type":"array"
-        },
-        "help":{
-          "$ref":"#/definitions/dtypesHelp"
-        },
-        "info":{
-          "type":"string"
-        },
-        "message":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "protobufAny":{
-      "properties":{
-        "type_url":{
-          "type":"string"
-        },
-        "value":{
           "type":"string"
         }
       },

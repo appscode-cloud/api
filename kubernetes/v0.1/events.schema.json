@@ -25,7 +25,6 @@
         },
         "service":{
           "items":{
-            "format":"string",
             "type":"string"
           },
           "type":"array"
