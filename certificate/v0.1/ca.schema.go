@@ -1,4 +1,4 @@
-package ca
+package certificate
 
 import (
 	"github.com/xeipuuv/gojsonschema"
