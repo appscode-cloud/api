@@ -89,15 +89,15 @@ func init() {
 	}
 }
 
-func (m *StatusRequest) InValid() (*gojsonschema.Result, error) {
+func (m *StatusRequest) IsValid() (*gojsonschema.Result, error) {
 	return statusRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *CreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *CheckRequest) InValid() (*gojsonschema.Result, error) {
+func (m *CheckRequest) IsValid() (*gojsonschema.Result, error) {
 	return checkRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *LogRequest) InValid() (*gojsonschema.Result, error) {
+func (m *LogRequest) IsValid() (*gojsonschema.Result, error) {
 	return logRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

@@ -318,18 +318,18 @@ func init() {
 	}
 }
 
-func (m *ListRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ListRequest) IsValid() (*gojsonschema.Result, error) {
 	return listRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DeleteRequest) InValid() (*gojsonschema.Result, error) {
+func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *CreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *NotificationRequest) InValid() (*gojsonschema.Result, error) {
+func (m *NotificationRequest) IsValid() (*gojsonschema.Result, error) {
 	return notificationRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *UpdateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
 	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

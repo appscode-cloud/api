@@ -66,12 +66,12 @@ func init() {
 	}
 }
 
-func (m *VolumeListRequest) InValid() (*gojsonschema.Result, error) {
+func (m *VolumeListRequest) IsValid() (*gojsonschema.Result, error) {
 	return volumeListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *VolumeCreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *VolumeCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return volumeCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *VolumeDeleteRequest) InValid() (*gojsonschema.Result, error) {
+func (m *VolumeDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return volumeDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

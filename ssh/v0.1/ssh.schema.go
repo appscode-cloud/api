@@ -34,6 +34,6 @@ func init() {
 	}
 }
 
-func (m *SecureShellGetRequest) InValid() (*gojsonschema.Result, error) {
+func (m *SecureShellGetRequest) IsValid() (*gojsonschema.Result, error) {
 	return secureShellGetRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

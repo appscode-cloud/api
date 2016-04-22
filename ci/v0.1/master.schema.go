@@ -41,9 +41,9 @@ func init() {
 	}
 }
 
-func (m *MasterDeleteRequest) InValid() (*gojsonschema.Result, error) {
+func (m *MasterDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return masterDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *MasterCreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *MasterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return masterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

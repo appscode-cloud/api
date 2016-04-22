@@ -201,27 +201,27 @@ func init() {
 	}
 }
 
-func (m *ClusterInstanceListRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterInstanceListRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterInstanceListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterScaleRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterScaleRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterScaleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterUpdateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterUpdateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterDeleteRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterStartupScriptRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterStartupScriptRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterStartupScriptRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterCreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterClientConfigRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterClientConfigRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterClientConfigRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

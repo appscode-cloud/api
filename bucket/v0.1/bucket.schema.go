@@ -25,6 +25,6 @@ func init() {
 	}
 }
 
-func (m *BucketListRequest) InValid() (*gojsonschema.Result, error) {
+func (m *BucketListRequest) IsValid() (*gojsonschema.Result, error) {
 	return bucketListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

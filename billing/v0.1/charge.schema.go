@@ -25,6 +25,6 @@ func init() {
 	}
 }
 
-func (m *ChargeCalculateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ChargeCalculateRequest) IsValid() (*gojsonschema.Result, error) {
 	return chargeCalculateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

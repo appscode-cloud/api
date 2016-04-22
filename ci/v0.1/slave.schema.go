@@ -95,15 +95,15 @@ func init() {
 	}
 }
 
-func (m *SlaveDeleteRequest) InValid() (*gojsonschema.Result, error) {
+func (m *SlaveDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *SlaveRestartRequest) InValid() (*gojsonschema.Result, error) {
+func (m *SlaveRestartRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveRestartRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *SlaveDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *SlaveDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *SlaveCreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *SlaveCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

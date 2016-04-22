@@ -44,9 +44,9 @@ func init() {
 	}
 }
 
-func (m *BuildListRequest) InValid() (*gojsonschema.Result, error) {
+func (m *BuildListRequest) IsValid() (*gojsonschema.Result, error) {
 	return buildListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *BuildDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *BuildDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return buildDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

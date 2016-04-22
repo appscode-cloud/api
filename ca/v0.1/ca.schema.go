@@ -28,6 +28,6 @@ func init() {
 	}
 }
 
-func (m *CertificateCreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *CertificateCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return certificateCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

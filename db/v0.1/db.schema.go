@@ -201,21 +201,21 @@ func init() {
 	}
 }
 
-func (m *DeleteRequest) InValid() (*gojsonschema.Result, error) {
+func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *DescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return describeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *BackupRequest) InValid() (*gojsonschema.Result, error) {
+func (m *BackupRequest) IsValid() (*gojsonschema.Result, error) {
 	return backupRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *CreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *SnapshotListRequest) InValid() (*gojsonschema.Result, error) {
+func (m *SnapshotListRequest) IsValid() (*gojsonschema.Result, error) {
 	return snapshotListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *RestoreRequest) InValid() (*gojsonschema.Result, error) {
+func (m *RestoreRequest) IsValid() (*gojsonschema.Result, error) {
 	return restoreRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

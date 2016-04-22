@@ -86,15 +86,15 @@ func init() {
 	}
 }
 
-func (m *ClusterDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterListRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterListRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterDeleteRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterCreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

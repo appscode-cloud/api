@@ -72,12 +72,12 @@ func init() {
 	}
 }
 
-func (m *PVCUnregisterRequest) InValid() (*gojsonschema.Result, error) {
+func (m *PVCUnregisterRequest) IsValid() (*gojsonschema.Result, error) {
 	return pVCUnregisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *PVCRegisterRequest) InValid() (*gojsonschema.Result, error) {
+func (m *PVCRegisterRequest) IsValid() (*gojsonschema.Result, error) {
 	return pVCRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *PVCDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *PVCDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return pVCDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

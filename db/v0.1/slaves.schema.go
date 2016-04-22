@@ -31,6 +31,6 @@ func init() {
 	}
 }
 
-func (m *SlaveAddRequest) InValid() (*gojsonschema.Result, error) {
+func (m *SlaveAddRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveAddRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

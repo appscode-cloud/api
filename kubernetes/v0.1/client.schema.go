@@ -82,15 +82,15 @@ func init() {
 	}
 }
 
-func (m *SecretDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *SecretDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return secretDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ConfigMapDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ConfigMapDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return configMapDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *AppDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *AppDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return appDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClientRequest) InValid() (*gojsonschema.Result, error) {
+func (m *ClientRequest) IsValid() (*gojsonschema.Result, error) {
 	return clientRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }

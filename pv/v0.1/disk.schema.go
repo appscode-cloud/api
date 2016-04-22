@@ -85,15 +85,15 @@ func init() {
 	}
 }
 
-func (m *DiskDescribeRequest) InValid() (*gojsonschema.Result, error) {
+func (m *DiskDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DiskDeleteRequest) InValid() (*gojsonschema.Result, error) {
+func (m *DiskDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DiskListRequest) InValid() (*gojsonschema.Result, error) {
+func (m *DiskListRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DiskCreateRequest) InValid() (*gojsonschema.Result, error) {
+func (m *DiskCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
