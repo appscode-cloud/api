@@ -104,12 +104,19 @@ func init() {
 func (m *SlaveDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SlaveDeleteRequest) IsRequest() {}
+
 func (m *SlaveRestartRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveRestartRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SlaveRestartRequest) IsRequest() {}
+
 func (m *SlaveDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SlaveDescribeRequest) IsRequest() {}
+
 func (m *SlaveCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SlaveCreateRequest) IsRequest() {}

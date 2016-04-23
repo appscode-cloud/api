@@ -28,3 +28,4 @@ func init() {
 func (m *ChargeCalculateRequest) IsValid() (*gojsonschema.Result, error) {
 	return chargeCalculateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ChargeCalculateRequest) IsRequest() {}

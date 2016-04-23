@@ -90,12 +90,19 @@ func init() {
 func (m *TLSCertificateCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return tLSCertificateCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *TLSCertificateCreateRequest) IsRequest() {}
+
 func (m *TLSCertificateDeployRequest) IsValid() (*gojsonschema.Result, error) {
 	return tLSCertificateDeployRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *TLSCertificateDeployRequest) IsRequest() {}
+
 func (m *TLSCertificateDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return tLSCertificateDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *TLSCertificateDescribeRequest) IsRequest() {}
+
 func (m *TLSCertificateDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return tLSCertificateDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *TLSCertificateDeleteRequest) IsRequest() {}
