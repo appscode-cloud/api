@@ -97,15 +97,24 @@ func init() {
 func (m *JobDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return jobDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *JobDescribeRequest) IsRequest() {}
+
 func (m *JobDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return jobDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *JobDeleteRequest) IsRequest() {}
+
 func (m *JobCopyRequest) IsValid() (*gojsonschema.Result, error) {
 	return jobCopyRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *JobCopyRequest) IsRequest() {}
+
 func (m *JobCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return jobCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *JobCreateRequest) IsRequest() {}
+
 func (m *JobBuildRequest) IsValid() (*gojsonschema.Result, error) {
 	return jobBuildRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *JobBuildRequest) IsRequest() {}

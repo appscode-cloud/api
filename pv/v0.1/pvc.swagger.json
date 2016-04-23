@@ -137,7 +137,6 @@
   },
   "definitions": {
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -150,7 +149,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -176,7 +174,6 @@
       }
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -184,7 +181,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",
@@ -197,7 +193,6 @@
       }
     },
     "pvPVCDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -214,7 +209,6 @@
       }
     },
     "pvPVCDescribeResponse": {
-      "type": "object",
       "properties": {
         "pvc": {
           "$ref": "#/definitions/pvPVCInfo"
@@ -225,7 +219,6 @@
       }
     },
     "pvPVCInfo": {
-      "type": "object",
       "properties": {
         "accessModes": {
           "type": "array",
@@ -257,7 +250,6 @@
       }
     },
     "pvPVCRegisterRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -278,7 +270,6 @@
       }
     },
     "pvPVCUnregisterRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",

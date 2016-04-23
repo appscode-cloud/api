@@ -41,3 +41,4 @@ func init() {
 func (m *DashboardCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return dashboardCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *DashboardCreateRequest) IsRequest() {}

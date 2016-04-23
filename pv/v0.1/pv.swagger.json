@@ -121,7 +121,6 @@
   },
   "definitions": {
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -134,7 +133,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -160,7 +158,6 @@
       }
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -168,7 +165,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",
@@ -181,7 +177,6 @@
       }
     },
     "pvPVDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -194,7 +189,6 @@
       }
     },
     "pvPVDescribeResponse": {
-      "type": "object",
       "properties": {
         "pv": {
           "$ref": "#/definitions/pvPVInfo"
@@ -205,7 +199,6 @@
       }
     },
     "pvPVInfo": {
-      "type": "object",
       "properties": {
         "accessModes": {
           "type": "array",
@@ -241,7 +234,6 @@
       }
     },
     "pvPVRegisterRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -270,7 +262,6 @@
       }
     },
     "pvPVUnregisterRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",

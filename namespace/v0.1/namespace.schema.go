@@ -99,12 +99,19 @@ func init() {
 func (m *StatusRequest) IsValid() (*gojsonschema.Result, error) {
 	return statusRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *StatusRequest) IsRequest() {}
+
 func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *CreateRequest) IsRequest() {}
+
 func (m *CheckRequest) IsValid() (*gojsonschema.Result, error) {
 	return checkRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *CheckRequest) IsRequest() {}
+
 func (m *LogRequest) IsValid() (*gojsonschema.Result, error) {
 	return logRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *LogRequest) IsRequest() {}

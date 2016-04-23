@@ -69,9 +69,14 @@ func init() {
 func (m *VolumeListRequest) IsValid() (*gojsonschema.Result, error) {
 	return volumeListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *VolumeListRequest) IsRequest() {}
+
 func (m *VolumeCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return volumeCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *VolumeCreateRequest) IsRequest() {}
+
 func (m *VolumeDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return volumeDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *VolumeDeleteRequest) IsRequest() {}

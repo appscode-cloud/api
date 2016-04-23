@@ -144,7 +144,6 @@
   },
   "definitions": {
     "certificateTLSCertificate": {
-      "type": "object",
       "properties": {
         "cert": {
           "type": "string",
@@ -196,7 +195,6 @@
       }
     },
     "certificateTLSCertificateCreateRequest": {
-      "type": "object",
       "properties": {
         "cert_data": {
           "type": "string",
@@ -213,7 +211,6 @@
       }
     },
     "certificateTLSCertificateDeleteRequest": {
-      "type": "object",
       "properties": {
         "cert": {
           "type": "string",
@@ -222,7 +219,6 @@
       }
     },
     "certificateTLSCertificateDeployRequest": {
-      "type": "object",
       "properties": {
         "cert": {
           "type": "string",
@@ -243,7 +239,6 @@
       }
     },
     "certificateTLSCertificateDescribeRequest": {
-      "type": "object",
       "properties": {
         "cert": {
           "type": "string",
@@ -252,7 +247,6 @@
       }
     },
     "certificateTLSCertificateDescribeResponse": {
-      "type": "object",
       "properties": {
         "certificate": {
           "$ref": "#/definitions/certificateTLSCertificate"
@@ -263,7 +257,6 @@
       }
     },
     "certificateTLSCertificateListResponse": {
-      "type": "object",
       "properties": {
         "certificates": {
           "type": "array",
@@ -277,7 +270,6 @@
       }
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -290,7 +282,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -305,21 +296,18 @@
         "help": {
           "$ref": "#/definitions/dtypesHelp"
         },
-        "info": {
+        "message": {
           "type": "string",
           "format": "string"
         },
-        "message": {
+        "status": {
           "type": "string",
           "format": "string"
         }
       }
     },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
+    "dtypesVoidRequest": {},
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -327,7 +315,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",

@@ -237,7 +237,6 @@
   },
   "definitions": {
     "ClusterCreateRequestCloudCredentialDataEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string",
@@ -250,7 +249,6 @@
       }
     },
     "ClusterCreateRequestNodeSetEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string",
@@ -263,7 +261,6 @@
       }
     },
     "ClusterDescribeResponseSpecs": {
-      "type": "object",
       "properties": {
         "containers": {
           "type": "integer",
@@ -292,7 +289,6 @@
       }
     },
     "ClusterScaleRequestNodeChangesEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string",
@@ -305,7 +301,6 @@
       }
     },
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -318,7 +313,6 @@
       }
     },
     "dtypesLongRunningResponse": {
-      "type": "object",
       "properties": {
         "job_id": {
           "type": "string",
@@ -338,7 +332,6 @@
       }
     },
     "dtypesStatus": {
-      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -363,11 +356,8 @@
         }
       }
     },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
+    "dtypesVoidRequest": {},
     "kubernetesCluster": {
-      "type": "object",
       "properties": {
         "created_at": {
           "type": "string",
@@ -410,7 +400,6 @@
       }
     },
     "kubernetesClusterClientConfigRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string",
@@ -419,7 +408,6 @@
       }
     },
     "kubernetesClusterClientConfigResponse": {
-      "type": "object",
       "properties": {
         "configuration": {
           "type": "string",
@@ -431,7 +419,6 @@
       }
     },
     "kubernetesClusterCreateRequest": {
-      "type": "object",
       "properties": {
         "cloud_credential": {
           "type": "string",
@@ -476,7 +463,6 @@
       }
     },
     "kubernetesClusterDeleteRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string",
@@ -489,7 +475,6 @@
       }
     },
     "kubernetesClusterDescribeRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string",
@@ -498,7 +483,6 @@
       }
     },
     "kubernetesClusterDescribeResponse": {
-      "type": "object",
       "properties": {
         "cluster": {
           "$ref": "#/definitions/kubernetesCluster"
@@ -512,7 +496,6 @@
       }
     },
     "kubernetesClusterInstance": {
-      "type": "object",
       "properties": {
         "external_id": {
           "type": "string",
@@ -545,7 +528,6 @@
       }
     },
     "kubernetesClusterInstanceListRequest": {
-      "type": "object",
       "properties": {
         "cluster_name": {
           "type": "string",
@@ -554,7 +536,6 @@
       }
     },
     "kubernetesClusterInstanceListResponse": {
-      "type": "object",
       "properties": {
         "instances": {
           "type": "array",
@@ -568,7 +549,6 @@
       }
     },
     "kubernetesClusterLinksEntry": {
-      "type": "object",
       "properties": {
         "key": {
           "type": "string",
@@ -581,7 +561,6 @@
       }
     },
     "kubernetesClusterListResponse": {
-      "type": "object",
       "properties": {
         "clusters": {
           "type": "array",
@@ -595,7 +574,6 @@
       }
     },
     "kubernetesClusterScaleRequest": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string",
@@ -610,7 +588,6 @@
       }
     },
     "kubernetesClusterStartupScriptRequest": {
-      "type": "object",
       "properties": {
         "role": {
           "type": "string",
@@ -619,7 +596,6 @@
       }
     },
     "kubernetesClusterStartupScriptResponse": {
-      "type": "object",
       "properties": {
         "configuration": {
           "type": "string",
@@ -631,7 +607,6 @@
       }
     },
     "kubernetesClusterUpdateRequest": {
-      "type": "object",
       "properties": {
         "kube_starter_version": {
           "type": "string",
@@ -652,7 +627,6 @@
       }
     },
     "protobufAny": {
-      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",
