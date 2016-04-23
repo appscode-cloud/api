@@ -1,12 +1,15 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "dbBackupRequest": {
       "properties": {
         "auth_secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "bucket_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "cluster": {
@@ -19,25 +22,34 @@
           "type": "boolean"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "region": {
           "type": "string"
         },
         "secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "snapshot_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "type": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbCreateRequest": {
       "properties": {
         "bucket_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "cluster": {
@@ -53,6 +65,8 @@
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "node": {
@@ -67,48 +81,8 @@
         "region": {
           "type": "string"
         },
-        "sku": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        }
-      }
-    },
-    "dbDatabase": {
-      "properties": {
-        "archive_bucket": {
-          "type": "string"
-        },
-        "archive_bucket_region": {
-          "type": "string"
-        },
-        "auto_snapshot": {
-          "type": "integer"
-        },
-        "cluster_name": {
-          "type": "string"
-        },
-        "created": {
-          "type": "string"
-        },
-        "kubernetes_service": {
-          "type": "string"
-        },
-        "last_backup": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "pv_size": {
-          "type": "integer"
+        "set_password": {
+          "type": "boolean"
         },
         "sku": {
           "type": "string"
@@ -119,7 +93,8 @@
         "version": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbDeleteRequest": {
       "properties": {
@@ -127,12 +102,15 @@
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "type": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "dbDescribeRequest": {
       "properties": {
@@ -140,63 +118,18 @@
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
-    },
-    "dbDescribeResponse": {
-      "properties": {
-        "auto_snapshot": {
-          "type": "integer"
-        },
-        "cluster": {
-          "type": "string"
-        },
-        "created": {
-          "type": "string"
-        },
-        "kube": {
-          "$ref": "#/definitions/dbkubeInfo"
-        },
-        "last_backup": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "type": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        }
-      }
-    },
-    "dbListResponse": {
-      "properties": {
-        "databases": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dbDatabase"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
+      },
+      "type": "object"
     },
     "dbRestoreRequest": {
       "properties": {
         "bucket_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "cluster": {
@@ -209,6 +142,8 @@
           "type": "boolean"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "node": {
@@ -224,6 +159,8 @@
           "type": "string"
         },
         "secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "sku": {
@@ -238,130 +175,21 @@
         "version": {
           "type": "string"
         }
-      }
-    },
-    "dbSnapshot": {
-      "properties": {
-        "bucket": {
-          "type": "string"
-        },
-        "created": {
-          "type": "string"
-        },
-        "db_cluster": {
-          "type": "string"
-        },
-        "db_name": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "process": {
-          "type": "string"
-        },
-        "provider": {
-          "type": "string"
-        },
-        "region": {
-          "type": "string"
-        },
-        "restore_db": {
-          "type": "string"
-        },
-        "restore_snap": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "zone": {
-          "type": "string"
-        }
-      }
+      },
+      "type": "object"
     },
     "dbSnapshotListRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
-    "dbSnapshotListResponse": {
-      "properties": {
-        "list": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dbSnapshot"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dbkubeInfo": {
-      "properties": {
-        "pods": {
-          "type": "integer"
-        },
-        "rc": {
-          "type": "integer"
-        },
-        "svc": {
-          "type": "integer"
-        }
-      }
-    },
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "message": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesVoidRequest": {},
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+    "dtypesVoidRequest": {
+      "type": "object"
     }
   }
 }

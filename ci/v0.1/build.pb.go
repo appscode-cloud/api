@@ -151,7 +151,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Builds service
 
@@ -197,28 +197,40 @@ func RegisterBuildsServer(s *grpc.Server, srv BuildsServer) {
 	s.RegisterService(&_Builds_serviceDesc, srv)
 }
 
-func _Builds_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Builds_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BuildDescribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(BuildsServer).Describe(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(BuildsServer).Describe(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Builds/Describe",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BuildsServer).Describe(ctx, req.(*BuildDescribeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Builds_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Builds_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BuildListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(BuildsServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(BuildsServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Builds/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BuildsServer).List(ctx, req.(*BuildListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Builds_serviceDesc = grpc.ServiceDesc{

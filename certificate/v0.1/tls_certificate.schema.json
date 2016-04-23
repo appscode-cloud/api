@@ -1,0 +1,62 @@
+{
+  "definitions": {
+    "certificateTLSCertificateCreateRequest": {
+      "properties": {
+        "cert_data": {
+          "type": "string"
+        },
+        "key_data": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateTLSCertificateDeleteRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateTLSCertificateDeployRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        },
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        },
+        "secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateTLSCertificateDescribeRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dtypesVoidRequest": {
+      "type": "object"
+    }
+  }
+}

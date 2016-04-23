@@ -171,7 +171,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for Slaves service
 
@@ -250,64 +250,94 @@ func RegisterSlavesServer(s *grpc.Server, srv SlavesServer) {
 	s.RegisterService(&_Slaves_serviceDesc, srv)
 }
 
-func _Slaves_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Slaves_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(dtypes.VoidRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(SlavesServer).List(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(SlavesServer).List(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Slaves/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SlavesServer).List(ctx, req.(*dtypes.VoidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Slaves_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Slaves_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SlaveDescribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(SlavesServer).Describe(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(SlavesServer).Describe(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Slaves/Describe",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SlavesServer).Describe(ctx, req.(*SlaveDescribeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Slaves_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Slaves_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SlaveCreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(SlavesServer).Create(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(SlavesServer).Create(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Slaves/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SlavesServer).Create(ctx, req.(*SlaveCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Slaves_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Slaves_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SlaveDeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(SlavesServer).Delete(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(SlavesServer).Delete(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Slaves/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SlavesServer).Delete(ctx, req.(*SlaveDeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _Slaves_Restart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Slaves_Restart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SlaveRestartRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(SlavesServer).Restart(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(SlavesServer).Restart(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ci.Slaves/Restart",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SlavesServer).Restart(ctx, req.(*SlaveRestartRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Slaves_serviceDesc = grpc.ServiceDesc{

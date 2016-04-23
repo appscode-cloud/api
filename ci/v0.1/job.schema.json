@@ -1,25 +1,17 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "ciJob": {
-      "properties": {
-        "color": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
     "ciJobBuildRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "param": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobCopyRequest": {
       "properties": {
@@ -29,119 +21,44 @@
         "source": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobCreateRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "sh_file": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobDeleteRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciJobDescribeRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
-    "ciJobDescribeResponse": {
-      "properties": {
-        "build_count": {
-          "type": "integer"
-        },
-        "builds_command": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "display_name": {
-          "type": "string"
-        },
-        "job_color": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciJobListResponse": {
-      "properties": {
-        "jobs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ciJob"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "message": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesVoidRequest": {},
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+    "dtypesVoidRequest": {
+      "type": "object"
     }
   }
 }

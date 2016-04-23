@@ -1,102 +1,17 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "message": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
     "pvPVDescribeRequest": {
       "properties": {
         "cluster": {
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
-    },
-    "pvPVDescribeResponse": {
-      "properties": {
-        "pv": {
-          "$ref": "#/definitions/pvPVInfo"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "pvPVInfo": {
-      "properties": {
-        "accessModes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "claim": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "plugin": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "string"
-        },
-        "volume": {
-          "type": "string"
-        }
-      }
+      },
+      "type": "object"
     },
     "pvPVRegisterRequest": {
       "properties": {
@@ -110,6 +25,8 @@
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "plugin": {
@@ -118,7 +35,8 @@
         "size": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVUnregisterRequest": {
       "properties": {
@@ -126,9 +44,12 @@
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   }
 }

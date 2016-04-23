@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/kubernetes/v0.1/clusters/{cluster_name}/events/construct": {
+    "/api/kubernetes/v0.1/events/{cluster_name}/construct": {
       "put": {
         "summary": "Events.Constructive",
         "operationId": "Constructive",
@@ -49,7 +49,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/clusters/{cluster_name}/events/destruct": {
+    "/api/kubernetes/v0.1/events/{cluster_name}/destruct": {
       "put": {
         "summary": "Events.Destructive",
         "operationId": "Destructive",
@@ -86,6 +86,7 @@
   },
   "definitions": {
     "EventRequestObjectMeta": {
+      "type": "object",
       "properties": {
         "instance_id": {
           "type": "string",
@@ -123,6 +124,7 @@
       }
     },
     "EventResponseHandler": {
+      "type": "object",
       "properties": {
         "action": {
           "type": "string",
@@ -151,6 +153,7 @@
       }
     },
     "ObjectMetaLabelsEntry": {
+      "type": "object",
       "properties": {
         "key": {
           "type": "string",
@@ -163,6 +166,7 @@
       }
     },
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -175,6 +179,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -200,6 +205,7 @@
       }
     },
     "kubernetesEventRequest": {
+      "type": "object",
       "properties": {
         "cluster_name": {
           "type": "string",
@@ -227,6 +233,7 @@
       }
     },
     "kubernetesEventResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -240,6 +247,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",

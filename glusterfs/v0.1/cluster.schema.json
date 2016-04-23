@@ -1,77 +1,12 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "message": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "glusterfsCluster": {
-      "properties": {
-        "created": {
-          "type": "string"
-        },
-        "kube_cluster": {
-          "type": "string"
-        },
-        "kube_namespace": {
-          "type": "string"
-        },
-        "mood": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "replica": {
-          "type": "integer"
-        }
-      }
-    },
     "glusterfsClusterCreateRequest": {
       "properties": {
         "disks": {
-          "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "type": "array"
         },
         "kube_cluster": {
           "type": "string"
@@ -80,12 +15,15 @@
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "node": {
           "type": "integer"
         }
-      }
+      },
+      "type": "object"
     },
     "glusterfsClusterDeleteRequest": {
       "properties": {
@@ -93,9 +31,12 @@
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "glusterfsClusterDescribeRequest": {
       "properties": {
@@ -103,46 +44,20 @@
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
-    },
-    "glusterfsClusterDescribeResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
+      },
+      "type": "object"
     },
     "glusterfsClusterListRequest": {
       "properties": {
         "kube_cluster": {
           "type": "string"
         }
-      }
-    },
-    "glusterfsClusterListResponse": {
-      "properties": {
-        "glusterfs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/glusterfsCluster"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+      },
+      "type": "object"
     }
   }
 }

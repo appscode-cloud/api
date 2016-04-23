@@ -106,7 +106,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion1
+const _ = grpc.SupportPackageIsVersion2
 
 // Client API for PersistentVolumeClaims service
 
@@ -163,40 +163,58 @@ func RegisterPersistentVolumeClaimsServer(s *grpc.Server, srv PersistentVolumeCl
 	s.RegisterService(&_PersistentVolumeClaims_serviceDesc, srv)
 }
 
-func _PersistentVolumeClaims_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _PersistentVolumeClaims_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PVCDescribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(PersistentVolumeClaimsServer).Describe(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(PersistentVolumeClaimsServer).Describe(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.PersistentVolumeClaims/Describe",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PersistentVolumeClaimsServer).Describe(ctx, req.(*PVCDescribeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _PersistentVolumeClaims_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _PersistentVolumeClaims_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PVCRegisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(PersistentVolumeClaimsServer).Register(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(PersistentVolumeClaimsServer).Register(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.PersistentVolumeClaims/Register",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PersistentVolumeClaimsServer).Register(ctx, req.(*PVCRegisterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
-func _PersistentVolumeClaims_Unregister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _PersistentVolumeClaims_Unregister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PVCUnregisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	out, err := srv.(PersistentVolumeClaimsServer).Unregister(ctx, in)
-	if err != nil {
-		return nil, err
+	if interceptor == nil {
+		return srv.(PersistentVolumeClaimsServer).Unregister(ctx, in)
 	}
-	return out, nil
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pv.PersistentVolumeClaims/Unregister",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PersistentVolumeClaimsServer).Unregister(ctx, req.(*PVCUnregisterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _PersistentVolumeClaims_serviceDesc = grpc.ServiceDesc{

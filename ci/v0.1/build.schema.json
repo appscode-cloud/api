@@ -1,16 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "ciBuild": {
-      "properties": {
-        "build_number": {
-          "type": "integer"
-        },
-        "result": {
-          "type": "string"
-        }
-      }
-    },
     "ciBuildDescribeRequest": {
       "properties": {
         "console": {
@@ -22,94 +11,16 @@
         "number": {
           "type": "integer"
         }
-      }
-    },
-    "ciBuildDescribeResponse": {
-      "properties": {
-        "base_url": {
-          "type": "string"
-        },
-        "build_number": {
-          "type": "integer"
-        },
-        "console_output": {
-          "type": "string"
-        },
-        "job_name": {
-          "type": "string"
-        },
-        "result": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
+      },
+      "type": "object"
     },
     "ciBuildListRequest": {
       "properties": {
         "job_name": {
           "type": "string"
         }
-      }
-    },
-    "ciBuildListResponse": {
-      "properties": {
-        "builds": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ciBuild"
-          }
-        },
-        "job_name": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "message": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+      },
+      "type": "object"
     }
   }
 }

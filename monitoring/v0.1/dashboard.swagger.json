@@ -45,6 +45,7 @@
   },
   "definitions": {
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -57,6 +58,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -82,6 +84,7 @@
       }
     },
     "monitoringDashboardCreateRequest": {
+      "type": "object",
       "properties": {
         "cluster_name": {
           "type": "string",
@@ -102,6 +105,7 @@
       }
     },
     "monitoringDashboardCreateResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -113,6 +117,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",

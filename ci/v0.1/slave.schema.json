@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "ciPortInfo": {
       "properties": {
@@ -9,17 +8,8 @@
         "protocol": {
           "type": "string"
         }
-      }
-    },
-    "ciSlave": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveCreateRequest": {
       "properties": {
@@ -33,10 +23,10 @@
           "type": "string"
         },
         "ports": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ciPortInfo"
-          }
+          },
+          "type": "array"
         },
         "saltbase_version": {
           "type": "string"
@@ -44,141 +34,41 @@
         "user_startup_script": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveDeleteRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveDescribeRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
-    },
-    "ciSlaveDescribeResponse": {
-      "properties": {
-        "created_at": {
-          "type": "string"
-        },
-        "executors": {
-          "type": "integer"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "node_status": {
-          "type": "string"
-        },
-        "offline_reason": {
-          "type": "string"
-        },
-        "provider": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "startup_script": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciSlaveListResponse": {
-      "properties": {
-        "slaves": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ciSlave"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
+      },
+      "type": "object"
     },
     "ciSlaveRestartRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
-    "ciSlaveRestartResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesLongRunningResponse": {
-      "properties": {
-        "job_id": {
-          "type": "string"
-        },
-        "job_type": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "type_id": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesStatus": {
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp"
-        },
-        "message": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "dtypesVoidRequest": {},
-    "protobufAny": {
-      "properties": {
-        "type_url": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
+    "dtypesVoidRequest": {
+      "type": "object"
     }
   }
 }

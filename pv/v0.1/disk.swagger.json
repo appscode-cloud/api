@@ -158,6 +158,7 @@
   },
   "definitions": {
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -170,6 +171,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -195,6 +197,7 @@
       }
     },
     "dtypesVoidResponse": {
+      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -202,6 +205,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",
@@ -214,6 +218,7 @@
       }
     },
     "pvDisk": {
+      "type": "object",
       "properties": {
         "endpoint": {
           "type": "string",
@@ -265,6 +270,7 @@
       }
     },
     "pvDiskCreateRequest": {
+      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -289,6 +295,7 @@
       }
     },
     "pvDiskDeleteRequest": {
+      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -301,6 +308,7 @@
       }
     },
     "pvDiskDescribeRequest": {
+      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -317,6 +325,7 @@
       }
     },
     "pvDiskDescribeResponse": {
+      "type": "object",
       "properties": {
         "disk": {
           "$ref": "#/definitions/pvDisk"
@@ -327,6 +336,7 @@
       }
     },
     "pvDiskListRequest": {
+      "type": "object",
       "properties": {
         "cluster": {
           "type": "string",
@@ -335,6 +345,7 @@
       }
     },
     "pvDiskListResponse": {
+      "type": "object",
       "properties": {
         "kube": {
           "type": "string",
@@ -352,6 +363,7 @@
       }
     },
     "pvPV": {
+      "type": "object",
       "properties": {
         "claim": {
           "type": "string",
@@ -384,6 +396,7 @@
       }
     },
     "pvPVC": {
+      "type": "object",
       "properties": {
         "name": {
           "type": "string",
@@ -408,6 +421,7 @@
       }
     },
     "pvResult": {
+      "type": "object",
       "properties": {
         "disk": {
           "$ref": "#/definitions/pvDisk"
