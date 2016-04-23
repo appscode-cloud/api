@@ -138,9 +138,9 @@
     "ciPortInfo": {
       "type": "object",
       "properties": {
-        "port": {
-          "type": "integer",
-          "format": "int32"
+        "port_range": {
+          "type": "string",
+          "format": "string"
         },
         "protocol": {
           "type": "string",

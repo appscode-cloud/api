@@ -59,7 +59,7 @@ message SlaveCreateRequest {
 
 message PortInfo {
     string protocol = 1;
-    int32 port = 2;
+    string port_range = 2;
 }
 
 message SlaveDescribeRequest {
