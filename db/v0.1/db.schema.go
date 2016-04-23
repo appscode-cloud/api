@@ -233,18 +233,29 @@ func init() {
 func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *DeleteRequest) IsRequest() {}
+
 func (m *DescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return describeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *DescribeRequest) IsRequest() {}
+
 func (m *BackupRequest) IsValid() (*gojsonschema.Result, error) {
 	return backupRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *BackupRequest) IsRequest() {}
+
 func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *CreateRequest) IsRequest() {}
+
 func (m *SnapshotListRequest) IsValid() (*gojsonschema.Result, error) {
 	return snapshotListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SnapshotListRequest) IsRequest() {}
+
 func (m *RestoreRequest) IsValid() (*gojsonschema.Result, error) {
 	return restoreRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *RestoreRequest) IsRequest() {}

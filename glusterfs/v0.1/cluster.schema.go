@@ -94,12 +94,19 @@ func init() {
 func (m *ClusterDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ClusterDescribeRequest) IsRequest() {}
+
 func (m *ClusterListRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ClusterListRequest) IsRequest() {}
+
 func (m *ClusterDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ClusterDeleteRequest) IsRequest() {}
+
 func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ClusterCreateRequest) IsRequest() {}

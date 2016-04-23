@@ -92,12 +92,19 @@ func init() {
 func (m *DiskDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *DiskDescribeRequest) IsRequest() {}
+
 func (m *DiskDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *DiskDeleteRequest) IsRequest() {}
+
 func (m *DiskListRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *DiskListRequest) IsRequest() {}
+
 func (m *DiskCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *DiskCreateRequest) IsRequest() {}

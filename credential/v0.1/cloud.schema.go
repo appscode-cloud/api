@@ -104,9 +104,14 @@ func init() {
 func (m *CloudCredentialUpdateRequest) IsValid() (*gojsonschema.Result, error) {
 	return cloudCredentialUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *CloudCredentialUpdateRequest) IsRequest() {}
+
 func (m *CloudCredentialDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return cloudCredentialDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *CloudCredentialDeleteRequest) IsRequest() {}
+
 func (m *CloudCredentialCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return cloudCredentialCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *CloudCredentialCreateRequest) IsRequest() {}

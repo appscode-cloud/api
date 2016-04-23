@@ -337,15 +337,24 @@ func init() {
 func (m *ListRequest) IsValid() (*gojsonschema.Result, error) {
 	return listRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ListRequest) IsRequest() {}
+
 func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *DeleteRequest) IsRequest() {}
+
 func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *CreateRequest) IsRequest() {}
+
 func (m *NotificationRequest) IsValid() (*gojsonschema.Result, error) {
 	return notificationRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *NotificationRequest) IsRequest() {}
+
 func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
 	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *UpdateRequest) IsRequest() {}

@@ -159,6 +159,7 @@ import (
         contents += 'func (m *' + key + ') IsValid() (*gojsonschema.Result, error) {\n'
         contents += '	return {}Schema.Validate(gojsonschema.NewGoLoader(m))\n'.format(key[0:1].lower() + key[1:])
         contents += '}\n'
+        contents += 'func (m *' + key + ') IsRequest() {}\n\n'
 
     return contents
 

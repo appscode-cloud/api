@@ -92,3 +92,4 @@ func init() {
 func (m *EventRequest) IsValid() (*gojsonschema.Result, error) {
 	return eventRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *EventRequest) IsRequest() {}

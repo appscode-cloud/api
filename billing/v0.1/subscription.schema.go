@@ -123,15 +123,24 @@ func init() {
 func (m *SubscriptionCloseRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionCloseRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SubscriptionCloseRequest) IsRequest() {}
+
 func (m *SubscriptionQutaRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionQutaRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SubscriptionQutaRequest) IsRequest() {}
+
 func (m *SubscriptionCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SubscriptionCreateRequest) IsRequest() {}
+
 func (m *SubscriptionDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SubscriptionDescribeRequest) IsRequest() {}
+
 func (m *SubscriptionOpenRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionOpenRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SubscriptionOpenRequest) IsRequest() {}

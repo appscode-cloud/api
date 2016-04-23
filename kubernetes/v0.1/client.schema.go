@@ -97,12 +97,19 @@ func init() {
 func (m *SecretDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return secretDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SecretDescribeRequest) IsRequest() {}
+
 func (m *ConfigMapDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return configMapDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ConfigMapDescribeRequest) IsRequest() {}
+
 func (m *AppDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return appDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *AppDescribeRequest) IsRequest() {}
+
 func (m *ClientRequest) IsValid() (*gojsonschema.Result, error) {
 	return clientRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ClientRequest) IsRequest() {}
