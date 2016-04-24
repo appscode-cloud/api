@@ -144,3 +144,4 @@ func (m *SubscriptionOpenRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionOpenRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SubscriptionOpenRequest) IsRequest() {}
+

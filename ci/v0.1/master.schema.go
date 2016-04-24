@@ -54,3 +54,4 @@ func (m *MasterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return masterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *MasterCreateRequest) IsRequest() {}
+

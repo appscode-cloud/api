@@ -7,11 +7,21 @@ Package certificate is a generated protocol buffer package.
 
 It is generated from these files:
 	ca.proto
+	freessl_certificate.proto
 	tls_certificate.proto
 
 It has these top-level messages:
 	CertificateCreateRequest
 	CertificateCreateResponse
+	FreeSSLCertificateRegisterRequest
+	FreeSSLCertificateRegisterResponse
+	FreeSSLCertificateListResponse
+	FreeSSLCertificateDescribeResponse
+	FreeSSLCertificate
+	FreeSSLCertificateCreateRequest
+	FreeSSLCertificateDeleteRequest
+	FreeSSLCertificateDescribeRequest
+	FreeSSLCertificateDeployRequest
 	TLSCertificateListResponse
 	TLSCertificateDescribeResponse
 	TLSCertificate

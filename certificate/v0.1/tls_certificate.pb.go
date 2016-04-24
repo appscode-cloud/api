@@ -28,7 +28,7 @@ type TLSCertificateListResponse struct {
 func (m *TLSCertificateListResponse) Reset()                    { *m = TLSCertificateListResponse{} }
 func (m *TLSCertificateListResponse) String() string            { return proto.CompactTextString(m) }
 func (*TLSCertificateListResponse) ProtoMessage()               {}
-func (*TLSCertificateListResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (*TLSCertificateListResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
 func (m *TLSCertificateListResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -52,7 +52,7 @@ type TLSCertificateDescribeResponse struct {
 func (m *TLSCertificateDescribeResponse) Reset()                    { *m = TLSCertificateDescribeResponse{} }
 func (m *TLSCertificateDescribeResponse) String() string            { return proto.CompactTextString(m) }
 func (*TLSCertificateDescribeResponse) ProtoMessage()               {}
-func (*TLSCertificateDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (*TLSCertificateDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
 
 func (m *TLSCertificateDescribeResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -88,7 +88,7 @@ type TLSCertificate struct {
 func (m *TLSCertificate) Reset()                    { *m = TLSCertificate{} }
 func (m *TLSCertificate) String() string            { return proto.CompactTextString(m) }
 func (*TLSCertificate) ProtoMessage()               {}
-func (*TLSCertificate) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+func (*TLSCertificate) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
 
 type TLSCertificateCreateRequest struct {
 	Name     string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
@@ -99,7 +99,7 @@ type TLSCertificateCreateRequest struct {
 func (m *TLSCertificateCreateRequest) Reset()                    { *m = TLSCertificateCreateRequest{} }
 func (m *TLSCertificateCreateRequest) String() string            { return proto.CompactTextString(m) }
 func (*TLSCertificateCreateRequest) ProtoMessage()               {}
-func (*TLSCertificateCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
+func (*TLSCertificateCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
 
 type TLSCertificateDeleteRequest struct {
 	Cert string `protobuf:"bytes,1,opt,name=cert" json:"cert,omitempty"`
@@ -108,7 +108,7 @@ type TLSCertificateDeleteRequest struct {
 func (m *TLSCertificateDeleteRequest) Reset()                    { *m = TLSCertificateDeleteRequest{} }
 func (m *TLSCertificateDeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*TLSCertificateDeleteRequest) ProtoMessage()               {}
-func (*TLSCertificateDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
+func (*TLSCertificateDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
 
 type TLSCertificateDescribeRequest struct {
 	Cert string `protobuf:"bytes,1,opt,name=cert" json:"cert,omitempty"`
@@ -117,7 +117,7 @@ type TLSCertificateDescribeRequest struct {
 func (m *TLSCertificateDescribeRequest) Reset()                    { *m = TLSCertificateDescribeRequest{} }
 func (m *TLSCertificateDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*TLSCertificateDescribeRequest) ProtoMessage()               {}
-func (*TLSCertificateDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{5} }
+func (*TLSCertificateDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{5} }
 
 type TLSCertificateDeployRequest struct {
 	Cert        string `protobuf:"bytes,1,opt,name=cert" json:"cert,omitempty"`
@@ -129,7 +129,7 @@ type TLSCertificateDeployRequest struct {
 func (m *TLSCertificateDeployRequest) Reset()                    { *m = TLSCertificateDeployRequest{} }
 func (m *TLSCertificateDeployRequest) String() string            { return proto.CompactTextString(m) }
 func (*TLSCertificateDeployRequest) ProtoMessage()               {}
-func (*TLSCertificateDeployRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{6} }
+func (*TLSCertificateDeployRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{6} }
 
 func init() {
 	proto.RegisterType((*TLSCertificateListResponse)(nil), "certificate.TLSCertificateListResponse")
@@ -344,7 +344,7 @@ var _TLSCertificates_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
-var fileDescriptor1 = []byte{
+var fileDescriptor2 = []byte{
 	// 655 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x94, 0x55, 0xcb, 0x6e, 0xd3, 0x4c,
 	0x14, 0x96, 0x93, 0x34, 0x97, 0x93, 0xfe, 0xfd, 0xd1, 0x70, 0x91, 0xeb, 0xb4, 0x25, 0x35, 0x88,

@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package certificate;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service FreeSSLCertificates {
+  rpc Register(FreeSSLCertificateRegisterRequest) returns (FreeSSLCertificateRegisterResponse) {
+    option (google.api.http) = {
+      get: "/api/freessl/v0.1/tls"
+    };
+  }
+  rpc List(dtypes.VoidRequest) returns (FreeSSLCertificateListResponse) {
+    option (google.api.http) = {
+      get: "/api/freessl/v0.1/tls"
+    };
+  }
+  rpc Describe(FreeSSLCertificateDescribeRequest) returns (FreeSSLCertificateDescribeResponse) {
+    option (google.api.http) = {
+      get: "/api/freessl/v0.1/tls/{cert}"
+    };
+  }
+
+  rpc Create(FreeSSLCertificateCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/freessl/v0.1/tls"
+      body: "*"
+    };
+  }
+
+  rpc Delete(FreeSSLCertificateDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/api/freessl/v0.1/tls/{cert}"
+    };
+  }
+
+  rpc Deploy(FreeSSLCertificateDeployRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/api/freessl/v0.1/tls/{cert}/deploy"
+      body: "*"
+    };
+  }
+}
+
+message FreeSSLCertificateRegisterRequest {
+}
+
+message FreeSSLCertificateRegisterResponse {
+  dtypes.Status status = 1;
+  repeated FreeSSLCertificate certificates = 2;
+}
+
+message FreeSSLCertificateListResponse {
+  dtypes.Status status = 1;
+  repeated FreeSSLCertificate certificates = 2;
+}
+
+message FreeSSLCertificateDescribeResponse {
+  dtypes.Status status = 1;
+  FreeSSLCertificate certificate = 2;
+}
+
+message FreeSSLCertificate {
+  string phid = 1;
+  string name = 2;
+  string common_name = 3;
+  string issued_by = 4;
+  string valid_from = 5;
+  string expire_date = 6;
+
+  // those feilds will not included into list response.
+  // only describe response will include the underlying
+  // feilds.
+  repeated string sans = 7;
+  string cert = 8;
+  string key = 9;
+  int32 version = 10;
+  string serial_number = 11;
+}
+
+message FreeSSLCertificateCreateRequest {
+  string name = 1;
+  string cert_data = 2;
+  string key_data = 3;
+}
+
+message FreeSSLCertificateDeleteRequest {
+  string cert = 1;
+}
+
+message FreeSSLCertificateDescribeRequest {
+  string cert = 1;
+}
+
+message FreeSSLCertificateDeployRequest {
+  string cert = 1;
+  string secret_name = 2;
+  string cluster_name = 3;
+  string namespace = 4;
+}

@@ -31,3 +31,4 @@ func (m *BucketListRequest) IsValid() (*gojsonschema.Result, error) {
 	return bucketListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *BucketListRequest) IsRequest() {}
+

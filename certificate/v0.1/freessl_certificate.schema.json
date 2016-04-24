@@ -1,0 +1,57 @@
+{
+  "definitions": {
+    "certificateFreeSSLCertificateCreateRequest": {
+      "properties": {
+        "cert_data": {
+          "type": "string"
+        },
+        "key_data": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateFreeSSLCertificateDeleteRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateFreeSSLCertificateDeployRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        },
+        "cluster_name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "secret_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateFreeSSLCertificateDescribeRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateFreeSSLCertificateRegisterRequest": {
+      "type": "object"
+    },
+    "dtypesVoidRequest": {
+      "type": "object"
+    }
+  }
+}

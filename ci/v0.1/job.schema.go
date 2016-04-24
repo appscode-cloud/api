@@ -118,3 +118,4 @@ func (m *JobBuildRequest) IsValid() (*gojsonschema.Result, error) {
 	return jobBuildRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *JobBuildRequest) IsRequest() {}
+

@@ -92,3 +92,4 @@ func (m *PVRegisterRequest) IsValid() (*gojsonschema.Result, error) {
 	return pVRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PVRegisterRequest) IsRequest() {}
+
