@@ -105,7 +105,8 @@ message FreeSSLCertificateRevokeRequest {
 
 message FreeSSLCertificateRenewRequest {
   string account_phid = 1;
-  string cert_phid = 2;
+  string name = 2;
+  string cert_phid = 3;
 }
 
 message FreeSSLCertificateRenewResponse {
