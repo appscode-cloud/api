@@ -39,8 +39,6 @@
     "kubernetesClusterClientConfigRequest": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -49,8 +47,6 @@
     "kubernetesClusterCreateRequest": {
       "properties": {
         "cloud_credential": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "cloud_credential_data": {
@@ -66,8 +62,6 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "node_set": {
@@ -91,8 +85,6 @@
     "kubernetesClusterDeleteRequest": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "release_reserved_ip": {
@@ -104,8 +96,6 @@
     "kubernetesClusterDescribeRequest": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -114,8 +104,6 @@
     "kubernetesClusterInstanceListRequest": {
       "properties": {
         "cluster_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -124,8 +112,6 @@
     "kubernetesClusterScaleRequest": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "node_changes": {
@@ -154,8 +140,6 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "saltbase_version": {

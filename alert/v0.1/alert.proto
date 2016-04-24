@@ -9,34 +9,34 @@ import "api/dtypes/types.proto";
 service Alerts {
   rpc Notify(NotificationRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/api/alert/v0.1/notify"
+      post : "/alert/v0.1/notify"
       body : "*"
     };
   }
 
   rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
+      put: "/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
       body: "*"
     };
   }
 
   rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
+      post: "/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
       body: "*"
     };
   }
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}/{phid}"
+      delete: "/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}/{phid}"
     };
   }
 
   rpc List(ListRequest) returns (ListResponse) {
     option (google.api.http) = {
-      get: "/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
+      get: "/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
     };
   }
 }

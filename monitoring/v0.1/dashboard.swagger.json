@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/monitoring/v0.1/dashboard": {
+    "/monitoring/v0.1/dashboard": {
       "put": {
         "summary": "Dashboard.Create",
         "operationId": "Create",

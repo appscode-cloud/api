@@ -18,8 +18,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -44,8 +42,6 @@ func init() {
       "type": "array"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "password": {
@@ -70,8 +66,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -84,8 +78,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },

@@ -1,13 +1,19 @@
 {
   "definitions": {
-    "certificateCertificateCreateRequest": {
+    "certificateCACreateRequest": {
       "properties": {
         "csr": {
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateCARegisterRequest": {
+      "properties": {
+        "email": {
           "type": "string"
         }
       },

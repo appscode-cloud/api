@@ -250,11 +250,11 @@ func RegisterVolumesHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 }
 
 var (
-	pattern_Volumes_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "glusterfs", "v0.1", "volumes", "kube_cluster", "glusterfs_cluster"}, ""))
+	pattern_Volumes_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"glusterfs", "v0.1", "volumes", "kube_cluster", "glusterfs_cluster"}, ""))
 
-	pattern_Volumes_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "glusterfs", "v0.1", "volumes", "kube_cluster"}, ""))
+	pattern_Volumes_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"glusterfs", "v0.1", "volumes", "kube_cluster"}, ""))
 
-	pattern_Volumes_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "glusterfs", "v0.1", "volumes", "kube_cluster", "glusterfs_cluster", "volume"}, ""))
+	pattern_Volumes_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"glusterfs", "v0.1", "volumes", "kube_cluster", "glusterfs_cluster", "volume"}, ""))
 )
 
 var (

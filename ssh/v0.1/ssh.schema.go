@@ -15,8 +15,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "cluster_namespace": {

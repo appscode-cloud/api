@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gearman;
 
-import "api/certificate/v0.1/freessl_certificate.proto";
+import "api/certificate/v0.1/certificate.proto";
 import "api/ci/v0.1/slave.proto";
 import "api/kubernetes/v0.1/clusters.proto";
 

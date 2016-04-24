@@ -8,57 +8,57 @@ import "api/dtypes/types.proto";
 service Clusters {
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get : "/api/kubernetes/v0.1/clusters/{name}"
+      get : "/kubernetes/v0.1/clusters/{name}"
     };
   }
 
   rpc Create(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
-  	  put: "/api/kubernetes/v0.1/clusters"
+  	  put: "/kubernetes/v0.1/clusters"
       body: "*"
     };
   }
 
   rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
-  	  post: "/api/kubernetes/v0.1/clusters"
+  	  post: "/kubernetes/v0.1/clusters"
       body: "*"
     };
   }
 
   rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
   	option (google.api.http) = {
-  	  delete : "/api/kubernetes/v0.1/clusters/{name}"
+  	  delete : "/kubernetes/v0.1/clusters/{name}"
   	};
   }
 
   rpc Update(ClusterUpdateRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-       post : "/api/kubernetes/v0.1/clusters/{name}"
+       post : "/kubernetes/v0.1/clusters/{name}"
     };
   }
 
   rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
      option (google.api.http) = {
-       get : "/api/kubernetes/v0.1/clusters"
+       get : "/kubernetes/v0.1/clusters"
      };
   }
 
   rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
      option (google.api.http) = {
-       get : "/api/kubernetes/v0.1/cluster-startup-script/{role}"
+       get : "/kubernetes/v0.1/cluster-startup-script/{role}"
      };
   }
 
   rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
      option (google.api.http) = {
-       get : "/api/kubernetes/v0.1/clusters/{name}/client-config"
+       get : "/kubernetes/v0.1/clusters/{name}/client-config"
      };
   }
 
   rpc Instances(ClusterInstanceListRequest) returns (ClusterInstanceListResponse) {
      option (google.api.http) = {
-       get : "/api/kubernetes/v0.1/clusters/{cluster_name}/instances"
+       get : "/kubernetes/v0.1/clusters/{cluster_name}/instances"
      };
   }
 }

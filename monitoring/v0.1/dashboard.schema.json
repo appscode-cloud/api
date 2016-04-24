@@ -3,13 +3,9 @@
     "monitoringDashboardCreateRequest": {
       "properties": {
         "cluster_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "object_name": {

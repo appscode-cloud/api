@@ -22,8 +22,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -49,8 +47,6 @@ func init() {
   },
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "node_changes": {
@@ -75,8 +71,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "saltbase_version": {
@@ -92,8 +86,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "release_reserved_ip": {
@@ -109,8 +101,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -159,8 +149,6 @@ func init() {
   },
   "properties": {
     "cloud_credential": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "cloud_credential_data": {
@@ -176,8 +164,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "node_set": {
@@ -205,8 +191,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },

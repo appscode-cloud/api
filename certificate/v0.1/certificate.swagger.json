@@ -15,25 +15,52 @@
     "application/json"
   ],
   "paths": {
-    "/api/certificate/v0.1/tls": {
+    "/ssl/certificate/v0.1": {
       "get": {
-        "summary": "TLSCertificates.List",
+        "summary": "Certificates.List",
         "operationId": "List",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/certificateTLSCertificateListResponse"
+              "$ref": "#/definitions/certificateCertificateListResponse"
             }
           }
         },
         "tags": [
-          "TLSCertificates"
+          "Certificates"
         ]
       },
       "put": {
-        "summary": "TLSCertificates.Create",
+        "summary": "Certificates.Create",
         "operationId": "Create",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateCreateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Certificates"
+        ]
+      }
+    },
+    "/ssl/certificate/v0.1/{name}/import": {
+      "put": {
+        "summary": "Certificates.Import",
+        "operationId": "Import",
         "responses": {
           "default": {
             "description": "Description",
@@ -44,34 +71,41 @@
         },
         "parameters": [
           {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/certificateTLSCertificateCreateRequest"
+              "$ref": "#/definitions/certificateCertificateImportRequest"
             }
           }
         ],
         "tags": [
-          "TLSCertificates"
+          "Certificates"
         ]
       }
     },
-    "/api/certificate/v0.1/tls/{cert}": {
+    "/ssl/certificate/v0.1/{uid}": {
       "get": {
-        "summary": "TLSCertificates.Describe",
+        "summary": "Certificates.Describe",
         "operationId": "Describe",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/certificateTLSCertificateDescribeResponse"
+              "$ref": "#/definitions/certificateCertificateDescribeResponse"
             }
           }
         },
         "parameters": [
           {
-            "name": "cert",
+            "name": "uid",
             "in": "path",
             "required": true,
             "type": "string",
@@ -79,11 +113,11 @@
           }
         ],
         "tags": [
-          "TLSCertificates"
+          "Certificates"
         ]
       },
       "delete": {
-        "summary": "TLSCertificates.Delete",
+        "summary": "Certificates.Delete",
         "operationId": "Delete",
         "responses": {
           "default": {
@@ -95,7 +129,7 @@
         },
         "parameters": [
           {
-            "name": "cert",
+            "name": "uid",
             "in": "path",
             "required": true,
             "type": "string",
@@ -103,13 +137,13 @@
           }
         ],
         "tags": [
-          "TLSCertificates"
+          "Certificates"
         ]
       }
     },
-    "/api/certificate/v0.1/tls/{cert}/deploy": {
-      "put": {
-        "summary": "TLSCertificates.Deploy",
+    "/ssl/certificate/v0.1/{uid}/deploy": {
+      "post": {
+        "summary": "Certificates.Deploy",
         "operationId": "Deploy",
         "responses": {
           "default": {
@@ -121,7 +155,7 @@
         },
         "parameters": [
           {
-            "name": "cert",
+            "name": "uid",
             "in": "path",
             "required": true,
             "type": "string",
@@ -132,18 +166,70 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/certificateTLSCertificateDeployRequest"
+              "$ref": "#/definitions/certificateCertificateDeployRequest"
             }
           }
         ],
         "tags": [
-          "TLSCertificates"
+          "Certificates"
+        ]
+      }
+    },
+    "/ssl/certificate/v0.1/{uid}/renew": {
+      "post": {
+        "summary": "Certificates.Renew",
+        "operationId": "Renew",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateRenewResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Certificates"
+        ]
+      }
+    },
+    "/ssl/certificate/v0.1/{uid}/revoke": {
+      "put": {
+        "summary": "Certificates.Revoke",
+        "operationId": "Revoke",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Certificates"
         ]
       }
     }
   },
   "definitions": {
-    "certificateTLSCertificate": {
+    "certificateCertificate": {
       "type": "object",
       "properties": {
         "cert": {
@@ -195,7 +281,120 @@
         }
       }
     },
-    "certificateTLSCertificateCreateRequest": {
+    "certificateCertificateCreateRequest": {
+      "type": "object",
+      "properties": {
+        "account_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "bundle": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "common_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "csr": {
+          "type": "string",
+          "format": "string"
+        },
+        "key_data": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "san": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      }
+    },
+    "certificateCertificateCreateResponse": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string",
+          "format": "byte"
+        },
+        "certificate": {
+          "$ref": "#/definitions/certificateCertificate"
+        },
+        "key": {
+          "type": "string",
+          "format": "byte"
+        },
+        "phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "root": {
+          "type": "string",
+          "format": "byte"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateCertificateDeleteRequest": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateCertificateDeployRequest": {
+      "type": "object",
+      "properties": {
+        "cluster_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "secret_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateCertificateDescribeRequest": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateCertificateDescribeResponse": {
+      "type": "object",
+      "properties": {
+        "certificate": {
+          "$ref": "#/definitions/certificateCertificate"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateCertificateImportRequest": {
       "type": "object",
       "properties": {
         "cert_data": {
@@ -212,67 +411,59 @@
         }
       }
     },
-    "certificateTLSCertificateDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "cert": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "certificateTLSCertificateDeployRequest": {
-      "type": "object",
-      "properties": {
-        "cert": {
-          "type": "string",
-          "format": "string"
-        },
-        "cluster_name": {
-          "type": "string",
-          "format": "string"
-        },
-        "namespace": {
-          "type": "string",
-          "format": "string"
-        },
-        "secret_name": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "certificateTLSCertificateDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "cert": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "certificateTLSCertificateDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "certificate": {
-          "$ref": "#/definitions/certificateTLSCertificate"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "certificateTLSCertificateListResponse": {
+    "certificateCertificateListResponse": {
       "type": "object",
       "properties": {
         "certificates": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/certificateTLSCertificate"
+            "$ref": "#/definitions/certificateCertificate"
           }
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateCertificateRenewRequest": {
+      "type": "object",
+      "properties": {
+        "account_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateCertificateRenewResponse": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateCertificateRevokeRequest": {
+      "type": "object",
+      "properties": {
+        "account_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "uid": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
