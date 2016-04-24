@@ -10,14 +10,6 @@
         }
       },
       "type": "object"
-    },
-    "certificateCARegisterRequest": {
-      "properties": {
-        "email": {
-          "type": "string"
-        }
-      },
-      "type": "object"
     }
   }
 }

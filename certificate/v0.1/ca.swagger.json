@@ -40,21 +40,6 @@
         "tags": [
           "CAs"
         ]
-      },
-      "put": {
-        "summary": "CAs.Register",
-        "operationId": "Register",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/certificateCARegisterResponse"
-            }
-          }
-        },
-        "tags": [
-          "CAs"
-        ]
       }
     }
   },
@@ -90,27 +75,6 @@
         "root": {
           "type": "string",
           "format": "byte"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "certificateCARegisterRequest": {
-      "type": "object",
-      "properties": {
-        "email": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "certificateCARegisterResponse": {
-      "type": "object",
-      "properties": {
-        "phid": {
-          "type": "string",
-          "format": "string"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"

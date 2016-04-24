@@ -42,23 +42,6 @@ func request_CAs_Create_0(ctx context.Context, client CAsClient, req *http.Reque
 
 }
 
-var (
-	filter_CAs_Register_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
-func request_CAs_Register_0(ctx context.Context, client CAsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CARegisterRequest
-	var metadata runtime.ServerMetadata
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_CAs_Register_0); err != nil {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.Register(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
 // RegisterCAsHandlerFromEndpoint is same as RegisterCAsHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
 func RegisterCAsHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
@@ -112,40 +95,13 @@ func RegisterCAsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.C
 
 	})
 
-	mux.Handle("PUT", pattern_CAs_Register_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(ctx)
-		defer cancel()
-		if cn, ok := w.(http.CloseNotifier); ok {
-			go func(done <-chan struct{}, closed <-chan bool) {
-				select {
-				case <-done:
-				case <-closed:
-					cancel()
-				}
-			}(ctx.Done(), cn.CloseNotify())
-		}
-		resp, md, err := request_CAs_Register_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
-			return
-		}
-
-		forward_CAs_Register_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
 	return nil
 }
 
 var (
 	pattern_CAs_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"ssl", "ca", "v0.1"}, ""))
-
-	pattern_CAs_Register_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"ssl", "ca", "v0.1"}, ""))
 )
 
 var (
 	forward_CAs_Create_0 = runtime.ForwardResponseMessage
-
-	forward_CAs_Register_0 = runtime.ForwardResponseMessage
 )

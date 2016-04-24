@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/ssl/ca/v0.1": {
+    "/ssl/acme-users/v0.1": {
       "put": {
         "summary": "AcmeUsers.Register",
         "operationId": "Register",

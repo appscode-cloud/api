@@ -12,12 +12,6 @@ service CAs {
 	  body: "*"
 	};
   }
-
-  rpc Register(CARegisterRequest) returns (CARegisterResponse) {
-    option (google.api.http) = {
-      put: "/ssl/ca/v0.1"
-    };
-  }
 }
 
 // Use specific requests for protos
@@ -32,13 +26,4 @@ message CACreateResponse {
   bytes cert = 3;
   bytes key = 4;
   bytes root = 5;
-}
-
-message CARegisterRequest {
-  string email = 1;
-}
-
-message CARegisterResponse {
-  dtypes.Status status = 1;
-  string phid = 2;
 }
