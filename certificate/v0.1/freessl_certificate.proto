@@ -31,13 +31,13 @@ service FreeSSLCertificates {
 
   rpc Revoke(FreeSSLCertificateRevokeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/api/freessl/v0.1/tls/{cert}"
+      delete: "/api/freessl/v0.1/tls/{cert_phid}"
     };
   }
 
   rpc Renew(FreeSSLCertificateRenewRequest) returns (FreeSSLCertificateRenewResponse) {
     option (google.api.http) = {
-      delete: "/api/freessl/v0.1/tls/{cert}"
+      delete: "/api/freessl/v0.1/tls/{cert_phid}"
     };
   }
 
@@ -94,8 +94,10 @@ message FreeSSLCertificate {
 
 message FreeSSLCertificateCreateRequest {
   string name = 1;
-  string cert_data = 2;
-  string key_data = 3;
+  string common_name = 2;
+  repeated string san = 3;
+  bool bundle = 4;
+  string key_data = 5;
 }
 
 message FreeSSLCertificateRevokeRequest {

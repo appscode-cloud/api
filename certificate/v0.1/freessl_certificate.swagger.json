@@ -57,6 +57,32 @@
         ]
       }
     },
+    "/api/freessl/v0.1/tls/{cert_phid}": {
+      "delete": {
+        "summary": "FreeSSLCertificates.Renew",
+        "operationId": "Renew",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/certificateFreeSSLCertificateRenewResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cert_phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "FreeSSLCertificates"
+        ]
+      }
+    },
     "/api/freessl/v0.1/tls/{cert}": {
       "get": {
         "summary": "FreeSSLCertificates.Describe",
@@ -198,7 +224,11 @@
     "certificateFreeSSLCertificateCreateRequest": {
       "type": "object",
       "properties": {
-        "cert_data": {
+        "bundle": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "common_name": {
           "type": "string",
           "format": "string"
         },
@@ -209,6 +239,13 @@
         "name": {
           "type": "string",
           "format": "string"
+        },
+        "san": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
         }
       }
     },
@@ -300,16 +337,40 @@
     "certificateFreeSSLCertificateRenewRequest": {
       "type": "object",
       "properties": {
+        "account_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "cert_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateFreeSSLCertificateRenewResponse": {
+      "type": "object",
+      "properties": {
         "cert": {
           "type": "string",
           "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },
     "certificateFreeSSLCertificateRevokeRequest": {
       "type": "object",
       "properties": {
-        "cert": {
+        "account_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "cert_phid": {
           "type": "string",
           "format": "string"
         }
