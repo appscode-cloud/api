@@ -5,31 +5,22 @@ package certificate;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-service AuthorityCertificate {
-  rpc Create(CertificateCreateRequest) returns (CertificateCreateResponse) {
+service CAs {
+  rpc Create(CACreateRequest) returns (CACreateResponse) {
 	option (google.api.http) = {
-	  put: "/api/certificate/v0.1/authority"
+	  post: "/ssl/ca/v0.1"
 	  body: "*"
 	};
   }
 }
 
-service ClientCertificate {
-  rpc Create(CertificateCreateRequest) returns (CertificateCreateResponse) {
-    option (google.api.http) = {
-      put: "/api/certificate/v0.1/client"
-      body: "*"
-    };
-  }
-}
-
 // Use specific requests for protos
-message CertificateCreateRequest {
+message  CACreateRequest {
   string name = 1;
   string csr = 2;
 }
 
-message CertificateCreateResponse {
+message CACreateResponse {
   dtypes.Status status = 1;
   string phid = 2;
   bytes cert = 3;

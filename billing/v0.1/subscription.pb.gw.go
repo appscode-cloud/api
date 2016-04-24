@@ -311,15 +311,15 @@ func RegisterSubscriptionsHandler(ctx context.Context, mux *runtime.ServeMux, co
 }
 
 var (
-	pattern_Subscriptions_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "billing", "v0.1", "subscription"}, ""))
+	pattern_Subscriptions_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"billing", "v0.1", "subscription"}, ""))
 
-	pattern_Subscriptions_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "billing", "v0.1", "subscription", "time"}, ""))
+	pattern_Subscriptions_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"billing", "v0.1", "subscription", "time"}, ""))
 
-	pattern_Subscriptions_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "billing", "v0.1", "subscription", "product_type", "object_phid"}, ""))
+	pattern_Subscriptions_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"billing", "v0.1", "subscription", "product_type", "object_phid"}, ""))
 
-	pattern_Subscriptions_UnSubscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "billing", "v0.1", "subscription", "product_type", "object_phid"}, ""))
+	pattern_Subscriptions_UnSubscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"billing", "v0.1", "subscription", "product_type", "object_phid"}, ""))
 
-	pattern_Subscriptions_Quota_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "billing", "v0.1", "subscription", "quota"}, ""))
+	pattern_Subscriptions_Quota_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"billing", "v0.1", "subscription", "quota"}, ""))
 )
 
 var (

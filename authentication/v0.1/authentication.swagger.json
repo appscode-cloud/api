@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/authn/v0.1/token": {
+    "/authn/v0.1/token": {
       "post": {
         "summary": "Authentication.Token",
         "operationId": "Token",
@@ -42,7 +42,7 @@
         ]
       }
     },
-    "/api/authn/v0.1/user": {
+    "/authn/v0.1/user": {
       "post": {
         "summary": "Authentication.User",
         "operationId": "User",

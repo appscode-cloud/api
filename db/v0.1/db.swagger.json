@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/db/v0.1": {
+    "/db/v0.1": {
       "get": {
         "summary": "Databases.List",
         "operationId": "List",
@@ -32,7 +32,7 @@
         ]
       }
     },
-    "/api/db/v0.1/backup/{cluster}/{type}": {
+    "/db/v0.1/backup/{cluster}/{type}": {
       "post": {
         "summary": "Databases.Backup",
         "operationId": "Backup",
@@ -73,7 +73,7 @@
         ]
       }
     },
-    "/api/db/v0.1/restore/{cluster}/{type}": {
+    "/db/v0.1/restore/{cluster}/{type}": {
       "put": {
         "summary": "Databases.Restore",
         "operationId": "Restore",
@@ -114,7 +114,7 @@
         ]
       }
     },
-    "/api/db/v0.1/snapshots/{name}": {
+    "/db/v0.1/snapshots/{name}": {
       "get": {
         "summary": "Databases.SnapshotList",
         "operationId": "SnapshotList",
@@ -140,7 +140,7 @@
         ]
       }
     },
-    "/api/db/v0.1/{cluster}/{name}": {
+    "/db/v0.1/{cluster}/{name}": {
       "get": {
         "summary": "Databases.Describe",
         "operationId": "Describe",
@@ -173,7 +173,7 @@
         ]
       }
     },
-    "/api/db/v0.1/{cluster}/{type}": {
+    "/db/v0.1/{cluster}/{type}": {
       "put": {
         "summary": "Databases.Create",
         "operationId": "Create",
@@ -214,7 +214,7 @@
         ]
       }
     },
-    "/api/db/v0.1/{cluster}/{type}/{name}": {
+    "/db/v0.1/{cluster}/{type}/{name}": {
       "delete": {
         "summary": "Databases.Delete",
         "operationId": "Delete",

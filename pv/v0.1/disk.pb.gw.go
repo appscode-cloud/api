@@ -311,13 +311,13 @@ func RegisterDisksHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 }
 
 var (
-	pattern_Disks_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "pv", "v0.1", "disks", "cluster"}, ""))
+	pattern_Disks_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"pv", "v0.1", "disks", "cluster"}, ""))
 
-	pattern_Disks_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "pv", "v0.1", "disks", "cluster", "name", "plugin"}, ""))
+	pattern_Disks_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"pv", "v0.1", "disks", "cluster", "name", "plugin"}, ""))
 
-	pattern_Disks_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0.1", "disks", "cluster", "name"}, ""))
+	pattern_Disks_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"pv", "v0.1", "disks", "cluster", "name"}, ""))
 
-	pattern_Disks_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "pv", "v0.1", "disks", "cluster", "identifier"}, ""))
+	pattern_Disks_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"pv", "v0.1", "disks", "cluster", "identifier"}, ""))
 )
 
 var (

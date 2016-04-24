@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/pv/v0.1/{cluster}/{name}": {
+    "/pv/v0.1/{cluster}/{name}": {
       "get": {
         "summary": "PersistentVolumes.Describe",
         "operationId": "Describe",

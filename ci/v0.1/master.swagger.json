@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/ci/v0.1/master": {
+    "/ci/v0.1/master": {
       "put": {
         "summary": "Master.Delete",
         "operationId": "Delete",

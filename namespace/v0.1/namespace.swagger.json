@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/namespace/v0.1/log/{name}": {
+    "/namespace/v0.1/log/{name}": {
       "get": {
         "summary": "Namespace.Log",
         "operationId": "Log",
@@ -41,7 +41,7 @@
         ]
       }
     },
-    "/api/namespace/v0.1/status/{name}": {
+    "/namespace/v0.1/status/{name}": {
       "get": {
         "summary": "Namespace.Status",
         "operationId": "Status",
@@ -67,7 +67,7 @@
         ]
       }
     },
-    "/api/namespace/v0.1/{name}": {
+    "/namespace/v0.1/{name}": {
       "get": {
         "summary": "Namespace.Check",
         "operationId": "Check",

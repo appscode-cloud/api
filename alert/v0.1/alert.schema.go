@@ -24,8 +24,6 @@ func init() {
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "object_name": {
@@ -57,8 +55,6 @@ func init() {
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "object_name": {
@@ -133,8 +129,6 @@ func init() {
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "query": {
@@ -152,8 +146,6 @@ func init() {
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "object_name": {
@@ -180,8 +172,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "spec": {
@@ -269,8 +259,6 @@ func init() {
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "query": {
@@ -288,8 +276,6 @@ func init() {
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "object_name": {
@@ -316,8 +302,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "phid": {

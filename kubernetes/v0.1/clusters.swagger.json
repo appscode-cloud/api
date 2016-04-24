@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/kubernetes/v0.1/cluster-startup-script/{role}": {
+    "/kubernetes/v0.1/cluster-startup-script/{role}": {
       "get": {
         "summary": "Clusters.StartupScript",
         "operationId": "StartupScript",
@@ -41,7 +41,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/clusters": {
+    "/kubernetes/v0.1/clusters": {
       "get": {
         "summary": "Clusters.List",
         "operationId": "List",
@@ -108,7 +108,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/clusters/{cluster_name}/instances": {
+    "/kubernetes/v0.1/clusters/{cluster_name}/instances": {
       "get": {
         "summary": "Clusters.Instances",
         "operationId": "Instances",
@@ -134,7 +134,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/clusters/{name}": {
+    "/kubernetes/v0.1/clusters/{name}": {
       "get": {
         "summary": "Clusters.Describe",
         "operationId": "Describe",
@@ -208,7 +208,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/clusters/{name}/client-config": {
+    "/kubernetes/v0.1/clusters/{name}/client-config": {
       "get": {
         "summary": "Clusters.ClientConfig",
         "operationId": "ClientConfig",
