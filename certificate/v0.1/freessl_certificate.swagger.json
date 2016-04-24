@@ -17,13 +17,13 @@
   "paths": {
     "/api/freessl/v0.1/tls": {
       "get": {
-        "summary": "FreeSSLCertificates.List",
-        "operationId": "List",
+        "summary": "FreeSSLCertificates.Register",
+        "operationId": "Register",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/certificateFreeSSLCertificateListResponse"
+              "$ref": "#/definitions/certificateFreeSSLCertificateRegisterResponse"
             }
           }
         },
@@ -84,30 +84,6 @@
       }
     },
     "/api/freessl/v0.1/tls/{cert}": {
-      "get": {
-        "summary": "FreeSSLCertificates.Describe",
-        "operationId": "Describe",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/certificateFreeSSLCertificateDescribeResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cert",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "FreeSSLCertificates"
-        ]
-      },
       "delete": {
         "summary": "FreeSSLCertificates.Delete",
         "operationId": "Delete",
@@ -294,40 +270,6 @@
         }
       }
     },
-    "certificateFreeSSLCertificateDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "cert": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "certificateFreeSSLCertificateDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "certificate": {
-          "$ref": "#/definitions/certificateFreeSSLCertificate"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "certificateFreeSSLCertificateListResponse": {
-      "type": "object",
-      "properties": {
-        "certificates": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/certificateFreeSSLCertificate"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
     "certificateFreeSSLCertificateRegisterRequest": {
       "type": "object",
       "properties": {
@@ -429,9 +371,6 @@
           "format": "string"
         }
       }
-    },
-    "dtypesVoidRequest": {
-      "type": "object"
     },
     "dtypesVoidResponse": {
       "type": "object",

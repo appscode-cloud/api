@@ -11,16 +11,6 @@ service FreeSSLCertificates {
       get: "/api/freessl/v0.1/tls"
     };
   }
-  rpc List(dtypes.VoidRequest) returns (FreeSSLCertificateListResponse) {
-    option (google.api.http) = {
-      get: "/api/freessl/v0.1/tls"
-    };
-  }
-  rpc Describe(FreeSSLCertificateDescribeRequest) returns (FreeSSLCertificateDescribeResponse) {
-    option (google.api.http) = {
-      get: "/api/freessl/v0.1/tls/{cert}"
-    };
-  }
 
   rpc Create(FreeSSLCertificateCreateRequest) returns (FreeSSLCertificateCreateResponse) {
     option (google.api.http) = {
@@ -62,16 +52,6 @@ message FreeSSLCertificateRegisterRequest {
 message FreeSSLCertificateRegisterResponse {
   dtypes.Status status = 1;
   string phid = 2;
-}
-
-message FreeSSLCertificateListResponse {
-  dtypes.Status status = 1;
-  repeated FreeSSLCertificate certificates = 2;
-}
-
-message FreeSSLCertificateDescribeResponse {
-  dtypes.Status status = 1;
-  FreeSSLCertificate certificate = 2;
 }
 
 message FreeSSLCertificate {

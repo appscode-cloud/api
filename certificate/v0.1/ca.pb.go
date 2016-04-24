@@ -15,8 +15,6 @@ It has these top-level messages:
 	CertificateCreateResponse
 	FreeSSLCertificateRegisterRequest
 	FreeSSLCertificateRegisterResponse
-	FreeSSLCertificateListResponse
-	FreeSSLCertificateDescribeResponse
 	FreeSSLCertificate
 	FreeSSLCertificateCreateRequest
 	FreeSSLCertificateCreateResponse
