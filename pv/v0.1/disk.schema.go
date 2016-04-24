@@ -108,3 +108,4 @@ func (m *DiskCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DiskCreateRequest) IsRequest() {}
+

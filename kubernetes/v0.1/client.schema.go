@@ -113,3 +113,4 @@ func (m *ClientRequest) IsValid() (*gojsonschema.Result, error) {
 	return clientRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClientRequest) IsRequest() {}
+

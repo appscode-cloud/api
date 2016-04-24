@@ -40,3 +40,4 @@ func (m *SecureShellGetRequest) IsValid() (*gojsonschema.Result, error) {
 	return secureShellGetRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SecureShellGetRequest) IsRequest() {}
+

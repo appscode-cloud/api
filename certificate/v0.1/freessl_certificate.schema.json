@@ -1,0 +1,63 @@
+{
+  "definitions": {
+    "certificateFreeSSLCertificateCreateRequest": {
+      "properties": {
+        "account_phid": {
+          "type": "string"
+        },
+        "bundle": {
+          "type": "boolean"
+        },
+        "common_name": {
+          "type": "string"
+        },
+        "key_data": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "san": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "certificateFreeSSLCertificateRegisterRequest": {
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateFreeSSLCertificateRenewRequest": {
+      "properties": {
+        "account_phid": {
+          "type": "string"
+        },
+        "cert_phid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateFreeSSLCertificateRevokeRequest": {
+      "properties": {
+        "account_phid": {
+          "type": "string"
+        },
+        "cert_phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

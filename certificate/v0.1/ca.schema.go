@@ -34,3 +34,4 @@ func (m *CertificateCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return certificateCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CertificateCreateRequest) IsRequest() {}
+

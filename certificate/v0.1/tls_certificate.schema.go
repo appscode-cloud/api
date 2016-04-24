@@ -106,3 +106,4 @@ func (m *TLSCertificateDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return tLSCertificateDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *TLSCertificateDeleteRequest) IsRequest() {}
+

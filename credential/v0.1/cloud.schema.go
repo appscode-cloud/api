@@ -115,3 +115,4 @@ func (m *CloudCredentialCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return cloudCredentialCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CloudCredentialCreateRequest) IsRequest() {}
+

@@ -115,3 +115,4 @@ func (m *LogRequest) IsValid() (*gojsonschema.Result, error) {
 	return logRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *LogRequest) IsRequest() {}
+

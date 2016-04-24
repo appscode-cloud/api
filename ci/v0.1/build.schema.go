@@ -53,3 +53,4 @@ func (m *BuildDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return buildDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *BuildDescribeRequest) IsRequest() {}
+
