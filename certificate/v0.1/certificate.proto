@@ -80,6 +80,7 @@ message CertificateCreateRequest {
   bool bundle = 5;
   string key_data = 6;
   SubjectInfo subject_info = 7;
+  bool issue_private_cert = 8;
 }
 
 // A Name contains the SubjectInfo fields.
