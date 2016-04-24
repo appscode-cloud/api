@@ -35,7 +35,7 @@ service FreeSSLCertificates {
     };
   }
 
-  rpc Renew(FreeSSLCertificateRenewRequest) returns (dtypes.VoidResponse) {
+  rpc Renew(FreeSSLCertificateRenewRequest) returns (FreeSSLCertificateRenewResponse) {
     option (google.api.http) = {
       delete: "/api/freessl/v0.1/tls/{cert}"
     };
@@ -99,11 +99,18 @@ message FreeSSLCertificateCreateRequest {
 }
 
 message FreeSSLCertificateRevokeRequest {
-  string cert = 1;
+  string account_phid = 1;
+  string cert_phid = 2;
 }
 
 message FreeSSLCertificateRenewRequest {
-  string cert = 1;
+  string account_phid = 1;
+  string cert_phid = 2;
+}
+
+message FreeSSLCertificateRenewResponse {
+  dtypes.Status status = 1;
+  string cert = 2;
 }
 
 message FreeSSLCertificateDeleteRequest {
