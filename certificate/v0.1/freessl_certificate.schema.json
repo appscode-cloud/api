@@ -50,6 +50,22 @@
     "certificateFreeSSLCertificateRegisterRequest": {
       "type": "object"
     },
+    "certificateFreeSSLCertificateRenewRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateFreeSSLCertificateRevokeRequest": {
+      "properties": {
+        "cert": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "dtypesVoidRequest": {
       "type": "object"
     }

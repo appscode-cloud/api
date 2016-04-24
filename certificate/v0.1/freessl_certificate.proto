@@ -29,6 +29,18 @@ service FreeSSLCertificates {
     };
   }
 
+  rpc Revoke(FreeSSLCertificateRevokeRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/api/freessl/v0.1/tls/{cert}"
+    };
+  }
+
+  rpc Renew(FreeSSLCertificateRenewRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/api/freessl/v0.1/tls/{cert}"
+    };
+  }
+
   rpc Delete(FreeSSLCertificateDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/api/freessl/v0.1/tls/{cert}"
@@ -44,11 +56,12 @@ service FreeSSLCertificates {
 }
 
 message FreeSSLCertificateRegisterRequest {
+  string email = 1;
 }
 
 message FreeSSLCertificateRegisterResponse {
   dtypes.Status status = 1;
-  repeated FreeSSLCertificate certificates = 2;
+  string phid = 2;
 }
 
 message FreeSSLCertificateListResponse {
@@ -83,6 +96,14 @@ message FreeSSLCertificateCreateRequest {
   string name = 1;
   string cert_data = 2;
   string key_data = 3;
+}
+
+message FreeSSLCertificateRevokeRequest {
+  string cert = 1;
+}
+
+message FreeSSLCertificateRenewRequest {
+  string cert = 1;
 }
 
 message FreeSSLCertificateDeleteRequest {

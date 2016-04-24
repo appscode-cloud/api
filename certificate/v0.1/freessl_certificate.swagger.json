@@ -277,19 +277,41 @@
       }
     },
     "certificateFreeSSLCertificateRegisterRequest": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "string"
+        }
+      }
     },
     "certificateFreeSSLCertificateRegisterResponse": {
       "type": "object",
       "properties": {
-        "certificates": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/certificateFreeSSLCertificate"
-          }
+        "phid": {
+          "type": "string",
+          "format": "string"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateFreeSSLCertificateRenewRequest": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateFreeSSLCertificateRevokeRequest": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string",
+          "format": "string"
         }
       }
     },

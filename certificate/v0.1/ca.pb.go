@@ -19,6 +19,8 @@ It has these top-level messages:
 	FreeSSLCertificateDescribeResponse
 	FreeSSLCertificate
 	FreeSSLCertificateCreateRequest
+	FreeSSLCertificateRevokeRequest
+	FreeSSLCertificateRenewRequest
 	FreeSSLCertificateDeleteRequest
 	FreeSSLCertificateDescribeRequest
 	FreeSSLCertificateDeployRequest
