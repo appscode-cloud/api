@@ -38,7 +38,7 @@
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
+              "$ref": "#/definitions/certificateFreeSSLCertificateCreateResponse"
             }
           }
         },
@@ -246,6 +246,17 @@
             "type": "string",
             "format": "string"
           }
+        }
+      }
+    },
+    "certificateFreeSSLCertificateCreateResponse": {
+      "type": "object",
+      "properties": {
+        "certificate": {
+          "$ref": "#/definitions/certificateFreeSSLCertificate"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },

@@ -22,7 +22,7 @@ service FreeSSLCertificates {
     };
   }
 
-  rpc Create(FreeSSLCertificateCreateRequest) returns (dtypes.VoidResponse) {
+  rpc Create(FreeSSLCertificateCreateRequest) returns (FreeSSLCertificateCreateResponse) {
     option (google.api.http) = {
       put: "/api/freessl/v0.1/tls"
       body: "*"
@@ -98,6 +98,11 @@ message FreeSSLCertificateCreateRequest {
   repeated string san = 3;
   bool bundle = 4;
   string key_data = 5;
+}
+
+message FreeSSLCertificateCreateResponse {
+  dtypes.Status status = 1;
+  FreeSSLCertificate certificate = 2;
 }
 
 message FreeSSLCertificateRevokeRequest {
