@@ -10,6 +10,7 @@ ROOT=$PWD
 ALIAS="Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,"
 ALIAS+="Mapi/dtypes/types.proto=github.com/appscode/api/dtypes,"
 ALIAS+="Mapi/ci/v0.1/slave.proto=github.com/appscode/api/ci/v0.1,"
+ALIAS+="Mapi/certificate/v0.1/freessl_certificate.proto=github.com/appscode/api/certificate/v0.1,"
 ALIAS+="Mapi/kubernetes/v0.1/clusters.proto=github.com/appscode/api/kubernetes/v0.1,"
 ALIAS+="Mapi/ssh/v0.1/ssh.proto=github.com/appscode/api/ssh/v0.1,"
 ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any"

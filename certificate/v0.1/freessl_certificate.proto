@@ -136,3 +136,8 @@ message FreeSSLCertificateDeployRequest {
   string cluster_name = 3;
   string namespace = 4;
 }
+
+message DNSCheckRequest {
+  string domain =1;
+  string key_auth = 2;
+}

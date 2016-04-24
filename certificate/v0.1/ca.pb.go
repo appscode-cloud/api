@@ -26,6 +26,7 @@ It has these top-level messages:
 	FreeSSLCertificateDeleteRequest
 	FreeSSLCertificateDescribeRequest
 	FreeSSLCertificateDeployRequest
+	DNSCheckRequest
 	TLSCertificateListResponse
 	TLSCertificateDescribeResponse
 	TLSCertificate
