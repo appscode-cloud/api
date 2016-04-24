@@ -296,10 +296,6 @@
           "type": "string",
           "format": "string"
         },
-        "csr": {
-          "type": "string",
-          "format": "string"
-        },
         "key_data": {
           "type": "string",
           "format": "string"
@@ -314,6 +310,9 @@
             "type": "string",
             "format": "string"
           }
+        },
+        "subject_info": {
+          "$ref": "#/definitions/certificateSubjectInfo"
         }
       }
     },
@@ -462,6 +461,31 @@
           "format": "string"
         },
         "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateSubjectInfo": {
+      "type": "object",
+      "properties": {
+        "C": {
+          "type": "string",
+          "format": "string"
+        },
+        "L": {
+          "type": "string",
+          "format": "string"
+        },
+        "O": {
+          "type": "string",
+          "format": "string"
+        },
+        "OU": {
+          "type": "string",
+          "format": "string"
+        },
+        "ST": {
           "type": "string",
           "format": "string"
         }

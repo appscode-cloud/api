@@ -79,7 +79,16 @@ message CertificateCreateRequest {
   repeated string san = 4;
   bool bundle = 5;
   string key_data = 6;
-  string csr = 7;
+  SubjectInfo subject_info = 7;
+}
+
+// A Name contains the SubjectInfo fields.
+message SubjectInfo {
+  string C  = 1; // Country
+  string ST = 2; // State
+  string L  = 3; // Locality
+  string O  = 4; // OrganisationName
+  string OU = 5; // OrganisationalUnitName
 }
 
 message CertificateCreateResponse {

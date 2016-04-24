@@ -19,6 +19,7 @@ It has these top-level messages:
 	CertificateDescribeRequest
 	CertificateDescribeResponse
 	CertificateCreateRequest
+	SubjectInfo
 	CertificateCreateResponse
 	Certificate
 	CertificateImportRequest

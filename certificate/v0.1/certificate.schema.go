@@ -94,6 +94,28 @@ func init() {
 	}
 	certificateCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "certificateSubjectInfo": {
+      "properties": {
+        "C": {
+          "type": "string"
+        },
+        "L": {
+          "type": "string"
+        },
+        "O": {
+          "type": "string"
+        },
+        "OU": {
+          "type": "string"
+        },
+        "ST": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
   "properties": {
     "account_phid": {
       "type": "string"
@@ -102,9 +124,6 @@ func init() {
       "type": "boolean"
     },
     "common_name": {
-      "type": "string"
-    },
-    "csr": {
       "type": "string"
     },
     "key_data": {
@@ -118,6 +137,9 @@ func init() {
         "type": "string"
       },
       "type": "array"
+    },
+    "subject_info": {
+      "$ref": "#/definitions/certificateSubjectInfo"
     }
   },
   "type": "object"

@@ -11,9 +11,6 @@
         "common_name": {
           "type": "string"
         },
-        "csr": {
-          "type": "string"
-        },
         "key_data": {
           "type": "string"
         },
@@ -25,6 +22,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "subject_info": {
+          "$ref": "#/definitions/certificateSubjectInfo"
         }
       },
       "type": "object"
@@ -96,6 +96,26 @@
           "type": "string"
         },
         "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateSubjectInfo": {
+      "properties": {
+        "C": {
+          "type": "string"
+        },
+        "L": {
+          "type": "string"
+        },
+        "O": {
+          "type": "string"
+        },
+        "OU": {
+          "type": "string"
+        },
+        "ST": {
           "type": "string"
         }
       },
