@@ -93,11 +93,12 @@ message FreeSSLCertificate {
 }
 
 message FreeSSLCertificateCreateRequest {
-  string name = 1;
-  string common_name = 2;
-  repeated string san = 3;
-  bool bundle = 4;
-  string key_data = 5;
+  string account_phid = 1;
+  string name = 2;
+  string common_name = 3;
+  repeated string san = 4;
+  bool bundle = 5;
+  string key_data = 6;
 }
 
 message FreeSSLCertificateCreateResponse {

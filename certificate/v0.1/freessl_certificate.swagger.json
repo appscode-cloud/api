@@ -224,6 +224,10 @@
     "certificateFreeSSLCertificateCreateRequest": {
       "type": "object",
       "properties": {
+        "account_phid": {
+          "type": "string",
+          "format": "string"
+        },
         "bundle": {
           "type": "boolean",
           "format": "boolean"
