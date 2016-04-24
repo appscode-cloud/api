@@ -129,64 +129,6 @@ func request_FreeSSLCertificates_Renew_0(ctx context.Context, client FreeSSLCert
 
 }
 
-func request_FreeSSLCertificates_Delete_0(ctx context.Context, client FreeSSLCertificatesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq FreeSSLCertificateDeleteRequest
-	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["cert"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cert")
-	}
-
-	protoReq.Cert, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
-	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func request_FreeSSLCertificates_Deploy_0(ctx context.Context, client FreeSSLCertificatesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq FreeSSLCertificateDeployRequest
-	var metadata runtime.ServerMetadata
-
-	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["cert"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cert")
-	}
-
-	protoReq.Cert, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
-	msg, err := client.Deploy(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
 // RegisterFreeSSLCertificatesHandlerFromEndpoint is same as RegisterFreeSSLCertificatesHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
 func RegisterFreeSSLCertificatesHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
@@ -309,52 +251,6 @@ func RegisterFreeSSLCertificatesHandler(ctx context.Context, mux *runtime.ServeM
 
 	})
 
-	mux.Handle("DELETE", pattern_FreeSSLCertificates_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(ctx)
-		defer cancel()
-		if cn, ok := w.(http.CloseNotifier); ok {
-			go func(done <-chan struct{}, closed <-chan bool) {
-				select {
-				case <-done:
-				case <-closed:
-					cancel()
-				}
-			}(ctx.Done(), cn.CloseNotify())
-		}
-		resp, md, err := request_FreeSSLCertificates_Delete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
-			return
-		}
-
-		forward_FreeSSLCertificates_Delete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("PUT", pattern_FreeSSLCertificates_Deploy_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(ctx)
-		defer cancel()
-		if cn, ok := w.(http.CloseNotifier); ok {
-			go func(done <-chan struct{}, closed <-chan bool) {
-				select {
-				case <-done:
-				case <-closed:
-					cancel()
-				}
-			}(ctx.Done(), cn.CloseNotify())
-		}
-		resp, md, err := request_FreeSSLCertificates_Deploy_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
-			return
-		}
-
-		forward_FreeSSLCertificates_Deploy_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
 	return nil
 }
 
@@ -366,10 +262,6 @@ var (
 	pattern_FreeSSLCertificates_Revoke_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "freessl", "v0.1", "tls", "cert_phid"}, ""))
 
 	pattern_FreeSSLCertificates_Renew_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "freessl", "v0.1", "tls", "cert_phid"}, ""))
-
-	pattern_FreeSSLCertificates_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "freessl", "v0.1", "tls", "cert"}, ""))
-
-	pattern_FreeSSLCertificates_Deploy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "freessl", "v0.1", "tls", "cert", "deploy"}, ""))
 )
 
 var (
@@ -380,8 +272,4 @@ var (
 	forward_FreeSSLCertificates_Revoke_0 = runtime.ForwardResponseMessage
 
 	forward_FreeSSLCertificates_Renew_0 = runtime.ForwardResponseMessage
-
-	forward_FreeSSLCertificates_Delete_0 = runtime.ForwardResponseMessage
-
-	forward_FreeSSLCertificates_Deploy_0 = runtime.ForwardResponseMessage
 )

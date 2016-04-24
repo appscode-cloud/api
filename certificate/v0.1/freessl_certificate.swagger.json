@@ -82,66 +82,6 @@
           "FreeSSLCertificates"
         ]
       }
-    },
-    "/api/freessl/v0.1/tls/{cert}": {
-      "delete": {
-        "summary": "FreeSSLCertificates.Delete",
-        "operationId": "Delete",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cert",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "FreeSSLCertificates"
-        ]
-      }
-    },
-    "/api/freessl/v0.1/tls/{cert}/deploy": {
-      "put": {
-        "summary": "FreeSSLCertificates.Deploy",
-        "operationId": "Deploy",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cert",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/certificateFreeSSLCertificateDeployRequest"
-            }
-          }
-        ],
-        "tags": [
-          "FreeSSLCertificates"
-        ]
-      }
     }
   },
   "definitions": {
@@ -237,36 +177,6 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "certificateFreeSSLCertificateDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "cert": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "certificateFreeSSLCertificateDeployRequest": {
-      "type": "object",
-      "properties": {
-        "cert": {
-          "type": "string",
-          "format": "string"
-        },
-        "cluster_name": {
-          "type": "string",
-          "format": "string"
-        },
-        "namespace": {
-          "type": "string",
-          "format": "string"
-        },
-        "secret_name": {
-          "type": "string",
-          "format": "string"
         }
       }
     },

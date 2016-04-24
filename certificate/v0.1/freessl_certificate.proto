@@ -30,19 +30,6 @@ service FreeSSLCertificates {
       delete: "/api/freessl/v0.1/tls/{cert_phid}"
     };
   }
-
-  rpc Delete(FreeSSLCertificateDeleteRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      delete: "/api/freessl/v0.1/tls/{cert}"
-    };
-  }
-
-  rpc Deploy(FreeSSLCertificateDeployRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      put: "/api/freessl/v0.1/tls/{cert}/deploy"
-      body: "*"
-    };
-  }
 }
 
 message FreeSSLCertificateRegisterRequest {
@@ -102,19 +89,8 @@ message FreeSSLCertificateRenewResponse {
   string cert = 2;
 }
 
-message FreeSSLCertificateDeleteRequest {
-  string cert = 1;
-}
-
 message FreeSSLCertificateDescribeRequest {
   string cert = 1;
-}
-
-message FreeSSLCertificateDeployRequest {
-  string cert = 1;
-  string secret_name = 2;
-  string cluster_name = 3;
-  string namespace = 4;
 }
 
 message DNSCheckRequest {
