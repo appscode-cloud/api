@@ -7,19 +7,17 @@ import (
 
 // Auto-generated. DO NOT EDIT.
 
-var certificateCreateRequestSchema *gojsonschema.Schema
+var cACreateRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	certificateCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	cACreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "csr": {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -30,7 +28,8 @@ func init() {
 	}
 }
 
-func (m *CertificateCreateRequest) IsValid() (*gojsonschema.Result, error) {
-	return certificateCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *CACreateRequest) IsValid() (*gojsonschema.Result, error) {
+	return cACreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *CertificateCreateRequest) IsRequest() {}
+func (m *CACreateRequest) IsRequest() {}
+

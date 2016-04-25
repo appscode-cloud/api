@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/sshkey/v0.1": {
+    "/sshkey/v0.1": {
       "get": {
         "summary": "SecureShell.Get",
         "operationId": "Get",

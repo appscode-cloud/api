@@ -15,13 +15,9 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "object_name": {
@@ -42,3 +38,4 @@ func (m *DashboardCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return dashboardCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DashboardCreateRequest) IsRequest() {}
+

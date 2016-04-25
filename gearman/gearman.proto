@@ -2,37 +2,9 @@ syntax = "proto3";
 
 package gearman;
 
+import "api/certificate/v0.1/certificate.proto";
 import "api/ci/v0.1/slave.proto";
 import "api/kubernetes/v0.1/clusters.proto";
-
-// Next Id: 11
-enum OperationType {
-  UNKNOWN = 0;
-  CLUSTER_CREATE = 1;
-  CLUSTER_SCALE = 2;
-  CLUSTER_DELETE = 3;
-  NAMESPACE_CREATE = 4;
-  SLAVE_CREATE = 5;
-  SLAVE_DELETE = 6;
-  CLUSTER_UPDATE = 7;
-}
-
-// Next Id: 10
-message Operation {
-  string phid = 1;
-  OperationType type = 2;
-  oneof request {
-    kubernetes.ClusterCreateRequest cluster_create_request = 3;
-    kubernetes.ClusterScaleRequest cluster_scale_request = 4;
-    kubernetes.ClusterDeleteRequest cluster_delete_request = 5;
-    ci.SlaveCreateRequest ci_slave_create_request = 6;
-    ci.SlaveDeleteRequest ci_slave_delete_request = 7;
-    kubernetes.ClusterUpdateRequest cluster_update_request = 11;
-  }
-  Auth auth = 8;
-  int64 request_time = 9;
-  Metadata metadata = 10;
-}
 
 message Auth {
   string namespace = 1;
@@ -42,4 +14,35 @@ message Auth {
 
 message Metadata {
   string subscription_phid = 1;
+}
+
+// Next Id: 11
+enum OperationType {
+  UNKNOWN = 0;
+  CLUSTER_CREATE = 1;
+  CLUSTER_SCALE = 2;
+  CLUSTER_DELETE = 3;
+  CLUSTER_UPDATE = 4;
+  SLAVE_CREATE = 5;
+  SLAVE_DELETE = 6;
+  CHECK_DNS = 7;
+  NAMESPACE_CREATE = 8;
+}
+
+// Next Id: 10
+message Operation {
+  string phid = 1;
+  Auth auth = 2;
+  int64 request_time = 3;
+  Metadata metadata = 4;
+  OperationType type = 5;
+  oneof request {
+    kubernetes.ClusterCreateRequest cluster_create_request = 6;
+    kubernetes.ClusterScaleRequest cluster_scale_request = 7;
+    kubernetes.ClusterDeleteRequest cluster_delete_request = 8;
+    kubernetes.ClusterUpdateRequest cluster_update_request = 9;
+    ci.SlaveCreateRequest ci_slave_create_request = 10;
+    ci.SlaveDeleteRequest ci_slave_delete_request = 11;
+    certificate.DNSCheckRequest dns_check_request = 12;
+  }
 }

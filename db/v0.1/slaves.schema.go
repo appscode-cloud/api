@@ -21,8 +21,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -37,3 +35,4 @@ func (m *SlaveAddRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveAddRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SlaveAddRequest) IsRequest() {}
+

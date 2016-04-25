@@ -1,0 +1,562 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/ssl/certificate/v0.1": {
+      "get": {
+        "summary": "Certificates.List",
+        "operationId": "List",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Certificates"
+        ]
+      },
+      "put": {
+        "summary": "Certificates.Create",
+        "operationId": "Create",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateCreateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Certificates"
+        ]
+      }
+    },
+    "/ssl/certificate/v0.1/{name}/import": {
+      "put": {
+        "summary": "Certificates.Import",
+        "operationId": "Import",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateImportRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Certificates"
+        ]
+      }
+    },
+    "/ssl/certificate/v0.1/{uid}": {
+      "get": {
+        "summary": "Certificates.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Certificates"
+        ]
+      },
+      "delete": {
+        "summary": "Certificates.Delete",
+        "operationId": "Delete",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Certificates"
+        ]
+      }
+    },
+    "/ssl/certificate/v0.1/{uid}/deploy": {
+      "post": {
+        "summary": "Certificates.Deploy",
+        "operationId": "Deploy",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateDeployRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Certificates"
+        ]
+      }
+    },
+    "/ssl/certificate/v0.1/{uid}/renew": {
+      "post": {
+        "summary": "Certificates.Renew",
+        "operationId": "Renew",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/certificateCertificateRenewResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Certificates"
+        ]
+      }
+    },
+    "/ssl/certificate/v0.1/{uid}/revoke": {
+      "put": {
+        "summary": "Certificates.Revoke",
+        "operationId": "Revoke",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Certificates"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "certificateCertificate": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string",
+          "format": "string"
+        },
+        "common_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "expire_date": {
+          "type": "string",
+          "format": "string"
+        },
+        "issued_by": {
+          "type": "string",
+          "format": "string"
+        },
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "sans": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "serial_number": {
+          "type": "string",
+          "format": "string"
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "string"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "certificateCertificateCreateRequest": {
+      "type": "object",
+      "properties": {
+        "account_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "bundle": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "common_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "issue_private_cert": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "key_data": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "san": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "subject_info": {
+          "$ref": "#/definitions/certificateSubjectInfo"
+        }
+      }
+    },
+    "certificateCertificateCreateResponse": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string",
+          "format": "byte"
+        },
+        "certificate": {
+          "$ref": "#/definitions/certificateCertificate"
+        },
+        "key": {
+          "type": "string",
+          "format": "byte"
+        },
+        "phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "root": {
+          "type": "string",
+          "format": "byte"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateCertificateDeleteRequest": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateCertificateDeployRequest": {
+      "type": "object",
+      "properties": {
+        "cluster_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "secret_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateCertificateDescribeRequest": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateCertificateDescribeResponse": {
+      "type": "object",
+      "properties": {
+        "certificate": {
+          "$ref": "#/definitions/certificateCertificate"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateCertificateImportRequest": {
+      "type": "object",
+      "properties": {
+        "cert_data": {
+          "type": "string",
+          "format": "string"
+        },
+        "key_data": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateCertificateListResponse": {
+      "type": "object",
+      "properties": {
+        "certificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/certificateCertificate"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateCertificateRenewRequest": {
+      "type": "object",
+      "properties": {
+        "account_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateCertificateRenewResponse": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "certificateCertificateRevokeRequest": {
+      "type": "object",
+      "properties": {
+        "account_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "uid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "certificateSubjectInfo": {
+      "type": "object",
+      "properties": {
+        "C": {
+          "type": "string",
+          "format": "string"
+        },
+        "L": {
+          "type": "string",
+          "format": "string"
+        },
+        "O": {
+          "type": "string",
+          "format": "string"
+        },
+        "OU": {
+          "type": "string",
+          "format": "string"
+        },
+        "ST": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesVoidRequest": {
+      "type": "object"
+    },
+    "dtypesVoidResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}

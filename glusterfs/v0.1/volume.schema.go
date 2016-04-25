@@ -80,3 +80,4 @@ func (m *VolumeDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return volumeDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *VolumeDeleteRequest) IsRequest() {}
+

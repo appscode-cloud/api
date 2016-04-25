@@ -6,20 +6,21 @@ set -o pipefail
 
 RETVAL=0
 ROOT=$PWD
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ALIAS="Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,"
 ALIAS+="Mapi/dtypes/types.proto=github.com/appscode/api/dtypes,"
 ALIAS+="Mapi/ci/v0.1/slave.proto=github.com/appscode/api/ci/v0.1,"
+ALIAS+="Mapi/certificate/v0.1/certificate.proto=github.com/appscode/api/certificate/v0.1,"
 ALIAS+="Mapi/kubernetes/v0.1/clusters.proto=github.com/appscode/api/kubernetes/v0.1,"
 ALIAS+="Mapi/ssh/v0.1/ssh.proto=github.com/appscode/api/ssh/v0.1,"
 ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any"
 
 clean() {
-	rm -rf ./*/*/*.pb.go ./*/*/*.pb.gw.go
-	rm -rf ./**/*.pb.go ./**/*.pb.gw.go
-
-	#rm -rf ./*/*/*.py
-	#rm -rf ./**/*.py
+	find . | grep pb.go | xargs rm
+	find . | grep pb.gw.go | xargs rm
+	find . | grep schema.json | xargs rm
+	find . | grep schema.go | xargs rm
 }
 
 gen_proto() {
@@ -193,6 +194,7 @@ gen_protos() {
     gen_server_protos
     gen_proxy_protos
     gen_swagger_defs
+    python $DIR/schema.py
     # gen_json_schemas
     # gen_python_protos
     # gen_php_protos

@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/billing/v0.1/charge/{charge_type}": {
+    "/billing/v0.1/charge/{charge_type}": {
       "put": {
         "summary": "Charge.Calculate",
         "operationId": "Calculate",

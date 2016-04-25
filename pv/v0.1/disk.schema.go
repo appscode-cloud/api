@@ -21,8 +21,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "plugin": {
@@ -71,8 +69,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "size": {
@@ -108,3 +104,4 @@ func (m *DiskCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DiskCreateRequest) IsRequest() {}
+

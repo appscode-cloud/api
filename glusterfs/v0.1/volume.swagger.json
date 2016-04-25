@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/glusterfs/v0.1/volumes/{kube_cluster}": {
+    "/glusterfs/v0.1/volumes/{kube_cluster}": {
       "put": {
         "summary": "Volumes.Create",
         "operationId": "Create",
@@ -49,7 +49,7 @@
         ]
       }
     },
-    "/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}": {
+    "/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}": {
       "get": {
         "summary": "Volumes.List",
         "operationId": "List",
@@ -82,7 +82,7 @@
         ]
       }
     },
-    "/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}/{volume}": {
+    "/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}/{volume}": {
       "delete": {
         "summary": "Volumes.Delete",
         "operationId": "Delete",

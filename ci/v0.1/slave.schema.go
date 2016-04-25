@@ -18,8 +18,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -32,8 +30,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -46,8 +42,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -61,8 +55,8 @@ func init() {
   "definitions": {
     "ciPortInfo": {
       "properties": {
-        "port": {
-          "type": "integer"
+        "port_range": {
+          "type": "string"
         },
         "protocol": {
           "type": "string"
@@ -120,3 +114,4 @@ func (m *SlaveCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SlaveCreateRequest) IsRequest() {}
+

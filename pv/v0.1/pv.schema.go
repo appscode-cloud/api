@@ -20,8 +20,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -37,8 +35,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -60,8 +56,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "plugin": {
@@ -92,3 +86,4 @@ func (m *PVRegisterRequest) IsValid() (*gojsonschema.Result, error) {
 	return pVRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PVRegisterRequest) IsRequest() {}
+

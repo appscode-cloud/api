@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/alert/v0.1/notify": {
+    "/alert/v0.1/notify": {
       "post": {
         "summary": "Alerts.Notify",
         "operationId": "Notify",
@@ -42,7 +42,7 @@
         ]
       }
     },
-    "/api/alert/v0.1/{spec}/{spec}/{spec}/{spec}": {
+    "/alert/v0.1/{spec}/{spec}/{spec}/{spec}": {
       "get": {
         "summary": "Alerts.List",
         "operationId": "List",
@@ -195,7 +195,7 @@
         ]
       }
     },
-    "/api/alert/v0.1/{spec}/{spec}/{spec}/{spec}/{phid}": {
+    "/alert/v0.1/{spec}/{spec}/{spec}/{spec}/{phid}": {
       "delete": {
         "summary": "Alerts.Delete",
         "operationId": "Delete",

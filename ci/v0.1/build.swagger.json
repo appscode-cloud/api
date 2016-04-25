@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/ci/v0.1/builds/{job_name}": {
+    "/ci/v0.1/builds/{job_name}": {
       "get": {
         "summary": "Builds.List",
         "operationId": "List",
@@ -41,7 +41,7 @@
         ]
       }
     },
-    "/api/ci/v0.1/builds/{job_name}/{number}": {
+    "/ci/v0.1/builds/{job_name}/{number}": {
       "get": {
         "summary": "Builds.Describe",
         "operationId": "Describe",

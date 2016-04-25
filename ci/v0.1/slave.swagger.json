@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/ci/v0.1/slaves": {
+    "/ci/v0.1/slaves": {
       "get": {
         "summary": "Slaves.List",
         "operationId": "List",
@@ -57,7 +57,7 @@
         ]
       }
     },
-    "/api/ci/v0.1/slaves/{name}": {
+    "/ci/v0.1/slaves/{name}": {
       "get": {
         "summary": "Slaves.Describe",
         "operationId": "Describe",
@@ -107,7 +107,7 @@
         ]
       }
     },
-    "/api/ci/v0.1/slaves/{name}/reboot": {
+    "/ci/v0.1/slaves/{name}/reboot": {
       "get": {
         "summary": "Slaves.Restart",
         "operationId": "Restart",
@@ -138,9 +138,9 @@
     "ciPortInfo": {
       "type": "object",
       "properties": {
-        "port": {
-          "type": "integer",
-          "format": "int32"
+        "port_range": {
+          "type": "string",
+          "format": "string"
         },
         "protocol": {
           "type": "string",

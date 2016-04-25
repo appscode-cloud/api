@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/kubernetes/v0.1/client/{cluster}/apps": {
+    "/kubernetes/v0.1/client/{cluster}/apps": {
       "get": {
         "summary": "Clients.Apps",
         "operationId": "Apps",
@@ -41,7 +41,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}": {
+    "/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}": {
       "get": {
         "summary": "Clients.App",
         "operationId": "App",
@@ -81,7 +81,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}/pods": {
+    "/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}/pods": {
       "get": {
         "summary": "Clients.AppPods",
         "operationId": "AppPods",
@@ -121,7 +121,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/configmaps": {
+    "/kubernetes/v0.1/client/{cluster}/configmaps": {
       "get": {
         "summary": "Clients.ConfigMaps",
         "operationId": "ConfigMaps",
@@ -147,7 +147,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}": {
+    "/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}": {
       "get": {
         "summary": "Clients.ConfigMap",
         "operationId": "ConfigMap",
@@ -187,7 +187,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/jobs": {
+    "/kubernetes/v0.1/client/{cluster}/jobs": {
       "get": {
         "summary": "Clients.Jobs",
         "operationId": "Jobs",
@@ -213,7 +213,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/namespaces": {
+    "/kubernetes/v0.1/client/{cluster}/namespaces": {
       "get": {
         "summary": "Clients.Namespaces",
         "operationId": "Namespaces",
@@ -239,7 +239,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/nodes": {
+    "/kubernetes/v0.1/client/{cluster}/nodes": {
       "get": {
         "summary": "Clients.Nodes",
         "operationId": "Nodes",
@@ -265,7 +265,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/pods": {
+    "/kubernetes/v0.1/client/{cluster}/pods": {
       "get": {
         "summary": "Clients.Pods",
         "operationId": "Pods",
@@ -291,7 +291,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/rcs": {
+    "/kubernetes/v0.1/client/{cluster}/rcs": {
       "get": {
         "summary": "Clients.ReplicationControllers",
         "operationId": "ReplicationControllers",
@@ -317,7 +317,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/secrets": {
+    "/kubernetes/v0.1/client/{cluster}/secrets": {
       "get": {
         "summary": "Clients.Secrets",
         "operationId": "Secrets",
@@ -343,7 +343,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}": {
+    "/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}": {
       "get": {
         "summary": "Clients.Secret",
         "operationId": "Secret",
@@ -383,7 +383,7 @@
         ]
       }
     },
-    "/api/kubernetes/v0.1/client/{cluster}/services": {
+    "/kubernetes/v0.1/client/{cluster}/services": {
       "get": {
         "summary": "Clients.Services",
         "operationId": "Services",

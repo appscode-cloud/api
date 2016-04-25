@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/pv/v0.1/disks/{cluster}": {
+    "/pv/v0.1/disks/{cluster}": {
       "get": {
         "summary": "Disks.List",
         "operationId": "List",
@@ -41,7 +41,7 @@
         ]
       }
     },
-    "/api/pv/v0.1/disks/{cluster}/{identifier}": {
+    "/pv/v0.1/disks/{cluster}/{identifier}": {
       "delete": {
         "summary": "Disks.Delete",
         "operationId": "Delete",
@@ -74,7 +74,7 @@
         ]
       }
     },
-    "/api/pv/v0.1/disks/{cluster}/{name}": {
+    "/pv/v0.1/disks/{cluster}/{name}": {
       "put": {
         "summary": "Disks.Create",
         "operationId": "Create",
@@ -115,7 +115,7 @@
         ]
       }
     },
-    "/api/pv/v0.1/disks/{cluster}/{name}/{plugin}": {
+    "/pv/v0.1/disks/{cluster}/{name}/{plugin}": {
       "get": {
         "summary": "Disks.Describe",
         "operationId": "Describe",

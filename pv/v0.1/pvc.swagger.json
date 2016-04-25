@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/pv/v0.1/pvc/{cluster}/{name}": {
+    "/pv/v0.1/pvc/{cluster}/{name}": {
       "put": {
         "summary": "PersistentVolumeClaims.Register",
         "operationId": "Register",
@@ -56,7 +56,7 @@
         ]
       }
     },
-    "/api/pv/v0.1/pvc/{cluster}/{name}/{namespace}": {
+    "/pv/v0.1/pvc/{cluster}/{name}/{namespace}": {
       "get": {
         "summary": "PersistentVolumeClaims.Describe",
         "operationId": "Describe",

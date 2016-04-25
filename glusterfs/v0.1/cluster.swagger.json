@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/glusterfs/v0.1/clusters/{kube_cluster}": {
+    "/glusterfs/v0.1/clusters/{kube_cluster}": {
       "get": {
         "summary": "Clusters.List",
         "operationId": "List",
@@ -73,7 +73,7 @@
         ]
       }
     },
-    "/api/glusterfs/v0.1/clusters/{kube_cluster}/{name}": {
+    "/glusterfs/v0.1/clusters/{kube_cluster}/{name}": {
       "get": {
         "summary": "Clusters.Describe",
         "operationId": "Describe",
