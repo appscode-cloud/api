@@ -65,6 +65,9 @@ func init() {
       },
       "type": "array"
     },
+    "enable_bacula": {
+      "type": "integer"
+    },
     "kube_cluster": {
       "type": "string"
     },
@@ -104,4 +107,3 @@ func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterCreateRequest) IsRequest() {}
-

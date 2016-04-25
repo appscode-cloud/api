@@ -189,6 +189,10 @@
     "glusterfsCluster": {
       "type": "object",
       "properties": {
+        "BaculaEnabled": {
+          "type": "integer",
+          "format": "int32"
+        },
         "created": {
           "type": "string",
           "format": "string"
@@ -228,6 +232,10 @@
             "type": "string",
             "format": "string"
           }
+        },
+        "enable_bacula": {
+          "type": "integer",
+          "format": "int32"
         },
         "kube_cluster": {
           "type": "string",

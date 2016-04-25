@@ -8,6 +8,9 @@ func Patterns() []runtime.Pattern {
 	patterns = append(patterns, pattern_Certificates_Delete_0)
 	patterns = append(patterns, pattern_Certificates_Deploy_0)
 	patterns = append(patterns, pattern_Certificates_Describe_0)
+	patterns = append(patterns, pattern_Certificates_Import_0)
+	patterns = append(patterns, pattern_Certificates_Renew_0)
+	patterns = append(patterns, pattern_Certificates_Revoke_0)
 	patterns = append(patterns, pattern_Certificates_List_0)
 	return patterns
 }

@@ -8,6 +8,9 @@
           },
           "type": "array"
         },
+        "enable_bacula": {
+          "type": "integer"
+        },
         "kube_cluster": {
           "type": "string"
         },
