@@ -126,6 +126,9 @@ func init() {
     "common_name": {
       "type": "string"
     },
+    "issue_private_cert": {
+      "type": "boolean"
+    },
     "key_data": {
       "type": "string"
     },
