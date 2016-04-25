@@ -219,8 +219,6 @@ if __name__ == "__main__":
         # http://stackoverflow.com/a/817296
         globals()[sys.argv[1]](*sys.argv[2:])
     else:
-        # call('find . | grep schema.json | xargs rm')
-        call('find . | grep schema.go | xargs rm')
         generate_json_schema()
         # apply_naming_policy()
         generate_go_schema()
