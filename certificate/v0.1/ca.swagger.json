@@ -72,6 +72,7 @@
   },
   "definitions": {
     "certificateCertificateCreateRequest": {
+      "type": "object",
       "properties": {
         "csr": {
           "type": "string",
@@ -84,6 +85,7 @@
       }
     },
     "certificateCertificateCreateResponse": {
+      "type": "object",
       "properties": {
         "cert": {
           "type": "string",
@@ -107,6 +109,7 @@
       }
     },
     "dtypesHelp": {
+      "type": "object",
       "properties": {
         "description": {
           "type": "string",
@@ -119,6 +122,7 @@
       }
     },
     "dtypesStatus": {
+      "type": "object",
       "properties": {
         "code": {
           "type": "string",
@@ -144,6 +148,7 @@
       }
     },
     "protobufAny": {
+      "type": "object",
       "properties": {
         "type_url": {
           "type": "string",
