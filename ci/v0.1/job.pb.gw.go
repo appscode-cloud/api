@@ -369,17 +369,17 @@ func RegisterJobsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.
 }
 
 var (
-	pattern_Jobs_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ci", "v0.1", "jobs"}, ""))
+	pattern_Jobs_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"ci", "v0.1", "jobs"}, ""))
 
-	pattern_Jobs_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "ci", "v0.1", "jobs", "name"}, ""))
+	pattern_Jobs_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"ci", "v0.1", "jobs", "name"}, ""))
 
-	pattern_Jobs_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "ci", "v0.1", "jobs", "name"}, ""))
+	pattern_Jobs_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"ci", "v0.1", "jobs", "name"}, ""))
 
-	pattern_Jobs_Copy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "ci", "v0.1", "jobs", "source", "destination"}, ""))
+	pattern_Jobs_Copy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"ci", "v0.1", "jobs", "source", "destination"}, ""))
 
-	pattern_Jobs_Build_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "ci", "v0.1", "jobs", "name", "build"}, ""))
+	pattern_Jobs_Build_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"ci", "v0.1", "jobs", "name", "build"}, ""))
 
-	pattern_Jobs_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "ci", "v0.1", "jobs", "name"}, ""))
+	pattern_Jobs_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"ci", "v0.1", "jobs", "name"}, ""))
 )
 
 var (

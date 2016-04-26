@@ -1,21 +1,21 @@
 {
-  "definitions":{
-    "sshSecureShellGetRequest":{
-      "properties":{
-        "cluster_name":{
-          "type":"string"
+  "definitions": {
+    "sshSecureShellGetRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
         },
-        "cluster_namespace":{
-          "type":"string"
+        "cluster_namespace": {
+          "type": "string"
         },
-        "instance_name":{
-          "type":"string"
+        "instance_name": {
+          "type": "string"
         },
-        "jenkins_namespace":{
-          "type":"string"
+        "jenkins_namespace": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

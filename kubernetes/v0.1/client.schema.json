@@ -1,54 +1,54 @@
 {
-  "definitions":{
-    "kubernetesAppDescribeRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+  "definitions": {
+    "kubernetesAppDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "kubernetesClientRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+    "kubernetesClientRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "kubernetesConfigMapDescribeRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+    "kubernetesConfigMapDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "kubernetesSecretDescribeRequest":{
-      "properties":{
-        "cluster":{
-          "type":"string"
+    "kubernetesSecretDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

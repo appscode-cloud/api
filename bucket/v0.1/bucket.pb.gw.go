@@ -103,7 +103,7 @@ func RegisterBucketsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 }
 
 var (
-	pattern_Buckets_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "buckets", "v0.1"}, ""))
+	pattern_Buckets_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"buckets", "v0.1"}, ""))
 )
 
 var (

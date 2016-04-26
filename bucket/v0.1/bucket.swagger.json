@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/buckets/v0.1": {
+    "/buckets/v0.1": {
       "get": {
         "summary": "Buckets.List",
         "operationId": "List",

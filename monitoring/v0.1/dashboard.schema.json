@@ -1,21 +1,21 @@
 {
-  "definitions":{
-    "monitoringDashboardCreateRequest":{
-      "properties":{
-        "cluster_name":{
-          "type":"string"
+  "definitions": {
+    "monitoringDashboardCreateRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
         },
-        "namespace":{
-          "type":"string"
+        "namespace": {
+          "type": "string"
         },
-        "object_name":{
-          "type":"string"
+        "object_name": {
+          "type": "string"
         },
-        "type":{
-          "type":"string"
+        "type": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

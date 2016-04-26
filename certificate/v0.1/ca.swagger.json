@@ -15,15 +15,15 @@
     "application/json"
   ],
   "paths": {
-    "/api/certificate/v0.1/authority": {
-      "put": {
-        "summary": "AuthorityCertificate.Create",
+    "/ssl/ca/v0.1": {
+      "post": {
+        "summary": "CAs.Create",
         "operationId": "Create",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/certificateCertificateCreateResponse"
+              "$ref": "#/definitions/certificateCACreateResponse"
             }
           }
         },
@@ -33,45 +33,18 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/certificateCertificateCreateRequest"
+              "$ref": "#/definitions/certificateCACreateRequest"
             }
           }
         ],
         "tags": [
-          "AuthorityCertificate"
-        ]
-      }
-    },
-    "/api/certificate/v0.1/client": {
-      "put": {
-        "summary": "ClientCertificate.Create",
-        "operationId": "Create",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/certificateCertificateCreateResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/certificateCertificateCreateRequest"
-            }
-          }
-        ],
-        "tags": [
-          "ClientCertificate"
+          "CAs"
         ]
       }
     }
   },
   "definitions": {
-    "certificateCertificateCreateRequest": {
+    "certificateCACreateRequest": {
       "type": "object",
       "properties": {
         "csr": {
@@ -84,7 +57,7 @@
         }
       }
     },
-    "certificateCertificateCreateResponse": {
+    "certificateCACreateResponse": {
       "type": "object",
       "properties": {
         "cert": {

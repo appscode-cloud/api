@@ -1,12 +1,12 @@
 {
-  "definitions":{
-    "bucketBucketListRequest":{
-      "properties":{
-        "cloud_credential":{
-          "type":"string"
+  "definitions": {
+    "bucketBucketListRequest": {
+      "properties": {
+        "cloud_credential": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

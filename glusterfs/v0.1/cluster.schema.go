@@ -2,7 +2,7 @@ package glusterfs
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -15,86 +15,102 @@ var clusterCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "kube_cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "kube_cluster": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "kube_cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "kube_cluster": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "kube_cluster":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "kube_cluster": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "disks":{
-      "items":{
-        "format":"string",
-        "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "bucket": {
+      "type": "string"
+    },
+    "credential": {
+      "type": "string"
+    },
+    "disks": {
+      "items": {
+        "type": "string"
       },
-      "type":"array"
+      "type": "array"
     },
-    "kube_cluster":{
-      "type":"string"
+    "enable_bacula": {
+      "type": "integer"
     },
-    "mood":{
-      "type":"string"
+    "kube_cluster": {
+      "type": "string"
     },
-    "name":{
-      "type":"string"
+    "mood": {
+      "type": "string"
     },
-    "node":{
-      "type":"integer"
+    "name": {
+      "type": "string"
+    },
+    "node": {
+      "type": "integer"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 
 func (m *ClusterDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ClusterDescribeRequest) IsRequest() {}
+
 func (m *ClusterListRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ClusterListRequest) IsRequest() {}
+
 func (m *ClusterDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ClusterDeleteRequest) IsRequest() {}
+
 func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *ClusterCreateRequest) IsRequest() {}
+

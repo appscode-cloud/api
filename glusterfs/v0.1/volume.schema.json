@@ -1,43 +1,43 @@
 {
-  "definitions":{
-    "glusterfsVolumeCreateRequest":{
-      "properties":{
-        "glusterfs_cluster":{
-          "type":"string"
+  "definitions": {
+    "glusterfsVolumeCreateRequest": {
+      "properties": {
+        "glusterfs_cluster": {
+          "type": "string"
         },
-        "kube_cluster":{
-          "type":"string"
+        "kube_cluster": {
+          "type": "string"
         },
-        "volume":{
-          "type":"string"
+        "volume": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "glusterfsVolumeDeleteRequest":{
-      "properties":{
-        "glusterfs_cluster":{
-          "type":"string"
+    "glusterfsVolumeDeleteRequest": {
+      "properties": {
+        "glusterfs_cluster": {
+          "type": "string"
         },
-        "kube_cluster":{
-          "type":"string"
+        "kube_cluster": {
+          "type": "string"
         },
-        "volume":{
-          "type":"string"
+        "volume": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "glusterfsVolumeListRequest":{
-      "properties":{
-        "glusterfs_cluster":{
-          "type":"string"
+    "glusterfsVolumeListRequest": {
+      "properties": {
+        "glusterfs_cluster": {
+          "type": "string"
         },
-        "kube_cluster":{
-          "type":"string"
+        "kube_cluster": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

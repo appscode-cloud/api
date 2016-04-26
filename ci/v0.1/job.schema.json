@@ -1,56 +1,56 @@
 {
-  "definitions":{
-    "ciJobBuildRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+  "definitions": {
+    "ciJobBuildRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
         },
-        "param":{
-          "type":"string"
+        "param": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciJobCopyRequest":{
-      "properties":{
-        "destination":{
-          "type":"string"
+    "ciJobCopyRequest": {
+      "properties": {
+        "destination": {
+          "type": "string"
         },
-        "source":{
-          "type":"string"
+        "source": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciJobCreateRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "ciJobCreateRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
         },
-        "sh_file":{
-          "type":"string"
+        "sh_file": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciJobDeleteRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "ciJobDeleteRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "ciJobDescribeRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "ciJobDescribeRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "dtypesVoidRequest":{
-      "type":"object"
+    "dtypesVoidRequest": {
+      "type": "object"
     }
   }
 }

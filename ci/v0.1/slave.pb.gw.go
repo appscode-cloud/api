@@ -282,15 +282,15 @@ func RegisterSlavesHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 }
 
 var (
-	pattern_Slaves_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ci", "v0.1", "slaves"}, ""))
+	pattern_Slaves_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"ci", "v0.1", "slaves"}, ""))
 
-	pattern_Slaves_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "ci", "v0.1", "slaves", "name"}, ""))
+	pattern_Slaves_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"ci", "v0.1", "slaves", "name"}, ""))
 
-	pattern_Slaves_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ci", "v0.1", "slaves"}, ""))
+	pattern_Slaves_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"ci", "v0.1", "slaves"}, ""))
 
-	pattern_Slaves_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "ci", "v0.1", "slaves", "name"}, ""))
+	pattern_Slaves_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"ci", "v0.1", "slaves", "name"}, ""))
 
-	pattern_Slaves_Restart_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "ci", "v0.1", "slaves", "name", "reboot"}, ""))
+	pattern_Slaves_Restart_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"ci", "v0.1", "slaves", "name", "reboot"}, ""))
 )
 
 var (

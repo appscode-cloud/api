@@ -2,7 +2,7 @@ package ci
 
 import (
 	"github.com/xeipuuv/gojsonschema"
-	// "log"
+	"log"
 )
 
 // Auto-generated. DO NOT EDIT.
@@ -15,95 +15,103 @@ var slaveCreateRequestSchema *gojsonschema.Schema
 func init() {
 	var err error
 	slaveDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	slaveRestartRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	slaveDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "properties":{
-    "name":{
-      "type":"string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 	slaveCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema":"http://json-schema.org/draft-04/schema#",
-  "definitions":{
-    "ciPortInfo":{
-      "properties":{
-        "port":{
-          "type":"integer"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "ciPortInfo": {
+      "properties": {
+        "port_range": {
+          "type": "string"
         },
-        "protocol":{
-          "type":"string"
+        "protocol": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   },
-  "properties":{
-    "ci_starter_version":{
-      "type":"string"
+  "properties": {
+    "ci_starter_version": {
+      "type": "string"
     },
-    "executors":{
-      "type":"integer"
+    "executors": {
+      "type": "integer"
     },
-    "labels":{
-      "type":"string"
+    "labels": {
+      "type": "string"
     },
-    "ports":{
-      "items":{
-        "$ref":"#/definitions/ciPortInfo"
+    "ports": {
+      "items": {
+        "$ref": "#/definitions/ciPortInfo"
       },
-      "type":"array"
+      "type": "array"
     },
-    "saltbase_version":{
-      "type":"string"
+    "saltbase_version": {
+      "type": "string"
     },
-    "user_startup_script":{
-      "type":"string"
+    "user_startup_script": {
+      "type": "string"
     }
   },
-  "type":"object"
+  "type": "object"
 }`))
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
 }
 
 func (m *SlaveDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SlaveDeleteRequest) IsRequest() {}
+
 func (m *SlaveRestartRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveRestartRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SlaveRestartRequest) IsRequest() {}
+
 func (m *SlaveDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SlaveDescribeRequest) IsRequest() {}
+
 func (m *SlaveCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
+func (m *SlaveCreateRequest) IsRequest() {}
+

@@ -1,61 +1,60 @@
 {
-  "definitions":{
-    "namespaceCheckRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+  "definitions": {
+    "namespaceCheckRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "namespaceCreateRequest":{
-      "properties":{
-        "display_name":{
-          "type":"string"
+    "namespaceCreateRequest": {
+      "properties": {
+        "display_name": {
+          "type": "string"
         },
-        "email":{
-          "type":"string"
+        "email": {
+          "type": "string"
         },
-        "invite_email":{
-          "items":{
-            "format":"string",
-            "type":"string"
+        "invite_email": {
+          "items": {
+            "type": "string"
           },
-          "type":"array"
+          "type": "array"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "password":{
-          "type":"string"
+        "password": {
+          "type": "string"
         },
-        "subscription_type":{
-          "type":"string"
+        "subscription_type": {
+          "type": "string"
         },
-        "user_ip":{
-          "type":"string"
+        "user_ip": {
+          "type": "string"
         },
-        "user_name":{
-          "type":"string"
+        "user_name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "namespaceLogRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "namespaceLogRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "namespaceStatusRequest":{
-      "properties":{
-        "name":{
-          "type":"string"
+    "namespaceStatusRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

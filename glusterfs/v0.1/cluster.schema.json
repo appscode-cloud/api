@@ -1,58 +1,66 @@
 {
-  "definitions":{
-    "glusterfsClusterCreateRequest":{
-      "properties":{
-        "disks":{
-          "items":{
-            "format":"string",
-            "type":"string"
+  "definitions": {
+    "glusterfsClusterCreateRequest": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "disks": {
+          "items": {
+            "type": "string"
           },
-          "type":"array"
+          "type": "array"
         },
-        "kube_cluster":{
-          "type":"string"
+        "enable_bacula": {
+          "type": "integer"
         },
-        "mood":{
-          "type":"string"
+        "kube_cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "mood": {
+          "type": "string"
         },
-        "node":{
-          "type":"integer"
+        "name": {
+          "type": "string"
+        },
+        "node": {
+          "type": "integer"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "glusterfsClusterDeleteRequest":{
-      "properties":{
-        "kube_cluster":{
-          "type":"string"
+    "glusterfsClusterDeleteRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "glusterfsClusterDescribeRequest":{
-      "properties":{
-        "kube_cluster":{
-          "type":"string"
+    "glusterfsClusterDescribeRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     },
-    "glusterfsClusterListRequest":{
-      "properties":{
-        "kube_cluster":{
-          "type":"string"
+    "glusterfsClusterListRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
         }
       },
-      "type":"object"
+      "type": "object"
     }
   }
 }

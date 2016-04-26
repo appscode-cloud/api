@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/billing/v0.1/subscription": {
+    "/billing/v0.1/subscription": {
       "put": {
         "summary": "Subscriptions.Create",
         "operationId": "Create",
@@ -42,7 +42,7 @@
         ]
       }
     },
-    "/api/billing/v0.1/subscription/quota": {
+    "/billing/v0.1/subscription/quota": {
       "post": {
         "summary": "Subscriptions.Quota",
         "operationId": "Quota",
@@ -69,7 +69,7 @@
         ]
       }
     },
-    "/api/billing/v0.1/subscription/{product_type}/{object_phid}": {
+    "/billing/v0.1/subscription/{product_type}/{object_phid}": {
       "delete": {
         "summary": "Subscriptions.UnSubscribe",
         "operationId": "UnSubscribe",
@@ -141,7 +141,7 @@
         ]
       }
     },
-    "/api/billing/v0.1/subscription/{time}": {
+    "/billing/v0.1/subscription/{time}": {
       "get": {
         "summary": "Subscriptions.Describe",
         "operationId": "Describe",

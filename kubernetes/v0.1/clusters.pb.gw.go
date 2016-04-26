@@ -484,23 +484,23 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 }
 
 var (
-	pattern_Clusters_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "kubernetes", "v0.1", "clusters", "name"}, ""))
+	pattern_Clusters_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kubernetes", "v0.1", "clusters", "name"}, ""))
 
-	pattern_Clusters_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "kubernetes", "v0.1", "clusters"}, ""))
+	pattern_Clusters_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"kubernetes", "v0.1", "clusters"}, ""))
 
-	pattern_Clusters_Scale_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "kubernetes", "v0.1", "clusters"}, ""))
+	pattern_Clusters_Scale_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"kubernetes", "v0.1", "clusters"}, ""))
 
-	pattern_Clusters_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "kubernetes", "v0.1", "clusters", "name"}, ""))
+	pattern_Clusters_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kubernetes", "v0.1", "clusters", "name"}, ""))
 
-	pattern_Clusters_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "kubernetes", "v0.1", "clusters", "name"}, ""))
+	pattern_Clusters_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kubernetes", "v0.1", "clusters", "name"}, ""))
 
-	pattern_Clusters_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "kubernetes", "v0.1", "clusters"}, ""))
+	pattern_Clusters_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"kubernetes", "v0.1", "clusters"}, ""))
 
-	pattern_Clusters_StartupScript_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "kubernetes", "v0.1", "cluster-startup-script", "role"}, ""))
+	pattern_Clusters_StartupScript_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kubernetes", "v0.1", "cluster-startup-script", "role"}, ""))
 
-	pattern_Clusters_ClientConfig_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0.1", "clusters", "name", "client-config"}, ""))
+	pattern_Clusters_ClientConfig_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"kubernetes", "v0.1", "clusters", "name", "client-config"}, ""))
 
-	pattern_Clusters_Instances_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"api", "kubernetes", "v0.1", "clusters", "cluster_name", "instances"}, ""))
+	pattern_Clusters_Instances_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"kubernetes", "v0.1", "clusters", "cluster_name", "instances"}, ""))
 )
 
 var (
