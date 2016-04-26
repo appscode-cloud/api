@@ -226,6 +226,14 @@
     "glusterfsClusterCreateRequest": {
       "type": "object",
       "properties": {
+        "bucket": {
+          "type": "string",
+          "format": "string"
+        },
+        "credential": {
+          "type": "string",
+          "format": "string"
+        },
         "disks": {
           "type": "array",
           "items": {
