@@ -275,6 +275,10 @@
           "type": "string",
           "format": "string"
         },
+        "dump": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "force": {
           "type": "boolean",
           "format": "boolean"
@@ -304,6 +308,10 @@
     "dbCreateRequest": {
       "type": "object",
       "properties": {
+        "auth_secret_name": {
+          "type": "string",
+          "format": "string"
+        },
         "bucket_name": {
           "type": "string",
           "format": "string"
@@ -344,10 +352,6 @@
           "type": "string",
           "format": "string"
         },
-        "set_password": {
-          "type": "boolean",
-          "format": "boolean"
-        },
         "sku": {
           "type": "string",
           "format": "string"
@@ -365,11 +369,7 @@
     "dbDatabase": {
       "type": "object",
       "properties": {
-        "archive_bucket": {
-          "type": "string",
-          "format": "string"
-        },
-        "archive_bucket_region": {
+        "auth_secret": {
           "type": "string",
           "format": "string"
         },
@@ -385,11 +385,11 @@
           "type": "string",
           "format": "string"
         },
-        "kubernetes_service": {
+        "last_backup": {
           "type": "string",
           "format": "string"
         },
-        "last_backup": {
+        "name": {
           "type": "string",
           "format": "string"
         },
@@ -517,6 +517,10 @@
     "dbRestoreRequest": {
       "type": "object",
       "properties": {
+        "auth_secret_name": {
+          "type": "string",
+          "format": "string"
+        },
         "bucket_name": {
           "type": "string",
           "format": "string"
