@@ -73,6 +73,8 @@ message ClusterCreateRequest {
   repeated string disks = 4;
   string kube_cluster = 5;
   int32 enable_bacula = 6;
+  // if bacula is enabled the following two fields are
+  // required.
   string bucket = 7;
   string credential = 8;
 }
