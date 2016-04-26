@@ -59,11 +59,20 @@ func init() {
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "bucket": {
+      "type": "string"
+    },
+    "credential": {
+      "type": "string"
+    },
     "disks": {
       "items": {
         "type": "string"
       },
       "type": "array"
+    },
+    "enable_bacula": {
+      "type": "integer"
     },
     "kube_cluster": {
       "type": "string"
@@ -104,4 +113,3 @@ func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterCreateRequest) IsRequest() {}
-
