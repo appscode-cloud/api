@@ -14,6 +14,9 @@
         "credential": {
           "type": "string"
         },
+        "dump": {
+          "type": "boolean"
+        },
         "force": {
           "type": "boolean"
         },
@@ -37,6 +40,9 @@
     },
     "dbCreateRequest": {
       "properties": {
+        "auth_secret_name": {
+          "type": "string"
+        },
         "bucket_name": {
           "type": "string"
         },
@@ -66,9 +72,6 @@
         },
         "region": {
           "type": "string"
-        },
-        "set_password": {
-          "type": "boolean"
         },
         "sku": {
           "type": "string"
@@ -109,6 +112,9 @@
     },
     "dbRestoreRequest": {
       "properties": {
+        "auth_secret_name": {
+          "type": "string"
+        },
         "bucket_name": {
           "type": "string"
         },

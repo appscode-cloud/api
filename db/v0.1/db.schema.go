@@ -64,6 +64,9 @@ func init() {
     "credential": {
       "type": "string"
     },
+    "dump": {
+      "type": "boolean"
+    },
     "force": {
       "type": "boolean"
     },
@@ -91,6 +94,9 @@ func init() {
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "auth_secret_name": {
+      "type": "string"
+    },
     "bucket_name": {
       "type": "string"
     },
@@ -120,9 +126,6 @@ func init() {
     },
     "region": {
       "type": "string"
-    },
-    "set_password": {
-      "type": "boolean"
     },
     "sku": {
       "type": "string"
@@ -154,6 +157,9 @@ func init() {
 	restoreRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "auth_secret_name": {
+      "type": "string"
+    },
     "bucket_name": {
       "type": "string"
     },
