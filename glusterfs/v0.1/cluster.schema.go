@@ -113,3 +113,4 @@ func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterCreateRequest) IsRequest() {}
+
