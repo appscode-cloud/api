@@ -2,11 +2,20 @@
   "definitions": {
     "glusterfsClusterCreateRequest": {
       "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
         "disks": {
           "items": {
             "type": "string"
           },
           "type": "array"
+        },
+        "enable_bacula": {
+          "type": "integer"
         },
         "kube_cluster": {
           "type": "string"

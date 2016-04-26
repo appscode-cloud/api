@@ -189,6 +189,10 @@
     "glusterfsCluster": {
       "type": "object",
       "properties": {
+        "BaculaEnabled": {
+          "type": "integer",
+          "format": "int32"
+        },
         "created": {
           "type": "string",
           "format": "string"
@@ -222,12 +226,24 @@
     "glusterfsClusterCreateRequest": {
       "type": "object",
       "properties": {
+        "bucket": {
+          "type": "string",
+          "format": "string"
+        },
+        "credential": {
+          "type": "string",
+          "format": "string"
+        },
         "disks": {
           "type": "array",
           "items": {
             "type": "string",
             "format": "string"
           }
+        },
+        "enable_bacula": {
+          "type": "integer",
+          "format": "int32"
         },
         "kube_cluster": {
           "type": "string",
