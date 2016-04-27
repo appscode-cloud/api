@@ -67,7 +67,7 @@ message CreateRequest {
   string version = 11;
   string gfs_endpoint = 12;
   string gfs_disk = 13;
-  bool set_password = 14;
+  string auth_secret_name = 14;
 }
 
 message DeleteRequest {
@@ -86,7 +86,9 @@ message BackupRequest {
   string credential = 7;
   string region = 8;
   string auth_secret_name = 9;
-  bool force = 10;
+  bool wal = 10;
+  bool force = 11;
+
 }
 
 message RestoreRequest {
@@ -103,7 +105,9 @@ message RestoreRequest {
   string region = 11;
   string secret_name = 12;
   string version = 13;
-  bool force = 14;
+  string auth_secret_name = 14;
+  bool wal = 15;
+  bool force = 16;
 }
 
 message DescribeRequest {
@@ -142,17 +146,16 @@ message ListResponse {
 message Database {
   string phid = 1;
   string cluster_name = 2;
-  string kubernetes_service = 3;
+  string name = 3;
   string namespace = 4;
   string type = 5;
   string sku = 6;
   string version = 7;
-  string archive_bucket = 8;
-  string archive_bucket_region = 9;
-  int32 auto_snapshot = 10;
-  int64 pv_size = 11;
-  string created = 12;
-  string last_backup = 13;
+  string auth_secret = 8;
+  int32 auto_snapshot = 9;
+  int64 pv_size = 10;
+  string created = 11;
+  string last_backup = 12;
 }
 
 message SnapshotListRequest {

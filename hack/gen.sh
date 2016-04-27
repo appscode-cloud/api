@@ -17,10 +17,10 @@ ALIAS+="Mapi/ssh/v0.1/ssh.proto=github.com/appscode/api/ssh/v0.1,"
 ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any"
 
 clean() {
-	find . | grep pb.go | xargs rm
-	find . | grep pb.gw.go | xargs rm
-	find . | grep schema.json | xargs rm
-	find . | grep schema.go | xargs rm
+	(find . | grep pb.go | xargs rm) || true
+	(find . | grep pb.gw.go | xargs rm) || true
+	(find . | grep schema.json | xargs rm) || true
+	(find . | grep schema.go | xargs rm) || true
 }
 
 gen_proto() {
