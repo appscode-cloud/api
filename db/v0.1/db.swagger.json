@@ -275,10 +275,6 @@
           "type": "string",
           "format": "string"
         },
-        "dump": {
-          "type": "boolean",
-          "format": "boolean"
-        },
         "force": {
           "type": "boolean",
           "format": "boolean"
@@ -302,6 +298,10 @@
         "type": {
           "type": "string",
           "format": "string"
+        },
+        "wal": {
+          "type": "boolean",
+          "format": "boolean"
         }
       }
     },
@@ -576,6 +576,10 @@
         "version": {
           "type": "string",
           "format": "string"
+        },
+        "wal": {
+          "type": "boolean",
+          "format": "boolean"
         }
       }
     },

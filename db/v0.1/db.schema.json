@@ -14,9 +14,6 @@
         "credential": {
           "type": "string"
         },
-        "dump": {
-          "type": "boolean"
-        },
         "force": {
           "type": "boolean"
         },
@@ -34,6 +31,9 @@
         },
         "type": {
           "type": "string"
+        },
+        "wal": {
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -156,6 +156,9 @@
         },
         "version": {
           "type": "string"
+        },
+        "wal": {
+          "type": "boolean"
         }
       },
       "type": "object"

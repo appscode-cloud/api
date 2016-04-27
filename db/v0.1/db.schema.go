@@ -64,9 +64,6 @@ func init() {
     "credential": {
       "type": "string"
     },
-    "dump": {
-      "type": "boolean"
-    },
     "force": {
       "type": "boolean"
     },
@@ -84,6 +81,9 @@ func init() {
     },
     "type": {
       "type": "string"
+    },
+    "wal": {
+      "type": "boolean"
     }
   },
   "type": "object"
@@ -201,6 +201,9 @@ func init() {
     },
     "version": {
       "type": "string"
+    },
+    "wal": {
+      "type": "boolean"
     }
   },
   "type": "object"
