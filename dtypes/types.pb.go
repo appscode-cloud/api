@@ -137,7 +137,7 @@ func (StatusCode) EnumDescriptor() ([]byte, []int) { return fileDescriptor0, []i
 type Status struct {
 	// Response status code
 	Code string `protobuf:"bytes,1,opt,name=code" json:"code,omitempty"`
-	// Response status code string details.
+	// Response status code string.
 	Status string `protobuf:"bytes,2,opt,name=status" json:"status,omitempty"`
 	// User facing message.
 	Message string `protobuf:"bytes,3,opt,name=message" json:"message,omitempty"`
