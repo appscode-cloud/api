@@ -107,7 +107,7 @@ enum StatusCode {
 message Status {
     // Response status code
     string code = 1;
-    // Response status code string details.
+    // Response status code string.
     string status = 2;
 
     // User facing message.
