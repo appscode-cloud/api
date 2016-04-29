@@ -72,9 +72,7 @@ message SubscriptionCloseRequest {
 }
 
 message SubscriptionCreateRequest {
-  string author_phid = 1;
-  string product_phid = 2;
-  string type = 3;
+  string phid = 1;
 }
 
 message Quota {

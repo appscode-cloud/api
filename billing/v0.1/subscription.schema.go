@@ -67,13 +67,7 @@ func init() {
 	subscriptionCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "author_phid": {
-      "type": "string"
-    },
-    "product_phid": {
-      "type": "string"
-    },
-    "type": {
+    "phid": {
       "type": "string"
     }
   },

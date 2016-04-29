@@ -24,13 +24,7 @@
     },
     "billingSubscriptionCreateRequest": {
       "properties": {
-        "author_phid": {
-          "type": "string"
-        },
-        "product_phid": {
-          "type": "string"
-        },
-        "type": {
+        "phid": {
           "type": "string"
         }
       },

@@ -321,15 +321,7 @@
     "billingSubscriptionCreateRequest": {
       "type": "object",
       "properties": {
-        "author_phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "product_phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "type": {
+        "phid": {
           "type": "string",
           "format": "string"
         }
