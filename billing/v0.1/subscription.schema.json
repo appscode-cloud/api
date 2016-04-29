@@ -31,11 +31,6 @@
       "type": "object"
     },
     "billingSubscriptionDescribeRequest": {
-      "properties": {
-        "time": {
-          "type": "string"
-        }
-      },
       "type": "object"
     },
     "billingSubscriptionOpenRequest": {

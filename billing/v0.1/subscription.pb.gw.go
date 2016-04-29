@@ -46,24 +46,6 @@ func request_Subscriptions_Describe_0(ctx context.Context, client SubscriptionsC
 	var protoReq SubscriptionDescribeRequest
 	var metadata runtime.ServerMetadata
 
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["time"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "time")
-	}
-
-	protoReq.Time, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
 	msg, err := client.Describe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -313,7 +295,7 @@ func RegisterSubscriptionsHandler(ctx context.Context, mux *runtime.ServeMux, co
 var (
 	pattern_Subscriptions_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"billing", "v0.1", "subscription"}, ""))
 
-	pattern_Subscriptions_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"billing", "v0.1", "subscription", "time"}, ""))
+	pattern_Subscriptions_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"billing", "v0.1", "subscription"}, ""))
 
 	pattern_Subscriptions_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"billing", "v0.1", "subscription", "product_type", "object_phid"}, ""))
 

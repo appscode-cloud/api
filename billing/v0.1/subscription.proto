@@ -15,7 +15,7 @@ service Subscriptions {
 
   rpc Describe(SubscriptionDescribeRequest) returns (SubscriptionDescribeResponse) {
     option (google.api.http) = {
-      get: "/billing/v0.1/subscription/{time}"
+      get: "/billing/v0.1/subscription"
     };
   }
 
@@ -41,7 +41,6 @@ service Subscriptions {
 }
 
 message SubscriptionDescribeRequest {
-  string time = 1;
 }
 
 message SubscriptionDescribeResponse {
