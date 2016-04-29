@@ -52,9 +52,10 @@ message Subscription {
   string author = 1;
   string type = 2;
   string product_sku = 3;
-  Quota quota = 4;
-  string date_started = 5;
-  string date_ended = 6;
+  string product_type = 4;
+  Quota quota = 5;
+  string date_started = 6;
+  string date_ended = 7;
 }
 
 message SubscriptionOpenRequest {
