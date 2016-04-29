@@ -24,7 +24,8 @@ It has these top-level messages:
 	ArtifactoryQuota
 	ClusterQuota
 	DBQuota
-	SubscriptionQutaRequest
+	SubscriptionQoutaRequest
+	SubscriptionAlterRequest
 	SubscriptionQutaResponse
 */
 package billing

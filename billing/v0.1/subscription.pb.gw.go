@@ -42,6 +42,19 @@ func request_Subscriptions_Create_0(ctx context.Context, client SubscriptionsCli
 
 }
 
+func request_Subscriptions_Alter_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SubscriptionAlterRequest
+	var metadata runtime.ServerMetadata
+
+	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.Alter(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
 func request_Subscriptions_Describe_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SubscriptionDescribeRequest
 	var metadata runtime.ServerMetadata
@@ -132,7 +145,7 @@ func request_Subscriptions_UnSubscribe_0(ctx context.Context, client Subscriptio
 }
 
 func request_Subscriptions_Quota_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq SubscriptionQutaRequest
+	var protoReq SubscriptionQoutaRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -194,6 +207,29 @@ func RegisterSubscriptionsHandler(ctx context.Context, mux *runtime.ServeMux, co
 		}
 
 		forward_Subscriptions_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("POST", pattern_Subscriptions_Alter_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		resp, md, err := request_Subscriptions_Alter_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, w, req, err)
+			return
+		}
+
+		forward_Subscriptions_Alter_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -295,6 +331,8 @@ func RegisterSubscriptionsHandler(ctx context.Context, mux *runtime.ServeMux, co
 var (
 	pattern_Subscriptions_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"billing", "v0.1", "subscription"}, ""))
 
+	pattern_Subscriptions_Alter_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"billing", "v0.1", "subscription", "alter"}, ""))
+
 	pattern_Subscriptions_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"billing", "v0.1", "subscription"}, ""))
 
 	pattern_Subscriptions_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"billing", "v0.1", "subscription", "product_type", "object_phid"}, ""))
@@ -306,6 +344,8 @@ var (
 
 var (
 	forward_Subscriptions_Create_0 = runtime.ForwardResponseMessage
+
+	forward_Subscriptions_Alter_0 = runtime.ForwardResponseMessage
 
 	forward_Subscriptions_Describe_0 = runtime.ForwardResponseMessage
 

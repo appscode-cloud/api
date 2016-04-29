@@ -57,6 +57,33 @@
         ]
       }
     },
+    "/billing/v0.1/subscription/alter": {
+      "post": {
+        "summary": "Subscriptions.Alter",
+        "operationId": "Alter",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/billingSubscriptionAlterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Subscriptions"
+        ]
+      }
+    },
     "/billing/v0.1/subscription/quota": {
       "post": {
         "summary": "Subscriptions.Quota",
@@ -75,7 +102,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionQutaRequest"
+              "$ref": "#/definitions/billingSubscriptionQoutaRequest"
             }
           }
         ],
@@ -298,6 +325,9 @@
         }
       }
     },
+    "billingSubscriptionAlterRequest": {
+      "type": "object"
+    },
     "billingSubscriptionCloseRequest": {
       "type": "object",
       "properties": {
@@ -362,7 +392,7 @@
         }
       }
     },
-    "billingSubscriptionQutaRequest": {
+    "billingSubscriptionQoutaRequest": {
       "type": "object",
       "properties": {
         "count": {

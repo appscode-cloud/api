@@ -11,6 +11,9 @@
       ],
       "type": "string"
     },
+    "billingSubscriptionAlterRequest": {
+      "type": "object"
+    },
     "billingSubscriptionCloseRequest": {
       "properties": {
         "object_phid": {
@@ -53,7 +56,7 @@
       },
       "type": "object"
     },
-    "billingSubscriptionQutaRequest": {
+    "billingSubscriptionQoutaRequest": {
       "properties": {
         "count": {
           "type": "integer"

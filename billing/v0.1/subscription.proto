@@ -13,6 +13,13 @@ service Subscriptions {
     };
   }
 
+  rpc Alter(SubscriptionAlterRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/billing/v0.1/subscription/alter"
+      body: "*"
+    };
+  }
+
   rpc Describe(SubscriptionDescribeRequest) returns (SubscriptionDescribeResponse) {
     option (google.api.http) = {
       get: "/billing/v0.1/subscription"
@@ -32,7 +39,7 @@ service Subscriptions {
     };
   }
 
-  rpc Quota(SubscriptionQutaRequest) returns (SubscriptionQutaResponse) {
+  rpc Quota(SubscriptionQoutaRequest) returns (SubscriptionQutaResponse) {
     option (google.api.http) = {
       post: "/billing/v0.1/subscription/quota"
       body: "*"
@@ -119,12 +126,16 @@ enum Resource {
   CI = 4;
 }
 
-message SubscriptionQutaRequest {
+message SubscriptionQoutaRequest {
   Resource resource = 1;
   string subresource = 2;
   string object_phid = 3;
   int64 count = 5;
 }
+
+message SubscriptionAlterRequest {
+}
+
 
 message SubscriptionQutaResponse {
   dtypes.Status status = 1;
