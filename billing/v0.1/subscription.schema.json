@@ -24,24 +24,13 @@
     },
     "billingSubscriptionCreateRequest": {
       "properties": {
-        "author_phid": {
-          "type": "string"
-        },
-        "product_phid": {
-          "type": "string"
-        },
-        "type": {
+        "phid": {
           "type": "string"
         }
       },
       "type": "object"
     },
     "billingSubscriptionDescribeRequest": {
-      "properties": {
-        "time": {
-          "type": "string"
-        }
-      },
       "type": "object"
     },
     "billingSubscriptionOpenRequest": {
@@ -64,7 +53,7 @@
       },
       "type": "object"
     },
-    "billingSubscriptionQutaRequest": {
+    "billingSubscriptionQoutaRequest": {
       "properties": {
         "count": {
           "type": "integer"

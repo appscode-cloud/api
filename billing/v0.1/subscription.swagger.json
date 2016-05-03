@@ -16,9 +16,51 @@
   ],
   "paths": {
     "/billing/v0.1/subscription": {
+      "get": {
+        "summary": "Subscriptions.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/billingSubscriptionDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Subscriptions"
+        ]
+      },
       "put": {
         "summary": "Subscriptions.Create",
         "operationId": "Create",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/billingSubscriptionCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Subscriptions"
+        ]
+      }
+    },
+    "/billing/v0.1/subscription/alter": {
+      "post": {
+        "summary": "Subscriptions.Alter",
+        "operationId": "Alter",
         "responses": {
           "default": {
             "description": "Description",
@@ -60,7 +102,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionQutaRequest"
+              "$ref": "#/definitions/billingSubscriptionQoutaRequest"
             }
           }
         ],
@@ -134,32 +176,6 @@
             "schema": {
               "$ref": "#/definitions/billingSubscriptionOpenRequest"
             }
-          }
-        ],
-        "tags": [
-          "Subscriptions"
-        ]
-      }
-    },
-    "/billing/v0.1/subscription/{time}": {
-      "get": {
-        "summary": "Subscriptions.Describe",
-        "operationId": "Describe",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/billingSubscriptionDescribeResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "time",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
           }
         ],
         "tags": [
@@ -296,6 +312,10 @@
           "type": "string",
           "format": "string"
         },
+        "product_type": {
+          "type": "string",
+          "format": "string"
+        },
         "quota": {
           "$ref": "#/definitions/billingQuota"
         },
@@ -321,28 +341,14 @@
     "billingSubscriptionCreateRequest": {
       "type": "object",
       "properties": {
-        "author_phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "product_phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "type": {
+        "phid": {
           "type": "string",
           "format": "string"
         }
       }
     },
     "billingSubscriptionDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "time": {
-          "type": "string",
-          "format": "string"
-        }
-      }
+      "type": "object"
     },
     "billingSubscriptionDescribeResponse": {
       "type": "object",
@@ -383,7 +389,7 @@
         }
       }
     },
-    "billingSubscriptionQutaRequest": {
+    "billingSubscriptionQoutaRequest": {
       "type": "object",
       "properties": {
         "count": {

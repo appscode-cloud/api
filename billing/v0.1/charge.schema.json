@@ -2,7 +2,7 @@
   "definitions": {
     "billingChargeCalculateRequest": {
       "properties": {
-        "charge_type": {
+        "type": {
           "type": "string"
         }
       },

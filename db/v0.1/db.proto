@@ -60,7 +60,7 @@ message CreateRequest {
   string cluster = 4;
   string pv = 5;
   int64 pv_size = 6;
-  int32 node = 7;
+  int64 node = 7;
   string region = 8;
   string bucket_name = 9;
   string credential = 10;
@@ -98,7 +98,7 @@ message RestoreRequest {
   string pv = 4;
   int64 pv_size = 5;
   string sku = 6;
-  int32 node = 7;
+  int64 node = 7;
   string snapshot_phid = 8;
   string bucket_name = 9;
   string credential = 10;

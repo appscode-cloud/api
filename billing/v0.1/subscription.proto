@@ -13,9 +13,16 @@ service Subscriptions {
     };
   }
 
+  rpc Alter(SubscriptionCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/billing/v0.1/subscription/alter"
+      body: "*"
+    };
+  }
+
   rpc Describe(SubscriptionDescribeRequest) returns (SubscriptionDescribeResponse) {
     option (google.api.http) = {
-      get: "/billing/v0.1/subscription/{time}"
+      get: "/billing/v0.1/subscription"
     };
   }
 
@@ -32,7 +39,7 @@ service Subscriptions {
     };
   }
 
-  rpc Quota(SubscriptionQutaRequest) returns (SubscriptionQutaResponse) {
+  rpc Quota(SubscriptionQoutaRequest) returns (SubscriptionQutaResponse) {
     option (google.api.http) = {
       post: "/billing/v0.1/subscription/quota"
       body: "*"
@@ -41,7 +48,6 @@ service Subscriptions {
 }
 
 message SubscriptionDescribeRequest {
-  string time = 1;
 }
 
 message SubscriptionDescribeResponse {
@@ -53,9 +59,10 @@ message Subscription {
   string author = 1;
   string type = 2;
   string product_sku = 3;
-  Quota quota = 4;
-  string date_started = 5;
-  string date_ended = 6;
+  string product_type = 4;
+  Quota quota = 5;
+  string date_started = 6;
+  string date_ended = 7;
 }
 
 message SubscriptionOpenRequest {
@@ -72,9 +79,7 @@ message SubscriptionCloseRequest {
 }
 
 message SubscriptionCreateRequest {
-  string author_phid = 1;
-  string product_phid = 2;
-  string type = 3;
+  string phid = 1;
 }
 
 message Quota {
@@ -121,7 +126,7 @@ enum Resource {
   CI = 4;
 }
 
-message SubscriptionQutaRequest {
+message SubscriptionQoutaRequest {
   Resource resource = 1;
   string subresource = 2;
   string object_phid = 3;

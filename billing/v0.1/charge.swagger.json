@@ -15,8 +15,8 @@
     "application/json"
   ],
   "paths": {
-    "/billing/v0.1/charge/{charge_type}": {
-      "put": {
+    "/billing/v0.1/charge": {
+      "get": {
         "summary": "Charge.Calculate",
         "operationId": "Calculate",
         "responses": {
@@ -27,23 +27,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "charge_type",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/billingChargeCalculateRequest"
-            }
-          }
-        ],
         "tags": [
           "Charge"
         ]
@@ -54,7 +37,7 @@
     "billingChargeCalculateRequest": {
       "type": "object",
       "properties": {
-        "charge_type": {
+        "type": {
           "type": "string",
           "format": "string"
         }

@@ -8,14 +8,13 @@ import "api/dtypes/types.proto";
 service Charge {
   rpc Calculate(ChargeCalculateRequest) returns (ChargeCalculateResponse) {
     option (google.api.http) = {
-      put: "/billing/v0.1/charge/{charge_type}"
-      body: "*"
+      get: "/billing/v0.1/charge"
     };
   }
 }
 
 message ChargeCalculateRequest {
-  string charge_type = 1;
+  string type = 1;
 }
 
 message ChargeCalculateResponse {
