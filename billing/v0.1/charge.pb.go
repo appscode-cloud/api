@@ -25,7 +25,6 @@ It has these top-level messages:
 	ClusterQuota
 	DBQuota
 	SubscriptionQoutaRequest
-	SubscriptionAlterRequest
 	SubscriptionQutaResponse
 */
 package billing

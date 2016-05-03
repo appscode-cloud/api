@@ -338,7 +338,7 @@
         },
         "node": {
           "type": "integer",
-          "format": "int32"
+          "format": "int64"
         },
         "pv": {
           "type": "string",
@@ -543,7 +543,7 @@
         },
         "node": {
           "type": "integer",
-          "format": "int32"
+          "format": "int64"
         },
         "pv": {
           "type": "string",

@@ -43,7 +43,7 @@ func request_Subscriptions_Create_0(ctx context.Context, client SubscriptionsCli
 }
 
 func request_Subscriptions_Alter_0(ctx context.Context, client SubscriptionsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq SubscriptionAlterRequest
+	var protoReq SubscriptionCreateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {

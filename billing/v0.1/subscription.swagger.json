@@ -75,7 +75,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionAlterRequest"
+              "$ref": "#/definitions/billingSubscriptionCreateRequest"
             }
           }
         ],
@@ -324,9 +324,6 @@
           "format": "string"
         }
       }
-    },
-    "billingSubscriptionAlterRequest": {
-      "type": "object"
     },
     "billingSubscriptionCloseRequest": {
       "type": "object",

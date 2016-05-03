@@ -13,7 +13,7 @@ service Subscriptions {
     };
   }
 
-  rpc Alter(SubscriptionAlterRequest) returns (dtypes.VoidResponse) {
+  rpc Alter(SubscriptionCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post: "/billing/v0.1/subscription/alter"
       body: "*"
@@ -132,10 +132,6 @@ message SubscriptionQoutaRequest {
   string object_phid = 3;
   int64 count = 5;
 }
-
-message SubscriptionAlterRequest {
-}
-
 
 message SubscriptionQutaResponse {
   dtypes.Status status = 1;

@@ -11,9 +11,6 @@
       ],
       "type": "string"
     },
-    "billingSubscriptionAlterRequest": {
-      "type": "object"
-    },
     "billingSubscriptionCloseRequest": {
       "properties": {
         "object_phid": {
