@@ -1,0 +1,298 @@
+{
+  "gce": {
+    "cloud_provider": "gce",
+    "regions": [
+      {
+        "region": "Eastern US",
+        "Location": "Berkeley County, South Carolina",
+        "zones": [
+          "us-east1-b",
+          "us-east1-c",
+          "us-east1-d"
+        ]
+      },
+      {
+        "region": "Central US",
+        "Location": "Council Bluffs, Iowa",
+        "zones": [
+          "us-central1-a",
+          "us-central1-b",
+          "us-central1-c",
+          "us-central1-f"
+        ]
+      },
+      {
+        "region": "Western Europe",
+        "Location": "St. Ghislain, Belgium",
+        "zones": [
+          "europe-west1-b",
+          "europe-west1-c",
+          "europe-west1-d"
+        ]
+      },
+      {
+        "region": "East Asia",
+        "Location": "Changhua County, Taiwan",
+        "zones": [
+          "asia-east1-a",
+          "asia-east1-b",
+          "asia-east1-c"
+        ]
+      }
+    ],
+    "instance_types": [
+      {
+        "category": "General Purpose",
+        "sku": "t2.nano",
+        "cpu": 1,
+        "memory": 0.5
+      },
+      {
+        "category": "General Purpose",
+        "sku": "t2.micro",
+        "cpu": 1,
+        "memory": 1
+      },
+      {
+        "category": "General Purpose",
+        "sku": "t2.small",
+        "cpu": 1,
+        "memory": 2
+      },
+      {
+        "category": "General Purpose",
+        "sku": "t2.medium",
+        "cpu": 2,
+        "memory": 4
+      },
+      {
+        "category": "General Purpose",
+        "sku": "t2.large",
+        "cpu": 2,
+        "memory": 8
+      },
+      {
+        "category": "General Purpose",
+        "sku": "m4.large",
+        "cpu": 2,
+        "memory": 8
+      },
+      {
+        "category": "General Purpose",
+        "sku": "m4.xlarge",
+        "cpu": 4,
+        "memory": 16
+      },
+      {
+        "category": "General Purpose",
+        "sku": "m4.2xlarge",
+        "cpu": 8,
+        "memory": 32
+      },
+      {
+        "category": "General Purpose",
+        "sku": "m4.4xlarge",
+        "cpu": 16,
+        "memory": 64
+      },
+      {
+        "category": "General Purpose",
+        "sku": "m4.10xlarge",
+        "cpu": 40,
+        "memory": 160
+      },
+      {
+        "category": "General Purpose",
+        "sku": "m3.medium",
+        "cpu": 1,
+        "memory": 3.75
+      },
+      {
+        "category": "General Purpose",
+        "sku": "m3.large",
+        "cpu": 2,
+        "memory": 7.5
+      },
+      {
+        "category": "General Purpose",
+        "sku": "m3.xlarge",
+        "cpu": 4,
+        "memory": 15
+      },
+      {
+        "category": "General Purpose",
+        "sku": "m3.2xlarge",
+        "cpu": 8,
+        "memory": 30
+      },
+      {
+        "category": 0,
+        "sku": 0,
+        "cpu": 0,
+        "memory": 0
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c4.large",
+        "cpu": 2,
+        "memory": 3.75
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c4.xlarge",
+        "cpu": 4,
+        "memory": 7.5
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c4.2xlarge",
+        "cpu": 8,
+        "memory": 15
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c4.4xlarge",
+        "cpu": 16,
+        "memory": 30
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c4.8xlarge",
+        "cpu": 36,
+        "memory": 60
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c3.large",
+        "cpu": 2,
+        "memory": 3.75
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c3.xlarge",
+        "cpu": 4,
+        "memory": 7.5
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c3.2xlarge",
+        "cpu": 8,
+        "memory": 15
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c3.4xlarge",
+        "cpu": 16,
+        "memory": 30
+      },
+      {
+        "category": "Compute Optimized",
+        "sku": "c3.8xlarge",
+        "cpu": 32,
+        "memory": 60
+      },
+      {
+        "category": 0,
+        "sku": 0,
+        "cpu": 0,
+        "memory": 0
+      },
+      {
+        "category": "GPU Instances",
+        "sku": "g2.2xlarge",
+        "cpu": 8,
+        "memory": 15
+      },
+      {
+        "category": "GPU Instances",
+        "sku": "g2.8xlarge",
+        "cpu": 32,
+        "memory": 60
+      },
+      {
+        "category": 0,
+        "sku": 0,
+        "cpu": 0,
+        "memory": 0
+      },
+      {
+        "category": "Memory optimized",
+        "sku": "r3.large",
+        "cpu": 2,
+        "memory": 15
+      },
+      {
+        "category": "Memory optimized",
+        "sku": "r3.xlarge",
+        "cpu": 4,
+        "memory": 30.5
+      },
+      {
+        "category": "Memory optimized",
+        "sku": "r3.2xlarge",
+        "cpu": 8,
+        "memory": 61
+      },
+      {
+        "category": "Memory optimized",
+        "sku": "r3.4xlarge",
+        "cpu": 16,
+        "memory": 122
+      },
+      {
+        "category": "Memory optimized",
+        "sku": "r3.8xlarge",
+        "cpu": 32,
+        "memory": 244
+      },
+      {
+        "category": "Storage Optimized",
+        "sku": "i2.xlarge",
+        "cpu": 4,
+        "memory": 30.5
+      },
+      {
+        "category": "Storage Optimized",
+        "sku": "i2.2xlarge",
+        "cpu": 8,
+        "memory": 61
+      },
+      {
+        "category": "Storage Optimized",
+        "sku": "i2.4xlarge",
+        "cpu": 16,
+        "memory": 122
+      },
+      {
+        "category": "Storage Optimized",
+        "sku": "i2.8xlarge",
+        "cpu": 32,
+        "memory": 244
+      },
+      {
+        "category": "Storage Optimized",
+        "sku": "d2.xlarge",
+        "cpu": 4,
+        "memory": 30.5
+      },
+      {
+        "category": "Storage Optimized",
+        "sku": "d2.2xlarge",
+        "cpu": 8,
+        "memory": 61
+      },
+      {
+        "category": "Storage Optimized",
+        "sku": "d2.4xlarge",
+        "cpu": 16,
+        "memory": 122
+      },
+      {
+        "category": "Storage Optimized",
+        "sku": "d2.8xlarge",
+        "cpu": 36,
+        "memory": 244
+      }
+    ]
+  }
+}
