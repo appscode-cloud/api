@@ -77,12 +77,6 @@
     "instance_types": [
       {
         "category": "General Purpose",
-        "sku": "t2.nano",
-        "cpu": 1,
-        "memory": 0.5
-      },
-      {
-        "category": "General Purpose",
         "sku": "t2.micro",
         "cpu": 1,
         "memory": 1
@@ -371,12 +365,6 @@
       }
     ],
     "instance_types": [
-      {
-        "category": "Micro",
-        "sku": "f1-micro",
-        "CPUs": 1,
-        "Memory": "0.60GB"
-      },
       {
         "category": "Small",
         "sku": "g1-small",
