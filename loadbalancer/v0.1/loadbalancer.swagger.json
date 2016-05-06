@@ -173,9 +173,6 @@
         }
       }
     },
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
     "dtypesVoidResponse": {
       "type": "object",
       "properties": {
@@ -185,11 +182,25 @@
       }
     },
     "loadbalancerCreateRequest": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
     },
     "loadbalancerDeleteRequest": {
       "type": "object",
       "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
           "type": "string",
           "format": "string"
@@ -199,6 +210,10 @@
     "loadbalancerDescribeRequest": {
       "type": "object",
       "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
           "type": "string",
           "format": "string"
@@ -213,6 +228,15 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "loadbalancerListRequest": {
+      "type": "object",
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -234,7 +258,17 @@
       "type": "object"
     },
     "loadbalancerUpdateRequest": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        }
+      }
     },
     "protobufAny": {
       "type": "object",

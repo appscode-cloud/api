@@ -7,6 +7,7 @@ import (
 
 // Auto-generated. DO NOT EDIT.
 
+var listRequestSchema *gojsonschema.Schema
 var deleteRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
 var describeRequestSchema *gojsonschema.Schema
@@ -14,9 +15,24 @@ var updateRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
+	listRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		log.Fatal(err)
+	}
 	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "cluster": {
+      "type": "string"
+    },
     "name": {
       "type": "string"
     }
@@ -28,6 +44,14 @@ func init() {
 	}
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
   "type": "object"
 }`))
 	if err != nil {
@@ -36,6 +60,9 @@ func init() {
 	describeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "cluster": {
+      "type": "string"
+    },
     "name": {
       "type": "string"
     }
@@ -47,12 +74,25 @@ func init() {
 	}
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
   "type": "object"
 }`))
 	if err != nil {
 		log.Fatal(err)
 	}
 }
+
+func (m *ListRequest) IsValid() (*gojsonschema.Result, error) {
+	return listRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *ListRequest) IsRequest() {}
 
 func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))

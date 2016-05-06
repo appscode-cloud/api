@@ -1,13 +1,21 @@
 {
   "definitions": {
-    "dtypesVoidRequest": {
-      "type": "object"
-    },
     "loadbalancerCreateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "loadbalancerDeleteRequest": {
       "properties": {
+        "cluster": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         }
@@ -16,13 +24,32 @@
     },
     "loadbalancerDescribeRequest": {
       "properties": {
+        "cluster": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         }
       },
       "type": "object"
     },
+    "loadbalancerListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "loadbalancerUpdateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
       "type": "object"
     }
   }
