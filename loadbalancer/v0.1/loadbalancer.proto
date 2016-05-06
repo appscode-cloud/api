@@ -51,5 +51,21 @@ message DescribeRequest {
 
 message DescribeResponse {
   dtypes.Status status = 1;
+  Loadbalancer loadbalancer = 2;
+}
+
+message CreateRequest {
+
+}
+
+message UpdateRequest {
+
+}
+
+message DeleteRequest {
+  string name = 1;
+}
+
+message Loadbalancer {
 
 }

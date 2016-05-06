@@ -1,0 +1,29 @@
+{
+  "definitions": {
+    "dtypesVoidRequest": {
+      "type": "object"
+    },
+    "loadbalancerCreateRequest": {
+      "type": "object"
+    },
+    "loadbalancerDeleteRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerDescribeRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerUpdateRequest": {
+      "type": "object"
+    }
+  }
+}
