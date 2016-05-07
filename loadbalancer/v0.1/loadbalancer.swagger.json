@@ -16,21 +16,6 @@
   ],
   "paths": {
     "/loadbalancer/v0.1": {
-      "get": {
-        "summary": "LoadBalancers.List",
-        "operationId": "List",
-        "responses": {
-          "default": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/loadbalancerListResponse"
-            }
-          }
-        },
-        "tags": [
-          "LoadBalancers"
-        ]
-      },
       "post": {
         "summary": "LoadBalancers.Update",
         "operationId": "Update",
@@ -75,6 +60,32 @@
             "schema": {
               "$ref": "#/definitions/loadbalancerCreateRequest"
             }
+          }
+        ],
+        "tags": [
+          "LoadBalancers"
+        ]
+      }
+    },
+    "/loadbalancer/v0.1/{cluster}": {
+      "get": {
+        "summary": "LoadBalancers.List",
+        "operationId": "List",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/loadbalancerListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
           }
         ],
         "tags": [
