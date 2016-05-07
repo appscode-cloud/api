@@ -3,7 +3,7 @@
     {
       "sku":"CI-R512",
       "price":35,
-      "detials":{
+      "details":{
         "cpu":1,
         "ram":512
       }
@@ -11,7 +11,7 @@
     {
       "sku":"CI-R1",
       "price":55,
-      "detials":{
+      "details":{
         "cpu":1,
         "ram":1
       }
@@ -19,7 +19,7 @@
     {
       "sku":"CI-R2",
       "price":100,
-      "detials":{
+      "details":{
         "cpu":2,
         "ram":2
       }
@@ -27,7 +27,7 @@
     {
       "sku":"CI-R4",
       "price":160,
-      "detials":{
+      "details":{
         "cpu":2,
         "ram":4
       }
@@ -35,7 +35,7 @@
     {
       "sku":"CI-R8",
       "price":250,
-      "detials":{
+      "details":{
         "cpu":4,
         "ram":8
       }
@@ -43,7 +43,7 @@
     {
       "sku":"CI-R16",
       "price":360,
-      "detials":{
+      "details":{
         "cpu":8,
         "ram":16
       }

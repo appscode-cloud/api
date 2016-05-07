@@ -297,7 +297,7 @@
     "loadbalancerListResponse": {
       "type": "object",
       "properties": {
-        "load_balancers": {
+        "load_balancer": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/loadbalancerLoadBalancer"

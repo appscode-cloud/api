@@ -46,7 +46,7 @@ message ListRequest {
 
 message ListResponse {
   dtypes.Status status = 1;
-  repeated LoadBalancer load_balancers = 2;
+  repeated LoadBalancer load_balancer = 2;
 }
 
 message DescribeRequest {
