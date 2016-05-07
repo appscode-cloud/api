@@ -44,11 +44,160 @@ func init() {
 	}
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "LoadBalancerOptionsEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerHTTPLoadBalancerRule": {
+      "properties": {
+        "SSL_secret_name": {
+          "type": "string"
+        },
+        "backend": {
+          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+        },
+        "header_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "path": {
+          "type": "string"
+        },
+        "rewrite_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancer": {
+      "properties": {
+        "creation_timestamp": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/definitions/LoadBalancerOptionsEntry"
+          },
+          "type": "array"
+        },
+        "spec": {
+          "$ref": "#/definitions/loadbalancerSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/loadbalancerStatus"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancerBackend": {
+      "properties": {
+        "service_name": {
+          "type": "string"
+        },
+        "service_port": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancerRule": {
+      "properties": {
+        "HTTP": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
+          },
+          "type": "array"
+        },
+        "TCP": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerTCPLoadBalancerRule"
+          },
+          "type": "array"
+        },
+        "host": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancerStatus": {
+      "properties": {
+        "IP": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerSpec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerLoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerStatus": {
+      "properties": {
+        "status": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerLoadBalancerStatus"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerTCPLoadBalancerRule": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+        },
+        "port": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
   "properties": {
     "cluster": {
       "type": "string"
     },
+    "load_balancer": {
+      "$ref": "#/definitions/loadbalancerLoadBalancer"
+    },
     "name": {
+      "type": "string"
+    },
+    "namespace": {
       "type": "string"
     }
   },
@@ -65,6 +214,9 @@ func init() {
     },
     "name": {
       "type": "string"
+    },
+    "namespace": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -74,9 +226,155 @@ func init() {
 	}
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "LoadBalancerOptionsEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerHTTPLoadBalancerRule": {
+      "properties": {
+        "SSL_secret_name": {
+          "type": "string"
+        },
+        "backend": {
+          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+        },
+        "header_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "path": {
+          "type": "string"
+        },
+        "rewrite_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancer": {
+      "properties": {
+        "creation_timestamp": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/definitions/LoadBalancerOptionsEntry"
+          },
+          "type": "array"
+        },
+        "spec": {
+          "$ref": "#/definitions/loadbalancerSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/loadbalancerStatus"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancerBackend": {
+      "properties": {
+        "service_name": {
+          "type": "string"
+        },
+        "service_port": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancerRule": {
+      "properties": {
+        "HTTP": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
+          },
+          "type": "array"
+        },
+        "TCP": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerTCPLoadBalancerRule"
+          },
+          "type": "array"
+        },
+        "host": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancerStatus": {
+      "properties": {
+        "IP": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerSpec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerLoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerStatus": {
+      "properties": {
+        "status": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerLoadBalancerStatus"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerTCPLoadBalancerRule": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+        },
+        "port": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
   "properties": {
     "cluster": {
       "type": "string"
+    },
+    "load_balancer": {
+      "$ref": "#/definitions/loadbalancerLoadBalancer"
     },
     "name": {
       "type": "string"

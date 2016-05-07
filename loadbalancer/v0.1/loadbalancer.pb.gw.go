@@ -30,14 +30,14 @@ var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
 var (
-	filter_Loadbalancers_List_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_LoadBalancers_List_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_Loadbalancers_List_0(ctx context.Context, client LoadbalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_List_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListRequest
 	var metadata runtime.ServerMetadata
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Loadbalancers_List_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_LoadBalancers_List_0); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -47,10 +47,10 @@ func request_Loadbalancers_List_0(ctx context.Context, client LoadbalancersClien
 }
 
 var (
-	filter_Loadbalancers_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_LoadBalancers_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_Loadbalancers_Describe_0(ctx context.Context, client LoadbalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_Describe_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -72,7 +72,7 @@ func request_Loadbalancers_Describe_0(ctx context.Context, client LoadbalancersC
 		return nil, metadata, err
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Loadbalancers_Describe_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_LoadBalancers_Describe_0); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -81,7 +81,7 @@ func request_Loadbalancers_Describe_0(ctx context.Context, client LoadbalancersC
 
 }
 
-func request_Loadbalancers_Create_0(ctx context.Context, client LoadbalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_Create_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CreateRequest
 	var metadata runtime.ServerMetadata
 
@@ -94,7 +94,7 @@ func request_Loadbalancers_Create_0(ctx context.Context, client LoadbalancersCli
 
 }
 
-func request_Loadbalancers_Update_0(ctx context.Context, client LoadbalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_Update_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq UpdateRequest
 	var metadata runtime.ServerMetadata
 
@@ -108,10 +108,10 @@ func request_Loadbalancers_Update_0(ctx context.Context, client LoadbalancersCli
 }
 
 var (
-	filter_Loadbalancers_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_LoadBalancers_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_Loadbalancers_Delete_0(ctx context.Context, client LoadbalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_Delete_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteRequest
 	var metadata runtime.ServerMetadata
 
@@ -133,7 +133,7 @@ func request_Loadbalancers_Delete_0(ctx context.Context, client LoadbalancersCli
 		return nil, metadata, err
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Loadbalancers_Delete_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_LoadBalancers_Delete_0); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -142,9 +142,9 @@ func request_Loadbalancers_Delete_0(ctx context.Context, client LoadbalancersCli
 
 }
 
-// RegisterLoadbalancersHandlerFromEndpoint is same as RegisterLoadbalancersHandler but
+// RegisterLoadBalancersHandlerFromEndpoint is same as RegisterLoadBalancersHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterLoadbalancersHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterLoadBalancersHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -164,15 +164,15 @@ func RegisterLoadbalancersHandlerFromEndpoint(ctx context.Context, mux *runtime.
 		}()
 	}()
 
-	return RegisterLoadbalancersHandler(ctx, mux, conn)
+	return RegisterLoadBalancersHandler(ctx, mux, conn)
 }
 
-// RegisterLoadbalancersHandler registers the http handlers for service Loadbalancers to "mux".
+// RegisterLoadBalancersHandler registers the http handlers for service LoadBalancers to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterLoadbalancersHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	client := NewLoadbalancersClient(conn)
+func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	client := NewLoadBalancersClient(conn)
 
-	mux.Handle("GET", pattern_Loadbalancers_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_LoadBalancers_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -184,18 +184,18 @@ func RegisterLoadbalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Loadbalancers_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_LoadBalancers_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Loadbalancers_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Loadbalancers_Describe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_LoadBalancers_Describe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -207,18 +207,18 @@ func RegisterLoadbalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Loadbalancers_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_LoadBalancers_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Loadbalancers_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_Loadbalancers_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_LoadBalancers_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -230,18 +230,18 @@ func RegisterLoadbalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Loadbalancers_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_LoadBalancers_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Loadbalancers_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Loadbalancers_Update_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_LoadBalancers_Update_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -253,18 +253,18 @@ func RegisterLoadbalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Loadbalancers_Update_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_LoadBalancers_Update_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Loadbalancers_Update_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_Update_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_Loadbalancers_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_LoadBalancers_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -276,14 +276,14 @@ func RegisterLoadbalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Loadbalancers_Delete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_LoadBalancers_Delete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Loadbalancers_Delete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_Delete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -291,25 +291,25 @@ func RegisterLoadbalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 }
 
 var (
-	pattern_Loadbalancers_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"loadbalancer", "v0.1"}, ""))
+	pattern_LoadBalancers_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"loadbalancer", "v0.1"}, ""))
 
-	pattern_Loadbalancers_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"loadbalancer", "v0.1", "name"}, ""))
+	pattern_LoadBalancers_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"loadbalancer", "v0.1", "name"}, ""))
 
-	pattern_Loadbalancers_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"loadbalancer", "v0.1"}, ""))
+	pattern_LoadBalancers_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"loadbalancer", "v0.1"}, ""))
 
-	pattern_Loadbalancers_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"loadbalancer", "v0.1"}, ""))
+	pattern_LoadBalancers_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"loadbalancer", "v0.1"}, ""))
 
-	pattern_Loadbalancers_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"loadbalancer", "v0.1", "name"}, ""))
+	pattern_LoadBalancers_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"loadbalancer", "v0.1", "name"}, ""))
 )
 
 var (
-	forward_Loadbalancers_List_0 = runtime.ForwardResponseMessage
+	forward_LoadBalancers_List_0 = runtime.ForwardResponseMessage
 
-	forward_Loadbalancers_Describe_0 = runtime.ForwardResponseMessage
+	forward_LoadBalancers_Describe_0 = runtime.ForwardResponseMessage
 
-	forward_Loadbalancers_Create_0 = runtime.ForwardResponseMessage
+	forward_LoadBalancers_Create_0 = runtime.ForwardResponseMessage
 
-	forward_Loadbalancers_Update_0 = runtime.ForwardResponseMessage
+	forward_LoadBalancers_Update_0 = runtime.ForwardResponseMessage
 
-	forward_Loadbalancers_Delete_0 = runtime.ForwardResponseMessage
+	forward_LoadBalancers_Delete_0 = runtime.ForwardResponseMessage
 )

@@ -6,7 +6,7 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 // alert service protobufs for clusters alerts.
-service Loadbalancers {
+service LoadBalancers {
   rpc List(ListRequest) returns (ListResponse) {
     option (google.api.http) = {
       get: "/loadbalancer/v0.1"
@@ -46,27 +46,33 @@ message ListRequest {
 
 message ListResponse {
   dtypes.Status status = 1;
-  repeated Loadbalancer loadbalancers = 2;
+  repeated LoadBalancer load_balancers = 2;
 }
 
 message DescribeRequest {
   string name = 1;
-  string cluster = 2;
+  string namespace = 2;
+  string cluster = 3;
 }
 
 message DescribeResponse {
   dtypes.Status status = 1;
-  Loadbalancer loadbalancer = 2;
+  LoadBalancer load_balancer = 2;
 }
 
 message CreateRequest {
   string name = 1;
-  string cluster = 2;
+  string namespace = 2;
+  string cluster = 3;
+
+  LoadBalancer load_balancer = 4;
 }
 
 message UpdateRequest {
   string name = 1;
   string cluster = 2;
+
+  LoadBalancer load_balancer = 3;
 }
 
 message DeleteRequest {
@@ -74,6 +80,52 @@ message DeleteRequest {
   string cluster = 2;
 }
 
-message Loadbalancer {
+message LoadBalancer {
+  string name = 1;
+  string namespace = 2;
+  string creation_timestamp = 3;
+  map<string, string> options = 4;
 
+  Spec spec = 5;
+  Status status = 6;
+}
+
+message Spec {
+  LoadBalancerBackend backend = 1;
+  repeated LoadBalancerRule rules = 2;
+}
+
+message Status {
+  repeated LoadBalancerStatus status = 1;
+}
+
+message LoadBalancerStatus {
+  string IP = 1;
+  string host = 2;
+}
+
+message LoadBalancerBackend {
+  string service_name = 1;
+  string service_port = 2;
+}
+
+message LoadBalancerRule {
+  string host = 1;
+  repeated HTTPLoadBalancerRule HTTP = 2;
+  repeated TCPLoadBalancerRule TCP = 3;
+}
+
+message HTTPLoadBalancerRule {
+  string path = 1;
+  LoadBalancerBackend backend = 2;
+  repeated string header_rule = 3;
+  repeated string rewrite_rule = 4;
+
+  string SSL_secret_name = 5;
+
+}
+
+message TCPLoadBalancerRule {
+  string port = 1;
+  LoadBalancerBackend backend = 2;
 }
