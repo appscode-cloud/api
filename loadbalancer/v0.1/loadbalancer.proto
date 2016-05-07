@@ -91,7 +91,7 @@ message LoadBalancer {
 }
 
 message Spec {
-  LoadBalancerBackend backend = 1;
+  HTTPLoadBalancerRule backend = 1;
   repeated LoadBalancerRule rules = 2;
 }
 
@@ -128,4 +128,6 @@ message HTTPLoadBalancerRule {
 message TCPLoadBalancerRule {
   string port = 1;
   LoadBalancerBackend backend = 2;
+  string secret_name = 3;
+  string PEM_name = 4;
 }

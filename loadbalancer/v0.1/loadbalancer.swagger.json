@@ -388,7 +388,7 @@
       "type": "object",
       "properties": {
         "backend": {
-          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+          "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
         },
         "rules": {
           "type": "array",
@@ -412,10 +412,18 @@
     "loadbalancerTCPLoadBalancerRule": {
       "type": "object",
       "properties": {
+        "PEM_name": {
+          "type": "string",
+          "format": "string"
+        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
         "port": {
+          "type": "string",
+          "format": "string"
+        },
+        "secret_name": {
           "type": "string",
           "format": "string"
         }

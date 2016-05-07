@@ -153,7 +153,7 @@ func init() {
     "loadbalancerSpec": {
       "properties": {
         "backend": {
-          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+          "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
         },
         "rules": {
           "items": {
@@ -177,10 +177,16 @@ func init() {
     },
     "loadbalancerTCPLoadBalancerRule": {
       "properties": {
+        "PEM_name": {
+          "type": "string"
+        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
         "port": {
+          "type": "string"
+        },
+        "secret_name": {
           "type": "string"
         }
       },
@@ -335,7 +341,7 @@ func init() {
     "loadbalancerSpec": {
       "properties": {
         "backend": {
-          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+          "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
         },
         "rules": {
           "items": {
@@ -359,10 +365,16 @@ func init() {
     },
     "loadbalancerTCPLoadBalancerRule": {
       "properties": {
+        "PEM_name": {
+          "type": "string"
+        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
         "port": {
+          "type": "string"
+        },
+        "secret_name": {
           "type": "string"
         }
       },
