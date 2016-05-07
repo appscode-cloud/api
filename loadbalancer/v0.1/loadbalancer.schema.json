@@ -33,7 +33,13 @@
         "cluster": {
           "type": "string"
         },
+        "kind": {
+          "type": "string"
+        },
         "name": {
+          "type": "string"
+        },
+        "namespace": {
           "type": "string"
         }
       },
@@ -42,6 +48,9 @@
     "loadbalancerDescribeRequest": {
       "properties": {
         "cluster": {
+          "type": "string"
+        },
+        "kind": {
           "type": "string"
         },
         "name": {
@@ -90,6 +99,9 @@
     "loadbalancerLoadBalancer": {
       "properties": {
         "creation_timestamp": {
+          "type": "string"
+        },
+        "kind": {
           "type": "string"
         },
         "name": {

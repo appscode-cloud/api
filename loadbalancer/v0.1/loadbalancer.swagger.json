@@ -221,7 +221,15 @@
           "type": "string",
           "format": "string"
         },
+        "kind": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
           "type": "string",
           "format": "string"
         }
@@ -231,6 +239,10 @@
       "type": "object",
       "properties": {
         "cluster": {
+          "type": "string",
+          "format": "string"
+        },
+        "kind": {
           "type": "string",
           "format": "string"
         },
@@ -312,6 +324,10 @@
       "type": "object",
       "properties": {
         "creation_timestamp": {
+          "type": "string",
+          "format": "string"
+        },
+        "kind": {
           "type": "string",
           "format": "string"
         },

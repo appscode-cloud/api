@@ -33,7 +33,13 @@ func init() {
     "cluster": {
       "type": "string"
     },
+    "kind": {
+      "type": "string"
+    },
     "name": {
+      "type": "string"
+    },
+    "namespace": {
       "type": "string"
     }
   },
@@ -85,6 +91,9 @@ func init() {
     "loadbalancerLoadBalancer": {
       "properties": {
         "creation_timestamp": {
+          "type": "string"
+        },
+        "kind": {
           "type": "string"
         },
         "name": {
@@ -218,6 +227,9 @@ func init() {
     "cluster": {
       "type": "string"
     },
+    "kind": {
+      "type": "string"
+    },
     "name": {
       "type": "string"
     },
@@ -273,6 +285,9 @@ func init() {
     "loadbalancerLoadBalancer": {
       "properties": {
         "creation_timestamp": {
+          "type": "string"
+        },
+        "kind": {
           "type": "string"
         },
         "name": {
