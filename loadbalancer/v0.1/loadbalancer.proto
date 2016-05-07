@@ -127,8 +127,8 @@ message LoadBalancerBackend {
 
 message LoadBalancerRule {
   string host = 1;
-  repeated HTTPLoadBalancerRule HTTP = 2;
-  repeated TCPLoadBalancerRule TCP = 3;
+  repeated HTTPLoadBalancerRule http = 2;
+  repeated TCPLoadBalancerRule tcp = 3;
 }
 
 message HTTPLoadBalancerRule {
