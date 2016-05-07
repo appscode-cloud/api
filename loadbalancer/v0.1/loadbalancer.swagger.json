@@ -380,21 +380,21 @@
     "loadbalancerLoadBalancerRule": {
       "type": "object",
       "properties": {
-        "HTTP": {
+        "host": {
+          "type": "string",
+          "format": "string"
+        },
+        "http": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
           }
         },
-        "TCP": {
+        "tcp": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/loadbalancerTCPLoadBalancerRule"
           }
-        },
-        "host": {
-          "type": "string",
-          "format": "string"
         }
       }
     },

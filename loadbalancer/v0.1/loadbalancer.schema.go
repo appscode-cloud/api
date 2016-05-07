@@ -130,20 +130,20 @@ func init() {
     },
     "loadbalancerLoadBalancerRule": {
       "properties": {
-        "HTTP": {
+        "host": {
+          "type": "string"
+        },
+        "http": {
           "items": {
             "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
           },
           "type": "array"
         },
-        "TCP": {
+        "tcp": {
           "items": {
             "$ref": "#/definitions/loadbalancerTCPLoadBalancerRule"
           },
           "type": "array"
-        },
-        "host": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -324,20 +324,20 @@ func init() {
     },
     "loadbalancerLoadBalancerRule": {
       "properties": {
-        "HTTP": {
+        "host": {
+          "type": "string"
+        },
+        "http": {
           "items": {
             "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
           },
           "type": "array"
         },
-        "TCP": {
+        "tcp": {
           "items": {
             "$ref": "#/definitions/loadbalancerTCPLoadBalancerRule"
           },
           "type": "array"
-        },
-        "host": {
-          "type": "string"
         }
       },
       "type": "object"
