@@ -3,7 +3,7 @@
     {
       "sku":"H-M2M-Free",
       "price":0,
-      "detials":{
+      "details":{
         "user":3,
         "phabricator":{
           "disk_size":2
@@ -28,7 +28,7 @@
     {
       "sku":"H-M2M-Indie",
       "price":120,
-      "detials":{
+      "details":{
         "user":10,
         "phabricator":{
           "disk_size":20
@@ -53,7 +53,7 @@
     {
       "sku":"H-M2M-Startup",
       "price":170,
-      "detials":{
+      "details":{
         "user":25,
         "phabricator":{
           "disk_size":100
@@ -78,7 +78,7 @@
     {
       "sku":"H-M2M-Professional",
       "price":220,
-      "detials":{
+      "details":{
         "user":100,
         "phabricator":{
           "disk_size":250
@@ -103,7 +103,7 @@
     {
       "sku":"H-M2M-Enterprise",
       "price":-1,
-      "detials":{
+      "details":{
         "user":-1,
         "phabricator":{
           "disk_size":-1
@@ -128,7 +128,7 @@
     {
       "sku":"H-APM-Indie",
       "price":110,
-      "detials":{
+      "details":{
         "user":10,
         "phabricator":{
           "disk_size":20
@@ -153,7 +153,7 @@
     {
       "sku":"H-APM-Startup",
       "price":160,
-      "detials":{
+      "details":{
         "user":25,
         "phabricator":{
           "disk_size":100
@@ -178,7 +178,7 @@
     {
       "sku":"H-APM-Professional",
       "price":210,
-      "detials":{
+      "details":{
         "user":100,
         "phabricator":{
           "disk_size":250
@@ -203,7 +203,7 @@
     {
       "sku":"H-APM-Enterprise",
       "price":-1,
-      "detials":{
+      "details":{
         "user":-1,
         "phabricator":{
           "disk_size":-1
@@ -228,7 +228,7 @@
     {
       "sku":"H-APA-Indie",
       "price":100,
-      "detials":{
+      "details":{
         "user":10,
         "phabricator":{
           "disk_size":20
@@ -253,7 +253,7 @@
     {
       "sku":"H-APA-Startup",
       "price":150,
-      "detials":{
+      "details":{
         "user":25,
         "phabricator":{
           "disk_size":100
@@ -278,7 +278,7 @@
     {
       "sku":"H-APA-Professional",
       "price":200,
-      "detials":{
+      "details":{
         "user":100,
         "phabricator":{
           "disk_size":250
@@ -303,7 +303,7 @@
     {
       "sku":"H-APA-Enterprise",
       "price":-1,
-      "detials":{
+      "details":{
         "user":-1,
         "phabricator":{
           "disk_size":-1
