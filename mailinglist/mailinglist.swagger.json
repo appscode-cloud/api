@@ -33,7 +33,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/credentialSubscribeRequest"
+              "$ref": "#/definitions/mailinglistSubscribeRequest"
             }
           }
         ],
@@ -44,15 +44,6 @@
     }
   },
   "definitions": {
-    "credentialSubscribeRequest": {
-      "type": "object",
-      "properties": {
-        "email": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
     "dtypesHelp": {
       "type": "object",
       "properties": {
@@ -97,6 +88,15 @@
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "mailinglistSubscribeRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "string"
         }
       }
     },

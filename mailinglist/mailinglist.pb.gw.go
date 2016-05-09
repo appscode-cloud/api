@@ -3,11 +3,11 @@
 // DO NOT EDIT!
 
 /*
-Package credential is a reverse proxy.
+Package mailinglist is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package credential
+package mailinglist
 
 import (
 	"encoding/json"

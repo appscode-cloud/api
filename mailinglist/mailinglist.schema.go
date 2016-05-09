@@ -1,4 +1,4 @@
-package credential
+package mailinglist
 
 import (
 	"github.com/xeipuuv/gojsonschema"
