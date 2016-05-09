@@ -1,0 +1,117 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/mailinglist/v0.1/cloud": {
+      "put": {
+        "summary": "MailingList.Subscribe",
+        "operationId": "Subscribe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/credentialSubscribeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MailingList"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "credentialSubscribeRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesVoidResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}

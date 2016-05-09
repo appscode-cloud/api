@@ -1,0 +1,12 @@
+{
+  "definitions": {
+    "credentialSubscribeRequest": {
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

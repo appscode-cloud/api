@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package credential;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service MailingList {
+  rpc Subscribe(SubscribeRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/mailinglist/v0.1/cloud"
+      body: "*"
+    };
+  }
+}
+
+message SubscribeRequest {
+  string email = 1;
+}
