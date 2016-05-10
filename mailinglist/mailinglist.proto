@@ -6,14 +6,19 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service MailingList {
-  rpc Subscribe(SubscribeRequest) returns (dtypes.VoidResponse) {
+  rpc Subscribe(MembershipRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/mailinglist/v0.1/member"
+      put: "/mailinglist/v0.1/{email}/subscribe"
       body: "*"
+    };
+  }
+  rpc Unsubscribe(MembershipRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      get: "/mailinglist/v0.1/{email}/unsubscribe"
     };
   }
 }
 
-message SubscribeRequest {
+message MembershipRequest {
   string email = 1;
 }

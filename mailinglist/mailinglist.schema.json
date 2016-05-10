@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "mailinglistSubscribeRequest": {
+    "mailinglistMembershipRequest": {
       "properties": {
         "email": {
           "type": "string"

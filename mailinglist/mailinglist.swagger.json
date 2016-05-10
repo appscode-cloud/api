@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/mailinglist/v0.1/member": {
+    "/mailinglist/v0.1/{email}/subscribe": {
       "put": {
         "summary": "MailingList.Subscribe",
         "operationId": "Subscribe",
@@ -29,12 +29,45 @@
         },
         "parameters": [
           {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/mailinglistSubscribeRequest"
+              "$ref": "#/definitions/mailinglistMembershipRequest"
             }
+          }
+        ],
+        "tags": [
+          "MailingList"
+        ]
+      }
+    },
+    "/mailinglist/v0.1/{email}/unsubscribe": {
+      "get": {
+        "summary": "MailingList.Unsubscribe",
+        "operationId": "Unsubscribe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
           }
         ],
         "tags": [
@@ -91,7 +124,7 @@
         }
       }
     },
-    "mailinglistSubscribeRequest": {
+    "mailinglistMembershipRequest": {
       "type": "object",
       "properties": {
         "email": {
