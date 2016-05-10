@@ -30,7 +30,7 @@ var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
 func request_MailingList_Subscribe_0(ctx context.Context, client MailingListClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq MembershipRequest
+	var protoReq SubscribeRequest
 	var metadata runtime.ServerMetadata
 
 	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -61,7 +61,7 @@ func request_MailingList_Subscribe_0(ctx context.Context, client MailingListClie
 }
 
 func request_MailingList_Unsubscribe_0(ctx context.Context, client MailingListClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq MembershipRequest
+	var protoReq UnsubscribeRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -71,12 +71,12 @@ func request_MailingList_Unsubscribe_0(ctx context.Context, client MailingListCl
 		_   = err
 	)
 
-	val, ok = pathParams["email"]
+	val, ok = pathParams["magic_code"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "email")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "magic_code")
 	}
 
-	protoReq.Email, err = runtime.String(val)
+	protoReq.MagicCode, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
@@ -167,9 +167,9 @@ func RegisterMailingListHandler(ctx context.Context, mux *runtime.ServeMux, conn
 }
 
 var (
-	pattern_MailingList_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"mailinglist", "v0.1", "email", "subscribe"}, ""))
+	pattern_MailingList_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mailinglist", "v0.1", "subscribe", "email"}, ""))
 
-	pattern_MailingList_Unsubscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"mailinglist", "v0.1", "email", "unsubscribe"}, ""))
+	pattern_MailingList_Unsubscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mailinglist", "v0.1", "unsubscribe", "magic_code"}, ""))
 )
 
 var (

@@ -9,7 +9,8 @@ It is generated from these files:
 	mailinglist.proto
 
 It has these top-level messages:
-	MembershipRequest
+	SubscribeRequest
+	UnsubscribeRequest
 */
 package mailinglist
 
@@ -33,17 +34,27 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 const _ = proto.ProtoPackageIsVersion1
 
-type MembershipRequest struct {
+type SubscribeRequest struct {
 	Email string `protobuf:"bytes,1,opt,name=email" json:"email,omitempty"`
 }
 
-func (m *MembershipRequest) Reset()                    { *m = MembershipRequest{} }
-func (m *MembershipRequest) String() string            { return proto.CompactTextString(m) }
-func (*MembershipRequest) ProtoMessage()               {}
-func (*MembershipRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (m *SubscribeRequest) Reset()                    { *m = SubscribeRequest{} }
+func (m *SubscribeRequest) String() string            { return proto.CompactTextString(m) }
+func (*SubscribeRequest) ProtoMessage()               {}
+func (*SubscribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+
+type UnsubscribeRequest struct {
+	MagicCode string `protobuf:"bytes,1,opt,name=magic_code,json=magicCode" json:"magic_code,omitempty"`
+}
+
+func (m *UnsubscribeRequest) Reset()                    { *m = UnsubscribeRequest{} }
+func (m *UnsubscribeRequest) String() string            { return proto.CompactTextString(m) }
+func (*UnsubscribeRequest) ProtoMessage()               {}
+func (*UnsubscribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
 func init() {
-	proto.RegisterType((*MembershipRequest)(nil), "mailinglist.MembershipRequest")
+	proto.RegisterType((*SubscribeRequest)(nil), "mailinglist.SubscribeRequest")
+	proto.RegisterType((*UnsubscribeRequest)(nil), "mailinglist.UnsubscribeRequest")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -57,8 +68,8 @@ const _ = grpc.SupportPackageIsVersion2
 // Client API for MailingList service
 
 type MailingListClient interface {
-	Subscribe(ctx context.Context, in *MembershipRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
-	Unsubscribe(ctx context.Context, in *MembershipRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
+	Subscribe(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
+	Unsubscribe(ctx context.Context, in *UnsubscribeRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
 }
 
 type mailingListClient struct {
@@ -69,7 +80,7 @@ func NewMailingListClient(cc *grpc.ClientConn) MailingListClient {
 	return &mailingListClient{cc}
 }
 
-func (c *mailingListClient) Subscribe(ctx context.Context, in *MembershipRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
+func (c *mailingListClient) Subscribe(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
 	out := new(dtypes.VoidResponse)
 	err := grpc.Invoke(ctx, "/mailinglist.MailingList/Subscribe", in, out, c.cc, opts...)
 	if err != nil {
@@ -78,7 +89,7 @@ func (c *mailingListClient) Subscribe(ctx context.Context, in *MembershipRequest
 	return out, nil
 }
 
-func (c *mailingListClient) Unsubscribe(ctx context.Context, in *MembershipRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
+func (c *mailingListClient) Unsubscribe(ctx context.Context, in *UnsubscribeRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
 	out := new(dtypes.VoidResponse)
 	err := grpc.Invoke(ctx, "/mailinglist.MailingList/Unsubscribe", in, out, c.cc, opts...)
 	if err != nil {
@@ -90,8 +101,8 @@ func (c *mailingListClient) Unsubscribe(ctx context.Context, in *MembershipReque
 // Server API for MailingList service
 
 type MailingListServer interface {
-	Subscribe(context.Context, *MembershipRequest) (*dtypes.VoidResponse, error)
-	Unsubscribe(context.Context, *MembershipRequest) (*dtypes.VoidResponse, error)
+	Subscribe(context.Context, *SubscribeRequest) (*dtypes.VoidResponse, error)
+	Unsubscribe(context.Context, *UnsubscribeRequest) (*dtypes.VoidResponse, error)
 }
 
 func RegisterMailingListServer(s *grpc.Server, srv MailingListServer) {
@@ -99,7 +110,7 @@ func RegisterMailingListServer(s *grpc.Server, srv MailingListServer) {
 }
 
 func _MailingList_Subscribe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MembershipRequest)
+	in := new(SubscribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -111,13 +122,13 @@ func _MailingList_Subscribe_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/mailinglist.MailingList/Subscribe",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MailingListServer).Subscribe(ctx, req.(*MembershipRequest))
+		return srv.(MailingListServer).Subscribe(ctx, req.(*SubscribeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _MailingList_Unsubscribe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MembershipRequest)
+	in := new(UnsubscribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -129,7 +140,7 @@ func _MailingList_Unsubscribe_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/mailinglist.MailingList/Unsubscribe",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MailingListServer).Unsubscribe(ctx, req.(*MembershipRequest))
+		return srv.(MailingListServer).Unsubscribe(ctx, req.(*UnsubscribeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -151,20 +162,22 @@ var _MailingList_serviceDesc = grpc.ServiceDesc{
 }
 
 var fileDescriptor0 = []byte{
-	// 231 bytes of a gzipped FileDescriptorProto
+	// 263 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0x12, 0xcc, 0x4d, 0xcc, 0xcc,
 	0xc9, 0xcc, 0x4b, 0xcf, 0xc9, 0x2c, 0x2e, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x46,
 	0x12, 0x92, 0x92, 0x49, 0xcf, 0xcf, 0x4f, 0xcf, 0x49, 0xd5, 0x4f, 0x2c, 0xc8, 0xd4, 0x4f, 0xcc,
 	0xcb, 0xcb, 0x2f, 0x49, 0x2c, 0xc9, 0xcc, 0xcf, 0x2b, 0x86, 0x28, 0x95, 0x12, 0x03, 0x09, 0xa7,
-	0x94, 0x54, 0x16, 0xa4, 0x16, 0xeb, 0x83, 0x49, 0x88, 0xb8, 0x92, 0x26, 0x97, 0xa0, 0x6f, 0x6a,
-	0x6e, 0x52, 0x6a, 0x51, 0x71, 0x46, 0x66, 0x41, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x89, 0x90,
-	0x08, 0x17, 0x6b, 0x2a, 0xc8, 0x68, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x08, 0xc7, 0xe8,
-	0x0b, 0x23, 0x17, 0xb7, 0x2f, 0xc4, 0x42, 0x1f, 0xa0, 0x85, 0x42, 0x85, 0x5c, 0x9c, 0xc1, 0xa5,
-	0x49, 0xc5, 0xc9, 0x45, 0x99, 0x49, 0xa9, 0x42, 0x72, 0x7a, 0xc8, 0xce, 0xc3, 0x30, 0x52, 0x4a,
-	0x44, 0x0f, 0x62, 0xb9, 0x5e, 0x58, 0x7e, 0x66, 0x4a, 0x50, 0x6a, 0x71, 0x01, 0xd0, 0x69, 0xa9,
-	0x4a, 0x7a, 0x4d, 0x97, 0x9f, 0x4c, 0x66, 0xd2, 0x90, 0x52, 0xd6, 0x47, 0xd2, 0xad, 0x5f, 0x66,
-	0xa0, 0x67, 0xa8, 0x5f, 0x0d, 0xb6, 0xb4, 0x56, 0xbf, 0x18, 0x66, 0x85, 0x15, 0xa3, 0x96, 0x50,
-	0x11, 0x17, 0x77, 0x68, 0x5e, 0x31, 0x85, 0x96, 0xea, 0x82, 0x2d, 0x55, 0x17, 0x52, 0xc5, 0x6d,
-	0x69, 0x29, 0xc2, 0x92, 0x24, 0x36, 0x70, 0x40, 0x19, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0x62,
-	0xf4, 0xd6, 0xa1, 0x80, 0x01, 0x00, 0x00,
+	0x94, 0x54, 0x16, 0xa4, 0x16, 0xeb, 0x83, 0x49, 0x88, 0xb8, 0x92, 0x06, 0x97, 0x40, 0x70, 0x69,
+	0x52, 0x71, 0x72, 0x51, 0x66, 0x52, 0x6a, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x89, 0x90, 0x08,
+	0x17, 0x6b, 0x2a, 0xc8, 0x64, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x08, 0x47, 0xc9, 0x98,
+	0x4b, 0x28, 0x34, 0xaf, 0x18, 0x5d, 0xad, 0x2c, 0x17, 0x57, 0x6e, 0x62, 0x7a, 0x66, 0x72, 0x7c,
+	0x72, 0x7e, 0x4a, 0x2a, 0x54, 0x03, 0x27, 0x58, 0xc4, 0x19, 0x28, 0x60, 0xf4, 0x93, 0x91, 0x8b,
+	0xdb, 0x17, 0xe2, 0x48, 0x1f, 0xa0, 0x23, 0x85, 0x0a, 0xb8, 0x38, 0xe1, 0xd6, 0x09, 0xc9, 0xea,
+	0x21, 0x7b, 0x09, 0xdd, 0x19, 0x52, 0x22, 0x7a, 0x10, 0xf7, 0xea, 0x85, 0xe5, 0x67, 0xa6, 0x04,
+	0xa5, 0x16, 0x17, 0x00, 0x7d, 0x93, 0xaa, 0xa4, 0xd7, 0x74, 0xf9, 0xc9, 0x64, 0x26, 0x0d, 0x29,
+	0x65, 0x7d, 0x24, 0xcd, 0xfa, 0x65, 0x06, 0x7a, 0x86, 0xfa, 0x70, 0xc7, 0xe9, 0x57, 0x83, 0x9d,
+	0x5c, 0x6b, 0xc5, 0xa8, 0x25, 0x54, 0xc1, 0xc5, 0x8d, 0xe4, 0x6c, 0x21, 0x79, 0x14, 0x3b, 0x31,
+	0x3d, 0x84, 0xc3, 0x56, 0x23, 0xb0, 0xad, 0x3a, 0x42, 0x5a, 0x98, 0xb6, 0x96, 0xe6, 0x21, 0xd9,
+	0x8b, 0x08, 0x8b, 0xda, 0x24, 0x36, 0x70, 0x08, 0x1b, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0xaa,
+	0x32, 0x95, 0xcd, 0xb9, 0x01, 0x00, 0x00,
 }
