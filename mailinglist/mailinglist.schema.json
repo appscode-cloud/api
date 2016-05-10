@@ -1,0 +1,20 @@
+{
+  "definitions": {
+    "mailinglistSubscribeRequest": {
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "mailinglistUnsubscribeRequest": {
+      "properties": {
+        "magic_code": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
