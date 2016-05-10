@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/mailinglist/v0.1/cloud": {
+    "/mailinglist/v0.1/member": {
       "put": {
         "summary": "MailingList.Subscribe",
         "operationId": "Subscribe",

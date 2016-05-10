@@ -99,7 +99,7 @@ func RegisterMailingListHandler(ctx context.Context, mux *runtime.ServeMux, conn
 }
 
 var (
-	pattern_MailingList_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"mailinglist", "v0.1", "cloud"}, ""))
+	pattern_MailingList_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"mailinglist", "v0.1", "member"}, ""))
 )
 
 var (
