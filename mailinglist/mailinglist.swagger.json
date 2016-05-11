@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/mail/v0.1/send": {
+    "/mail/v0.1": {
       "post": {
         "summary": "MailingList.SendEmail",
         "operationId": "SendEmail",
