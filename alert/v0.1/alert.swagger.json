@@ -365,6 +365,10 @@
           "type": "integer",
           "format": "int64"
         },
+        "formula_r": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
           "type": "string",
           "format": "string"
@@ -374,10 +378,6 @@
           "items": {
             "$ref": "#/definitions/IcingaServiceQueryEntry"
           }
-        },
-        "r": {
-          "type": "string",
-          "format": "string"
         }
       }
     },

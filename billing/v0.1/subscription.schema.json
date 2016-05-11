@@ -1,0 +1,74 @@
+{
+  "definitions": {
+    "billingResource": {
+      "default": "USER",
+      "enum": [
+        "USER",
+        "CLUSTER",
+        "NODE",
+        "DB",
+        "CI"
+      ],
+      "type": "string"
+    },
+    "billingSubscriptionCloseRequest": {
+      "properties": {
+        "object_phid": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "billingSubscriptionCreateRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "billingSubscriptionDescribeRequest": {
+      "type": "object"
+    },
+    "billingSubscriptionOpenRequest": {
+      "properties": {
+        "author_phid": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "object_phid": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string"
+        },
+        "subscription_phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "billingSubscriptionQoutaRequest": {
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "object_phid": {
+          "type": "string"
+        },
+        "resource": {
+          "$ref": "#/definitions/billingResource"
+        },
+        "subresource": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

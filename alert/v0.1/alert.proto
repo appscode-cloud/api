@@ -110,6 +110,6 @@ message IcingaService {
   string name = 1;
   string check_command = 2;
   map<string, string> query = 3;
-  string r  = 4;
+  string formula_r  = 4;
     int64 check_interval = 6;
 }

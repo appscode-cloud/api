@@ -1,0 +1,18 @@
+{
+  "definitions": {
+    "authenticationValidateRequest": {
+      "properties": {
+        "namespace": {
+          "type": "string"
+        },
+        "secret": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
