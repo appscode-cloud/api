@@ -15,6 +15,33 @@
     "application/json"
   ],
   "paths": {
+    "/mail/v0.1": {
+      "post": {
+        "summary": "MailingList.SendEmail",
+        "operationId": "SendEmail",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/mailinglistSendEmailRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MailingList"
+        ]
+      }
+    },
     "/mailinglist/v0.1/subscribe/{email}": {
       "put": {
         "summary": "MailingList.Subscribe",
@@ -121,6 +148,27 @@
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "mailinglistSendEmailRequest": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "string",
+          "format": "string"
+        },
+        "sender_email": {
+          "type": "string",
+          "format": "string"
+        },
+        "sender_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "subject": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
