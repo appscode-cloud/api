@@ -251,7 +251,7 @@
     }
   },
   "definitions": {
-    "MatrixQueryEntry": {
+    "IcingaServiceQueryEntry": {
       "type": "object",
       "properties": {
         "key": {
@@ -267,12 +267,12 @@
     "alertAlert": {
       "type": "object",
       "properties": {
+        "icinga_service": {
+          "$ref": "#/definitions/alertIcingaService"
+        },
         "icinga_url": {
           "type": "string",
           "format": "string"
-        },
-        "matrix": {
-          "$ref": "#/definitions/alertMatrix"
         },
         "name": {
           "type": "string",
@@ -281,10 +281,6 @@
         "phid": {
           "type": "string",
           "format": "string"
-        },
-        "refresh_interval": {
-          "type": "integer",
-          "format": "int64"
         },
         "spec": {
           "$ref": "#/definitions/alertAlertSpec"
@@ -330,14 +326,10 @@
         "alert_spec": {
           "$ref": "#/definitions/alertAlertSpec"
         },
-        "check_interval": {
-          "type": "integer",
-          "format": "int64"
+        "icinga_service": {
+          "$ref": "#/definitions/alertIcingaService"
         },
-        "matrix": {
-          "$ref": "#/definitions/alertMatrix"
-        },
-        "matrix_phid": {
+        "icinga_service_phid": {
           "type": "string",
           "format": "string"
         },
@@ -362,6 +354,33 @@
         }
       }
     },
+    "alertIcingaService": {
+      "type": "object",
+      "properties": {
+        "check_command": {
+          "type": "string",
+          "format": "string"
+        },
+        "check_interval": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "query": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IcingaServiceQueryEntry"
+          }
+        },
+        "r": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
     "alertListRequest": {
       "type": "object",
       "properties": {
@@ -381,29 +400,6 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "alertMatrix": {
-      "type": "object",
-      "properties": {
-        "command": {
-          "type": "string",
-          "format": "string"
-        },
-        "formula": {
-          "type": "string",
-          "format": "string"
-        },
-        "name": {
-          "type": "string",
-          "format": "string"
-        },
-        "query": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MatrixQueryEntry"
-          }
         }
       }
     },
@@ -463,14 +459,10 @@
         "alert_spec": {
           "$ref": "#/definitions/alertAlertSpec"
         },
-        "check_interval": {
-          "type": "integer",
-          "format": "int64"
+        "icinga_service": {
+          "$ref": "#/definitions/alertIcingaService"
         },
-        "matrix": {
-          "$ref": "#/definitions/alertMatrix"
-        },
-        "matrix_phid": {
+        "icinga_service_phid": {
           "type": "string",
           "format": "string"
         },

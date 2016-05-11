@@ -83,7 +83,7 @@ func init() {
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "MatrixQueryEntry": {
+    "IcingaServiceQueryEntry": {
       "properties": {
         "key": {
           "type": "string"
@@ -120,22 +120,25 @@ func init() {
       },
       "type": "object"
     },
-    "alertMatrix": {
+    "alertIcingaService": {
       "properties": {
-        "command": {
+        "check_command": {
           "type": "string"
         },
-        "formula": {
-          "type": "string"
+        "check_interval": {
+          "type": "integer"
         },
         "name": {
           "type": "string"
         },
         "query": {
           "items": {
-            "$ref": "#/definitions/MatrixQueryEntry"
+            "$ref": "#/definitions/IcingaServiceQueryEntry"
           },
           "type": "array"
+        },
+        "r": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -162,13 +165,10 @@ func init() {
     "alert_spec": {
       "$ref": "#/definitions/alertAlertSpec"
     },
-    "check_interval": {
-      "type": "integer"
+    "icinga_service": {
+      "$ref": "#/definitions/alertIcingaService"
     },
-    "matrix": {
-      "$ref": "#/definitions/alertMatrix"
-    },
-    "matrix_phid": {
+    "icinga_service_phid": {
       "type": "string"
     },
     "name": {
@@ -213,7 +213,7 @@ func init() {
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "MatrixQueryEntry": {
+    "IcingaServiceQueryEntry": {
       "properties": {
         "key": {
           "type": "string"
@@ -250,22 +250,25 @@ func init() {
       },
       "type": "object"
     },
-    "alertMatrix": {
+    "alertIcingaService": {
       "properties": {
-        "command": {
+        "check_command": {
           "type": "string"
         },
-        "formula": {
-          "type": "string"
+        "check_interval": {
+          "type": "integer"
         },
         "name": {
           "type": "string"
         },
         "query": {
           "items": {
-            "$ref": "#/definitions/MatrixQueryEntry"
+            "$ref": "#/definitions/IcingaServiceQueryEntry"
           },
           "type": "array"
+        },
+        "r": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -292,13 +295,10 @@ func init() {
     "alert_spec": {
       "$ref": "#/definitions/alertAlertSpec"
     },
-    "check_interval": {
-      "type": "integer"
+    "icinga_service": {
+      "$ref": "#/definitions/alertIcingaService"
     },
-    "matrix": {
-      "$ref": "#/definitions/alertMatrix"
-    },
-    "matrix_phid": {
+    "icinga_service_phid": {
       "type": "string"
     },
     "name": {

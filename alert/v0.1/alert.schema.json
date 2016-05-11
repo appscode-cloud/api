@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "MatrixQueryEntry": {
+    "IcingaServiceQueryEntry": {
       "properties": {
         "key": {
           "type": "string"
@@ -42,13 +42,10 @@
         "alert_spec": {
           "$ref": "#/definitions/alertAlertSpec"
         },
-        "check_interval": {
-          "type": "integer"
+        "icinga_service": {
+          "$ref": "#/definitions/alertIcingaService"
         },
-        "matrix": {
-          "$ref": "#/definitions/alertMatrix"
-        },
-        "matrix_phid": {
+        "icinga_service_phid": {
           "type": "string"
         },
         "name": {
@@ -71,30 +68,33 @@
       },
       "type": "object"
     },
-    "alertListRequest": {
+    "alertIcingaService": {
       "properties": {
-        "spec": {
-          "$ref": "#/definitions/alertSpec"
-        }
-      },
-      "type": "object"
-    },
-    "alertMatrix": {
-      "properties": {
-        "command": {
+        "check_command": {
           "type": "string"
         },
-        "formula": {
-          "type": "string"
+        "check_interval": {
+          "type": "integer"
         },
         "name": {
           "type": "string"
         },
         "query": {
           "items": {
-            "$ref": "#/definitions/MatrixQueryEntry"
+            "$ref": "#/definitions/IcingaServiceQueryEntry"
           },
           "type": "array"
+        },
+        "r": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertListRequest": {
+      "properties": {
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
         }
       },
       "type": "object"
@@ -144,13 +144,10 @@
         "alert_spec": {
           "$ref": "#/definitions/alertAlertSpec"
         },
-        "check_interval": {
-          "type": "integer"
+        "icinga_service": {
+          "$ref": "#/definitions/alertIcingaService"
         },
-        "matrix": {
-          "$ref": "#/definitions/alertMatrix"
-        },
-        "matrix_phid": {
+        "icinga_service_phid": {
           "type": "string"
         },
         "name": {
