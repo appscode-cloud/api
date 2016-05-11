@@ -294,19 +294,11 @@
           "type": "integer",
           "format": "int64"
         },
-        "critical_condition": {
-          "type": "string",
-          "format": "string"
-        },
         "critical_method": {
           "type": "integer",
           "format": "int32"
         },
         "critical_user": {
-          "type": "string",
-          "format": "string"
-        },
-        "warning_condition": {
           "type": "string",
           "format": "string"
         },
@@ -365,6 +357,10 @@
           "type": "integer",
           "format": "int64"
         },
+        "critical_condition": {
+          "type": "string",
+          "format": "string"
+        },
         "formula_r": {
           "type": "string",
           "format": "string"
@@ -378,6 +374,10 @@
           "items": {
             "$ref": "#/definitions/IcingaServiceQueryEntry"
           }
+        },
+        "warning_condition": {
+          "type": "string",
+          "format": "string"
         }
       }
     },

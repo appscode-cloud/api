@@ -99,16 +99,10 @@ func init() {
         "alert_interval": {
           "type": "integer"
         },
-        "critical_condition": {
-          "type": "string"
-        },
         "critical_method": {
           "type": "integer"
         },
         "critical_user": {
-          "type": "string"
-        },
-        "warning_condition": {
           "type": "string"
         },
         "warning_method": {
@@ -128,6 +122,9 @@ func init() {
         "check_interval": {
           "type": "integer"
         },
+        "critical_condition": {
+          "type": "string"
+        },
         "formula_r": {
           "type": "string"
         },
@@ -139,6 +136,9 @@ func init() {
             "$ref": "#/definitions/IcingaServiceQueryEntry"
           },
           "type": "array"
+        },
+        "warning_condition": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -229,16 +229,10 @@ func init() {
         "alert_interval": {
           "type": "integer"
         },
-        "critical_condition": {
-          "type": "string"
-        },
         "critical_method": {
           "type": "integer"
         },
         "critical_user": {
-          "type": "string"
-        },
-        "warning_condition": {
           "type": "string"
         },
         "warning_method": {
@@ -258,6 +252,9 @@ func init() {
         "check_interval": {
           "type": "integer"
         },
+        "critical_condition": {
+          "type": "string"
+        },
         "formula_r": {
           "type": "string"
         },
@@ -269,6 +266,9 @@ func init() {
             "$ref": "#/definitions/IcingaServiceQueryEntry"
           },
           "type": "array"
+        },
+        "warning_condition": {
+          "type": "string"
         }
       },
       "type": "object"
