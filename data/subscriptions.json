@@ -23,7 +23,9 @@
           "elasticsearch":0,
           "influxdb":0
         }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     },
     {
       "sku":"H-M2M-Indie",
@@ -48,7 +50,9 @@
           "elasticsearch":5,
           "influxdb":5
         }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     },
     {
       "sku":"H-M2M-Startup",
@@ -73,7 +77,9 @@
           "elasticsearch":10,
           "influxdb":10
         }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     },
     {
       "sku":"H-M2M-Professional",
@@ -98,32 +104,9 @@
           "elasticsearch":20,
           "influxdb":20
         }
-      }
-    },
-    {
-      "sku":"H-M2M-Enterprise",
-      "price":-1,
-      "details":{
-        "user":-1,
-        "phabricator":{
-          "disk_size":-1
-        },
-        "artifact":{
-          "disk_size":-1
-        },
-        "kube":{
-          "cluster":-1,
-          "nodes":-1
-        },
-        "ci":{
-          "agent":-1
-        },
-        "db":{
-          "postgres":-1,
-          "elasticsearch":-1,
-          "influxdb":-1
-        }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     },
     {
       "sku":"H-APM-Indie",
@@ -148,7 +131,9 @@
           "elasticsearch":5,
           "influxdb":5
         }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     },
     {
       "sku":"H-APM-Startup",
@@ -173,7 +158,9 @@
           "elasticsearch":10,
           "influxdb":10
         }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     },
     {
       "sku":"H-APM-Professional",
@@ -198,32 +185,9 @@
           "elasticsearch":20,
           "influxdb":20
         }
-      }
-    },
-    {
-      "sku":"H-APM-Enterprise",
-      "price":-1,
-      "details":{
-        "user":-1,
-        "phabricator":{
-          "disk_size":-1
-        },
-        "artifact":{
-          "disk_size":-1
-        },
-        "kube":{
-          "cluster":-1,
-          "nodes":-1
-        },
-        "ci":{
-          "agent":-1
-        },
-        "db":{
-          "postgres":-1,
-          "elasticsearch":-1,
-          "influxdb":-1
-        }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     },
     {
       "sku":"H-APA-Indie",
@@ -248,7 +212,9 @@
           "elasticsearch":5,
           "influxdb":5
         }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     },
     {
       "sku":"H-APA-Startup",
@@ -273,7 +239,9 @@
           "elasticsearch":10,
           "influxdb":10
         }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     },
     {
       "sku":"H-APA-Professional",
@@ -298,18 +266,22 @@
           "elasticsearch":20,
           "influxdb":20
         }
-      }
-    },
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
+    }
+  ],
+  "trial":[
     {
-      "sku":"H-APA-Enterprise",
-      "price":-1,
+      "sku":"Trail-Indie",
+      "price":0,
       "details":{
-        "user":-1,
+        "user":10,
         "phabricator":{
-          "disk_size":-1
+          "disk_size":20
         },
         "artifact":{
-          "disk_size":-1
+          "disk_size":100
         },
         "kube":{
           "cluster":-1,
@@ -319,11 +291,67 @@
           "agent":-1
         },
         "db":{
-          "postgres":-1,
-          "elasticsearch":-1,
-          "influxdb":-1
+          "postgres":5,
+          "elasticsearch":5,
+          "influxdb":5
         }
-      }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
+    },
+    {
+      "sku":"Trail-Startup",
+      "price":0,
+      "details":{
+        "user":25,
+        "phabricator":{
+          "disk_size":100
+        },
+        "artifact":{
+          "disk_size":500
+        },
+        "kube":{
+          "cluster":-1,
+          "nodes":-1
+        },
+        "ci":{
+          "agent":-1
+        },
+        "db":{
+          "postgres":10,
+          "elasticsearch":10,
+          "influxdb":10
+        }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
+    },
+    {
+      "sku":"Trail-Professional",
+      "price":0,
+      "details":{
+        "user":100,
+        "phabricator":{
+          "disk_size":250
+        },
+        "artifact":{
+          "disk_size":500
+        },
+        "kube":{
+          "cluster":-1,
+          "nodes":-1
+        },
+        "ci":{
+          "agent":-1
+        },
+        "db":{
+          "postgres":20,
+          "elasticsearch":20,
+          "influxdb":20
+        }
+      },
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
     }
   ]
 }

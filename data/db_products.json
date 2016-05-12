@@ -9,22 +9,30 @@
         {
           "sku":"DB-PG-BASIC",
           "price":0,
-          "name":"basic"
+          "name":"basic",
+          "date_started": "2016-01-01T00:00:00.000Z",
+          "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-PG-DURABLE",
           "price":5,
-          "name":"durable"
+          "name":"durable",
+          "date_started": "2016-01-01T00:00:00.000Z",
+          "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-PG-HA",
           "price":20,
-          "name":"ha"
+          "name":"ha",
+          "date_started": "2016-01-01T00:00:00.000Z",
+          "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-PG-CLOUD",
           "price":25,
-          "name":"cloud"
+          "name":"cloud",
+          "date_started": "2016-01-01T00:00:00.000Z",
+          "date_ended": "2030-01-01T00:00:00.000Z"
         }
       ]
     },
@@ -38,17 +46,16 @@
         {
           "sku":"DB-ES-BASIC",
           "price":0,
-          "name":"basic"
+          "name":"basic",
+          "date_started": "2016-01-01T00:00:00.000Z",
+          "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-ES-DURABLE",
           "price":5,
-          "name":"durable"
-        },
-        {
-          "sku":"DB-ES-FS",
-          "price":15,
-          "name":"fs-snapshot"
+          "name":"durable",
+          "date_started": "2016-01-01T00:00:00.000Z",
+          "date_ended": "2030-01-01T00:00:00.000Z"
         }
       ]
     },
@@ -61,12 +68,16 @@
         {
           "sku":"DB-INFLUX-BASIC",
           "price":0,
-          "name":"basic"
+          "name":"basic",
+          "date_started": "2016-01-01T00:00:00.000Z",
+          "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-INFLUX-DURABLE",
           "price":5,
-          "name":"durable"
+          "name":"durable",
+          "date_started": "2016-01-01T00:00:00.000Z",
+          "date_ended": "2030-01-01T00:00:00.000Z"
         }
       ]
     }

@@ -47,6 +47,10 @@ service Subscriptions {
   }
 }
 
+message SubscriptionCreateRequest {
+    string phid = 1;
+}
+
 message SubscriptionDescribeRequest {
 }
 
@@ -76,10 +80,6 @@ message SubscriptionOpenRequest {
 message SubscriptionCloseRequest {
   string product_type = 1;
   string object_phid = 2;
-}
-
-message SubscriptionCreateRequest {
-  string phid = 1;
 }
 
 message Quota {

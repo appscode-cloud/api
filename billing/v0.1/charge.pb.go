@@ -12,12 +12,12 @@ It is generated from these files:
 It has these top-level messages:
 	ChargeCalculateRequest
 	ChargeCalculateResponse
+	SubscriptionCreateRequest
 	SubscriptionDescribeRequest
 	SubscriptionDescribeResponse
 	Subscription
 	SubscriptionOpenRequest
 	SubscriptionCloseRequest
-	SubscriptionCreateRequest
 	Quota
 	PhabricatorQuota
 	CIQuota
