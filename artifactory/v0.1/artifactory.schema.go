@@ -28,14 +28,8 @@ func init() {
 	searchRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "from": {
-      "type": "integer"
-    },
-    "query_string": {
+    "query": {
       "type": "string"
-    },
-    "size": {
-      "type": "integer"
     },
     "type": {
       "type": "string"

@@ -3,97 +3,94 @@ syntax = "proto3";
 package artifactory;
 
 import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
 
-option java_multiple_files = true;
+service Artifactory {
 
-service ArtifactoryServices {
-
-  rpc Search(SearchRequest) returns(SearchResponse){
-      option(google.api.http) = {
-          get: "/artifactory/v0.1/{type}"
-      };
+  rpc Search(SearchRequest) returns(SearchResponse) {
+    option(google.api.http) = {
+      get: "/artifactory/v0.1/search/{type}"
+    };
   }
 
-  rpc List(ListRequest) returns(ListResponse){
-      option(google.api.http) = {
-          get: "/artifactory/v0.1/{type}"
-      };
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {
+      get: "/artifactory/v0.1/{type}"
+    };
   }
 
-  rpc Describe(DescribeRequest) returns(DescribeResponse){
-      option(google.api.http) = {
-           get: "/artifactory/v0.1/{type}"
-      };
+  rpc Describe(DescribeRequest) returns (DescribeResponse) {
+    option(google.api.http) = {
+      get: "/artifactory/v0.1/{type}/{id}"
+    };
   }
 }
 
-message SearchRequest{
-    string query_string = 1;
-    string type = 2;
-    int32 from = 3;
-    int32 size = 4;
+message SearchRequest {
+  string query = 1;
+  string type = 2;
 }
 
-message SearchResponse{
-    string status = 1;
-    repeated Artifacts artifact = 2;
+message SearchResponse {
+  dtypes.Status status = 1;
+  repeated Artifact artifacts = 2;
 }
 
-message ListRequest{
-    string type =1;
+message ListRequest {
+  string type = 1;
 }
 
-message ListResponse{
-    string status = 1;
-    repeated Artifacts artifact = 2;
+message ListResponse {
+  dtypes.Status status = 1;
+  repeated Artifact artifacts = 2;
 }
 
-message DescribeRequest{
-    string type =1 ;
-    string id = 2;
+message DescribeRequest {
+  string id = 2;
+  string type = 1;
 }
 
-message DescribeResponse{
-    string status = 1;
-    Artifacts artifact = 2;
+message DescribeResponse {
+  dtypes.Status status = 1;
+  Artifact artifact = 2;
 }
 
 
-message Artifacts{
-    string id = 1;
-    string name = 2;
-    string version = 3;
-    string last_modified_time = 4;
-    string type = 5;
+message Artifact {
+  string id = 1;
+  string name = 2;
+  string version = 3;
+  string last_modified_time = 4;
+  string type = 5;
 
-    oneof model_artifacts{
-        JavaSpec java = 6;
-        DockerSpec docker = 7;
-        PhpSpec php = 8;
-        NpmSpec npm = 9;
-    }
+  oneof specs{
+    JavaSpec java = 6;
+    DockerSpec docker = 7;
+    PhpSpec php = 8;
+    NpmSpec npm = 9;
+  }
 }
 
-message JavaSpec{
-    string group_id = 1;
-    string artifact_id = 2;
-    string artifact_url = 3;
+message JavaSpec {
+  string group_id = 1;
+  string artifact_id = 2;
+  string artifact_url = 3;
 }
 
-message DockerSpec{
-    repeated string tar_Sums = 1;
-    string manifest_url = 2;
+message DockerSpec {
+  repeated string tar_Sums = 1;
+  string manifest_url = 2;
 }
 
-message PhpSpec{
-    string download_url = 1;
-    string shasum = 2;
+message PhpSpec {
+  string download_url = 1;
+  string shasum = 2;
 }
 
-message NpmSpec{
-    string description = 1;
-    string artifact_id = 2;
-    string shasum = 3;
-    repeated string keywords = 4;
-    string artifact_url = 5;
+message NpmSpec {
+  string description = 1;
+  string artifact_id = 2;
+  string shasum = 3;
+  repeated string keywords = 4;
+  string artifact_url = 5;
 }

@@ -30,10 +30,10 @@ var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
 var (
-	filter_ArtifactoryServices_Search_0 = &utilities.DoubleArray{Encoding: map[string]int{"type": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_Artifactory_Search_0 = &utilities.DoubleArray{Encoding: map[string]int{"type": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_ArtifactoryServices_Search_0(ctx context.Context, client ArtifactoryServicesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Artifactory_Search_0(ctx context.Context, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SearchRequest
 	var metadata runtime.ServerMetadata
 
@@ -55,7 +55,7 @@ func request_ArtifactoryServices_Search_0(ctx context.Context, client Artifactor
 		return nil, metadata, err
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ArtifactoryServices_Search_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Artifactory_Search_0); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -64,7 +64,7 @@ func request_ArtifactoryServices_Search_0(ctx context.Context, client Artifactor
 
 }
 
-func request_ArtifactoryServices_List_0(ctx context.Context, client ArtifactoryServicesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Artifactory_List_0(ctx context.Context, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListRequest
 	var metadata runtime.ServerMetadata
 
@@ -91,11 +91,7 @@ func request_ArtifactoryServices_List_0(ctx context.Context, client ArtifactoryS
 
 }
 
-var (
-	filter_ArtifactoryServices_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"type": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
-func request_ArtifactoryServices_Describe_0(ctx context.Context, client ArtifactoryServicesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Artifactory_Describe_0(ctx context.Context, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -117,8 +113,15 @@ func request_ArtifactoryServices_Describe_0(ctx context.Context, client Artifact
 		return nil, metadata, err
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ArtifactoryServices_Describe_0); err != nil {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	val, ok = pathParams["id"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
+	}
+
+	protoReq.Id, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
 	}
 
 	msg, err := client.Describe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -126,9 +129,9 @@ func request_ArtifactoryServices_Describe_0(ctx context.Context, client Artifact
 
 }
 
-// RegisterArtifactoryServicesHandlerFromEndpoint is same as RegisterArtifactoryServicesHandler but
+// RegisterArtifactoryHandlerFromEndpoint is same as RegisterArtifactoryHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterArtifactoryServicesHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterArtifactoryHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -148,15 +151,15 @@ func RegisterArtifactoryServicesHandlerFromEndpoint(ctx context.Context, mux *ru
 		}()
 	}()
 
-	return RegisterArtifactoryServicesHandler(ctx, mux, conn)
+	return RegisterArtifactoryHandler(ctx, mux, conn)
 }
 
-// RegisterArtifactoryServicesHandler registers the http handlers for service ArtifactoryServices to "mux".
+// RegisterArtifactoryHandler registers the http handlers for service Artifactory to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterArtifactoryServicesHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	client := NewArtifactoryServicesClient(conn)
+func RegisterArtifactoryHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	client := NewArtifactoryClient(conn)
 
-	mux.Handle("GET", pattern_ArtifactoryServices_Search_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Artifactory_Search_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -168,18 +171,18 @@ func RegisterArtifactoryServicesHandler(ctx context.Context, mux *runtime.ServeM
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_ArtifactoryServices_Search_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Artifactory_Search_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_ArtifactoryServices_Search_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Artifactory_Search_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ArtifactoryServices_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Artifactory_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -191,18 +194,18 @@ func RegisterArtifactoryServicesHandler(ctx context.Context, mux *runtime.ServeM
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_ArtifactoryServices_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Artifactory_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_ArtifactoryServices_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Artifactory_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ArtifactoryServices_Describe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Artifactory_Describe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -214,14 +217,14 @@ func RegisterArtifactoryServicesHandler(ctx context.Context, mux *runtime.ServeM
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_ArtifactoryServices_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		resp, md, err := request_Artifactory_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_ArtifactoryServices_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Artifactory_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -229,17 +232,17 @@ func RegisterArtifactoryServicesHandler(ctx context.Context, mux *runtime.ServeM
 }
 
 var (
-	pattern_ArtifactoryServices_Search_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"artifactory", "v0.1", "type"}, ""))
+	pattern_Artifactory_Search_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"artifactory", "v0.1", "search", "type"}, ""))
 
-	pattern_ArtifactoryServices_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"artifactory", "v0.1", "type"}, ""))
+	pattern_Artifactory_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"artifactory", "v0.1", "type"}, ""))
 
-	pattern_ArtifactoryServices_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"artifactory", "v0.1", "type"}, ""))
+	pattern_Artifactory_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3}, []string{"artifactory", "v0.1", "type", "id"}, ""))
 )
 
 var (
-	forward_ArtifactoryServices_Search_0 = runtime.ForwardResponseMessage
+	forward_Artifactory_Search_0 = runtime.ForwardResponseMessage
 
-	forward_ArtifactoryServices_List_0 = runtime.ForwardResponseMessage
+	forward_Artifactory_List_0 = runtime.ForwardResponseMessage
 
-	forward_ArtifactoryServices_Describe_0 = runtime.ForwardResponseMessage
+	forward_Artifactory_Describe_0 = runtime.ForwardResponseMessage
 )

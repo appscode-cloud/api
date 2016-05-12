@@ -21,14 +21,8 @@
     },
     "artifactorySearchRequest": {
       "properties": {
-        "from": {
-          "type": "integer"
-        },
-        "query_string": {
+        "query": {
           "type": "string"
-        },
-        "size": {
-          "type": "integer"
         },
         "type": {
           "type": "string"

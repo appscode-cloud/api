@@ -15,7 +15,7 @@ It has these top-level messages:
 	ListResponse
 	DescribeRequest
 	DescribeResponse
-	Artifacts
+	Artifact
 	JavaSpec
 	DockerSpec
 	PhpSpec
@@ -27,6 +27,7 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 import _ "github.com/gengo/grpc-gateway/third_party/googleapis/google/api"
+import dtypes "github.com/appscode/api/dtypes"
 
 import (
 	context "golang.org/x/net/context"
@@ -43,10 +44,8 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion1
 
 type SearchRequest struct {
-	QueryString string `protobuf:"bytes,1,opt,name=query_string,json=queryString" json:"query_string,omitempty"`
-	Type        string `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
-	From        int32  `protobuf:"varint,3,opt,name=from" json:"from,omitempty"`
-	Size        int32  `protobuf:"varint,4,opt,name=size" json:"size,omitempty"`
+	Query string `protobuf:"bytes,1,opt,name=query" json:"query,omitempty"`
+	Type  string `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
 }
 
 func (m *SearchRequest) Reset()                    { *m = SearchRequest{} }
@@ -55,8 +54,8 @@ func (*SearchRequest) ProtoMessage()               {}
 func (*SearchRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
 type SearchResponse struct {
-	Status   string       `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-	Artifact []*Artifacts `protobuf:"bytes,2,rep,name=artifact" json:"artifact,omitempty"`
+	Status    *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
+	Artifacts []*Artifact    `protobuf:"bytes,2,rep,name=artifacts" json:"artifacts,omitempty"`
 }
 
 func (m *SearchResponse) Reset()                    { *m = SearchResponse{} }
@@ -64,9 +63,16 @@ func (m *SearchResponse) String() string            { return proto.CompactTextSt
 func (*SearchResponse) ProtoMessage()               {}
 func (*SearchResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
-func (m *SearchResponse) GetArtifact() []*Artifacts {
+func (m *SearchResponse) GetStatus() *dtypes.Status {
 	if m != nil {
-		return m.Artifact
+		return m.Status
+	}
+	return nil
+}
+
+func (m *SearchResponse) GetArtifacts() []*Artifact {
+	if m != nil {
+		return m.Artifacts
 	}
 	return nil
 }
@@ -81,8 +87,8 @@ func (*ListRequest) ProtoMessage()               {}
 func (*ListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
 type ListResponse struct {
-	Status   string       `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-	Artifact []*Artifacts `protobuf:"bytes,2,rep,name=artifact" json:"artifact,omitempty"`
+	Status    *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
+	Artifacts []*Artifact    `protobuf:"bytes,2,rep,name=artifacts" json:"artifacts,omitempty"`
 }
 
 func (m *ListResponse) Reset()                    { *m = ListResponse{} }
@@ -90,16 +96,23 @@ func (m *ListResponse) String() string            { return proto.CompactTextStri
 func (*ListResponse) ProtoMessage()               {}
 func (*ListResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
 
-func (m *ListResponse) GetArtifact() []*Artifacts {
+func (m *ListResponse) GetStatus() *dtypes.Status {
 	if m != nil {
-		return m.Artifact
+		return m.Status
+	}
+	return nil
+}
+
+func (m *ListResponse) GetArtifacts() []*Artifact {
+	if m != nil {
+		return m.Artifacts
 	}
 	return nil
 }
 
 type DescribeRequest struct {
-	Type string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
 	Id   string `protobuf:"bytes,2,opt,name=id" json:"id,omitempty"`
+	Type string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
 }
 
 func (m *DescribeRequest) Reset()                    { *m = DescribeRequest{} }
@@ -108,8 +121,8 @@ func (*DescribeRequest) ProtoMessage()               {}
 func (*DescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
 type DescribeResponse struct {
-	Status   string     `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-	Artifact *Artifacts `protobuf:"bytes,2,opt,name=artifact" json:"artifact,omitempty"`
+	Status   *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
+	Artifact *Artifact      `protobuf:"bytes,2,opt,name=artifact" json:"artifact,omitempty"`
 }
 
 func (m *DescribeResponse) Reset()                    { *m = DescribeResponse{} }
@@ -117,190 +130,197 @@ func (m *DescribeResponse) String() string            { return proto.CompactText
 func (*DescribeResponse) ProtoMessage()               {}
 func (*DescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
-func (m *DescribeResponse) GetArtifact() *Artifacts {
+func (m *DescribeResponse) GetStatus() *dtypes.Status {
+	if m != nil {
+		return m.Status
+	}
+	return nil
+}
+
+func (m *DescribeResponse) GetArtifact() *Artifact {
 	if m != nil {
 		return m.Artifact
 	}
 	return nil
 }
 
-type Artifacts struct {
+type Artifact struct {
 	Id               string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	Name             string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
 	Version          string `protobuf:"bytes,3,opt,name=version" json:"version,omitempty"`
 	LastModifiedTime string `protobuf:"bytes,4,opt,name=last_modified_time,json=lastModifiedTime" json:"last_modified_time,omitempty"`
 	Type             string `protobuf:"bytes,5,opt,name=type" json:"type,omitempty"`
-	// Types that are valid to be assigned to ModelArtifacts:
-	//	*Artifacts_Java
-	//	*Artifacts_Docker
-	//	*Artifacts_Php
-	//	*Artifacts_Npm
-	ModelArtifacts isArtifacts_ModelArtifacts `protobuf_oneof:"model_artifacts"`
+	// Types that are valid to be assigned to Specs:
+	//	*Artifact_Java
+	//	*Artifact_Docker
+	//	*Artifact_Php
+	//	*Artifact_Npm
+	Specs isArtifact_Specs `protobuf_oneof:"specs"`
 }
 
-func (m *Artifacts) Reset()                    { *m = Artifacts{} }
-func (m *Artifacts) String() string            { return proto.CompactTextString(m) }
-func (*Artifacts) ProtoMessage()               {}
-func (*Artifacts) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+func (m *Artifact) Reset()                    { *m = Artifact{} }
+func (m *Artifact) String() string            { return proto.CompactTextString(m) }
+func (*Artifact) ProtoMessage()               {}
+func (*Artifact) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
 
-type isArtifacts_ModelArtifacts interface {
-	isArtifacts_ModelArtifacts()
+type isArtifact_Specs interface {
+	isArtifact_Specs()
 }
 
-type Artifacts_Java struct {
+type Artifact_Java struct {
 	Java *JavaSpec `protobuf:"bytes,6,opt,name=java,oneof"`
 }
-type Artifacts_Docker struct {
+type Artifact_Docker struct {
 	Docker *DockerSpec `protobuf:"bytes,7,opt,name=docker,oneof"`
 }
-type Artifacts_Php struct {
+type Artifact_Php struct {
 	Php *PhpSpec `protobuf:"bytes,8,opt,name=php,oneof"`
 }
-type Artifacts_Npm struct {
+type Artifact_Npm struct {
 	Npm *NpmSpec `protobuf:"bytes,9,opt,name=npm,oneof"`
 }
 
-func (*Artifacts_Java) isArtifacts_ModelArtifacts()   {}
-func (*Artifacts_Docker) isArtifacts_ModelArtifacts() {}
-func (*Artifacts_Php) isArtifacts_ModelArtifacts()    {}
-func (*Artifacts_Npm) isArtifacts_ModelArtifacts()    {}
+func (*Artifact_Java) isArtifact_Specs()   {}
+func (*Artifact_Docker) isArtifact_Specs() {}
+func (*Artifact_Php) isArtifact_Specs()    {}
+func (*Artifact_Npm) isArtifact_Specs()    {}
 
-func (m *Artifacts) GetModelArtifacts() isArtifacts_ModelArtifacts {
+func (m *Artifact) GetSpecs() isArtifact_Specs {
 	if m != nil {
-		return m.ModelArtifacts
+		return m.Specs
 	}
 	return nil
 }
 
-func (m *Artifacts) GetJava() *JavaSpec {
-	if x, ok := m.GetModelArtifacts().(*Artifacts_Java); ok {
+func (m *Artifact) GetJava() *JavaSpec {
+	if x, ok := m.GetSpecs().(*Artifact_Java); ok {
 		return x.Java
 	}
 	return nil
 }
 
-func (m *Artifacts) GetDocker() *DockerSpec {
-	if x, ok := m.GetModelArtifacts().(*Artifacts_Docker); ok {
+func (m *Artifact) GetDocker() *DockerSpec {
+	if x, ok := m.GetSpecs().(*Artifact_Docker); ok {
 		return x.Docker
 	}
 	return nil
 }
 
-func (m *Artifacts) GetPhp() *PhpSpec {
-	if x, ok := m.GetModelArtifacts().(*Artifacts_Php); ok {
+func (m *Artifact) GetPhp() *PhpSpec {
+	if x, ok := m.GetSpecs().(*Artifact_Php); ok {
 		return x.Php
 	}
 	return nil
 }
 
-func (m *Artifacts) GetNpm() *NpmSpec {
-	if x, ok := m.GetModelArtifacts().(*Artifacts_Npm); ok {
+func (m *Artifact) GetNpm() *NpmSpec {
+	if x, ok := m.GetSpecs().(*Artifact_Npm); ok {
 		return x.Npm
 	}
 	return nil
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*Artifacts) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Artifacts_OneofMarshaler, _Artifacts_OneofUnmarshaler, _Artifacts_OneofSizer, []interface{}{
-		(*Artifacts_Java)(nil),
-		(*Artifacts_Docker)(nil),
-		(*Artifacts_Php)(nil),
-		(*Artifacts_Npm)(nil),
+func (*Artifact) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _Artifact_OneofMarshaler, _Artifact_OneofUnmarshaler, _Artifact_OneofSizer, []interface{}{
+		(*Artifact_Java)(nil),
+		(*Artifact_Docker)(nil),
+		(*Artifact_Php)(nil),
+		(*Artifact_Npm)(nil),
 	}
 }
 
-func _Artifacts_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Artifacts)
-	// model_artifacts
-	switch x := m.ModelArtifacts.(type) {
-	case *Artifacts_Java:
+func _Artifact_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
+	m := msg.(*Artifact)
+	// specs
+	switch x := m.Specs.(type) {
+	case *Artifact_Java:
 		b.EncodeVarint(6<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.Java); err != nil {
 			return err
 		}
-	case *Artifacts_Docker:
+	case *Artifact_Docker:
 		b.EncodeVarint(7<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.Docker); err != nil {
 			return err
 		}
-	case *Artifacts_Php:
+	case *Artifact_Php:
 		b.EncodeVarint(8<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.Php); err != nil {
 			return err
 		}
-	case *Artifacts_Npm:
+	case *Artifact_Npm:
 		b.EncodeVarint(9<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.Npm); err != nil {
 			return err
 		}
 	case nil:
 	default:
-		return fmt.Errorf("Artifacts.ModelArtifacts has unexpected type %T", x)
+		return fmt.Errorf("Artifact.Specs has unexpected type %T", x)
 	}
 	return nil
 }
 
-func _Artifacts_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Artifacts)
+func _Artifact_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
+	m := msg.(*Artifact)
 	switch tag {
-	case 6: // model_artifacts.java
+	case 6: // specs.java
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
 		msg := new(JavaSpec)
 		err := b.DecodeMessage(msg)
-		m.ModelArtifacts = &Artifacts_Java{msg}
+		m.Specs = &Artifact_Java{msg}
 		return true, err
-	case 7: // model_artifacts.docker
+	case 7: // specs.docker
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
 		msg := new(DockerSpec)
 		err := b.DecodeMessage(msg)
-		m.ModelArtifacts = &Artifacts_Docker{msg}
+		m.Specs = &Artifact_Docker{msg}
 		return true, err
-	case 8: // model_artifacts.php
+	case 8: // specs.php
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
 		msg := new(PhpSpec)
 		err := b.DecodeMessage(msg)
-		m.ModelArtifacts = &Artifacts_Php{msg}
+		m.Specs = &Artifact_Php{msg}
 		return true, err
-	case 9: // model_artifacts.npm
+	case 9: // specs.npm
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
 		msg := new(NpmSpec)
 		err := b.DecodeMessage(msg)
-		m.ModelArtifacts = &Artifacts_Npm{msg}
+		m.Specs = &Artifact_Npm{msg}
 		return true, err
 	default:
 		return false, nil
 	}
 }
 
-func _Artifacts_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Artifacts)
-	// model_artifacts
-	switch x := m.ModelArtifacts.(type) {
-	case *Artifacts_Java:
+func _Artifact_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*Artifact)
+	// specs
+	switch x := m.Specs.(type) {
+	case *Artifact_Java:
 		s := proto.Size(x.Java)
 		n += proto.SizeVarint(6<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
-	case *Artifacts_Docker:
+	case *Artifact_Docker:
 		s := proto.Size(x.Docker)
 		n += proto.SizeVarint(7<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
-	case *Artifacts_Php:
+	case *Artifact_Php:
 		s := proto.Size(x.Php)
 		n += proto.SizeVarint(8<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
-	case *Artifacts_Npm:
+	case *Artifact_Npm:
 		s := proto.Size(x.Npm)
 		n += proto.SizeVarint(9<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
@@ -363,7 +383,7 @@ func init() {
 	proto.RegisterType((*ListResponse)(nil), "artifactory.ListResponse")
 	proto.RegisterType((*DescribeRequest)(nil), "artifactory.DescribeRequest")
 	proto.RegisterType((*DescribeResponse)(nil), "artifactory.DescribeResponse")
-	proto.RegisterType((*Artifacts)(nil), "artifactory.Artifacts")
+	proto.RegisterType((*Artifact)(nil), "artifactory.Artifact")
 	proto.RegisterType((*JavaSpec)(nil), "artifactory.JavaSpec")
 	proto.RegisterType((*DockerSpec)(nil), "artifactory.DockerSpec")
 	proto.RegisterType((*PhpSpec)(nil), "artifactory.PhpSpec")
@@ -378,178 +398,178 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion2
 
-// Client API for ArtifactoryServices service
+// Client API for Artifactory service
 
-type ArtifactoryServicesClient interface {
+type ArtifactoryClient interface {
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
 	Describe(ctx context.Context, in *DescribeRequest, opts ...grpc.CallOption) (*DescribeResponse, error)
 }
 
-type artifactoryServicesClient struct {
+type artifactoryClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewArtifactoryServicesClient(cc *grpc.ClientConn) ArtifactoryServicesClient {
-	return &artifactoryServicesClient{cc}
+func NewArtifactoryClient(cc *grpc.ClientConn) ArtifactoryClient {
+	return &artifactoryClient{cc}
 }
 
-func (c *artifactoryServicesClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
+func (c *artifactoryClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
 	out := new(SearchResponse)
-	err := grpc.Invoke(ctx, "/artifactory.ArtifactoryServices/Search", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/artifactory.Artifactory/Search", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *artifactoryServicesClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
+func (c *artifactoryClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
 	out := new(ListResponse)
-	err := grpc.Invoke(ctx, "/artifactory.ArtifactoryServices/List", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/artifactory.Artifactory/List", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *artifactoryServicesClient) Describe(ctx context.Context, in *DescribeRequest, opts ...grpc.CallOption) (*DescribeResponse, error) {
+func (c *artifactoryClient) Describe(ctx context.Context, in *DescribeRequest, opts ...grpc.CallOption) (*DescribeResponse, error) {
 	out := new(DescribeResponse)
-	err := grpc.Invoke(ctx, "/artifactory.ArtifactoryServices/Describe", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/artifactory.Artifactory/Describe", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for ArtifactoryServices service
+// Server API for Artifactory service
 
-type ArtifactoryServicesServer interface {
+type ArtifactoryServer interface {
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
 	List(context.Context, *ListRequest) (*ListResponse, error)
 	Describe(context.Context, *DescribeRequest) (*DescribeResponse, error)
 }
 
-func RegisterArtifactoryServicesServer(s *grpc.Server, srv ArtifactoryServicesServer) {
-	s.RegisterService(&_ArtifactoryServices_serviceDesc, srv)
+func RegisterArtifactoryServer(s *grpc.Server, srv ArtifactoryServer) {
+	s.RegisterService(&_Artifactory_serviceDesc, srv)
 }
 
-func _ArtifactoryServices_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Artifactory_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ArtifactoryServicesServer).Search(ctx, in)
+		return srv.(ArtifactoryServer).Search(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/artifactory.ArtifactoryServices/Search",
+		FullMethod: "/artifactory.Artifactory/Search",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ArtifactoryServicesServer).Search(ctx, req.(*SearchRequest))
+		return srv.(ArtifactoryServer).Search(ctx, req.(*SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ArtifactoryServices_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Artifactory_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ArtifactoryServicesServer).List(ctx, in)
+		return srv.(ArtifactoryServer).List(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/artifactory.ArtifactoryServices/List",
+		FullMethod: "/artifactory.Artifactory/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ArtifactoryServicesServer).List(ctx, req.(*ListRequest))
+		return srv.(ArtifactoryServer).List(ctx, req.(*ListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ArtifactoryServices_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Artifactory_Describe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DescribeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ArtifactoryServicesServer).Describe(ctx, in)
+		return srv.(ArtifactoryServer).Describe(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/artifactory.ArtifactoryServices/Describe",
+		FullMethod: "/artifactory.Artifactory/Describe",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ArtifactoryServicesServer).Describe(ctx, req.(*DescribeRequest))
+		return srv.(ArtifactoryServer).Describe(ctx, req.(*DescribeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _ArtifactoryServices_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "artifactory.ArtifactoryServices",
-	HandlerType: (*ArtifactoryServicesServer)(nil),
+var _Artifactory_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "artifactory.Artifactory",
+	HandlerType: (*ArtifactoryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Search",
-			Handler:    _ArtifactoryServices_Search_Handler,
+			Handler:    _Artifactory_Search_Handler,
 		},
 		{
 			MethodName: "List",
-			Handler:    _ArtifactoryServices_List_Handler,
+			Handler:    _Artifactory_List_Handler,
 		},
 		{
 			MethodName: "Describe",
-			Handler:    _ArtifactoryServices_Describe_Handler,
+			Handler:    _Artifactory_Describe_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{},
 }
 
 var fileDescriptor0 = []byte{
-	// 682 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x55, 0x5d, 0x6e, 0xd3, 0x4a,
-	0x14, 0xbe, 0x4e, 0xd2, 0xfc, 0x9c, 0xf4, 0xf6, 0x67, 0xee, 0xbd, 0xbd, 0xae, 0x29, 0xa2, 0xf5,
-	0x53, 0x25, 0x50, 0x43, 0x8b, 0x58, 0x40, 0xab, 0x3e, 0x40, 0x05, 0xa8, 0x72, 0xe0, 0x05, 0x01,
-	0xd6, 0xd4, 0x9e, 0x24, 0x43, 0x63, 0x8f, 0x99, 0x71, 0x52, 0x05, 0xc4, 0x0b, 0x5b, 0x60, 0x09,
-	0x6c, 0x85, 0x15, 0xc0, 0x16, 0x58, 0x08, 0x33, 0xe3, 0x19, 0x27, 0x56, 0x0b, 0x94, 0x07, 0xde,
-	0xce, 0xf9, 0xce, 0xe7, 0xf3, 0x3f, 0xc7, 0xb0, 0x8e, 0x79, 0x4e, 0x07, 0x38, 0xca, 0x19, 0x9f,
-	0xed, 0x65, 0x9c, 0xe5, 0x0c, 0x75, 0x17, 0x20, 0x6f, 0x6b, 0xc8, 0xd8, 0x70, 0x4c, 0x7a, 0x38,
-	0xa3, 0x3d, 0x9c, 0xa6, 0x2c, 0xc7, 0x39, 0x65, 0xa9, 0x28, 0xa8, 0x7e, 0x0a, 0x7f, 0xf7, 0x09,
-	0xe6, 0xd1, 0x28, 0x20, 0x6f, 0x26, 0x44, 0xe4, 0x68, 0x07, 0x96, 0xa5, 0xc0, 0x67, 0xa1, 0xc8,
-	0x39, 0x4d, 0x87, 0xae, 0xb3, 0xed, 0xec, 0x76, 0x82, 0xae, 0xc6, 0xfa, 0x1a, 0x42, 0x08, 0x1a,
-	0xf9, 0x2c, 0x23, 0x6e, 0x4d, 0x9b, 0xb4, 0xac, 0xb0, 0x01, 0x67, 0x89, 0x5b, 0x97, 0xd8, 0x52,
-	0xa0, 0x65, 0x85, 0x09, 0xfa, 0x96, 0xb8, 0x8d, 0x02, 0x53, 0xb2, 0xff, 0x02, 0x56, 0x6c, 0x3c,
-	0x91, 0xc9, 0x34, 0x08, 0xda, 0x80, 0xa6, 0x90, 0x39, 0x4d, 0x84, 0x09, 0x65, 0x34, 0x74, 0x00,
-	0x6d, 0x5b, 0x86, 0x8c, 0x54, 0xdf, 0xed, 0x1e, 0x6c, 0xec, 0x2d, 0x96, 0x7a, 0x68, 0x64, 0x11,
-	0x94, 0x3c, 0x7f, 0x07, 0xba, 0x8f, 0xa8, 0xc8, 0x6d, 0x2d, 0x36, 0x51, 0x67, 0x9e, 0xa8, 0xff,
-	0x1c, 0x96, 0x0b, 0xca, 0x1f, 0x08, 0x7f, 0x1f, 0x56, 0x8f, 0x89, 0x88, 0x38, 0x3d, 0x23, 0x3f,
-	0x49, 0x01, 0xad, 0x40, 0x8d, 0xc6, 0xa6, 0x7b, 0x52, 0xf2, 0x5f, 0xc1, 0xda, 0xfc, 0xb3, 0xdf,
-	0x4a, 0xcb, 0xb9, 0x56, 0x5a, 0x5f, 0x6a, 0xd0, 0x29, 0x71, 0x13, 0xdd, 0xb1, 0xd1, 0x55, 0x86,
-	0x29, 0x4e, 0xca, 0x69, 0x2a, 0x19, 0xb9, 0xd0, 0x9a, 0x12, 0x2e, 0xe4, 0x9e, 0xe8, 0x81, 0x76,
-	0x02, 0xab, 0xa2, 0x3b, 0x80, 0xc6, 0x58, 0xe4, 0x61, 0xc2, 0x62, 0x3a, 0xa0, 0x24, 0x0e, 0x73,
-	0x9a, 0x14, 0x13, 0xee, 0x04, 0x6b, 0xca, 0xf2, 0xd8, 0x18, 0x9e, 0x4a, 0xbc, 0xac, 0x7e, 0x69,
-	0xa1, 0xfa, 0xdb, 0xd0, 0x78, 0x8d, 0xa7, 0xd8, 0x6d, 0xea, 0xec, 0xff, 0xab, 0x64, 0x7f, 0x22,
-	0x0d, 0xfd, 0x8c, 0x44, 0x0f, 0xfe, 0x0a, 0x34, 0x09, 0xed, 0x43, 0x33, 0x66, 0xd1, 0x39, 0xe1,
-	0x6e, 0x4b, 0xd3, 0xff, 0xaf, 0xd0, 0x8f, 0xb5, 0xc9, 0x7c, 0x60, 0x88, 0x68, 0x17, 0xea, 0xd9,
-	0x28, 0x73, 0xdb, 0x9a, 0xff, 0x6f, 0x85, 0x7f, 0x3a, 0xca, 0x0c, 0x59, 0x51, 0x14, 0x33, 0xcd,
-	0x12, 0xb7, 0x73, 0x05, 0xf3, 0x49, 0x96, 0x58, 0xa6, 0xa4, 0x1c, 0xad, 0xc3, 0xaa, 0x2c, 0x98,
-	0x8c, 0x43, 0xcb, 0x11, 0x3e, 0x85, 0xb6, 0xcd, 0x16, 0x6d, 0x42, 0x7b, 0xc8, 0xd9, 0x24, 0x0b,
-	0xcb, 0xc6, 0xb6, 0xb4, 0xfe, 0x30, 0x46, 0xb7, 0xa0, 0x7c, 0x8c, 0x61, 0x39, 0x74, 0xb0, 0x90,
-	0x24, 0xc8, 0xf7, 0x56, 0x12, 0x26, 0x7c, 0x6c, 0xfa, 0x5d, 0x7e, 0xf4, 0x8c, 0x8f, 0xfd, 0x13,
-	0x80, 0x79, 0xa5, 0x2a, 0x58, 0x8e, 0x79, 0xd8, 0x9f, 0x24, 0x6a, 0x37, 0xea, 0x2a, 0x98, 0xd4,
-	0x95, 0xaa, 0x7c, 0x25, 0x38, 0xa5, 0x03, 0xb9, 0x78, 0xda, 0x57, 0x11, 0xad, 0x6b, 0x31, 0xe5,
-	0xeb, 0x18, 0x5a, 0xa6, 0x0b, 0x8a, 0x1d, 0xb3, 0x8b, 0x74, 0xcc, 0x70, 0xac, 0xd9, 0xe6, 0xa5,
-	0x5b, 0x4c, 0xb2, 0xf5, 0x16, 0x8e, 0xb0, 0x98, 0x24, 0xc6, 0x95, 0xd1, 0xfc, 0x4f, 0x0e, 0xb4,
-	0x4c, 0x8b, 0xd0, 0x36, 0x74, 0x63, 0xbd, 0xbd, 0x99, 0xba, 0x2b, 0xa5, 0x97, 0x39, 0xf4, 0xeb,
-	0x1e, 0xcc, 0xc3, 0xd4, 0x17, 0xc3, 0x20, 0x0f, 0xda, 0xe7, 0x64, 0x76, 0xc1, 0x78, 0x2c, 0xe4,
-	0x8a, 0xa9, 0x52, 0x4b, 0xfd, 0x52, 0xdf, 0x96, 0x2e, 0xf5, 0xed, 0xe0, 0x73, 0x0d, 0xfe, 0x39,
-	0x9c, 0x0f, 0xb5, 0x4f, 0xf8, 0x94, 0x46, 0x44, 0xa0, 0x08, 0x9a, 0xc5, 0x0d, 0x42, 0x5e, 0x65,
-	0xe8, 0x95, 0x43, 0xe8, 0xdd, 0xb8, 0xd2, 0x56, 0x3c, 0x4f, 0x7f, 0xfb, 0xc3, 0xd7, 0x6f, 0x1f,
-	0x6b, 0x1e, 0x72, 0x7b, 0x0b, 0xa4, 0xde, 0xf4, 0xee, 0xde, 0x7e, 0xef, 0x9d, 0xda, 0xf2, 0xf7,
-	0xe8, 0x25, 0x34, 0xd4, 0x9d, 0x41, 0x6e, 0xc5, 0xcd, 0xc2, 0x75, 0xf2, 0x36, 0xaf, 0xb0, 0x5c,
-	0xdb, 0xbd, 0x5c, 0x3f, 0x7b, 0x33, 0xd0, 0x56, 0xf5, 0x51, 0x54, 0x2f, 0x90, 0x77, 0xf3, 0x07,
-	0xd6, 0xeb, 0x86, 0x3a, 0xaa, 0x9d, 0x3a, 0x67, 0x4d, 0xfd, 0xb7, 0xb8, 0xf7, 0x3d, 0x00, 0x00,
-	0xff, 0xff, 0xc6, 0xdd, 0xaf, 0x07, 0x6d, 0x06, 0x00, 0x00,
+	// 686 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xbc, 0x55, 0xcf, 0x4e, 0x14, 0x4f,
+	0x10, 0xfe, 0xed, 0xff, 0xa1, 0x86, 0x1f, 0x62, 0x07, 0x71, 0x18, 0x21, 0xc0, 0x24, 0x2a, 0x89,
+	0x66, 0x47, 0x20, 0x1e, 0x3c, 0x62, 0x38, 0x28, 0x51, 0x63, 0x76, 0xf5, 0x68, 0x36, 0xcd, 0x4e,
+	0xc3, 0x0e, 0xec, 0x4c, 0x8f, 0xdd, 0x33, 0x90, 0x0d, 0xe1, 0xe2, 0x2b, 0xf8, 0x08, 0x3e, 0x8c,
+	0xde, 0x7d, 0x05, 0x1f, 0xc4, 0xee, 0x9e, 0xee, 0xf9, 0x13, 0x96, 0x18, 0x2f, 0x5e, 0x36, 0x5d,
+	0x55, 0x5f, 0xd7, 0xf7, 0x55, 0x4d, 0x75, 0x2d, 0xdc, 0xc5, 0x2c, 0x0d, 0x4f, 0xf0, 0x38, 0xa5,
+	0x6c, 0xd6, 0x4f, 0x18, 0x4d, 0x29, 0xb2, 0x2b, 0x2e, 0x77, 0xfd, 0x94, 0xd2, 0xd3, 0x29, 0xf1,
+	0x71, 0x12, 0xfa, 0x38, 0x8e, 0x69, 0x8a, 0xd3, 0x90, 0xc6, 0x3c, 0x87, 0xba, 0xab, 0xd2, 0x1d,
+	0xa4, 0xb3, 0x84, 0x70, 0x5f, 0xfd, 0xe6, 0x7e, 0xef, 0x05, 0xfc, 0x3f, 0x24, 0x98, 0x8d, 0x27,
+	0x03, 0xf2, 0x39, 0x23, 0x3c, 0x45, 0x2b, 0xd0, 0x11, 0x07, 0x36, 0x73, 0x1a, 0x5b, 0x8d, 0x9d,
+	0x85, 0x41, 0x6e, 0x20, 0x04, 0x6d, 0x79, 0xcb, 0x69, 0x2a, 0xa7, 0x3a, 0x7b, 0x11, 0x2c, 0x99,
+	0xab, 0x3c, 0x11, 0x4c, 0x04, 0x3d, 0x82, 0x2e, 0x17, 0xb4, 0x19, 0x57, 0x97, 0xed, 0xbd, 0xa5,
+	0x7e, 0xce, 0xd8, 0x1f, 0x2a, 0xef, 0x40, 0x47, 0xd1, 0x3e, 0x2c, 0x18, 0xe5, 0x5c, 0xa4, 0x6c,
+	0x09, 0xe8, 0xbd, 0x7e, 0xb5, 0xbc, 0x03, 0x7d, 0x1e, 0x94, 0x38, 0x6f, 0x1b, 0xec, 0x37, 0x21,
+	0x4f, 0x8d, 0x4e, 0xa3, 0xa8, 0x51, 0x51, 0x74, 0x0e, 0x8b, 0x39, 0xe4, 0x5f, 0xe8, 0x79, 0x0e,
+	0x77, 0x0e, 0x09, 0x1f, 0xb3, 0xf0, 0x98, 0x18, 0x4d, 0x4b, 0xd0, 0x0c, 0x03, 0xdd, 0x23, 0x71,
+	0x9a, 0xab, 0x31, 0x82, 0xe5, 0xf2, 0xda, 0x5f, 0xea, 0xdc, 0x05, 0xcb, 0xf0, 0x2b, 0x96, 0x5b,
+	0x65, 0x16, 0x30, 0xef, 0x7b, 0x13, 0x2c, 0xe3, 0xd6, 0xfa, 0x1a, 0x55, 0x7d, 0x31, 0x8e, 0x8a,
+	0xaf, 0x2a, 0xcf, 0xc8, 0x81, 0xde, 0x05, 0x61, 0x5c, 0x8c, 0x8e, 0xd3, 0x52, 0x6e, 0x63, 0xa2,
+	0xa7, 0x80, 0xa6, 0x98, 0xa7, 0xa3, 0x88, 0x06, 0xe1, 0x49, 0x48, 0x82, 0x51, 0x1a, 0x8a, 0xbb,
+	0x6d, 0x05, 0x5a, 0x96, 0x91, 0xb7, 0x3a, 0xf0, 0x41, 0xf8, 0x8b, 0xda, 0x3b, 0x65, 0xed, 0xe8,
+	0x09, 0xb4, 0xcf, 0xf0, 0x05, 0x76, 0xba, 0x73, 0xb4, 0x1f, 0x89, 0xc0, 0x30, 0x21, 0xe3, 0x57,
+	0xff, 0x0d, 0x14, 0x48, 0x14, 0xdb, 0x0d, 0xe8, 0xf8, 0x9c, 0x30, 0xa7, 0xa7, 0xe0, 0xf7, 0x6b,
+	0xf0, 0x43, 0x15, 0xd2, 0x17, 0x34, 0x10, 0xed, 0x40, 0x2b, 0x99, 0x24, 0x8e, 0xa5, 0xf0, 0x2b,
+	0x35, 0xfc, 0xfb, 0x49, 0xa2, 0xc1, 0x12, 0x22, 0x91, 0x71, 0x12, 0x39, 0x0b, 0x73, 0x90, 0xef,
+	0x92, 0xc8, 0x20, 0x05, 0xe4, 0x65, 0x0f, 0x3a, 0x5c, 0x98, 0xdc, 0x0b, 0xc1, 0x32, 0x1a, 0xd1,
+	0x1a, 0x58, 0xa7, 0x8c, 0x66, 0xc9, 0xa8, 0x68, 0x67, 0x4f, 0xd9, 0xaf, 0x03, 0xb4, 0x09, 0xc5,
+	0xab, 0x1c, 0x15, 0xc3, 0x00, 0xc6, 0x25, 0x00, 0xdb, 0xb0, 0x58, 0x00, 0x32, 0x36, 0xd5, 0x5d,
+	0x2e, 0x2e, 0x7d, 0x64, 0x53, 0xef, 0x08, 0xa0, 0xac, 0x4f, 0x92, 0xa5, 0x98, 0x8d, 0x86, 0x59,
+	0x24, 0xe7, 0xa3, 0x25, 0xc9, 0x84, 0x2d, 0x4d, 0x99, 0x2b, 0xc2, 0x71, 0x78, 0x22, 0x86, 0x4f,
+	0xe5, 0xca, 0xd9, 0x6c, 0xe3, 0x93, 0xb9, 0x0e, 0xa1, 0xa7, 0x6b, 0x97, 0xe8, 0x80, 0x5e, 0xc6,
+	0x53, 0x8a, 0x03, 0x85, 0xce, 0x95, 0xdb, 0xc6, 0x27, 0xd0, 0x68, 0x55, 0x4c, 0xe2, 0x04, 0xf3,
+	0x2c, 0xd2, 0xa9, 0xb4, 0xe5, 0x7d, 0x6b, 0x40, 0x4f, 0x37, 0x06, 0x6d, 0x81, 0x1d, 0xa8, 0x09,
+	0x4e, 0xe4, 0x82, 0x29, 0xb2, 0x94, 0xae, 0x3f, 0xf7, 0xa0, 0xa4, 0x69, 0x55, 0x69, 0x90, 0x0b,
+	0xd6, 0x39, 0x99, 0x5d, 0x52, 0x16, 0x70, 0x31, 0x58, 0xb2, 0xd4, 0xc2, 0xbe, 0xd1, 0xb7, 0xce,
+	0x8d, 0xbe, 0xed, 0xfd, 0x68, 0x82, 0x7d, 0x50, 0x7e, 0x4a, 0x74, 0x06, 0xdd, 0x7c, 0x43, 0x21,
+	0xb7, 0xf6, 0x89, 0x6b, 0x1b, 0xcf, 0x7d, 0x30, 0x37, 0x96, 0x3f, 0x4d, 0xef, 0xf1, 0x97, 0x9f,
+	0xbf, 0xbe, 0x36, 0xb7, 0xd1, 0xa6, 0x5f, 0x01, 0xf9, 0x17, 0xcf, 0xfa, 0xbb, 0x3e, 0x57, 0x48,
+	0xff, 0x4a, 0x8e, 0xf6, 0x35, 0xfa, 0x04, 0x6d, 0xb9, 0x7b, 0x90, 0x53, 0xcb, 0x56, 0xd9, 0x58,
+	0xee, 0xda, 0x9c, 0x88, 0x66, 0xd9, 0x52, 0x2c, 0x2e, 0x72, 0x6e, 0xb2, 0xe8, 0xf4, 0x31, 0x58,
+	0x66, 0x6d, 0xa0, 0xf5, 0xfa, 0x4b, 0xa8, 0x2f, 0x21, 0x77, 0xe3, 0x96, 0xa8, 0xa6, 0x7a, 0xa8,
+	0xa8, 0x36, 0xd1, 0xc6, 0x6d, 0x54, 0xfe, 0x55, 0x18, 0x5c, 0x1f, 0x77, 0xd5, 0xdf, 0xc3, 0xfe,
+	0xef, 0x00, 0x00, 0x00, 0xff, 0xff, 0xb1, 0x5a, 0xf6, 0x7d, 0x76, 0x06, 0x00, 0x00,
 }
