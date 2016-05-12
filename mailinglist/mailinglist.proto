@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package mailinglist;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service MailingList {
+  rpc SendEmail(SendEmailRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/mail/v0.1"
+      body: "*"
+    };
+  }
+  rpc Subscribe(SubscribeRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/mailinglist/v0.1/subscribe/{email}"
+      body: "*"
+    };
+  }
+  rpc Unsubscribe(UnsubscribeRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      get: "/mailinglist/v0.1/unsubscribe/{magic_code}"
+    };
+  }
+}
+
+message SendEmailRequest {
+  string sender_name = 1;
+  string sender_email = 2;
+  string subject = 3;
+  string body = 4;
+}
+
+message SubscribeRequest {
+  string email = 1;
+}
+
+message UnsubscribeRequest {
+  string magic_code = 1;
+}
