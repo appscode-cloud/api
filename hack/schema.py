@@ -57,6 +57,11 @@ def write_json(obj, name):
         return json.dump(obj, f, sort_keys=True, indent=2, separators=(',', ': '))
 
 
+def gen_assets():
+    call('go get github.com/jteeuwen/go-bindata/...')
+    call('go-bindata -ignore=\\.go -o data/data.go -pkg data data/...')
+
+
 def swagger_defs(defs):
     stack = []
     result = {}
