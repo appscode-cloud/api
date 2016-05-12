@@ -1,0 +1,40 @@
+{
+  "definitions": {
+    "artifactoryDescribeRequest": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "artifactoryListRequest": {
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "artifactorySearchRequest": {
+      "properties": {
+        "from": {
+          "type": "integer"
+        },
+        "query_string": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
