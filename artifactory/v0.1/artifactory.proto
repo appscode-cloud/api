@@ -63,7 +63,7 @@ message Artifact {
   string last_modified_time = 4;
   string type = 5;
 
-  oneof specs{
+  oneof specs {
     JavaSpec java = 6;
     DockerSpec docker = 7;
     PhpSpec php = 8;
