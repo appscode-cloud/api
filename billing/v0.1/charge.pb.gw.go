@@ -34,7 +34,7 @@ var (
 )
 
 func request_Charge_Calculate_0(ctx context.Context, client ChargeClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ChargeCalculateRequest
+	var protoReq ChargeRequest
 	var metadata runtime.ServerMetadata
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Charge_Calculate_0); err != nil {
@@ -42,6 +42,23 @@ func request_Charge_Calculate_0(ctx context.Context, client ChargeClient, req *h
 	}
 
 	msg, err := client.Calculate(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+var (
+	filter_Charge_PaymentMethod_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
+func request_Charge_PaymentMethod_0(ctx context.Context, client ChargeClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ChargeRequest
+	var metadata runtime.ServerMetadata
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Charge_PaymentMethod_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.PaymentMethod(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -99,13 +116,40 @@ func RegisterChargeHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 
 	})
 
+	mux.Handle("GET", pattern_Charge_PaymentMethod_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		resp, md, err := request_Charge_PaymentMethod_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, w, req, err)
+			return
+		}
+
+		forward_Charge_PaymentMethod_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	return nil
 }
 
 var (
 	pattern_Charge_Calculate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"billing", "v0.1", "charge"}, ""))
+
+	pattern_Charge_PaymentMethod_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"billing", "v0.1", "charge", "payment"}, ""))
 )
 
 var (
 	forward_Charge_Calculate_0 = runtime.ForwardResponseMessage
+
+	forward_Charge_PaymentMethod_0 = runtime.ForwardResponseMessage
 )

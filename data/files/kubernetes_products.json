@@ -1,0 +1,10 @@
+{
+  "kube_agents":
+    {
+      "sku":"NODE-C",
+      "price":7.5,
+      "cpu":1,
+      "date_started": "2016-01-01T00:00:00.000Z",
+      "date_ended": "2030-01-01T00:00:00.000Z"
+    }
+}
