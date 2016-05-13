@@ -17,8 +17,8 @@
   "paths": {
     "/billing/v0.1/charge": {
       "get": {
-        "summary": "Charge.Charge",
-        "operationId": "Charge",
+        "summary": "Charge.Calculate",
+        "operationId": "Calculate",
         "responses": {
           "default": {
             "description": "Description",
@@ -34,13 +34,13 @@
     },
     "/billing/v0.1/charge/payment": {
       "get": {
-        "summary": "Charge.ChargePayment",
-        "operationId": "ChargePayment",
+        "summary": "Charge.PaymentMethod",
+        "operationId": "PaymentMethod",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
+              "$ref": "#/definitions/billingChargePaymentResponse"
             }
           }
         },
@@ -51,6 +51,25 @@
     }
   },
   "definitions": {
+    "billingChargePaymentResponse": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "format": "string"
+        },
+        "method_list": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "billingChargeRequest": {
       "type": "object",
       "properties": {
@@ -108,14 +127,6 @@
         "status": {
           "type": "string",
           "format": "string"
-        }
-      }
-    },
-    "dtypesVoidResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },

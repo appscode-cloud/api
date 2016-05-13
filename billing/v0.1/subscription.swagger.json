@@ -308,6 +308,10 @@
           "type": "string",
           "format": "string"
         },
+        "pricing_model": {
+          "type": "string",
+          "format": "string"
+        },
         "product_sku": {
           "type": "string",
           "format": "string"

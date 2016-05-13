@@ -6,13 +6,13 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Charge {
-  rpc Charge(ChargeRequest) returns (ChargeResponse) {
+  rpc Calculate(ChargeRequest) returns (ChargeResponse) {
     option (google.api.http) = {
       get: "/billing/v0.1/charge"
     };
   }
 
-  rpc ChargePayment(ChargeRequest) returns (dtypes.VoidResponse) {
+  rpc PaymentMethod(ChargeRequest) returns (ChargePaymentResponse) {
     option (google.api.http) = {
       get: "/billing/v0.1/charge/payment"
    };
@@ -31,6 +31,6 @@ message ChargeResponse {
 
 message ChargePaymentResponse {
     dtypes.Status status = 1;
-    bool method_set = 2;
-    repeated string methods = 3;
+    string method = 2;
+    repeated string method_list = 3;
 }
