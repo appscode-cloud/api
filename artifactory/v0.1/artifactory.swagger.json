@@ -116,8 +116,8 @@
           "$ref": "#/definitions/artifactoryJavaSpec"
         },
         "last_modified_time": {
-          "type": "integer",
-          "format": "int64"
+          "type": "string",
+          "format": "string"
         },
         "name": {
           "type": "string",

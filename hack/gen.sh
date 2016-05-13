@@ -25,6 +25,9 @@ clean() {
 }
 
 gen_proto() {
+  if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
+    return
+  fi
   rm -rf *.pb.go
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
@@ -34,6 +37,9 @@ gen_proto() {
 }
 
 gen_gateway_proto() {
+  if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
+    return
+  fi
   rm -rf *.pb.gw.go
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
@@ -43,16 +49,22 @@ gen_gateway_proto() {
 }
 
 gen_swagger_def() {
-  rm -rf *.swagger.json
-  protoc -I /usr/local/include -I . \
-         -I ${GOPATH}/src/github.com/appscode \
-         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
-         -I ${GOPATH}/src/github.com/google/googleapis/google \
-         --swagger_out=logtostderr=true,${ALIAS}:. *.proto
+  if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
+    return
+  fi
+   rm -rf *.swagger.json
+   protoc -I /usr/local/include -I . \
+          -I ${GOPATH}/src/github.com/appscode \
+          -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+          -I ${GOPATH}/src/github.com/google/googleapis/google \
+          --swagger_out=logtostderr=true,${ALIAS}:. *.proto
 }
 
 # DO NOT DELETE prior schema, since they might contain hand written changes.
 gen_json_schema() {
+  if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
+    return
+  fi
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
          -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
@@ -63,76 +75,71 @@ gen_json_schema() {
 gen_server_protos() {
 	echo "Generating server protobuf files"
     for d in */ ; do
-        pushd ${d}
-        if [ -f *.proto ]; then
+      pushd ${d}
+      gen_proto
+      if [ -d */ ]; then
+        for dd in */ ; do
+          pushd ${dd}
           gen_proto
-        fi
-        if [ -d */ ]; then
-          for dd in */ ; do
-            pushd ${dd}
-            gen_proto
-            popd
-          done
-        fi
-        popd
+          popd
+        done
+      fi
+      popd
     done
 }
 
 gen_proxy_protos() {
     echo "Generating gateway protobuf files"
     for d in */ ; do
-        pushd ${d}
-        if [ -f *.proto ]; then
+      pushd ${d}
+      gen_gateway_proto
+      if [ -d */ ]; then
+        for dd in */ ; do
+          pushd ${dd}
           gen_gateway_proto
-        fi
-         if [ -d */ ]; then
-          for dd in */ ; do
-            pushd ${dd}
-            gen_gateway_proto
-            popd
-          done
-        fi
-        popd
+          popd
+        done
+      fi
+      popd
     done
 }
 
 gen_swagger_defs() {
     echo "Generating swagger api definition files"
     for d in */ ; do
-        pushd ${d}
-        if [ -f *.proto ]; then
+      pushd ${d}
+      gen_swagger_def
+      if [ -d */ ]; then
+        for dd in */ ; do
+          pushd ${dd}
           gen_swagger_def
-        fi
-         if [ -d */ ]; then
-          for dd in */ ; do
-            pushd ${dd}
-            gen_swagger_def
-            popd
-          done
-        fi
-        popd
+          popd
+        done
+      fi
+      popd
     done
 }
 
 gen_json_schemas() {
     echo "Generating json schema"
     for d in */ ; do
-        pushd ${d}
-        if [ -f *.proto ]; then
+      pushd ${d}
+      gen_json_schema
+      if [ -d */ ]; then
+        for dd in */ ; do
+          pushd ${dd}
           gen_json_schema
-        fi
-         if [ -d */ ]; then
-          for dd in */ ; do
-            pushd ${dd}
-            gen_json_schema
-            popd
-          done
-        fi
-        popd
+          popd
+        done
+      fi
+      popd
     done
 }
 
 gen_py() {
+  if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
+    return
+  fi
   rm -rf *.py
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
@@ -142,23 +149,25 @@ gen_py() {
 }
 
 gen_python_protos() {
+  gen_py
   for d in */ ; do
-        pushd ${d}
-        if [ -f *.proto ]; then
-          gen_py
-        fi
-        if [ -d */ ]; then
-          for dd in */ ; do
-            pushd ${dd}
-            gen_py
-            popd
-          done
-        fi
+    pushd ${d}
+    gen_py
+    if [ -d */ ]; then
+      for dd in */ ; do
+        pushd ${dd}
+        gen_py
         popd
-    done
+      done
+    fi
+    popd
+  done
 }
 
 gen_php() {
+  if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
+    return
+  fi
   rm -rf *.php
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
@@ -170,37 +179,35 @@ gen_php() {
 
 gen_php_protos() {
   for d in */ ; do
-        pushd ${d}
-        if [ -f *.proto ]; then
-          gen_php
-        fi
-        if [ -d */ ]; then
-          for dd in */ ; do
-            pushd ${dd}
-            gen_php
-            popd
-          done
-        fi
+    pushd ${d}
+    gen_php
+    if [ -d */ ]; then
+      for dd in */ ; do
+        pushd ${dd}
+        gen_php
         popd
-    done
+      done
+    fi
+    popd
+  done
 }
 
 compile() {
-    echo "compiling files"
-    go install ./...
+  echo "compiling files"
+  go install ./...
 }
 
 gen_protos() {
-    clean
-    python $DIR/schema.py gen_assets
-    gen_server_protos
-    gen_proxy_protos
-    gen_swagger_defs
-    python $DIR/schema.py
-    # gen_json_schemas
-    # gen_python_protos
-    # gen_php_protos
-    compile
+  clean
+  python $DIR/schema.py gen_assets
+  gen_server_protos
+  gen_proxy_protos
+  gen_swagger_defs
+  python $DIR/schema.py
+  # gen_json_schemas
+  # gen_python_protos
+  # gen_php_protos
+  compile
 }
 
 if [ $# -eq 0 ]; then
