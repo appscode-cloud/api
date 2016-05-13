@@ -6,7 +6,6 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Artifactory {
-
   rpc Search(SearchRequest) returns(SearchResponse) {
     option(google.api.http) = {
       get: "/artifactory/v0.1/search/{type}"
@@ -60,9 +59,8 @@ message Artifact {
   string id = 1;
   string name = 2;
   string version = 3;
-  int64 last_modified_time = 4;
+  string last_modified_time = 4;
   string type = 5;
-
   oneof specs {
     JavaSpec java = 6;
     DockerSpec docker = 7;
