@@ -28,12 +28,12 @@ gen_proto() {
   if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
     return
   fi
-   rm -rf *.pb.go
-   protoc -I /usr/local/include -I . \
-          -I ${GOPATH}/src/github.com/appscode \
-          -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
-          -I ${GOPATH}/src/github.com/google/googleapis/google \
-          --go_out=plugins=grpc,${ALIAS}:. *.proto
+  rm -rf *.pb.go
+  protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src/github.com/appscode \
+         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/google/googleapis/google \
+         --go_out=plugins=grpc,${ALIAS}:. *.proto
 }
 
 gen_gateway_proto() {
