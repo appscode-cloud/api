@@ -60,7 +60,7 @@ message Artifact {
   string id = 1;
   string name = 2;
   string version = 3;
-  string last_modified_time = 4;
+  int64 last_modified_time = 4;
   string type = 5;
 
   oneof specs {
