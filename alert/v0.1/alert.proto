@@ -53,38 +53,33 @@ message NotificationRequest {
 message CreateRequest {
   string name = 1;
   Spec spec = 2;
-  string matrix_phid = 3;
-  Matrix matrix = 4;
+  string icinga_service_phid = 3;
+  IcingaService icinga_service = 4;
   AlertSpec alert_spec = 5;
-  int64 check_interval = 6;
 }
 
 message UpdateRequest {
   string phid = 1;
   string name = 2;
   Spec spec = 3;
-  string matrix_phid = 4;
-  Matrix matrix = 5;
+  string icinga_service_phid = 4;
+  IcingaService icinga_service = 5;
   AlertSpec alert_spec = 6;
-  int64 check_interval = 7;
-
 }
 
 message Spec {
-  string cluster = 2;
-  string namespace  = 3;
-  string object_type = 4;
-  string object_name = 5;
+  string cluster = 1;
+  string namespace  = 2;
+  string object_type = 3;
+  string object_name = 4;
 }
 
 message AlertSpec {
-  string warning_condition = 1;
-  string critical_condition  = 2;
-  string warning_user = 4;
-  int32 warning_method = 5;
-  string critical_user  = 6;
-  int32 critical_method  = 7;
-  int64 alert_interval = 8;
+  string warning_user = 1;
+  int32 warning_method = 2;
+  string critical_user  = 3;
+  int32 critical_method  = 4;
+  int64 alert_interval = 5;
 }
 
 message ListRequest {
@@ -105,14 +100,16 @@ message Alert {
   string phid = 1;
   string name = 2;
   string icinga_url = 3;
-  Matrix matrix = 4;
+  IcingaService icinga_service = 4;
   AlertSpec spec = 5;
-  int64 refresh_interval = 6;
 }
 
-message Matrix {
+message IcingaService {
   string name = 1;
-  string command = 2;
+  string check_command = 2;
   map<string, string> query = 3;
-  string formula  = 4;
+  string formula_r  = 4;
+  string warning_condition = 5;
+  string critical_condition  = 6;
+  int64 check_interval = 7;
 }

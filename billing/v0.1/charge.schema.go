@@ -7,11 +7,11 @@ import (
 
 // Auto-generated. DO NOT EDIT.
 
-var chargeCalculateRequestSchema *gojsonschema.Schema
+var chargeRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	chargeCalculateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	chargeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "type": {
@@ -25,8 +25,8 @@ func init() {
 	}
 }
 
-func (m *ChargeCalculateRequest) IsValid() (*gojsonschema.Result, error) {
-	return chargeCalculateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ChargeRequest) IsValid() (*gojsonschema.Result, error) {
+	return chargeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ChargeCalculateRequest) IsRequest() {}
+func (m *ChargeRequest) IsRequest() {}
 

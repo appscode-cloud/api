@@ -192,6 +192,7 @@ compile() {
 
 gen_protos() {
     clean
+    python $DIR/schema.py gen_assets
     gen_server_protos
     gen_proxy_protos
     gen_swagger_defs

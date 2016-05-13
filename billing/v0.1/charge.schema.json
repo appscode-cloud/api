@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "billingChargeCalculateRequest": {
+    "billingChargeRequest": {
       "properties": {
         "type": {
           "type": "string"

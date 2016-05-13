@@ -9,10 +9,11 @@ import (
 	db "github.com/appscode/api/db/v0.1"
 	glusterfs "github.com/appscode/api/glusterfs/v0.1"
 	kubernetes "github.com/appscode/api/kubernetes/v0.1"
+	loadbalancer "github.com/appscode/api/loadbalancer/v0.1"
+	"github.com/appscode/api/mailinglist"
 	namespace "github.com/appscode/api/namespace/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
 	"github.com/gengo/grpc-gateway/runtime"
-	"github.com/appscode/api/mailinglist"
 )
 
 // This is a hackish method to add support javascript
@@ -32,5 +33,6 @@ func Patterens() []runtime.Pattern {
 	ps = append(ps, bucket.Patterns()...)
 	ps = append(ps, certificate.Patterns()...)
 	ps = append(ps, mailinglist.Patterns()...)
+	ps = append(ps, loadbalancer.Patterns()...)
 	return ps
 }
