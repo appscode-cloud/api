@@ -1,0 +1,343 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/artifactory/v0.1/search/{type}": {
+      "get": {
+        "summary": "Artifactory.Search",
+        "operationId": "Search",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/artifactorySearchResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Artifactory"
+        ]
+      }
+    },
+    "/artifactory/v0.1/{type}": {
+      "get": {
+        "summary": "Artifactory.List",
+        "operationId": "List",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/artifactoryListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Artifactory"
+        ]
+      }
+    },
+    "/artifactory/v0.1/{type}/{id}": {
+      "get": {
+        "summary": "Artifactory.Describe",
+        "operationId": "Describe",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/artifactoryDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Artifactory"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "artifactoryArtifact": {
+      "type": "object",
+      "properties": {
+        "docker": {
+          "$ref": "#/definitions/artifactoryDockerSpec"
+        },
+        "id": {
+          "type": "string",
+          "format": "string"
+        },
+        "java": {
+          "$ref": "#/definitions/artifactoryJavaSpec"
+        },
+        "last_modified_time": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "npm": {
+          "$ref": "#/definitions/artifactoryNpmSpec"
+        },
+        "php": {
+          "$ref": "#/definitions/artifactoryPhpSpec"
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        },
+        "version": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "artifactoryDescribeRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "string"
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "artifactoryDescribeResponse": {
+      "type": "object",
+      "properties": {
+        "artifact": {
+          "$ref": "#/definitions/artifactoryArtifact"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "artifactoryDockerSpec": {
+      "type": "object",
+      "properties": {
+        "manifest_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "tar_Sums": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      }
+    },
+    "artifactoryJavaSpec": {
+      "type": "object",
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "format": "string"
+        },
+        "artifact_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "group_id": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "artifactoryListRequest": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "artifactoryListResponse": {
+      "type": "object",
+      "properties": {
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/artifactoryArtifact"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "artifactoryNpmSpec": {
+      "type": "object",
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "format": "string"
+        },
+        "artifact_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "shasum": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "artifactoryPhpSpec": {
+      "type": "object",
+      "properties": {
+        "download_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "shasum": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "artifactorySearchRequest": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "format": "string"
+        },
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "artifactorySearchResponse": {
+      "type": "object",
+      "properties": {
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/artifactoryArtifact"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "dtypesHelp": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "format": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "dtypesStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp"
+        },
+        "message": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}
