@@ -9,28 +9,28 @@
         {
           "sku":"DB-PG-BASIC",
           "price":0,
-          "name":"basic",
+          "name":"Basic",
           "date_started": "2016-01-01T00:00:00.000Z",
           "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-PG-DURABLE",
           "price":5,
-          "name":"durable",
+          "name":"Durable",
           "date_started": "2016-01-01T00:00:00.000Z",
           "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-PG-HA",
           "price":20,
-          "name":"ha",
+          "name":"HA",
           "date_started": "2016-01-01T00:00:00.000Z",
           "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-PG-CLOUD",
           "price":25,
-          "name":"cloud",
+          "name":"Cloud",
           "date_started": "2016-01-01T00:00:00.000Z",
           "date_ended": "2030-01-01T00:00:00.000Z"
         }
@@ -46,14 +46,14 @@
         {
           "sku":"DB-ES-BASIC",
           "price":0,
-          "name":"basic",
+          "name":"Basic",
           "date_started": "2016-01-01T00:00:00.000Z",
           "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-ES-DURABLE",
           "price":5,
-          "name":"durable",
+          "name":"Durable",
           "date_started": "2016-01-01T00:00:00.000Z",
           "date_ended": "2030-01-01T00:00:00.000Z"
         }
@@ -68,14 +68,14 @@
         {
           "sku":"DB-INFLUX-BASIC",
           "price":0,
-          "name":"basic",
+          "name":"Basic",
           "date_started": "2016-01-01T00:00:00.000Z",
           "date_ended": "2030-01-01T00:00:00.000Z"
         },
         {
           "sku":"DB-INFLUX-DURABLE",
           "price":5,
-          "name":"durable",
+          "name":"Durable",
           "date_started": "2016-01-01T00:00:00.000Z",
           "date_ended": "2030-01-01T00:00:00.000Z"
         }

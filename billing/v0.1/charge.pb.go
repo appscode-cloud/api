@@ -10,8 +10,9 @@ It is generated from these files:
 	subscription.proto
 
 It has these top-level messages:
-	ChargeCalculateRequest
-	ChargeCalculateResponse
+	ChargeRequest
+	ChargeResponse
+	ChargePaymentResponse
 	SubscriptionCreateRequest
 	SubscriptionDescribeRequest
 	SubscriptionDescribeResponse
@@ -49,26 +50,44 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 const _ = proto.ProtoPackageIsVersion1
 
-type ChargeCalculateRequest struct {
+type ChargeRequest struct {
 	Type string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
 }
 
-func (m *ChargeCalculateRequest) Reset()                    { *m = ChargeCalculateRequest{} }
-func (m *ChargeCalculateRequest) String() string            { return proto.CompactTextString(m) }
-func (*ChargeCalculateRequest) ProtoMessage()               {}
-func (*ChargeCalculateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (m *ChargeRequest) Reset()                    { *m = ChargeRequest{} }
+func (m *ChargeRequest) String() string            { return proto.CompactTextString(m) }
+func (*ChargeRequest) ProtoMessage()               {}
+func (*ChargeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
-type ChargeCalculateResponse struct {
+type ChargeResponse struct {
 	Status  *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	CostUsd string         `protobuf:"bytes,2,opt,name=cost_usd,json=costUsd" json:"cost_usd,omitempty"`
 }
 
-func (m *ChargeCalculateResponse) Reset()                    { *m = ChargeCalculateResponse{} }
-func (m *ChargeCalculateResponse) String() string            { return proto.CompactTextString(m) }
-func (*ChargeCalculateResponse) ProtoMessage()               {}
-func (*ChargeCalculateResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+func (m *ChargeResponse) Reset()                    { *m = ChargeResponse{} }
+func (m *ChargeResponse) String() string            { return proto.CompactTextString(m) }
+func (*ChargeResponse) ProtoMessage()               {}
+func (*ChargeResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
-func (m *ChargeCalculateResponse) GetStatus() *dtypes.Status {
+func (m *ChargeResponse) GetStatus() *dtypes.Status {
+	if m != nil {
+		return m.Status
+	}
+	return nil
+}
+
+type ChargePaymentResponse struct {
+	Status    *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
+	MethodSet bool           `protobuf:"varint,2,opt,name=method_set,json=methodSet" json:"method_set,omitempty"`
+	Methods   []string       `protobuf:"bytes,3,rep,name=methods" json:"methods,omitempty"`
+}
+
+func (m *ChargePaymentResponse) Reset()                    { *m = ChargePaymentResponse{} }
+func (m *ChargePaymentResponse) String() string            { return proto.CompactTextString(m) }
+func (*ChargePaymentResponse) ProtoMessage()               {}
+func (*ChargePaymentResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+
+func (m *ChargePaymentResponse) GetStatus() *dtypes.Status {
 	if m != nil {
 		return m.Status
 	}
@@ -76,8 +95,9 @@ func (m *ChargeCalculateResponse) GetStatus() *dtypes.Status {
 }
 
 func init() {
-	proto.RegisterType((*ChargeCalculateRequest)(nil), "billing.ChargeCalculateRequest")
-	proto.RegisterType((*ChargeCalculateResponse)(nil), "billing.ChargeCalculateResponse")
+	proto.RegisterType((*ChargeRequest)(nil), "billing.ChargeRequest")
+	proto.RegisterType((*ChargeResponse)(nil), "billing.ChargeResponse")
+	proto.RegisterType((*ChargePaymentResponse)(nil), "billing.ChargePaymentResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -91,7 +111,8 @@ const _ = grpc.SupportPackageIsVersion2
 // Client API for Charge service
 
 type ChargeClient interface {
-	Calculate(ctx context.Context, in *ChargeCalculateRequest, opts ...grpc.CallOption) (*ChargeCalculateResponse, error)
+	Charge(ctx context.Context, in *ChargeRequest, opts ...grpc.CallOption) (*ChargeResponse, error)
+	ChargePayment(ctx context.Context, in *ChargeRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
 }
 
 type chargeClient struct {
@@ -102,9 +123,18 @@ func NewChargeClient(cc *grpc.ClientConn) ChargeClient {
 	return &chargeClient{cc}
 }
 
-func (c *chargeClient) Calculate(ctx context.Context, in *ChargeCalculateRequest, opts ...grpc.CallOption) (*ChargeCalculateResponse, error) {
-	out := new(ChargeCalculateResponse)
-	err := grpc.Invoke(ctx, "/billing.Charge/Calculate", in, out, c.cc, opts...)
+func (c *chargeClient) Charge(ctx context.Context, in *ChargeRequest, opts ...grpc.CallOption) (*ChargeResponse, error) {
+	out := new(ChargeResponse)
+	err := grpc.Invoke(ctx, "/billing.Charge/Charge", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chargeClient) ChargePayment(ctx context.Context, in *ChargeRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
+	out := new(dtypes.VoidResponse)
+	err := grpc.Invoke(ctx, "/billing.Charge/ChargePayment", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -114,27 +144,46 @@ func (c *chargeClient) Calculate(ctx context.Context, in *ChargeCalculateRequest
 // Server API for Charge service
 
 type ChargeServer interface {
-	Calculate(context.Context, *ChargeCalculateRequest) (*ChargeCalculateResponse, error)
+	Charge(context.Context, *ChargeRequest) (*ChargeResponse, error)
+	ChargePayment(context.Context, *ChargeRequest) (*dtypes.VoidResponse, error)
 }
 
 func RegisterChargeServer(s *grpc.Server, srv ChargeServer) {
 	s.RegisterService(&_Charge_serviceDesc, srv)
 }
 
-func _Charge_Calculate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChargeCalculateRequest)
+func _Charge_Charge_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChargeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ChargeServer).Calculate(ctx, in)
+		return srv.(ChargeServer).Charge(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/billing.Charge/Calculate",
+		FullMethod: "/billing.Charge/Charge",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChargeServer).Calculate(ctx, req.(*ChargeCalculateRequest))
+		return srv.(ChargeServer).Charge(ctx, req.(*ChargeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Charge_ChargePayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChargeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChargeServer).ChargePayment(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/billing.Charge/ChargePayment",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChargeServer).ChargePayment(ctx, req.(*ChargeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -144,28 +193,37 @@ var _Charge_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*ChargeServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Calculate",
-			Handler:    _Charge_Calculate_Handler,
+			MethodName: "Charge",
+			Handler:    _Charge_Charge_Handler,
+		},
+		{
+			MethodName: "ChargePayment",
+			Handler:    _Charge_ChargePayment_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{},
 }
 
 var fileDescriptor0 = []byte{
-	// 237 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0xe2, 0x49, 0xce, 0x48, 0x2c,
-	0x4a, 0x4f, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x4f, 0xca, 0xcc, 0xc9, 0xc9, 0xcc,
-	0x4b, 0x97, 0x92, 0x49, 0xcf, 0xcf, 0x4f, 0xcf, 0x49, 0xd5, 0x4f, 0x2c, 0xc8, 0xd4, 0x4f, 0xcc,
-	0xcb, 0xcb, 0x2f, 0x49, 0x2c, 0xc9, 0xcc, 0xcf, 0x2b, 0x86, 0x28, 0x93, 0x12, 0x03, 0x09, 0xa7,
-	0x94, 0x54, 0x16, 0xa4, 0x16, 0xeb, 0x83, 0x49, 0x88, 0xb8, 0x92, 0x0e, 0x97, 0x98, 0x33, 0xd8,
-	0x38, 0xe7, 0xc4, 0x9c, 0xe4, 0xd2, 0x9c, 0xc4, 0x92, 0xd4, 0xa0, 0xd4, 0xc2, 0xd2, 0xd4, 0xe2,
-	0x12, 0x21, 0x21, 0x2e, 0x16, 0x90, 0x42, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x30, 0x5b,
-	0x29, 0x86, 0x4b, 0x1c, 0x43, 0x75, 0x71, 0x01, 0xd0, 0x96, 0x54, 0x21, 0x35, 0x2e, 0xb6, 0x62,
-	0xa0, 0x95, 0xa5, 0xc5, 0x60, 0x0d, 0xdc, 0x46, 0x7c, 0x7a, 0x10, 0xdb, 0xf4, 0x82, 0xc1, 0xa2,
-	0x41, 0x50, 0x59, 0x21, 0x49, 0x2e, 0x8e, 0xe4, 0xfc, 0xe2, 0x92, 0xf8, 0xd2, 0xe2, 0x14, 0x09,
-	0x26, 0xb0, 0xd1, 0xec, 0x20, 0x7e, 0x68, 0x71, 0x8a, 0x51, 0x19, 0x17, 0x1b, 0xc4, 0x74, 0xa1,
-	0x1c, 0x2e, 0x4e, 0xb8, 0x0d, 0x42, 0xf2, 0x7a, 0x50, 0x2f, 0xea, 0x61, 0x77, 0xa9, 0x94, 0x02,
-	0x6e, 0x05, 0x10, 0xc7, 0x29, 0xc9, 0x34, 0x5d, 0x7e, 0x32, 0x99, 0x49, 0x4c, 0x48, 0x44, 0x1f,
-	0xaa, 0x52, 0xbf, 0xcc, 0x40, 0xcf, 0x50, 0x1f, 0x12, 0x90, 0x49, 0x6c, 0xe0, 0xa0, 0x30, 0x06,
-	0x04, 0x00, 0x00, 0xff, 0xff, 0xc0, 0x28, 0x31, 0x75, 0x59, 0x01, 0x00, 0x00,
+	// 306 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x94, 0x91, 0x51, 0x4e, 0x83, 0x40,
+	0x10, 0x86, 0x43, 0x6b, 0xa0, 0x1d, 0xb5, 0x0f, 0x9b, 0x8a, 0x48, 0xd0, 0x34, 0x68, 0x8c, 0x4f,
+	0xbb, 0x5a, 0x8f, 0xe0, 0x05, 0x0c, 0x44, 0x7d, 0x6c, 0x28, 0x6c, 0x28, 0x09, 0x65, 0xb1, 0xb3,
+	0x18, 0xfb, 0xea, 0x15, 0xbc, 0x93, 0x17, 0xf0, 0x0a, 0x1e, 0xc4, 0xb2, 0xbb, 0x34, 0x31, 0xea,
+	0x43, 0x5f, 0x36, 0x33, 0xff, 0xfc, 0xf9, 0x66, 0x67, 0x06, 0x0e, 0xd2, 0x45, 0xb2, 0xca, 0x39,
+	0xad, 0x57, 0x42, 0x0a, 0xe2, 0xcc, 0x8b, 0xb2, 0x2c, 0xaa, 0xdc, 0x0f, 0x72, 0x21, 0xf2, 0x92,
+	0xb3, 0xa4, 0x2e, 0x58, 0x52, 0x55, 0x42, 0x26, 0xb2, 0x10, 0x15, 0x6a, 0x9b, 0xef, 0xb6, 0x72,
+	0x26, 0xd7, 0x35, 0x47, 0xa6, 0x5e, 0xad, 0x87, 0xe7, 0x70, 0x78, 0xa7, 0x70, 0x11, 0x7f, 0x6e,
+	0x38, 0x4a, 0x42, 0x60, 0xaf, 0xad, 0x7b, 0xd6, 0xc4, 0xba, 0x1a, 0x46, 0x2a, 0x0e, 0x63, 0x18,
+	0x75, 0x26, 0xac, 0x37, 0x4c, 0x4e, 0x2e, 0xc1, 0xc6, 0x4d, 0x83, 0x06, 0x95, 0x6f, 0x7f, 0x3a,
+	0xa2, 0x9a, 0x4d, 0x63, 0xa5, 0x46, 0xa6, 0x4a, 0x4e, 0x60, 0x90, 0x0a, 0x94, 0xb3, 0x06, 0x33,
+	0xaf, 0xa7, 0x88, 0x4e, 0x9b, 0x3f, 0x60, 0x16, 0xbe, 0xc2, 0x91, 0x86, 0xde, 0x27, 0xeb, 0x25,
+	0xaf, 0xe4, 0xce, 0xec, 0x53, 0x80, 0x25, 0x97, 0x0b, 0x91, 0xcd, 0x90, 0x4b, 0x45, 0x1f, 0x44,
+	0x43, 0xad, 0xc4, 0x5c, 0x12, 0x0f, 0x1c, 0x9d, 0xa0, 0xd7, 0x9f, 0xf4, 0xdb, 0xce, 0x26, 0x9d,
+	0x7e, 0x58, 0x60, 0xeb, 0xd6, 0xe4, 0x69, 0x1b, 0xb9, 0xd4, 0x2c, 0x92, 0xfe, 0xd8, 0x87, 0x7f,
+	0xfc, 0x4b, 0xd7, 0xdf, 0x0c, 0x83, 0xb7, 0xcf, 0xaf, 0xf7, 0x9e, 0x4b, 0xc6, 0xcc, 0x18, 0xd8,
+	0xcb, 0x35, 0xbd, 0x61, 0xfa, 0x38, 0x24, 0xed, 0xf6, 0x6a, 0xa6, 0xfb, 0x97, 0x3f, 0xee, 0xa6,
+	0x7b, 0x14, 0x45, 0xb6, 0x85, 0x5f, 0x28, 0xf8, 0x19, 0x09, 0xfe, 0x82, 0xb3, 0x5a, 0x33, 0xe7,
+	0xb6, 0xba, 0xe1, 0xed, 0x77, 0x00, 0x00, 0x00, 0xff, 0xff, 0xec, 0x21, 0x6d, 0xfc, 0x12, 0x02,
+	0x00, 0x00,
 }

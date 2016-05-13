@@ -17,13 +17,30 @@
   "paths": {
     "/billing/v0.1/charge": {
       "get": {
-        "summary": "Charge.Calculate",
-        "operationId": "Calculate",
+        "summary": "Charge.Charge",
+        "operationId": "Charge",
         "responses": {
           "default": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/billingChargeCalculateResponse"
+              "$ref": "#/definitions/billingChargeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Charge"
+        ]
+      }
+    },
+    "/billing/v0.1/charge/payment": {
+      "get": {
+        "summary": "Charge.ChargePayment",
+        "operationId": "ChargePayment",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
@@ -34,7 +51,7 @@
     }
   },
   "definitions": {
-    "billingChargeCalculateRequest": {
+    "billingChargeRequest": {
       "type": "object",
       "properties": {
         "type": {
@@ -43,7 +60,7 @@
         }
       }
     },
-    "billingChargeCalculateResponse": {
+    "billingChargeResponse": {
       "type": "object",
       "properties": {
         "cost_usd": {
@@ -91,6 +108,14 @@
         "status": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "dtypesVoidResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },
