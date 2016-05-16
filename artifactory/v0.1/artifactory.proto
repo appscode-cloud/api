@@ -26,42 +26,36 @@ service Artifactory {
 }
 
 message SearchRequest {
-  // next id will be used: 3
   string query = 1;
   string type = 2;
 }
 
 message SearchResponse {
-  // next id will be used: 3
   dtypes.Status status = 1;
   repeated Artifact artifacts = 2;
 }
 
 message ListRequest {
-  // next id will be used: 2
   string type = 1;
 }
 
 message ListResponse {
-  // next id will be used: 3
   dtypes.Status status = 1;
   repeated Artifact artifacts = 2;
 }
 
 message DescribeRequest {
-  // next id will be used: 3
   string id = 2;
   string type = 1;
 }
 
 message DescribeResponse {
-  // next id will be used: 3
   dtypes.Status status = 1;
   Artifact artifact = 2;
 }
 
+
 message Artifact {
-  // next id will be used: 10
   string id = 1;
   string name = 2;
   string version = 3;
@@ -76,26 +70,22 @@ message Artifact {
 }
 
 message JavaSpec {
-  // next id will be used: 4
   string group_id = 1;
   string artifact_id = 2;
   string artifact_url = 3;
 }
 
 message DockerSpec {
-  // next id will be used: 3
-  repeated string tar_Sums = 1;
+  repeated string tar_sums = 1;
   string manifest_url = 2;
 }
 
 message PhpSpec {
-  // next id will be used: 3
   string download_url = 1;
   string shasum = 2;
 }
 
 message NpmSpec {
-  // next id will be used: 6
   string description = 1;
   string artifact_id = 2;
   string shasum = 3;
