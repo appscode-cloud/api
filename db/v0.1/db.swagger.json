@@ -401,6 +401,10 @@
           "type": "string",
           "format": "string"
         },
+        "status": {
+          "type": "string",
+          "format": "string"
+        },
         "type": {
           "type": "string",
           "format": "string"

@@ -154,6 +154,7 @@ message Database {
   int64 pv_size = 10;
   string created = 11;
   string last_backup = 12;
+  string status = 13;
 }
 
 message SnapshotListRequest {
