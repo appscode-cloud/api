@@ -1,0 +1,23 @@
+{
+  "definitions": {
+    "ciMasterCreateRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
+        },
+        "volume_id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciMasterDeleteRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
