@@ -76,7 +76,7 @@ message JavaSpec {
 }
 
 message DockerSpec {
-  repeated string tar_Sums = 1;
+  repeated string tar_sums = 1;
   string manifest_url = 2;
 }
 
