@@ -1,0 +1,12 @@
+{
+  "definitions": {
+    "billingChargeRequest": {
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/appscode/api/data/files"
-	"strings"
 )
 
 func DBGenericName(dbName, sku string) (string, error) {
@@ -20,10 +19,10 @@ func DBGenericName(dbName, sku string) (string, error) {
 	}
 	if pg, ok := dbs[dbName]; ok {
 		for _, dt := range pg.DbTypes {
-			if dt.Sku == strings.ToUpper(sku) {
+			if dt.Sku == sku {
 				return dt.Name, nil
 			}
 		}
 	}
-	return "", fmt.Errorf("Can't detect generic name for db %v and sku %v", dbName, sku)
+	return "", fmt.Errorf("Unknown SKU provided", dbName, sku)
 }

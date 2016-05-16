@@ -1,0 +1,15 @@
+{
+  "definitions": {
+    "certificateCACreateRequest": {
+      "properties": {
+        "csr": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

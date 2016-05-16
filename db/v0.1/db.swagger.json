@@ -324,14 +324,6 @@
           "type": "string",
           "format": "string"
         },
-        "gfs_disk": {
-          "type": "string",
-          "format": "string"
-        },
-        "gfs_endpoint": {
-          "type": "string",
-          "format": "string"
-        },
         "name": {
           "type": "string",
           "format": "string"
