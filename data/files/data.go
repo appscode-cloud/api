@@ -87,7 +87,11 @@ func dataFilesCi_productsJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/ci_products.json", size: 1651, mode: os.FileMode(436), modTime: time.Unix(1463146060, 0)}
+=======
+	info := bindataFileInfo{name: "data/files/ci_products.json", size: 1651, mode: os.FileMode(436), modTime: time.Unix(1463146004, 0)}
+>>>>>>> bc7771396c1315c1ba8b012c487e06182947bd36
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -107,7 +111,11 @@ func dataFilesCloud_providersJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/cloud_providers.json", size: 10044, mode: os.FileMode(436), modTime: time.Unix(1463146060, 0)}
+=======
+	info := bindataFileInfo{name: "data/files/cloud_providers.json", size: 10044, mode: os.FileMode(436), modTime: time.Unix(1463146004, 0)}
+>>>>>>> bc7771396c1315c1ba8b012c487e06182947bd36
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -127,7 +135,11 @@ func dataFilesDb_productsJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/db_products.json", size: 1868, mode: os.FileMode(436), modTime: time.Unix(1463146060, 0)}
+=======
+	info := bindataFileInfo{name: "data/files/db_products.json", size: 1868, mode: os.FileMode(436), modTime: time.Unix(1463146004, 0)}
+>>>>>>> bc7771396c1315c1ba8b012c487e06182947bd36
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -147,7 +159,11 @@ func dataFilesKubernetes_productsJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/kubernetes_products.json", size: 186, mode: os.FileMode(436), modTime: time.Unix(1463146060, 0)}
+=======
+	info := bindataFileInfo{name: "data/files/kubernetes_products.json", size: 186, mode: os.FileMode(436), modTime: time.Unix(1463146004, 0)}
+>>>>>>> bc7771396c1315c1ba8b012c487e06182947bd36
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -167,7 +183,11 @@ func dataFilesSubscriptionsJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(436), modTime: time.Unix(1463146060, 0)}
+=======
+	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(436), modTime: time.Unix(1463146004, 0)}
+>>>>>>> bc7771396c1315c1ba8b012c487e06182947bd36
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -224,11 +244,11 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"data/files/ci_products.json": dataFilesCi_productsJson,
-	"data/files/cloud_providers.json": dataFilesCloud_providersJson,
-	"data/files/db_products.json": dataFilesDb_productsJson,
+	"data/files/ci_products.json":         dataFilesCi_productsJson,
+	"data/files/cloud_providers.json":     dataFilesCloud_providersJson,
+	"data/files/db_products.json":         dataFilesDb_productsJson,
 	"data/files/kubernetes_products.json": dataFilesKubernetes_productsJson,
-	"data/files/subscriptions.json": dataFilesSubscriptionsJson,
+	"data/files/subscriptions.json":       dataFilesSubscriptionsJson,
 }
 
 // AssetDir returns the file names below a certain
@@ -270,14 +290,15 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
+
 var _bintree = &bintree{nil, map[string]*bintree{
 	"data": &bintree{nil, map[string]*bintree{
 		"files": &bintree{nil, map[string]*bintree{
-			"ci_products.json": &bintree{dataFilesCi_productsJson, map[string]*bintree{}},
-			"cloud_providers.json": &bintree{dataFilesCloud_providersJson, map[string]*bintree{}},
-			"db_products.json": &bintree{dataFilesDb_productsJson, map[string]*bintree{}},
+			"ci_products.json":         &bintree{dataFilesCi_productsJson, map[string]*bintree{}},
+			"cloud_providers.json":     &bintree{dataFilesCloud_providersJson, map[string]*bintree{}},
+			"db_products.json":         &bintree{dataFilesDb_productsJson, map[string]*bintree{}},
 			"kubernetes_products.json": &bintree{dataFilesKubernetes_productsJson, map[string]*bintree{}},
-			"subscriptions.json": &bintree{dataFilesSubscriptionsJson, map[string]*bintree{}},
+			"subscriptions.json":       &bintree{dataFilesSubscriptionsJson, map[string]*bintree{}},
 		}},
 	}},
 }}
@@ -328,4 +349,3 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
-
