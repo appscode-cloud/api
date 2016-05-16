@@ -74,7 +74,7 @@ message SubscriptionOpenRequest {
   string product_type = 1;
   string author_phid = 2;
   string object_phid = 3;
-  string subscription_phid = 4;
+  string product_phid = 4;
   string metadata = 5;
 }
 
@@ -136,5 +136,5 @@ message SubscriptionQoutaRequest {
 
 message SubscriptionQutaResponse {
   dtypes.Status status = 1;
-  string subscription_phid = 3;
+  string product_phid = 3;
 }
