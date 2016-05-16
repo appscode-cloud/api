@@ -2,9 +2,9 @@ package data
 
 import (
 	"encoding/json"
-	"strings"
 	"fmt"
 	"github.com/appscode/api/data/files"
+	"strings"
 )
 
 func DBGenericName(dbName, sku string) (string, error) {
@@ -27,5 +27,3 @@ func DBGenericName(dbName, sku string) (string, error) {
 	}
 	return "", fmt.Errorf("Can't detect generic name for db %v and sku %v", dbName, sku)
 }
-
-
