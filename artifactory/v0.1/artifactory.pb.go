@@ -44,6 +44,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion1
 
 type SearchRequest struct {
+	// next id will be used: 3
 	Query string `protobuf:"bytes,1,opt,name=query" json:"query,omitempty"`
 	Type  string `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
 }
@@ -54,6 +55,7 @@ func (*SearchRequest) ProtoMessage()               {}
 func (*SearchRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
 type SearchResponse struct {
+	// next id will be used: 3
 	Status    *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Artifacts []*Artifact    `protobuf:"bytes,2,rep,name=artifacts" json:"artifacts,omitempty"`
 }
@@ -78,6 +80,7 @@ func (m *SearchResponse) GetArtifacts() []*Artifact {
 }
 
 type ListRequest struct {
+	// next id will be used: 2
 	Type string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
 }
 
@@ -87,6 +90,7 @@ func (*ListRequest) ProtoMessage()               {}
 func (*ListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
 type ListResponse struct {
+	// next id will be used: 3
 	Status    *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Artifacts []*Artifact    `protobuf:"bytes,2,rep,name=artifacts" json:"artifacts,omitempty"`
 }
@@ -111,6 +115,7 @@ func (m *ListResponse) GetArtifacts() []*Artifact {
 }
 
 type DescribeRequest struct {
+	// next id will be used: 3
 	Id   string `protobuf:"bytes,2,opt,name=id" json:"id,omitempty"`
 	Type string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
 }
@@ -121,6 +126,7 @@ func (*DescribeRequest) ProtoMessage()               {}
 func (*DescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
 type DescribeResponse struct {
+	// next id will be used: 3
 	Status   *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Artifact *Artifact      `protobuf:"bytes,2,opt,name=artifact" json:"artifact,omitempty"`
 }
@@ -145,6 +151,7 @@ func (m *DescribeResponse) GetArtifact() *Artifact {
 }
 
 type Artifact struct {
+	// next id will be used: 10
 	Id               string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	Name             string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
 	Version          string `protobuf:"bytes,3,opt,name=version" json:"version,omitempty"`
@@ -333,6 +340,7 @@ func _Artifact_OneofSizer(msg proto.Message) (n int) {
 }
 
 type JavaSpec struct {
+	// next id will be used: 4
 	GroupId     string `protobuf:"bytes,1,opt,name=group_id,json=groupId" json:"group_id,omitempty"`
 	ArtifactId  string `protobuf:"bytes,2,opt,name=artifact_id,json=artifactId" json:"artifact_id,omitempty"`
 	ArtifactUrl string `protobuf:"bytes,3,opt,name=artifact_url,json=artifactUrl" json:"artifact_url,omitempty"`
@@ -344,6 +352,7 @@ func (*JavaSpec) ProtoMessage()               {}
 func (*JavaSpec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
 
 type DockerSpec struct {
+	// next id will be used: 3
 	Tar_Sums    []string `protobuf:"bytes,1,rep,name=tar_Sums,json=tarSums" json:"tar_Sums,omitempty"`
 	ManifestUrl string   `protobuf:"bytes,2,opt,name=manifest_url,json=manifestUrl" json:"manifest_url,omitempty"`
 }
@@ -354,6 +363,7 @@ func (*DockerSpec) ProtoMessage()               {}
 func (*DockerSpec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
 
 type PhpSpec struct {
+	// next id will be used: 3
 	DownloadUrl string `protobuf:"bytes,1,opt,name=download_url,json=downloadUrl" json:"download_url,omitempty"`
 	Shasum      string `protobuf:"bytes,2,opt,name=shasum" json:"shasum,omitempty"`
 }
@@ -364,6 +374,7 @@ func (*PhpSpec) ProtoMessage()               {}
 func (*PhpSpec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{9} }
 
 type NpmSpec struct {
+	// next id will be used: 6
 	Description string   `protobuf:"bytes,1,opt,name=description" json:"description,omitempty"`
 	ArtifactId  string   `protobuf:"bytes,2,opt,name=artifact_id,json=artifactId" json:"artifact_id,omitempty"`
 	Shasum      string   `protobuf:"bytes,3,opt,name=shasum" json:"shasum,omitempty"`
