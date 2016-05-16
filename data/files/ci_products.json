@@ -1,25 +1,14 @@
 {
   "build_agents": [
     {
-      "sku": "CI-R512",
-      "provider": "digitalocean",
-      "os": "linux",
-      "price": 35,
-      "details": {
-        "cpu": 1,
-        "ram": 512
-      },
-      "date_started": "2016-01-01T00:00:00.000Z",
-      "date_ended": "2030-01-01T00:00:00.000Z"
-    },
-    {
       "sku": "CI-R1",
       "provider": "digitalocean",
       "os": "linux",
       "price": 55,
       "details": {
         "cpu": 1,
-        "ram": 1
+        "ram": 1,
+        "disk": 30
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -31,7 +20,8 @@
       "price": 100,
       "details": {
         "cpu": 2,
-        "ram": 2
+        "ram": 2,
+        "disk": 40
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -43,7 +33,8 @@
       "price": 160,
       "details": {
         "cpu": 2,
-        "ram": 4
+        "ram": 4,
+        "disk": 60
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -55,7 +46,8 @@
       "price": 250,
       "details": {
         "cpu": 4,
-        "ram": 8
+        "ram": 8,
+        "disk": 80
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -67,7 +59,8 @@
       "price": 360,
       "details": {
         "cpu": 8,
-        "ram": 16
+        "ram": 16,
+        "disk": 160
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
