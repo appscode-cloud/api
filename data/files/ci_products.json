@@ -9,7 +9,8 @@
         "cpu": 1,
         "ram": 1,
         "disk": 30,
-        "recommended_executors": 1
+        "recommended_executors": 1,
+        "external_id": "1gb"
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -23,7 +24,8 @@
         "cpu": 2,
         "ram": 2,
         "disk": 40,
-        "recommended_executors": 2
+        "recommended_executors": 2,
+        "external_id": "2gb"
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -37,7 +39,8 @@
         "cpu": 2,
         "ram": 4,
         "disk": 60,
-        "recommended_executors": 2
+        "recommended_executors": 2,
+        "external_id": "4gb"
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -51,7 +54,8 @@
         "cpu": 4,
         "ram": 8,
         "disk": 80,
-        "recommended_executors": 2
+        "recommended_executors": 2,
+        "external_id": "8gb"
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -65,7 +69,8 @@
         "cpu": 8,
         "ram": 16,
         "disk": 160,
-        "recommended_executors": 4
+        "recommended_executors": 4,
+        "external_id": "16gb"
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
