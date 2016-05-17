@@ -1,0 +1,18 @@
+{
+  "definitions": {
+    "dbSlaveAddRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "config": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "definitions": {
+    "ciBuildDescribeRequest": {
+      "properties": {
+        "console": {
+          "type": "string"
+        },
+        "job_name": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "ciBuildListRequest": {
+      "properties": {
+        "job_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
