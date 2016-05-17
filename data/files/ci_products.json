@@ -8,7 +8,8 @@
       "details": {
         "cpu": 1,
         "ram": 1,
-        "disk": 30
+        "disk": 30,
+        "recommended_executors": 1
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -21,7 +22,8 @@
       "details": {
         "cpu": 2,
         "ram": 2,
-        "disk": 40
+        "disk": 40,
+        "recommended_executors": 2
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -34,7 +36,8 @@
       "details": {
         "cpu": 2,
         "ram": 4,
-        "disk": 60
+        "disk": 60,
+        "recommended_executors": 2
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -47,7 +50,8 @@
       "details": {
         "cpu": 4,
         "ram": 8,
-        "disk": 80
+        "disk": 80,
+        "recommended_executors": 4
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -60,7 +64,8 @@
       "details": {
         "cpu": 8,
         "ram": 16,
-        "disk": 160
+        "disk": 160,
+        "recommended_executors": 8
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"

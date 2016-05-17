@@ -186,6 +186,10 @@
           "type": "string",
           "format": "string"
         },
+        "sku": {
+          "type": "string",
+          "format": "string"
+        },
         "user_startup_script": {
           "type": "string",
           "format": "string"
