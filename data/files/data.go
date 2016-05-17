@@ -87,7 +87,7 @@ func dataFilesCi_productsJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/ci_products.json", size: 1810, mode: os.FileMode(436), modTime: time.Unix(1463464732, 0)}
+	info := bindataFileInfo{name: "data/files/ci_products.json", size: 1810, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
@@ -107,7 +107,7 @@ func dataFilesCloud_providersJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/cloud_providers.json", size: 10044, mode: os.FileMode(436), modTime: time.Unix(1463144871, 0)}
+	info := bindataFileInfo{name: "data/files/cloud_providers.json", size: 10044, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
@@ -127,7 +127,7 @@ func dataFilesDb_productsJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/db_products.json", size: 1868, mode: os.FileMode(436), modTime: time.Unix(1463144871, 0)}
+	info := bindataFileInfo{name: "data/files/db_products.json", size: 1868, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
@@ -147,7 +147,7 @@ func dataFilesKubernetes_productsJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/kubernetes_products.json", size: 186, mode: os.FileMode(436), modTime: time.Unix(1463144871, 0)}
+	info := bindataFileInfo{name: "data/files/kubernetes_products.json", size: 186, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
@@ -167,7 +167,7 @@ func dataFilesSubscriptionsJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(436), modTime: time.Unix(1463144871, 0)}
+	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
