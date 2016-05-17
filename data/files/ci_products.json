@@ -51,7 +51,7 @@
         "cpu": 4,
         "ram": 8,
         "disk": 80,
-        "recommended_executors": 4
+        "recommended_executors": 2
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
@@ -65,7 +65,7 @@
         "cpu": 8,
         "ram": 16,
         "disk": 160,
-        "recommended_executors": 8
+        "recommended_executors": 4
       },
       "date_started": "2016-01-01T00:00:00.000Z",
       "date_ended": "2030-01-01T00:00:00.000Z"
