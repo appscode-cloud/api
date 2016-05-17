@@ -28,6 +28,9 @@ func DBGenericName(dbName, sku string) (string, error) {
 	return "", fmt.Errorf("Can't detect generic name for db %v and sku %v", dbName, sku)
 }
 
+/*
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer <token>" "https://api.digitalocean.com/v2/sizes"
+*/
 func BuildAgentExternalID(sku string) (string, error) {
 	bytes, err := files.Asset("data/files/ci_products.json")
 	if err != nil {
