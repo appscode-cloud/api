@@ -7,14 +7,49 @@ import (
 
 // Auto-generated. DO NOT EDIT.
 
-var listRequestSchema *gojsonschema.Schema
 var deleteRequestSchema *gojsonschema.Schema
+var listRequestSchema *gojsonschema.Schema
+var acknowledgeRequestSchema *gojsonschema.Schema
+var updateRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
 var notificationRequestSchema *gojsonschema.Schema
-var updateRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
+	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "alertSpec": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "object_name": {
+          "type": "string"
+        },
+        "object_type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "properties": {
+    "phid": {
+      "type": "string"
+    },
+    "spec": {
+      "$ref": "#/definitions/alertSpec"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		log.Fatal(err)
+	}
 	listRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
@@ -46,9 +81,84 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	acknowledgeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "comment": {
+      "type": "string"
+    },
+    "phid": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		log.Fatal(err)
+	}
+	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
+    "IcingaServiceQueryEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertSpec": {
+      "properties": {
+        "alert_interval": {
+          "type": "integer"
+        },
+        "critical_method": {
+          "type": "integer"
+        },
+        "critical_user": {
+          "type": "string"
+        },
+        "warning_method": {
+          "type": "integer"
+        },
+        "warning_user": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertIcingaService": {
+      "properties": {
+        "check_command": {
+          "type": "string"
+        },
+        "check_interval": {
+          "type": "integer"
+        },
+        "critical_condition": {
+          "type": "string"
+        },
+        "formula_r": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "query": {
+          "items": {
+            "$ref": "#/definitions/IcingaServiceQueryEntry"
+          },
+          "type": "array"
+        },
+        "warning_condition": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "alertSpec": {
       "properties": {
         "cluster": {
@@ -68,6 +178,18 @@ func init() {
     }
   },
   "properties": {
+    "alert_spec": {
+      "$ref": "#/definitions/alertAlertSpec"
+    },
+    "icinga_service": {
+      "$ref": "#/definitions/alertIcingaService"
+    },
+    "icinga_service_phid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
     "phid": {
       "type": "string"
     },
@@ -210,123 +332,27 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "IcingaServiceQueryEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertAlertSpec": {
-      "properties": {
-        "alert_interval": {
-          "type": "integer"
-        },
-        "critical_method": {
-          "type": "integer"
-        },
-        "critical_user": {
-          "type": "string"
-        },
-        "warning_method": {
-          "type": "integer"
-        },
-        "warning_user": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertIcingaService": {
-      "properties": {
-        "check_command": {
-          "type": "string"
-        },
-        "check_interval": {
-          "type": "integer"
-        },
-        "critical_condition": {
-          "type": "string"
-        },
-        "formula_r": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "query": {
-          "items": {
-            "$ref": "#/definitions/IcingaServiceQueryEntry"
-          },
-          "type": "array"
-        },
-        "warning_condition": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertSpec": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "object_name": {
-          "type": "string"
-        },
-        "object_type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    }
-  },
-  "properties": {
-    "alert_spec": {
-      "$ref": "#/definitions/alertAlertSpec"
-    },
-    "icinga_service": {
-      "$ref": "#/definitions/alertIcingaService"
-    },
-    "icinga_service_phid": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "phid": {
-      "type": "string"
-    },
-    "spec": {
-      "$ref": "#/definitions/alertSpec"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		log.Fatal(err)
-	}
 }
+
+func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
+	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *DeleteRequest) IsRequest() {}
 
 func (m *ListRequest) IsValid() (*gojsonschema.Result, error) {
 	return listRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ListRequest) IsRequest() {}
 
-func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
-	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *AcknowledgeRequest) IsValid() (*gojsonschema.Result, error) {
+	return acknowledgeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DeleteRequest) IsRequest() {}
+func (m *AcknowledgeRequest) IsRequest() {}
+
+func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
+	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *UpdateRequest) IsRequest() {}
 
 func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -337,9 +363,4 @@ func (m *NotificationRequest) IsValid() (*gojsonschema.Result, error) {
 	return notificationRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *NotificationRequest) IsRequest() {}
-
-func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
-	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *UpdateRequest) IsRequest() {}
 
