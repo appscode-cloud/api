@@ -1,0 +1,18 @@
+# Configurations for APIEndpoints. APIServer will
+# act on individual methods upon the configurations
+# provided.
+
+type: "InterceptorConfig"
+authenticationInterceptor:
+  order: 1
+  unauthenticatedEndpoint:
+    - "health.Status"
+    - "authentication.User"
+    - "authentication.Token"
+    - "mailinglist.SendEmail"
+    - "mailinglist.Subscribe"
+    - "mailinglist.Unsubscribe"
+    - "namespace.Check"
+    - "namespace.Create"
+    - "namespace.Status"
+    - "namespace.Log"

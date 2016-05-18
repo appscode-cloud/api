@@ -2,6 +2,7 @@
 // sources:
 // data/files/ci_products.json
 // data/files/cloud_providers.json
+// data/files/configs.yaml
 // data/files/db_products.json
 // data/files/kubernetes_products.json
 // data/files/subscriptions.json
@@ -87,7 +88,7 @@ func dataFilesCi_productsJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/ci_products.json", size: 1810, mode: os.FileMode(420), modTime: time.Unix(1463460579, 0)}
+	info := bindataFileInfo{name: "data/files/ci_products.json", size: 1810, mode: os.FileMode(436), modTime: time.Unix(1463569592, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -107,7 +108,27 @@ func dataFilesCloud_providersJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/cloud_providers.json", size: 10044, mode: os.FileMode(420), modTime: time.Unix(1463144889, 0)}
+	info := bindataFileInfo{name: "data/files/cloud_providers.json", size: 10044, mode: os.FileMode(436), modTime: time.Unix(1463569592, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _dataFilesConfigsYaml = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\x74\x90\xc1\x4e\x03\x31\x0c\x44\xef\xfb\x15\xd6\xf6\x4c\x24\xae\xbd\xa1\xaa\x87\x4a\x1c\x90\x96\x7e\x40\x9a\xb8\x5d\xab\x59\x3b\x72\x9c\x22\xfe\x9e\x2c\xa8\xd0\xc2\x72\x4b\xe6\xcd\x58\x1e\xaf\x60\x23\x7c\xa4\x53\x55\x6f\x24\x5c\xe0\x28\x0a\x4f\x2f\xbb\x2d\xc7\x2c\xc4\x56\xdc\xfc\x1b\x50\x2f\xa8\xf0\x46\x29\x75\x2b\xf0\xc1\x40\x18\x88\x23\x5d\x28\x56\x9f\x60\x42\x1b\x25\x16\xa8\xb9\xe9\x36\x22\x84\xbb\xa1\x2d\x93\x55\x9a\x17\xa3\xeb\x3a\x7b\xcf\xb8\x86\x7e\xc7\x86\x1a\x30\x9b\xe8\xd7\x0a\x7d\xe7\x6b\xcb\xb2\x51\xf8\x8c\xdd\x18\xd6\x1d\x80\x68\x44\x5d\xc3\x63\x7b\x56\xbe\x71\x62\xbc\xee\x3a\xbb\x00\x1e\xa0\x1f\xd1\x27\x1b\xdd\x60\xde\x6a\xe9\xaf\xea\xfd\x74\xb7\x2f\xa8\xff\xb1\x57\x39\x23\x7f\xc3\xc9\x53\x22\x3e\x25\x2a\xe6\x06\xe4\xb8\x9d\x85\x65\x5a\x0f\x25\x28\x1d\x70\x91\xee\xb9\xfc\xe1\xec\x27\x2c\xd9\x07\x74\x9b\x11\xc3\x79\x49\x57\x6c\x25\x17\xc0\xaf\x7a\x3f\xe0\x59\xda\x2d\x3f\x02\x00\x00\xff\xff\x45\xa7\x78\xea\xd9\x01\x00\x00")
+
+func dataFilesConfigsYamlBytes() ([]byte, error) {
+	return bindataRead(
+		_dataFilesConfigsYaml,
+		"data/files/configs.yaml",
+	)
+}
+
+func dataFilesConfigsYaml() (*asset, error) {
+	bytes, err := dataFilesConfigsYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "data/files/configs.yaml", size: 473, mode: os.FileMode(436), modTime: time.Unix(1463574458, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -127,7 +148,7 @@ func dataFilesDb_productsJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/db_products.json", size: 1868, mode: os.FileMode(420), modTime: time.Unix(1463144889, 0)}
+	info := bindataFileInfo{name: "data/files/db_products.json", size: 1868, mode: os.FileMode(436), modTime: time.Unix(1463569592, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -147,7 +168,7 @@ func dataFilesKubernetes_productsJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/kubernetes_products.json", size: 186, mode: os.FileMode(420), modTime: time.Unix(1463144889, 0)}
+	info := bindataFileInfo{name: "data/files/kubernetes_products.json", size: 186, mode: os.FileMode(436), modTime: time.Unix(1463569592, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -167,7 +188,7 @@ func dataFilesSubscriptionsJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(420), modTime: time.Unix(1463144889, 0)}
+	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(436), modTime: time.Unix(1463569592, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -226,6 +247,7 @@ func AssetNames() []string {
 var _bindata = map[string]func() (*asset, error){
 	"data/files/ci_products.json": dataFilesCi_productsJson,
 	"data/files/cloud_providers.json": dataFilesCloud_providersJson,
+	"data/files/configs.yaml": dataFilesConfigsYaml,
 	"data/files/db_products.json": dataFilesDb_productsJson,
 	"data/files/kubernetes_products.json": dataFilesKubernetes_productsJson,
 	"data/files/subscriptions.json": dataFilesSubscriptionsJson,
@@ -275,6 +297,7 @@ var _bintree = &bintree{nil, map[string]*bintree{
 		"files": &bintree{nil, map[string]*bintree{
 			"ci_products.json": &bintree{dataFilesCi_productsJson, map[string]*bintree{}},
 			"cloud_providers.json": &bintree{dataFilesCloud_providersJson, map[string]*bintree{}},
+			"configs.yaml": &bintree{dataFilesConfigsYaml, map[string]*bintree{}},
 			"db_products.json": &bintree{dataFilesDb_productsJson, map[string]*bintree{}},
 			"kubernetes_products.json": &bintree{dataFilesKubernetes_productsJson, map[string]*bintree{}},
 			"subscriptions.json": &bintree{dataFilesSubscriptionsJson, map[string]*bintree{}},
