@@ -20,12 +20,12 @@ func DBGenericName(dbName, sku string) (string, error) {
 	}
 	if pg, ok := dbs[dbName]; ok {
 		for _, dt := range pg.DbTypes {
-			if dt.Sku == sku {
+			if dt.Sku == strings.ToUpper(sku) {
 				return dt.Name, nil
 			}
 		}
 	}
-	return "", fmt.Errorf("Unknown SKU provided", dbName, sku)
+	return "", fmt.Errorf("Can't detect generic name for db %v and sku %v", dbName, sku)
 }
 
 /*
