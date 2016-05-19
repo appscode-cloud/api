@@ -15,6 +15,33 @@
     "application/json"
   ],
   "paths": {
+    "/alert/v0.1/acknowledge": {
+      "post": {
+        "summary": "Alerts.Acknowledge",
+        "operationId": "Acknowledge",
+        "responses": {
+          "default": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/alertAcknowledgeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Alerts"
+        ]
+      }
+    },
     "/alert/v0.1/notify": {
       "post": {
         "summary": "Alerts.Notify",
@@ -264,9 +291,25 @@
         }
       }
     },
+    "alertAcknowledgeRequest": {
+      "type": "object",
+      "properties": {
+        "comment": {
+          "type": "string",
+          "format": "string"
+        },
+        "phid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
     "alertAlert": {
       "type": "object",
       "properties": {
+        "alert_spec": {
+          "$ref": "#/definitions/alertAlertSpec"
+        },
         "icinga_service": {
           "$ref": "#/definitions/alertIcingaService"
         },
@@ -281,9 +324,6 @@
         "phid": {
           "type": "string",
           "format": "string"
-        },
-        "spec": {
-          "$ref": "#/definitions/alertAlertSpec"
         }
       }
     },

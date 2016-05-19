@@ -14,6 +14,13 @@ service Alerts {
     };
   }
 
+  rpc Acknowledge(AcknowledgeRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post : "/alert/v0.1/acknowledge"
+      body : "*"
+    };
+  }
+
   rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
@@ -48,6 +55,11 @@ message NotificationRequest {
   string service_output = 4;
   string alert_phid = 5;
   string host_name = 6;
+}
+
+message AcknowledgeRequest {
+  string phid = 1;
+  string comment = 2;
 }
 
 message CreateRequest {
@@ -101,7 +113,7 @@ message Alert {
   string name = 2;
   string icinga_url = 3;
   IcingaService icinga_service = 4;
-  AlertSpec spec = 5;
+  AlertSpec alert_spec = 5;
 }
 
 message IcingaService {
