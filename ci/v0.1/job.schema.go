@@ -1,12 +1,11 @@
 package ci
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var jobDescribeRequestSchema *gojsonschema.Schema
 var jobDeleteRequestSchema *gojsonschema.Schema
 var jobCopyRequestSchema *gojsonschema.Schema
@@ -110,4 +109,12 @@ func (m *JobBuildRequest) IsValid() (*gojsonschema.Result, error) {
 	return jobBuildRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *JobBuildRequest) IsRequest() {}
+
+func (m *JobDescribeResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *JobListResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

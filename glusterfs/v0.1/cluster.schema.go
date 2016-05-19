@@ -1,12 +1,11 @@
 package glusterfs
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var clusterDescribeRequestSchema *gojsonschema.Schema
 var clusterListRequestSchema *gojsonschema.Schema
 var clusterDeleteRequestSchema *gojsonschema.Schema
@@ -113,4 +112,12 @@ func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterCreateRequest) IsRequest() {}
+
+func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

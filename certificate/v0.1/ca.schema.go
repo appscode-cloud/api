@@ -1,12 +1,11 @@
 package certificate
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var cACreateRequestSchema *gojsonschema.Schema
 
 func init() {
@@ -32,4 +31,8 @@ func (m *CACreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return cACreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CACreateRequest) IsRequest() {}
+
+func (m *CACreateResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

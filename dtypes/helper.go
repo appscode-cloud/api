@@ -72,3 +72,13 @@ func (a *Status) AddDetails(v ...proto.Message) {
 		a.Details = append(a.Details, anyValue)
 	}
 }
+
+func (m *VoidRequest) IsRequest() {}
+
+func (m *LongRunningResponse) SetStatus(s *Status) {
+   m.Status = s
+}
+
+func (m *VoidResponse) SetStatus(s *Status) {
+   m.Status = s
+}

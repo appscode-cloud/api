@@ -1,12 +1,11 @@
 package pv
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var pVCUnregisterRequestSchema *gojsonschema.Schema
 var pVCRegisterRequestSchema *gojsonschema.Schema
 var pVCDescribeRequestSchema *gojsonschema.Schema
@@ -86,4 +85,8 @@ func (m *PVCDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return pVCDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PVCDescribeRequest) IsRequest() {}
+
+func (m *PVCDescribeResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

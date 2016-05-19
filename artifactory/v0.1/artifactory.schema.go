@@ -1,12 +1,11 @@
 package artifactory
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var listRequestSchema *gojsonschema.Schema
 var searchRequestSchema *gojsonschema.Schema
 var describeRequestSchema *gojsonschema.Schema
@@ -71,4 +70,16 @@ func (m *DescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return describeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DescribeRequest) IsRequest() {}
+
+func (m *ListResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *DescribeResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *SearchResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

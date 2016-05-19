@@ -1,12 +1,11 @@
 package ci
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var masterDeleteRequestSchema *gojsonschema.Schema
 var masterCreateRequestSchema *gojsonschema.Schema
 
@@ -50,4 +49,12 @@ func (m *MasterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return masterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *MasterCreateRequest) IsRequest() {}
+
+func (m *MasterDeleteResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *MasterCreateResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

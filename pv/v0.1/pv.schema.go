@@ -1,34 +1,18 @@
 package pv
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var pVUnregisterRequestSchema *gojsonschema.Schema
-var pVDescribeRequestSchema *gojsonschema.Schema
 var pVRegisterRequestSchema *gojsonschema.Schema
+var pVDescribeRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
 	pVUnregisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "cluster": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		log.Fatal(err)
-	}
-	pVDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -70,6 +54,21 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	pVDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func (m *PVUnregisterRequest) IsValid() (*gojsonschema.Result, error) {
@@ -77,13 +76,17 @@ func (m *PVUnregisterRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *PVUnregisterRequest) IsRequest() {}
 
+func (m *PVRegisterRequest) IsValid() (*gojsonschema.Result, error) {
+	return pVRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *PVRegisterRequest) IsRequest() {}
+
 func (m *PVDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return pVDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PVDescribeRequest) IsRequest() {}
 
-func (m *PVRegisterRequest) IsValid() (*gojsonschema.Result, error) {
-	return pVRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *PVDescribeResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
 }
-func (m *PVRegisterRequest) IsRequest() {}
 
