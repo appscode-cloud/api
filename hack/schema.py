@@ -151,38 +151,42 @@ def render_schema_go(pkg, schemas):
 
 // Auto-generated. DO NOT EDIT.
 
+import (
 """.format(pkg)
-
+    if schemas['responses']:
+        contents += """
+    "github.com/appscode/dtypes"
+"""
     if schemas['requests']:
         contents += """
-import (
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
 """
-        for key in schemas['requests'].keys():
-            contents += 'var {0}Schema *gojsonschema.Schema\n'.format(key[0:1].lower() + key[1:])
-        contents += '\n'
 
-        contents += """func init() {
-    	var err error
-    """
-        for key, sch in schemas['requests'].iteritems():
-            var_name = key[0:1].lower() + key[1:]
-            sch_str = json.dumps(sch, sort_keys=True, indent=2, separators=(',', ': '))
-            contents += '	{0}Schema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{1}`))\n'.format(
-                var_name, sch_str)
-            contents += """	if err != nil {
-    		log.Fatal(err)
-    	}
-    """
-        contents += '}\n\n'
+    for key in schemas['requests'].keys():
+        contents += 'var {0}Schema *gojsonschema.Schema\n'.format(key[0:1].lower() + key[1:])
+    contents += '\n'
 
-        for key in schemas['requests'].keys():
-            contents += 'func (m *' + key + ') IsValid() (*gojsonschema.Result, error) {\n'
-            contents += '	return {}Schema.Validate(gojsonschema.NewGoLoader(m))\n'.format(key[0:1].lower() + key[1:])
-            contents += '}\n'
-            contents += 'func (m *' + key + ') IsRequest() {}\n\n'
+    contents += """func init() {
+	var err error
+"""
+    for key, sch in schemas['requests'].iteritems():
+        var_name = key[0:1].lower() + key[1:]
+        sch_str = json.dumps(sch, sort_keys=True, indent=2, separators=(',', ': '))
+        contents += '	{0}Schema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{1}`))\n'.format(
+            var_name, sch_str)
+        contents += """	if err != nil {
+		log.Fatal(err)
+	}
+"""
+    contents += '}\n\n'
+
+    for key in schemas['requests'].keys():
+        contents += 'func (m *' + key + ') IsValid() (*gojsonschema.Result, error) {\n'
+        contents += '	return {}Schema.Validate(gojsonschema.NewGoLoader(m))\n'.format(key[0:1].lower() + key[1:])
+        contents += '}\n'
+        contents += 'func (m *' + key + ') IsRequest() {}\n\n'
 
     for key in schemas['responses'].keys():
         contents += 'func (m *' + key + ') SetStatus(s *dtypes.Status) {\n'
@@ -212,7 +216,7 @@ def generate_go_schema():
             pkg = detect_pkg(schema)
             defs = swagger_defs(read_json(swagger)['definitions'])
             schemas = schema_go(pkg, defs)
-            if schemas:
+            if schemas['requests'] or schemas['responses']:
                 write_file(go, render_schema_go(pkg, schemas))
 
 
