@@ -106,12 +106,6 @@ func init() {
     "credential": {
       "type": "string"
     },
-    "gfs_disk": {
-      "type": "string"
-    },
-    "gfs_endpoint": {
-      "type": "string"
-    },
     "name": {
       "type": "string"
     },

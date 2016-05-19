@@ -324,14 +324,6 @@
           "type": "string",
           "format": "string"
         },
-        "gfs_disk": {
-          "type": "string",
-          "format": "string"
-        },
-        "gfs_endpoint": {
-          "type": "string",
-          "format": "string"
-        },
         "name": {
           "type": "string",
           "format": "string"
@@ -406,6 +398,10 @@
           "format": "int64"
         },
         "sku": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
           "type": "string",
           "format": "string"
         },
