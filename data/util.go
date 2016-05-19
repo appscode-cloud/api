@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/appscode/api/data/files"
+	"strings"
 )
 
 func DBGenericName(dbName, sku string) (string, error) {
