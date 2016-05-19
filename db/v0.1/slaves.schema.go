@@ -1,8 +1,6 @@
 package db
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
     "github.com/xeipuuv/gojsonschema"
     "log"
@@ -10,8 +8,8 @@ import (
 var slaveAddRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	slaveAddRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	slaveAddRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -27,9 +25,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *SlaveAddRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveAddRequestSchema.Validate(gojsonschema.NewGoLoader(m))

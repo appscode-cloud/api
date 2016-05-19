@@ -1,9 +1,8 @@
 package kubernetes
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
+    "github.com/appscode/api/dtypes"
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
@@ -13,8 +12,8 @@ var appDescribeRequestSchema *gojsonschema.Schema
 var clientRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	secretDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	secretDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -30,9 +29,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	configMapDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	configMapDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -48,9 +47,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	appDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	appDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -66,9 +65,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	clientRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	clientRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -78,9 +77,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *SecretDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return secretDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))

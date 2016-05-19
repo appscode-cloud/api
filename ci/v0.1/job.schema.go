@@ -1,9 +1,8 @@
 package ci
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
+    "github.com/appscode/api/dtypes"
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
@@ -14,8 +13,8 @@ var jobCreateRequestSchema *gojsonschema.Schema
 var jobBuildRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	jobDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	jobDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
@@ -25,9 +24,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	jobDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	jobDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
@@ -37,9 +36,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	jobCopyRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	jobCopyRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "destination": {
@@ -52,9 +51,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	jobCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	jobCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
@@ -67,9 +66,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	jobBuildRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	jobBuildRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
@@ -82,9 +81,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *JobDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return jobDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))

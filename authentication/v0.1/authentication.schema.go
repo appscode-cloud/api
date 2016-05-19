@@ -1,17 +1,16 @@
 package authentication
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
+    "github.com/appscode/api/dtypes"
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
 var validateRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	validateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	validateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "namespace": {
@@ -27,9 +26,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *ValidateRequest) IsValid() (*gojsonschema.Result, error) {
 	return validateRequestSchema.Validate(gojsonschema.NewGoLoader(m))

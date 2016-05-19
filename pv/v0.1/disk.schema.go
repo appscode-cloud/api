@@ -1,9 +1,8 @@
 package pv
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
+    "github.com/appscode/api/dtypes"
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
@@ -13,8 +12,8 @@ var diskListRequestSchema *gojsonschema.Schema
 var diskCreateRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	diskDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	diskDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -30,9 +29,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	diskDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	diskDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -45,9 +44,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	diskListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	diskListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -57,9 +56,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	diskCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	diskCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -81,9 +80,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *DiskDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))

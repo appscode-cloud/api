@@ -1,9 +1,8 @@
 package namespace
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
+    "github.com/appscode/api/dtypes"
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
@@ -13,8 +12,8 @@ var checkRequestSchema *gojsonschema.Schema
 var logRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	statusRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	statusRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
@@ -24,9 +23,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "display_name": {
@@ -60,9 +59,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	checkRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	checkRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
@@ -72,9 +71,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	logRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	logRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
@@ -84,9 +83,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *StatusRequest) IsValid() (*gojsonschema.Result, error) {
 	return statusRequestSchema.Validate(gojsonschema.NewGoLoader(m))

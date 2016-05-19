@@ -150,37 +150,39 @@ def render_schema_go(pkg, schemas):
     contents = """package {}
 
 // Auto-generated. DO NOT EDIT.
-
-import (
 """.format(pkg)
-    if schemas['responses']:
-        contents += """
-    "github.com/appscode/dtypes"
-"""
+
+    imports = []
     if schemas['requests']:
-        contents += """
-    "github.com/xeipuuv/gojsonschema"
-    "log"
-)
-"""
+        imports.append("github.com/xeipuuv/gojsonschema")
+        imports.append("log")
+    if schemas['responses']:
+        imports.append("github.com/appscode/api/dtypes")
+    imports.sort()
+    if imports:
+        contents += 'import (\n'
+        for pkg in imports:
+            contents += '    "{}"\n'.format(pkg)
+        contents += ')\n'
 
     for key in schemas['requests'].keys():
         contents += 'var {0}Schema *gojsonschema.Schema\n'.format(key[0:1].lower() + key[1:])
     contents += '\n'
 
-    contents += """func init() {
+    if schemas['requests']:
+        contents += """func init() {
 	var err error
 """
-    for key, sch in schemas['requests'].iteritems():
-        var_name = key[0:1].lower() + key[1:]
-        sch_str = json.dumps(sch, sort_keys=True, indent=2, separators=(',', ': '))
-        contents += '	{0}Schema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{1}`))\n'.format(
-            var_name, sch_str)
-        contents += """	if err != nil {
+        for key, sch in schemas['requests'].iteritems():
+            var_name = key[0:1].lower() + key[1:]
+            sch_str = json.dumps(sch, sort_keys=True, indent=2, separators=(',', ': '))
+            contents += '	{0}Schema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{1}`))\n'.format(
+                var_name, sch_str)
+            contents += """	if err != nil {
 		log.Fatal(err)
 	}
 """
-    contents += '}\n\n'
+        contents += '}\n\n'
 
     for key in schemas['requests'].keys():
         contents += 'func (m *' + key + ') IsValid() (*gojsonschema.Result, error) {\n'

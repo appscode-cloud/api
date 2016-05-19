@@ -1,17 +1,16 @@
 package kubernetes
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
+    "github.com/appscode/api/dtypes"
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
 var eventRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	eventRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	eventRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "EventRequestObjectMeta": {
@@ -81,9 +80,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *EventRequest) IsValid() (*gojsonschema.Result, error) {
 	return eventRequestSchema.Validate(gojsonschema.NewGoLoader(m))

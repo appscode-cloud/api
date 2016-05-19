@@ -1,17 +1,16 @@
 package certificate
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
+    "github.com/appscode/api/dtypes"
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
 var acmeUserRegisterRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	acmeUserRegisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	acmeUserRegisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "email": {
@@ -21,9 +20,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *AcmeUserRegisterRequest) IsValid() (*gojsonschema.Result, error) {
 	return acmeUserRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))

@@ -1,8 +1,6 @@
 package mailinglist
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
     "github.com/xeipuuv/gojsonschema"
     "log"
@@ -12,8 +10,8 @@ var unsubscribeRequestSchema *gojsonschema.Schema
 var sendEmailRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	subscribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	subscribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "email": {
@@ -23,9 +21,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	unsubscribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	unsubscribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "magic_code": {
@@ -35,9 +33,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    	sendEmailRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+		log.Fatal(err)
+	}
+	sendEmailRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "body": {
@@ -56,9 +54,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *SubscribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))

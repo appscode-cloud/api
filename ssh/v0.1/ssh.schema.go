@@ -1,17 +1,16 @@
 package ssh
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
+    "github.com/appscode/api/dtypes"
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
 var secureShellGetRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	secureShellGetRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	secureShellGetRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster_name": {
@@ -30,9 +29,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *SecureShellGetRequest) IsValid() (*gojsonschema.Result, error) {
 	return secureShellGetRequestSchema.Validate(gojsonschema.NewGoLoader(m))

@@ -1,17 +1,16 @@
 package certificate
 
 // Auto-generated. DO NOT EDIT.
-
-
 import (
+    "github.com/appscode/api/dtypes"
     "github.com/xeipuuv/gojsonschema"
     "log"
 )
 var cACreateRequestSchema *gojsonschema.Schema
 
 func init() {
-    	var err error
-    	cACreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	var err error
+	cACreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "csr": {
@@ -24,9 +23,9 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-    		log.Fatal(err)
-    	}
-    }
+		log.Fatal(err)
+	}
+}
 
 func (m *CACreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return cACreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
