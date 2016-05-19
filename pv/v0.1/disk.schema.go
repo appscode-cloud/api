@@ -2,10 +2,11 @@ package pv
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var diskDescribeRequestSchema *gojsonschema.Schema
 var diskDeleteRequestSchema *gojsonschema.Schema
 var diskListRequestSchema *gojsonschema.Schema
@@ -105,10 +106,10 @@ func (m *DiskCreateRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *DiskCreateRequest) IsRequest() {}
 
 func (m *DiskDescribeResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *DiskListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

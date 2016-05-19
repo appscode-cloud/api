@@ -2,10 +2,11 @@ package certificate
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var certificateImportRequestSchema *gojsonschema.Schema
 var certificateRenewRequestSchema *gojsonschema.Schema
 var certificateDeleteRequestSchema *gojsonschema.Schema
@@ -208,18 +209,18 @@ func (m *CertificateDeployRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *CertificateDeployRequest) IsRequest() {}
 
 func (m *CertificateListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *CertificateDescribeResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *CertificateCreateResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *CertificateRenewResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

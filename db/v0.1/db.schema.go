@@ -2,10 +2,11 @@ package db
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var deleteRequestSchema *gojsonschema.Schema
 var describeRequestSchema *gojsonschema.Schema
 var backupRequestSchema *gojsonschema.Schema
@@ -237,14 +238,14 @@ func (m *RestoreRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *RestoreRequest) IsRequest() {}
 
 func (m *ListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *SnapshotListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *DescribeResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

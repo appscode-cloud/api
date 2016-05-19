@@ -76,9 +76,9 @@ func (a *Status) AddDetails(v ...proto.Message) {
 func (m *VoidRequest) IsRequest() {}
 
 func (m *LongRunningResponse) SetStatus(s *Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *VoidResponse) SetStatus(s *Status) {
-   m.Status = s
+	m.Status = s
 }

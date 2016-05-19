@@ -2,10 +2,11 @@ package kubernetes
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var eventRequestSchema *gojsonschema.Schema
 
 func init() {
@@ -90,6 +91,6 @@ func (m *EventRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *EventRequest) IsRequest() {}
 
 func (m *EventResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

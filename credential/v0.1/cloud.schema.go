@@ -2,10 +2,11 @@ package credential
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var cloudCredentialUpdateRequestSchema *gojsonschema.Schema
 var cloudCredentialDeleteRequestSchema *gojsonschema.Schema
 var cloudCredentialCreateRequestSchema *gojsonschema.Schema
@@ -110,6 +111,6 @@ func (m *CloudCredentialCreateRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *CloudCredentialCreateRequest) IsRequest() {}
 
 func (m *CloudCredentialListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

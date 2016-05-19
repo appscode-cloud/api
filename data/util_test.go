@@ -1,8 +1,8 @@
 package data
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func Test(t *testing.T) {

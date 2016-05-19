@@ -2,10 +2,11 @@ package monitoring
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var dashboardCreateRequestSchema *gojsonschema.Schema
 
 func init() {
@@ -39,6 +40,6 @@ func (m *DashboardCreateRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *DashboardCreateRequest) IsRequest() {}
 
 func (m *DashboardCreateResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

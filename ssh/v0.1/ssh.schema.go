@@ -2,10 +2,11 @@ package ssh
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var secureShellGetRequestSchema *gojsonschema.Schema
 
 func init() {
@@ -39,6 +40,6 @@ func (m *SecureShellGetRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *SecureShellGetRequest) IsRequest() {}
 
 func (m *SecureShellGetResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

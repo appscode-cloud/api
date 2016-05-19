@@ -2,10 +2,11 @@ package billing
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var subscriptionQoutaRequestSchema *gojsonschema.Schema
 var subscriptionOpenRequestSchema *gojsonschema.Schema
 var subscriptionCreateRequestSchema *gojsonschema.Schema
@@ -134,10 +135,10 @@ func (m *SubscriptionCloseRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *SubscriptionCloseRequest) IsRequest() {}
 
 func (m *SubscriptionQutaResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *SubscriptionDescribeResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

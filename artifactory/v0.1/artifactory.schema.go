@@ -2,10 +2,11 @@ package artifactory
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var listRequestSchema *gojsonschema.Schema
 var searchRequestSchema *gojsonschema.Schema
 var describeRequestSchema *gojsonschema.Schema
@@ -72,14 +73,14 @@ func (m *DescribeRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *DescribeRequest) IsRequest() {}
 
 func (m *ListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *DescribeResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *SearchResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

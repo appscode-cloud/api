@@ -2,10 +2,11 @@ package certificate
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var acmeUserRegisterRequestSchema *gojsonschema.Schema
 
 func init() {
@@ -30,6 +31,6 @@ func (m *AcmeUserRegisterRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *AcmeUserRegisterRequest) IsRequest() {}
 
 func (m *AcmeUserRegisterResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

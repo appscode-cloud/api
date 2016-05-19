@@ -2,9 +2,10 @@ package db
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
+
 var slaveAddRequestSchema *gojsonschema.Schema
 
 func init() {
