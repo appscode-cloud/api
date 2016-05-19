@@ -307,6 +307,9 @@
     "alertAlert": {
       "type": "object",
       "properties": {
+        "alert_spec": {
+          "$ref": "#/definitions/alertAlertSpec"
+        },
         "icinga_service": {
           "$ref": "#/definitions/alertIcingaService"
         },
@@ -321,9 +324,6 @@
         "phid": {
           "type": "string",
           "format": "string"
-        },
-        "spec": {
-          "$ref": "#/definitions/alertAlertSpec"
         }
       }
     },

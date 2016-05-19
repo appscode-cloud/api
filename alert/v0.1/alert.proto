@@ -113,7 +113,7 @@ message Alert {
   string name = 2;
   string icinga_url = 3;
   IcingaService icinga_service = 4;
-  AlertSpec spec = 5;
+  AlertSpec alert_spec = 5;
 }
 
 message IcingaService {
