@@ -2,9 +2,9 @@ package bucket
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
 var bucketListRequestSchema *gojsonschema.Schema
 
@@ -30,6 +30,6 @@ func (m *BucketListRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *BucketListRequest) IsRequest() {}
 
 func (m *BucketListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

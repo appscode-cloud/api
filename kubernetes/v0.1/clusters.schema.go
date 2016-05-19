@@ -2,9 +2,9 @@ package kubernetes
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
 var clusterInstanceListRequestSchema *gojsonschema.Schema
 var clusterStartupScriptRequestSchema *gojsonschema.Schema
@@ -241,22 +241,22 @@ func (m *ClusterClientConfigRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *ClusterClientConfigRequest) IsRequest() {}
 
 func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *ClusterStartupScriptResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *ClusterClientConfigResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *ClusterInstanceListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

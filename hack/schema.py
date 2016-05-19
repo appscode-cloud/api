@@ -139,10 +139,8 @@ def schema_go(pkg, defs):
     for key in defs['responses'].keys():
         print key
         if key.startswith(pkg) and key.endswith("Response"):
-            # print '>>>>>>>>>>>>>>>>>>>', key
             schema = defs['responses'][key]
             result['responses'][key[len(pkg):]] = schema
-    # print result
     return result
 
 
@@ -162,7 +160,7 @@ def render_schema_go(pkg, schemas):
     if imports:
         contents += 'import (\n'
         for pkg in imports:
-            contents += '    "{}"\n'.format(pkg)
+            contents += '	"{}"\n'.format(pkg)
         contents += ')\n'
 
     for key in schemas['requests'].keys():
@@ -192,7 +190,7 @@ def render_schema_go(pkg, schemas):
 
     for key in schemas['responses'].keys():
         contents += 'func (m *' + key + ') SetStatus(s *dtypes.Status) {\n'
-        contents += '   m.Status = s\n'
+        contents += '	m.Status = s\n'
         contents += '}\n\n'
 
     return contents

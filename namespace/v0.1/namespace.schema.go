@@ -2,9 +2,9 @@ package namespace
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
 var statusRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
@@ -108,18 +108,18 @@ func (m *LogRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *LogRequest) IsRequest() {}
 
 func (m *CheckResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *StatusResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *LogResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *CreateResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

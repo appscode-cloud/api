@@ -2,9 +2,9 @@ package billing
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
 var chargeRequestSchema *gojsonschema.Schema
 
@@ -30,10 +30,10 @@ func (m *ChargeRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *ChargeRequest) IsRequest() {}
 
 func (m *ChargePaymentResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *ChargeResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

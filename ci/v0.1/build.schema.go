@@ -2,9 +2,9 @@ package ci
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
 var buildListRequestSchema *gojsonschema.Schema
 var buildDescribeRequestSchema *gojsonschema.Schema
@@ -54,10 +54,10 @@ func (m *BuildDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *BuildDescribeRequest) IsRequest() {}
 
 func (m *BuildDescribeResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *BuildListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

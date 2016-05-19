@@ -2,9 +2,9 @@ package glusterfs
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
 var volumeListRequestSchema *gojsonschema.Schema
 var volumeCreateRequestSchema *gojsonschema.Schema
@@ -81,6 +81,6 @@ func (m *VolumeDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *VolumeDeleteRequest) IsRequest() {}
 
 func (m *VolumeListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

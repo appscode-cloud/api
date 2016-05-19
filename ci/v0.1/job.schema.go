@@ -2,9 +2,9 @@ package ci
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
 var jobDescribeRequestSchema *gojsonschema.Schema
 var jobDeleteRequestSchema *gojsonschema.Schema
@@ -111,10 +111,10 @@ func (m *JobBuildRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *JobBuildRequest) IsRequest() {}
 
 func (m *JobDescribeResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
 func (m *JobListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 

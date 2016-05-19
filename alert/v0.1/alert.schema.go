@@ -2,9 +2,9 @@ package alert
 
 // Auto-generated. DO NOT EDIT.
 import (
-    "github.com/appscode/api/dtypes"
-    "github.com/xeipuuv/gojsonschema"
-    "log"
+	"github.com/appscode/api/dtypes"
+	"github.com/xeipuuv/gojsonschema"
+	"log"
 )
 var deleteRequestSchema *gojsonschema.Schema
 var listRequestSchema *gojsonschema.Schema
@@ -364,6 +364,6 @@ func (m *NotificationRequest) IsValid() (*gojsonschema.Result, error) {
 func (m *NotificationRequest) IsRequest() {}
 
 func (m *ListResponse) SetStatus(s *dtypes.Status) {
-   m.Status = s
+	m.Status = s
 }
 
