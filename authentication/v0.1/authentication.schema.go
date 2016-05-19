@@ -1,12 +1,11 @@
 package authentication
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var validateRequestSchema *gojsonschema.Schema
 
 func init() {
@@ -35,4 +34,8 @@ func (m *ValidateRequest) IsValid() (*gojsonschema.Result, error) {
 	return validateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ValidateRequest) IsRequest() {}
+
+func (m *ValidateResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

@@ -1,18 +1,17 @@
 package kubernetes
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var clusterInstanceListRequestSchema *gojsonschema.Schema
+var clusterStartupScriptRequestSchema *gojsonschema.Schema
 var clusterScaleRequestSchema *gojsonschema.Schema
 var clusterUpdateRequestSchema *gojsonschema.Schema
 var clusterDeleteRequestSchema *gojsonschema.Schema
 var clusterDescribeRequestSchema *gojsonschema.Schema
-var clusterStartupScriptRequestSchema *gojsonschema.Schema
 var clusterCreateRequestSchema *gojsonschema.Schema
 var clusterClientConfigRequestSchema *gojsonschema.Schema
 
@@ -22,6 +21,18 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster_name": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		log.Fatal(err)
+	}
+	clusterStartupScriptRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "role": {
       "type": "string"
     }
   },
@@ -101,18 +112,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		log.Fatal(err)
-	}
-	clusterStartupScriptRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "role": {
       "type": "string"
     }
   },
@@ -206,6 +205,11 @@ func (m *ClusterInstanceListRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterInstanceListRequest) IsRequest() {}
 
+func (m *ClusterStartupScriptRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterStartupScriptRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *ClusterStartupScriptRequest) IsRequest() {}
+
 func (m *ClusterScaleRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterScaleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
@@ -226,11 +230,6 @@ func (m *ClusterDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterDescribeRequest) IsRequest() {}
 
-func (m *ClusterStartupScriptRequest) IsValid() (*gojsonschema.Result, error) {
-	return clusterStartupScriptRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *ClusterStartupScriptRequest) IsRequest() {}
-
 func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
@@ -240,4 +239,24 @@ func (m *ClusterClientConfigRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterClientConfigRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterClientConfigRequest) IsRequest() {}
+
+func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *ClusterStartupScriptResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *ClusterClientConfigResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *ClusterInstanceListResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

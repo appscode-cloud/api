@@ -1,12 +1,11 @@
 package namespace
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var statusRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
 var checkRequestSchema *gojsonschema.Schema
@@ -107,4 +106,20 @@ func (m *LogRequest) IsValid() (*gojsonschema.Result, error) {
 	return logRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *LogRequest) IsRequest() {}
+
+func (m *CheckResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *StatusResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *LogResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *CreateResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

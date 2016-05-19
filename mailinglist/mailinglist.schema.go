@@ -1,12 +1,10 @@
 package mailinglist
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var subscribeRequestSchema *gojsonschema.Schema
 var unsubscribeRequestSchema *gojsonschema.Schema
 var sendEmailRequestSchema *gojsonschema.Schema

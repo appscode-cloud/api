@@ -1,12 +1,11 @@
 package loadbalancer
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var listRequestSchema *gojsonschema.Schema
 var deleteRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
@@ -438,4 +437,12 @@ func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
 	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *UpdateRequest) IsRequest() {}
+
+func (m *ListResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *DescribeResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

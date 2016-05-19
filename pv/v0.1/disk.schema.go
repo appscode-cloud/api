@@ -1,12 +1,11 @@
 package pv
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var diskDescribeRequestSchema *gojsonschema.Schema
 var diskDeleteRequestSchema *gojsonschema.Schema
 var diskListRequestSchema *gojsonschema.Schema
@@ -104,4 +103,12 @@ func (m *DiskCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return diskCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DiskCreateRequest) IsRequest() {}
+
+func (m *DiskDescribeResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
+
+func (m *DiskListResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 

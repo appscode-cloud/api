@@ -1,12 +1,11 @@
 package alert
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
-
+import (
+    "github.com/appscode/api/dtypes"
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 var deleteRequestSchema *gojsonschema.Schema
 var listRequestSchema *gojsonschema.Schema
 var acknowledgeRequestSchema *gojsonschema.Schema
@@ -363,4 +362,8 @@ func (m *NotificationRequest) IsValid() (*gojsonschema.Result, error) {
 	return notificationRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *NotificationRequest) IsRequest() {}
+
+func (m *ListResponse) SetStatus(s *dtypes.Status) {
+   m.Status = s
+}
 
