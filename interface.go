@@ -19,4 +19,5 @@ type Response interface {
 	String() string
 	ProtoMessage()
 	GetStatus() *dtypes.Status
+	SetStatus(*dtypes.Status)
 }
