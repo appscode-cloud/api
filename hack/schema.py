@@ -64,26 +64,31 @@ def gen_assets():
 
 def swagger_defs(defs):
     stack = []
-    result = {}
+    result = {
+        'requests': {},
+        'responses': {}
+    }
     for key in defs.keys():
         if key.endswith("Request"):
             stack.append(key)
+        elif key.endswith("Response"):
+            result['responses'][key] = defs[key]
     while stack:
         name = stack.pop()
         schema = defs[name]
-        result[name] = schema
+        result['requests'][name] = schema
         if 'properties' in schema:
             for p, v in schema['properties'].iteritems():
                 if '$ref' in v:
                     nw_obj = v['$ref'][len('#/definitions/'):]
-                    if nw_obj not in result:
+                    if nw_obj not in result['requests']:
                         stack.append(nw_obj)
                 if 'format' in v and not v['format'] in VALID_FORMATS:
                     v.pop('format', None)
                 if 'items' in v:
                     if '$ref' in v['items']:
                         nw_obj = v['items']['$ref'][len('#/definitions/'):]
-                        if nw_obj not in result:
+                        if nw_obj not in result['requests']:
                             stack.append(nw_obj)
                     if 'format' in v['items'] and not v['items']['format'] in VALID_FORMATS:
                         v['items'].pop('format', None)
@@ -96,18 +101,21 @@ def generate_json_schema():
             swagger = os.path.join(root, filename)
             schema = os.path.join(root, filename.replace('.swagger.', '.schema.'))
             print schema
-            defs = swagger_defs(read_json(swagger)['definitions'])
+            defs = swagger_defs(read_json(swagger)['definitions'])['requests']
             if os.path.exists(schema):
                 defs.update(read_json(schema)['definitions'])
             write_json({'definitions': defs}, schema)
 
 
 def schema_go(pkg, defs):
-    result = {}
-    for key in defs.keys():
+    result = {
+        'requests': {},
+        'responses': {}
+    }
+    for key in defs['requests'].keys():
         if key.startswith(pkg) and key.endswith("Request"):
-            schema = defs[key]
-            result[key[len(pkg):]] = schema
+            schema = defs['requests'][key]
+            result['requests'][key[len(pkg):]] = schema
             dep_defs = {}
             stack = []
             stack.append(schema)
@@ -118,53 +126,68 @@ def schema_go(pkg, defs):
                         if '$ref' in v:
                             nw_obj = v['$ref'][len('#/definitions/'):]
                             if nw_obj not in dep_defs:
-                                dep_defs[nw_obj] = defs[nw_obj]
-                                stack.append(defs[nw_obj])
+                                dep_defs[nw_obj] = defs['requests'][nw_obj]
+                                stack.append(defs['requests'][nw_obj])
                         if 'items' in v and '$ref' in v['items']:
                             nw_obj = v['items']['$ref'][len('#/definitions/'):]
                             if nw_obj not in dep_defs:
-                                dep_defs[nw_obj] = defs[nw_obj]
-                                stack.append(defs[nw_obj])
+                                dep_defs[nw_obj] = defs['requests'][nw_obj]
+                                stack.append(defs['requests'][nw_obj])
             if dep_defs:
                 schema['definitions'] = dep_defs
             schema['$schema'] = 'http://json-schema.org/draft-04/schema#'
+    for key in defs['responses'].keys():
+        print key
+        if key.startswith(pkg) and key.endswith("Response"):
+            # print '>>>>>>>>>>>>>>>>>>>', key
+            schema = defs['responses'][key]
+            result['responses'][key[len(pkg):]] = schema
+    # print result
     return result
 
 
 def render_schema_go(pkg, schemas):
     contents = """package {}
 
-import (
-	"github.com/xeipuuv/gojsonschema"
-	"log"
-)
-
 // Auto-generated. DO NOT EDIT.
 
 """.format(pkg)
-    for key in schemas.keys():
-        contents += 'var {0}Schema *gojsonschema.Schema\n'.format(key[0:1].lower() + key[1:])
-    contents += '\n'
 
-    contents += """func init() {
-	var err error
+    if schemas['requests']:
+        contents += """
+import (
+    "github.com/xeipuuv/gojsonschema"
+    "log"
+)
 """
-    for key, sch in schemas.iteritems():
-        var_name = key[0:1].lower() + key[1:]
-        sch_str = json.dumps(sch, sort_keys=True, indent=2, separators=(',', ': '))
-        contents += '	{0}Schema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{1}`))\n'.format(
-            var_name, sch_str)
-        contents += """	if err != nil {
-		log.Fatal(err)
-	}
-"""
-    contents += '}\n\n'
+        for key in schemas['requests'].keys():
+            contents += 'var {0}Schema *gojsonschema.Schema\n'.format(key[0:1].lower() + key[1:])
+        contents += '\n'
 
-    for key in schemas.keys():
-        contents += 'func (m *' + key + ') IsValid() (*gojsonschema.Result, error) {\n'
-        contents += '	return {}Schema.Validate(gojsonschema.NewGoLoader(m))\n'.format(key[0:1].lower() + key[1:])
-        contents += '}\n'
-        contents += 'func (m *' + key + ') IsRequest() {}\n\n'
+        contents += """func init() {
+    	var err error
+    """
+        for key, sch in schemas['requests'].iteritems():
+            var_name = key[0:1].lower() + key[1:]
+            sch_str = json.dumps(sch, sort_keys=True, indent=2, separators=(',', ': '))
+            contents += '	{0}Schema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{1}`))\n'.format(
+                var_name, sch_str)
+            contents += """	if err != nil {
+    		log.Fatal(err)
+    	}
+    """
+        contents += '}\n\n'
+
+        for key in schemas['requests'].keys():
+            contents += 'func (m *' + key + ') IsValid() (*gojsonschema.Result, error) {\n'
+            contents += '	return {}Schema.Validate(gojsonschema.NewGoLoader(m))\n'.format(key[0:1].lower() + key[1:])
+            contents += '}\n'
+            contents += 'func (m *' + key + ') IsRequest() {}\n\n'
+
+    for key in schemas['responses'].keys():
+        contents += 'func (m *' + key + ') SetStatus(s *dtypes.Status) {\n'
+        contents += '   m.Status = s\n'
+        contents += '}\n\n'
 
     return contents
 
@@ -181,12 +204,13 @@ def detect_pkg(schema):
 
 def generate_go_schema():
     for root, dirnames, filenames in os.walk(API_ROOT):
-        for filename in fnmatch.filter(filenames, '*.schema.json'):
-            schema = os.path.join(root, filename)
+        for filename in fnmatch.filter(filenames, '*.swagger.json'):
+            swagger = os.path.join(root, filename)
+            schema = os.path.join(root, filename.replace('.swagger.', '.schema.'))
             go = schema[:-len('.json')] + '.go'
             print go
             pkg = detect_pkg(schema)
-            defs = read_json(schema)['definitions']
+            defs = swagger_defs(read_json(swagger)['definitions'])
             schemas = schema_go(pkg, defs)
             if schemas:
                 write_file(go, render_schema_go(pkg, schemas))
