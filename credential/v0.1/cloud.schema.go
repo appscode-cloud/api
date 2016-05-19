@@ -6,6 +6,7 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 	"log"
 )
+
 var cloudCredentialUpdateRequestSchema *gojsonschema.Schema
 var cloudCredentialDeleteRequestSchema *gojsonschema.Schema
 var cloudCredentialCreateRequestSchema *gojsonschema.Schema

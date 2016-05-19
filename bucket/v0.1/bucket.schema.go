@@ -6,6 +6,7 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 	"log"
 )
+
 var bucketListRequestSchema *gojsonschema.Schema
 
 func init() {

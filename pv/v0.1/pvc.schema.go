@@ -6,6 +6,7 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 	"log"
 )
+
 var pVCUnregisterRequestSchema *gojsonschema.Schema
 var pVCRegisterRequestSchema *gojsonschema.Schema
 var pVCDescribeRequestSchema *gojsonschema.Schema

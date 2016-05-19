@@ -6,6 +6,7 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 	"log"
 )
+
 var jobDescribeRequestSchema *gojsonschema.Schema
 var jobDeleteRequestSchema *gojsonschema.Schema
 var jobCopyRequestSchema *gojsonschema.Schema

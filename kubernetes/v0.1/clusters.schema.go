@@ -6,6 +6,7 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 	"log"
 )
+
 var clusterInstanceListRequestSchema *gojsonschema.Schema
 var clusterStartupScriptRequestSchema *gojsonschema.Schema
 var clusterScaleRequestSchema *gojsonschema.Schema

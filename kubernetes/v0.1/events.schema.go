@@ -6,6 +6,7 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 	"log"
 )
+
 var eventRequestSchema *gojsonschema.Schema
 
 func init() {

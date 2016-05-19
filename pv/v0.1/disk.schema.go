@@ -6,6 +6,7 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 	"log"
 )
+
 var diskDescribeRequestSchema *gojsonschema.Schema
 var diskDeleteRequestSchema *gojsonschema.Schema
 var diskListRequestSchema *gojsonschema.Schema

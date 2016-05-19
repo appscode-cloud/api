@@ -161,7 +161,7 @@ def render_schema_go(pkg, schemas):
         contents += 'import (\n'
         for pkg in imports:
             contents += '	"{}"\n'.format(pkg)
-        contents += ')\n'
+        contents += ')\n\n'
 
     for key in schemas['requests'].keys():
         contents += 'var {0}Schema *gojsonschema.Schema\n'.format(key[0:1].lower() + key[1:])
