@@ -7,6 +7,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/golang/protobuf/proto"
 	google_protobuf "github.com/golang/protobuf/ptypes/any"
+	"github.com/xeipuuv/gojsonschema"
 )
 
 // Helper methods for status object.
@@ -73,6 +74,9 @@ func (a *Status) AddDetails(v ...proto.Message) {
 	}
 }
 
+func (m *VoidRequest) IsValid() (*gojsonschema.Result, error) {
+	return &gojsonschema.Result{}, nil
+}
 func (m *VoidRequest) IsRequest() {}
 
 func (m *LongRunningResponse) SetStatus(s *Status) {
