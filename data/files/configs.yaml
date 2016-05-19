@@ -20,3 +20,7 @@ authenticationInterceptor:
   systemAuthenticatedEndpoint:
     - "/ci.Master/Create"
     - "/ci.Master/Delete"
+validationInterceptor:
+  order: 2
+  noValidation:
+    - "/health.Health/Status"
