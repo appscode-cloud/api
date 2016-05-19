@@ -84,6 +84,9 @@ func init() {
     "saltbase_version": {
       "type": "string"
     },
+    "sku": {
+      "type": "string"
+    },
     "user_startup_script": {
       "type": "string"
     }

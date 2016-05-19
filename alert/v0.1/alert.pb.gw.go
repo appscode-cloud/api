@@ -42,6 +42,19 @@ func request_Alerts_Notify_0(ctx context.Context, client AlertsClient, req *http
 
 }
 
+func request_Alerts_Acknowledge_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq AcknowledgeRequest
+	var metadata runtime.ServerMetadata
+
+	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.Acknowledge(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
 func request_Alerts_Create_0(ctx context.Context, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CreateRequest
 	var metadata runtime.ServerMetadata
@@ -370,6 +383,29 @@ func RegisterAlertsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 
 	})
 
+	mux.Handle("POST", pattern_Alerts_Acknowledge_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		resp, md, err := request_Alerts_Acknowledge_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, w, req, err)
+			return
+		}
+
+		forward_Alerts_Acknowledge_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("PUT", pattern_Alerts_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
@@ -468,6 +504,8 @@ func RegisterAlertsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 var (
 	pattern_Alerts_Notify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"alert", "v0.1", "notify"}, ""))
 
+	pattern_Alerts_Acknowledge_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"alert", "v0.1", "acknowledge"}, ""))
+
 	pattern_Alerts_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
 
 	pattern_Alerts_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
@@ -479,6 +517,8 @@ var (
 
 var (
 	forward_Alerts_Notify_0 = runtime.ForwardResponseMessage
+
+	forward_Alerts_Acknowledge_0 = runtime.ForwardResponseMessage
 
 	forward_Alerts_Create_0 = runtime.ForwardResponseMessage
 

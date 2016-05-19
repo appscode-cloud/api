@@ -170,7 +170,7 @@
           "type": "string",
           "format": "string"
         },
-        "tar_Sums": {
+        "tar_sums": {
           "type": "array",
           "items": {
             "type": "string",

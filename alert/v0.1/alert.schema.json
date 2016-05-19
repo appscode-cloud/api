@@ -11,6 +11,17 @@
       },
       "type": "object"
     },
+    "alertAcknowledgeRequest": {
+      "properties": {
+        "comment": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "alertAlertSpec": {
       "properties": {
         "alert_interval": {

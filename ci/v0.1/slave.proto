@@ -49,12 +49,13 @@ message Slave {
 }
 
 message SlaveCreateRequest {
-    int32 executors = 1;
-    string labels = 2;
-    string user_startup_script = 3;
-    string saltbase_version = 4;
-    string ci_starter_version = 5;
-    repeated PortInfo ports = 6;
+    string sku = 1;
+    int32 executors = 2;
+    string labels = 3;
+    string user_startup_script = 4;
+    string saltbase_version = 5;
+    string ci_starter_version = 6;
+    repeated PortInfo ports = 7;
 }
 
 message PortInfo {

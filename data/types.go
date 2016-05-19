@@ -42,8 +42,11 @@ type CIProduct struct {
 		Os       string `json:"os"`
 		Price    int    `json:"price"`
 		Details  struct {
-			CPU int `json:"cpu"`
-			RAM int `json:"ram"`
+			CPU                  int    `json:"cpu"`
+			RAM                  int    `json:"ram"`
+			Disk                 int    `json:"disk"`
+			RecommendedExecutors int    `json:"recommended_executors"`
+			ExternalID           string `json:"external_id"`
 		} `json:"details"`
 		DateStarted time.Time `json:"date_started"`
 		DateEnded   time.Time `json:"date_ended"`

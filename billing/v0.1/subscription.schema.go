@@ -61,10 +61,10 @@ func init() {
     "object_phid": {
       "type": "string"
     },
-    "product_type": {
+    "product_phid": {
       "type": "string"
     },
-    "subscription_phid": {
+    "product_type": {
       "type": "string"
     }
   },
