@@ -9,21 +9,21 @@ service Authentication {
   // This rpc is used to check a valid user from other applications.
   rpc Login(LoginRequest) returns (LoginResponse) {
     option (google.api.http) = {
-      post : "/auth/v0.1/login"
+      post : "/appscode/api/auth/v0.1/login"
       body : "*"
     };
   }
 
   rpc Logout(LogoutRequest) returns (LogoutResponse) {
     option (google.api.http) = {
-      post : "/auth/v0.1/logout"
+      post : "/appscode/api/auth/v0.1/logout"
       body : "*"
     };
   }
   // appctl used this to validates the user token with phabricator.
   rpc Token(ValidateRequest) returns (ValidateResponse) {
     option (google.api.http) = {
-      post: "/auth/v0.1/token"
+      post: "/appscode/api/auth/v0.1/token"
       body: "*"
     };
   }

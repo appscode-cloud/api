@@ -172,11 +172,11 @@ func RegisterAuthenticationHandler(ctx context.Context, mux *runtime.ServeMux, c
 }
 
 var (
-	pattern_Authentication_Login_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"auth", "v0.1", "login"}, ""))
+	pattern_Authentication_Login_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "auth", "v0.1", "login"}, ""))
 
-	pattern_Authentication_Logout_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"auth", "v0.1", "logout"}, ""))
+	pattern_Authentication_Logout_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "auth", "v0.1", "logout"}, ""))
 
-	pattern_Authentication_Token_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"auth", "v0.1", "token"}, ""))
+	pattern_Authentication_Token_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "auth", "v0.1", "token"}, ""))
 )
 
 var (

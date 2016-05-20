@@ -135,9 +135,9 @@ func RegisterConduitHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 }
 
 var (
-	pattern_Conduit_WhoAmI_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"auth", "v0.1", "conduit", "whoami"}, ""))
+	pattern_Conduit_WhoAmI_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "auth", "v0.1", "conduit", "whoami"}, ""))
 
-	pattern_Conduit_Users_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"auth", "v0.1", "conduit", "users"}, ""))
+	pattern_Conduit_Users_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "auth", "v0.1", "conduit", "users"}, ""))
 )
 
 var (

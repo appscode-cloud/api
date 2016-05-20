@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/auth/v0.1/conduit/users": {
+    "/appscode/api/auth/v0.1/conduit/users": {
       "post": {
         "summary": "appctl used this to validates the user token with phabricator.",
         "operationId": "Users",
@@ -42,7 +42,7 @@
         ]
       }
     },
-    "/auth/v0.1/conduit/whoami": {
+    "/appscode/api/auth/v0.1/conduit/whoami": {
       "post": {
         "summary": "This rpc is used to check a valid user from other applications.",
         "operationId": "WhoAmI",
