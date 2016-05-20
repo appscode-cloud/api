@@ -85,6 +85,8 @@ def swagger_defs(defs):
                         stack.append(nw_obj)
                 if 'format' in v and not v['format'] in VALID_FORMATS:
                     v.pop('format', None)
+                if 'additionalProperties' in v and 'format' in v['additionalProperties'] and not v['additionalProperties']['format'] in VALID_FORMATS:
+                    v['additionalProperties'].pop('format', None)
                 if 'items' in v:
                     if '$ref' in v['items']:
                         nw_obj = v['items']['$ref'][len('#/definitions/'):]

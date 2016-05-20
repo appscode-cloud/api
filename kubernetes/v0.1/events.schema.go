@@ -24,7 +24,6 @@ func init() {
         },
         "labels": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"

@@ -18,7 +18,6 @@ func init() {
   "properties": {
     "data": {
       "additionalProperties": {
-        "format": "string",
         "type": "string"
       },
       "type": "object"
@@ -52,7 +51,6 @@ func init() {
   "properties": {
     "data": {
       "additionalProperties": {
-        "format": "string",
         "type": "string"
       },
       "type": "object"

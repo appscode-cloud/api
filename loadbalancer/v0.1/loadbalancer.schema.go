@@ -94,7 +94,6 @@ func init() {
         },
         "options": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -279,7 +278,6 @@ func init() {
         },
         "options": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"

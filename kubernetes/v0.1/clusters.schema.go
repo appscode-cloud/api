@@ -38,7 +38,6 @@ func init() {
     },
     "node_changes": {
       "additionalProperties": {
-        "format": "int64",
         "type": "integer"
       },
       "type": "object"
@@ -117,7 +116,6 @@ func init() {
     },
     "cloud_credential_data": {
       "additionalProperties": {
-        "format": "string",
         "type": "string"
       },
       "type": "object"
@@ -133,7 +131,6 @@ func init() {
     },
     "node_set": {
       "additionalProperties": {
-        "format": "int64",
         "type": "integer"
       },
       "type": "object"

@@ -138,7 +138,6 @@ func init() {
         },
         "query": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -234,7 +233,6 @@ func init() {
         },
         "query": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
