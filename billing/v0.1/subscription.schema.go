@@ -137,8 +137,6 @@ func (m *SubscriptionCloseRequest) IsRequest() {}
 func (m *SubscriptionQutaResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *SubscriptionDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

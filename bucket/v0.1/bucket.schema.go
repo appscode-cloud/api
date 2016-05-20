@@ -33,4 +33,3 @@ func (m *BucketListRequest) IsRequest() {}
 func (m *BucketListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

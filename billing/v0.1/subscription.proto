@@ -8,40 +8,40 @@ import "api/dtypes/types.proto";
 service Subscriptions {
   rpc Create(SubscriptionCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/billing/v0.1/subscription"
+      put: "/appscode/api/billing/v0.1/subscription"
       body: "*"
     };
   }
 
   rpc Alter(SubscriptionCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/billing/v0.1/subscription/alter"
+      post: "/appscode/api/billing/v0.1/subscription/alter"
       body: "*"
     };
   }
 
   rpc Describe(SubscriptionDescribeRequest) returns (SubscriptionDescribeResponse) {
     option (google.api.http) = {
-      get: "/billing/v0.1/subscription"
+      get: "/appscode/api/billing/v0.1/subscription"
     };
   }
 
   rpc Subscribe(SubscriptionOpenRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/billing/v0.1/subscription/{product_type}/{object_phid}"
+      put: "/appscode/api/billing/v0.1/subscription/{product_type}/{object_phid}"
       body: "*"
     };
   }
 
   rpc UnSubscribe(SubscriptionCloseRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/billing/v0.1/subscription/{product_type}/{object_phid}"
+      delete: "/appscode/api/billing/v0.1/subscription/{product_type}/{object_phid}"
     };
   }
 
   rpc Quota(SubscriptionQoutaRequest) returns (SubscriptionQutaResponse) {
     option (google.api.http) = {
-      post: "/billing/v0.1/subscription/quota"
+      post: "/appscode/api/billing/v0.1/subscription/quota"
       body: "*"
     };
   }

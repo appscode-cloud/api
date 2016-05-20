@@ -143,9 +143,9 @@ func RegisterChargeHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 }
 
 var (
-	pattern_Charge_Calculate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"billing", "v0.1", "charge"}, ""))
+	pattern_Charge_Calculate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "charge"}, ""))
 
-	pattern_Charge_PaymentMethod_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"billing", "v0.1", "charge", "payment"}, ""))
+	pattern_Charge_PaymentMethod_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "billing", "v0.1", "charge", "payment"}, ""))
 )
 
 var (

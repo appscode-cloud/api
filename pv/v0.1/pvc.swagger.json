@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/pv/v0.1/pvc/{cluster}/{name}": {
+    "/appscode/api/pv/v0.1/pvc/{cluster}/{name}": {
       "put": {
         "operationId": "Register",
         "responses": {
@@ -55,7 +55,7 @@
         ]
       }
     },
-    "/pv/v0.1/pvc/{cluster}/{name}/{namespace}": {
+    "/appscode/api/pv/v0.1/pvc/{cluster}/{name}/{namespace}": {
       "get": {
         "operationId": "Describe",
         "responses": {

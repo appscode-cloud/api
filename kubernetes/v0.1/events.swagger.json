@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/kubernetes/v0.1/events/{cluster_name}/construct": {
+    "/appscode/api/kubernetes/v0.1/events/{cluster_name}/construct": {
       "put": {
         "operationId": "Constructive",
         "responses": {
@@ -48,7 +48,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/events/{cluster_name}/destruct": {
+    "/appscode/api/kubernetes/v0.1/events/{cluster_name}/destruct": {
       "put": {
         "operationId": "Destructive",
         "responses": {

@@ -82,4 +82,3 @@ func (m *EventRequest) IsRequest() {}
 func (m *EventResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

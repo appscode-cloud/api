@@ -204,11 +204,11 @@ func RegisterMailingListHandler(ctx context.Context, mux *runtime.ServeMux, conn
 }
 
 var (
-	pattern_MailingList_SendEmail_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"mail", "v0.1"}, ""))
+	pattern_MailingList_SendEmail_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"appscode", "api", "mail", "v0.1"}, ""))
 
-	pattern_MailingList_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mailinglist", "v0.1", "subscribe", "email"}, ""))
+	pattern_MailingList_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "mailinglist", "v0.1", "subscribe", "email"}, ""))
 
-	pattern_MailingList_Unsubscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mailinglist", "v0.1", "unsubscribe", "magic_code"}, ""))
+	pattern_MailingList_Unsubscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "mailinglist", "v0.1", "unsubscribe", "magic_code"}, ""))
 )
 
 var (

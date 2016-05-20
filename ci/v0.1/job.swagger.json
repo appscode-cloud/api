@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/ci/v0.1/jobs": {
+    "/appscode/api/ci/v0.1/jobs": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -31,7 +31,7 @@
         ]
       }
     },
-    "/ci/v0.1/jobs/{name}": {
+    "/appscode/api/ci/v0.1/jobs/{name}": {
       "get": {
         "operationId": "Describe",
         "responses": {
@@ -110,7 +110,7 @@
         ]
       }
     },
-    "/ci/v0.1/jobs/{name}/build": {
+    "/appscode/api/ci/v0.1/jobs/{name}/build": {
       "put": {
         "operationId": "Build",
         "responses": {
@@ -143,7 +143,7 @@
         ]
       }
     },
-    "/ci/v0.1/jobs/{source}/{destination}": {
+    "/appscode/api/ci/v0.1/jobs/{source}/{destination}": {
       "post": {
         "operationId": "Copy",
         "responses": {

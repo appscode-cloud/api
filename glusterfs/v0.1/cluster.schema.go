@@ -118,8 +118,6 @@ func (m *ClusterCreateRequest) IsRequest() {}
 func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

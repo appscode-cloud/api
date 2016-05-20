@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/buckets/v0.1": {
+    "/appscode/api/buckets/v0.1": {
       "get": {
         "operationId": "List",
         "responses": {

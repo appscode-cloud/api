@@ -212,16 +212,12 @@ func (m *CertificateDeployRequest) IsRequest() {}
 func (m *CertificateListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *CertificateDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *CertificateCreateResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *CertificateRenewResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

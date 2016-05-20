@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/db/v0.1/slave/{cluster}": {
+    "/appscode/api/db/v0.1/slave/{cluster}": {
       "put": {
         "operationId": "Add",
         "responses": {

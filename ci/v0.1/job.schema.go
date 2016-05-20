@@ -114,8 +114,6 @@ func (m *JobBuildRequest) IsRequest() {}
 func (m *JobDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *JobListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

@@ -105,48 +105,36 @@ func (m *ClientRequest) IsRequest() {}
 func (m *ConfigMapListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *SecretListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *ConfigMapDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *NamespaceListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *ServiceListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *AppListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *AppDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *NodeListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *SecretDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *JobListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *ReplicationControllerListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *PodListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

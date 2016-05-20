@@ -8,26 +8,26 @@ import "api/dtypes/types.proto";
 service Disks {
   rpc List(DiskListRequest) returns (DiskListResponse) {
     option (google.api.http) = {
-      get: "/pv/v0.1/disks/{cluster}"
+      get: "/appscode/api/pv/v0.1/disks/{cluster}"
     };
   }
 
   rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
     option (google.api.http) = {
-      get: "/pv/v0.1/disks/{cluster}/{name}/{plugin}"
+      get: "/appscode/api/pv/v0.1/disks/{cluster}/{name}/{plugin}"
     };
   }
 
   rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/pv/v0.1/disks/{cluster}/{name}"
+      put: "/appscode/api/pv/v0.1/disks/{cluster}/{name}"
       body: "*"
     };
   }
 
   rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/pv/v0.1/disks/{cluster}/{identifier}"
+      delete: "/appscode/api/pv/v0.1/disks/{cluster}/{identifier}"
     };
   }
 }

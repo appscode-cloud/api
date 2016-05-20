@@ -84,4 +84,3 @@ func (m *VolumeDeleteRequest) IsRequest() {}
 func (m *VolumeListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

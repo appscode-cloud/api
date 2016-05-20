@@ -23,9 +23,6 @@
         "region": {
           "type": "string"
         },
-        "secret_name": {
-          "type": "string"
-        },
         "snapshot_name": {
           "type": "string"
         },
@@ -134,9 +131,6 @@
           "type": "integer"
         },
         "region": {
-          "type": "string"
-        },
-        "secret_name": {
           "type": "string"
         },
         "sku": {

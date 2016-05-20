@@ -43,4 +43,3 @@ func (m *SecureShellGetRequest) IsRequest() {}
 func (m *SecureShellGetResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

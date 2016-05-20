@@ -8,46 +8,46 @@ import "api/dtypes/types.proto";
 service Databases {
   rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put : "/db/v0.1/{cluster}/{type}"
+      put : "/appscode/api/db/v0.1/{cluster}/{type}"
       body : "*"
     };
   }
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/db/v0.1/{cluster}/{type}/{name}"
+      delete: "/appscode/api/db/v0.1/{cluster}/{type}/{name}"
     };
   }
 
   rpc Backup(BackupRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/db/v0.1/backup/{cluster}/{type}"
+      post: "/appscode/api/db/v0.1/backup/{cluster}/{type}"
       body: "*"
     };
   }
 
   rpc SnapshotList(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
-      get: "/db/v0.1/snapshots/{name}"
+      get: "/appscode/api/db/v0.1/snapshots/{name}"
     };
   }
 
   rpc Restore(RestoreRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/db/v0.1/restore/{cluster}/{type}"
+      put: "/appscode/api/db/v0.1/restore/{cluster}/{type}"
       body: "*"
     };
   }
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/db/v0.1/{cluster}/{name}"
+      get: "/appscode/api/db/v0.1/{cluster}/{name}"
     };
   }
 
   rpc List(dtypes.VoidRequest) returns (ListResponse) {
     option (google.api.http) = {
-      get: "/db/v0.1"
+      get: "/appscode/api/db/v0.1"
     };
   }
 }
@@ -79,13 +79,12 @@ message BackupRequest {
   string name = 2;
   string type = 3;
   string bucket_name = 4;
-  string secret_name = 5;
-  string snapshot_name = 6;
-  string credential = 7;
-  string region = 8;
-  string auth_secret_name = 9;
-  bool wal = 10;
-  bool force = 11;
+  string snapshot_name = 5;
+  string credential = 6;
+  string region = 7;
+  string auth_secret_name = 8;
+  bool wal = 9;
+  bool force = 10;
 
 }
 
@@ -101,11 +100,10 @@ message RestoreRequest {
   string bucket_name = 9;
   string credential = 10;
   string region = 11;
-  string secret_name = 12;
-  string version = 13;
-  string auth_secret_name = 14;
-  bool wal = 15;
-  bool force = 16;
+  string version = 12;
+  string auth_secret_name = 13;
+  bool wal = 14;
+  bool force = 15;
 }
 
 message DescribeRequest {

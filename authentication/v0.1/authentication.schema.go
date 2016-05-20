@@ -88,12 +88,9 @@ func (m *ValidateRequest) IsRequest() {}
 func (m *ValidateResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *LogoutResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *LoginResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

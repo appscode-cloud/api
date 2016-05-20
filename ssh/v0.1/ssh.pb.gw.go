@@ -102,7 +102,7 @@ func RegisterSecureShellHandler(ctx context.Context, mux *runtime.ServeMux, conn
 }
 
 var (
-	pattern_SecureShell_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"sshkey", "v0.1"}, ""))
+	pattern_SecureShell_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"appscode", "api", "sshkey", "v0.1"}, ""))
 )
 
 var (

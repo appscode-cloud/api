@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/ci/v0.1/master": {
+    "/appscode/api/ci/v0.1/master": {
       "put": {
         "operationId": "Delete",
         "responses": {

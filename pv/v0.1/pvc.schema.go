@@ -90,4 +90,3 @@ func (m *PVCDescribeRequest) IsRequest() {}
 func (m *PVCDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

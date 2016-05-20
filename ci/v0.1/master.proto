@@ -8,14 +8,14 @@ import "api/dtypes/types.proto";
 service Master {
   rpc Create(MasterCreateRequest) returns (MasterCreateResponse) {
     option (google.api.http) = {
-      put: "/ci/v0.1/master"
+      put: "/appscode/api/ci/v0.1/master"
       body: "*"
     };
   }
 
   rpc Delete(MasterDeleteRequest) returns (MasterDeleteResponse) {
     option (google.api.http) = {
-      put: "/ci/v0.1/master"
+      put: "/appscode/api/ci/v0.1/master"
       body: "*"
     };
   }

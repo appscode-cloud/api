@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/sshkey/v0.1": {
+    "/appscode/api/sshkey/v0.1": {
       "get": {
         "operationId": "Get",
         "responses": {

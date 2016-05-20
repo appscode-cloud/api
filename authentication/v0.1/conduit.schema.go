@@ -36,8 +36,6 @@ func (m *ConduitRequest) IsRequest() {}
 func (m *ConduitUsersResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *ConduitWhoAmIResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

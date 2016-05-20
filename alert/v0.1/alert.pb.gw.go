@@ -506,17 +506,17 @@ func RegisterAlertsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 }
 
 var (
-	pattern_Alerts_Notify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"alert", "v0.1", "notify"}, ""))
+	pattern_Alerts_Notify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "alert", "v0.1", "notify"}, ""))
 
-	pattern_Alerts_Acknowledge_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"alert", "v0.1", "acknowledge"}, ""))
+	pattern_Alerts_Acknowledge_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "alert", "v0.1", "acknowledge"}, ""))
 
-	pattern_Alerts_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
+	pattern_Alerts_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
 
-	pattern_Alerts_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
+	pattern_Alerts_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
 
-	pattern_Alerts_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name", "phid"}, ""))
+	pattern_Alerts_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name", "phid"}, ""))
 
-	pattern_Alerts_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
+	pattern_Alerts_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "alert", "v0.1", "spec.cluster", "spec.namespace", "spec.object_type", "spec.object_name"}, ""))
 )
 
 var (

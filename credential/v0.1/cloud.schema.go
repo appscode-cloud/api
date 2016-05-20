@@ -87,4 +87,3 @@ func (m *CloudCredentialCreateRequest) IsRequest() {}
 func (m *CloudCredentialListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

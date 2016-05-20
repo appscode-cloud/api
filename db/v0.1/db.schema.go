@@ -73,9 +73,6 @@ func init() {
     "region": {
       "type": "string"
     },
-    "secret_name": {
-      "type": "string"
-    },
     "snapshot_name": {
       "type": "string"
     },
@@ -181,9 +178,6 @@ func init() {
     "region": {
       "type": "string"
     },
-    "secret_name": {
-      "type": "string"
-    },
     "sku": {
       "type": "string"
     },
@@ -240,12 +234,9 @@ func (m *RestoreRequest) IsRequest() {}
 func (m *ListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *SnapshotListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *DescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
