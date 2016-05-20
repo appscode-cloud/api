@@ -22,6 +22,7 @@ clean() {
 	(find . | grep pb.gw.go | xargs rm) || true
 	(find . | grep schema.json | xargs rm) || true
 	(find . | grep schema.go | xargs rm) || true
+	(find . | grep php | xargs rm) || true
 }
 
 gen_proto() {
