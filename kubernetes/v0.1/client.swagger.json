@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "",
-    "title": ""
+    "title": "client.proto",
+    "version": "version not set"
   },
   "schemes": [
     "http",
@@ -17,10 +17,9 @@
   "paths": {
     "/kubernetes/v0.1/client/{cluster}/apps": {
       "get": {
-        "summary": "Clients.Apps",
         "operationId": "Apps",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesAppListResponse"
@@ -43,10 +42,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}": {
       "get": {
-        "summary": "Clients.App",
         "operationId": "App",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesAppDescribeResponse"
@@ -83,10 +81,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}/pods": {
       "get": {
-        "summary": "Clients.AppPods",
         "operationId": "AppPods",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesPodListResponse"
@@ -123,10 +120,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/configmaps": {
       "get": {
-        "summary": "Clients.ConfigMaps",
         "operationId": "ConfigMaps",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesConfigMapListResponse"
@@ -149,10 +145,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}": {
       "get": {
-        "summary": "Clients.ConfigMap",
         "operationId": "ConfigMap",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesConfigMapDescribeResponse"
@@ -189,10 +184,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/jobs": {
       "get": {
-        "summary": "Clients.Jobs",
         "operationId": "Jobs",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesJobListResponse"
@@ -215,10 +209,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/namespaces": {
       "get": {
-        "summary": "Clients.Namespaces",
         "operationId": "Namespaces",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesNamespaceListResponse"
@@ -241,10 +234,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/nodes": {
       "get": {
-        "summary": "Clients.Nodes",
         "operationId": "Nodes",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesNodeListResponse"
@@ -267,10 +259,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/pods": {
       "get": {
-        "summary": "Clients.Pods",
         "operationId": "Pods",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesPodListResponse"
@@ -293,10 +284,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/rcs": {
       "get": {
-        "summary": "Clients.ReplicationControllers",
         "operationId": "ReplicationControllers",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesReplicationControllerListResponse"
@@ -319,10 +309,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/secrets": {
       "get": {
-        "summary": "Clients.Secrets",
         "operationId": "Secrets",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesSecretListResponse"
@@ -345,10 +334,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}": {
       "get": {
-        "summary": "Clients.Secret",
         "operationId": "Secret",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesSecretDescribeResponse"
@@ -385,10 +373,9 @@
     },
     "/kubernetes/v0.1/client/{cluster}/services": {
       "get": {
-        "summary": "Clients.Services",
         "operationId": "Services",
         "responses": {
-          "default": {
+          "200": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesServiceListResponse"
@@ -471,39 +458,48 @@
       "properties": {
         "description": {
           "type": "string",
-          "format": "string"
+          "format": "string",
+          "title": "Describe what link offers"
         },
         "url": {
           "type": "string",
-          "format": "string"
+          "format": "string",
+          "description": "The URL of The link."
         }
-      }
+      },
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;"
     },
     "dtypesStatus": {
       "type": "object",
       "properties": {
         "code": {
           "type": "string",
-          "format": "string"
+          "format": "string",
+          "title": "Response status code"
         },
         "details": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          }
+          },
+          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use."
         },
         "help": {
-          "$ref": "#/definitions/dtypesHelp"
+          "$ref": "#/definitions/dtypesHelp",
+          "description": "Optional. Help link if there is an error."
         },
         "message": {
           "type": "string",
-          "format": "string"
+          "format": "string",
+          "description": "User facing message."
         },
         "status": {
           "type": "string",
-          "format": "string"
+          "format": "string",
+          "description": "Response status code string."
         }
-      }
+      },
+      "description": "Next Id 5."
     },
     "kubernetesApp": {
       "type": "object",
@@ -554,26 +550,14 @@
           "$ref": "#/definitions/kubernetesService"
         },
         "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/kubernetesAppDescribeResponseLinksEntry"
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "string"
           }
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "kubernetesAppDescribeResponseLinksEntry": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string",
-          "format": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "string"
         }
       }
     },
@@ -654,9 +638,10 @@
           "format": "string"
         },
         "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/kubernetesConfigMapDescribeResponseDataEntry"
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "string"
           }
         },
         "name": {
@@ -669,19 +654,6 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "kubernetesConfigMapDescribeResponseDataEntry": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string",
-          "format": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "string"
         }
       }
     },
@@ -887,9 +859,10 @@
           "format": "string"
         },
         "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/kubernetesPodLinksEntry"
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "string"
           }
         },
         "message": {
@@ -917,19 +890,6 @@
           "format": "string"
         },
         "start_time": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "kubernetesPodLinksEntry": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string",
-          "format": "string"
-        },
-        "value": {
           "type": "string",
           "format": "string"
         }
@@ -1060,9 +1020,10 @@
           "format": "string"
         },
         "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/kubernetesSecretDescribeResponseDataEntry"
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "string"
           }
         },
         "name": {
@@ -1081,19 +1042,6 @@
           "$ref": "#/definitions/dtypesStatus"
         },
         "type": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "kubernetesSecretDescribeResponseDataEntry": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string",
-          "format": "string"
-        },
-        "value": {
           "type": "string",
           "format": "string"
         }
@@ -1180,13 +1128,16 @@
       "properties": {
         "type_url": {
           "type": "string",
-          "format": "string"
+          "format": "string",
+          "description": "A URL/resource name whose content describes the type of the\nserialized message.\n\nFor URLs which use the schema `http`, `https`, or no schema, the\nfollowing restrictions and interpretations apply:\n\n* If no schema is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][google.protobuf.Type]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemas other than `http`, `https` (or the empty schema) might be\nused with implementation specific semantics."
         },
         "value": {
           "type": "string",
-          "format": "byte"
+          "format": "byte",
+          "description": "Must be valid serialized data of the above specified type."
         }
-      }
+      },
+      "description": "`Any` contains an arbitrary serialized message along with a URL\nthat describes the type of the serialized message.\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the the `@type`\nfield. Example (for message [google.protobuf.Duration][google.protobuf.Duration]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     }
   }
 }

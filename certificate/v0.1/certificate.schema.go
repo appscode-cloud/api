@@ -96,6 +96,7 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "certificateSubjectInfo": {
+      "description": "A Name contains the SubjectInfo fields.",
       "properties": {
         "C": {
           "type": "string"

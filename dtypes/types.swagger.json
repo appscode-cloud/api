@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "",
-    "title": ""
+    "title": "types.proto",
+    "version": "version not set"
   },
   "schemes": [
     "http",

@@ -10,7 +10,6 @@ It translates gRPC into RESTful JSON APIs.
 package ci
 
 import (
-	"encoding/json"
 	"io"
 	"net/http"
 
@@ -26,14 +25,13 @@ import (
 var _ codes.Code
 var _ io.Reader
 var _ = runtime.String
-var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
 var (
 	filter_Builds_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"job_name": 0, "number": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_Builds_Describe_0(ctx context.Context, client BuildsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Builds_Describe_0(ctx context.Context, marshaler runtime.Marshaler, client BuildsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq BuildDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -75,7 +73,7 @@ func request_Builds_Describe_0(ctx context.Context, client BuildsClient, req *ht
 
 }
 
-func request_Builds_List_0(ctx context.Context, client BuildsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Builds_List_0(ctx context.Context, marshaler runtime.Marshaler, client BuildsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq BuildListRequest
 	var metadata runtime.ServerMetadata
 
@@ -144,14 +142,15 @@ func RegisterBuildsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Builds_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_Builds_Describe_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Builds_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Builds_Describe_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -167,14 +166,15 @@ func RegisterBuildsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Builds_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_Builds_List_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Builds_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Builds_List_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
