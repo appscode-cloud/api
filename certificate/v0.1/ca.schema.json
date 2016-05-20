@@ -1,0 +1,16 @@
+{
+  "definitions": {
+    "certificateCACreateRequest": {
+      "properties": {
+        "csr": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "Use specific requests for protos",
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "definitions": {
+    "glusterfsVolumeCreateRequest": {
+      "properties": {
+        "glusterfs_cluster": {
+          "type": "string"
+        },
+        "kube_cluster": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "glusterfsVolumeDeleteRequest": {
+      "properties": {
+        "glusterfs_cluster": {
+          "type": "string"
+        },
+        "kube_cluster": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "glusterfsVolumeListRequest": {
+      "properties": {
+        "glusterfs_cluster": {
+          "type": "string"
+        },
+        "kube_cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

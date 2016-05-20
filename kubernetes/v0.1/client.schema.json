@@ -1,0 +1,54 @@
+{
+  "definitions": {
+    "kubernetesAppDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClientRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesConfigMapDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesSecretDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

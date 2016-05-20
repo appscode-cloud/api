@@ -1,0 +1,47 @@
+{
+  "definitions": {
+    "authenticationLoginRequest": {
+      "properties": {
+        "issue_token": {
+          "type": "boolean"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "secret": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "authenticationLogoutRequest": {
+      "properties": {
+        "namespace": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "authenticationValidateRequest": {
+      "properties": {
+        "namespace": {
+          "type": "string"
+        },
+        "secret": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id 4",
+      "type": "object"
+    }
+  }
+}
