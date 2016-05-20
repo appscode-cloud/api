@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/loadbalancer/v0.1": {
+    "/appscode/api/loadbalancer/v0.1": {
       "post": {
         "operationId": "Update",
         "responses": {
@@ -65,7 +65,7 @@
         ]
       }
     },
-    "/loadbalancer/v0.1/{cluster}": {
+    "/appscode/api/loadbalancer/v0.1/{cluster}": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -90,7 +90,7 @@
         ]
       }
     },
-    "/loadbalancer/v0.1/{name}": {
+    "/appscode/api/loadbalancer/v0.1/{name}": {
       "get": {
         "operationId": "Describe",
         "responses": {

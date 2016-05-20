@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/pv/v0.1/disks/{cluster}": {
+    "/appscode/api/pv/v0.1/disks/{cluster}": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -40,7 +40,7 @@
         ]
       }
     },
-    "/pv/v0.1/disks/{cluster}/{identifier}": {
+    "/appscode/api/pv/v0.1/disks/{cluster}/{identifier}": {
       "delete": {
         "operationId": "Delete",
         "responses": {
@@ -72,7 +72,7 @@
         ]
       }
     },
-    "/pv/v0.1/disks/{cluster}/{name}": {
+    "/appscode/api/pv/v0.1/disks/{cluster}/{name}": {
       "put": {
         "operationId": "Create",
         "responses": {
@@ -112,7 +112,7 @@
         ]
       }
     },
-    "/pv/v0.1/disks/{cluster}/{name}/{plugin}": {
+    "/appscode/api/pv/v0.1/disks/{cluster}/{name}/{plugin}": {
       "get": {
         "operationId": "Describe",
         "responses": {

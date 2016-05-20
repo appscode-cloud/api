@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/billing/v0.1/subscription": {
+    "/appscode/api/billing/v0.1/subscription": {
       "get": {
         "operationId": "Describe",
         "responses": {
@@ -55,7 +55,7 @@
         ]
       }
     },
-    "/billing/v0.1/subscription/alter": {
+    "/appscode/api/billing/v0.1/subscription/alter": {
       "post": {
         "operationId": "Alter",
         "responses": {
@@ -81,7 +81,7 @@
         ]
       }
     },
-    "/billing/v0.1/subscription/quota": {
+    "/appscode/api/billing/v0.1/subscription/quota": {
       "post": {
         "operationId": "Quota",
         "responses": {
@@ -107,7 +107,7 @@
         ]
       }
     },
-    "/billing/v0.1/subscription/{product_type}/{object_phid}": {
+    "/appscode/api/billing/v0.1/subscription/{product_type}/{object_phid}": {
       "delete": {
         "operationId": "UnSubscribe",
         "responses": {

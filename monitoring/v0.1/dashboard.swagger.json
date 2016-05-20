@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/monitoring/v0.1/dashboard": {
+    "/appscode/api/monitoring/v0.1/dashboard": {
       "put": {
         "operationId": "Create",
         "responses": {

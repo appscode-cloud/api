@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/namespace/v0.1/log/{name}": {
+    "/appscode/api/namespace/v0.1/log/{name}": {
       "get": {
         "operationId": "Log",
         "responses": {
@@ -40,7 +40,7 @@
         ]
       }
     },
-    "/namespace/v0.1/status/{name}": {
+    "/appscode/api/namespace/v0.1/status/{name}": {
       "get": {
         "operationId": "Status",
         "responses": {
@@ -65,7 +65,7 @@
         ]
       }
     },
-    "/namespace/v0.1/{name}": {
+    "/appscode/api/namespace/v0.1/{name}": {
       "get": {
         "operationId": "Check",
         "responses": {

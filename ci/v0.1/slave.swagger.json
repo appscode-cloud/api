@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/ci/v0.1/slaves": {
+    "/appscode/api/ci/v0.1/slaves": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -55,7 +55,7 @@
         ]
       }
     },
-    "/ci/v0.1/slaves/{name}": {
+    "/appscode/api/ci/v0.1/slaves/{name}": {
       "get": {
         "operationId": "Describe",
         "responses": {
@@ -103,7 +103,7 @@
         ]
       }
     },
-    "/ci/v0.1/slaves/{name}/reboot": {
+    "/appscode/api/ci/v0.1/slaves/{name}/reboot": {
       "get": {
         "operationId": "Restart",
         "responses": {

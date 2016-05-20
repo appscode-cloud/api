@@ -8,46 +8,46 @@ import "api/dtypes/types.proto";
 service Databases {
   rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put : "/db/v0.1/{cluster}/{type}"
+      put : "/appscode/api/db/v0.1/{cluster}/{type}"
       body : "*"
     };
   }
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/db/v0.1/{cluster}/{type}/{name}"
+      delete: "/appscode/api/db/v0.1/{cluster}/{type}/{name}"
     };
   }
 
   rpc Backup(BackupRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/db/v0.1/backup/{cluster}/{type}"
+      post: "/appscode/api/db/v0.1/backup/{cluster}/{type}"
       body: "*"
     };
   }
 
   rpc SnapshotList(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
-      get: "/db/v0.1/snapshots/{name}"
+      get: "/appscode/api/db/v0.1/snapshots/{name}"
     };
   }
 
   rpc Restore(RestoreRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/db/v0.1/restore/{cluster}/{type}"
+      put: "/appscode/api/db/v0.1/restore/{cluster}/{type}"
       body: "*"
     };
   }
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/db/v0.1/{cluster}/{name}"
+      get: "/appscode/api/db/v0.1/{cluster}/{name}"
     };
   }
 
   rpc List(dtypes.VoidRequest) returns (ListResponse) {
     option (google.api.http) = {
-      get: "/db/v0.1"
+      get: "/appscode/api/db/v0.1"
     };
   }
 }

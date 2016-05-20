@@ -8,51 +8,51 @@ import "api/dtypes/types.proto";
 service Certificates {
   rpc List(dtypes.VoidRequest) returns (CertificateListResponse) {
     option (google.api.http) = {
-      get: "/ssl/certificate/v0.1"
+      get: "/appscode/api/ssl/certificate/v0.1"
     };
   }
 
   rpc Describe(CertificateDescribeRequest) returns (CertificateDescribeResponse) {
     option (google.api.http) = {
-      get: "/ssl/certificate/v0.1/{uid}"
+      get: "/appscode/api/ssl/certificate/v0.1/{uid}"
     };
   }
 
   rpc Create(CertificateCreateRequest) returns (CertificateCreateResponse) {
     option (google.api.http) = {
-      put: "/ssl/certificate/v0.1"
+      put: "/appscode/api/ssl/certificate/v0.1"
       body: "*"
     };
   }
 
   rpc Import(CertificateImportRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/ssl/certificate/v0.1/{name}/import"
+      put: "/appscode/api/ssl/certificate/v0.1/{name}/import"
       body: "*"
     };
   }
 
   rpc Delete(CertificateDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/ssl/certificate/v0.1/{uid}"
+      delete: "/appscode/api/ssl/certificate/v0.1/{uid}"
     };
   }
 
   rpc Renew(CertificateRenewRequest) returns (CertificateRenewResponse) {
     option (google.api.http) = {
-      post: "/ssl/certificate/v0.1/{uid}/renew"
+      post: "/appscode/api/ssl/certificate/v0.1/{uid}/renew"
     };
   }
 
   rpc Revoke(CertificateRevokeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/ssl/certificate/v0.1/{uid}/revoke"
+      put: "/appscode/api/ssl/certificate/v0.1/{uid}/revoke"
     };
   }
 
   rpc Deploy(CertificateDeployRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/ssl/certificate/v0.1/{uid}/deploy"
+      post: "/appscode/api/ssl/certificate/v0.1/{uid}/deploy"
       body: "*"
     };
   }

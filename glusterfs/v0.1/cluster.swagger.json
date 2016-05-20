@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/glusterfs/v0.1/clusters/{kube_cluster}": {
+    "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}": {
       "get": {
         "summary": "Glusterfs cluster list. Needs to work with two modes.\nFirst is to list all the glusterfs cluster through the\nspace with out considering the kubernetes cluster. if the\ncluster_name is provided then list all the glusterfs cluster\nwith respect to the provided kube cluster space.",
         "operationId": "List",
@@ -72,7 +72,7 @@
         ]
       }
     },
-    "/glusterfs/v0.1/clusters/{kube_cluster}/{name}": {
+    "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}/{name}": {
       "get": {
         "operationId": "Describe",
         "responses": {

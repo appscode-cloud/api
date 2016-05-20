@@ -8,20 +8,20 @@ import "api/dtypes/types.proto";
 service Volumes {
   rpc List(VolumeListRequest) returns (VolumeListResponse) {
     option (google.api.http) = {
-      get: "/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}"
+      get: "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}"
     };
   }
 
   rpc Create(VolumeCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put : "/glusterfs/v0.1/volumes/{kube_cluster}"
+      put : "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}"
       body: "*"
     };
   }
 
   rpc Delete(VolumeDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete : "/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}/{volume}"
+      delete : "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}/{volume}"
     };
   }
 }

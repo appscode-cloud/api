@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/ssl/acme-users/v0.1": {
+    "/appscode/api/ssl/acme-users/v0.1": {
       "put": {
         "operationId": "Register",
         "responses": {

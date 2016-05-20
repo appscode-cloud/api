@@ -8,7 +8,7 @@ import "api/dtypes/types.proto";
 service AcmeUsers {
   rpc Register(AcmeUserRegisterRequest) returns (AcmeUserRegisterResponse) {
     option (google.api.http) = {
-      put: "/ssl/acme-users/v0.1"
+      put: "/appscode/api/ssl/acme-users/v0.1"
     };
   }
 }

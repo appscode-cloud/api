@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/billing/v0.1/charge": {
+    "/appscode/api/billing/v0.1/charge": {
       "get": {
         "operationId": "Calculate",
         "responses": {
@@ -31,7 +31,7 @@
         ]
       }
     },
-    "/billing/v0.1/charge/payment": {
+    "/appscode/api/billing/v0.1/charge/payment": {
       "get": {
         "operationId": "PaymentMethod",
         "responses": {

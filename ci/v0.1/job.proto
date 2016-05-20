@@ -8,40 +8,40 @@ import "api/dtypes/types.proto";
 service Jobs {
   rpc List(dtypes.VoidRequest) returns (JobListResponse) {
     option (google.api.http) = {
-      get: "/ci/v0.1/jobs"
+      get: "/appscode/api/ci/v0.1/jobs"
     };
   }
 
   rpc Describe(JobDescribeRequest) returns (JobDescribeResponse) {
     option (google.api.http) = {
-      get: "/ci/v0.1/jobs/{name}"
+      get: "/appscode/api/ci/v0.1/jobs/{name}"
     };
   }
 
   rpc Create(JobCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/ci/v0.1/jobs/{name}"
+      put: "/appscode/api/ci/v0.1/jobs/{name}"
       body: "*"
     };
   }
 
   rpc Copy(JobCopyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/ci/v0.1/jobs/{source}/{destination}"
+      post: "/appscode/api/ci/v0.1/jobs/{source}/{destination}"
       body: "*"
     };
   }
 
   rpc Build(JobBuildRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/ci/v0.1/jobs/{name}/build"
+      put: "/appscode/api/ci/v0.1/jobs/{name}/build"
       body: "*"
     };
   }
 
   rpc Delete(JobDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/ci/v0.1/jobs/{name}"
+      delete: "/appscode/api/ci/v0.1/jobs/{name}"
     };
   }
 }

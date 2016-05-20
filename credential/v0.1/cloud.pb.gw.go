@@ -220,13 +220,13 @@ func RegisterCloudHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 }
 
 var (
-	pattern_Cloud_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"credentials", "v0.1", "cloud"}, ""))
+	pattern_Cloud_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "credentials", "v0.1", "cloud"}, ""))
 
-	pattern_Cloud_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"credentials", "v0.1", "cloud"}, ""))
+	pattern_Cloud_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "credentials", "v0.1", "cloud"}, ""))
 
-	pattern_Cloud_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"credentials", "v0.1", "cloud"}, ""))
+	pattern_Cloud_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "credentials", "v0.1", "cloud"}, ""))
 
-	pattern_Cloud_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"credentials", "v0.1", "cloud", "name"}, ""))
+	pattern_Cloud_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "credentials", "v0.1", "cloud", "name"}, ""))
 )
 
 var (

@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/authn/v0.1/token": {
+    "/appscode/api/authn/v0.1/token": {
       "post": {
         "summary": "appctl used this to validates the user token with phabricator.",
         "operationId": "Token",
@@ -42,7 +42,7 @@
         ]
       }
     },
-    "/authn/v0.1/user": {
+    "/appscode/api/authn/v0.1/user": {
       "post": {
         "summary": "This rpc is used to check a valid user from other applications.",
         "operationId": "User",

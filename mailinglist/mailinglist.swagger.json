@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/mail/v0.1": {
+    "/appscode/api/mail/v0.1": {
       "post": {
         "operationId": "SendEmail",
         "responses": {
@@ -41,7 +41,7 @@
         ]
       }
     },
-    "/mailinglist/v0.1/subscribe/{email}": {
+    "/appscode/api/mailinglist/v0.1/subscribe/{email}": {
       "put": {
         "operationId": "Subscribe",
         "responses": {
@@ -74,7 +74,7 @@
         ]
       }
     },
-    "/mailinglist/v0.1/unsubscribe/{magic_code}": {
+    "/appscode/api/mailinglist/v0.1/unsubscribe/{magic_code}": {
       "get": {
         "operationId": "Unsubscribe",
         "responses": {

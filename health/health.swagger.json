@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/healthz": {
+    "/appscode/api/healthz": {
       "get": {
         "operationId": "Status",
         "responses": {

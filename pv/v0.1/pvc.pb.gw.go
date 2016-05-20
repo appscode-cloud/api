@@ -273,11 +273,11 @@ func RegisterPersistentVolumeClaimsHandler(ctx context.Context, mux *runtime.Ser
 }
 
 var (
-	pattern_PersistentVolumeClaims_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"pv", "v0.1", "pvc", "cluster", "name", "namespace"}, ""))
+	pattern_PersistentVolumeClaims_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "pv", "v0.1", "pvc", "cluster", "name", "namespace"}, ""))
 
-	pattern_PersistentVolumeClaims_Register_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"pv", "v0.1", "pvc", "cluster", "name"}, ""))
+	pattern_PersistentVolumeClaims_Register_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "pv", "v0.1", "pvc", "cluster", "name"}, ""))
 
-	pattern_PersistentVolumeClaims_Unregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"pv", "v0.1", "pvc", "cluster", "name", "namespace"}, ""))
+	pattern_PersistentVolumeClaims_Unregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "pv", "v0.1", "pvc", "cluster", "name", "namespace"}, ""))
 )
 
 var (
