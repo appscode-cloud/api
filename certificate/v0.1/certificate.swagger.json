@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/ssl/certificate/v0.1": {
+    "/appscode/api/ssl/certificate/v0.1": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -55,7 +55,7 @@
         ]
       }
     },
-    "/ssl/certificate/v0.1/{name}/import": {
+    "/appscode/api/ssl/certificate/v0.1/{name}/import": {
       "put": {
         "operationId": "Import",
         "responses": {
@@ -88,7 +88,7 @@
         ]
       }
     },
-    "/ssl/certificate/v0.1/{uid}": {
+    "/appscode/api/ssl/certificate/v0.1/{uid}": {
       "get": {
         "operationId": "Describe",
         "responses": {
@@ -136,7 +136,7 @@
         ]
       }
     },
-    "/ssl/certificate/v0.1/{uid}/deploy": {
+    "/appscode/api/ssl/certificate/v0.1/{uid}/deploy": {
       "post": {
         "operationId": "Deploy",
         "responses": {
@@ -169,7 +169,7 @@
         ]
       }
     },
-    "/ssl/certificate/v0.1/{uid}/renew": {
+    "/appscode/api/ssl/certificate/v0.1/{uid}/renew": {
       "post": {
         "operationId": "Renew",
         "responses": {
@@ -194,7 +194,7 @@
         ]
       }
     },
-    "/ssl/certificate/v0.1/{uid}/revoke": {
+    "/appscode/api/ssl/certificate/v0.1/{uid}/revoke": {
       "put": {
         "operationId": "Revoke",
         "responses": {

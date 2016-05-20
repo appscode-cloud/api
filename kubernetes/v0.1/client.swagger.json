@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/kubernetes/v0.1/client/{cluster}/apps": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/apps": {
       "get": {
         "operationId": "Apps",
         "responses": {
@@ -40,7 +40,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}": {
       "get": {
         "operationId": "App",
         "responses": {
@@ -79,7 +79,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}/pods": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}/pods": {
       "get": {
         "operationId": "AppPods",
         "responses": {
@@ -118,7 +118,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/configmaps": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/configmaps": {
       "get": {
         "operationId": "ConfigMaps",
         "responses": {
@@ -143,7 +143,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}": {
       "get": {
         "operationId": "ConfigMap",
         "responses": {
@@ -182,7 +182,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/jobs": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/jobs": {
       "get": {
         "operationId": "Jobs",
         "responses": {
@@ -207,7 +207,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/namespaces": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/namespaces": {
       "get": {
         "operationId": "Namespaces",
         "responses": {
@@ -232,7 +232,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/nodes": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/nodes": {
       "get": {
         "operationId": "Nodes",
         "responses": {
@@ -257,7 +257,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/pods": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/pods": {
       "get": {
         "operationId": "Pods",
         "responses": {
@@ -282,7 +282,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/rcs": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/rcs": {
       "get": {
         "operationId": "ReplicationControllers",
         "responses": {
@@ -307,7 +307,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/secrets": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/secrets": {
       "get": {
         "operationId": "Secrets",
         "responses": {
@@ -332,7 +332,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}": {
       "get": {
         "operationId": "Secret",
         "responses": {
@@ -371,7 +371,7 @@
         ]
       }
     },
-    "/kubernetes/v0.1/client/{cluster}/services": {
+    "/appscode/api/kubernetes/v0.1/client/{cluster}/services": {
       "get": {
         "operationId": "Services",
         "responses": {

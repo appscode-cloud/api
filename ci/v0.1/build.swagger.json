@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/ci/v0.1/builds/{job_name}": {
+    "/appscode/api/ci/v0.1/builds/{job_name}": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -40,7 +40,7 @@
         ]
       }
     },
-    "/ci/v0.1/builds/{job_name}/{number}": {
+    "/appscode/api/ci/v0.1/builds/{job_name}/{number}": {
       "get": {
         "operationId": "Describe",
         "responses": {

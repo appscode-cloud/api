@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/pv/v0.1/{cluster}/{name}": {
+    "/appscode/api/pv/v0.1/{cluster}/{name}": {
       "get": {
         "operationId": "Describe",
         "responses": {

@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/db/v0.1": {
+    "/appscode/api/db/v0.1": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -31,7 +31,7 @@
         ]
       }
     },
-    "/db/v0.1/backup/{cluster}/{type}": {
+    "/appscode/api/db/v0.1/backup/{cluster}/{type}": {
       "post": {
         "operationId": "Backup",
         "responses": {
@@ -71,7 +71,7 @@
         ]
       }
     },
-    "/db/v0.1/restore/{cluster}/{type}": {
+    "/appscode/api/db/v0.1/restore/{cluster}/{type}": {
       "put": {
         "operationId": "Restore",
         "responses": {
@@ -111,7 +111,7 @@
         ]
       }
     },
-    "/db/v0.1/snapshots/{name}": {
+    "/appscode/api/db/v0.1/snapshots/{name}": {
       "get": {
         "operationId": "SnapshotList",
         "responses": {
@@ -136,7 +136,7 @@
         ]
       }
     },
-    "/db/v0.1/{cluster}/{name}": {
+    "/appscode/api/db/v0.1/{cluster}/{name}": {
       "get": {
         "operationId": "Describe",
         "responses": {
@@ -168,7 +168,7 @@
         ]
       }
     },
-    "/db/v0.1/{cluster}/{type}": {
+    "/appscode/api/db/v0.1/{cluster}/{type}": {
       "put": {
         "operationId": "Create",
         "responses": {
@@ -208,7 +208,7 @@
         ]
       }
     },
-    "/db/v0.1/{cluster}/{type}/{name}": {
+    "/appscode/api/db/v0.1/{cluster}/{type}/{name}": {
       "delete": {
         "operationId": "Delete",
         "responses": {

@@ -233,11 +233,11 @@ func RegisterArtifactoryHandler(ctx context.Context, mux *runtime.ServeMux, conn
 }
 
 var (
-	pattern_Artifactory_Search_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"artifactory", "v0.1", "search", "type"}, ""))
+	pattern_Artifactory_Search_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "artifactory", "v0.1", "search", "type"}, ""))
 
-	pattern_Artifactory_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"artifactory", "v0.1", "type"}, ""))
+	pattern_Artifactory_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"appscode", "api", "artifactory", "v0.1", "type"}, ""))
 
-	pattern_Artifactory_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3}, []string{"artifactory", "v0.1", "type", "id"}, ""))
+	pattern_Artifactory_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "artifactory", "v0.1", "type", "id"}, ""))
 )
 
 var (

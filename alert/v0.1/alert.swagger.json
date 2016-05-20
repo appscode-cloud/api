@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/alert/v0.1/acknowledge": {
+    "/appscode/api/alert/v0.1/acknowledge": {
       "post": {
         "operationId": "Acknowledge",
         "responses": {
@@ -41,7 +41,7 @@
         ]
       }
     },
-    "/alert/v0.1/notify": {
+    "/appscode/api/alert/v0.1/notify": {
       "post": {
         "operationId": "Notify",
         "responses": {
@@ -67,7 +67,7 @@
         ]
       }
     },
-    "/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}": {
+    "/appscode/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -217,7 +217,7 @@
         ]
       }
     },
-    "/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}/{phid}": {
+    "/appscode/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}/{phid}": {
       "delete": {
         "operationId": "Delete",
         "responses": {

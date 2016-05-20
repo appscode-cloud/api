@@ -9,26 +9,26 @@ import "api/dtypes/types.proto";
 service Namespace {
   rpc Check(CheckRequest) returns (CheckResponse) {
 	  option (google.api.http) = {
-	    get : "/namespace/v0.1/{name}"
+	    get : "/appscode/api/namespace/v0.1/{name}"
     };
   }
 
   rpc Create(CreateRequest) returns (CreateResponse) {
 	  option (google.api.http) = {
-	    put: "/namespace/v0.1/{name}"
+	    put: "/appscode/api/namespace/v0.1/{name}"
 	    body: "*"
     };
   }
 
   rpc Status(StatusRequest) returns (StatusResponse) {
 	  option (google.api.http) = {
-	    get: "/namespace/v0.1/status/{name}"
+	    get: "/appscode/api/namespace/v0.1/status/{name}"
 	  };
   }
 
   rpc Log(LogRequest) returns (LogResponse) {
 	  option (google.api.http) = {
-	    get: "/namespace/v0.1/log/{name}"
+	    get: "/appscode/api/namespace/v0.1/log/{name}"
 	  };
   }
 }

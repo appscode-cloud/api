@@ -8,32 +8,32 @@ import "api/dtypes/types.proto";
 service Slaves {
   rpc List(dtypes.VoidRequest) returns (SlaveListResponse) {
     option (google.api.http) = {
-      get: "/ci/v0.1/slaves"
+      get: "/appscode/api/ci/v0.1/slaves"
     };
   }
 
   rpc Describe(SlaveDescribeRequest) returns (SlaveDescribeResponse) {
     option (google.api.http) = {
-      get: "/ci/v0.1/slaves/{name}"
+      get: "/appscode/api/ci/v0.1/slaves/{name}"
     };
   }
 
   rpc Create(SlaveCreateRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      put: "/ci/v0.1/slaves"
+      put: "/appscode/api/ci/v0.1/slaves"
       body: "*"
     };
   }
 
   rpc Delete(SlaveDeleteRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      delete: "/ci/v0.1/slaves/{name}"
+      delete: "/appscode/api/ci/v0.1/slaves/{name}"
     };
   }
 
   rpc Restart(SlaveRestartRequest) returns (SlaveRestartResponse) {
     option (google.api.http) = {
-      get: "/ci/v0.1/slaves/{name}/reboot"
+      get: "/appscode/api/ci/v0.1/slaves/{name}/reboot"
     };
   }
 }

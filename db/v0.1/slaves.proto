@@ -8,7 +8,7 @@ import "api/dtypes/types.proto";
 service Slaves {
   rpc Add(SlaveAddRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/db/v0.1/slave/{cluster}"
+      put: "/appscode/api/db/v0.1/slave/{cluster}"
       body: "*"
     };
   }

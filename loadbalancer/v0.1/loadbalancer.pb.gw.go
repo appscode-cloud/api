@@ -304,15 +304,15 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 }
 
 var (
-	pattern_LoadBalancers_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"loadbalancer", "v0.1", "cluster"}, ""))
+	pattern_LoadBalancers_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"appscode", "api", "loadbalancer", "v0.1", "cluster"}, ""))
 
-	pattern_LoadBalancers_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"loadbalancer", "v0.1", "name"}, ""))
+	pattern_LoadBalancers_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"appscode", "api", "loadbalancer", "v0.1", "name"}, ""))
 
-	pattern_LoadBalancers_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"loadbalancer", "v0.1"}, ""))
+	pattern_LoadBalancers_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"appscode", "api", "loadbalancer", "v0.1"}, ""))
 
-	pattern_LoadBalancers_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"loadbalancer", "v0.1"}, ""))
+	pattern_LoadBalancers_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"appscode", "api", "loadbalancer", "v0.1"}, ""))
 
-	pattern_LoadBalancers_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"loadbalancer", "v0.1", "name"}, ""))
+	pattern_LoadBalancers_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"appscode", "api", "loadbalancer", "v0.1", "name"}, ""))
 )
 
 var (
