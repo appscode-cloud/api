@@ -345,4 +345,3 @@ func (m *NotificationRequest) IsRequest() {}
 func (m *ListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

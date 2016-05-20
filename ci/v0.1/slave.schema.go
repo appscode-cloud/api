@@ -121,12 +121,9 @@ func (m *SlaveCreateRequest) IsRequest() {}
 func (m *SlaveListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *SlaveRestartResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *SlaveDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

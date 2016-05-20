@@ -422,8 +422,6 @@ func (m *UpdateRequest) IsRequest() {}
 func (m *ListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *DescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

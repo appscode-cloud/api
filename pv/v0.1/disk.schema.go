@@ -108,8 +108,6 @@ func (m *DiskCreateRequest) IsRequest() {}
 func (m *DiskDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *DiskListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

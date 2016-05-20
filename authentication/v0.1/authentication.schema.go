@@ -40,4 +40,3 @@ func (m *ValidateRequest) IsRequest() {}
 func (m *ValidateResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

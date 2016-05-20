@@ -194,7 +194,7 @@ def render_schema_go(pkg, schemas):
     for key in schemas['responses'].keys():
         contents += 'func (m *' + key + ') SetStatus(s *dtypes.Status) {\n'
         contents += '	m.Status = s\n'
-        contents += '}\n\n'
+        contents += '}\n'
 
     return contents
 

@@ -33,4 +33,3 @@ func (m *AcmeUserRegisterRequest) IsRequest() {}
 func (m *AcmeUserRegisterResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

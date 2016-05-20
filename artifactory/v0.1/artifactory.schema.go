@@ -75,12 +75,9 @@ func (m *DescribeRequest) IsRequest() {}
 func (m *ListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *DescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *SearchResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

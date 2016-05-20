@@ -111,16 +111,12 @@ func (m *LogRequest) IsRequest() {}
 func (m *CheckResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *StatusResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *LogResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *CreateResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

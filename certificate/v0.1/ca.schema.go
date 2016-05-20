@@ -37,4 +37,3 @@ func (m *CACreateRequest) IsRequest() {}
 func (m *CACreateResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

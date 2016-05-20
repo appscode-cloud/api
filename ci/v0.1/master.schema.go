@@ -54,8 +54,6 @@ func (m *MasterCreateRequest) IsRequest() {}
 func (m *MasterDeleteResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *MasterCreateResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

@@ -207,20 +207,15 @@ func (m *ClusterClientConfigRequest) IsRequest() {}
 func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *ClusterStartupScriptResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *ClusterClientConfigResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *ClusterInstanceListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

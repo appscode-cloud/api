@@ -42,4 +42,3 @@ func (m *DashboardCreateRequest) IsRequest() {}
 func (m *DashboardCreateResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-

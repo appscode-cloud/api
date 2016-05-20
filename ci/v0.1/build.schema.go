@@ -57,8 +57,6 @@ func (m *BuildDescribeRequest) IsRequest() {}
 func (m *BuildDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
 func (m *BuildListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-
