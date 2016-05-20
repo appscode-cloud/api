@@ -8,11 +8,11 @@ import (
 )
 
 var clusterInstanceListRequestSchema *gojsonschema.Schema
-var clusterStartupScriptRequestSchema *gojsonschema.Schema
 var clusterScaleRequestSchema *gojsonschema.Schema
 var clusterUpdateRequestSchema *gojsonschema.Schema
 var clusterDeleteRequestSchema *gojsonschema.Schema
 var clusterDescribeRequestSchema *gojsonschema.Schema
+var clusterStartupScriptRequestSchema *gojsonschema.Schema
 var clusterCreateRequestSchema *gojsonschema.Schema
 var clusterClientConfigRequestSchema *gojsonschema.Schema
 
@@ -30,42 +30,18 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	clusterStartupScriptRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "role": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		log.Fatal(err)
-	}
 	clusterScaleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "ClusterScaleRequestNodeChangesEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    }
-  },
   "properties": {
     "name": {
       "type": "string"
     },
     "node_changes": {
-      "items": {
-        "$ref": "#/definitions/ClusterScaleRequestNodeChangesEntry"
+      "additionalProperties": {
+        "format": "int64",
+        "type": "integer"
       },
-      "type": "array"
+      "type": "object"
     }
   },
   "type": "object"
@@ -121,41 +97,30 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	clusterStartupScriptRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "ClusterCreateRequestCloudCredentialDataEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ClusterCreateRequestNodeSetEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "integer"
-        }
-      },
-      "type": "object"
+  "properties": {
+    "role": {
+      "type": "string"
     }
   },
+  "type": "object"
+}`))
+	if err != nil {
+		log.Fatal(err)
+	}
+	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cloud_credential": {
       "type": "string"
     },
     "cloud_credential_data": {
-      "items": {
-        "$ref": "#/definitions/ClusterCreateRequestCloudCredentialDataEntry"
+      "additionalProperties": {
+        "format": "string",
+        "type": "string"
       },
-      "type": "array"
+      "type": "object"
     },
     "kube_starter_version": {
       "type": "string"
@@ -167,10 +132,11 @@ func init() {
       "type": "string"
     },
     "node_set": {
-      "items": {
-        "$ref": "#/definitions/ClusterCreateRequestNodeSetEntry"
+      "additionalProperties": {
+        "format": "int64",
+        "type": "integer"
       },
-      "type": "array"
+      "type": "object"
     },
     "provider": {
       "type": "string"
@@ -206,11 +172,6 @@ func (m *ClusterInstanceListRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterInstanceListRequest) IsRequest() {}
 
-func (m *ClusterStartupScriptRequest) IsValid() (*gojsonschema.Result, error) {
-	return clusterStartupScriptRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *ClusterStartupScriptRequest) IsRequest() {}
-
 func (m *ClusterScaleRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterScaleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
@@ -230,6 +191,11 @@ func (m *ClusterDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterDescribeRequest) IsRequest() {}
+
+func (m *ClusterStartupScriptRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterStartupScriptRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *ClusterStartupScriptRequest) IsRequest() {}
 
 func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))

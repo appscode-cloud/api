@@ -3,6 +3,7 @@
     "glusterfsClusterCreateRequest": {
       "properties": {
         "bucket": {
+          "description": "if bacula is enabled the following two fields are\nrequired.",
           "type": "string"
         },
         "credential": {

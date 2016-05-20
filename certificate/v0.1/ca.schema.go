@@ -21,6 +21,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Use specific requests for protos",
   "type": "object"
 }`))
 	if err != nil {

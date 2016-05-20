@@ -174,6 +174,7 @@ def render_schema_go(pkg, schemas):
         for key, sch in schemas['requests'].iteritems():
             var_name = key[0:1].lower() + key[1:]
             sch_str = json.dumps(sch, sort_keys=True, indent=2, separators=(',', ': '))
+            sch_str = sch_str.replace('`', '` + "`" + `')
             contents += '	{0}Schema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{1}`))\n'.format(
                 var_name, sch_str)
             contents += """	if err != nil {

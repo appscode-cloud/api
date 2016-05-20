@@ -99,17 +99,6 @@ func init() {
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "IcingaServiceQueryEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "alertAlertSpec": {
       "properties": {
         "alert_interval": {
@@ -148,10 +137,11 @@ func init() {
           "type": "string"
         },
         "query": {
-          "items": {
-            "$ref": "#/definitions/IcingaServiceQueryEntry"
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
           },
-          "type": "array"
+          "type": "object"
         },
         "warning_condition": {
           "type": "string"
@@ -205,17 +195,6 @@ func init() {
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "IcingaServiceQueryEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "alertAlertSpec": {
       "properties": {
         "alert_interval": {
@@ -254,10 +233,11 @@ func init() {
           "type": "string"
         },
         "query": {
-          "items": {
-            "$ref": "#/definitions/IcingaServiceQueryEntry"
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
           },
-          "type": "array"
+          "type": "object"
         },
         "warning_condition": {
           "type": "string"
