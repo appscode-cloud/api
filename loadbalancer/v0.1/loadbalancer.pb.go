@@ -166,13 +166,13 @@ func (*DeleteRequest) ProtoMessage()               {}
 func (*DeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
 
 type LoadBalancer struct {
-	// `kind` defines is it the regular kubernetes instance or the
+	// 'kind' defines is it the regular kubernetes instance or the
 	// appscode superset called Extended Ingress. This field will
 	// strictly contains only those two values
-	// `ingress` - default kubernetes ingress object.
-	// `extendedIngress` - appscode superset of ingress.
+	// 'ingress' - default kubernetes ingress object.
+	// 'extendedIngress' - appscode superset of ingress.
 	// when creating a Loadbalancer from UI this field will always
-	// be only `extendedIngress.` List, Describe, Update and Delete
+	// be only 'extendedIngress.' List, Describe, Update and Delete
 	// will support both two modes.
 	// Create will support only extendedIngress.
 	// For Creating or Updating an regular ingress one must use the
