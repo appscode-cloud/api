@@ -3,8 +3,8 @@ package glusterfs
 // Auto-generated. DO NOT EDIT.
 import (
 	"github.com/appscode/api/dtypes"
+	"github.com/golang/glog"
 	"github.com/xeipuuv/gojsonschema"
-	"log"
 )
 
 var clusterDescribeRequestSchema *gojsonschema.Schema
@@ -27,7 +27,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -39,7 +39,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -54,12 +54,13 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "bucket": {
+      "description": "if bacula is enabled the following two fields are\nrequired.",
       "type": "string"
     },
     "credential": {
@@ -90,7 +91,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 }
 

@@ -3,8 +3,8 @@ package db
 // Auto-generated. DO NOT EDIT.
 import (
 	"github.com/appscode/api/dtypes"
+	"github.com/golang/glog"
 	"github.com/xeipuuv/gojsonschema"
-	"log"
 )
 
 var deleteRequestSchema *gojsonschema.Schema
@@ -32,7 +32,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	describeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -47,7 +47,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	backupRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -89,7 +89,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -134,7 +134,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	snapshotListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -146,7 +146,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	restoreRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -203,7 +203,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 }
 

@@ -74,6 +74,8 @@ func (a *Status) AddDetails(v ...proto.Message) {
 	}
 }
 
+// Ideally schema.py should generate the functions below, but it can't do it today.
+// So, this is a manually written for now.
 func (m *VoidRequest) IsValid() (*gojsonschema.Result, error) {
 	return &gojsonschema.Result{}, nil
 }

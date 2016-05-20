@@ -3,8 +3,8 @@ package kubernetes
 // Auto-generated. DO NOT EDIT.
 import (
 	"github.com/appscode/api/dtypes"
+	"github.com/golang/glog"
 	"github.com/xeipuuv/gojsonschema"
-	"log"
 )
 
 var eventRequestSchema *gojsonschema.Schema
@@ -23,10 +23,10 @@ func init() {
           "type": "string"
         },
         "labels": {
-          "items": {
-            "$ref": "#/definitions/ObjectMetaLabelsEntry"
+          "additionalProperties": {
+            "type": "string"
           },
-          "type": "array"
+          "type": "object"
         },
         "namespace": {
           "type": "string"
@@ -42,17 +42,6 @@ func init() {
             "type": "string"
           },
           "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "ObjectMetaLabelsEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -81,7 +70,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 }
 

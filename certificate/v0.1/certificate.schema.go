@@ -3,8 +3,8 @@ package certificate
 // Auto-generated. DO NOT EDIT.
 import (
 	"github.com/appscode/api/dtypes"
+	"github.com/golang/glog"
 	"github.com/xeipuuv/gojsonschema"
-	"log"
 )
 
 var certificateImportRequestSchema *gojsonschema.Schema
@@ -33,7 +33,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	certificateRenewRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -51,7 +51,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	certificateDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -63,7 +63,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	certificateRevokeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -78,7 +78,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	certificateDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -90,12 +90,13 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	certificateCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "certificateSubjectInfo": {
+      "description": "A Name contains the SubjectInfo fields.",
       "properties": {
         "C": {
           "type": "string"
@@ -148,7 +149,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	certificateDeployRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -169,7 +170,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 }
 

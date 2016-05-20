@@ -60,18 +60,6 @@ gen_swagger_def() {
           --swagger_out=logtostderr=true,${ALIAS}:. *.proto
 }
 
-# DO NOT DELETE prior schema, since they might contain hand written changes.
-gen_json_schema() {
-  if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
-    return
-  fi
-  protoc -I /usr/local/include -I . \
-         -I ${GOPATH}/src/github.com/appscode \
-         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
-         -I ${GOPATH}/src/github.com/google/googleapis/google \
-         --json-schema_out=logtostderr=true,mode=merge,${ALIAS}:. *.proto
-}
-
 gen_server_protos() {
 	echo "Generating server protobuf files"
     for d in */ ; do
@@ -113,22 +101,6 @@ gen_swagger_defs() {
         for dd in */ ; do
           pushd ${dd}
           gen_swagger_def
-          popd
-        done
-      fi
-      popd
-    done
-}
-
-gen_json_schemas() {
-    echo "Generating json schema"
-    for d in */ ; do
-      pushd ${d}
-      gen_json_schema
-      if [ -d */ ]; then
-        for dd in */ ; do
-          pushd ${dd}
-          gen_json_schema
           popd
         done
       fi
@@ -204,7 +176,6 @@ gen_protos() {
   gen_proxy_protos
   gen_swagger_defs
   python $DIR/schema.py
-  # gen_json_schemas
   # gen_python_protos
   # gen_php_protos
   compile
@@ -227,9 +198,6 @@ case "$1" in
 		;;
 	swagger)
 		gen_swagger_defs
-		;;
-	json-schema)
-		gen_json_schemas
 		;;
 	all)
 		gen_protos

@@ -10,7 +10,6 @@ It translates gRPC into RESTful JSON APIs.
 package pv
 
 import (
-	"encoding/json"
 	"io"
 	"net/http"
 
@@ -26,10 +25,9 @@ import (
 var _ codes.Code
 var _ io.Reader
 var _ = runtime.String
-var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_PersistentVolumes_Describe_0(ctx context.Context, client PersistentVolumesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_PersistentVolumes_Describe_0(ctx context.Context, marshaler runtime.Marshaler, client PersistentVolumesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PVDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -67,11 +65,11 @@ func request_PersistentVolumes_Describe_0(ctx context.Context, client Persistent
 
 }
 
-func request_PersistentVolumes_Register_0(ctx context.Context, client PersistentVolumesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_PersistentVolumes_Register_0(ctx context.Context, marshaler runtime.Marshaler, client PersistentVolumesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PVRegisterRequest
 	var metadata runtime.ServerMetadata
 
-	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -109,7 +107,7 @@ func request_PersistentVolumes_Register_0(ctx context.Context, client Persistent
 
 }
 
-func request_PersistentVolumes_Unregister_0(ctx context.Context, client PersistentVolumesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_PersistentVolumes_Unregister_0(ctx context.Context, marshaler runtime.Marshaler, client PersistentVolumesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PVUnregisterRequest
 	var metadata runtime.ServerMetadata
 
@@ -189,14 +187,15 @@ func RegisterPersistentVolumesHandler(ctx context.Context, mux *runtime.ServeMux
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_PersistentVolumes_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_PersistentVolumes_Describe_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PersistentVolumes_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PersistentVolumes_Describe_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -212,14 +211,15 @@ func RegisterPersistentVolumesHandler(ctx context.Context, mux *runtime.ServeMux
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_PersistentVolumes_Register_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_PersistentVolumes_Register_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PersistentVolumes_Register_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PersistentVolumes_Register_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -235,14 +235,15 @@ func RegisterPersistentVolumesHandler(ctx context.Context, mux *runtime.ServeMux
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_PersistentVolumes_Unregister_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_PersistentVolumes_Unregister_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PersistentVolumes_Unregister_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PersistentVolumes_Unregister_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 

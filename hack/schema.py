@@ -85,6 +85,8 @@ def swagger_defs(defs):
                         stack.append(nw_obj)
                 if 'format' in v and not v['format'] in VALID_FORMATS:
                     v.pop('format', None)
+                if 'additionalProperties' in v and 'format' in v['additionalProperties'] and not v['additionalProperties']['format'] in VALID_FORMATS:
+                    v['additionalProperties'].pop('format', None)
                 if 'items' in v:
                     if '$ref' in v['items']:
                         nw_obj = v['items']['$ref'][len('#/definitions/'):]
@@ -153,7 +155,7 @@ def render_schema_go(pkg, schemas):
     imports = []
     if schemas['requests']:
         imports.append("github.com/xeipuuv/gojsonschema")
-        imports.append("log")
+        imports.append("github.com/golang/glog")
     if schemas['responses']:
         imports.append("github.com/appscode/api/dtypes")
     imports.sort()
@@ -174,10 +176,11 @@ def render_schema_go(pkg, schemas):
         for key, sch in schemas['requests'].iteritems():
             var_name = key[0:1].lower() + key[1:]
             sch_str = json.dumps(sch, sort_keys=True, indent=2, separators=(',', ': '))
+            sch_str = sch_str.replace('`', '` + "`" + `')
             contents += '	{0}Schema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{1}`))\n'.format(
                 var_name, sch_str)
             contents += """	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 """
         contents += '}\n\n'

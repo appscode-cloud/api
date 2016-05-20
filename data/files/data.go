@@ -88,8 +88,13 @@ func dataFilesCi_productsJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/ci_products.json", size: 1810, mode: os.FileMode(436), modTime: time.Unix(1463645138, 0)}
 	a := &asset{bytes: bytes, info:  info}
+=======
+	info := bindataFileInfo{name: "data/files/ci_products.json", size: 1810, mode: os.FileMode(420), modTime: time.Unix(1463461520, 0)}
+	a := &asset{bytes: bytes, info: info}
+>>>>>>> d003cc4f2e1c2223607f518e8a9593ed528f2c6a
 	return a, nil
 }
 
@@ -108,8 +113,13 @@ func dataFilesCloud_providersJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/cloud_providers.json", size: 10044, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
+=======
+	info := bindataFileInfo{name: "data/files/cloud_providers.json", size: 10044, mode: os.FileMode(420), modTime: time.Unix(1463144889, 0)}
+	a := &asset{bytes: bytes, info: info}
+>>>>>>> d003cc4f2e1c2223607f518e8a9593ed528f2c6a
 	return a, nil
 }
 
@@ -128,8 +138,13 @@ func dataFilesConfigsYaml() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/configs.yaml", size: 787, mode: os.FileMode(436), modTime: time.Unix(1463665264, 0)}
 	a := &asset{bytes: bytes, info:  info}
+=======
+	info := bindataFileInfo{name: "data/files/configs.yaml", size: 787, mode: os.FileMode(420), modTime: time.Unix(1463664829, 0)}
+	a := &asset{bytes: bytes, info: info}
+>>>>>>> d003cc4f2e1c2223607f518e8a9593ed528f2c6a
 	return a, nil
 }
 
@@ -148,8 +163,13 @@ func dataFilesDb_productsJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/db_products.json", size: 1868, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
+=======
+	info := bindataFileInfo{name: "data/files/db_products.json", size: 1868, mode: os.FileMode(420), modTime: time.Unix(1463144889, 0)}
+	a := &asset{bytes: bytes, info: info}
+>>>>>>> d003cc4f2e1c2223607f518e8a9593ed528f2c6a
 	return a, nil
 }
 
@@ -168,8 +188,13 @@ func dataFilesKubernetes_productsJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/kubernetes_products.json", size: 186, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
+=======
+	info := bindataFileInfo{name: "data/files/kubernetes_products.json", size: 186, mode: os.FileMode(420), modTime: time.Unix(1463144889, 0)}
+	a := &asset{bytes: bytes, info: info}
+>>>>>>> d003cc4f2e1c2223607f518e8a9593ed528f2c6a
 	return a, nil
 }
 
@@ -188,8 +213,13 @@ func dataFilesSubscriptionsJson() (*asset, error) {
 		return nil, err
 	}
 
+<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
+=======
+	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(420), modTime: time.Unix(1463144889, 0)}
+	a := &asset{bytes: bytes, info: info}
+>>>>>>> d003cc4f2e1c2223607f518e8a9593ed528f2c6a
 	return a, nil
 }
 

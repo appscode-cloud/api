@@ -105,6 +105,7 @@
       "type": "object"
     },
     "certificateSubjectInfo": {
+      "description": "A Name contains the SubjectInfo fields.",
       "properties": {
         "C": {
           "type": "string"
@@ -125,6 +126,7 @@
       "type": "object"
     },
     "dtypesVoidRequest": {
+      "description": "Void Requests and response to use with other types.",
       "type": "object"
     }
   }

@@ -3,8 +3,8 @@ package credential
 // Auto-generated. DO NOT EDIT.
 import (
 	"github.com/appscode/api/dtypes"
+	"github.com/golang/glog"
 	"github.com/xeipuuv/gojsonschema"
-	"log"
 )
 
 var cloudCredentialUpdateRequestSchema *gojsonschema.Schema
@@ -15,25 +15,12 @@ func init() {
 	var err error
 	cloudCredentialUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "credentialCloudCredentialUpdateRequestDataEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    }
-  },
   "properties": {
     "data": {
-      "items": {
-        "$ref": "#/definitions/credentialCloudCredentialUpdateRequestDataEntry"
+      "additionalProperties": {
+        "type": "string"
       },
-      "type": "array"
+      "type": "object"
     },
     "name": {
       "type": "string"
@@ -45,7 +32,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	cloudCredentialDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -57,29 +44,16 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 	cloudCredentialCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "credentialCloudCredentialCreateRequestDataEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    }
-  },
   "properties": {
     "data": {
-      "items": {
-        "$ref": "#/definitions/credentialCloudCredentialCreateRequestDataEntry"
+      "additionalProperties": {
+        "type": "string"
       },
-      "type": "array"
+      "type": "object"
     },
     "name": {
       "type": "string"
@@ -91,7 +65,7 @@ func init() {
   "type": "object"
 }`))
 	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 }
 
