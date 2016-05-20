@@ -287,10 +287,6 @@
           "type": "string",
           "format": "string"
         },
-        "secret_name": {
-          "type": "string",
-          "format": "string"
-        },
         "snapshot_name": {
           "type": "string",
           "format": "string"
@@ -550,10 +546,6 @@
           "format": "int64"
         },
         "region": {
-          "type": "string",
-          "format": "string"
-        },
-        "secret_name": {
           "type": "string",
           "format": "string"
         },
