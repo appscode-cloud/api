@@ -10,6 +10,7 @@ It translates gRPC into RESTful JSON APIs.
 package artifactory
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 
@@ -25,13 +26,14 @@ import (
 var _ codes.Code
 var _ io.Reader
 var _ = runtime.String
+var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
 var (
 	filter_Artifactory_Search_0 = &utilities.DoubleArray{Encoding: map[string]int{"type": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_Artifactory_Search_0(ctx context.Context, marshaler runtime.Marshaler, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Artifactory_Search_0(ctx context.Context, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SearchRequest
 	var metadata runtime.ServerMetadata
 
@@ -62,7 +64,7 @@ func request_Artifactory_Search_0(ctx context.Context, marshaler runtime.Marshal
 
 }
 
-func request_Artifactory_List_0(ctx context.Context, marshaler runtime.Marshaler, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Artifactory_List_0(ctx context.Context, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListRequest
 	var metadata runtime.ServerMetadata
 
@@ -89,7 +91,7 @@ func request_Artifactory_List_0(ctx context.Context, marshaler runtime.Marshaler
 
 }
 
-func request_Artifactory_Describe_0(ctx context.Context, marshaler runtime.Marshaler, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Artifactory_Describe_0(ctx context.Context, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -169,15 +171,14 @@ func RegisterArtifactoryHandler(ctx context.Context, mux *runtime.ServeMux, conn
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Artifactory_Search_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Artifactory_Search_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Artifactory_Search_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Artifactory_Search_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -193,15 +194,14 @@ func RegisterArtifactoryHandler(ctx context.Context, mux *runtime.ServeMux, conn
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Artifactory_List_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Artifactory_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Artifactory_List_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Artifactory_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -217,15 +217,14 @@ func RegisterArtifactoryHandler(ctx context.Context, mux *runtime.ServeMux, conn
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Artifactory_Describe_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Artifactory_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Artifactory_Describe_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Artifactory_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 

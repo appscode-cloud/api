@@ -10,6 +10,7 @@ It translates gRPC into RESTful JSON APIs.
 package kubernetes
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 
@@ -25,9 +26,10 @@ import (
 var _ codes.Code
 var _ io.Reader
 var _ = runtime.String
+var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_Clients_Nodes_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Nodes_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -54,7 +56,7 @@ func request_Clients_Nodes_0(ctx context.Context, marshaler runtime.Marshaler, c
 
 }
 
-func request_Clients_Secrets_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Secrets_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -81,7 +83,7 @@ func request_Clients_Secrets_0(ctx context.Context, marshaler runtime.Marshaler,
 
 }
 
-func request_Clients_Jobs_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Jobs_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -108,7 +110,7 @@ func request_Clients_Jobs_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 }
 
-func request_Clients_Namespaces_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Namespaces_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -135,7 +137,7 @@ func request_Clients_Namespaces_0(ctx context.Context, marshaler runtime.Marshal
 
 }
 
-func request_Clients_Pods_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Pods_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -162,7 +164,7 @@ func request_Clients_Pods_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 }
 
-func request_Clients_Services_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Services_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -189,7 +191,7 @@ func request_Clients_Services_0(ctx context.Context, marshaler runtime.Marshaler
 
 }
 
-func request_Clients_ReplicationControllers_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_ReplicationControllers_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -216,7 +218,7 @@ func request_Clients_ReplicationControllers_0(ctx context.Context, marshaler run
 
 }
 
-func request_Clients_Apps_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Apps_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -243,7 +245,7 @@ func request_Clients_Apps_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 }
 
-func request_Clients_App_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_App_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq AppDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -292,7 +294,7 @@ func request_Clients_App_0(ctx context.Context, marshaler runtime.Marshaler, cli
 
 }
 
-func request_Clients_AppPods_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_AppPods_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq AppDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -341,7 +343,7 @@ func request_Clients_AppPods_0(ctx context.Context, marshaler runtime.Marshaler,
 
 }
 
-func request_Clients_ConfigMaps_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_ConfigMaps_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClientRequest
 	var metadata runtime.ServerMetadata
 
@@ -368,7 +370,7 @@ func request_Clients_ConfigMaps_0(ctx context.Context, marshaler runtime.Marshal
 
 }
 
-func request_Clients_ConfigMap_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_ConfigMap_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ConfigMapDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -417,7 +419,7 @@ func request_Clients_ConfigMap_0(ctx context.Context, marshaler runtime.Marshale
 
 }
 
-func request_Clients_Secret_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Clients_Secret_0(ctx context.Context, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SecretDescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -508,15 +510,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_Nodes_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_Nodes_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_Nodes_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Nodes_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -532,15 +533,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_Secrets_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_Secrets_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_Secrets_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Secrets_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -556,15 +556,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_Jobs_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_Jobs_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_Jobs_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Jobs_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -580,15 +579,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_Namespaces_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_Namespaces_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_Namespaces_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Namespaces_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -604,15 +602,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_Pods_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_Pods_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_Pods_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Pods_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -628,15 +625,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_Services_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_Services_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_Services_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Services_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -652,15 +648,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_ReplicationControllers_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_ReplicationControllers_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_ReplicationControllers_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_ReplicationControllers_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -676,15 +671,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_Apps_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_Apps_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_Apps_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Apps_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -700,15 +694,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_App_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_App_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_App_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_App_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -724,15 +717,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_AppPods_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_AppPods_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_AppPods_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_AppPods_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -748,15 +740,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_ConfigMaps_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_ConfigMaps_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_ConfigMaps_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_ConfigMaps_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -772,15 +763,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_ConfigMap_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_ConfigMap_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_ConfigMap_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_ConfigMap_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -796,15 +786,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Clients_Secret_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_Secret_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Clients_Secret_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_Secret_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 

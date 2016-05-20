@@ -65,7 +65,6 @@
       "type": "object"
     },
     "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
       "type": "object"
     }
   }

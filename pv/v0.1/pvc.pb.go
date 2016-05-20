@@ -30,7 +30,7 @@ type PVCRegisterRequest struct {
 func (m *PVCRegisterRequest) Reset()                    { *m = PVCRegisterRequest{} }
 func (m *PVCRegisterRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVCRegisterRequest) ProtoMessage()               {}
-func (*PVCRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (*PVCRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
 type PVCUnregisterRequest struct {
 	Cluster   string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -41,7 +41,7 @@ type PVCUnregisterRequest struct {
 func (m *PVCUnregisterRequest) Reset()                    { *m = PVCUnregisterRequest{} }
 func (m *PVCUnregisterRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVCUnregisterRequest) ProtoMessage()               {}
-func (*PVCUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (*PVCUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
 
 type PVCDescribeRequest struct {
 	Cluster   string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -52,7 +52,7 @@ type PVCDescribeRequest struct {
 func (m *PVCDescribeRequest) Reset()                    { *m = PVCDescribeRequest{} }
 func (m *PVCDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVCDescribeRequest) ProtoMessage()               {}
-func (*PVCDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+func (*PVCDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
 
 type PVCInfo struct {
 	Name        string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
@@ -66,7 +66,7 @@ type PVCInfo struct {
 func (m *PVCInfo) Reset()                    { *m = PVCInfo{} }
 func (m *PVCInfo) String() string            { return proto.CompactTextString(m) }
 func (*PVCInfo) ProtoMessage()               {}
-func (*PVCInfo) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+func (*PVCInfo) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
 
 type PVCDescribeResponse struct {
 	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -76,7 +76,7 @@ type PVCDescribeResponse struct {
 func (m *PVCDescribeResponse) Reset()                    { *m = PVCDescribeResponse{} }
 func (m *PVCDescribeResponse) String() string            { return proto.CompactTextString(m) }
 func (*PVCDescribeResponse) ProtoMessage()               {}
-func (*PVCDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
+func (*PVCDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
 
 func (m *PVCDescribeResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -237,11 +237,7 @@ var _PersistentVolumeClaims_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
-<<<<<<< HEAD
 var fileDescriptor1 = []byte{
-=======
-var fileDescriptor2 = []byte{
->>>>>>> d003cc4f2e1c2223607f518e8a9593ed528f2c6a
 	// 437 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x93, 0xbf, 0x8e, 0xd3, 0x30,
 	0x1c, 0xc7, 0x95, 0xe4, 0xe8, 0x5d, 0x7f, 0x91, 0x18, 0xcc, 0x29, 0x44, 0xd1, 0x9d, 0x54, 0x65,

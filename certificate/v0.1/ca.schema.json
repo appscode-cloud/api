@@ -9,7 +9,6 @@
           "type": "string"
         }
       },
-      "title": "Use specific requests for protos",
       "type": "object"
     }
   }

@@ -10,6 +10,7 @@ It translates gRPC into RESTful JSON APIs.
 package credential
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 
@@ -26,9 +27,10 @@ import (
 var _ codes.Code
 var _ io.Reader
 var _ = runtime.String
+var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_Cloud_List_0(ctx context.Context, marshaler runtime.Marshaler, client CloudClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Cloud_List_0(ctx context.Context, client CloudClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq dtypes.VoidRequest
 	var metadata runtime.ServerMetadata
 
@@ -37,11 +39,11 @@ func request_Cloud_List_0(ctx context.Context, marshaler runtime.Marshaler, clie
 
 }
 
-func request_Cloud_Create_0(ctx context.Context, marshaler runtime.Marshaler, client CloudClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Cloud_Create_0(ctx context.Context, client CloudClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CloudCredentialCreateRequest
 	var metadata runtime.ServerMetadata
 
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -50,11 +52,11 @@ func request_Cloud_Create_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 }
 
-func request_Cloud_Update_0(ctx context.Context, marshaler runtime.Marshaler, client CloudClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Cloud_Update_0(ctx context.Context, client CloudClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CloudCredentialUpdateRequest
 	var metadata runtime.ServerMetadata
 
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -63,7 +65,7 @@ func request_Cloud_Update_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 }
 
-func request_Cloud_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client CloudClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Cloud_Delete_0(ctx context.Context, client CloudClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CloudCredentialDeleteRequest
 	var metadata runtime.ServerMetadata
 
@@ -132,15 +134,14 @@ func RegisterCloudHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Cloud_List_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Cloud_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Cloud_List_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Cloud_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -156,15 +157,14 @@ func RegisterCloudHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Cloud_Create_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Cloud_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Cloud_Create_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Cloud_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -180,15 +180,14 @@ func RegisterCloudHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Cloud_Update_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Cloud_Update_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Cloud_Update_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Cloud_Update_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -204,15 +203,14 @@ func RegisterCloudHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Cloud_Delete_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Cloud_Delete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Cloud_Delete_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Cloud_Delete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
