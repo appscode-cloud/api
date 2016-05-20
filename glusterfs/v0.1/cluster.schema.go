@@ -60,6 +60,7 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "bucket": {
+      "description": "if bacula is enabled the following two fields are\nrequired.",
       "type": "string"
     },
     "credential": {

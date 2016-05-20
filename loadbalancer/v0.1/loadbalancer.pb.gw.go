@@ -10,7 +10,6 @@ It translates gRPC into RESTful JSON APIs.
 package loadbalancer
 
 import (
-	"encoding/json"
 	"io"
 	"net/http"
 
@@ -26,10 +25,9 @@ import (
 var _ codes.Code
 var _ io.Reader
 var _ = runtime.String
-var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_LoadBalancers_List_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_List_0(ctx context.Context, marshaler runtime.Marshaler, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListRequest
 	var metadata runtime.ServerMetadata
 
@@ -60,7 +58,7 @@ var (
 	filter_LoadBalancers_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_LoadBalancers_Describe_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_Describe_0(ctx context.Context, marshaler runtime.Marshaler, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DescribeRequest
 	var metadata runtime.ServerMetadata
 
@@ -91,11 +89,11 @@ func request_LoadBalancers_Describe_0(ctx context.Context, client LoadBalancersC
 
 }
 
-func request_LoadBalancers_Create_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_Create_0(ctx context.Context, marshaler runtime.Marshaler, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CreateRequest
 	var metadata runtime.ServerMetadata
 
-	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -104,11 +102,11 @@ func request_LoadBalancers_Create_0(ctx context.Context, client LoadBalancersCli
 
 }
 
-func request_LoadBalancers_Update_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_Update_0(ctx context.Context, marshaler runtime.Marshaler, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq UpdateRequest
 	var metadata runtime.ServerMetadata
 
-	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -121,7 +119,7 @@ var (
 	filter_LoadBalancers_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_LoadBalancers_Delete_0(ctx context.Context, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_LoadBalancers_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteRequest
 	var metadata runtime.ServerMetadata
 
@@ -194,14 +192,15 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_LoadBalancers_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_LoadBalancers_List_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_LoadBalancers_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_List_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -217,14 +216,15 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_LoadBalancers_Describe_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_LoadBalancers_Describe_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_LoadBalancers_Describe_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_Describe_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -240,14 +240,15 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_LoadBalancers_Create_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_LoadBalancers_Create_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_LoadBalancers_Create_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_Create_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -263,14 +264,15 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_LoadBalancers_Update_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_LoadBalancers_Update_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_LoadBalancers_Update_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_Update_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -286,14 +288,15 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_LoadBalancers_Delete_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_LoadBalancers_Delete_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_LoadBalancers_Delete_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_LoadBalancers_Delete_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 

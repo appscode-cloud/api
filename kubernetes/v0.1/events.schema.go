@@ -23,10 +23,10 @@ func init() {
           "type": "string"
         },
         "labels": {
-          "items": {
-            "$ref": "#/definitions/ObjectMetaLabelsEntry"
+          "additionalProperties": {
+            "type": "string"
           },
-          "type": "array"
+          "type": "object"
         },
         "namespace": {
           "type": "string"
@@ -42,17 +42,6 @@ func init() {
             "type": "string"
           },
           "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "ObjectMetaLabelsEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
         }
       },
       "type": "object"

@@ -10,7 +10,6 @@ It translates gRPC into RESTful JSON APIs.
 package db
 
 import (
-	"encoding/json"
 	"io"
 	"net/http"
 
@@ -26,14 +25,13 @@ import (
 var _ codes.Code
 var _ io.Reader
 var _ = runtime.String
-var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
-func request_Slaves_Add_0(ctx context.Context, client SlavesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Slaves_Add_0(ctx context.Context, marshaler runtime.Marshaler, client SlavesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SlaveAddRequest
 	var metadata runtime.ServerMetadata
 
-	if err := json.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -102,14 +100,15 @@ func RegisterSlavesHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		resp, md, err := request_Slaves_Add_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_Slaves_Add_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, w, req, err)
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Slaves_Add_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Slaves_Add_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 

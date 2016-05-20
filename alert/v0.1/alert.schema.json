@@ -1,16 +1,5 @@
 {
   "definitions": {
-    "IcingaServiceQueryEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "alertAcknowledgeRequest": {
       "properties": {
         "comment": {
@@ -91,10 +80,10 @@
           "type": "string"
         },
         "query": {
-          "items": {
-            "$ref": "#/definitions/IcingaServiceQueryEntry"
+          "additionalProperties": {
+            "type": "string"
           },
-          "type": "array"
+          "type": "object"
         },
         "warning_condition": {
           "type": "string"

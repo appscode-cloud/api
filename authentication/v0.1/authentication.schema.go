@@ -24,6 +24,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id 4",
   "type": "object"
 }`))
 	if err != nil {

@@ -51,17 +51,6 @@ func init() {
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "LoadBalancerOptionsEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "loadbalancerHTTPLoadBalancerRule": {
       "properties": {
         "SSL_secret_name": {
@@ -94,6 +83,7 @@ func init() {
           "type": "string"
         },
         "kind": {
+          "description": "'kind' defines is it the regular kubernetes instance or the\nappscode superset called Extended Ingress. This field will\nstrictly contains only those two values\n'ingress' - default kubernetes ingress object.\n'extendedIngress' - appscode superset of ingress.\nwhen creating a Loadbalancer from UI this field will always\nbe only 'extendedIngress.' List, Describe, Update and Delete\nwill support both two modes.\nCreate will support only extendedIngress.\nFor Creating or Updating an regular ingress one must use the\nkubectl or direct API calls directly to kubernetes.",
           "type": "string"
         },
         "name": {
@@ -103,10 +93,10 @@ func init() {
           "type": "string"
         },
         "options": {
-          "items": {
-            "$ref": "#/definitions/LoadBalancerOptionsEntry"
+          "additionalProperties": {
+            "type": "string"
           },
-          "type": "array"
+          "type": "object"
         },
         "spec": {
           "$ref": "#/definitions/loadbalancerSpec"
@@ -245,17 +235,6 @@ func init() {
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "LoadBalancerOptionsEntry": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "loadbalancerHTTPLoadBalancerRule": {
       "properties": {
         "SSL_secret_name": {
@@ -288,6 +267,7 @@ func init() {
           "type": "string"
         },
         "kind": {
+          "description": "'kind' defines is it the regular kubernetes instance or the\nappscode superset called Extended Ingress. This field will\nstrictly contains only those two values\n'ingress' - default kubernetes ingress object.\n'extendedIngress' - appscode superset of ingress.\nwhen creating a Loadbalancer from UI this field will always\nbe only 'extendedIngress.' List, Describe, Update and Delete\nwill support both two modes.\nCreate will support only extendedIngress.\nFor Creating or Updating an regular ingress one must use the\nkubectl or direct API calls directly to kubernetes.",
           "type": "string"
         },
         "name": {
@@ -297,10 +277,10 @@ func init() {
           "type": "string"
         },
         "options": {
-          "items": {
-            "$ref": "#/definitions/LoadBalancerOptionsEntry"
+          "additionalProperties": {
+            "type": "string"
           },
-          "type": "array"
+          "type": "object"
         },
         "spec": {
           "$ref": "#/definitions/loadbalancerSpec"
