@@ -23,9 +23,6 @@
         "region": {
           "type": "string"
         },
-        "secret_name": {
-          "type": "string"
-        },
         "snapshot_name": {
           "type": "string"
         },
@@ -136,9 +133,6 @@
         "region": {
           "type": "string"
         },
-        "secret_name": {
-          "type": "string"
-        },
         "sku": {
           "type": "string"
         },
@@ -166,7 +160,6 @@
       "type": "object"
     },
     "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
       "type": "object"
     }
   }

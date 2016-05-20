@@ -73,9 +73,6 @@ func init() {
     "region": {
       "type": "string"
     },
-    "secret_name": {
-      "type": "string"
-    },
     "snapshot_name": {
       "type": "string"
     },
@@ -179,9 +176,6 @@ func init() {
       "type": "integer"
     },
     "region": {
-      "type": "string"
-    },
-    "secret_name": {
       "type": "string"
     },
     "sku": {

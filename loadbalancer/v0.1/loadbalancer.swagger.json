@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "loadbalancer.proto",
-    "version": "version not set"
+    "version": "",
+    "title": ""
   },
   "schemes": [
     "http",
@@ -17,9 +17,10 @@
   "paths": {
     "/loadbalancer/v0.1": {
       "post": {
+        "summary": "LoadBalancers.Update",
         "operationId": "Update",
         "responses": {
-          "200": {
+          "default": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
@@ -41,9 +42,10 @@
         ]
       },
       "put": {
+        "summary": "LoadBalancers.Create",
         "operationId": "Create",
         "responses": {
-          "200": {
+          "default": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
@@ -67,9 +69,10 @@
     },
     "/loadbalancer/v0.1/{cluster}": {
       "get": {
+        "summary": "LoadBalancers.List",
         "operationId": "List",
         "responses": {
-          "200": {
+          "default": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/loadbalancerListResponse"
@@ -92,9 +95,10 @@
     },
     "/loadbalancer/v0.1/{name}": {
       "get": {
+        "summary": "LoadBalancers.Describe",
         "operationId": "Describe",
         "responses": {
-          "200": {
+          "default": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/loadbalancerDescribeResponse"
@@ -115,9 +119,10 @@
         ]
       },
       "delete": {
+        "summary": "LoadBalancers.Delete",
         "operationId": "Delete",
         "responses": {
-          "200": {
+          "default": {
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
@@ -140,53 +145,57 @@
     }
   },
   "definitions": {
+    "LoadBalancerOptionsEntry": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
     "dtypesHelp": {
       "type": "object",
       "properties": {
         "description": {
           "type": "string",
-          "format": "string",
-          "title": "Describe what link offers"
+          "format": "string"
         },
         "url": {
           "type": "string",
-          "format": "string",
-          "description": "The URL of The link."
+          "format": "string"
         }
-      },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;"
+      }
     },
     "dtypesStatus": {
       "type": "object",
       "properties": {
         "code": {
           "type": "string",
-          "format": "string",
-          "title": "Response status code"
+          "format": "string"
         },
         "details": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/protobufAny"
-          },
-          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use."
+          }
         },
         "help": {
-          "$ref": "#/definitions/dtypesHelp",
-          "description": "Optional. Help link if there is an error."
+          "$ref": "#/definitions/dtypesHelp"
         },
         "message": {
           "type": "string",
-          "format": "string",
-          "description": "User facing message."
+          "format": "string"
         },
         "status": {
           "type": "string",
-          "format": "string",
-          "description": "Response status code string."
+          "format": "string"
         }
-      },
-      "description": "Next Id 5."
+      }
     },
     "dtypesVoidResponse": {
       "type": "object",
@@ -331,8 +340,7 @@
         },
         "kind": {
           "type": "string",
-          "format": "string",
-          "description": "'kind' defines is it the regular kubernetes instance or the\nappscode superset called Extended Ingress. This field will\nstrictly contains only those two values\n'ingress' - default kubernetes ingress object.\n'extendedIngress' - appscode superset of ingress.\nwhen creating a Loadbalancer from UI this field will always\nbe only 'extendedIngress.' List, Describe, Update and Delete\nwill support both two modes.\nCreate will support only extendedIngress.\nFor Creating or Updating an regular ingress one must use the\nkubectl or direct API calls directly to kubernetes."
+          "format": "string"
         },
         "name": {
           "type": "string",
@@ -343,10 +351,9 @@
           "format": "string"
         },
         "options": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string",
-            "format": "string"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LoadBalancerOptionsEntry"
           }
         },
         "spec": {
@@ -470,16 +477,13 @@
       "properties": {
         "type_url": {
           "type": "string",
-          "format": "string",
-          "description": "A URL/resource name whose content describes the type of the\nserialized message.\n\nFor URLs which use the schema `http`, `https`, or no schema, the\nfollowing restrictions and interpretations apply:\n\n* If no schema is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemas other than `http`, `https` (or the empty schema) might be\nused with implementation specific semantics."
+          "format": "string"
         },
         "value": {
           "type": "string",
-          "format": "byte",
-          "description": "Must be valid serialized data of the above specified type."
+          "format": "byte"
         }
-      },
-      "description": "`Any` contains an arbitrary serialized message along with a URL\nthat describes the type of the serialized message.\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      }
     }
   }
 }

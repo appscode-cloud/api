@@ -20,12 +20,60 @@ func DBGenericName(dbName, sku string) (string, error) {
 	}
 	if pg, ok := dbs[dbName]; ok {
 		for _, dt := range pg.DbTypes {
-			if dt.Sku == sku {
+			if strings.ToUpper(dt.Sku) == strings.ToUpper(sku) {
 				return dt.Name, nil
 			}
 		}
 	}
 	return "", fmt.Errorf("Unknown SKU provided", dbName, sku)
+}
+
+func DBSku(dbName, mode string) (string, error) {
+	bytes, err := files.Asset("data/files/db_products.json")
+	if err != nil {
+		return "", err
+	}
+
+	dbs := make(map[string]DBProduct)
+	err = json.Unmarshal(bytes, &dbs)
+	if err != nil {
+		return "", err
+	}
+	if pg, ok := dbs[dbName]; ok {
+		for _, dt := range pg.DbTypes {
+			if strings.ToLower(dt.Name) == strings.ToLower(mode) {
+				return dt.Sku, nil
+			}
+		}
+	}
+	return "", nil
+}
+
+func DBVersion(dbName, dbVersion string) (string, error) {
+	bytes, err := files.Asset("data/files/db_products.json")
+	if err != nil {
+		return "", err
+	}
+
+	dbs := make(map[string]DBProduct)
+	err = json.Unmarshal(bytes, &dbs)
+	if err != nil {
+		return "", err
+	}
+
+	version := ""
+	if pg, ok := dbs[dbName]; ok {
+		for _, v := range pg.Versions {
+			if v == dbVersion {
+				return dbVersion, nil
+			}
+			version = v
+		}
+	}
+	if dbVersion == "" {
+		return version, nil
+	}
+	return "", nil
 }
 
 /*

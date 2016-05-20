@@ -10,6 +10,7 @@ It translates gRPC into RESTful JSON APIs.
 package bucket
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 
@@ -25,13 +26,14 @@ import (
 var _ codes.Code
 var _ io.Reader
 var _ = runtime.String
+var _ = json.Marshal
 var _ = utilities.NewDoubleArray
 
 var (
 	filter_Buckets_List_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_Buckets_List_0(ctx context.Context, marshaler runtime.Marshaler, client BucketsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Buckets_List_0(ctx context.Context, client BucketsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq BucketListRequest
 	var metadata runtime.ServerMetadata
 
@@ -86,15 +88,14 @@ func RegisterBucketsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 				}
 			}(ctx.Done(), cn.CloseNotify())
 		}
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Buckets_List_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Buckets_List_0(runtime.AnnotateContext(ctx, req), client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
-			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			runtime.HTTPError(ctx, w, req, err)
 			return
 		}
 
-		forward_Buckets_List_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Buckets_List_0(ctx, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 

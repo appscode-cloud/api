@@ -15,12 +15,25 @@ func init() {
 	var err error
 	cloudCredentialUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "data": {
-      "additionalProperties": {
-        "type": "string"
+  "definitions": {
+    "credentialCloudCredentialUpdateRequestDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
       },
       "type": "object"
+    }
+  },
+  "properties": {
+    "data": {
+      "items": {
+        "$ref": "#/definitions/credentialCloudCredentialUpdateRequestDataEntry"
+      },
+      "type": "array"
     },
     "name": {
       "type": "string"
@@ -48,12 +61,25 @@ func init() {
 	}
 	cloudCredentialCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "data": {
-      "additionalProperties": {
-        "type": "string"
+  "definitions": {
+    "credentialCloudCredentialCreateRequestDataEntry": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
       },
       "type": "object"
+    }
+  },
+  "properties": {
+    "data": {
+      "items": {
+        "$ref": "#/definitions/credentialCloudCredentialCreateRequestDataEntry"
+      },
+      "type": "array"
     },
     "name": {
       "type": "string"
