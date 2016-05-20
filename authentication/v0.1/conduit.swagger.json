@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "authentication.proto",
+    "title": "conduit.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,68 +15,15 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/auth/v0.1/login": {
-      "post": {
-        "summary": "This rpc is used to check a valid user from other applications.",
-        "operationId": "Login",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/authenticationLoginResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/authenticationLoginRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Authentication"
-        ]
-      }
-    },
-    "/appscode/api/auth/v0.1/logout": {
-      "post": {
-        "operationId": "Logout",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/authenticationLogoutResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/authenticationLogoutRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Authentication"
-        ]
-      }
-    },
-    "/appscode/api/auth/v0.1/token": {
+    "/appscode/api/auth/v0.1/conduit/users": {
       "post": {
         "summary": "appctl used this to validates the user token with phabricator.",
-        "operationId": "Token",
+        "operationId": "Users",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/authenticationValidateResponse"
+              "$ref": "#/definitions/authenticationConduitUsersResponse"
             }
           }
         },
@@ -86,51 +33,45 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authenticationValidateRequest"
+              "$ref": "#/definitions/authenticationConduitRequest"
             }
           }
         ],
         "tags": [
-          "Authentication"
+          "Conduit"
+        ]
+      }
+    },
+    "/appscode/api/auth/v0.1/conduit/whoami": {
+      "post": {
+        "summary": "This rpc is used to check a valid user from other applications.",
+        "operationId": "WhoAmI",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/authenticationConduitWhoAmIResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authenticationConduitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Conduit"
         ]
       }
     }
   },
   "definitions": {
-    "authenticationLoginRequest": {
-      "type": "object",
-      "properties": {
-        "issue_token": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "namespace": {
-          "type": "string",
-          "format": "string"
-        },
-        "secret": {
-          "type": "string",
-          "format": "string"
-        },
-        "username": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "authenticationLoginResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "token": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "authenticationLogoutRequest": {
+    "authenticationConduitRequest": {
       "type": "object",
       "properties": {
         "namespace": {
@@ -143,37 +84,64 @@
         }
       }
     },
-    "authenticationLogoutResponse": {
+    "authenticationConduitUser": {
       "type": "object",
       "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+        "iamge": {
+          "type": "string",
+          "format": "string"
+        },
+        "phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "primary_email": {
+          "type": "string",
+          "format": "string"
+        },
+        "real_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "uri": {
+          "type": "string",
+          "format": "string"
+        },
+        "user_name": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
-    "authenticationValidateRequest": {
-      "type": "object",
-      "properties": {
-        "namespace": {
-          "type": "string",
-          "format": "string"
-        },
-        "secret": {
-          "type": "string",
-          "format": "string"
-        },
-        "username": {
-          "type": "string",
-          "format": "string"
-        }
-      },
-      "title": "Next Id 4"
-    },
-    "authenticationValidateResponse": {
+    "authenticationConduitUsersResponse": {
       "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        },
+        "user": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/authenticationConduitUser"
+          }
+        }
+      }
+    },
+    "authenticationConduitWhoAmIResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "user": {
+          "$ref": "#/definitions/authenticationConduitUser"
         }
       }
     },

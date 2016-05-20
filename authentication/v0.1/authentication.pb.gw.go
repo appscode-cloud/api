@@ -27,15 +27,28 @@ var _ io.Reader
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
-func request_Authentication_User_0(ctx context.Context, marshaler runtime.Marshaler, client AuthenticationClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ValidateRequest
+func request_Authentication_Login_0(ctx context.Context, marshaler runtime.Marshaler, client AuthenticationClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq LoginRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.User(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Login(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func request_Authentication_Logout_0(ctx context.Context, marshaler runtime.Marshaler, client AuthenticationClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq LogoutRequest
+	var metadata runtime.ServerMetadata
+
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.Logout(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -83,7 +96,7 @@ func RegisterAuthenticationHandlerFromEndpoint(ctx context.Context, mux *runtime
 func RegisterAuthenticationHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewAuthenticationClient(conn)
 
-	mux.Handle("POST", pattern_Authentication_User_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Authentication_Login_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -96,14 +109,38 @@ func RegisterAuthenticationHandler(ctx context.Context, mux *runtime.ServeMux, c
 			}(ctx.Done(), cn.CloseNotify())
 		}
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Authentication_User_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Authentication_Login_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Authentication_User_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Authentication_Login_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("POST", pattern_Authentication_Logout_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_Authentication_Logout_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_Authentication_Logout_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -135,13 +172,17 @@ func RegisterAuthenticationHandler(ctx context.Context, mux *runtime.ServeMux, c
 }
 
 var (
-	pattern_Authentication_User_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "authn", "v0.1", "user"}, ""))
+	pattern_Authentication_Login_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "auth", "v0.1", "login"}, ""))
 
-	pattern_Authentication_Token_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "authn", "v0.1", "token"}, ""))
+	pattern_Authentication_Logout_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "auth", "v0.1", "logout"}, ""))
+
+	pattern_Authentication_Token_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "auth", "v0.1", "token"}, ""))
 )
 
 var (
-	forward_Authentication_User_0 = runtime.ForwardResponseMessage
+	forward_Authentication_Login_0 = runtime.ForwardResponseMessage
+
+	forward_Authentication_Logout_0 = runtime.ForwardResponseMessage
 
 	forward_Authentication_Token_0 = runtime.ForwardResponseMessage
 )
