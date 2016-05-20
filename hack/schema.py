@@ -155,7 +155,7 @@ def render_schema_go(pkg, schemas):
     imports = []
     if schemas['requests']:
         imports.append("github.com/xeipuuv/gojsonschema")
-        imports.append("log")
+        imports.append("github.com/golang/glog")
     if schemas['responses']:
         imports.append("github.com/appscode/api/dtypes")
     imports.sort()
@@ -180,7 +180,7 @@ def render_schema_go(pkg, schemas):
             contents += '	{0}Schema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{1}`))\n'.format(
                 var_name, sch_str)
             contents += """	if err != nil {
-		log.Fatal(err)
+		glog.Fatal(err)
 	}
 """
         contents += '}\n\n'
