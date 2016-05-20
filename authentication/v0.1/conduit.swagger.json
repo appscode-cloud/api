@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "slave.proto",
+    "title": "conduit.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,28 +15,15 @@
     "application/json"
   ],
   "paths": {
-    "/ci/v0.1/slaves": {
-      "get": {
-        "operationId": "List",
+    "/auth/v0.1/conduit/users": {
+      "post": {
+        "summary": "appctl used this to validates the user token with phabricator.",
+        "operationId": "Users",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/ciSlaveListResponse"
-            }
-          }
-        },
-        "tags": [
-          "Slaves"
-        ]
-      },
-      "put": {
-        "operationId": "Create",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesLongRunningResponse"
+              "$ref": "#/definitions/authenticationConduitUsersResponse"
             }
           }
         },
@@ -46,241 +33,115 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ciSlaveCreateRequest"
+              "$ref": "#/definitions/authenticationConduitRequest"
             }
           }
         ],
         "tags": [
-          "Slaves"
+          "Conduit"
         ]
       }
     },
-    "/ci/v0.1/slaves/{name}": {
-      "get": {
-        "operationId": "Describe",
+    "/auth/v0.1/conduit/whoami": {
+      "post": {
+        "summary": "This rpc is used to check a valid user from other applications.",
+        "operationId": "WhoAmI",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/ciSlaveDescribeResponse"
+              "$ref": "#/definitions/authenticationConduitWhoAmIResponse"
             }
           }
         },
         "parameters": [
           {
-            "name": "name",
-            "in": "path",
+            "name": "body",
+            "in": "body",
             "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Slaves"
-        ]
-      },
-      "delete": {
-        "operationId": "Delete",
-        "responses": {
-          "200": {
-            "description": "Description",
             "schema": {
-              "$ref": "#/definitions/dtypesLongRunningResponse"
+              "$ref": "#/definitions/authenticationConduitRequest"
             }
           }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
         ],
         "tags": [
-          "Slaves"
-        ]
-      }
-    },
-    "/ci/v0.1/slaves/{name}/reboot": {
-      "get": {
-        "operationId": "Restart",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/ciSlaveRestartResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Slaves"
+          "Conduit"
         ]
       }
     }
   },
   "definitions": {
-    "ciPortInfo": {
+    "authenticationConduitRequest": {
       "type": "object",
       "properties": {
-        "port_range": {
+        "namespace": {
           "type": "string",
           "format": "string"
         },
-        "protocol": {
+        "token": {
           "type": "string",
           "format": "string"
         }
       }
     },
-    "ciSlave": {
+    "authenticationConduitUser": {
       "type": "object",
       "properties": {
-        "name": {
+        "iamge": {
           "type": "string",
           "format": "string"
         },
-        "status": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveCreateRequest": {
-      "type": "object",
-      "properties": {
-        "ci_starter_version": {
+        "phid": {
           "type": "string",
           "format": "string"
         },
-        "executors": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "labels": {
+        "primary_email": {
           "type": "string",
           "format": "string"
         },
-        "ports": {
+        "real_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "roles": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ciPortInfo"
+            "type": "string",
+            "format": "string"
           }
         },
-        "saltbase_version": {
+        "uri": {
           "type": "string",
           "format": "string"
         },
-        "sku": {
-          "type": "string",
-          "format": "string"
-        },
-        "user_startup_script": {
+        "user_name": {
           "type": "string",
           "format": "string"
         }
       }
     },
-    "ciSlaveDeleteRequest": {
+    "authenticationConduitUsersResponse": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "created_at": {
-          "type": "string",
-          "format": "string"
-        },
-        "executors": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "label": {
-          "type": "string",
-          "format": "string"
-        },
-        "name": {
-          "type": "string",
-          "format": "string"
-        },
-        "node_status": {
-          "type": "string",
-          "format": "string"
-        },
-        "offline_reason": {
-          "type": "string",
-          "format": "string"
-        },
-        "provider": {
-          "type": "string",
-          "format": "string"
-        },
-        "sku": {
-          "type": "string",
-          "format": "string"
-        },
-        "startup_script": {
-          "type": "string",
-          "format": "string"
-        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciSlaveListResponse": {
-      "type": "object",
-      "properties": {
-        "slaves": {
+        },
+        "user": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ciSlave"
+            "$ref": "#/definitions/authenticationConduitUser"
           }
+        }
+      }
+    },
+    "authenticationConduitWhoAmIResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciSlaveRestartRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveRestartResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+        "user": {
+          "$ref": "#/definitions/authenticationConduitUser"
         }
       }
     },
@@ -299,27 +160,6 @@
         }
       },
       "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;"
-    },
-    "dtypesLongRunningResponse": {
-      "type": "object",
-      "properties": {
-        "job_id": {
-          "type": "string",
-          "format": "string"
-        },
-        "job_type": {
-          "type": "string",
-          "format": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "type_id": {
-          "type": "string",
-          "format": "string"
-        }
-      },
-      "title": "Available Next ID: 6"
     },
     "dtypesStatus": {
       "type": "object",
@@ -352,10 +192,6 @@
         }
       },
       "description": "Next Id 5."
-    },
-    "dtypesVoidRequest": {
-      "type": "object",
-      "description": "Void Requests and response to use with other types."
     },
     "protobufAny": {
       "type": "object",

@@ -1,0 +1,15 @@
+{
+  "definitions": {
+    "authenticationConduitRequest": {
+      "properties": {
+        "namespace": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
