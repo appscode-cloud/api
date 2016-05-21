@@ -245,12 +245,12 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"data/files/ci_products.json": dataFilesCi_productsJson,
-	"data/files/cloud_providers.json": dataFilesCloud_providersJson,
-	"data/files/configs.yaml": dataFilesConfigsYaml,
-	"data/files/db_products.json": dataFilesDb_productsJson,
+	"data/files/ci_products.json":         dataFilesCi_productsJson,
+	"data/files/cloud_providers.json":     dataFilesCloud_providersJson,
+	"data/files/configs.yaml":             dataFilesConfigsYaml,
+	"data/files/db_products.json":         dataFilesDb_productsJson,
 	"data/files/kubernetes_products.json": dataFilesKubernetes_productsJson,
-	"data/files/subscriptions.json": dataFilesSubscriptionsJson,
+	"data/files/subscriptions.json":       dataFilesSubscriptionsJson,
 }
 
 // AssetDir returns the file names below a certain
@@ -292,15 +292,16 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
+
 var _bintree = &bintree{nil, map[string]*bintree{
 	"data": &bintree{nil, map[string]*bintree{
 		"files": &bintree{nil, map[string]*bintree{
-			"ci_products.json": &bintree{dataFilesCi_productsJson, map[string]*bintree{}},
-			"cloud_providers.json": &bintree{dataFilesCloud_providersJson, map[string]*bintree{}},
-			"configs.yaml": &bintree{dataFilesConfigsYaml, map[string]*bintree{}},
-			"db_products.json": &bintree{dataFilesDb_productsJson, map[string]*bintree{}},
+			"ci_products.json":         &bintree{dataFilesCi_productsJson, map[string]*bintree{}},
+			"cloud_providers.json":     &bintree{dataFilesCloud_providersJson, map[string]*bintree{}},
+			"configs.yaml":             &bintree{dataFilesConfigsYaml, map[string]*bintree{}},
+			"db_products.json":         &bintree{dataFilesDb_productsJson, map[string]*bintree{}},
 			"kubernetes_products.json": &bintree{dataFilesKubernetes_productsJson, map[string]*bintree{}},
-			"subscriptions.json": &bintree{dataFilesSubscriptionsJson, map[string]*bintree{}},
+			"subscriptions.json":       &bintree{dataFilesSubscriptionsJson, map[string]*bintree{}},
 		}},
 	}},
 }}
@@ -351,4 +352,3 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
-

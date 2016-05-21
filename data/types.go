@@ -35,22 +35,24 @@ type SubscriptionProductList struct {
 	Trial   []SubscriptionProduct `json:"trial"`
 }
 
+type BuildAgent struct {
+	Sku      string `json:"sku"`
+	Provider string `json:"provider"`
+	Os       string `json:"os"`
+	Price    int    `json:"price"`
+	Details  struct {
+		CPU                  int    `json:"cpu"`
+		RAM                  int    `json:"ram"`
+		Disk                 int    `json:"disk"`
+		RecommendedExecutors int    `json:"recommended_executors"`
+		ExternalID           string `json:"external_id"`
+	} `json:"details"`
+	DateStarted time.Time `json:"date_started"`
+	DateEnded   time.Time `json:"date_ended"`
+}
+
 type CIProduct struct {
-	BuildAgents []struct {
-		Sku      string `json:"sku"`
-		Provider string `json:"provider"`
-		Os       string `json:"os"`
-		Price    int    `json:"price"`
-		Details  struct {
-			CPU                  int    `json:"cpu"`
-			RAM                  int    `json:"ram"`
-			Disk                 int    `json:"disk"`
-			RecommendedExecutors int    `json:"recommended_executors"`
-			ExternalID           string `json:"external_id"`
-		} `json:"details"`
-		DateStarted time.Time `json:"date_started"`
-		DateEnded   time.Time `json:"date_ended"`
-	} `json:"build_agents"`
+	BuildAgents []*BuildAgent `json:"build_agents"`
 }
 
 type DBProduct struct {

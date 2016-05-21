@@ -6,5 +6,6 @@ import (
 )
 
 func Test(t *testing.T) {
-	fmt.Println(BuildAgentExternalID("CI-R1"))
+	agent, _ := CIBuildAgent("CI-R1")
+	fmt.Println(agent.Details.ExternalID)
 }

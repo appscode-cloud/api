@@ -79,21 +79,21 @@ func DBVersion(dbName, dbVersion string) (string, error) {
 /*
 curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer <token>" "https://api.digitalocean.com/v2/sizes"
 */
-func BuildAgentExternalID(sku string) (string, error) {
+func CIBuildAgent(sku string) (*BuildAgent, error) {
 	bytes, err := files.Asset("data/files/ci_products.json")
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	var ci CIProduct
 	err = json.Unmarshal(bytes, &ci)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	for _, agent := range ci.BuildAgents {
 		if agent.Sku == strings.ToUpper(sku) {
-			return agent.Details.ExternalID, nil
+			return agent, nil
 		}
 	}
-	return "", fmt.Errorf("Can't detect external id for CIProduct sku %v", sku)
+	return nil, fmt.Errorf("Can't find build agent for CIProduct sku %v", sku)
 }
