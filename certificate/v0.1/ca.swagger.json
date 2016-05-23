@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/ssl/ca/v0.1": {
+    "/appscode/api/certificate/v0.1/ca": {
       "post": {
         "operationId": "Create",
         "responses": {

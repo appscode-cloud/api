@@ -30,44 +30,9 @@
           "Charge"
         ]
       }
-    },
-    "/appscode/api/billing/v0.1/charge/payment": {
-      "get": {
-        "operationId": "PaymentMethod",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/billingChargePaymentResponse"
-            }
-          }
-        },
-        "tags": [
-          "Charge"
-        ]
-      }
     }
   },
   "definitions": {
-    "billingChargePaymentResponse": {
-      "type": "object",
-      "properties": {
-        "method": {
-          "type": "string",
-          "format": "string"
-        },
-        "method_list": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
     "billingChargeRequest": {
       "type": "object",
       "properties": {

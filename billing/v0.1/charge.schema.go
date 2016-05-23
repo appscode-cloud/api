@@ -30,9 +30,6 @@ func (m *ChargeRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ChargeRequest) IsRequest() {}
 
-func (m *ChargePaymentResponse) SetStatus(s *dtypes.Status) {
-	m.Status = s
-}
 func (m *ChargeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

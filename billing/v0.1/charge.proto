@@ -11,12 +11,6 @@ service Charge {
       get: "/appscode/api/billing/v0.1/charge"
     };
   }
-
-  rpc PaymentMethod(ChargeRequest) returns (ChargePaymentResponse) {
-    option (google.api.http) = {
-      get: "/appscode/api/billing/v0.1/charge/payment"
-   };
-  }
 }
 
 message ChargeRequest {
@@ -26,11 +20,4 @@ message ChargeRequest {
 message ChargeResponse {
   dtypes.Status status = 1;
   string cost_usd = 2;
-}
-
-
-message ChargePaymentResponse {
-    dtypes.Status status = 1;
-    string method = 2;
-    repeated string method_list = 3;
 }

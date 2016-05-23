@@ -462,21 +462,21 @@ func RegisterCertificatesHandler(ctx context.Context, mux *runtime.ServeMux, con
 }
 
 var (
-	pattern_Certificates_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "ssl", "certificate", "v0.1"}, ""))
+	pattern_Certificates_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "certificate", "v0.1", "tls-cert"}, ""))
 
-	pattern_Certificates_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "ssl", "certificate", "v0.1", "uid"}, ""))
+	pattern_Certificates_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "certificate", "v0.1", "tls-cert", "uid"}, ""))
 
-	pattern_Certificates_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "ssl", "certificate", "v0.1"}, ""))
+	pattern_Certificates_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "certificate", "v0.1", "tls-cert"}, ""))
 
-	pattern_Certificates_Import_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "ssl", "certificate", "v0.1", "name", "import"}, ""))
+	pattern_Certificates_Import_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "certificate", "v0.1", "tls-cert", "name", "import"}, ""))
 
-	pattern_Certificates_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "ssl", "certificate", "v0.1", "uid"}, ""))
+	pattern_Certificates_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "certificate", "v0.1", "tls-cert", "uid"}, ""))
 
-	pattern_Certificates_Renew_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "ssl", "certificate", "v0.1", "uid", "renew"}, ""))
+	pattern_Certificates_Renew_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "certificate", "v0.1", "tls-cert", "uid", "renew"}, ""))
 
-	pattern_Certificates_Revoke_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "ssl", "certificate", "v0.1", "uid", "revoke"}, ""))
+	pattern_Certificates_Revoke_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "certificate", "v0.1", "tls-cert", "uid", "revoke"}, ""))
 
-	pattern_Certificates_Deploy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "ssl", "certificate", "v0.1", "uid", "deploy"}, ""))
+	pattern_Certificates_Deploy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "certificate", "v0.1", "tls-cert", "uid", "deploy"}, ""))
 )
 
 var (

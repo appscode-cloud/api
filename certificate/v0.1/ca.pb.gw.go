@@ -98,7 +98,7 @@ func RegisterCAsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.C
 }
 
 var (
-	pattern_CAs_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "ssl", "ca", "v0.1"}, ""))
+	pattern_CAs_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "certificate", "v0.1", "ca"}, ""))
 )
 
 var (

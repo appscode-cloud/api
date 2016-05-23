@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "acme_user.proto",
+    "title": "paymentmethod.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,39 +15,37 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/certificate/v0.1/acme-users": {
-      "put": {
-        "operationId": "Register",
+    "/appscode/api/billing/v0.1/paymentmethod": {
+      "get": {
+        "operationId": "PaymentMethod",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/certificateAcmeUserRegisterResponse"
+              "$ref": "#/definitions/billingListPaymentResponse"
             }
           }
         },
         "tags": [
-          "AcmeUsers"
+          "PaymentMethod"
         ]
       }
     }
   },
   "definitions": {
-    "certificateAcmeUserRegisterRequest": {
+    "billingListPaymentResponse": {
       "type": "object",
       "properties": {
-        "email": {
+        "method": {
           "type": "string",
           "format": "string"
-        }
-      }
-    },
-    "certificateAcmeUserRegisterResponse": {
-      "type": "object",
-      "properties": {
-        "phid": {
-          "type": "string",
-          "format": "string"
+        },
+        "method_list": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -101,6 +99,10 @@
         }
       },
       "description": "Next Id 5."
+    },
+    "dtypesVoidRequest": {
+      "type": "object",
+      "description": "Void Requests and response to use with other types."
     },
     "protobufAny": {
       "type": "object",
