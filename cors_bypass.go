@@ -14,6 +14,7 @@ import (
 	"github.com/appscode/api/mailinglist"
 	namespace "github.com/appscode/api/namespace/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
+	billing "github.com/appscode/api/billing/v0.1"
 	"github.com/gengo/grpc-gateway/runtime"
 )
 
@@ -36,5 +37,6 @@ func Patterens() []runtime.Pattern {
 	ps = append(ps, mailinglist.Patterns()...)
 	ps = append(ps, loadbalancer.Patterns()...)
 	ps = append(ps, artifactory.Patterns()...)
+	ps = append(ps, billing.Patterns()...)
 	return ps
 }
