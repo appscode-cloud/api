@@ -20,7 +20,9 @@ ALIAS+="Mapi/artifactory/model_artifacts.proto=github.com/appscode/api/artifacto
 clean() {
 	(find . | grep pb.go | xargs rm) || true
 	(find . | grep pb.gw.go | xargs rm) || true
-	(find . | grep schema.json | xargs rm) || true
+	# Do NOT delete schema.json files as they contain handwritten validation rules.
+	# contact tamal@ / sadlil@ if in doubt.
+	# (find . | grep schema.json | xargs rm) || true
 	(find . | grep schema.go | xargs rm) || true
 	(find . | grep php | xargs rm) || true
 }

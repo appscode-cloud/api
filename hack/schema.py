@@ -218,6 +218,9 @@ def generate_go_schema():
             print go
             pkg = detect_pkg(schema)
             defs = swagger_defs(read_json(swagger)['definitions'])
+            # overwrite requests with json schema from *.schema.json
+            # to preserve hand written rules
+            defs['requests'] = read_json(schema)['definitions']
             schemas = schema_go(pkg, defs)
             if schemas['requests'] or schemas['responses']:
                 write_file(go, render_schema_go(pkg, schemas))

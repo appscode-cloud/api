@@ -6,6 +6,8 @@
           "type": "boolean"
         },
         "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "secret": {
@@ -20,6 +22,8 @@
     "authenticationLogoutRequest": {
       "properties": {
         "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "token": {
@@ -31,6 +35,8 @@
     "authenticationTokenRequest": {
       "properties": {
         "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "token": {

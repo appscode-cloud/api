@@ -3,6 +3,8 @@
     "ciJobBuildRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "param": {
@@ -25,6 +27,8 @@
     "ciJobCreateRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "sh_file": {
@@ -36,6 +40,8 @@
     "ciJobDeleteRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -44,6 +50,8 @@
     "ciJobDescribeRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
