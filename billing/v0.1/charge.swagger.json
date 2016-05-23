@@ -33,6 +33,15 @@
     }
   },
   "definitions": {
+    "billingChargeRequest": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
     "billingChargeResponse": {
       "type": "object",
       "properties": {
@@ -92,10 +101,6 @@
         }
       },
       "description": "Next Id 5."
-    },
-    "dtypesVoidRequest": {
-      "type": "object",
-      "description": "Void Requests and response to use with other types."
     },
     "protobufAny": {
       "type": "object",
