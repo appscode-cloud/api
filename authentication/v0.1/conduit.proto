@@ -23,10 +23,7 @@ service Conduit {
   }
 }
 
-message ConduitRequest {
-  string namespace = 1;
-  string token = 2;
-}
+message ConduitRequest {}
 
 message ConduitWhoAmIResponse {
   dtypes.Status status = 1;

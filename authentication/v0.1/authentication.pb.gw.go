@@ -54,7 +54,7 @@ func request_Authentication_Logout_0(ctx context.Context, marshaler runtime.Mars
 }
 
 func request_Authentication_Token_0(ctx context.Context, marshaler runtime.Marshaler, client AuthenticationClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ValidateRequest
+	var protoReq TokenRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {

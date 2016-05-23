@@ -76,7 +76,7 @@
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/authenticationValidateResponse"
+              "$ref": "#/definitions/authenticationTokenResponse"
             }
           }
         },
@@ -86,7 +86,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authenticationValidateRequest"
+              "$ref": "#/definitions/authenticationTokenRequest"
             }
           }
         ],
@@ -151,25 +151,21 @@
         }
       }
     },
-    "authenticationValidateRequest": {
+    "authenticationTokenRequest": {
       "type": "object",
       "properties": {
         "namespace": {
           "type": "string",
           "format": "string"
         },
-        "secret": {
-          "type": "string",
-          "format": "string"
-        },
-        "username": {
+        "token": {
           "type": "string",
           "format": "string"
         }
       },
       "title": "Next Id 4"
     },
-    "authenticationValidateResponse": {
+    "authenticationTokenResponse": {
       "type": "object",
       "properties": {
         "status": {

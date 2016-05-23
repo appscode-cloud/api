@@ -13,14 +13,6 @@ func init() {
 	var err error
 	conduitRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "namespace": {
-      "type": "string"
-    },
-    "token": {
-      "type": "string"
-    }
-  },
   "type": "object"
 }`))
 	if err != nil {

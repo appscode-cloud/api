@@ -28,15 +28,12 @@
       },
       "type": "object"
     },
-    "authenticationValidateRequest": {
+    "authenticationTokenRequest": {
       "properties": {
         "namespace": {
           "type": "string"
         },
-        "secret": {
-          "type": "string"
-        },
-        "username": {
+        "token": {
           "type": "string"
         }
       },
