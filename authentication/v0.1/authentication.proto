@@ -21,7 +21,7 @@ service Authentication {
     };
   }
   // appctl used this to validates the user token with phabricator.
-  rpc Token(ValidateRequest) returns (ValidateResponse) {
+  rpc Token(TokenRequest) returns (TokenResponse) {
     option (google.api.http) = {
       post: "/appscode/api/auth/v0.1/token"
       body: "*"
@@ -30,13 +30,12 @@ service Authentication {
 }
 
 //Next Id 4
-message ValidateRequest {
+message TokenRequest {
   string namespace = 1;
-  string username = 2;
-  string secret = 3;
+  string token = 2;
 }
 
-message ValidateResponse {
+message TokenResponse {
   dtypes.Status status = 1;
 }
 

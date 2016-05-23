@@ -72,17 +72,7 @@
   },
   "definitions": {
     "authenticationConduitRequest": {
-      "type": "object",
-      "properties": {
-        "namespace": {
-          "type": "string",
-          "format": "string"
-        },
-        "token": {
-          "type": "string",
-          "format": "string"
-        }
-      }
+      "type": "object"
     },
     "authenticationConduitUser": {
       "type": "object",
