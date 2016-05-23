@@ -5,7 +5,6 @@ package health;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-
 service Health {
   rpc Status(dtypes.VoidRequest) returns (Response) {
     option (google.api.http) = {

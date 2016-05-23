@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/ssl/certificate/v0.1": {
+    "/appscode/api/certificate/v0.1/tls-cert": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -55,7 +55,7 @@
         ]
       }
     },
-    "/appscode/api/ssl/certificate/v0.1/{name}/import": {
+    "/appscode/api/certificate/v0.1/tls-cert/{name}/import": {
       "put": {
         "operationId": "Import",
         "responses": {
@@ -88,7 +88,7 @@
         ]
       }
     },
-    "/appscode/api/ssl/certificate/v0.1/{uid}": {
+    "/appscode/api/certificate/v0.1/tls-cert/{uid}": {
       "get": {
         "operationId": "Describe",
         "responses": {
@@ -136,7 +136,7 @@
         ]
       }
     },
-    "/appscode/api/ssl/certificate/v0.1/{uid}/deploy": {
+    "/appscode/api/certificate/v0.1/tls-cert/{uid}/deploy": {
       "post": {
         "operationId": "Deploy",
         "responses": {
@@ -169,7 +169,7 @@
         ]
       }
     },
-    "/appscode/api/ssl/certificate/v0.1/{uid}/renew": {
+    "/appscode/api/certificate/v0.1/tls-cert/{uid}/renew": {
       "post": {
         "operationId": "Renew",
         "responses": {
@@ -194,7 +194,7 @@
         ]
       }
     },
-    "/appscode/api/ssl/certificate/v0.1/{uid}/revoke": {
+    "/appscode/api/certificate/v0.1/tls-cert/{uid}/revoke": {
       "put": {
         "operationId": "Revoke",
         "responses": {

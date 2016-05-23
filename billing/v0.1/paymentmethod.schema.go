@@ -6,6 +6,6 @@ import (
 )
 
 
-func (m *ChargeResponse) SetStatus(s *dtypes.Status) {
+func (m *ListPaymentResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

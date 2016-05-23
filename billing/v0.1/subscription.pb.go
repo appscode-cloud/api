@@ -48,7 +48,7 @@ var Resource_value = map[string]int32{
 func (x Resource) String() string {
 	return proto.EnumName(Resource_name, int32(x))
 }
-func (Resource) EnumDescriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (Resource) EnumDescriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
 type SubscriptionCreateRequest struct {
 	Phid string `protobuf:"bytes,1,opt,name=phid" json:"phid,omitempty"`
@@ -57,7 +57,7 @@ type SubscriptionCreateRequest struct {
 func (m *SubscriptionCreateRequest) Reset()                    { *m = SubscriptionCreateRequest{} }
 func (m *SubscriptionCreateRequest) String() string            { return proto.CompactTextString(m) }
 func (*SubscriptionCreateRequest) ProtoMessage()               {}
-func (*SubscriptionCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (*SubscriptionCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
 type SubscriptionDescribeRequest struct {
 }
@@ -65,7 +65,7 @@ type SubscriptionDescribeRequest struct {
 func (m *SubscriptionDescribeRequest) Reset()                    { *m = SubscriptionDescribeRequest{} }
 func (m *SubscriptionDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*SubscriptionDescribeRequest) ProtoMessage()               {}
-func (*SubscriptionDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (*SubscriptionDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
 
 type SubscriptionDescribeResponse struct {
 	Status        *dtypes.Status  `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -75,7 +75,7 @@ type SubscriptionDescribeResponse struct {
 func (m *SubscriptionDescribeResponse) Reset()                    { *m = SubscriptionDescribeResponse{} }
 func (m *SubscriptionDescribeResponse) String() string            { return proto.CompactTextString(m) }
 func (*SubscriptionDescribeResponse) ProtoMessage()               {}
-func (*SubscriptionDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+func (*SubscriptionDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
 
 func (m *SubscriptionDescribeResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -105,7 +105,7 @@ type Subscription struct {
 func (m *Subscription) Reset()                    { *m = Subscription{} }
 func (m *Subscription) String() string            { return proto.CompactTextString(m) }
 func (*Subscription) ProtoMessage()               {}
-func (*Subscription) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
+func (*Subscription) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
 
 func (m *Subscription) GetQuota() *Quota {
 	if m != nil {
@@ -125,7 +125,7 @@ type SubscriptionOpenRequest struct {
 func (m *SubscriptionOpenRequest) Reset()                    { *m = SubscriptionOpenRequest{} }
 func (m *SubscriptionOpenRequest) String() string            { return proto.CompactTextString(m) }
 func (*SubscriptionOpenRequest) ProtoMessage()               {}
-func (*SubscriptionOpenRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
+func (*SubscriptionOpenRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
 
 type SubscriptionCloseRequest struct {
 	ProductType string `protobuf:"bytes,1,opt,name=product_type,json=productType" json:"product_type,omitempty"`
@@ -135,7 +135,7 @@ type SubscriptionCloseRequest struct {
 func (m *SubscriptionCloseRequest) Reset()                    { *m = SubscriptionCloseRequest{} }
 func (m *SubscriptionCloseRequest) String() string            { return proto.CompactTextString(m) }
 func (*SubscriptionCloseRequest) ProtoMessage()               {}
-func (*SubscriptionCloseRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{5} }
+func (*SubscriptionCloseRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{5} }
 
 type Quota struct {
 	User        int64             `protobuf:"varint,1,opt,name=user" json:"user,omitempty"`
@@ -149,7 +149,7 @@ type Quota struct {
 func (m *Quota) Reset()                    { *m = Quota{} }
 func (m *Quota) String() string            { return proto.CompactTextString(m) }
 func (*Quota) ProtoMessage()               {}
-func (*Quota) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{6} }
+func (*Quota) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{6} }
 
 func (m *Quota) GetPhabricator() *PhabricatorQuota {
 	if m != nil {
@@ -194,7 +194,7 @@ type PhabricatorQuota struct {
 func (m *PhabricatorQuota) Reset()                    { *m = PhabricatorQuota{} }
 func (m *PhabricatorQuota) String() string            { return proto.CompactTextString(m) }
 func (*PhabricatorQuota) ProtoMessage()               {}
-func (*PhabricatorQuota) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{7} }
+func (*PhabricatorQuota) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{7} }
 
 type CIQuota struct {
 	Agent     int64 `protobuf:"varint,1,opt,name=agent" json:"agent,omitempty"`
@@ -205,7 +205,7 @@ type CIQuota struct {
 func (m *CIQuota) Reset()                    { *m = CIQuota{} }
 func (m *CIQuota) String() string            { return proto.CompactTextString(m) }
 func (*CIQuota) ProtoMessage()               {}
-func (*CIQuota) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{8} }
+func (*CIQuota) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{8} }
 
 type ArtifactoryQuota struct {
 	DiskSize   int64 `protobuf:"varint,1,opt,name=disk_size,json=diskSize" json:"disk_size,omitempty"`
@@ -215,7 +215,7 @@ type ArtifactoryQuota struct {
 func (m *ArtifactoryQuota) Reset()                    { *m = ArtifactoryQuota{} }
 func (m *ArtifactoryQuota) String() string            { return proto.CompactTextString(m) }
 func (*ArtifactoryQuota) ProtoMessage()               {}
-func (*ArtifactoryQuota) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{9} }
+func (*ArtifactoryQuota) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{9} }
 
 type ClusterQuota struct {
 	Cluster int64 `protobuf:"varint,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -225,7 +225,7 @@ type ClusterQuota struct {
 func (m *ClusterQuota) Reset()                    { *m = ClusterQuota{} }
 func (m *ClusterQuota) String() string            { return proto.CompactTextString(m) }
 func (*ClusterQuota) ProtoMessage()               {}
-func (*ClusterQuota) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{10} }
+func (*ClusterQuota) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{10} }
 
 type DBQuota struct {
 	Postgres      int64 `protobuf:"varint,1,opt,name=postgres" json:"postgres,omitempty"`
@@ -236,7 +236,7 @@ type DBQuota struct {
 func (m *DBQuota) Reset()                    { *m = DBQuota{} }
 func (m *DBQuota) String() string            { return proto.CompactTextString(m) }
 func (*DBQuota) ProtoMessage()               {}
-func (*DBQuota) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{11} }
+func (*DBQuota) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{11} }
 
 type SubscriptionQoutaRequest struct {
 	Resource    Resource `protobuf:"varint,1,opt,name=resource,enum=billing.Resource" json:"resource,omitempty"`
@@ -248,7 +248,7 @@ type SubscriptionQoutaRequest struct {
 func (m *SubscriptionQoutaRequest) Reset()                    { *m = SubscriptionQoutaRequest{} }
 func (m *SubscriptionQoutaRequest) String() string            { return proto.CompactTextString(m) }
 func (*SubscriptionQoutaRequest) ProtoMessage()               {}
-func (*SubscriptionQoutaRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{12} }
+func (*SubscriptionQoutaRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{12} }
 
 type SubscriptionQutaResponse struct {
 	Status      *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -258,7 +258,7 @@ type SubscriptionQutaResponse struct {
 func (m *SubscriptionQutaResponse) Reset()                    { *m = SubscriptionQutaResponse{} }
 func (m *SubscriptionQutaResponse) String() string            { return proto.CompactTextString(m) }
 func (*SubscriptionQutaResponse) ProtoMessage()               {}
-func (*SubscriptionQutaResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{13} }
+func (*SubscriptionQutaResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{13} }
 
 func (m *SubscriptionQutaResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -521,7 +521,7 @@ var _Subscriptions_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
-var fileDescriptor1 = []byte{
+var fileDescriptor2 = []byte{
 	// 1020 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xac, 0x56, 0xdd, 0x6e, 0x1b, 0x55,
 	0x10, 0x66, 0xfd, 0xef, 0x71, 0x52, 0x99, 0xa3, 0x52, 0x5c, 0x37, 0x85, 0x74, 0x29, 0x3f, 0x8d,

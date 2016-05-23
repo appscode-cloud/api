@@ -6,31 +6,14 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Charge {
-  rpc Calculate(ChargeRequest) returns (ChargeResponse) {
+  rpc Calculate(dtypes.VoidRequest) returns (ChargeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/billing/v0.1/charge"
     };
   }
-
-  rpc PaymentMethod(ChargeRequest) returns (ChargePaymentResponse) {
-    option (google.api.http) = {
-      get: "/appscode/api/billing/v0.1/charge/payment"
-   };
-  }
-}
-
-message ChargeRequest {
-    string type = 1;
 }
 
 message ChargeResponse {
   dtypes.Status status = 1;
   string cost_usd = 2;
-}
-
-
-message ChargePaymentResponse {
-    dtypes.Status status = 1;
-    string method = 2;
-    repeated string method_list = 3;
 }
