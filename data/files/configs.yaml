@@ -10,8 +10,6 @@ authenticationInterceptor:
     - "/authentication.Authentication/Login"
     - "/authentication.Authentication/Logout"
     - "/authentication.Authentication/Token"
-    - "/authentication.Conduit/WhoAmI"
-    - "/authentication.Conduit/Users"
     - "/mailinglist.MailingList/SendEmail"
     - "/mailinglist.MailingList/Subscribe"
     - "/mailinglist.MailingList/Unsubscribe"
