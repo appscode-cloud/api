@@ -6,30 +6,18 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Purchases {
-  rpc Subscribe(PurchaseOpenRequest) returns (dtypes.VoidResponse) {
+  rpc Open(PurchaseOpenRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/billing/v0.1/purchase/{product_type}/{object_phid}"
       body: "*"
     };
   }
 
-  rpc UnSubscribe(PurchaseCloseRequest) returns (dtypes.VoidResponse) {
+  rpc Close(PurchaseCloseRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/billing/v0.1/purchase/{product_type}/{object_phid}"
     };
   }
-}
-
-message PurchaseCreateRequest {
-    string phid = 1;
-}
-
-message PurchaseDescribeRequest {
-}
-
-message PurchaseDescribeResponse {
-  dtypes.Status status = 1;
-  repeated Purchase items = 2;
 }
 
 message Purchase {

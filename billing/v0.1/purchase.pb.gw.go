@@ -27,7 +27,7 @@ var _ io.Reader
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
-func request_Purchases_Subscribe_0(ctx context.Context, marshaler runtime.Marshaler, client PurchasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Purchases_Open_0(ctx context.Context, marshaler runtime.Marshaler, client PurchasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PurchaseOpenRequest
 	var metadata runtime.ServerMetadata
 
@@ -64,12 +64,12 @@ func request_Purchases_Subscribe_0(ctx context.Context, marshaler runtime.Marsha
 		return nil, metadata, err
 	}
 
-	msg, err := client.Subscribe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Open(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Purchases_UnSubscribe_0(ctx context.Context, marshaler runtime.Marshaler, client PurchasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Purchases_Close_0(ctx context.Context, marshaler runtime.Marshaler, client PurchasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PurchaseCloseRequest
 	var metadata runtime.ServerMetadata
 
@@ -102,7 +102,7 @@ func request_Purchases_UnSubscribe_0(ctx context.Context, marshaler runtime.Mars
 		return nil, metadata, err
 	}
 
-	msg, err := client.UnSubscribe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Close(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -137,7 +137,7 @@ func RegisterPurchasesHandlerFromEndpoint(ctx context.Context, mux *runtime.Serv
 func RegisterPurchasesHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewPurchasesClient(conn)
 
-	mux.Handle("PUT", pattern_Purchases_Subscribe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_Purchases_Open_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -150,18 +150,18 @@ func RegisterPurchasesHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 			}(ctx.Done(), cn.CloseNotify())
 		}
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Purchases_Subscribe_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Purchases_Open_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Purchases_Subscribe_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Purchases_Open_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_Purchases_UnSubscribe_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_Purchases_Close_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -174,14 +174,14 @@ func RegisterPurchasesHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 			}(ctx.Done(), cn.CloseNotify())
 		}
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Purchases_UnSubscribe_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Purchases_Close_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Purchases_UnSubscribe_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Purchases_Close_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -189,13 +189,13 @@ func RegisterPurchasesHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 }
 
 var (
-	pattern_Purchases_Subscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "billing", "v0.1", "purchase", "product_type", "object_phid"}, ""))
+	pattern_Purchases_Open_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "billing", "v0.1", "purchase", "product_type", "object_phid"}, ""))
 
-	pattern_Purchases_UnSubscribe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "billing", "v0.1", "purchase", "product_type", "object_phid"}, ""))
+	pattern_Purchases_Close_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "billing", "v0.1", "purchase", "product_type", "object_phid"}, ""))
 )
 
 var (
-	forward_Purchases_Subscribe_0 = runtime.ForwardResponseMessage
+	forward_Purchases_Open_0 = runtime.ForwardResponseMessage
 
-	forward_Purchases_UnSubscribe_0 = runtime.ForwardResponseMessage
+	forward_Purchases_Close_0 = runtime.ForwardResponseMessage
 )

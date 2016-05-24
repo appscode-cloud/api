@@ -17,7 +17,7 @@
   "paths": {
     "/appscode/api/billing/v0.1/purchase/{product_type}/{object_phid}": {
       "delete": {
-        "operationId": "UnSubscribe",
+        "operationId": "Close",
         "responses": {
           "200": {
             "description": "Description",
@@ -47,7 +47,7 @@
         ]
       },
       "put": {
-        "operationId": "Subscribe",
+        "operationId": "Open",
         "responses": {
           "200": {
             "description": "Description",
