@@ -15,7 +15,6 @@ It has these top-level messages:
 	ChargeRequest
 	ChargeResponse
 	ListPaymentResponse
-	Purchase
 	PurchaseOpenRequest
 	PurchaseCloseRequest
 	SubscriptionCreateRequest

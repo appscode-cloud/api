@@ -20,14 +20,6 @@ service Purchases {
   }
 }
 
-message Purchase {
-  string author = 1;
-  string type = 2;
-  string product_sku = 3;
-  string date_started = 7;
-  string date_ended = 8;
-}
-
 message PurchaseOpenRequest {
   string product_type = 1;
   string author_phid = 2;
