@@ -123,7 +123,8 @@ message DescribeResponse {
   string last_backup = 9;
   kubeInfo kube = 10;
   string db_status = 11;
-  string created = 12;
+  string auth_secret = 12;
+  string created = 13;
 }
 
 message kubeInfo {

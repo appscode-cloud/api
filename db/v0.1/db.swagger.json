@@ -445,6 +445,10 @@
     "dbDescribeResponse": {
       "type": "object",
       "properties": {
+        "auth_secret": {
+          "type": "string",
+          "format": "string"
+        },
         "auto_snapshot": {
           "type": "integer",
           "format": "int32"
