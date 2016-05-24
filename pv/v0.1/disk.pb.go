@@ -7,8 +7,8 @@ Package pv is a generated protocol buffer package.
 
 It is generated from these files:
 	disk.proto
-	pvc.proto
 	pv.proto
+	pvc.proto
 
 It has these top-level messages:
 	DiskCreateRequest
@@ -21,16 +21,16 @@ It has these top-level messages:
 	PVC
 	DiskDescribeRequest
 	DiskDescribeResponse
-	PVCRegisterRequest
-	PVCUnregisterRequest
-	PVCDescribeRequest
-	PVCInfo
-	PVCDescribeResponse
 	PVRegisterRequest
 	PVUnregisterRequest
 	PVDescribeRequest
 	PVInfo
 	PVDescribeResponse
+	PVCRegisterRequest
+	PVCUnregisterRequest
+	PVCDescribeRequest
+	PVCInfo
+	PVCDescribeResponse
 */
 package pv
 
@@ -52,9 +52,7 @@ var _ = math.Inf
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the proto package it is being compiled against.
-// A compilation error at this line likely means your copy of the
-// proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion1
 
 type DiskCreateRequest struct {
 	Cluster  string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
