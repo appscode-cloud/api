@@ -11,17 +11,6 @@
       ],
       "type": "string"
     },
-    "billingSubscriptionCloseRequest": {
-      "properties": {
-        "object_phid": {
-          "type": "string"
-        },
-        "product_type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "billingSubscriptionCreateRequest": {
       "properties": {
         "phid": {
@@ -31,26 +20,6 @@
       "type": "object"
     },
     "billingSubscriptionDescribeRequest": {
-      "type": "object"
-    },
-    "billingSubscriptionOpenRequest": {
-      "properties": {
-        "author_phid": {
-          "type": "string"
-        },
-        "metadata": {
-          "type": "string"
-        },
-        "object_phid": {
-          "type": "string"
-        },
-        "product_phid": {
-          "type": "string"
-        },
-        "product_type": {
-          "type": "string"
-        }
-      },
       "type": "object"
     },
     "billingSubscriptionQoutaRequest": {

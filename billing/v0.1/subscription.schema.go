@@ -8,10 +8,8 @@ import (
 )
 
 var subscriptionQoutaRequestSchema *gojsonschema.Schema
-var subscriptionOpenRequestSchema *gojsonschema.Schema
 var subscriptionCreateRequestSchema *gojsonschema.Schema
 var subscriptionDescribeRequestSchema *gojsonschema.Schema
-var subscriptionCloseRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
@@ -49,30 +47,6 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	subscriptionOpenRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "author_phid": {
-      "type": "string"
-    },
-    "metadata": {
-      "type": "string"
-    },
-    "object_phid": {
-      "type": "string"
-    },
-    "product_phid": {
-      "type": "string"
-    },
-    "product_type": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 	subscriptionCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -92,32 +66,12 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	subscriptionCloseRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "object_phid": {
-      "type": "string"
-    },
-    "product_type": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 }
 
 func (m *SubscriptionQoutaRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionQoutaRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SubscriptionQoutaRequest) IsRequest() {}
-
-func (m *SubscriptionOpenRequest) IsValid() (*gojsonschema.Result, error) {
-	return subscriptionOpenRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *SubscriptionOpenRequest) IsRequest() {}
 
 func (m *SubscriptionCreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -128,11 +82,6 @@ func (m *SubscriptionDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SubscriptionDescribeRequest) IsRequest() {}
-
-func (m *SubscriptionCloseRequest) IsValid() (*gojsonschema.Result, error) {
-	return subscriptionCloseRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *SubscriptionCloseRequest) IsRequest() {}
 
 func (m *SubscriptionQutaResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s

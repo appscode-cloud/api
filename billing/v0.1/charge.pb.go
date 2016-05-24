@@ -8,18 +8,23 @@ Package billing is a generated protocol buffer package.
 It is generated from these files:
 	charge.proto
 	paymentmethod.proto
+	purchase.proto
 	subscription.proto
 
 It has these top-level messages:
 	ChargeRequest
 	ChargeResponse
 	ListPaymentResponse
+	PurchaseCreateRequest
+	PurchaseDescribeRequest
+	PurchaseDescribeResponse
+	Purchase
+	PurchaseOpenRequest
+	PurchaseCloseRequest
 	SubscriptionCreateRequest
 	SubscriptionDescribeRequest
 	SubscriptionDescribeResponse
 	Subscription
-	SubscriptionOpenRequest
-	SubscriptionCloseRequest
 	Quota
 	PhabricatorQuota
 	CIQuota
