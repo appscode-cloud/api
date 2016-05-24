@@ -370,6 +370,10 @@
           "type": "string",
           "format": "string"
         },
+        "mode": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
           "type": "string",
           "format": "string"

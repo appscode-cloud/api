@@ -146,13 +146,14 @@ message Database {
   string namespace = 4;
   string type = 5;
   string sku = 6;
-  string version = 7;
-  string auth_secret = 8;
-  int32 auto_snapshot = 9;
-  int64 pv_size = 10;
-  string created = 11;
-  string last_backup = 12;
-  string status = 13;
+  string mode = 7;
+  string version = 8;
+  string auth_secret = 9;
+  int32 auto_snapshot = 10;
+  int64 pv_size = 11;
+  string created = 12;
+  string last_backup = 13;
+  string status = 14;
 }
 
 message SnapshotListRequest {
