@@ -366,6 +366,10 @@
           "type": "string",
           "format": "string"
         },
+        "deleted": {
+          "type": "string",
+          "format": "string"
+        },
         "last_backup": {
           "type": "string",
           "format": "string"
@@ -493,6 +497,12 @@
       "type": "object",
       "properties": {
         "databases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dbDatabase"
+          }
+        },
+        "deleted_databases": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/dbDatabase"

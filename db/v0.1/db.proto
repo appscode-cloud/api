@@ -137,6 +137,7 @@ message ListRequest {}
 message ListResponse {
   dtypes.Status status = 1;
   repeated Database databases = 2;
+  repeated Database deleted_databases = 3;
 }
 
 message Database {
@@ -151,9 +152,10 @@ message Database {
   string auth_secret = 9;
   int32 auto_snapshot = 10;
   int64 pv_size = 11;
-  string created = 12;
-  string last_backup = 13;
-  string status = 14;
+  string last_backup = 12;
+  string status = 13;
+  string created = 14;
+  string deleted = 15;
 }
 
 message SnapshotListRequest {
