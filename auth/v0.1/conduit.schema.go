@@ -1,4 +1,4 @@
-package authentication
+package auth
 
 // Auto-generated. DO NOT EDIT.
 import (
