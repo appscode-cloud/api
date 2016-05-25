@@ -188,13 +188,8 @@ func dataFilesSubscriptionsJson() (*asset, error) {
 		return nil, err
 	}
 
-<<<<<<< HEAD
 	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(436), modTime: time.Unix(1463493520, 0)}
 	a := &asset{bytes: bytes, info:  info}
-=======
-	info := bindataFileInfo{name: "data/files/subscriptions.json", size: 7127, mode: os.FileMode(420), modTime: time.Unix(1464021303, 0)}
-	a := &asset{bytes: bytes, info: info}
->>>>>>> 7bbd8c8f26b39db5e62431fb96d9b97bf91009f6
 	return a, nil
 }
 
