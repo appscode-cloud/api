@@ -1,4 +1,4 @@
-package authentication
+package auth
 
 // Auto-generated. DO NOT EDIT.
 import (
@@ -7,43 +7,12 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var tokenRequestSchema *gojsonschema.Schema
-var logoutRequestSchema *gojsonschema.Schema
 var loginRequestSchema *gojsonschema.Schema
+var logoutRequestSchema *gojsonschema.Schema
+var tokenRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	tokenRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "namespace": {
-      "type": "string"
-    },
-    "token": {
-      "type": "string"
-    }
-  },
-  "title": "Next Id 4",
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	logoutRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "namespace": {
-      "type": "string"
-    },
-    "token": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 	loginRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -65,22 +34,53 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
+	logoutRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "namespace": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	tokenRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "namespace": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string"
+    }
+  },
+  "title": "Next Id 4",
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
 }
 
-func (m *TokenRequest) IsValid() (*gojsonschema.Result, error) {
-	return tokenRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *LoginRequest) IsValid() (*gojsonschema.Result, error) {
+	return loginRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *TokenRequest) IsRequest() {}
+func (m *LoginRequest) IsRequest() {}
 
 func (m *LogoutRequest) IsValid() (*gojsonschema.Result, error) {
 	return logoutRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *LogoutRequest) IsRequest() {}
 
-func (m *LoginRequest) IsValid() (*gojsonschema.Result, error) {
-	return loginRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *TokenRequest) IsValid() (*gojsonschema.Result, error) {
+	return tokenRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *LoginRequest) IsRequest() {}
+func (m *TokenRequest) IsRequest() {}
 
 func (m *TokenResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s

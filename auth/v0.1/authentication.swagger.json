@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "conduit.proto",
+    "title": "authentication.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,15 +15,15 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/auth/v0.1/conduit/users": {
+    "/appscode/api/auth/v0.1/login": {
       "post": {
-        "summary": "appctl used this to validates the user token with phabricator.",
-        "operationId": "Users",
+        "summary": "This rpc is used to check a valid user from other applications.",
+        "operationId": "Login",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/authenticationConduitUsersResponse"
+              "$ref": "#/definitions/authLoginResponse"
             }
           }
         },
@@ -33,24 +33,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authenticationConduitRequest"
+              "$ref": "#/definitions/authLoginRequest"
             }
           }
         ],
         "tags": [
-          "Conduit"
+          "Authentication"
         ]
       }
     },
-    "/appscode/api/auth/v0.1/conduit/whoami": {
+    "/appscode/api/auth/v0.1/logout": {
       "post": {
-        "summary": "This rpc is used to check a valid user from other applications.",
-        "operationId": "WhoAmI",
+        "operationId": "Logout",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/authenticationConduitWhoAmIResponse"
+              "$ref": "#/definitions/authLogoutResponse"
             }
           }
         },
@@ -60,78 +59,117 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authenticationConduitRequest"
+              "$ref": "#/definitions/authLogoutRequest"
             }
           }
         ],
         "tags": [
-          "Conduit"
+          "Authentication"
+        ]
+      }
+    },
+    "/appscode/api/auth/v0.1/token": {
+      "post": {
+        "summary": "appctl used this to validates the user token with phabricator.",
+        "operationId": "Token",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/authTokenResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authTokenRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Authentication"
         ]
       }
     }
   },
   "definitions": {
-    "authenticationConduitRequest": {
-      "type": "object"
-    },
-    "authenticationConduitUser": {
+    "authLoginRequest": {
       "type": "object",
       "properties": {
-        "iamge": {
+        "issue_token": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "namespace": {
           "type": "string",
           "format": "string"
         },
-        "phid": {
+        "secret": {
           "type": "string",
           "format": "string"
         },
-        "primary_email": {
-          "type": "string",
-          "format": "string"
-        },
-        "real_name": {
-          "type": "string",
-          "format": "string"
-        },
-        "roles": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
-        },
-        "uri": {
-          "type": "string",
-          "format": "string"
-        },
-        "user_name": {
+        "username": {
           "type": "string",
           "format": "string"
         }
       }
     },
-    "authenticationConduitUsersResponse": {
+    "authLoginResponse": {
       "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         },
-        "user": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/authenticationConduitUser"
-          }
+        "token": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
-    "authenticationConduitWhoAmIResponse": {
+    "authLogoutRequest": {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "token": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "authLogoutResponse": {
       "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "authTokenRequest": {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "format": "string"
         },
-        "user": {
-          "$ref": "#/definitions/authenticationConduitUser"
+        "token": {
+          "type": "string",
+          "format": "string"
+        }
+      },
+      "title": "Next Id 4"
+    },
+    "authTokenResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },
