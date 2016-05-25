@@ -2,7 +2,7 @@
   "kube_agent":[
     {
       "sku":"KUBE-AGENT-AIO",
-      "name":"Kubernetes",
+      "display_name":"Kubernetes",
       "pricing_model":"PAYG",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_MIN",

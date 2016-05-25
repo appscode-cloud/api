@@ -7,7 +7,7 @@
     "database":[
       {
         "sku":"DB-PG-BASIC",
-        "name":"Basic",
+        "display_name":"Basic",
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
@@ -21,7 +21,7 @@
       },
       {
         "sku":"DB-PG-DURABLE",
-        "name":"Durable",
+        "display_name":"Durable",
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
@@ -35,7 +35,7 @@
       },
       {
         "sku":"DB-PG-HA",
-        "name":"HA",
+        "display_name":"HA",
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
@@ -49,7 +49,7 @@
       },
       {
         "sku":"DB-PG-CLOUD",
-        "name":"Cloud",
+        "display_name":"Cloud",
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
@@ -72,7 +72,7 @@
     "database":[
       {
         "sku":"DB-ES-BASIC",
-        "name":"Basic",
+        "display_name":"Basic",
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
@@ -86,7 +86,7 @@
       },
       {
         "sku":"DB-ES-DURABLE",
-        "name":"Durable",
+        "display_name":"Durable",
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
@@ -108,7 +108,7 @@
     "database":[
       {
         "sku":"DB-INFLUX-BASIC",
-        "name":"Basic",
+        "display_name":"Basic",
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
@@ -122,7 +122,7 @@
       },
       {
         "sku":"DB-INFLUX-DURABLE",
-        "name":"Durable",
+        "display_name":"Durable",
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",

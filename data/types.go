@@ -7,7 +7,7 @@ import (
 
 type GenericProduct struct {
 	Sku              string    `json:"sku"`
-	Name             string    `json:"name"`
+	DisplayName      string    `json:"display_name"`
 	PricingModel     string    `json:"pricing_model"`
 	SubscriptionType string    `json:"subscription_type"`
 	PricingMetric    string    `json:"pricing_metric"`
@@ -20,7 +20,7 @@ type GenericProduct struct {
 
 type BuildAgent struct {
 	Sku              string    `json:"sku"`
-	Name             string    `json:"name"`
+	DisplayName      string    `json:"display_name"`
 	PricingModel     string    `json:"pricing_model"`
 	SubscriptionType string    `json:"subscription_type"`
 	PricingMetric    string    `json:"pricing_metric"`
@@ -48,7 +48,7 @@ type CIProduct struct {
 
 type KubeAgent struct {
 	Sku              string    `json:"sku"`
-	Name             string    `json:"name"`
+	DisplayName      string    `json:"display_name"`
 	PricingModel     string    `json:"pricing_model"`
 	SubscriptionType string    `json:"subscription_type"`
 	PricingMetric    string    `json:"pricing_metric"`
@@ -70,7 +70,7 @@ type KubeProduct struct {
 
 type Database struct {
 	Sku              string    `json:"sku"`
-	Name             string    `json:"name"`
+	DisplayName      string    `json:"display_name"`
 	PricingModel     string    `json:"pricing_model"`
 	SubscriptionType string    `json:"subscription_type"`
 	PricingMetric    string    `json:"pricing_metric"`
@@ -93,7 +93,7 @@ type DatabaseProduct map[string]*DatabaseInfo
 
 type Subscription struct {
 	Sku              string    `json:"sku"`
-	Name             string    `json:"name"`
+	DisplayName      string    `json:"display_name"`
 	PricingModel     string    `json:"pricing_model"`
 	SubscriptionType string    `json:"subscription_type"`
 	PricingMetric    string    `json:"pricing_metric"`

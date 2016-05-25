@@ -2,7 +2,7 @@
   "build_agent": [
     {
       "sku": "CI-C1R1-DO",
-      "name": "Build Agent",
+      "display_name": "Build Agent",
       "pricing_model":"PAYG",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_MIN",
@@ -25,7 +25,7 @@
     },
     {
       "sku": "CI-C2R2-DO",
-      "name": "Build Agent",
+      "display_name": "Build Agent",
       "pricing_model":"PAYG",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_MIN",
@@ -48,7 +48,7 @@
     },
     {
       "sku": "CI-C2R4-DO",
-      "name": "Build Agent",
+      "display_name": "Build Agent",
       "pricing_model":"PAYG",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_MIN",
@@ -71,7 +71,7 @@
     },
     {
       "sku": "CI-C4R8-DO",
-      "name": "Build Agent",
+      "display_name": "Build Agent",
       "pricing_model":"PAYG",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_MIN",
@@ -94,7 +94,7 @@
     },
     {
       "sku": "CI-C8R16-DO",
-      "name": "Build Agent",
+      "display_name": "Build Agent",
       "pricing_model":"PAYG",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_MIN",

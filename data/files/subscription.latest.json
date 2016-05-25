@@ -2,7 +2,7 @@
   "subscription":[
     {
       "sku":"H-INDIE-TRIAL",
-      "name":"Indie",
+      "display_name":"Indie",
       "pricing_model":"FREE",
       "subscription_type":"TRIAL",
       "pricing_metric":"PER_DAY",
@@ -36,7 +36,7 @@
     },
     {
       "sku":"H-STARTUP-TRIAL",
-      "name":"Startup",
+      "display_name":"Startup",
       "pricing_model":"FREE",
       "subscription_type":"TRIAL",
       "pricing_metric":"PER_DAY",
@@ -70,7 +70,7 @@
     },
     {
       "sku":"H-PRO-TRIAL",
-      "name":"Professional",
+      "display_name":"Professional",
       "pricing_model":"FREE",
       "subscription_type":"TRIAL",
       "pricing_metric":"PER_DAY",
@@ -104,7 +104,7 @@
     },
     {
       "sku":"H-ENT-BETA",
-      "name":"Enterprise",
+      "display_name":"Enterprise",
       "pricing_model":"FREE",
       "subscription_type":"BETA",
       "pricing_metric":"PER_DAY",
@@ -138,7 +138,7 @@
     },
     {
       "sku":"H-ENT-BETA",
-      "name":"Enterprise",
+      "display_name":"Enterprise",
       "pricing_model":"FREE",
       "subscription_type":"BETA",
       "pricing_metric":"PER_DAY",
@@ -172,7 +172,7 @@
     },
     {
       "sku":"P-BETA",
-      "name":"Private Installation",
+      "display_name":"Private Installation",
       "pricing_model":"FREE",
       "subscription_type":"BETA",
       "pricing_metric":"PER_DAY",
@@ -206,7 +206,7 @@
     },
     {
       "sku":"H-FREE",
-      "name":"Free",
+      "display_name":"Free",
       "pricing_model":"M2M",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
@@ -240,7 +240,7 @@
     },
     {
       "sku":"H-M2M-INDIE",
-      "name":"Indie",
+      "display_name":"Indie",
       "pricing_model":"M2M",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
@@ -274,7 +274,7 @@
     },
     {
       "sku":"H-M2M-STARTUP",
-      "name":"Startup",
+      "display_name":"Startup",
       "pricing_model":"M2M",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
@@ -308,7 +308,7 @@
     },
     {
       "sku":"H-M2M-PRO",
-      "name":"Professional",
+      "display_name":"Professional",
       "pricing_model":"M2M",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
@@ -342,7 +342,7 @@
     },
     {
       "sku":"H-APM-INDIE",
-      "name":"Indie",
+      "display_name":"Indie",
       "pricing_model":"APM",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
@@ -376,7 +376,7 @@
     },
     {
       "sku":"H-APM-STARTUP",
-      "name":"Startup",
+      "display_name":"Startup",
       "pricing_model":"APM",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
@@ -410,7 +410,7 @@
     },
     {
       "sku":"H-APM-PRO",
-      "name":"Professional",
+      "display_name":"Professional",
       "pricing_model":"APM",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",

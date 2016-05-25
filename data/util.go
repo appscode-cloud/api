@@ -21,7 +21,7 @@ func DBGenericName(dbName, sku string) (string, error) {
 	if pg, ok := dbs[dbName]; ok {
 		for _, dt := range pg.Database {
 			if strings.ToUpper(dt.Sku) == strings.ToUpper(sku) {
-				return dt.Name, nil
+				return dt.DisplayName, nil
 			}
 		}
 	}
@@ -46,7 +46,7 @@ func DBGenericNameMap() (map[string]string, error) {
 	for _, dType := range dbType {
 		if db, ok := dbs[dType]; ok {
 			for _, dt := range db.Database {
-				skuMap[dt.Sku] = dt.Name
+				skuMap[dt.Sku] = dt.DisplayName
 			}
 		}
 	}
@@ -67,7 +67,7 @@ func DBSku(dbName, mode string) (string, error) {
 	}
 	if pg, ok := dbs[dbName]; ok {
 		for _, dt := range pg.Database {
-			if strings.ToLower(dt.Name) == strings.ToLower(mode) {
+			if strings.ToLower(dt.DisplayName) == strings.ToLower(mode) {
 				return dt.Sku, nil
 			}
 		}
