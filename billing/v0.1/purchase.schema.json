@@ -1,0 +1,35 @@
+{
+  "definitions": {
+    "billingPurchaseCloseRequest": {
+      "properties": {
+        "object_phid": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "billingPurchaseOpenRequest": {
+      "properties": {
+        "author_phid": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "object_phid": {
+          "type": "string"
+        },
+        "product_phid": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

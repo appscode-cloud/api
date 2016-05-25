@@ -26,19 +26,6 @@ service Subscriptions {
     };
   }
 
-  rpc Subscribe(SubscriptionOpenRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      put: "/appscode/api/billing/v0.1/subscription/{product_type}/{object_phid}"
-      body: "*"
-    };
-  }
-
-  rpc UnSubscribe(SubscriptionCloseRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      delete: "/appscode/api/billing/v0.1/subscription/{product_type}/{object_phid}"
-    };
-  }
-
   rpc Quota(SubscriptionQoutaRequest) returns (SubscriptionQutaResponse) {
     option (google.api.http) = {
       post: "/appscode/api/billing/v0.1/subscription/quota"
@@ -68,19 +55,6 @@ message Subscription {
   Quota quota = 6;
   string date_started = 7;
   string date_ended = 8;
-}
-
-message SubscriptionOpenRequest {
-  string product_type = 1;
-  string author_phid = 2;
-  string object_phid = 3;
-  string product_phid = 4;
-  string metadata = 5;
-}
-
-message SubscriptionCloseRequest {
-  string product_type = 1;
-  string object_phid = 2;
 }
 
 message Quota {

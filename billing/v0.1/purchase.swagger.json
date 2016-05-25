@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "subscription.proto",
+    "title": "purchase.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,23 +15,39 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/billing/v0.1/subscription": {
-      "get": {
-        "operationId": "Describe",
+    "/appscode/api/billing/v0.1/purchase/{product_type}/{object_phid}": {
+      "delete": {
+        "operationId": "Close",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionDescribeResponse"
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
+        "parameters": [
+          {
+            "name": "product_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "object_phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
         "tags": [
-          "Subscriptions"
+          "Purchases"
         ]
       },
       "put": {
-        "operationId": "Create",
+        "operationId": "Open",
         "responses": {
           "200": {
             "description": "Description",
@@ -42,272 +58,70 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
+            "name": "product_type",
+            "in": "path",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/billingSubscriptionCreateRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Subscriptions"
-        ]
-      }
-    },
-    "/appscode/api/billing/v0.1/subscription/alter": {
-      "post": {
-        "operationId": "Alter",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "parameters": [
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "object_phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionCreateRequest"
+              "$ref": "#/definitions/billingPurchaseOpenRequest"
             }
           }
         ],
         "tags": [
-          "Subscriptions"
-        ]
-      }
-    },
-    "/appscode/api/billing/v0.1/subscription/quota": {
-      "post": {
-        "operationId": "Quota",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/billingSubscriptionQutaResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/billingSubscriptionQoutaRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Subscriptions"
+          "Purchases"
         ]
       }
     }
   },
   "definitions": {
-    "billingArtifactoryQuota": {
+    "billingPurchaseCloseRequest": {
       "type": "object",
       "properties": {
-        "disk_size": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "repository": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingCIQuota": {
-      "type": "object",
-      "properties": {
-        "agent": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "executors": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "jobs": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingClusterQuota": {
-      "type": "object",
-      "properties": {
-        "cluster": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "nodes": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingDBQuota": {
-      "type": "object",
-      "properties": {
-        "elasticsearch": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "influxdb": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "postgres": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingPhabricatorQuota": {
-      "type": "object",
-      "properties": {
-        "disk_size": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "repository": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingQuota": {
-      "type": "object",
-      "properties": {
-        "artifact": {
-          "$ref": "#/definitions/billingArtifactoryQuota"
-        },
-        "ci": {
-          "$ref": "#/definitions/billingCIQuota"
-        },
-        "db": {
-          "$ref": "#/definitions/billingDBQuota"
-        },
-        "kube": {
-          "$ref": "#/definitions/billingClusterQuota"
-        },
-        "phabricator": {
-          "$ref": "#/definitions/billingPhabricatorQuota"
-        },
-        "user": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingResource": {
-      "type": "string",
-      "enum": [
-        "USER",
-        "CLUSTER",
-        "NODE",
-        "DB",
-        "CI"
-      ],
-      "default": "USER"
-    },
-    "billingSubscription": {
-      "type": "object",
-      "properties": {
-        "author": {
-          "type": "string",
-          "format": "string"
-        },
-        "date_ended": {
-          "type": "string",
-          "format": "string"
-        },
-        "date_started": {
-          "type": "string",
-          "format": "string"
-        },
-        "pricing_model": {
-          "type": "string",
-          "format": "string"
-        },
-        "product_sku": {
+        "object_phid": {
           "type": "string",
           "format": "string"
         },
         "product_type": {
           "type": "string",
           "format": "string"
-        },
-        "quota": {
-          "$ref": "#/definitions/billingQuota"
-        },
-        "type": {
+        }
+      }
+    },
+    "billingPurchaseOpenRequest": {
+      "type": "object",
+      "properties": {
+        "author_phid": {
           "type": "string",
           "format": "string"
-        }
-      }
-    },
-    "billingSubscriptionCreateRequest": {
-      "type": "object",
-      "properties": {
-        "phid": {
+        },
+        "metadata": {
           "type": "string",
           "format": "string"
-        }
-      }
-    },
-    "billingSubscriptionDescribeRequest": {
-      "type": "object"
-    },
-    "billingSubscriptionDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "subscriptions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/billingSubscription"
-          }
-        }
-      }
-    },
-    "billingSubscriptionQoutaRequest": {
-      "type": "object",
-      "properties": {
-        "count": {
-          "type": "integer",
-          "format": "int64"
         },
         "object_phid": {
           "type": "string",
           "format": "string"
         },
-        "resource": {
-          "$ref": "#/definitions/billingResource"
-        },
-        "subresource": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "billingSubscriptionQutaResponse": {
-      "type": "object",
-      "properties": {
         "product_phid": {
           "type": "string",
           "format": "string"
         },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+        "product_type": {
+          "type": "string",
+          "format": "string"
         }
       }
     },

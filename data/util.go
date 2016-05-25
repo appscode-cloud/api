@@ -28,6 +28,33 @@ func DBGenericName(dbName, sku string) (string, error) {
 	return "", fmt.Errorf("Unknown SKU provided", dbName, sku)
 }
 
+func DBGenericNameMap() (map[string]string, error) {
+	bytes, err := files.Asset("data/files/db_products.json")
+	if err != nil {
+		return nil, err
+	}
+
+	dbs := make(map[string]DBProduct)
+	err = json.Unmarshal(bytes, &dbs)
+	if err != nil {
+		return nil, err
+	}
+
+	dbType := []string{"postgres", "elasticsearch", "influx"}
+	skuMap := make(map[string]string)
+
+	for _, dType := range dbType {
+		if db, ok := dbs[dType]; ok {
+			for _, dt := range db.DbTypes {
+				skuMap[dt.Sku] = dt.Name
+			}
+		}
+	}
+
+
+	return skuMap, nil
+}
+
 func DBSku(dbName, mode string) (string, error) {
 	bytes, err := files.Asset("data/files/db_products.json")
 	if err != nil {

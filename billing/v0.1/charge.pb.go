@@ -8,18 +8,19 @@ Package billing is a generated protocol buffer package.
 It is generated from these files:
 	charge.proto
 	paymentmethod.proto
+	purchase.proto
 	subscription.proto
 
 It has these top-level messages:
 	ChargeRequest
 	ChargeResponse
 	ListPaymentResponse
+	PurchaseOpenRequest
+	PurchaseCloseRequest
 	SubscriptionCreateRequest
 	SubscriptionDescribeRequest
 	SubscriptionDescribeResponse
 	Subscription
-	SubscriptionOpenRequest
-	SubscriptionCloseRequest
 	Quota
 	PhabricatorQuota
 	CIQuota
@@ -49,7 +50,9 @@ var _ = math.Inf
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the proto package it is being compiled against.
-const _ = proto.ProtoPackageIsVersion1
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type ChargeRequest struct {
 	Type string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`

@@ -366,7 +366,15 @@
           "type": "string",
           "format": "string"
         },
+        "deleted": {
+          "type": "string",
+          "format": "string"
+        },
         "last_backup": {
+          "type": "string",
+          "format": "string"
+        },
+        "mode": {
           "type": "string",
           "format": "string"
         },
@@ -437,6 +445,10 @@
     "dbDescribeResponse": {
       "type": "object",
       "properties": {
+        "auth_secret": {
+          "type": "string",
+          "format": "string"
+        },
         "auto_snapshot": {
           "type": "integer",
           "format": "int32"
@@ -489,6 +501,12 @@
       "type": "object",
       "properties": {
         "databases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dbDatabase"
+          }
+        },
+        "deleted_databases": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/dbDatabase"
