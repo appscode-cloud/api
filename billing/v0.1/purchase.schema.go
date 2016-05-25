@@ -61,3 +61,4 @@ func (m *PurchaseCloseRequest) IsValid() (*gojsonschema.Result, error) {
 	return purchaseCloseRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PurchaseCloseRequest) IsRequest() {}
+
