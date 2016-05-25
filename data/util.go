@@ -8,18 +8,18 @@ import (
 )
 
 func DBGenericName(dbName, sku string) (string, error) {
-	bytes, err := files.Asset("data/files/db_products.json")
+	bytes, err := files.Asset("data/files/database.latest.json")
 	if err != nil {
 		return "", err
 	}
 
-	dbs := make(map[string]DBProduct)
+	var dbs DatabaseProduct
 	err = json.Unmarshal(bytes, &dbs)
 	if err != nil {
 		return "", err
 	}
 	if pg, ok := dbs[dbName]; ok {
-		for _, dt := range pg.DbTypes {
+		for _, dt := range pg.Database {
 			if strings.ToUpper(dt.Sku) == strings.ToUpper(sku) {
 				return dt.Name, nil
 			}
@@ -29,12 +29,12 @@ func DBGenericName(dbName, sku string) (string, error) {
 }
 
 func DBGenericNameMap() (map[string]string, error) {
-	bytes, err := files.Asset("data/files/db_products.json")
+	bytes, err := files.Asset("data/files/database.latest.json")
 	if err != nil {
 		return nil, err
 	}
 
-	dbs := make(map[string]DBProduct)
+	var dbs DatabaseProduct
 	err = json.Unmarshal(bytes, &dbs)
 	if err != nil {
 		return nil, err
@@ -45,29 +45,28 @@ func DBGenericNameMap() (map[string]string, error) {
 
 	for _, dType := range dbType {
 		if db, ok := dbs[dType]; ok {
-			for _, dt := range db.DbTypes {
+			for _, dt := range db.Database {
 				skuMap[dt.Sku] = dt.Name
 			}
 		}
 	}
 
-
 	return skuMap, nil
 }
 
 func DBSku(dbName, mode string) (string, error) {
-	bytes, err := files.Asset("data/files/db_products.json")
+	bytes, err := files.Asset("data/files/database.latest.json")
 	if err != nil {
 		return "", err
 	}
 
-	dbs := make(map[string]DBProduct)
+	var dbs DatabaseProduct
 	err = json.Unmarshal(bytes, &dbs)
 	if err != nil {
 		return "", err
 	}
 	if pg, ok := dbs[dbName]; ok {
-		for _, dt := range pg.DbTypes {
+		for _, dt := range pg.Database {
 			if strings.ToLower(dt.Name) == strings.ToLower(mode) {
 				return dt.Sku, nil
 			}
@@ -77,12 +76,12 @@ func DBSku(dbName, mode string) (string, error) {
 }
 
 func DBVersion(dbName, dbVersion string) (string, error) {
-	bytes, err := files.Asset("data/files/db_products.json")
+	bytes, err := files.Asset("data/files/database.latest.json")
 	if err != nil {
 		return "", err
 	}
 
-	dbs := make(map[string]DBProduct)
+	var dbs DatabaseProduct
 	err = json.Unmarshal(bytes, &dbs)
 	if err != nil {
 		return "", err
@@ -107,7 +106,7 @@ func DBVersion(dbName, dbVersion string) (string, error) {
 curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer <token>" "https://api.digitalocean.com/v2/sizes"
 */
 func CIBuildAgent(sku string) (*BuildAgent, error) {
-	bytes, err := files.Asset("data/files/ci_products.json")
+	bytes, err := files.Asset("data/files/ci.latest.json")
 	if err != nil {
 		return nil, err
 	}
@@ -117,7 +116,7 @@ func CIBuildAgent(sku string) (*BuildAgent, error) {
 	if err != nil {
 		return nil, err
 	}
-	for _, agent := range ci.BuildAgents {
+	for _, agent := range ci.BuildAgent {
 		if agent.Sku == strings.ToUpper(sku) {
 			return agent, nil
 		}

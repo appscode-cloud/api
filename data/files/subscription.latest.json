@@ -7,7 +7,7 @@
       "subscription_type":"TRIAL",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -41,7 +41,7 @@
       "subscription_type":"TRIAL",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -75,7 +75,7 @@
       "subscription_type":"TRIAL",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -109,7 +109,7 @@
       "subscription_type":"BETA",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -143,7 +143,7 @@
       "subscription_type":"BETA",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -177,7 +177,7 @@
       "subscription_type":"BETA",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -211,7 +211,7 @@
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -245,7 +245,7 @@
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -279,7 +279,7 @@
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -313,7 +313,7 @@
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -347,7 +347,7 @@
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -381,7 +381,7 @@
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },
@@ -415,7 +415,7 @@
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
       "unit_price_usd":0.1,
-      "dispay_price_usd":{
+      "display_price_usd":{
         "per_month_m2m":3,
         "per_month_apm":2.5
       },

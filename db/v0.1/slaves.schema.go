@@ -34,4 +34,3 @@ func (m *SlaveAddRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveAddRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SlaveAddRequest) IsRequest() {}
-
