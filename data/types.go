@@ -25,7 +25,7 @@ type SubscriptionProduct struct {
 			Elasticsearch int `json:"elasticsearch"`
 			Influxdb      int `json:"influxdb"`
 		} `json:"db"`
-	} `json:"details"`
+	} `json:"metadata"`
 	DateStarted time.Time `json:"date_started"`
 	DateEnded   time.Time `json:"date_ended"`
 }
@@ -46,7 +46,7 @@ type BuildAgent struct {
 		Disk                 int    `json:"disk"`
 		RecommendedExecutors int    `json:"recommended_executors"`
 		ExternalID           string `json:"external_id"`
-	} `json:"details"`
+	} `json:"metadata"`
 	DateStarted time.Time `json:"date_started"`
 	DateEnded   time.Time `json:"date_ended"`
 }
