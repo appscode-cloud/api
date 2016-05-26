@@ -15,14 +15,14 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/billing/v0.1/charge": {
-      "get": {
+    "/appscode/api/billing/v0.1/invoice": {
+      "post": {
         "operationId": "Generate",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/billingChargeResponse"
+              "$ref": "#/definitions/billingInvoiceResponse"
             }
           }
         },
@@ -33,16 +33,16 @@
     }
   },
   "definitions": {
-    "billingChargeRequest": {
+    "billingInvoiceRequest": {
       "type": "object",
       "properties": {
-        "type": {
+        "time_unit": {
           "type": "string",
           "format": "string"
         }
       }
     },
-    "billingChargeResponse": {
+    "billingInvoiceResponse": {
       "type": "object",
       "properties": {
         "cost_usd": {

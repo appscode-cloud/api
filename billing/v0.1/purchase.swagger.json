@@ -17,12 +17,12 @@
   "paths": {
     "/appscode/api/billing/v0.1/purchase": {
       "get": {
-        "operationId": "BeginPurchase",
+        "operationId": "Begin",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/billingPurchaseQutaResponse"
+              "$ref": "#/definitions/billingPurchaseBeginResponse"
             }
           }
         },
@@ -31,7 +31,7 @@
         ]
       },
       "put": {
-        "operationId": "ConfirmPurchase",
+        "operationId": "Confirm",
         "responses": {
           "200": {
             "description": "Description",
@@ -46,7 +46,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingPurchaseOpenRequest"
+              "$ref": "#/definitions/billingPurchaseConfirmRequest"
             }
           }
         ],
@@ -82,6 +82,31 @@
     }
   },
   "definitions": {
+    "billingPurchaseBeginRequest": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "product_sku": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingPurchaseBeginResponse": {
+      "type": "object",
+      "properties": {
+        "phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "billingPurchaseCloseRequest": {
       "type": "object",
       "properties": {
@@ -91,7 +116,7 @@
         }
       }
     },
-    "billingPurchaseOpenRequest": {
+    "billingPurchaseConfirmRequest": {
       "type": "object",
       "properties": {
         "object_phid": {
@@ -101,31 +126,6 @@
         "phid": {
           "type": "string",
           "format": "string"
-        }
-      }
-    },
-    "billingPurchaseQoutaRequest": {
-      "type": "object",
-      "properties": {
-        "count": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "product_type": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "billingPurchaseQutaResponse": {
-      "type": "object",
-      "properties": {
-        "phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },

@@ -32,7 +32,7 @@ var (
 )
 
 func request_Invoice_Generate_0(ctx context.Context, marshaler runtime.Marshaler, client InvoiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ChargeRequest
+	var protoReq InvoiceRequest
 	var metadata runtime.ServerMetadata
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Invoice_Generate_0); err != nil {
@@ -74,7 +74,7 @@ func RegisterInvoiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeM
 func RegisterInvoiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewInvoiceClient(conn)
 
-	mux.Handle("GET", pattern_Invoice_Generate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Invoice_Generate_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -102,7 +102,7 @@ func RegisterInvoiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 }
 
 var (
-	pattern_Invoice_Generate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "charge"}, ""))
+	pattern_Invoice_Generate_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "invoice"}, ""))
 )
 
 var (

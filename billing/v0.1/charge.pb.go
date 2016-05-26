@@ -14,12 +14,12 @@ It is generated from these files:
 
 It has these top-level messages:
 	ChargeEstimateResponse
-	ChargeRequest
-	ChargeResponse
+	InvoiceRequest
+	InvoiceResponse
 	PaymentMethodListResponse
-	PurchaseQoutaRequest
-	PurchaseQutaResponse
-	PurchaseOpenRequest
+	PurchaseBeginRequest
+	PurchaseBeginResponse
+	PurchaseConfirmRequest
 	PurchaseCloseRequest
 	SubscriptionSubscribeRequest
 */

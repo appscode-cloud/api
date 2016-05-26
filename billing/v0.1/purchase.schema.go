@@ -7,13 +7,13 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var purchaseOpenRequestSchema *gojsonschema.Schema
-var purchaseQoutaRequestSchema *gojsonschema.Schema
+var purchaseConfirmRequestSchema *gojsonschema.Schema
+var purchaseBeginRequestSchema *gojsonschema.Schema
 var purchaseCloseRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	purchaseOpenRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	purchaseConfirmRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "object_phid": {
@@ -28,13 +28,13 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	purchaseQoutaRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	purchaseBeginRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "count": {
       "type": "integer"
     },
-    "product_type": {
+    "product_sku": {
       "type": "string"
     }
   },
@@ -57,21 +57,21 @@ func init() {
 	}
 }
 
-func (m *PurchaseOpenRequest) IsValid() (*gojsonschema.Result, error) {
-	return purchaseOpenRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *PurchaseConfirmRequest) IsValid() (*gojsonschema.Result, error) {
+	return purchaseConfirmRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *PurchaseOpenRequest) IsRequest() {}
+func (m *PurchaseConfirmRequest) IsRequest() {}
 
-func (m *PurchaseQoutaRequest) IsValid() (*gojsonschema.Result, error) {
-	return purchaseQoutaRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *PurchaseBeginRequest) IsValid() (*gojsonschema.Result, error) {
+	return purchaseBeginRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *PurchaseQoutaRequest) IsRequest() {}
+func (m *PurchaseBeginRequest) IsRequest() {}
 
 func (m *PurchaseCloseRequest) IsValid() (*gojsonschema.Result, error) {
 	return purchaseCloseRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PurchaseCloseRequest) IsRequest() {}
 
-func (m *PurchaseQutaResponse) SetStatus(s *dtypes.Status) {
+func (m *PurchaseBeginResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

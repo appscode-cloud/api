@@ -1,8 +1,8 @@
 {
   "definitions": {
-    "billingChargeRequest": {
+    "billingInvoiceRequest": {
       "properties": {
-        "type": {
+        "time_unit": {
           "type": "string"
         }
       },

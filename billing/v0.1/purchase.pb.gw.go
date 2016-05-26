@@ -28,31 +28,31 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 var (
-	filter_Purchase_BeginPurchase_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_Purchase_Begin_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_Purchase_BeginPurchase_0(ctx context.Context, marshaler runtime.Marshaler, client PurchaseClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PurchaseQoutaRequest
+func request_Purchase_Begin_0(ctx context.Context, marshaler runtime.Marshaler, client PurchaseClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PurchaseBeginRequest
 	var metadata runtime.ServerMetadata
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Purchase_BeginPurchase_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Purchase_Begin_0); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.BeginPurchase(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Begin(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Purchase_ConfirmPurchase_0(ctx context.Context, marshaler runtime.Marshaler, client PurchaseClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PurchaseOpenRequest
+func request_Purchase_Confirm_0(ctx context.Context, marshaler runtime.Marshaler, client PurchaseClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PurchaseConfirmRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.ConfirmPurchase(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Confirm(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -114,7 +114,7 @@ func RegisterPurchaseHandlerFromEndpoint(ctx context.Context, mux *runtime.Serve
 func RegisterPurchaseHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewPurchaseClient(conn)
 
-	mux.Handle("GET", pattern_Purchase_BeginPurchase_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Purchase_Begin_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -127,18 +127,18 @@ func RegisterPurchaseHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 			}(ctx.Done(), cn.CloseNotify())
 		}
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Purchase_BeginPurchase_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Purchase_Begin_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Purchase_BeginPurchase_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Purchase_Begin_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_Purchase_ConfirmPurchase_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_Purchase_Confirm_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -151,14 +151,14 @@ func RegisterPurchaseHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 			}(ctx.Done(), cn.CloseNotify())
 		}
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Purchase_ConfirmPurchase_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Purchase_Confirm_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Purchase_ConfirmPurchase_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Purchase_Confirm_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -190,17 +190,17 @@ func RegisterPurchaseHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 }
 
 var (
-	pattern_Purchase_BeginPurchase_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "purchase"}, ""))
+	pattern_Purchase_Begin_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "purchase"}, ""))
 
-	pattern_Purchase_ConfirmPurchase_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "purchase"}, ""))
+	pattern_Purchase_Confirm_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "purchase"}, ""))
 
 	pattern_Purchase_Close_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "billing", "v0.1", "purchase", "object_phid"}, ""))
 )
 
 var (
-	forward_Purchase_BeginPurchase_0 = runtime.ForwardResponseMessage
+	forward_Purchase_Begin_0 = runtime.ForwardResponseMessage
 
-	forward_Purchase_ConfirmPurchase_0 = runtime.ForwardResponseMessage
+	forward_Purchase_Confirm_0 = runtime.ForwardResponseMessage
 
 	forward_Purchase_Close_0 = runtime.ForwardResponseMessage
 )

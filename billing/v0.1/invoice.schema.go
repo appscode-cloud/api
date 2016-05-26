@@ -7,14 +7,14 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var chargeRequestSchema *gojsonschema.Schema
+var invoiceRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	chargeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	invoiceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "type": {
+    "time_unit": {
       "type": "string"
     }
   },
@@ -25,11 +25,11 @@ func init() {
 	}
 }
 
-func (m *ChargeRequest) IsValid() (*gojsonschema.Result, error) {
-	return chargeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *InvoiceRequest) IsValid() (*gojsonschema.Result, error) {
+	return invoiceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ChargeRequest) IsRequest() {}
+func (m *InvoiceRequest) IsRequest() {}
 
-func (m *ChargeResponse) SetStatus(s *dtypes.Status) {
+func (m *InvoiceResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

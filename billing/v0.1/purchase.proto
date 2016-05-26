@@ -6,13 +6,13 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Purchase {
-  rpc BeginPurchase(PurchaseQoutaRequest) returns (PurchaseQutaResponse) {
+  rpc Begin(PurchaseBeginRequest) returns (PurchaseBeginResponse) {
     option (google.api.http) = {
       get: "/appscode/api/billing/v0.1/purchase"
     };
   }
 
-  rpc ConfirmPurchase(PurchaseOpenRequest) returns (dtypes.VoidResponse) {
+  rpc Confirm(PurchaseConfirmRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/billing/v0.1/purchase"
       body: "*"
@@ -26,17 +26,17 @@ service Purchase {
   }
 }
 
-message PurchaseQoutaRequest {
-  string product_type = 1;
+message PurchaseBeginRequest {
+  string product_sku = 1;
   int64 count = 2;
 }
 
-message PurchaseQutaResponse {
+message PurchaseBeginResponse {
   dtypes.Status status = 1;
   string phid = 2;
 }
 
-message PurchaseOpenRequest {
+message PurchaseConfirmRequest {
   string phid = 1;
   string object_phid = 2;
 }
