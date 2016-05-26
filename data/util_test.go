@@ -24,7 +24,7 @@ func TestGenericParsing(t *testing.T) {
 	}
 
 	p := &struct {
-		Subscription []*GenericProduct `json:"subscription"`
+		Subscription []*Product `json:"subscription"`
 	}{}
 	err = json.Unmarshal(bytes, &p)
 	if err != nil {

@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-type GenericProduct struct {
+type Product struct {
 	Sku              string          `json:"sku"`
 	DisplayName      string          `json:"display_name"`
 	PricingModel     string          `json:"pricing_model"`
