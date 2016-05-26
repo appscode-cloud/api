@@ -259,5 +259,5 @@ if __name__ == "__main__":
         globals()[sys.argv[1]](*sys.argv[2:])
     else:
         generate_json_schema()
-        apply_naming_policy()
+        # apply_naming_policy()
         generate_go_schema()
