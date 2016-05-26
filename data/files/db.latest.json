@@ -9,7 +9,7 @@
             "sku":"DB-PG-BASIC",
             "type":"db.free.postgres",
             "display_name":"Basic",
-            "pricing_model":"PAYG",
+            "pricing_model":"FREE",
             "time_unit":"MINUTE",
             "pricing_formula":"0.1",
             "display_price_usd":{
@@ -75,7 +75,7 @@
             "sku":"DB-ES-BASIC",
             "type":"db.free.elasticsearch",
             "display_name":"Basic",
-            "pricing_model":"PAYG",
+            "pricing_model":"FREE",
             "time_unit":"MINUTE",
             "pricing_formula":"0.1",
             "display_price_usd":{
@@ -111,7 +111,7 @@
             "sku":"DB-INFLUX-BASIC",
             "type":"db.free.influx",
             "display_name":"Basic",
-            "pricing_model":"PAYG",
+            "pricing_model":"FREE",
             "time_unit":"MINUTE",
             "pricing_formula":"0.1",
             "display_price_usd":{
