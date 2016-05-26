@@ -6,15 +6,14 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service PaymentMethod {
-  rpc PaymentMethod(dtypes.VoidRequest) returns (ListPaymentResponse) {
+  rpc List(dtypes.VoidRequest) returns (PaymentMethodListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/billing/v0.1/paymentmethod"
    };
   }
 }
 
-message ListPaymentResponse {
+message PaymentMethodListResponse {
     dtypes.Status status = 1;
-    string method = 2;
-    repeated string method_list = 3;
+    repeated string payment_methods = 3;
 }

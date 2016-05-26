@@ -8,27 +8,23 @@ import "api/dtypes/types.proto";
 service Purchases {
   rpc Open(PurchaseOpenRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/billing/v0.1/purchase/{product_type}/{object_phid}"
+      put: "/appscode/api/billing/v0.1/purchase/{object_phid}"
       body: "*"
     };
   }
 
   rpc Close(PurchaseCloseRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/billing/v0.1/purchase/{product_type}/{object_phid}"
+      delete: "/appscode/api/billing/v0.1/purchase/{object_phid}"
     };
   }
 }
 
 message PurchaseOpenRequest {
-  string product_type = 1;
-  string author_phid = 2;
-  string object_phid = 3;
-  string product_phid = 4;
-  string metadata = 5;
+  string object_phid = 1;
+  string product_phid = 2;
 }
 
 message PurchaseCloseRequest {
-  string product_type = 1;
-  string object_phid = 2;
+  string object_phid = 1;
 }
