@@ -8,26 +8,27 @@ import (
 
 type Product struct {
 	Sku              string          `json:"sku"`
-	Type string  `json:"type"`
+	Type             string          `json:"type"`
 	DisplayName      string          `json:"display_name"`
 	PricingModel     string          `json:"pricing_model"`
 	SubscriptionType string          `json:"subscription_type"`
-	TimeUnit string `json:"time_unit"`
-	PricingFormula string `json:"pricing_formula"`
+	TimeUnit         string          `json:"time_unit"`
+	PricingFormula   string          `json:"pricing_formula"`
 	DisplayPriceUSD  json.RawMessage `json:"display_price_usd"`
 	Metadata         json.RawMessage `json:"metadata"`
+	Quota            json.RawMessage `json:"quota"`
 	DateStarted      time.Time       `json:"date_started"`
 	DateEnded        time.Time       `json:"date_ended"`
 }
 
 type BuildAgent struct {
 	Sku              string `json:"sku"`
-	Type string  `json:"type"`
+	Type             string `json:"type"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
 	SubscriptionType string `json:"subscription_type"`
-	TimeUnit string `json:"time_unit"`
-		PricingFormula string `json:"pricing_formula"`
+	TimeUnit         string `json:"time_unit"`
+	PricingFormula   string `json:"pricing_formula"`
 	DisplayPriceUSD  struct {
 		PerHour  Money `json:"per_hour"`
 		PerMonth Money `json:"per_month"`
@@ -41,8 +42,9 @@ type BuildAgent struct {
 		RecommendedExecutors int    `json:"recommended_executors"`
 		ExternalID           string `json:"external_id"`
 	} `json:"metadata"`
-	DateStarted time.Time `json:"date_started"`
-	DateEnded   time.Time `json:"date_ended"`
+	Quota       map[string]int `json:"quota"`
+	DateStarted time.Time      `json:"date_started"`
+	DateEnded   time.Time      `json:"date_ended"`
 }
 
 type CIProduct struct {
@@ -51,21 +53,19 @@ type CIProduct struct {
 
 type KubeAgent struct {
 	Sku              string `json:"sku"`
-	Type string  `json:"type"`
+	Type             string `json:"type"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
 	SubscriptionType string `json:"subscription_type"`
-	TimeUnit string `json:"time_unit"`
-		PricingFormula string `json:"pricing_formula"`
+	TimeUnit         string `json:"time_unit"`
+	PricingFormula   string `json:"pricing_formula"`
 	DisplayPriceUSD  struct {
 		PerHour  Money `json:"per_hour"`
 		PerMonth Money `json:"per_month"`
 	} `json:"display_price_usd"`
-	Metadata struct {
-		CPU int `json:"cpu"`
-	} `json:"metadata"`
-	DateStarted time.Time `json:"date_started"`
-	DateEnded   time.Time `json:"date_ended"`
+	Quota       map[string]int `json:"quota"`
+	DateStarted time.Time      `json:"date_started"`
+	DateEnded   time.Time      `json:"date_ended"`
 }
 
 type ClusterProduct struct {
@@ -74,18 +74,19 @@ type ClusterProduct struct {
 
 type DB struct {
 	Sku              string `json:"sku"`
-	Type string  `json:"type"`
+	Type             string `json:"type"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
 	SubscriptionType string `json:"subscription_type"`
-	TimeUnit string `json:"time_unit"`
-		PricingFormula string `json:"pricing_formula"`
+	TimeUnit         string `json:"time_unit"`
+	PricingFormula   string `json:"pricing_formula"`
 	DisplayPriceUSD  struct {
 		PerHour  Money `json:"per_hour"`
 		PerMonth Money `json:"per_month"`
 	} `json:"display_price_usd"`
-	DateStarted time.Time `json:"date_started"`
-	DateEnded   time.Time `json:"date_ended"`
+	Quota       map[string]int `json:"quota"`
+	DateStarted time.Time      `json:"date_started"`
+	DateEnded   time.Time      `json:"date_ended"`
 }
 
 type DBInfo struct {
@@ -98,25 +99,25 @@ type DBProduct map[string]*DBInfo
 
 type Package struct {
 	Sku              string `json:"sku"`
-	Type string  `json:"type"`
+	Type             string `json:"type"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
 	SubscriptionType string `json:"subscription_type"`
-	TimeUnit string `json:"time_unit"`
-	PricingFormula string `json:"pricing_formula"`
+	TimeUnit         string `json:"time_unit"`
+	PricingFormula   string `json:"pricing_formula"`
 	DisplayPriceUSD  struct {
 		PerMonthM2M Money `json:"per_month_m2m"`
 		PerMonthAPM Money `json:"per_month_apm"`
 	} `json:"display_price_usd"`
-	Metadata struct {
-		PkgUser int `json:"pkg.user"`
+	Quota struct {
+		PkgUser           int `json:"pkg.user"`
 		PhabricatorDiskGB int `json:"phabricator.disk_gb"`
-		ArtifactDiskGB int `json:"artifact.disk_gb"`
-		CIBuildAgent int `json:"ci.build_agent"`
-		ClusterKubeAgent int `json:"cluster.kube_agent"`
-		DBPostgres int `json:"db.postgres"`
-		DBElasticSearch int `json:"db.elasticsearch"`
-		DBInflux int `json:"db.influx"`
+		ArtifactDiskGB    int `json:"artifact.disk_gb"`
+		CIBuildAgent      int `json:"ci.build_agent"`
+		ClusterKubeAgent  int `json:"cluster.kube_agent"`
+		DBPostgres        int `json:"db.postgres"`
+		DBElasticSearch   int `json:"db.elasticsearch"`
+		DBInflux          int `json:"db.influx"`
 	} `json:"metadata"`
 	DateStarted time.Time `json:"date_started"`
 	DateEnded   time.Time `json:"date_ended"`

@@ -73,4 +73,3 @@ func (m *SendEmailRequest) IsValid() (*gojsonschema.Result, error) {
 	return sendEmailRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SendEmailRequest) IsRequest() {}
-
