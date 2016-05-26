@@ -1,5 +1,5 @@
 {
-  "cloud_providers":{
+  "cloud_provider":{
     "aws":{
       "name":"aws",
       "regions":[
