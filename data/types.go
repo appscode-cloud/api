@@ -92,7 +92,7 @@ type ClusterProduct struct {
 	KubeAgent []*KubeAgent `json:"kube_agent"`
 }
 
-type Subscription struct {
+type Package struct {
 	Sku              string `json:"sku"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
@@ -127,8 +127,8 @@ type Subscription struct {
 	DateEnded   time.Time `json:"date_ended"`
 }
 
-type SubscriptionProduct struct {
-	Subscription []*Subscription `json:"subscription"`
+type PackageProduct struct {
+	Package []*Package `json:"package"`
 }
 
 type Money string
