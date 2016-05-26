@@ -16,7 +16,21 @@
   ],
   "paths": {
     "/appscode/api/billing/v0.1/purchase": {
-      "get": {
+      "delete": {
+        "operationId": "Close",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Purchase"
+        ]
+      },
+      "post": {
         "operationId": "Begin",
         "responses": {
           "200": {
@@ -29,7 +43,9 @@
         "tags": [
           "Purchase"
         ]
-      },
+      }
+    },
+    "/appscode/api/billing/v0.1/purchase/{phid}": {
       "put": {
         "operationId": "Confirm",
         "responses": {
@@ -42,37 +58,19 @@
         },
         "parameters": [
           {
+            "name": "phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
               "$ref": "#/definitions/billingPurchaseConfirmRequest"
             }
-          }
-        ],
-        "tags": [
-          "Purchase"
-        ]
-      }
-    },
-    "/appscode/api/billing/v0.1/purchase/{object_phid}": {
-      "delete": {
-        "operationId": "Close",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "object_phid",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
           }
         ],
         "tags": [

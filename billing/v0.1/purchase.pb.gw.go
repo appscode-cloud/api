@@ -52,15 +52,6 @@ func request_Purchase_Confirm_0(ctx context.Context, marshaler runtime.Marshaler
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.Confirm(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func request_Purchase_Close_0(ctx context.Context, marshaler runtime.Marshaler, client PurchaseClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PurchaseCloseRequest
-	var metadata runtime.ServerMetadata
-
 	var (
 		val string
 		ok  bool
@@ -68,15 +59,32 @@ func request_Purchase_Close_0(ctx context.Context, marshaler runtime.Marshaler, 
 		_   = err
 	)
 
-	val, ok = pathParams["object_phid"]
+	val, ok = pathParams["phid"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "object_phid")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "phid")
 	}
 
-	protoReq.ObjectPhid, err = runtime.String(val)
+	protoReq.Phid, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
+	}
+
+	msg, err := client.Confirm(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+var (
+	filter_Purchase_Close_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
+func request_Purchase_Close_0(ctx context.Context, marshaler runtime.Marshaler, client PurchaseClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PurchaseCloseRequest
+	var metadata runtime.ServerMetadata
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Purchase_Close_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Close(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -114,7 +122,7 @@ func RegisterPurchaseHandlerFromEndpoint(ctx context.Context, mux *runtime.Serve
 func RegisterPurchaseHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	client := NewPurchaseClient(conn)
 
-	mux.Handle("GET", pattern_Purchase_Begin_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Purchase_Begin_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -192,9 +200,9 @@ func RegisterPurchaseHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 var (
 	pattern_Purchase_Begin_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "purchase"}, ""))
 
-	pattern_Purchase_Confirm_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "purchase"}, ""))
+	pattern_Purchase_Confirm_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "billing", "v0.1", "purchase", "phid"}, ""))
 
-	pattern_Purchase_Close_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "billing", "v0.1", "purchase", "object_phid"}, ""))
+	pattern_Purchase_Close_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "purchase"}, ""))
 )
 
 var (

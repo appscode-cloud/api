@@ -13,12 +13,11 @@ func Test(t *testing.T) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(agent.UnitPriceUSD.String())
-	fmt.Println(agent.UnitPriceUSD.Float())
+	fmt.Println(agent.DisplayPriceUSD)
 }
 
 func TestGenericParsing(t *testing.T) {
-	bytes, err := files.Asset("data/files/subscription.latest.json")
+	bytes, err := files.Asset("data/files/pkg.latest.json")
 	if err != nil {
 		log.Fatal(err)
 	}

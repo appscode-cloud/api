@@ -8,20 +8,20 @@ import "api/dtypes/types.proto";
 service Purchase {
   rpc Begin(PurchaseBeginRequest) returns (PurchaseBeginResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/billing/v0.1/purchase"
+      post: "/appscode/api/billing/v0.1/purchase"
     };
   }
 
   rpc Confirm(PurchaseConfirmRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/billing/v0.1/purchase"
+      put: "/appscode/api/billing/v0.1/purchase/{phid}"
       body: "*"
     };
   }
 
   rpc Close(PurchaseCloseRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/billing/v0.1/purchase/{object_phid}"
+      delete: "/appscode/api/billing/v0.1/purchase"
     };
   }
 }
