@@ -16,7 +16,6 @@ It has these top-level messages:
 	ChargeEstimateResponse
 	InvoiceCreateRequest
 	InvoiceCreateResponse
-	PaymentMethodListResponse
 	PurchaseBeginRequest
 	PurchaseBeginResponse
 	PurchaseCompleteRequest
