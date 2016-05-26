@@ -7,19 +7,19 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var purchaseConfirmRequestSchema *gojsonschema.Schema
 var purchaseBeginRequestSchema *gojsonschema.Schema
+var purchaseCompleteRequestSchema *gojsonschema.Schema
 var purchaseCloseRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	purchaseConfirmRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	purchaseBeginRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "object_phid": {
-      "type": "string"
+    "count": {
+      "type": "integer"
     },
-    "phid": {
+    "product_sku": {
       "type": "string"
     }
   },
@@ -28,13 +28,16 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	purchaseBeginRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	purchaseCompleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "count": {
-      "type": "integer"
+    "failed": {
+      "type": "boolean"
     },
-    "product_sku": {
+    "object_phid": {
+      "type": "string"
+    },
+    "phid": {
       "type": "string"
     }
   },
@@ -57,15 +60,15 @@ func init() {
 	}
 }
 
-func (m *PurchaseConfirmRequest) IsValid() (*gojsonschema.Result, error) {
-	return purchaseConfirmRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *PurchaseConfirmRequest) IsRequest() {}
-
 func (m *PurchaseBeginRequest) IsValid() (*gojsonschema.Result, error) {
 	return purchaseBeginRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PurchaseBeginRequest) IsRequest() {}
+
+func (m *PurchaseCompleteRequest) IsValid() (*gojsonschema.Result, error) {
+	return purchaseCompleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *PurchaseCompleteRequest) IsRequest() {}
 
 func (m *PurchaseCloseRequest) IsValid() (*gojsonschema.Result, error) {
 	return purchaseCloseRequestSchema.Validate(gojsonschema.NewGoLoader(m))

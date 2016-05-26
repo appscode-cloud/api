@@ -44,8 +44,8 @@ func request_Purchase_Begin_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 }
 
-func request_Purchase_Confirm_0(ctx context.Context, marshaler runtime.Marshaler, client PurchaseClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PurchaseConfirmRequest
+func request_Purchase_Complete_0(ctx context.Context, marshaler runtime.Marshaler, client PurchaseClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PurchaseCompleteRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -70,7 +70,7 @@ func request_Purchase_Confirm_0(ctx context.Context, marshaler runtime.Marshaler
 		return nil, metadata, err
 	}
 
-	msg, err := client.Confirm(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Complete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -146,7 +146,7 @@ func RegisterPurchaseHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 
 	})
 
-	mux.Handle("PUT", pattern_Purchase_Confirm_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_Purchase_Complete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -159,14 +159,14 @@ func RegisterPurchaseHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 			}(ctx.Done(), cn.CloseNotify())
 		}
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Purchase_Confirm_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Purchase_Complete_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Purchase_Confirm_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Purchase_Complete_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -200,7 +200,7 @@ func RegisterPurchaseHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 var (
 	pattern_Purchase_Begin_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "purchase"}, ""))
 
-	pattern_Purchase_Confirm_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "billing", "v0.1", "purchase", "phid"}, ""))
+	pattern_Purchase_Complete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "billing", "v0.1", "purchase", "phid"}, ""))
 
 	pattern_Purchase_Close_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "billing", "v0.1", "purchase"}, ""))
 )
@@ -208,7 +208,7 @@ var (
 var (
 	forward_Purchase_Begin_0 = runtime.ForwardResponseMessage
 
-	forward_Purchase_Confirm_0 = runtime.ForwardResponseMessage
+	forward_Purchase_Complete_0 = runtime.ForwardResponseMessage
 
 	forward_Purchase_Close_0 = runtime.ForwardResponseMessage
 )

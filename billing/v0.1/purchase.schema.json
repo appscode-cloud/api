@@ -19,8 +19,11 @@
       },
       "type": "object"
     },
-    "billingPurchaseConfirmRequest": {
+    "billingPurchaseCompleteRequest": {
       "properties": {
+        "failed": {
+          "type": "boolean"
+        },
         "object_phid": {
           "type": "string"
         },

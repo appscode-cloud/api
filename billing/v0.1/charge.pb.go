@@ -19,7 +19,7 @@ It has these top-level messages:
 	PaymentMethodListResponse
 	PurchaseBeginRequest
 	PurchaseBeginResponse
-	PurchaseConfirmRequest
+	PurchaseCompleteRequest
 	PurchaseCloseRequest
 	SubscriptionSubscribeRequest
 */

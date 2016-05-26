@@ -47,7 +47,7 @@
     },
     "/appscode/api/billing/v0.1/purchase/{phid}": {
       "put": {
-        "operationId": "Confirm",
+        "operationId": "Complete",
         "responses": {
           "200": {
             "description": "Description",
@@ -69,7 +69,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingPurchaseConfirmRequest"
+              "$ref": "#/definitions/billingPurchaseCompleteRequest"
             }
           }
         ],
@@ -114,9 +114,13 @@
         }
       }
     },
-    "billingPurchaseConfirmRequest": {
+    "billingPurchaseCompleteRequest": {
       "type": "object",
       "properties": {
+        "failed": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "object_phid": {
           "type": "string",
           "format": "string"
