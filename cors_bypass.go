@@ -3,6 +3,7 @@ package api
 import (
 	alert "github.com/appscode/api/alert/v0.1"
 	artifactory "github.com/appscode/api/artifactory/v0.1"
+	billing "github.com/appscode/api/billing/v0.1"
 	bucket "github.com/appscode/api/bucket/v0.1"
 	certificate "github.com/appscode/api/certificate/v0.1"
 	ci "github.com/appscode/api/ci/v0.1"
@@ -14,7 +15,6 @@ import (
 	"github.com/appscode/api/mailinglist"
 	namespace "github.com/appscode/api/namespace/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
-	billing "github.com/appscode/api/billing/v0.1"
 	"github.com/gengo/grpc-gateway/runtime"
 )
 

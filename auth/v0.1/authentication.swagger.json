@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "subscription.proto",
+    "title": "authentication.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,28 +15,15 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/billing/v0.1/subscription": {
-      "get": {
-        "operationId": "Describe",
+    "/appscode/api/auth/v0.1/login": {
+      "post": {
+        "summary": "This rpc is used to check a valid user from other applications.",
+        "operationId": "Login",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionDescribeResponse"
-            }
-          }
-        },
-        "tags": [
-          "Subscriptions"
-        ]
-      },
-      "put": {
-        "operationId": "Create",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
+              "$ref": "#/definitions/authLoginResponse"
             }
           }
         },
@@ -46,23 +33,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionCreateRequest"
+              "$ref": "#/definitions/authLoginRequest"
             }
           }
         ],
         "tags": [
-          "Subscriptions"
+          "Authentication"
         ]
       }
     },
-    "/appscode/api/billing/v0.1/subscription/alter": {
+    "/appscode/api/auth/v0.1/logout": {
       "post": {
-        "operationId": "Alter",
+        "operationId": "Logout",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
+              "$ref": "#/definitions/authLogoutResponse"
             }
           }
         },
@@ -72,23 +59,24 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionCreateRequest"
+              "$ref": "#/definitions/authLogoutRequest"
             }
           }
         ],
         "tags": [
-          "Subscriptions"
+          "Authentication"
         ]
       }
     },
-    "/appscode/api/billing/v0.1/subscription/quota": {
+    "/appscode/api/auth/v0.1/token": {
       "post": {
-        "operationId": "Quota",
+        "summary": "appctl used this to validates the user token with phabricator.",
+        "operationId": "Token",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionQutaResponse"
+              "$ref": "#/definitions/authTokenResponse"
             }
           }
         },
@@ -98,214 +86,88 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingSubscriptionQoutaRequest"
+              "$ref": "#/definitions/authTokenRequest"
             }
           }
         ],
         "tags": [
-          "Subscriptions"
+          "Authentication"
         ]
       }
     }
   },
   "definitions": {
-    "billingArtifactoryQuota": {
+    "authLoginRequest": {
       "type": "object",
       "properties": {
-        "disk_size": {
-          "type": "integer",
-          "format": "int64"
+        "issue_token": {
+          "type": "boolean",
+          "format": "boolean"
         },
-        "repository": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingCIQuota": {
-      "type": "object",
-      "properties": {
-        "agent": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "executors": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "jobs": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingClusterQuota": {
-      "type": "object",
-      "properties": {
-        "cluster": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "nodes": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingDBQuota": {
-      "type": "object",
-      "properties": {
-        "elasticsearch": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "influxdb": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "postgres": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingPhabricatorQuota": {
-      "type": "object",
-      "properties": {
-        "disk_size": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "repository": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingQuota": {
-      "type": "object",
-      "properties": {
-        "artifact": {
-          "$ref": "#/definitions/billingArtifactoryQuota"
-        },
-        "ci": {
-          "$ref": "#/definitions/billingCIQuota"
-        },
-        "db": {
-          "$ref": "#/definitions/billingDBQuota"
-        },
-        "kube": {
-          "$ref": "#/definitions/billingClusterQuota"
-        },
-        "phabricator": {
-          "$ref": "#/definitions/billingPhabricatorQuota"
-        },
-        "user": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "billingResource": {
-      "type": "string",
-      "enum": [
-        "USER",
-        "CLUSTER",
-        "NODE",
-        "DB",
-        "CI"
-      ],
-      "default": "USER"
-    },
-    "billingSubscription": {
-      "type": "object",
-      "properties": {
-        "author": {
+        "namespace": {
           "type": "string",
           "format": "string"
         },
-        "date_ended": {
+        "secret": {
           "type": "string",
           "format": "string"
         },
-        "date_started": {
-          "type": "string",
-          "format": "string"
-        },
-        "pricing_model": {
-          "type": "string",
-          "format": "string"
-        },
-        "product_sku": {
-          "type": "string",
-          "format": "string"
-        },
-        "product_type": {
-          "type": "string",
-          "format": "string"
-        },
-        "quota": {
-          "$ref": "#/definitions/billingQuota"
-        },
-        "type": {
+        "username": {
           "type": "string",
           "format": "string"
         }
       }
     },
-    "billingSubscriptionCreateRequest": {
-      "type": "object",
-      "properties": {
-        "phid": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "billingSubscriptionDescribeRequest": {
-      "type": "object"
-    },
-    "billingSubscriptionDescribeResponse": {
+    "authLoginResponse": {
       "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         },
-        "subscriptions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/billingSubscription"
-          }
-        }
-      }
-    },
-    "billingSubscriptionQoutaRequest": {
-      "type": "object",
-      "properties": {
-        "count": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "object_phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "resource": {
-          "$ref": "#/definitions/billingResource"
-        },
-        "subresource": {
+        "token": {
           "type": "string",
           "format": "string"
         }
       }
     },
-    "billingSubscriptionQutaResponse": {
+    "authLogoutRequest": {
       "type": "object",
       "properties": {
-        "product_phid": {
+        "namespace": {
           "type": "string",
           "format": "string"
         },
+        "token": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "authLogoutResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
+    "authTokenRequest": {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        },
+        "token": {
+          "type": "string",
+          "format": "string"
+        }
+      },
+      "title": "Next Id 4"
+    },
+    "authTokenResponse": {
+      "type": "object",
+      "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
@@ -358,14 +220,6 @@
         }
       },
       "description": "Next Id 5."
-    },
-    "dtypesVoidResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
     },
     "protobufAny": {
       "type": "object",

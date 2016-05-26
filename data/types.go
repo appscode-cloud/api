@@ -1,78 +1,144 @@
 package data
 
-import "time"
+import (
+	"encoding/json"
+	"math/big"
+	"time"
+)
 
-type SubscriptionProduct struct {
-	Sku     string `json:"sku"`
-	Price   int    `json:"price"`
-	Details struct {
-		User        int `json:"user"`
-		Phabricator struct {
-			DiskSize int `json:"disk_size"`
-		} `json:"phabricator"`
-		Artifact struct {
-			DiskSize int `json:"disk_size"`
-		} `json:"artifact"`
-		Kube struct {
-			Cluster int `json:"cluster"`
-			Nodes   int `json:"nodes"`
-		} `json:"kube"`
-		Ci struct {
-			Agent int `json:"agent"`
-		} `json:"ci"`
-		Db struct {
-			Postgres      int `json:"postgres"`
-			Elasticsearch int `json:"elasticsearch"`
-			Influxdb      int `json:"influxdb"`
-		} `json:"db"`
-	} `json:"details"`
-	DateStarted time.Time `json:"date_started"`
-	DateEnded   time.Time `json:"date_ended"`
-}
-
-type SubscriptionProductList struct {
-	Primary []SubscriptionProduct `json:"primary"`
-	Trial   []SubscriptionProduct `json:"trial"`
+type Product struct {
+	Sku              string          `json:"sku"`
+	DisplayName      string          `json:"display_name"`
+	PricingModel     string          `json:"pricing_model"`
+	SubscriptionType string          `json:"subscription_type"`
+	PricingMetric    string          `json:"pricing_metric"`
+	UnitPriceUSD     Money           `json:"unit_price_usd"`
+	DisplayPriceUSD  json.RawMessage `json:"display_price_usd"`
+	Metadata         json.RawMessage `json:"metadata"`
+	DateStarted      time.Time       `json:"date_started"`
+	DateEnded        time.Time       `json:"date_ended"`
 }
 
 type BuildAgent struct {
-	Sku      string `json:"sku"`
-	Provider string `json:"provider"`
-	Os       string `json:"os"`
-	Price    int    `json:"price"`
-	Details  struct {
+	Sku              string `json:"sku"`
+	DisplayName      string `json:"display_name"`
+	PricingModel     string `json:"pricing_model"`
+	SubscriptionType string `json:"subscription_type"`
+	PricingMetric    string `json:"pricing_metric"`
+	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	DisplayPriceUSD  struct {
+		PerHour  Money `json:"per_hour"`
+		PerMonth Money `json:"per_month"`
+	} `json:"display_price_usd"`
+	Metadata struct {
+		Provider             string `json:"provider"`
+		Os                   string `json:"os"`
 		CPU                  int    `json:"cpu"`
 		RAM                  int    `json:"ram"`
 		Disk                 int    `json:"disk"`
 		RecommendedExecutors int    `json:"recommended_executors"`
 		ExternalID           string `json:"external_id"`
-	} `json:"details"`
+	} `json:"metadata"`
 	DateStarted time.Time `json:"date_started"`
 	DateEnded   time.Time `json:"date_ended"`
 }
 
 type CIProduct struct {
-	BuildAgents []*BuildAgent `json:"build_agents"`
+	BuildAgent []*BuildAgent `json:"build_agent"`
 }
 
-type DBProduct struct {
+type KubeAgent struct {
+	Sku              string `json:"sku"`
+	DisplayName      string `json:"display_name"`
+	PricingModel     string `json:"pricing_model"`
+	SubscriptionType string `json:"subscription_type"`
+	PricingMetric    string `json:"pricing_metric"`
+	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	DisplayPriceUSD  struct {
+		PerHour  Money `json:"per_hour"`
+		PerMonth Money `json:"per_month"`
+	} `json:"display_price_usd"`
+	Metadata struct {
+		CPU int `json:"cpu"`
+	} `json:"metadata"`
+	DateStarted time.Time `json:"date_started"`
+	DateEnded   time.Time `json:"date_ended"`
+}
+
+type ClusterProduct struct {
+	KubeAgent []*KubeAgent `json:"kube_agent"`
+}
+
+type DB struct {
+	Sku              string `json:"sku"`
+	DisplayName      string `json:"display_name"`
+	PricingModel     string `json:"pricing_model"`
+	SubscriptionType string `json:"subscription_type"`
+	PricingMetric    string `json:"pricing_metric"`
+	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	DisplayPriceUSD  struct {
+		PerHour  Money `json:"per_hour"`
+		PerMonth Money `json:"per_month"`
+	} `json:"display_price_usd"`
+	DateStarted time.Time `json:"date_started"`
+	DateEnded   time.Time `json:"date_ended"`
+}
+
+type DBInfo struct {
 	Name     string   `json:"name"`
 	Versions []string `json:"versions"`
-	DbTypes  []struct {
-		Sku         string    `json:"sku"`
-		Price       int       `json:"price"`
-		Name        string    `json:"name"`
-		DateStarted time.Time `json:"date_started"`
-		DateEnded   time.Time `json:"date_ended"`
-	} `json:"db_types"`
+	DB       []*DB    `json:"db"`
 }
 
-type KubeProduct struct {
-	KubeAgents struct {
-		Sku         string    `json:"sku"`
-		Price       float64   `json:"price"`
-		CPU         int       `json:"cpu"`
-		DateStarted time.Time `json:"date_started"`
-		DateEnded   time.Time `json:"date_ended"`
-	} `json:"kube_agents"`
+type DBProduct map[string]*DBInfo
+
+type Package struct {
+	Sku              string `json:"sku"`
+	DisplayName      string `json:"display_name"`
+	PricingModel     string `json:"pricing_model"`
+	SubscriptionType string `json:"subscription_type"`
+	PricingMetric    string `json:"pricing_metric"`
+	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	DisplayPriceUSD  struct {
+		PerMonthM2M Money `json:"per_month_m2m"`
+		PerMonthAPM Money `json:"per_month_apm"`
+	} `json:"display_price_usd"`
+	Metadata struct {
+		User        int `json:"user"`
+		Phabricator struct {
+			DiskGB int `json:"disk_gb"`
+		} `json:"phabricator"`
+		Artifact struct {
+			DiskGB int `json:"disk_gb"`
+		} `json:"artifact"`
+		Ci struct {
+			BuildAgent int `json:"build_agent"`
+		} `json:"ci"`
+		Cluster struct {
+			KubeAgent int `json:"kube_agent"`
+		} `json:"cluster"`
+		Database struct {
+			Postgres      int `json:"postgres"`
+			ElasticSearch int `json:"elasticsearch"`
+			Influx        int `json:"influx"`
+		} `json:"database"`
+	} `json:"metadata"`
+	DateStarted time.Time `json:"date_started"`
+	DateEnded   time.Time `json:"date_ended"`
+}
+
+type PackageProduct struct {
+	Package []*Package `json:"package"`
+}
+
+type Money string
+
+const moneyPrecision = 40
+
+func (m Money) Float() (*big.Float, bool) {
+	return new(big.Float).SetPrec(moneyPrecision).SetString(string(m))
+}
+
+func (m Money) String() string {
+	return string(m)
 }

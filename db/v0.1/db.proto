@@ -123,7 +123,8 @@ message DescribeResponse {
   string last_backup = 9;
   kubeInfo kube = 10;
   string db_status = 11;
-  string created = 12;
+  string auth_secret = 12;
+  string created = 13;
 }
 
 message kubeInfo {
@@ -137,6 +138,7 @@ message ListRequest {}
 message ListResponse {
   dtypes.Status status = 1;
   repeated Database databases = 2;
+  repeated Database deleted_databases = 3;
 }
 
 message Database {
@@ -146,13 +148,15 @@ message Database {
   string namespace = 4;
   string type = 5;
   string sku = 6;
-  string version = 7;
-  string auth_secret = 8;
-  int32 auto_snapshot = 9;
-  int64 pv_size = 10;
-  string created = 11;
+  string mode = 7;
+  string version = 8;
+  string auth_secret = 9;
+  int32 auto_snapshot = 10;
+  int64 pv_size = 11;
   string last_backup = 12;
   string status = 13;
+  string created = 14;
+  string deleted = 15;
 }
 
 message SnapshotListRequest {

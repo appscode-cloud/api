@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "authenticationLoginRequest": {
+    "authLoginRequest": {
       "properties": {
         "issue_token": {
           "type": "boolean"
@@ -19,7 +19,7 @@
       },
       "type": "object"
     },
-    "authenticationLogoutRequest": {
+    "authLogoutRequest": {
       "properties": {
         "namespace": {
           "maxLength": 63,
@@ -32,7 +32,7 @@
       },
       "type": "object"
     },
-    "authenticationTokenRequest": {
+    "authTokenRequest": {
       "properties": {
         "namespace": {
           "maxLength": 63,

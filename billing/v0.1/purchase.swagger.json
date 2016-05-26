@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "conduit.proto",
+    "title": "purchase.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,123 +15,113 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/auth/v0.1/conduit/users": {
-      "post": {
-        "summary": "appctl used this to validates the user token with phabricator.",
-        "operationId": "Users",
+    "/appscode/api/billing/v0.1/purchase/{product_type}/{object_phid}": {
+      "delete": {
+        "operationId": "Close",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/authenticationConduitUsersResponse"
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
+            "name": "product_type",
+            "in": "path",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/authenticationConduitRequest"
-            }
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "object_phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
           }
         ],
         "tags": [
-          "Conduit"
+          "Purchases"
         ]
-      }
-    },
-    "/appscode/api/auth/v0.1/conduit/whoami": {
-      "post": {
-        "summary": "This rpc is used to check a valid user from other applications.",
-        "operationId": "WhoAmI",
+      },
+      "put": {
+        "operationId": "Open",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/authenticationConduitWhoAmIResponse"
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
         "parameters": [
           {
+            "name": "product_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "object_phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authenticationConduitRequest"
+              "$ref": "#/definitions/billingPurchaseOpenRequest"
             }
           }
         ],
         "tags": [
-          "Conduit"
+          "Purchases"
         ]
       }
     }
   },
   "definitions": {
-    "authenticationConduitRequest": {
-      "type": "object"
-    },
-    "authenticationConduitUser": {
+    "billingPurchaseCloseRequest": {
       "type": "object",
       "properties": {
-        "iamge": {
+        "object_phid": {
           "type": "string",
           "format": "string"
         },
-        "phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "primary_email": {
-          "type": "string",
-          "format": "string"
-        },
-        "real_name": {
-          "type": "string",
-          "format": "string"
-        },
-        "roles": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
-        },
-        "uri": {
-          "type": "string",
-          "format": "string"
-        },
-        "user_name": {
+        "product_type": {
           "type": "string",
           "format": "string"
         }
       }
     },
-    "authenticationConduitUsersResponse": {
+    "billingPurchaseOpenRequest": {
       "type": "object",
       "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+        "author_phid": {
+          "type": "string",
+          "format": "string"
         },
-        "user": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/authenticationConduitUser"
-          }
-        }
-      }
-    },
-    "authenticationConduitWhoAmIResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
+        "metadata": {
+          "type": "string",
+          "format": "string"
         },
-        "user": {
-          "$ref": "#/definitions/authenticationConduitUser"
+        "object_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "product_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "product_type": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -182,6 +172,14 @@
         }
       },
       "description": "Next Id 5."
+    },
+    "dtypesVoidResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
     },
     "protobufAny": {
       "type": "object",
