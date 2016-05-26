@@ -88,11 +88,7 @@ func dataFilesCiLatestJson() (*asset, error) {
 		return nil, err
 	}
 
-<<<<<<< bd07591413a676a2a9fd3550117a9734a15a6cab
-	info := bindataFileInfo{name: "data/files/ci.latest.json", size: 3034, mode: os.FileMode(420), modTime: time.Unix(1464267070, 0)}
-=======
-	info := bindataFileInfo{name: "data/files/ci.latest.json", size: 2984, mode: os.FileMode(420), modTime: time.Unix(1464264833, 0)}
->>>>>>> Reorganize billing apis.
+	info := bindataFileInfo{name: "data/files/ci.latest.json", size: 2984, mode: os.FileMode(420), modTime: time.Unix(1464267152, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -132,11 +128,7 @@ func dataFilesClusterLatestJson() (*asset, error) {
 		return nil, err
 	}
 
-<<<<<<< bd07591413a676a2a9fd3550117a9734a15a6cab
-	info := bindataFileInfo{name: "data/files/cluster.latest.json", size: 459, mode: os.FileMode(420), modTime: time.Unix(1464267070, 0)}
-=======
-	info := bindataFileInfo{name: "data/files/cluster.latest.json", size: 471, mode: os.FileMode(420), modTime: time.Unix(1464264973, 0)}
->>>>>>> Reorganize billing apis.
+	info := bindataFileInfo{name: "data/files/cluster.latest.json", size: 471, mode: os.FileMode(420), modTime: time.Unix(1464267152, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -176,11 +168,7 @@ func dataFilesDbLatestJson() (*asset, error) {
 		return nil, err
 	}
 
-<<<<<<< bd07591413a676a2a9fd3550117a9734a15a6cab
-	info := bindataFileInfo{name: "data/files/db.latest.json", size: 3624, mode: os.FileMode(420), modTime: time.Unix(1464267070, 0)}
-=======
-	info := bindataFileInfo{name: "data/files/db.latest.json", size: 4085, mode: os.FileMode(420), modTime: time.Unix(1464266671, 0)}
->>>>>>> Reorganize billing apis.
+	info := bindataFileInfo{name: "data/files/db.latest.json", size: 4085, mode: os.FileMode(420), modTime: time.Unix(1464267152, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -200,11 +188,7 @@ func dataFilesPackageLatestJson() (*asset, error) {
 		return nil, err
 	}
 
-<<<<<<< bd07591413a676a2a9fd3550117a9734a15a6cab
-	info := bindataFileInfo{name: "data/files/package.latest.json", size: 9288, mode: os.FileMode(420), modTime: time.Unix(1464267070, 0)}
-=======
-	info := bindataFileInfo{name: "data/files/package.latest.json", size: 8415, mode: os.FileMode(420), modTime: time.Unix(1464266575, 0)}
->>>>>>> Reorganize billing apis.
+	info := bindataFileInfo{name: "data/files/package.latest.json", size: 8415, mode: os.FileMode(420), modTime: time.Unix(1464267152, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
