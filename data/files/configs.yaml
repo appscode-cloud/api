@@ -7,9 +7,9 @@ authenticationInterceptor:
   order: 1
   unauthenticatedEndpoint:
     - "/health.Health/Status"
-    - "/authentication.Authentication/Login"
-    - "/authentication.Authentication/Logout"
-    - "/authentication.Authentication/Token"
+    - "/auth.Authentication/Login"
+    - "/auth.Authentication/Logout"
+    - "/auth.Authentication/Token"
     - "/mailinglist.MailingList/SendEmail"
     - "/mailinglist.MailingList/Subscribe"
     - "/mailinglist.MailingList/Unsubscribe"
