@@ -2,8 +2,8 @@ package data
 
 import (
 	"fmt"
-	"testing"
 	"log"
+	"testing"
 )
 
 func Test(t *testing.T) {

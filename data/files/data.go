@@ -245,11 +245,11 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"data/files/ci.latest.json": dataFilesCiLatestJson,
-	"data/files/cloud_provider.json": dataFilesCloud_providerJson,
-	"data/files/cluster.latest.json": dataFilesClusterLatestJson,
-	"data/files/configs.yaml": dataFilesConfigsYaml,
-	"data/files/database.latest.json": dataFilesDatabaseLatestJson,
+	"data/files/ci.latest.json":           dataFilesCiLatestJson,
+	"data/files/cloud_provider.json":      dataFilesCloud_providerJson,
+	"data/files/cluster.latest.json":      dataFilesClusterLatestJson,
+	"data/files/configs.yaml":             dataFilesConfigsYaml,
+	"data/files/database.latest.json":     dataFilesDatabaseLatestJson,
 	"data/files/subscription.latest.json": dataFilesSubscriptionLatestJson,
 }
 
@@ -292,14 +292,15 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
+
 var _bintree = &bintree{nil, map[string]*bintree{
 	"data": &bintree{nil, map[string]*bintree{
 		"files": &bintree{nil, map[string]*bintree{
-			"ci.latest.json": &bintree{dataFilesCiLatestJson, map[string]*bintree{}},
-			"cloud_provider.json": &bintree{dataFilesCloud_providerJson, map[string]*bintree{}},
-			"cluster.latest.json": &bintree{dataFilesClusterLatestJson, map[string]*bintree{}},
-			"configs.yaml": &bintree{dataFilesConfigsYaml, map[string]*bintree{}},
-			"database.latest.json": &bintree{dataFilesDatabaseLatestJson, map[string]*bintree{}},
+			"ci.latest.json":           &bintree{dataFilesCiLatestJson, map[string]*bintree{}},
+			"cloud_provider.json":      &bintree{dataFilesCloud_providerJson, map[string]*bintree{}},
+			"cluster.latest.json":      &bintree{dataFilesClusterLatestJson, map[string]*bintree{}},
+			"configs.yaml":             &bintree{dataFilesConfigsYaml, map[string]*bintree{}},
+			"database.latest.json":     &bintree{dataFilesDatabaseLatestJson, map[string]*bintree{}},
 			"subscription.latest.json": &bintree{dataFilesSubscriptionLatestJson, map[string]*bintree{}},
 		}},
 	}},
@@ -351,4 +352,3 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
-

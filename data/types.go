@@ -1,34 +1,34 @@
 package data
 
 import (
+	"encoding/json"
 	"math/big"
 	"time"
-	"encoding/json"
 )
 
 type GenericProduct struct {
-	Sku              string    `json:"sku"`
-	DisplayName      string    `json:"display_name"`
-	PricingModel     string    `json:"pricing_model"`
-	SubscriptionType string    `json:"subscription_type"`
-	PricingMetric    string    `json:"pricing_metric"`
-	UnitPriceUSD     big.Float `json:"unit_price_usd"`
-	DisplayPriceUSD  json.RawMessage    `json:"display_price_usd"`
-	Metadata         json.RawMessage    `json:"metadata"`
-	DateStarted      time.Time `json:"date_started"`
-	DateEnded        time.Time `json:"date_ended"`
+	Sku              string          `json:"sku"`
+	DisplayName      string          `json:"display_name"`
+	PricingModel     string          `json:"pricing_model"`
+	SubscriptionType string          `json:"subscription_type"`
+	PricingMetric    string          `json:"pricing_metric"`
+	UnitPriceUSD     Money           `json:"unit_price_usd"`
+	DisplayPriceUSD  json.RawMessage `json:"display_price_usd"`
+	Metadata         json.RawMessage `json:"metadata"`
+	DateStarted      time.Time       `json:"date_started"`
+	DateEnded        time.Time       `json:"date_ended"`
 }
 
 type BuildAgent struct {
-	Sku              string    `json:"sku"`
-	DisplayName      string    `json:"display_name"`
-	PricingModel     string    `json:"pricing_model"`
-	SubscriptionType string    `json:"subscription_type"`
-	PricingMetric    string    `json:"pricing_metric"`
-	UnitPriceUSD     big.Float `json:"unit_price_usd"`
+	Sku              string `json:"sku"`
+	DisplayName      string `json:"display_name"`
+	PricingModel     string `json:"pricing_model"`
+	SubscriptionType string `json:"subscription_type"`
+	PricingMetric    string `json:"pricing_metric"`
+	UnitPriceUSD     Money  `json:"unit_price_usd"`
 	DisplayPriceUSD  struct {
-		PerHour  big.Float `json:"per_hour"`
-		PerMonth big.Float `json:"per_month"`
+		PerHour  Money `json:"per_hour"`
+		PerMonth Money `json:"per_month"`
 	} `json:"display_price_usd"`
 	Metadata struct {
 		Provider             string `json:"provider"`
@@ -48,15 +48,15 @@ type CIProduct struct {
 }
 
 type KubeAgent struct {
-	Sku              string    `json:"sku"`
-	DisplayName      string    `json:"display_name"`
-	PricingModel     string    `json:"pricing_model"`
-	SubscriptionType string    `json:"subscription_type"`
-	PricingMetric    string    `json:"pricing_metric"`
-	UnitPriceUSD     big.Float `json:"unit_price_usd"`
+	Sku              string `json:"sku"`
+	DisplayName      string `json:"display_name"`
+	PricingModel     string `json:"pricing_model"`
+	SubscriptionType string `json:"subscription_type"`
+	PricingMetric    string `json:"pricing_metric"`
+	UnitPriceUSD     Money  `json:"unit_price_usd"`
 	DisplayPriceUSD  struct {
-		PerHour  big.Float `json:"per_hour"`
-		PerMonth big.Float `json:"per_month"`
+		PerHour  Money `json:"per_hour"`
+		PerMonth Money `json:"per_month"`
 	} `json:"display_price_usd"`
 	Metadata struct {
 		CPU int `json:"cpu"`
@@ -70,15 +70,15 @@ type ClusterProduct struct {
 }
 
 type Database struct {
-	Sku              string    `json:"sku"`
-	DisplayName      string    `json:"display_name"`
-	PricingModel     string    `json:"pricing_model"`
-	SubscriptionType string    `json:"subscription_type"`
-	PricingMetric    string    `json:"pricing_metric"`
-	UnitPriceUSD     big.Float `json:"unit_price_usd"`
+	Sku              string `json:"sku"`
+	DisplayName      string `json:"display_name"`
+	PricingModel     string `json:"pricing_model"`
+	SubscriptionType string `json:"subscription_type"`
+	PricingMetric    string `json:"pricing_metric"`
+	UnitPriceUSD     Money  `json:"unit_price_usd"`
 	DisplayPriceUSD  struct {
-		PerHour  big.Float `json:"per_hour"`
-		PerMonth big.Float `json:"per_month"`
+		PerHour  Money `json:"per_hour"`
+		PerMonth Money `json:"per_month"`
 	} `json:"display_price_usd"`
 	DateStarted time.Time `json:"date_started"`
 	DateEnded   time.Time `json:"date_ended"`
@@ -93,15 +93,15 @@ type DatabaseInfo struct {
 type DatabaseProduct map[string]*DatabaseInfo
 
 type Subscription struct {
-	Sku              string    `json:"sku"`
-	DisplayName      string    `json:"display_name"`
-	PricingModel     string    `json:"pricing_model"`
-	SubscriptionType string    `json:"subscription_type"`
-	PricingMetric    string    `json:"pricing_metric"`
-	UnitPriceUSD     big.Float `json:"unit_price_usd"`
+	Sku              string `json:"sku"`
+	DisplayName      string `json:"display_name"`
+	PricingModel     string `json:"pricing_model"`
+	SubscriptionType string `json:"subscription_type"`
+	PricingMetric    string `json:"pricing_metric"`
+	UnitPriceUSD     Money  `json:"unit_price_usd"`
 	DisplayPriceUSD  struct {
-		PerMonthM2M big.Float `json:"per_month_m2m"`
-		PerMonthAPM big.Float `json:"per_month_apm"`
+		PerMonthM2M Money `json:"per_month_m2m"`
+		PerMonthAPM Money `json:"per_month_apm"`
 	} `json:"display_price_usd"`
 	Metadata struct {
 		User        int `json:"user"`
@@ -129,4 +129,16 @@ type Subscription struct {
 
 type SubscriptionProduct struct {
 	Subscription []*Subscription `json:"subscription"`
+}
+
+type Money string
+
+const moneyPrecision = 40
+
+func (m Money) Float() (*big.Float, bool) {
+	return new(big.Float).SetPrec(moneyPrecision).SetString(string(m))
+}
+
+func (m Money) String() string {
+	return string(m)
 }
