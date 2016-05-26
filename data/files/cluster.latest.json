@@ -6,10 +6,10 @@
       "pricing_model":"PAYG",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_MIN",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_hour":3,
-        "per_month":2.5
+        "per_hour":"3",
+        "per_month":"2.5"
       },
       "metadata":{
         "cpu":1

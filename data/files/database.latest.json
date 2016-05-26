@@ -11,10 +11,10 @@
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
-        "unit_price_usd":0.1,
+        "unit_price_usd":"0.1",
         "display_price_usd":{
-          "per_hour":3,
-          "per_month":55
+          "per_hour":"3",
+          "per_month":"55"
         },
         "date_started": "2016-01-01T00:00:00.000Z",
         "date_ended": "2030-01-01T00:00:00.000Z"
@@ -25,10 +25,10 @@
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
-        "unit_price_usd":0.1,
+        "unit_price_usd":"0.1",
         "display_price_usd":{
-          "per_hour":3,
-          "per_month":55
+          "per_hour":"3",
+          "per_month":"55"
         },
         "date_started": "2016-01-01T00:00:00.000Z",
         "date_ended": "2030-01-01T00:00:00.000Z"
@@ -39,10 +39,10 @@
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
-        "unit_price_usd":0.1,
+        "unit_price_usd":"0.1",
         "display_price_usd":{
-          "per_hour":3,
-          "per_month":55
+          "per_hour":"3",
+          "per_month":"55"
         },
         "date_started": "2016-01-01T00:00:00.000Z",
         "date_ended": "2030-01-01T00:00:00.000Z"
@@ -53,10 +53,10 @@
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
-        "unit_price_usd":0.1,
+        "unit_price_usd":"0.1",
         "display_price_usd":{
-          "per_hour":3,
-          "per_month":55
+          "per_hour":"3",
+          "per_month":"55"
         },
         "date_started": "2016-01-01T00:00:00.000Z",
         "date_ended": "2030-01-01T00:00:00.000Z"
@@ -76,10 +76,10 @@
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
-        "unit_price_usd":0.1,
+        "unit_price_usd":"0.1",
         "display_price_usd":{
-          "per_hour":3,
-          "per_month":55
+          "per_hour":"3",
+          "per_month":"55"
         },
         "date_started": "2016-01-01T00:00:00.000Z",
         "date_ended": "2030-01-01T00:00:00.000Z"
@@ -90,10 +90,10 @@
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
-        "unit_price_usd":0.1,
+        "unit_price_usd":"0.1",
         "display_price_usd":{
-          "per_hour":3,
-          "per_month":55
+          "per_hour":"3",
+          "per_month":"55"
         },
         "date_started": "2016-01-01T00:00:00.000Z",
         "date_ended": "2030-01-01T00:00:00.000Z"
@@ -112,10 +112,10 @@
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
-        "unit_price_usd":0.1,
+        "unit_price_usd":"0.1",
         "display_price_usd":{
-          "per_hour":3,
-          "per_month":55
+          "per_hour":"3",
+          "per_month":"55"
         },
         "date_started": "2016-01-01T00:00:00.000Z",
         "date_ended": "2030-01-01T00:00:00.000Z"
@@ -126,10 +126,10 @@
         "pricing_model":"PAYG",
         "subscription_type":"PRIMARY",
         "pricing_metric":"PER_MIN",
-        "unit_price_usd":0.1,
+        "unit_price_usd":"0.1",
         "display_price_usd":{
-          "per_hour":3,
-          "per_month":55
+          "per_hour":"3",
+          "per_month":"55"
         },
         "date_started": "2016-01-01T00:00:00.000Z",
         "date_ended": "2030-01-01T00:00:00.000Z"
