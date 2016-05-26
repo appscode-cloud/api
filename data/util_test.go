@@ -23,13 +23,13 @@ func TestGenericParsing(t *testing.T) {
 	}
 
 	p := &struct {
-		Subscription []*Product `json:"subscription"`
+		Product []*Product `json:"pkg"`
 	}{}
 	err = json.Unmarshal(bytes, &p)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(p.Subscription[0].DisplayName)
-	fmt.Println(len(p.Subscription[0].DisplayPriceUSD))
-	fmt.Println(string(p.Subscription[0].Metadata))
+	fmt.Println(p.Product[0].DisplayName)
+	fmt.Println(len(p.Product[0].DisplayPriceUSD))
+	fmt.Println(string(p.Product[0].Metadata))
 }
