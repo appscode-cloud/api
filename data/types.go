@@ -3,6 +3,7 @@ package data
 import (
 	"math/big"
 	"time"
+	"encoding/json"
 )
 
 type GenericProduct struct {
@@ -12,8 +13,8 @@ type GenericProduct struct {
 	SubscriptionType string    `json:"subscription_type"`
 	PricingMetric    string    `json:"pricing_metric"`
 	UnitPriceUSD     big.Float `json:"unit_price_usd"`
-	DisplayPriceUSD  []byte    `json:"display_price_usd"`
-	Metadata         []byte    `json:"metadata"`
+	DisplayPriceUSD  json.RawMessage    `json:"display_price_usd"`
+	Metadata         json.RawMessage    `json:"metadata"`
 	DateStarted      time.Time `json:"date_started"`
 	DateEnded        time.Time `json:"date_ended"`
 }
@@ -64,7 +65,7 @@ type KubeAgent struct {
 	DateEnded   time.Time `json:"date_ended"`
 }
 
-type KubeProduct struct {
+type ClusterProduct struct {
 	KubeAgent []*KubeAgent `json:"kube_agent"`
 }
 
