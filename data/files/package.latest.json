@@ -137,40 +137,6 @@
       "date_ended":"2030-01-01T00:00:00.000Z"
     },
     {
-      "sku":"H-ENT-BETA",
-      "display_name":"Enterprise",
-      "pricing_model":"FREE",
-      "subscription_type":"BETA",
-      "pricing_metric":"PER_DAY",
-      "unit_price_usd":"0.1",
-      "display_price_usd":{
-        "per_month_m2m":"3",
-        "per_month_apm":"2.5"
-      },
-      "metadata":{
-        "user":100,
-        "phabricator":{
-          "disk_gb":-1
-        },
-        "artifact":{
-          "disk_gb":-1
-        },
-        "ci":{
-          "build_agent":-1
-        },
-        "cluster":{
-          "kube_agent":-1
-        },
-        "database":{
-          "postgres":20,
-          "elasticsearch":20,
-          "influx":20
-        }
-      },
-      "date_started":"2016-01-01T00:00:00.000Z",
-      "date_ended":"2030-01-01T00:00:00.000Z"
-    },
-    {
       "sku":"P-BETA",
       "display_name":"Private Installation",
       "pricing_model":"FREE",
