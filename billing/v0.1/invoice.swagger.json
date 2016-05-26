@@ -17,12 +17,12 @@
   "paths": {
     "/appscode/api/billing/v0.1/invoice": {
       "post": {
-        "operationId": "Generate",
+        "operationId": "Create",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/billingInvoiceResponse"
+              "$ref": "#/definitions/billingInvoiceCreateResponse"
             }
           }
         },
@@ -33,7 +33,7 @@
     }
   },
   "definitions": {
-    "billingInvoiceRequest": {
+    "billingInvoiceCreateRequest": {
       "type": "object",
       "properties": {
         "time_unit": {
@@ -42,7 +42,7 @@
         }
       }
     },
-    "billingInvoiceResponse": {
+    "billingInvoiceCreateResponse": {
       "type": "object",
       "properties": {
         "cost_usd": {

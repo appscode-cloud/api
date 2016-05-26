@@ -14,8 +14,8 @@ It is generated from these files:
 
 It has these top-level messages:
 	ChargeEstimateResponse
-	InvoiceRequest
-	InvoiceResponse
+	InvoiceCreateRequest
+	InvoiceCreateResponse
 	PaymentMethodListResponse
 	PurchaseBeginRequest
 	PurchaseBeginResponse

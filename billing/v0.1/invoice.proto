@@ -6,18 +6,18 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Invoice {
-  rpc Generate(InvoiceRequest) returns (InvoiceResponse) {
+  rpc Create(InvoiceCreateRequest) returns (InvoiceCreateResponse) {
     option (google.api.http) = {
       post: "/appscode/api/billing/v0.1/invoice"
     };
   }
 }
 
-message InvoiceRequest {
+message InvoiceCreateRequest {
     string time_unit = 1;
 }
 
-message InvoiceResponse {
+message InvoiceCreateResponse {
   dtypes.Status status = 1;
   string cost_usd = 2;
 }

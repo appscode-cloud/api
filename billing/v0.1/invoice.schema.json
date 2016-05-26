@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "billingInvoiceRequest": {
+    "billingInvoiceCreateRequest": {
       "properties": {
         "time_unit": {
           "type": "string"
