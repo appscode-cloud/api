@@ -5,10 +5,16 @@ package billing;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-service Purchases {
-  rpc Open(PurchaseOpenRequest) returns (dtypes.VoidResponse) {
+service Purchase {
+  rpc BeginPurchase(PurchaseQoutaRequest) returns (PurchaseQutaResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/billing/v0.1/purchase/{object_phid}"
+      get: "/appscode/api/billing/v0.1/purchase"
+    };
+  }
+
+  rpc ConfirmPurchase(PurchaseOpenRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/billing/v0.1/purchase"
       body: "*"
     };
   }
@@ -20,9 +26,19 @@ service Purchases {
   }
 }
 
+message PurchaseQoutaRequest {
+  string product_type = 1;
+  int64 count = 2;
+}
+
+message PurchaseQutaResponse {
+  dtypes.Status status = 1;
+  string phid = 2;
+}
+
 message PurchaseOpenRequest {
-  string object_phid = 1;
-  string product_phid = 2;
+  string phid = 1;
+  string object_phid = 2;
 }
 
 message PurchaseCloseRequest {

@@ -17,12 +17,12 @@
   "paths": {
     "/appscode/api/billing/v0.1/paymentmethod": {
       "get": {
-        "operationId": "PaymentMethod",
+        "operationId": "List",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/billingListPaymentResponse"
+              "$ref": "#/definitions/billingPaymentMethodListResponse"
             }
           }
         },
@@ -33,14 +33,10 @@
     }
   },
   "definitions": {
-    "billingListPaymentResponse": {
+    "billingPaymentMethodListResponse": {
       "type": "object",
       "properties": {
-        "method": {
-          "type": "string",
-          "format": "string"
-        },
-        "method_list": {
+        "payment_methods": {
           "type": "array",
           "items": {
             "type": "string",

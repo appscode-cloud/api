@@ -20,30 +20,55 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-type PurchaseOpenRequest struct {
+type PurchaseQoutaRequest struct {
 	ProductType string `protobuf:"bytes,1,opt,name=product_type,json=productType" json:"product_type,omitempty"`
-	AuthorPhid  string `protobuf:"bytes,2,opt,name=author_phid,json=authorPhid" json:"author_phid,omitempty"`
-	ObjectPhid  string `protobuf:"bytes,3,opt,name=object_phid,json=objectPhid" json:"object_phid,omitempty"`
-	ProductPhid string `protobuf:"bytes,4,opt,name=product_phid,json=productPhid" json:"product_phid,omitempty"`
-	Metadata    string `protobuf:"bytes,5,opt,name=metadata" json:"metadata,omitempty"`
+	Count       int64  `protobuf:"varint,2,opt,name=count" json:"count,omitempty"`
+}
+
+func (m *PurchaseQoutaRequest) Reset()                    { *m = PurchaseQoutaRequest{} }
+func (m *PurchaseQoutaRequest) String() string            { return proto.CompactTextString(m) }
+func (*PurchaseQoutaRequest) ProtoMessage()               {}
+func (*PurchaseQoutaRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
+
+type PurchaseQutaResponse struct {
+	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
+	Phid   string         `protobuf:"bytes,2,opt,name=phid" json:"phid,omitempty"`
+}
+
+func (m *PurchaseQutaResponse) Reset()                    { *m = PurchaseQutaResponse{} }
+func (m *PurchaseQutaResponse) String() string            { return proto.CompactTextString(m) }
+func (*PurchaseQutaResponse) ProtoMessage()               {}
+func (*PurchaseQutaResponse) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
+
+func (m *PurchaseQutaResponse) GetStatus() *dtypes.Status {
+	if m != nil {
+		return m.Status
+	}
+	return nil
+}
+
+type PurchaseOpenRequest struct {
+	Phid       string `protobuf:"bytes,1,opt,name=phid" json:"phid,omitempty"`
+	ObjectPhid string `protobuf:"bytes,2,opt,name=object_phid,json=objectPhid" json:"object_phid,omitempty"`
 }
 
 func (m *PurchaseOpenRequest) Reset()                    { *m = PurchaseOpenRequest{} }
 func (m *PurchaseOpenRequest) String() string            { return proto.CompactTextString(m) }
 func (*PurchaseOpenRequest) ProtoMessage()               {}
-func (*PurchaseOpenRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (*PurchaseOpenRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{2} }
 
 type PurchaseCloseRequest struct {
-	ProductType string `protobuf:"bytes,1,opt,name=product_type,json=productType" json:"product_type,omitempty"`
-	ObjectPhid  string `protobuf:"bytes,2,opt,name=object_phid,json=objectPhid" json:"object_phid,omitempty"`
+	ObjectPhid string `protobuf:"bytes,1,opt,name=object_phid,json=objectPhid" json:"object_phid,omitempty"`
 }
 
 func (m *PurchaseCloseRequest) Reset()                    { *m = PurchaseCloseRequest{} }
 func (m *PurchaseCloseRequest) String() string            { return proto.CompactTextString(m) }
 func (*PurchaseCloseRequest) ProtoMessage()               {}
-func (*PurchaseCloseRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (*PurchaseCloseRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{3} }
 
 func init() {
+	proto.RegisterType((*PurchaseQoutaRequest)(nil), "billing.PurchaseQoutaRequest")
+	proto.RegisterType((*PurchaseQutaResponse)(nil), "billing.PurchaseQutaResponse")
 	proto.RegisterType((*PurchaseOpenRequest)(nil), "billing.PurchaseOpenRequest")
 	proto.RegisterType((*PurchaseCloseRequest)(nil), "billing.PurchaseCloseRequest")
 }
@@ -56,124 +81,159 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion2
 
-// Client API for Purchases service
+// Client API for Purchase service
 
-type PurchasesClient interface {
-	Open(ctx context.Context, in *PurchaseOpenRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
+type PurchaseClient interface {
+	BeginPurchase(ctx context.Context, in *PurchaseQoutaRequest, opts ...grpc.CallOption) (*PurchaseQutaResponse, error)
+	ConfirmPurchase(ctx context.Context, in *PurchaseOpenRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
 	Close(ctx context.Context, in *PurchaseCloseRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
 }
 
-type purchasesClient struct {
+type purchaseClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewPurchasesClient(cc *grpc.ClientConn) PurchasesClient {
-	return &purchasesClient{cc}
+func NewPurchaseClient(cc *grpc.ClientConn) PurchaseClient {
+	return &purchaseClient{cc}
 }
 
-func (c *purchasesClient) Open(ctx context.Context, in *PurchaseOpenRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
-	out := new(dtypes.VoidResponse)
-	err := grpc.Invoke(ctx, "/billing.Purchases/Open", in, out, c.cc, opts...)
+func (c *purchaseClient) BeginPurchase(ctx context.Context, in *PurchaseQoutaRequest, opts ...grpc.CallOption) (*PurchaseQutaResponse, error) {
+	out := new(PurchaseQutaResponse)
+	err := grpc.Invoke(ctx, "/billing.Purchase/BeginPurchase", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *purchasesClient) Close(ctx context.Context, in *PurchaseCloseRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
+func (c *purchaseClient) ConfirmPurchase(ctx context.Context, in *PurchaseOpenRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
 	out := new(dtypes.VoidResponse)
-	err := grpc.Invoke(ctx, "/billing.Purchases/Close", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/billing.Purchase/ConfirmPurchase", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for Purchases service
+func (c *purchaseClient) Close(ctx context.Context, in *PurchaseCloseRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
+	out := new(dtypes.VoidResponse)
+	err := grpc.Invoke(ctx, "/billing.Purchase/Close", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
 
-type PurchasesServer interface {
-	Open(context.Context, *PurchaseOpenRequest) (*dtypes.VoidResponse, error)
+// Server API for Purchase service
+
+type PurchaseServer interface {
+	BeginPurchase(context.Context, *PurchaseQoutaRequest) (*PurchaseQutaResponse, error)
+	ConfirmPurchase(context.Context, *PurchaseOpenRequest) (*dtypes.VoidResponse, error)
 	Close(context.Context, *PurchaseCloseRequest) (*dtypes.VoidResponse, error)
 }
 
-func RegisterPurchasesServer(s *grpc.Server, srv PurchasesServer) {
-	s.RegisterService(&_Purchases_serviceDesc, srv)
+func RegisterPurchaseServer(s *grpc.Server, srv PurchaseServer) {
+	s.RegisterService(&_Purchase_serviceDesc, srv)
 }
 
-func _Purchases_Open_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Purchase_BeginPurchase_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PurchaseQoutaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PurchaseServer).BeginPurchase(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/billing.Purchase/BeginPurchase",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PurchaseServer).BeginPurchase(ctx, req.(*PurchaseQoutaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Purchase_ConfirmPurchase_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PurchaseOpenRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PurchasesServer).Open(ctx, in)
+		return srv.(PurchaseServer).ConfirmPurchase(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/billing.Purchases/Open",
+		FullMethod: "/billing.Purchase/ConfirmPurchase",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PurchasesServer).Open(ctx, req.(*PurchaseOpenRequest))
+		return srv.(PurchaseServer).ConfirmPurchase(ctx, req.(*PurchaseOpenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Purchases_Close_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Purchase_Close_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PurchaseCloseRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PurchasesServer).Close(ctx, in)
+		return srv.(PurchaseServer).Close(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/billing.Purchases/Close",
+		FullMethod: "/billing.Purchase/Close",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PurchasesServer).Close(ctx, req.(*PurchaseCloseRequest))
+		return srv.(PurchaseServer).Close(ctx, req.(*PurchaseCloseRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Purchases_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "billing.Purchases",
-	HandlerType: (*PurchasesServer)(nil),
+var _Purchase_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "billing.Purchase",
+	HandlerType: (*PurchaseServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Open",
-			Handler:    _Purchases_Open_Handler,
+			MethodName: "BeginPurchase",
+			Handler:    _Purchase_BeginPurchase_Handler,
+		},
+		{
+			MethodName: "ConfirmPurchase",
+			Handler:    _Purchase_ConfirmPurchase_Handler,
 		},
 		{
 			MethodName: "Close",
-			Handler:    _Purchases_Close_Handler,
+			Handler:    _Purchase_Close_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{},
 }
 
-var fileDescriptor2 = []byte{
-	// 339 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0xe2, 0x2b, 0x28, 0x2d, 0x4a,
-	0xce, 0x48, 0x2c, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x4f, 0xca, 0xcc, 0xc9,
-	0xc9, 0xcc, 0x4b, 0x97, 0x92, 0x49, 0xcf, 0xcf, 0x4f, 0xcf, 0x49, 0xd5, 0x4f, 0x2c, 0xc8, 0xd4,
-	0x4f, 0xcc, 0xcb, 0xcb, 0x2f, 0x49, 0x2c, 0xc9, 0xcc, 0xcf, 0x2b, 0x86, 0x28, 0x93, 0x12, 0x03,
-	0x09, 0xa7, 0x94, 0x54, 0x16, 0xa4, 0x16, 0xeb, 0x83, 0x49, 0x88, 0xb8, 0xd2, 0x4e, 0x46, 0x2e,
-	0xe1, 0x00, 0xa8, 0x89, 0xfe, 0x05, 0xa9, 0x79, 0x41, 0xa9, 0x85, 0xa5, 0xa9, 0xc5, 0x25, 0x42,
-	0x8a, 0x5c, 0x3c, 0x40, 0x05, 0x29, 0xa5, 0xc9, 0x25, 0xf1, 0x20, 0xe5, 0x12, 0x8c, 0x0a, 0x8c,
-	0x1a, 0x9c, 0x41, 0xdc, 0x50, 0xb1, 0x10, 0xa0, 0x90, 0x90, 0x3c, 0x17, 0x77, 0x62, 0x69, 0x49,
-	0x46, 0x7e, 0x51, 0x7c, 0x41, 0x46, 0x66, 0x8a, 0x04, 0x13, 0x58, 0x05, 0x17, 0x44, 0x28, 0x00,
-	0x28, 0x02, 0x52, 0x90, 0x9f, 0x94, 0x95, 0x0a, 0x34, 0x02, 0xac, 0x80, 0x19, 0xa2, 0x00, 0x22,
-	0x04, 0x56, 0x80, 0x64, 0x09, 0x58, 0x05, 0x0b, 0x8a, 0x25, 0x60, 0x25, 0x52, 0x5c, 0x1c, 0xb9,
-	0xa9, 0x25, 0x89, 0x29, 0x89, 0x25, 0x89, 0x12, 0xac, 0x60, 0x69, 0x38, 0x5f, 0x29, 0x8a, 0x4b,
-	0x04, 0xe6, 0x74, 0xe7, 0x9c, 0xfc, 0xe2, 0x54, 0xd2, 0xdc, 0x8e, 0xec, 0x34, 0x26, 0x74, 0xa7,
-	0x19, 0xcd, 0x63, 0xe2, 0xe2, 0x84, 0x19, 0x5e, 0x2c, 0xd4, 0xce, 0xc8, 0xc5, 0x02, 0x0a, 0x1d,
-	0x21, 0x19, 0x3d, 0x68, 0x70, 0xeb, 0x61, 0x09, 0x34, 0x29, 0x11, 0x3d, 0x48, 0x08, 0xeb, 0x85,
-	0xe5, 0x67, 0xa6, 0x04, 0xa5, 0x16, 0x17, 0x00, 0xc3, 0x3f, 0x55, 0xc9, 0xbb, 0xe9, 0xf2, 0x93,
-	0xc9, 0x4c, 0xae, 0x52, 0x0e, 0xc0, 0xa8, 0x29, 0x28, 0x4e, 0xce, 0x4f, 0x81, 0xc4, 0x11, 0xd4,
-	0x20, 0xfd, 0x32, 0x03, 0x3d, 0x43, 0x7d, 0x58, 0xa4, 0xea, 0x57, 0x23, 0xbb, 0xbc, 0x56, 0xbf,
-	0x1a, 0xc9, 0x95, 0xb5, 0x56, 0x8c, 0x5a, 0x42, 0x6d, 0x8c, 0x5c, 0xac, 0x60, 0xcf, 0x0a, 0xc9,
-	0x62, 0x38, 0x05, 0x39, 0x10, 0x70, 0xb8, 0xc5, 0x03, 0xec, 0x16, 0x27, 0x2d, 0x8a, 0xdd, 0x92,
-	0xc4, 0x06, 0x4e, 0x3f, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x88, 0x22, 0xb9, 0x41, 0x90,
-	0x02, 0x00, 0x00,
+var fileDescriptor3 = []byte{
+	// 381 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x8c, 0x52, 0xc1, 0x4e, 0xea, 0x40,
+	0x14, 0x4d, 0x79, 0x0f, 0xde, 0x63, 0x50, 0x4c, 0x46, 0x62, 0x48, 0x83, 0x51, 0x6b, 0x34, 0x04,
+	0x93, 0x56, 0x60, 0x61, 0x74, 0x29, 0x3b, 0x37, 0x60, 0x35, 0x6e, 0x4d, 0x69, 0xc7, 0x32, 0xa6,
+	0xce, 0x8c, 0xcc, 0x8c, 0x46, 0x8d, 0x1b, 0x7f, 0xc1, 0x4f, 0xf3, 0x17, 0xfc, 0x06, 0xd7, 0x0e,
+	0xd3, 0x0e, 0x34, 0x88, 0x09, 0x1b, 0x42, 0xcf, 0xbd, 0xf7, 0x9c, 0xd3, 0x73, 0x0a, 0xaa, 0x4c,
+	0x8e, 0xc3, 0x51, 0xc0, 0x91, 0xcb, 0xc6, 0x54, 0x50, 0xf8, 0x6f, 0x88, 0x93, 0x04, 0x93, 0xd8,
+	0x6e, 0xc4, 0x94, 0xc6, 0x09, 0xf2, 0x02, 0x86, 0xbd, 0x80, 0x10, 0x2a, 0x02, 0x81, 0x29, 0xe1,
+	0xe9, 0x9a, 0xbd, 0x31, 0x81, 0x23, 0xf1, 0xc4, 0x10, 0xf7, 0xf4, 0x6f, 0x8a, 0x3b, 0x7d, 0x50,
+	0x1b, 0x64, 0x84, 0xe7, 0x54, 0x8a, 0xc0, 0x47, 0xf7, 0x12, 0x71, 0x01, 0x77, 0xc0, 0x8a, 0x5a,
+	0x88, 0x64, 0x28, 0xae, 0x27, 0xeb, 0x75, 0x6b, 0xdb, 0x6a, 0x96, 0xfd, 0x4a, 0x86, 0x5d, 0x2a,
+	0x08, 0xd6, 0x40, 0x31, 0xa4, 0x92, 0x88, 0x7a, 0x41, 0xcd, 0xfe, 0xf8, 0xe9, 0x83, 0xe3, 0xe7,
+	0x08, 0x35, 0x1f, 0x67, 0xca, 0x05, 0x82, 0xfb, 0xa0, 0xc4, 0x95, 0x25, 0xc9, 0x35, 0x55, 0xa5,
+	0x53, 0x75, 0x53, 0x37, 0xee, 0x85, 0x46, 0xfd, 0x6c, 0x0a, 0x21, 0xf8, 0xcb, 0x46, 0x38, 0xd2,
+	0xa4, 0x65, 0x5f, 0xff, 0x77, 0xce, 0xc0, 0xba, 0xe1, 0xec, 0x33, 0x44, 0x8c, 0x47, 0xb3, 0x6a,
+	0xcd, 0x56, 0xe1, 0x16, 0xa8, 0xd0, 0xe1, 0x2d, 0x52, 0xb6, 0x73, 0x2c, 0x20, 0x85, 0x06, 0x13,
+	0xae, 0xa3, 0x99, 0xbf, 0x5e, 0x42, 0x39, 0x32, 0x64, 0x73, 0x87, 0xd6, 0xfc, 0x61, 0xe7, 0xab,
+	0x00, 0xfe, 0x9b, 0x4b, 0xf8, 0x0c, 0x56, 0x4f, 0x51, 0x8c, 0xc9, 0x14, 0xd8, 0x74, 0xb3, 0x1e,
+	0xdc, 0x45, 0x71, 0xda, 0x0b, 0xc6, 0xb9, 0x70, 0x9c, 0x83, 0xb7, 0x8f, 0xcf, 0xf7, 0xc2, 0x1e,
+	0xdc, 0x55, 0xed, 0x31, 0x1e, 0xd2, 0x28, 0xad, 0x31, 0xbb, 0xf1, 0x1e, 0x0e, 0xdd, 0xb6, 0x67,
+	0x7a, 0x87, 0x12, 0xac, 0xf5, 0x28, 0xb9, 0xc1, 0xe3, 0xbb, 0xa9, 0x7a, 0xe3, 0x07, 0x7d, 0x2e,
+	0x27, 0xbb, 0x66, 0xa2, 0xbe, 0xa2, 0x38, 0x9a, 0x6a, 0xba, 0x5a, 0xb3, 0x69, 0x2f, 0xa3, 0x79,
+	0x62, 0xb5, 0xe0, 0x23, 0x28, 0xea, 0xc0, 0x16, 0xbc, 0x6a, 0x3e, 0xc8, 0x5f, 0xd4, 0x8e, 0xb5,
+	0x5a, 0xb7, 0xd5, 0x5e, 0x42, 0xcd, 0x7b, 0xc9, 0x35, 0xf1, 0x3a, 0x2c, 0xe9, 0x2f, 0xb5, 0xfb,
+	0x1d, 0x00, 0x00, 0xff, 0xff, 0x4a, 0x15, 0xf2, 0xd7, 0xfa, 0x02, 0x00, 0x00,
 }

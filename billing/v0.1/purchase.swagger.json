@@ -15,7 +15,47 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/billing/v0.1/purchase/{product_type}/{object_phid}": {
+    "/appscode/api/billing/v0.1/purchase": {
+      "get": {
+        "operationId": "BeginPurchase",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/billingPurchaseQutaResponse"
+            }
+          }
+        },
+        "tags": [
+          "Purchase"
+        ]
+      },
+      "put": {
+        "operationId": "ConfirmPurchase",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/billingPurchaseOpenRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Purchase"
+        ]
+      }
+    },
+    "/appscode/api/billing/v0.1/purchase/{object_phid}": {
       "delete": {
         "operationId": "Close",
         "responses": {
@@ -28,13 +68,6 @@
         },
         "parameters": [
           {
-            "name": "product_type",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
             "name": "object_phid",
             "in": "path",
             "required": true,
@@ -43,45 +76,7 @@
           }
         ],
         "tags": [
-          "Purchases"
-        ]
-      },
-      "put": {
-        "operationId": "Open",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "product_type",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "object_phid",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/billingPurchaseOpenRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Purchases"
+          "Purchase"
         ]
       }
     }
@@ -93,6 +88,28 @@
         "object_phid": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "billingPurchaseOpenRequest": {
+      "type": "object",
+      "properties": {
+        "object_phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "phid": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingPurchaseQoutaRequest": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int64"
         },
         "product_type": {
           "type": "string",
@@ -100,28 +117,15 @@
         }
       }
     },
-    "billingPurchaseOpenRequest": {
+    "billingPurchaseQutaResponse": {
       "type": "object",
       "properties": {
-        "author_phid": {
+        "phid": {
           "type": "string",
           "format": "string"
         },
-        "metadata": {
-          "type": "string",
-          "format": "string"
-        },
-        "object_phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "product_phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "product_type": {
-          "type": "string",
-          "format": "string"
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },

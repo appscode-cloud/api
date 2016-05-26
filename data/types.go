@@ -8,11 +8,12 @@ import (
 
 type Product struct {
 	Sku              string          `json:"sku"`
+	Type string  `json:"type"`
 	DisplayName      string          `json:"display_name"`
 	PricingModel     string          `json:"pricing_model"`
 	SubscriptionType string          `json:"subscription_type"`
-	PricingMetric    string          `json:"pricing_metric"`
-	UnitPriceUSD     Money           `json:"unit_price_usd"`
+	TimeUnit string `json:"time_unit"`
+	PricingFormula string `json:"pricing_formula"`
 	DisplayPriceUSD  json.RawMessage `json:"display_price_usd"`
 	Metadata         json.RawMessage `json:"metadata"`
 	DateStarted      time.Time       `json:"date_started"`
@@ -21,18 +22,19 @@ type Product struct {
 
 type BuildAgent struct {
 	Sku              string `json:"sku"`
+	Type string  `json:"type"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
 	SubscriptionType string `json:"subscription_type"`
-	PricingMetric    string `json:"pricing_metric"`
-	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	TimeUnit string `json:"time_unit"`
+		PricingFormula string `json:"pricing_formula"`
 	DisplayPriceUSD  struct {
 		PerHour  Money `json:"per_hour"`
 		PerMonth Money `json:"per_month"`
 	} `json:"display_price_usd"`
 	Metadata struct {
 		Provider             string `json:"provider"`
-		Os                   string `json:"os"`
+		OS                   string `json:"os"`
 		CPU                  int    `json:"cpu"`
 		RAM                  int    `json:"ram"`
 		Disk                 int    `json:"disk"`
@@ -49,11 +51,12 @@ type CIProduct struct {
 
 type KubeAgent struct {
 	Sku              string `json:"sku"`
+	Type string  `json:"type"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
 	SubscriptionType string `json:"subscription_type"`
-	PricingMetric    string `json:"pricing_metric"`
-	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	TimeUnit string `json:"time_unit"`
+		PricingFormula string `json:"pricing_formula"`
 	DisplayPriceUSD  struct {
 		PerHour  Money `json:"per_hour"`
 		PerMonth Money `json:"per_month"`
@@ -71,11 +74,12 @@ type ClusterProduct struct {
 
 type DB struct {
 	Sku              string `json:"sku"`
+	Type string  `json:"type"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
 	SubscriptionType string `json:"subscription_type"`
-	PricingMetric    string `json:"pricing_metric"`
-	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	TimeUnit string `json:"time_unit"`
+		PricingFormula string `json:"pricing_formula"`
 	DisplayPriceUSD  struct {
 		PerHour  Money `json:"per_hour"`
 		PerMonth Money `json:"per_month"`
@@ -94,34 +98,25 @@ type DBProduct map[string]*DBInfo
 
 type Package struct {
 	Sku              string `json:"sku"`
+	Type string  `json:"type"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
 	SubscriptionType string `json:"subscription_type"`
-	PricingMetric    string `json:"pricing_metric"`
-	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	TimeUnit string `json:"time_unit"`
+	PricingFormula string `json:"pricing_formula"`
 	DisplayPriceUSD  struct {
 		PerMonthM2M Money `json:"per_month_m2m"`
 		PerMonthAPM Money `json:"per_month_apm"`
 	} `json:"display_price_usd"`
 	Metadata struct {
-		User        int `json:"user"`
-		Phabricator struct {
-			DiskGB int `json:"disk_gb"`
-		} `json:"phabricator"`
-		Artifact struct {
-			DiskGB int `json:"disk_gb"`
-		} `json:"artifact"`
-		Ci struct {
-			BuildAgent int `json:"build_agent"`
-		} `json:"ci"`
-		Cluster struct {
-			KubeAgent int `json:"kube_agent"`
-		} `json:"cluster"`
-		Database struct {
-			Postgres      int `json:"postgres"`
-			ElasticSearch int `json:"elasticsearch"`
-			Influx        int `json:"influx"`
-		} `json:"database"`
+		PkgUser int `json:"pkg.user"`
+		PhabricatorDiskGB int `json:"phabricator.disk_gb"`
+		ArtifactDiskGB int `json:"artifact.disk_gb"`
+		CIBuildAgent int `json:"ci.build_agent"`
+		ClusterKubeAgent int `json:"cluster.kube_agent"`
+		DBPostgres int `json:"db.postgres"`
+		DBElasticSearch int `json:"db.elasticsearch"`
+		DBInflux int `json:"db.influx"`
 	} `json:"metadata"`
 	DateStarted time.Time `json:"date_started"`
 	DateEnded   time.Time `json:"date_ended"`

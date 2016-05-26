@@ -2,11 +2,11 @@
   "build_agent": [
     {
       "sku": "CI-C1R1-DO",
+      "type": "ci.build_agent",
       "display_name": "Build Agent",
       "pricing_model":"PAYG",
-      "subscription_type":"PRIMARY",
-      "pricing_metric":"PER_MIN",
-      "unit_price_usd":"0.1",
+      "time_unit":"MINUTE",
+      "pricing_formula":"0.1",
       "display_price_usd":{
         "per_hour":"3",
         "per_month":"55"
@@ -25,11 +25,11 @@
     },
     {
       "sku": "CI-C2R2-DO",
+      "type": "ci.build_agent",
       "display_name": "Build Agent",
       "pricing_model":"PAYG",
-      "subscription_type":"PRIMARY",
-      "pricing_metric":"PER_MIN",
-      "unit_price_usd":"0.1",
+      "time_unit":"MINUTE",
+      "pricing_formula":"0.1",
       "display_price_usd":{
         "per_hour":"3",
         "per_month":"100"
@@ -48,11 +48,11 @@
     },
     {
       "sku": "CI-C2R4-DO",
+      "type": "ci.build_agent",
       "display_name": "Build Agent",
       "pricing_model":"PAYG",
-      "subscription_type":"PRIMARY",
-      "pricing_metric":"PER_MIN",
-      "unit_price_usd":"0.1",
+      "time_unit":"MINUTE",
+      "pricing_formula":"0.1",
       "display_price_usd":{
         "per_hour":"3",
         "per_month":"160"
@@ -71,11 +71,11 @@
     },
     {
       "sku": "CI-C4R8-DO",
+      "type": "ci.build_agent",
       "display_name": "Build Agent",
       "pricing_model":"PAYG",
-      "subscription_type":"PRIMARY",
-      "pricing_metric":"PER_MIN",
-      "unit_price_usd":"0.1",
+      "time_unit":"MINUTE",
+      "pricing_formula":"0.1",
       "display_price_usd":{
         "per_hour":"3",
         "per_month":"250"
@@ -94,11 +94,11 @@
     },
     {
       "sku": "CI-C8R16-DO",
+      "type": "ci.build_agent",
       "display_name": "Build Agent",
       "pricing_model":"PAYG",
-      "subscription_type":"PRIMARY",
-      "pricing_metric":"PER_MIN",
-      "unit_price_usd":"0.1",
+      "time_unit":"MINUTE",
+      "pricing_formula":"0.1",
       "display_price_usd":{
         "per_hour":"3",
         "per_month":"360"
