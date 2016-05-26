@@ -6,10 +6,10 @@
       "pricing_model":"FREE",
       "subscription_type":"TRIAL",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":10,
@@ -40,10 +40,10 @@
       "pricing_model":"FREE",
       "subscription_type":"TRIAL",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":25,
@@ -74,10 +74,10 @@
       "pricing_model":"FREE",
       "subscription_type":"TRIAL",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":100,
@@ -108,10 +108,10 @@
       "pricing_model":"FREE",
       "subscription_type":"BETA",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":100,
@@ -142,10 +142,10 @@
       "pricing_model":"FREE",
       "subscription_type":"BETA",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":100,
@@ -176,10 +176,10 @@
       "pricing_model":"FREE",
       "subscription_type":"BETA",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":100,
@@ -210,10 +210,10 @@
       "pricing_model":"M2M",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":2,
@@ -244,10 +244,10 @@
       "pricing_model":"M2M",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":10,
@@ -278,10 +278,10 @@
       "pricing_model":"M2M",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":25,
@@ -312,10 +312,10 @@
       "pricing_model":"M2M",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":100,
@@ -346,10 +346,10 @@
       "pricing_model":"APM",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":10,
@@ -380,10 +380,10 @@
       "pricing_model":"APM",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":25,
@@ -414,10 +414,10 @@
       "pricing_model":"APM",
       "subscription_type":"PRIMARY",
       "pricing_metric":"PER_DAY",
-      "unit_price_usd":0.1,
+      "unit_price_usd":"0.1",
       "display_price_usd":{
-        "per_month_m2m":3,
-        "per_month_apm":2.5
+        "per_month_m2m":"3",
+        "per_month_apm":"2.5"
       },
       "metadata":{
         "user":100,
