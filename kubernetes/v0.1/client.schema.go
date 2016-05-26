@@ -21,9 +21,13 @@ func init() {
       "type": "string"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -39,9 +43,13 @@ func init() {
       "type": "string"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -57,9 +65,13 @@ func init() {
       "type": "string"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },

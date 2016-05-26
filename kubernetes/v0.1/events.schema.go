@@ -29,6 +29,8 @@ func init() {
           "type": "object"
         },
         "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "pod_ip": {
@@ -49,6 +51,8 @@ func init() {
   },
   "properties": {
     "cluster_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "event_type": {

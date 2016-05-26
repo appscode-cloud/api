@@ -37,9 +37,13 @@ func init() {
       "type": "string"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -87,9 +91,13 @@ func init() {
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "options": {
@@ -186,6 +194,8 @@ func init() {
           "type": "string"
         },
         "secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -200,9 +210,13 @@ func init() {
       "$ref": "#/definitions/loadbalancerLoadBalancer"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -221,9 +235,13 @@ func init() {
       "type": "string"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -271,9 +289,13 @@ func init() {
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "options": {
@@ -370,6 +392,8 @@ func init() {
           "type": "string"
         },
         "secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -384,6 +408,8 @@ func init() {
       "$ref": "#/definitions/loadbalancerLoadBalancer"
     },
     "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },

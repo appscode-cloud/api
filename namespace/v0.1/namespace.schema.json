@@ -3,6 +3,8 @@
     "namespaceCheckRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -23,6 +25,8 @@
           "type": "array"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         },
         "password": {
@@ -43,6 +47,8 @@
     "namespaceLogRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -51,6 +57,8 @@
     "namespaceStatusRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },

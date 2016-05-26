@@ -43,6 +43,8 @@
     "ciSlaveDeleteRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -51,6 +53,8 @@
     "ciSlaveDescribeRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -59,6 +63,8 @@
     "ciSlaveRestartRequest": {
       "properties": {
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
           "type": "string"
         }
       },
