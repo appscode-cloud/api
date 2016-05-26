@@ -7,12 +7,12 @@ import (
 )
 
 type GenericProduct struct {
-	Sku              string `json:"sku"`
-	DisplayName      string `json:"display_name"`
-	PricingModel     string `json:"pricing_model"`
-	SubscriptionType string `json:"subscription_type"`
-	PricingMetric    string `json:"pricing_metric"`
-	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	Sku              string          `json:"sku"`
+	DisplayName      string          `json:"display_name"`
+	PricingModel     string          `json:"pricing_model"`
+	SubscriptionType string          `json:"subscription_type"`
+	PricingMetric    string          `json:"pricing_metric"`
+	UnitPriceUSD     Money           `json:"unit_price_usd"`
 	DisplayPriceUSD  json.RawMessage `json:"display_price_usd"`
 	Metadata         json.RawMessage `json:"metadata"`
 	DateStarted      time.Time       `json:"date_started"`
@@ -47,7 +47,7 @@ type CIProduct struct {
 	BuildAgent []*BuildAgent `json:"build_agent"`
 }
 
-type Database struct {
+type DB struct {
 	Sku              string `json:"sku"`
 	DisplayName      string `json:"display_name"`
 	PricingModel     string `json:"pricing_model"`
@@ -62,13 +62,13 @@ type Database struct {
 	DateEnded   time.Time `json:"date_ended"`
 }
 
-type DatabaseInfo struct {
-	Name     string      `json:"name"`
-	Versions []string    `json:"versions"`
-	Database []*Database `json:"database"`
+type DBInfo struct {
+	Name     string   `json:"name"`
+	Versions []string `json:"versions"`
+	DB       []*DB    `json:"db"`
 }
 
-type DatabaseProduct map[string]*DatabaseInfo
+type DBProduct map[string]*DBInfo
 
 type KubeAgent struct {
 	Sku              string `json:"sku"`
@@ -132,6 +132,7 @@ type PackageProduct struct {
 }
 
 type Money string
+
 const moneyPrecision = 40
 
 func (m Money) Float() (*big.Float, bool) {

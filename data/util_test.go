@@ -1,11 +1,11 @@
 package data
 
 import (
+	"encoding/json"
 	"fmt"
+	"github.com/appscode/api/data/files"
 	"log"
 	"testing"
-	"github.com/appscode/api/data/files"
-	"encoding/json"
 )
 
 func Test(t *testing.T) {

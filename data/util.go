@@ -13,13 +13,13 @@ func DBGenericName(dbName, sku string) (string, error) {
 		return "", err
 	}
 
-	var dbs DatabaseProduct
+	var dbs DBProduct
 	err = json.Unmarshal(bytes, &dbs)
 	if err != nil {
 		return "", err
 	}
 	if pg, ok := dbs[dbName]; ok {
-		for _, dt := range pg.Database {
+		for _, dt := range pg.DB {
 			if strings.ToUpper(dt.Sku) == strings.ToUpper(sku) {
 				return dt.DisplayName, nil
 			}
@@ -34,7 +34,7 @@ func DBGenericNameMap() (map[string]string, error) {
 		return nil, err
 	}
 
-	var dbs DatabaseProduct
+	var dbs DBProduct
 	err = json.Unmarshal(bytes, &dbs)
 	if err != nil {
 		return nil, err
@@ -45,7 +45,7 @@ func DBGenericNameMap() (map[string]string, error) {
 
 	for _, dType := range dbType {
 		if db, ok := dbs[dType]; ok {
-			for _, dt := range db.Database {
+			for _, dt := range db.DB {
 				skuMap[dt.Sku] = dt.DisplayName
 			}
 		}
@@ -60,13 +60,13 @@ func DBSku(dbName, mode string) (string, error) {
 		return "", err
 	}
 
-	var dbs DatabaseProduct
+	var dbs DBProduct
 	err = json.Unmarshal(bytes, &dbs)
 	if err != nil {
 		return "", err
 	}
 	if pg, ok := dbs[dbName]; ok {
-		for _, dt := range pg.Database {
+		for _, dt := range pg.DB {
 			if strings.ToLower(dt.DisplayName) == strings.ToLower(mode) {
 				return dt.Sku, nil
 			}
@@ -81,7 +81,7 @@ func DBVersion(dbName, dbVersion string) (string, error) {
 		return "", err
 	}
 
-	var dbs DatabaseProduct
+	var dbs DBProduct
 	err = json.Unmarshal(bytes, &dbs)
 	if err != nil {
 		return "", err
