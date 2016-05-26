@@ -47,6 +47,28 @@ type CIProduct struct {
 	BuildAgent []*BuildAgent `json:"build_agent"`
 }
 
+type KubeAgent struct {
+	Sku              string `json:"sku"`
+	DisplayName      string `json:"display_name"`
+	PricingModel     string `json:"pricing_model"`
+	SubscriptionType string `json:"subscription_type"`
+	PricingMetric    string `json:"pricing_metric"`
+	UnitPriceUSD     Money  `json:"unit_price_usd"`
+	DisplayPriceUSD  struct {
+		PerHour  Money `json:"per_hour"`
+		PerMonth Money `json:"per_month"`
+	} `json:"display_price_usd"`
+	Metadata struct {
+		CPU int `json:"cpu"`
+	} `json:"metadata"`
+	DateStarted time.Time `json:"date_started"`
+	DateEnded   time.Time `json:"date_ended"`
+}
+
+type ClusterProduct struct {
+	KubeAgent []*KubeAgent `json:"kube_agent"`
+}
+
 type DB struct {
 	Sku              string `json:"sku"`
 	DisplayName      string `json:"display_name"`
@@ -69,28 +91,6 @@ type DBInfo struct {
 }
 
 type DBProduct map[string]*DBInfo
-
-type KubeAgent struct {
-	Sku              string `json:"sku"`
-	DisplayName      string `json:"display_name"`
-	PricingModel     string `json:"pricing_model"`
-	SubscriptionType string `json:"subscription_type"`
-	PricingMetric    string `json:"pricing_metric"`
-	UnitPriceUSD     Money  `json:"unit_price_usd"`
-	DisplayPriceUSD  struct {
-		PerHour  Money `json:"per_hour"`
-		PerMonth Money `json:"per_month"`
-	} `json:"display_price_usd"`
-	Metadata struct {
-		CPU int `json:"cpu"`
-	} `json:"metadata"`
-	DateStarted time.Time `json:"date_started"`
-	DateEnded   time.Time `json:"date_ended"`
-}
-
-type ClusterProduct struct {
-	KubeAgent []*KubeAgent `json:"kube_agent"`
-}
 
 type Package struct {
 	Sku              string `json:"sku"`
