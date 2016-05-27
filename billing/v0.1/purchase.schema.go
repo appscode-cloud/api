@@ -34,6 +34,12 @@ func init() {
     "failed": {
       "type": "boolean"
     },
+    "metadata": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "type": "object"
+    },
     "object_phid": {
       "type": "string"
     },

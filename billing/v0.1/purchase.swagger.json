@@ -134,6 +134,13 @@
           "type": "boolean",
           "format": "boolean"
         },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
         "object_phid": {
           "type": "string",
           "format": "string"
