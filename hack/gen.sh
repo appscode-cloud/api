@@ -22,7 +22,7 @@ clean() {
 	(find . | grep pb.gw.go | xargs rm) || true
 	# Do NOT delete schema.json files as they contain handwritten validation rules.
 	# contact tamal@ / sadlil@ if in doubt.
-	# (find . | grep schema.json | xargs rm) || true
+	(find . | grep schema.json | xargs rm) || true
 	(find . | grep schema.go | xargs rm) || true
 	(find . | grep php | xargs rm) || true
 }
