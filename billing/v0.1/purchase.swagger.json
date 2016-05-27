@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/billing/v0.1/purchase/{product_type}/{object_phid}": {
+    "/appscode/api/billing/v0.1/purchase": {
       "delete": {
         "operationId": "Close",
         "responses": {
@@ -26,28 +26,38 @@
             }
           }
         },
+        "tags": [
+          "Purchase"
+        ]
+      },
+      "post": {
+        "operationId": "Begin",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/billingPurchaseBeginResponse"
+            }
+          }
+        },
         "parameters": [
           {
-            "name": "product_type",
-            "in": "path",
+            "name": "body",
+            "in": "body",
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "object_phid",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "$ref": "#/definitions/billingPurchaseBeginRequest"
+            }
           }
         ],
         "tags": [
-          "Purchases"
+          "Purchase"
         ]
-      },
+      }
+    },
+    "/appscode/api/billing/v0.1/purchase/{phid}": {
       "put": {
-        "operationId": "Open",
+        "operationId": "Complete",
         "responses": {
           "200": {
             "description": "Description",
@@ -58,14 +68,7 @@
         },
         "parameters": [
           {
-            "name": "product_type",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "object_phid",
+            "name": "phid",
             "in": "path",
             "required": true,
             "type": "string",
@@ -76,50 +79,73 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/billingPurchaseOpenRequest"
+              "$ref": "#/definitions/billingPurchaseCompleteRequest"
             }
           }
         ],
         "tags": [
-          "Purchases"
+          "Purchase"
         ]
       }
     }
   },
   "definitions": {
+    "billingPurchaseBeginRequest": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "product_sku": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "billingPurchaseBeginResponse": {
+      "type": "object",
+      "properties": {
+        "phid_list": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
+    },
     "billingPurchaseCloseRequest": {
       "type": "object",
       "properties": {
         "object_phid": {
           "type": "string",
           "format": "string"
-        },
-        "product_type": {
-          "type": "string",
-          "format": "string"
         }
       }
     },
-    "billingPurchaseOpenRequest": {
+    "billingPurchaseCompleteRequest": {
       "type": "object",
       "properties": {
-        "author_phid": {
-          "type": "string",
-          "format": "string"
+        "failed": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "metadata": {
-          "type": "string",
-          "format": "string"
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          }
         },
         "object_phid": {
           "type": "string",
           "format": "string"
         },
-        "product_phid": {
-          "type": "string",
-          "format": "string"
-        },
-        "product_type": {
+        "phid": {
           "type": "string",
           "format": "string"
         }

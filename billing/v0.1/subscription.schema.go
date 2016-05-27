@@ -2,55 +2,18 @@ package billing
 
 // Auto-generated. DO NOT EDIT.
 import (
-	"github.com/appscode/api/dtypes"
 	"github.com/golang/glog"
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var subscriptionQoutaRequestSchema *gojsonschema.Schema
-var subscriptionCreateRequestSchema *gojsonschema.Schema
-var subscriptionDescribeRequestSchema *gojsonschema.Schema
+var subscriptionSubscribeRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	subscriptionQoutaRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "billingResource": {
-      "default": "USER",
-      "enum": [
-        "USER",
-        "CLUSTER",
-        "NODE",
-        "DB",
-        "CI"
-      ],
-      "type": "string"
-    }
-  },
-  "properties": {
-    "count": {
-      "type": "integer"
-    },
-    "object_phid": {
-      "type": "string"
-    },
-    "resource": {
-      "$ref": "#/definitions/billingResource"
-    },
-    "subresource": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	subscriptionCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	subscriptionSubscribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "phid": {
+    "product_phid": {
       "type": "string"
     }
   },
@@ -59,33 +22,10 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	subscriptionDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 }
 
-func (m *SubscriptionQoutaRequest) IsValid() (*gojsonschema.Result, error) {
-	return subscriptionQoutaRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *SubscriptionSubscribeRequest) IsValid() (*gojsonschema.Result, error) {
+	return subscriptionSubscribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *SubscriptionQoutaRequest) IsRequest() {}
+func (m *SubscriptionSubscribeRequest) IsRequest() {}
 
-func (m *SubscriptionCreateRequest) IsValid() (*gojsonschema.Result, error) {
-	return subscriptionCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *SubscriptionCreateRequest) IsRequest() {}
-
-func (m *SubscriptionDescribeRequest) IsValid() (*gojsonschema.Result, error) {
-	return subscriptionDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *SubscriptionDescribeRequest) IsRequest() {}
-
-func (m *SubscriptionQutaResponse) SetStatus(s *dtypes.Status) {
-	m.Status = s
-}
-func (m *SubscriptionDescribeResponse) SetStatus(s *dtypes.Status) {
-	m.Status = s
-}

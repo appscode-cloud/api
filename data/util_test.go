@@ -13,24 +13,23 @@ func Test(t *testing.T) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(agent.UnitPriceUSD.String())
-	fmt.Println(agent.UnitPriceUSD.Float())
+	fmt.Println(agent.DisplayPriceUSD)
 }
 
 func TestGenericParsing(t *testing.T) {
-	bytes, err := files.Asset("data/files/subscription.latest.json")
+	bytes, err := files.Asset("data/files/pkg.latest.json")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	p := &struct {
-		Subscription []*Product `json:"subscription"`
+		Product []*Product `json:"pkg"`
 	}{}
 	err = json.Unmarshal(bytes, &p)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(p.Subscription[0].DisplayName)
-	fmt.Println(len(p.Subscription[0].DisplayPriceUSD))
-	fmt.Println(string(p.Subscription[0].Metadata))
+	fmt.Println(p.Product[0].DisplayName)
+	fmt.Println(len(p.Product[0].DisplayPriceUSD))
+	fmt.Println(string(p.Product[0].Metadata))
 }

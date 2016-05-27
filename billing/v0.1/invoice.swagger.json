@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "subscription.proto",
+    "title": "invoice.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,40 +15,42 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/billing/v0.1/subscription": {
+    "/appscode/api/billing/v0.1/invoice": {
       "post": {
-        "operationId": "Subscribe",
+        "operationId": "Create",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
+              "$ref": "#/definitions/billingInvoiceCreateResponse"
             }
           }
         },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/billingSubscriptionSubscribeRequest"
-            }
-          }
-        ],
         "tags": [
-          "Subscription"
+          "Invoice"
         ]
       }
     }
   },
   "definitions": {
-    "billingSubscriptionSubscribeRequest": {
+    "billingInvoiceCreateRequest": {
       "type": "object",
       "properties": {
-        "product_phid": {
+        "time_unit": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "billingInvoiceCreateResponse": {
+      "type": "object",
+      "properties": {
+        "cost_usd": {
+          "type": "string",
+          "format": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },
@@ -99,14 +101,6 @@
         }
       },
       "description": "Next Id 5."
-    },
-    "dtypesVoidResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
     },
     "protobufAny": {
       "type": "object",

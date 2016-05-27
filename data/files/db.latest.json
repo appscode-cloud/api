@@ -7,59 +7,67 @@
     "db":[
       {
         "sku":"DB-PG-BASIC",
+        "type":"DB",
+        "sub_type":"POSTGRES",
+        "quota_required":"db.free.postgres",
         "display_name":"Basic",
-        "pricing_model":"PAYG",
-        "subscription_type":"PRIMARY",
-        "pricing_metric":"PER_MIN",
-        "unit_price_usd":"0.1",
+        "pricing_model":"FREE",
+        "time_unit":"MINUTE",
+        "pricing_formula":"0.1",
         "display_price_usd":{
           "per_hour":"3",
           "per_month":"55"
         },
-        "date_started": "2016-01-01T00:00:00.000Z",
-        "date_ended": "2030-01-01T00:00:00.000Z"
+        "date_started":"2016-01-01T00:00:00.000Z",
+        "date_ended":"2030-01-01T00:00:00.000Z"
       },
       {
         "sku":"DB-PG-DURABLE",
+        "type":"DB",
+        "sub_type":"POSTGRES",
+        "quota_required":"db.paid.postgres",
         "display_name":"Durable",
         "pricing_model":"PAYG",
-        "subscription_type":"PRIMARY",
-        "pricing_metric":"PER_MIN",
-        "unit_price_usd":"0.1",
+        "time_unit":"MINUTE",
+        "pricing_formula":"0.1",
         "display_price_usd":{
           "per_hour":"3",
           "per_month":"55"
         },
-        "date_started": "2016-01-01T00:00:00.000Z",
-        "date_ended": "2030-01-01T00:00:00.000Z"
+        "date_started":"2016-01-01T00:00:00.000Z",
+        "date_ended":"2030-01-01T00:00:00.000Z"
       },
       {
         "sku":"DB-PG-HA",
+        "type":"DB",
+        "sub_type":"POSTGRES",
+        "quota_required":"db.paid.postgres",
         "display_name":"HA",
         "pricing_model":"PAYG",
-        "subscription_type":"PRIMARY",
-        "pricing_metric":"PER_MIN",
-        "unit_price_usd":"0.1",
+        "time_unit":"MINUTE",
+        "pricing_formula":"0.1",
         "display_price_usd":{
           "per_hour":"3",
           "per_month":"55"
         },
-        "date_started": "2016-01-01T00:00:00.000Z",
-        "date_ended": "2030-01-01T00:00:00.000Z"
+        "date_started":"2016-01-01T00:00:00.000Z",
+        "date_ended":"2030-01-01T00:00:00.000Z"
       },
       {
         "sku":"DB-PG-CLOUD",
+        "type":"DB",
+        "sub_type":"POSTGRES",
+        "quota_required":"db.paid.postgres",
         "display_name":"Cloud",
         "pricing_model":"PAYG",
-        "subscription_type":"PRIMARY",
-        "pricing_metric":"PER_MIN",
-        "unit_price_usd":"0.1",
+        "time_unit":"MINUTE",
+        "pricing_formula":"0.1",
         "display_price_usd":{
           "per_hour":"3",
           "per_month":"55"
         },
-        "date_started": "2016-01-01T00:00:00.000Z",
-        "date_ended": "2030-01-01T00:00:00.000Z"
+        "date_started":"2016-01-01T00:00:00.000Z",
+        "date_ended":"2030-01-01T00:00:00.000Z"
       }
     ]
   },
@@ -72,31 +80,35 @@
     "db":[
       {
         "sku":"DB-ES-BASIC",
+        "type":"DB",
+        "sub_type":"ELASTICSEARCH",
+        "quota_required":"db.free.elasticsearch",
         "display_name":"Basic",
-        "pricing_model":"PAYG",
-        "subscription_type":"PRIMARY",
-        "pricing_metric":"PER_MIN",
-        "unit_price_usd":"0.1",
+        "pricing_model":"FREE",
+        "time_unit":"MINUTE",
+        "pricing_formula":"0.1",
         "display_price_usd":{
           "per_hour":"3",
           "per_month":"55"
         },
-        "date_started": "2016-01-01T00:00:00.000Z",
-        "date_ended": "2030-01-01T00:00:00.000Z"
+        "date_started":"2016-01-01T00:00:00.000Z",
+        "date_ended":"2030-01-01T00:00:00.000Z"
       },
       {
         "sku":"DB-ES-DURABLE",
+        "type":"DB",
+        "sub_type":"ELASTICSEARCH",
+        "quota_required":"db.paid.elasticsearch",
         "display_name":"Durable",
         "pricing_model":"PAYG",
-        "subscription_type":"PRIMARY",
-        "pricing_metric":"PER_MIN",
-        "unit_price_usd":"0.1",
+        "time_unit":"MINUTE",
+        "pricing_formula":"0.1",
         "display_price_usd":{
           "per_hour":"3",
           "per_month":"55"
         },
-        "date_started": "2016-01-01T00:00:00.000Z",
-        "date_ended": "2030-01-01T00:00:00.000Z"
+        "date_started":"2016-01-01T00:00:00.000Z",
+        "date_ended":"2030-01-01T00:00:00.000Z"
       }
     ]
   },
@@ -108,31 +120,35 @@
     "db":[
       {
         "sku":"DB-INFLUX-BASIC",
+        "type":"DB",
+        "sub_type":"INFLUX",
+        "quota_required":"db.free.influx",
         "display_name":"Basic",
-        "pricing_model":"PAYG",
-        "subscription_type":"PRIMARY",
-        "pricing_metric":"PER_MIN",
-        "unit_price_usd":"0.1",
+        "pricing_model":"FREE",
+        "time_unit":"MINUTE",
+        "pricing_formula":"0.1",
         "display_price_usd":{
           "per_hour":"3",
           "per_month":"55"
         },
-        "date_started": "2016-01-01T00:00:00.000Z",
-        "date_ended": "2030-01-01T00:00:00.000Z"
+        "date_started":"2016-01-01T00:00:00.000Z",
+        "date_ended":"2030-01-01T00:00:00.000Z"
       },
       {
         "sku":"DB-INFLUX-DURABLE",
+        "type":"DB",
+        "sub_type":"INFLUX",
+        "quota_required":"db.paid.influx",
         "display_name":"Durable",
         "pricing_model":"PAYG",
-        "subscription_type":"PRIMARY",
-        "pricing_metric":"PER_MIN",
-        "unit_price_usd":"0.1",
+        "time_unit":"MINUTE",
+        "pricing_formula":"0.1",
         "display_price_usd":{
           "per_hour":"3",
           "per_month":"55"
         },
-        "date_started": "2016-01-01T00:00:00.000Z",
-        "date_ended": "2030-01-01T00:00:00.000Z"
+        "date_started":"2016-01-01T00:00:00.000Z",
+        "date_ended":"2030-01-01T00:00:00.000Z"
       }
     ]
   }

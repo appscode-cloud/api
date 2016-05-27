@@ -17,12 +17,12 @@
   "paths": {
     "/appscode/api/billing/v0.1/paymentmethod": {
       "get": {
-        "operationId": "PaymentMethod",
+        "operationId": "Check",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/billingListPaymentResponse"
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
@@ -33,25 +33,6 @@
     }
   },
   "definitions": {
-    "billingListPaymentResponse": {
-      "type": "object",
-      "properties": {
-        "method": {
-          "type": "string",
-          "format": "string"
-        },
-        "method_list": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
     "dtypesHelp": {
       "type": "object",
       "properties": {
@@ -103,6 +84,14 @@
     "dtypesVoidRequest": {
       "type": "object",
       "description": "Void Requests and response to use with other types."
+    },
+    "dtypesVoidResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      }
     },
     "protobufAny": {
       "type": "object",

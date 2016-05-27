@@ -6,18 +6,14 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Charge {
-  rpc Calculate(ChargeRequest) returns (ChargeResponse) {
+  rpc Estimate(dtypes.VoidRequest) returns (ChargeEstimateResponse) {
     option (google.api.http) = {
       get: "/appscode/api/billing/v0.1/charge"
     };
   }
 }
 
-message ChargeRequest {
-    string type = 1;
-}
-
-message ChargeResponse {
+message ChargeEstimateResponse {
   dtypes.Status status = 1;
   string cost_usd = 2;
 }

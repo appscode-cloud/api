@@ -2,17 +2,16 @@
   "kube_agent":[
     {
       "sku":"KUBE-AGENT-AIO",
+      "type":"CLSTR",
+      "sub_type":"KUBE_AGENT",
+      "quota_required":"cluster.kube_agent",
       "display_name":"Kubernetes",
       "pricing_model":"PAYG",
-      "subscription_type":"PRIMARY",
-      "pricing_metric":"PER_MIN",
-      "unit_price_usd":"0.1",
+      "time_unit":"MINUTE",
+      "pricing_formula":"0.5 * cpu + 0.1 * ram",
       "display_price_usd":{
         "per_hour":"3",
         "per_month":"2.5"
-      },
-      "metadata":{
-        "cpu":1
       },
       "date_started":"2016-01-01T00:00:00.000Z",
       "date_ended":"2030-01-01T00:00:00.000Z"

@@ -5,110 +5,15 @@ package billing;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-service Subscriptions {
-  rpc Create(SubscriptionCreateRequest) returns (dtypes.VoidResponse) {
+service Subscription {
+  rpc Subscribe(SubscriptionSubscribeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/billing/v0.1/subscription"
-      body: "*"
-    };
-  }
-
-  rpc Alter(SubscriptionCreateRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      post: "/appscode/api/billing/v0.1/subscription/alter"
-      body: "*"
-    };
-  }
-
-  rpc Describe(SubscriptionDescribeRequest) returns (SubscriptionDescribeResponse) {
-    option (google.api.http) = {
-      get: "/appscode/api/billing/v0.1/subscription"
-    };
-  }
-
-  rpc Quota(SubscriptionQoutaRequest) returns (SubscriptionQutaResponse) {
-    option (google.api.http) = {
-      post: "/appscode/api/billing/v0.1/subscription/quota"
+      post: "/appscode/api/billing/v0.1/subscription"
       body: "*"
     };
   }
 }
 
-message SubscriptionCreateRequest {
-    string phid = 1;
-}
-
-message SubscriptionDescribeRequest {
-}
-
-message SubscriptionDescribeResponse {
-  dtypes.Status status = 1;
-  repeated Subscription subscriptions = 2;
-}
-
-message Subscription {
-  string author = 1;
-  string type = 2;
-  string product_sku = 3;
-  string pricing_model = 4;
-  string product_type = 5;
-  Quota quota = 6;
-  string date_started = 7;
-  string date_ended = 8;
-}
-
-message Quota {
-  int64 user = 1;
-  PhabricatorQuota phabricator = 2;
-  ArtifactoryQuota artifact = 3;
-  ClusterQuota kube = 4;
-  CIQuota ci = 5;
-  DBQuota db = 6;
-}
-
-message PhabricatorQuota {
-  int64 disk_size = 1;
-  int64 repository = 2;
-}
-
-message CIQuota {
-  int64 agent = 1;
-  int64 executors = 2;
-  int64 jobs = 3;
-}
-
-message ArtifactoryQuota {
-  int64 disk_size = 1;
-  int64 repository = 2;
-}
-
-message ClusterQuota {
-  int64 cluster = 1;
-  int64 nodes = 2;
-}
-
-message DBQuota {
-  int64 postgres = 1;
-  int64 elasticsearch = 2;
-  int64 influxdb = 3;
-}
-
-enum Resource {
-  USER = 0;
-  CLUSTER = 1;
-  NODE = 2;
-  DB = 3;
-  CI = 4;
-}
-
-message SubscriptionQoutaRequest {
-  Resource resource = 1;
-  string subresource = 2;
-  string object_phid = 3;
-  int64 count = 5;
-}
-
-message SubscriptionQutaResponse {
-  dtypes.Status status = 1;
-  string product_phid = 3;
+message SubscriptionSubscribeRequest {
+    string product_phid = 1;
 }

@@ -1,8 +1,8 @@
 {
   "definitions": {
-    "billingSubscriptionSubscribeRequest": {
+    "billingInvoiceCreateRequest": {
       "properties": {
-        "product_phid": {
+        "time_unit": {
           "type": "string"
         }
       },

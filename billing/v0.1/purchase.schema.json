@@ -1,31 +1,39 @@
 {
   "definitions": {
-    "billingPurchaseCloseRequest": {
+    "billingPurchaseBeginRequest": {
       "properties": {
-        "object_phid": {
-          "type": "string"
+        "count": {
+          "type": "integer"
         },
-        "product_type": {
+        "product_sku": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "billingPurchaseOpenRequest": {
+    "billingPurchaseCloseRequest": {
       "properties": {
-        "author_phid": {
+        "object_phid": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "billingPurchaseCompleteRequest": {
+      "properties": {
+        "failed": {
+          "type": "boolean"
         },
         "metadata": {
-          "type": "string"
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
         },
         "object_phid": {
           "type": "string"
         },
-        "product_phid": {
-          "type": "string"
-        },
-        "product_type": {
+        "phid": {
           "type": "string"
         }
       },
