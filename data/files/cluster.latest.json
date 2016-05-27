@@ -2,7 +2,9 @@
   "kube_agent":[
     {
       "sku":"KUBE-AGENT-AIO",
-      "type": "cluster.kube_agent",
+      "type":"CLSTR",
+      "sub_type":"KUBE_AGENT",
+      "quota_required":"cluster.kube_agent",
       "display_name":"Kubernetes",
       "pricing_model":"PAYG",
       "time_unit":"MINUTE",

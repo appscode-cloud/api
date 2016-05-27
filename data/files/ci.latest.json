@@ -1,9 +1,11 @@
 {
-  "build_agent": [
+  "build_agent":[
     {
-      "sku": "CI-C1R1-DO",
-      "type": "ci.build_agent",
-      "display_name": "Build Agent",
+      "sku":"CI-C1R1-DO",
+      "type":"CI",
+      "sub_type":"BUILD_AGENT",
+      "quota_required":"ci.build_agent",
+      "display_name":"Build Agent",
       "pricing_model":"PAYG",
       "time_unit":"MINUTE",
       "pricing_formula":"0.1",
@@ -11,22 +13,25 @@
         "per_hour":"3",
         "per_month":"55"
       },
-      "metadata": {
-        "provider": "DigitalOcean",
-        "os": "Linux",
-        "cpu": 1,
-        "ram": 1,
-        "disk": 30,
-        "recommended_executors": 1,
-        "external_id": "1gb"
+      "metadata":{
+        "provider":"DigitalOcean",
+        "os":"Linux",
+        "cpu":1,
+        "ram":1,
+        "disk":30,
+        "recommended_executors":1,
+        "external_id":"1gb",
+        "quota_req":"ci.build_agent"
       },
-      "date_started": "2016-01-01T00:00:00.000Z",
-      "date_ended": "2030-01-01T00:00:00.000Z"
+      "date_started":"2016-01-01T00:00:00.000Z",
+      "date_ended":"2030-01-01T00:00:00.000Z"
     },
     {
-      "sku": "CI-C2R2-DO",
-      "type": "ci.build_agent",
-      "display_name": "Build Agent",
+      "sku":"CI-C2R2-DO",
+      "type":"CI",
+      "sub_type":"BUILD_AGENT",
+      "quota_required":"ci.build_agent",
+      "display_name":"Build Agent",
       "pricing_model":"PAYG",
       "time_unit":"MINUTE",
       "pricing_formula":"0.1",
@@ -34,22 +39,24 @@
         "per_hour":"3",
         "per_month":"100"
       },
-      "metadata": {
-        "provider": "DigitalOcean",
-        "os": "Linux",
-        "cpu": 2,
-        "ram": 2,
-        "disk": 40,
-        "recommended_executors": 2,
-        "external_id": "2gb"
+      "metadata":{
+        "provider":"DigitalOcean",
+        "os":"Linux",
+        "cpu":2,
+        "ram":2,
+        "disk":40,
+        "recommended_executors":2,
+        "external_id":"2gb"
       },
-      "date_started": "2016-01-01T00:00:00.000Z",
-      "date_ended": "2030-01-01T00:00:00.000Z"
+      "date_started":"2016-01-01T00:00:00.000Z",
+      "date_ended":"2030-01-01T00:00:00.000Z"
     },
     {
-      "sku": "CI-C2R4-DO",
-      "type": "ci.build_agent",
-      "display_name": "Build Agent",
+      "sku":"CI-C2R4-DO",
+      "type":"CI",
+      "sub_type":"BUILD_AGENT",
+      "quota_required":"ci.build_agent",
+      "display_name":"Build Agent",
       "pricing_model":"PAYG",
       "time_unit":"MINUTE",
       "pricing_formula":"0.1",
@@ -57,22 +64,24 @@
         "per_hour":"3",
         "per_month":"160"
       },
-      "metadata": {
-        "provider": "DigitalOcean",
-        "os": "Linux",
-        "cpu": 2,
-        "ram": 4,
-        "disk": 60,
-        "recommended_executors": 2,
-        "external_id": "4gb"
+      "metadata":{
+        "provider":"DigitalOcean",
+        "os":"Linux",
+        "cpu":2,
+        "ram":4,
+        "disk":60,
+        "recommended_executors":2,
+        "external_id":"4gb"
       },
-      "date_started": "2016-01-01T00:00:00.000Z",
-      "date_ended": "2030-01-01T00:00:00.000Z"
+      "date_started":"2016-01-01T00:00:00.000Z",
+      "date_ended":"2030-01-01T00:00:00.000Z"
     },
     {
-      "sku": "CI-C4R8-DO",
-      "type": "ci.build_agent",
-      "display_name": "Build Agent",
+      "sku":"CI-C4R8-DO",
+      "type":"CI",
+      "sub_type":"BUILD_AGENT",
+      "quota_required":"ci.build_agent",
+      "display_name":"Build Agent",
       "pricing_model":"PAYG",
       "time_unit":"MINUTE",
       "pricing_formula":"0.1",
@@ -80,22 +89,24 @@
         "per_hour":"3",
         "per_month":"250"
       },
-      "metadata": {
-        "provider": "DigitalOcean",
-        "os": "Linux",
-        "cpu": 4,
-        "ram": 8,
-        "disk": 80,
-        "recommended_executors": 2,
-        "external_id": "8gb"
+      "metadata":{
+        "provider":"DigitalOcean",
+        "os":"Linux",
+        "cpu":4,
+        "ram":8,
+        "disk":80,
+        "recommended_executors":2,
+        "external_id":"8gb"
       },
-      "date_started": "2016-01-01T00:00:00.000Z",
-      "date_ended": "2030-01-01T00:00:00.000Z"
+      "date_started":"2016-01-01T00:00:00.000Z",
+      "date_ended":"2030-01-01T00:00:00.000Z"
     },
     {
-      "sku": "CI-C8R16-DO",
-      "type": "ci.build_agent",
-      "display_name": "Build Agent",
+      "sku":"CI-C8R16-DO",
+      "type":"CI",
+      "sub_type":"BUILD_AGENT",
+      "quota_required":"ci.build_agent",
+      "display_name":"Build Agent",
       "pricing_model":"PAYG",
       "time_unit":"MINUTE",
       "pricing_formula":"0.1",
@@ -103,17 +114,17 @@
         "per_hour":"3",
         "per_month":"360"
       },
-      "metadata": {
-        "provider": "DigitalOcean",
-        "os": "Linux",
-        "cpu": 8,
-        "ram": 16,
-        "disk": 160,
-        "recommended_executors": 4,
-        "external_id": "16gb"
+      "metadata":{
+        "provider":"DigitalOcean",
+        "os":"Linux",
+        "cpu":8,
+        "ram":16,
+        "disk":160,
+        "recommended_executors":4,
+        "external_id":"16gb"
       },
-      "date_started": "2016-01-01T00:00:00.000Z",
-      "date_ended": "2030-01-01T00:00:00.000Z"
+      "date_started":"2016-01-01T00:00:00.000Z",
+      "date_ended":"2030-01-01T00:00:00.000Z"
     }
   ]
 }

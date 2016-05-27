@@ -9,6 +9,8 @@ import (
 type Product struct {
 	Sku              string          `json:"sku"`
 	Type             string          `json:"type"`
+	SubType          string          `json:"sub_type"`
+	QuotaRequired    string          `json:"quota_required"`
 	DisplayName      string          `json:"display_name"`
 	PricingModel     string          `json:"pricing_model"`
 	SubscriptionType string          `json:"subscription_type"`

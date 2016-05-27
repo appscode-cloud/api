@@ -25,8 +25,9 @@ func DBGenericName(dbName, sku string) (string, error) {
 			}
 		}
 	}
-	return "", fmt.Errorf("Unknown SKU provided", dbName, sku)
+	return "", fmt.Errorf("Unknown SKU provided")
 }
+
 
 func DBGenericNameMap() (map[string]string, error) {
 	bytes, err := files.Asset("data/files/database.latest.json")

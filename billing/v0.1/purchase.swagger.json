@@ -96,9 +96,12 @@
     "billingPurchaseBeginResponse": {
       "type": "object",
       "properties": {
-        "phid": {
-          "type": "string",
-          "format": "string"
+        "phid_list": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
