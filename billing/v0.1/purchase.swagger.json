@@ -40,6 +40,16 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/billingPurchaseBeginRequest"
+            }
+          }
+        ],
         "tags": [
           "Purchase"
         ]

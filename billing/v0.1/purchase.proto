@@ -9,6 +9,7 @@ service Purchase {
   rpc Begin(PurchaseBeginRequest) returns (PurchaseBeginResponse) {
     option (google.api.http) = {
       post: "/appscode/api/billing/v0.1/purchase"
+      body: "*"
     };
   }
 
