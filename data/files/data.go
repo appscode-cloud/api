@@ -88,7 +88,7 @@ func dataFilesCiLatestJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/ci.latest.json", size: 2984, mode: os.FileMode(420), modTime: time.Unix(1464267152, 0)}
+	info := bindataFileInfo{name: "data/files/ci.latest.json", size: 2984, mode: os.FileMode(420), modTime: time.Unix(1464326447, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -128,7 +128,7 @@ func dataFilesClusterLatestJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/cluster.latest.json", size: 427, mode: os.FileMode(420), modTime: time.Unix(1464268466, 0)}
+	info := bindataFileInfo{name: "data/files/cluster.latest.json", size: 427, mode: os.FileMode(420), modTime: time.Unix(1464326447, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -168,7 +168,7 @@ func dataFilesDbLatestJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/db.latest.json", size: 4085, mode: os.FileMode(420), modTime: time.Unix(1464267433, 0)}
+	info := bindataFileInfo{name: "data/files/db.latest.json", size: 4085, mode: os.FileMode(420), modTime: time.Unix(1464326447, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -188,7 +188,7 @@ func dataFilesPkgLatestJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/pkg.latest.json", size: 8415, mode: os.FileMode(420), modTime: time.Unix(1464267152, 0)}
+	info := bindataFileInfo{name: "data/files/pkg.latest.json", size: 8415, mode: os.FileMode(420), modTime: time.Unix(1464326447, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
