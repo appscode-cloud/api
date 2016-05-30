@@ -141,7 +141,7 @@
       "sub_type":"USER",
       "quota_required":"pkg.user",
       "display_name":"Free",
-      "pricing_model":"M2M",
+      "pricing_model":"FREE",
       "subscription_type":"PRIMARY",
       "time_unit":"DAY",
       "pricing_formula":"0.1",
