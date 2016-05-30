@@ -8,7 +8,7 @@ import (
 )
 
 func DBGenericName(dbName, sku string) (string, error) {
-	bytes, err := files.Asset("data/files/database.latest.json")
+	bytes, err := files.Asset("data/files/db.latest.json")
 	if err != nil {
 		return "", err
 	}
@@ -30,7 +30,7 @@ func DBGenericName(dbName, sku string) (string, error) {
 
 
 func DBGenericNameMap() (map[string]string, error) {
-	bytes, err := files.Asset("data/files/database.latest.json")
+	bytes, err := files.Asset("data/files/db.latest.json")
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func DBGenericNameMap() (map[string]string, error) {
 }
 
 func DBSku(dbName, mode string) (string, error) {
-	bytes, err := files.Asset("data/files/database.latest.json")
+	bytes, err := files.Asset("data/files/db.latest.json")
 	if err != nil {
 		return "", err
 	}
@@ -77,7 +77,7 @@ func DBSku(dbName, mode string) (string, error) {
 }
 
 func DBVersion(dbName, dbVersion string) (string, error) {
-	bytes, err := files.Asset("data/files/database.latest.json")
+	bytes, err := files.Asset("data/files/db.latest.json")
 	if err != nil {
 		return "", err
 	}
