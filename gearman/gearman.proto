@@ -13,7 +13,7 @@ message Auth {
 }
 
 message Metadata {
-  repeated string kube_product_phid = 1;
+  repeated string purchase_phid = 1;
 }
 
 // Next Id: 11
