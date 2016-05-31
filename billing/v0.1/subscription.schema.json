@@ -2,7 +2,7 @@
   "definitions": {
     "billingSubscriptionSubscribeRequest": {
       "properties": {
-        "product_phid": {
+        "product_id": {
           "type": "string"
         }
       },

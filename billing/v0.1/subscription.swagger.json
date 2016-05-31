@@ -46,7 +46,7 @@
     "billingSubscriptionSubscribeRequest": {
       "type": "object",
       "properties": {
-        "product_phid": {
+        "product_id": {
           "type": "string",
           "format": "string"
         }

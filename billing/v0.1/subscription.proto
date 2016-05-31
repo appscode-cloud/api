@@ -15,5 +15,5 @@ service Subscription {
 }
 
 message SubscriptionSubscribeRequest {
-    string product_phid = 1;
+    string product_id = 1;
 }
