@@ -15,7 +15,7 @@ service LoadBalancers {
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/loadbalancer/v0.1/{name}"
+      get: "/appscode/api/loadbalancer/v0.1/{cluster}/{name}"
     };
   }
 
