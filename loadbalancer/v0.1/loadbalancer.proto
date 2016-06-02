@@ -127,6 +127,10 @@ message LoadBalancerBackend {
 
 message LoadBalancerRule {
   string host = 1;
+
+  // ssl secret name to enable https on the host.
+  // ssl secret must contain data with the certs pem file.
+  string SSL_secret_name = 5;
   repeated HTTPLoadBalancerRule http = 2;
   repeated TCPLoadBalancerRule tcp = 3;
 }
@@ -136,14 +140,10 @@ message HTTPLoadBalancerRule {
   LoadBalancerBackend backend = 2;
   repeated string header_rule = 3;
   repeated string rewrite_rule = 4;
-
-  string SSL_secret_name = 5;
-
 }
 
 message TCPLoadBalancerRule {
   string port = 1;
   LoadBalancerBackend backend = 2;
-  string secret_name = 3;
-  string PEM_name = 4;
+  string secret_pem_name = 4;
 }
