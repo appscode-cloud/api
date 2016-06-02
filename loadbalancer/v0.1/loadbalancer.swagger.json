@@ -90,7 +90,7 @@
         ]
       }
     },
-    "/appscode/api/loadbalancer/v0.1/{name}": {
+    "/appscode/api/loadbalancer/v0.1/{cluster}/{name}": {
       "get": {
         "operationId": "Describe",
         "responses": {
@@ -103,6 +103,13 @@
         },
         "parameters": [
           {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
             "name": "name",
             "in": "path",
             "required": true,
@@ -113,7 +120,9 @@
         "tags": [
           "LoadBalancers"
         ]
-      },
+      }
+    },
+    "/appscode/api/loadbalancer/v0.1/{name}": {
       "delete": {
         "operationId": "Delete",
         "responses": {
