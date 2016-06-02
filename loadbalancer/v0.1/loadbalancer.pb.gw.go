@@ -55,7 +55,7 @@ func request_LoadBalancers_List_0(ctx context.Context, marshaler runtime.Marshal
 }
 
 var (
-	filter_LoadBalancers_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_LoadBalancers_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"cluster": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_LoadBalancers_Describe_0(ctx context.Context, marshaler runtime.Marshaler, client LoadBalancersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -68,6 +68,17 @@ func request_LoadBalancers_Describe_0(ctx context.Context, marshaler runtime.Mar
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["cluster"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+	}
+
+	protoReq.Cluster, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -306,7 +317,7 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 var (
 	pattern_LoadBalancers_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"appscode", "api", "loadbalancer", "v0.1", "cluster"}, ""))
 
-	pattern_LoadBalancers_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"appscode", "api", "loadbalancer", "v0.1", "name"}, ""))
+	pattern_LoadBalancers_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "loadbalancer", "v0.1", "cluster", "name"}, ""))
 
 	pattern_LoadBalancers_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"appscode", "api", "loadbalancer", "v0.1"}, ""))
 

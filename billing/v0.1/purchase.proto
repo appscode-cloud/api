@@ -22,7 +22,7 @@ service Purchase {
 
   rpc Close(PurchaseCloseRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/billing/v0.1/purchase"
+      delete: "/appscode/api/billing/v0.1/purchase/{object_phid}"
     };
   }
 }

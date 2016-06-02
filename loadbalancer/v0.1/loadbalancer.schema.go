@@ -57,9 +57,6 @@ func init() {
   "definitions": {
     "loadbalancerHTTPLoadBalancerRule": {
       "properties": {
-        "SSL_secret_name": {
-          "type": "string"
-        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
@@ -128,6 +125,10 @@ func init() {
     },
     "loadbalancerLoadBalancerRule": {
       "properties": {
+        "SSL_secret_name": {
+          "description": "ssl secret name to enable https on the host.\nssl secret must contain data with the certs pem file.",
+          "type": "string"
+        },
         "host": {
           "type": "string"
         },
@@ -184,18 +185,13 @@ func init() {
     },
     "loadbalancerTCPLoadBalancerRule": {
       "properties": {
-        "PEM_name": {
-          "type": "string"
-        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
         "port": {
           "type": "string"
         },
-        "secret_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+        "secret_pem_name": {
           "type": "string"
         }
       },
@@ -255,9 +251,6 @@ func init() {
   "definitions": {
     "loadbalancerHTTPLoadBalancerRule": {
       "properties": {
-        "SSL_secret_name": {
-          "type": "string"
-        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
@@ -326,6 +319,10 @@ func init() {
     },
     "loadbalancerLoadBalancerRule": {
       "properties": {
+        "SSL_secret_name": {
+          "description": "ssl secret name to enable https on the host.\nssl secret must contain data with the certs pem file.",
+          "type": "string"
+        },
         "host": {
           "type": "string"
         },
@@ -382,18 +379,13 @@ func init() {
     },
     "loadbalancerTCPLoadBalancerRule": {
       "properties": {
-        "PEM_name": {
-          "type": "string"
-        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
         "port": {
           "type": "string"
         },
-        "secret_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+        "secret_pem_name": {
           "type": "string"
         }
       },

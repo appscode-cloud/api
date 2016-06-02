@@ -90,7 +90,7 @@
         ]
       }
     },
-    "/appscode/api/loadbalancer/v0.1/{name}": {
+    "/appscode/api/loadbalancer/v0.1/{cluster}/{name}": {
       "get": {
         "operationId": "Describe",
         "responses": {
@@ -103,6 +103,13 @@
         },
         "parameters": [
           {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
             "name": "name",
             "in": "path",
             "required": true,
@@ -113,7 +120,9 @@
         "tags": [
           "LoadBalancers"
         ]
-      },
+      }
+    },
+    "/appscode/api/loadbalancer/v0.1/{name}": {
       "delete": {
         "operationId": "Delete",
         "responses": {
@@ -272,10 +281,6 @@
     "loadbalancerHTTPLoadBalancerRule": {
       "type": "object",
       "properties": {
-        "SSL_secret_name": {
-          "type": "string",
-          "format": "string"
-        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
@@ -373,6 +378,11 @@
     "loadbalancerLoadBalancerRule": {
       "type": "object",
       "properties": {
+        "SSL_secret_name": {
+          "type": "string",
+          "format": "string",
+          "description": "ssl secret name to enable https on the host.\nssl secret must contain data with the certs pem file."
+        },
         "host": {
           "type": "string",
           "format": "string"
@@ -432,10 +442,6 @@
     "loadbalancerTCPLoadBalancerRule": {
       "type": "object",
       "properties": {
-        "PEM_name": {
-          "type": "string",
-          "format": "string"
-        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
@@ -443,7 +449,7 @@
           "type": "string",
           "format": "string"
         },
-        "secret_name": {
+        "secret_pem_name": {
           "type": "string",
           "format": "string"
         }

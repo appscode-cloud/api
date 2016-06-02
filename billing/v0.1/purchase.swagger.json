@@ -16,20 +16,6 @@
   ],
   "paths": {
     "/appscode/api/billing/v0.1/purchase": {
-      "delete": {
-        "operationId": "Close",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Purchase"
-        ]
-      },
       "post": {
         "operationId": "Begin",
         "responses": {
@@ -48,6 +34,31 @@
             "schema": {
               "$ref": "#/definitions/billingPurchaseBeginRequest"
             }
+          }
+        ],
+        "tags": [
+          "Purchase"
+        ]
+      }
+    },
+    "/appscode/api/billing/v0.1/purchase/{object_phid}": {
+      "delete": {
+        "operationId": "Close",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "object_phid",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
           }
         ],
         "tags": [
