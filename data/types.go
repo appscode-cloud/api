@@ -129,6 +129,27 @@ type PackageProduct struct {
 	Package []*Package `json:"package"`
 }
 
+type InstanceType struct {
+	Category string      `json:"category"`
+	Sku      string      `json:"sku"`
+	CPU      int         `json:"cpu"`
+	Memory   interface{} `json:"memory"`
+}
+
+type CloudInstance struct {
+	Name    string `json:"name"`
+	Regions []struct {
+		Location string   `json:"location"`
+		Region   string   `json:"region"`
+		Zones    []string `json:"zones,omitempty"`
+		Zone     []string `json:"zone,omitempty"`
+	} `json:"regions"`
+	InstanceTypes []*InstanceType `json:"instance_types"`
+}
+type ClusterProvider struct {
+	Provider map[string]CloudInstance `json:"cloud_provider"`
+}
+
 type Money string
 
 const moneyPrecision = 40

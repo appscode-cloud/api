@@ -33,3 +33,7 @@ func TestGenericParsing(t *testing.T) {
 	fmt.Println(len(p.Product[0].DisplayPriceUSD))
 	fmt.Println(string(p.Product[0].Metadata))
 }
+
+func TestName(t *testing.T) {
+	ClusterMachineType("gce","n1-standard-2")
+}
