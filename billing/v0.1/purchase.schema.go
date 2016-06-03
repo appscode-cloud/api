@@ -36,7 +36,7 @@ func init() {
     },
     "metadata": {
       "additionalProperties": {
-        "type": "integer"
+        "type": "string"
       },
       "type": "object"
     },
