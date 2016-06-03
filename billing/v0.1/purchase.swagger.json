@@ -148,8 +148,8 @@
         "metadata": {
           "type": "object",
           "additionalProperties": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string",
+            "format": "string"
           }
         },
         "object_phid": {
