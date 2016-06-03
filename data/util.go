@@ -124,3 +124,22 @@ func CIBuildAgent(sku string) (*BuildAgent, error) {
 	}
 	return nil, fmt.Errorf("Can't find build agent for CIProduct sku %v", sku)
 }
+
+func ClusterMachineType(cloud, sku string) (*InstanceType, error) {
+	bytes, err := files.Asset("data/files/cloud_provider.json")
+	if err != nil {
+		return nil, err
+	}
+
+	var provider ClusterProvider
+	err = json.Unmarshal(bytes, &provider)
+	if err != nil {
+		return nil, err
+	}
+	for _, instance := range provider.Provider[cloud].InstanceTypes{
+		if instance.Sku == sku {
+			return instance, nil
+		}
+	}
+	return nil, err
+}
