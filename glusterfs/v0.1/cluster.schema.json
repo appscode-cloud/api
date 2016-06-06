@@ -1,0 +1,73 @@
+{
+  "definitions": {
+    "glusterfsClusterCreateRequest": {
+      "properties": {
+        "bucket": {
+          "description": "if bacula is enabled the following two fields are\nrequired.",
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "disks": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "enable_bacula": {
+          "type": "integer"
+        },
+        "kube_cluster": {
+          "type": "string"
+        },
+        "mood": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        },
+        "node": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "glusterfsClusterDeleteRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "glusterfsClusterDescribeRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "glusterfsClusterListRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
