@@ -77,7 +77,7 @@
     "authConduitUser": {
       "type": "object",
       "properties": {
-        "iamge": {
+        "image": {
           "type": "string",
           "format": "string"
         },

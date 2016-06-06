@@ -39,7 +39,7 @@ message ConduitUser {
   string phid = 1;
   string user_name = 2;
   string real_name = 3;
-  string iamge = 4;
+  string image = 4;
   string uri = 5;
   repeated string roles = 6;
   string primary_email = 7;
