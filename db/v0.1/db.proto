@@ -84,7 +84,8 @@ message BackupRequest {
   string region = 7;
   string auth_secret_name = 8;
   bool wal = 9;
-  bool force = 10;
+  bool dump = 10;
+  bool force = 11;
 
 }
 
@@ -103,7 +104,8 @@ message RestoreRequest {
   string version = 12;
   string auth_secret_name = 13;
   bool wal = 14;
-  bool force = 15;
+  bool dump = 15;
+  bool force = 16;
 }
 
 message DescribeRequest {
