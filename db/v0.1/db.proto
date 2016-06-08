@@ -28,7 +28,7 @@ service Databases {
 
   rpc SnapshotList(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v0.1/snapshots/{name}"
+      get: "/appscode/api/db/v0.1/snapshots/{uid}"
     };
   }
 
@@ -162,7 +162,7 @@ message Database {
 }
 
 message SnapshotListRequest {
-  string name = 1;
+  string uid = 1;
 }
 
 message SnapshotListResponse {

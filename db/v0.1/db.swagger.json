@@ -111,7 +111,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/snapshots/{name}": {
+    "/appscode/api/db/v0.1/snapshots/{uid}": {
       "get": {
         "operationId": "SnapshotList",
         "responses": {
@@ -124,7 +124,7 @@
         },
         "parameters": [
           {
-            "name": "name",
+            "name": "uid",
             "in": "path",
             "required": true,
             "type": "string",
@@ -647,7 +647,7 @@
     "dbSnapshotListRequest": {
       "type": "object",
       "properties": {
-        "name": {
+        "uid": {
           "type": "string",
           "format": "string"
         }
