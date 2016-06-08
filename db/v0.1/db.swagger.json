@@ -71,6 +71,38 @@
         ]
       }
     },
+    "/appscode/api/db/v0.1/describe/{cluster}/{name}": {
+      "get": {
+        "operationId": "Describe",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dbDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
     "/appscode/api/db/v0.1/restore/{cluster}/{type}": {
       "put": {
         "operationId": "Restore",
@@ -202,31 +234,6 @@
             "type": "string",
             "format": "string"
           },
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Databases"
-        ]
-      }
-    },
-    "/appscode/api/db/v0.1/{name}": {
-      "get": {
-        "operationId": "Describe",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dbDescribeResponse"
-            }
-          }
-        },
-        "parameters": [
           {
             "name": "name",
             "in": "path",
@@ -474,6 +481,10 @@
           "format": "string"
         },
         "phid": {
+          "type": "string",
+          "format": "string"
+        },
+        "provider": {
           "type": "string",
           "format": "string"
         },

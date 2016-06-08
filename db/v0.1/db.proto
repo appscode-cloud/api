@@ -41,7 +41,7 @@ service Databases {
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v0.1/{name}"
+      get: "/appscode/api/db/v0.1/describe/{cluster}/{name}"
     };
   }
 
@@ -118,15 +118,16 @@ message DescribeResponse {
   string name = 2;
   string phid = 3;
   string cluster = 4;
-  string type = 5;
-  string sku = 6;
-  string version = 7;
-  int32 auto_snapshot = 8;
-  string last_backup = 9;
-  kubeInfo kube = 10;
-  string db_status = 11;
-  string auth_secret = 12;
-  string created = 13;
+  string provider = 5;
+  string type = 6;
+  string sku = 7;
+  string version = 8;
+  int32 auto_snapshot = 9;
+  string last_backup = 10;
+  kubeInfo kube = 11;
+  string db_status = 12;
+  string auth_secret = 13;
+  string created = 14;
 }
 
 message kubeInfo {
