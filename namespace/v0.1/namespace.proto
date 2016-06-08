@@ -7,12 +7,9 @@ import "api/dtypes/types.proto";
 
 // no authentication required, but rate limited apis.
 service Namespace {
-  rpc Check(CheckRequest) returns (CheckResponse) {
-	  option (google.api.http) = {
-	    get : "/appscode/api/namespace/v0.1/{name}"
-    };
-  }
-
+  /*
+  Creates a new namespace, if name is valid and no namespace with same name exists.
+  */
   rpc Create(CreateRequest) returns (CreateResponse) {
 	  option (google.api.http) = {
 	    put: "/appscode/api/namespace/v0.1/{name}"
@@ -20,25 +17,23 @@ service Namespace {
     };
   }
 
-  rpc Status(StatusRequest) returns (StatusResponse) {
+  /*
+  Gets a namespace, if exists. This can be used to check existence of a namespace.
+  */
+  rpc Get(GetRequest) returns (GetResponse) {
 	  option (google.api.http) = {
-	    get: "/appscode/api/namespace/v0.1/status/{name}"
+	    get: "/appscode/api/namespace/v0.1/{name}"
 	  };
   }
 
-  rpc Log(LogRequest) returns (LogResponse) {
+  /*
+  Check if a namespace name is available meaning name is valid and no namespace with same name exists.
+  */
+  rpc IsAvailable(IsAvailableRequest) returns (dtypes.VoidResponse) {
 	  option (google.api.http) = {
-	    get: "/appscode/api/namespace/v0.1/log/{name}"
-	  };
+	    get : "/appscode/api/namespace/v0.1/{name}/is-available"
+    };
   }
-}
-
-message CheckRequest {
-  string name = 1;
-}
-
-message CheckResponse {
-  dtypes.Status status = 1;
 }
 
 message CreateRequest {
@@ -48,32 +43,22 @@ message CreateRequest {
   string user_name = 4;
   string password = 5;
   repeated string invite_email = 6;
-  string user_ip = 7;
-  string subscription_type = 8;
+  string subscription_type = 7;
 }
 
 message CreateResponse {
   dtypes.Status status = 1;
 }
 
-message LogRequest {
+message GetRequest {
   string name = 1;
 }
 
-message LogResponse {
+message GetResponse {
   dtypes.Status status = 1;
-  repeated Log logs = 2;
+  string phid = 2;
 }
 
-message Log {
-  string info = 1;
-  string details = 2;
-}
-
-message StatusRequest {
+message IsAvailableRequest {
   string name = 1;
-}
-
-message StatusResponse {
-  dtypes.Status status = 1;
 }
