@@ -9,15 +9,11 @@ It is generated from these files:
 	namespace.proto
 
 It has these top-level messages:
-	CheckRequest
-	CheckResponse
 	CreateRequest
 	CreateResponse
-	LogRequest
-	LogResponse
-	Log
-	StatusRequest
-	StatusResponse
+	GetRequest
+	GetResponse
+	IsAvailableRequest
 */
 package namespace
 
@@ -43,31 +39,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type CheckRequest struct {
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-}
-
-func (m *CheckRequest) Reset()                    { *m = CheckRequest{} }
-func (m *CheckRequest) String() string            { return proto.CompactTextString(m) }
-func (*CheckRequest) ProtoMessage()               {}
-func (*CheckRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
-
-type CheckResponse struct {
-	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-}
-
-func (m *CheckResponse) Reset()                    { *m = CheckResponse{} }
-func (m *CheckResponse) String() string            { return proto.CompactTextString(m) }
-func (*CheckResponse) ProtoMessage()               {}
-func (*CheckResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
-
-func (m *CheckResponse) GetStatus() *dtypes.Status {
-	if m != nil {
-		return m.Status
-	}
-	return nil
-}
-
 type CreateRequest struct {
 	Name             string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	DisplayName      string   `protobuf:"bytes,2,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
@@ -75,14 +46,13 @@ type CreateRequest struct {
 	UserName         string   `protobuf:"bytes,4,opt,name=user_name,json=userName" json:"user_name,omitempty"`
 	Password         string   `protobuf:"bytes,5,opt,name=password" json:"password,omitempty"`
 	InviteEmail      []string `protobuf:"bytes,6,rep,name=invite_email,json=inviteEmail" json:"invite_email,omitempty"`
-	UserIp           string   `protobuf:"bytes,7,opt,name=user_ip,json=userIp" json:"user_ip,omitempty"`
-	SubscriptionType string   `protobuf:"bytes,8,opt,name=subscription_type,json=subscriptionType" json:"subscription_type,omitempty"`
+	SubscriptionType string   `protobuf:"bytes,7,opt,name=subscription_type,json=subscriptionType" json:"subscription_type,omitempty"`
 }
 
 func (m *CreateRequest) Reset()                    { *m = CreateRequest{} }
 func (m *CreateRequest) String() string            { return proto.CompactTextString(m) }
 func (*CreateRequest) ProtoMessage()               {}
-func (*CreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+func (*CreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
 type CreateResponse struct {
 	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -91,7 +61,7 @@ type CreateResponse struct {
 func (m *CreateResponse) Reset()                    { *m = CreateResponse{} }
 func (m *CreateResponse) String() string            { return proto.CompactTextString(m) }
 func (*CreateResponse) ProtoMessage()               {}
-func (*CreateResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (*CreateResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
 func (m *CreateResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -100,84 +70,47 @@ func (m *CreateResponse) GetStatus() *dtypes.Status {
 	return nil
 }
 
-type LogRequest struct {
+type GetRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
 
-func (m *LogRequest) Reset()                    { *m = LogRequest{} }
-func (m *LogRequest) String() string            { return proto.CompactTextString(m) }
-func (*LogRequest) ProtoMessage()               {}
-func (*LogRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+func (m *GetRequest) Reset()                    { *m = GetRequest{} }
+func (m *GetRequest) String() string            { return proto.CompactTextString(m) }
+func (*GetRequest) ProtoMessage()               {}
+func (*GetRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
-type LogResponse struct {
+type GetResponse struct {
 	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-	Logs   []*Log         `protobuf:"bytes,2,rep,name=logs" json:"logs,omitempty"`
+	Phid   string         `protobuf:"bytes,2,opt,name=phid" json:"phid,omitempty"`
 }
 
-func (m *LogResponse) Reset()                    { *m = LogResponse{} }
-func (m *LogResponse) String() string            { return proto.CompactTextString(m) }
-func (*LogResponse) ProtoMessage()               {}
-func (*LogResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+func (m *GetResponse) Reset()                    { *m = GetResponse{} }
+func (m *GetResponse) String() string            { return proto.CompactTextString(m) }
+func (*GetResponse) ProtoMessage()               {}
+func (*GetResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
 
-func (m *LogResponse) GetStatus() *dtypes.Status {
+func (m *GetResponse) GetStatus() *dtypes.Status {
 	if m != nil {
 		return m.Status
 	}
 	return nil
 }
 
-func (m *LogResponse) GetLogs() []*Log {
-	if m != nil {
-		return m.Logs
-	}
-	return nil
-}
-
-type Log struct {
-	Info    string `protobuf:"bytes,1,opt,name=info" json:"info,omitempty"`
-	Details string `protobuf:"bytes,2,opt,name=details" json:"details,omitempty"`
-}
-
-func (m *Log) Reset()                    { *m = Log{} }
-func (m *Log) String() string            { return proto.CompactTextString(m) }
-func (*Log) ProtoMessage()               {}
-func (*Log) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
-
-type StatusRequest struct {
+type IsAvailableRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
 
-func (m *StatusRequest) Reset()                    { *m = StatusRequest{} }
-func (m *StatusRequest) String() string            { return proto.CompactTextString(m) }
-func (*StatusRequest) ProtoMessage()               {}
-func (*StatusRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
-
-type StatusResponse struct {
-	Status *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-}
-
-func (m *StatusResponse) Reset()                    { *m = StatusResponse{} }
-func (m *StatusResponse) String() string            { return proto.CompactTextString(m) }
-func (*StatusResponse) ProtoMessage()               {}
-func (*StatusResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
-
-func (m *StatusResponse) GetStatus() *dtypes.Status {
-	if m != nil {
-		return m.Status
-	}
-	return nil
-}
+func (m *IsAvailableRequest) Reset()                    { *m = IsAvailableRequest{} }
+func (m *IsAvailableRequest) String() string            { return proto.CompactTextString(m) }
+func (*IsAvailableRequest) ProtoMessage()               {}
+func (*IsAvailableRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
 func init() {
-	proto.RegisterType((*CheckRequest)(nil), "namespace.CheckRequest")
-	proto.RegisterType((*CheckResponse)(nil), "namespace.CheckResponse")
 	proto.RegisterType((*CreateRequest)(nil), "namespace.CreateRequest")
 	proto.RegisterType((*CreateResponse)(nil), "namespace.CreateResponse")
-	proto.RegisterType((*LogRequest)(nil), "namespace.LogRequest")
-	proto.RegisterType((*LogResponse)(nil), "namespace.LogResponse")
-	proto.RegisterType((*Log)(nil), "namespace.Log")
-	proto.RegisterType((*StatusRequest)(nil), "namespace.StatusRequest")
-	proto.RegisterType((*StatusResponse)(nil), "namespace.StatusResponse")
+	proto.RegisterType((*GetRequest)(nil), "namespace.GetRequest")
+	proto.RegisterType((*GetResponse)(nil), "namespace.GetResponse")
+	proto.RegisterType((*IsAvailableRequest)(nil), "namespace.IsAvailableRequest")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -191,10 +124,15 @@ const _ = grpc.SupportPackageIsVersion2
 // Client API for Namespace service
 
 type NamespaceClient interface {
-	Check(ctx context.Context, in *CheckRequest, opts ...grpc.CallOption) (*CheckResponse, error)
+	//
+	// Creates a new namespace, if name is valid and no namespace with same name exists.
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
-	Status(ctx context.Context, in *StatusRequest, opts ...grpc.CallOption) (*StatusResponse, error)
-	Log(ctx context.Context, in *LogRequest, opts ...grpc.CallOption) (*LogResponse, error)
+	//
+	// Gets a namespace, if exists. This can be used to check existence of a namespace.
+	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
+	//
+	// Check if a namespace name is available meaning name is valid and no namespace with same name exists.
+	IsAvailable(ctx context.Context, in *IsAvailableRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error)
 }
 
 type namespaceClient struct {
@@ -203,15 +141,6 @@ type namespaceClient struct {
 
 func NewNamespaceClient(cc *grpc.ClientConn) NamespaceClient {
 	return &namespaceClient{cc}
-}
-
-func (c *namespaceClient) Check(ctx context.Context, in *CheckRequest, opts ...grpc.CallOption) (*CheckResponse, error) {
-	out := new(CheckResponse)
-	err := grpc.Invoke(ctx, "/namespace.Namespace/Check", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *namespaceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
@@ -223,18 +152,18 @@ func (c *namespaceClient) Create(ctx context.Context, in *CreateRequest, opts ..
 	return out, nil
 }
 
-func (c *namespaceClient) Status(ctx context.Context, in *StatusRequest, opts ...grpc.CallOption) (*StatusResponse, error) {
-	out := new(StatusResponse)
-	err := grpc.Invoke(ctx, "/namespace.Namespace/Status", in, out, c.cc, opts...)
+func (c *namespaceClient) Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error) {
+	out := new(GetResponse)
+	err := grpc.Invoke(ctx, "/namespace.Namespace/Get", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *namespaceClient) Log(ctx context.Context, in *LogRequest, opts ...grpc.CallOption) (*LogResponse, error) {
-	out := new(LogResponse)
-	err := grpc.Invoke(ctx, "/namespace.Namespace/Log", in, out, c.cc, opts...)
+func (c *namespaceClient) IsAvailable(ctx context.Context, in *IsAvailableRequest, opts ...grpc.CallOption) (*dtypes.VoidResponse, error) {
+	out := new(dtypes.VoidResponse)
+	err := grpc.Invoke(ctx, "/namespace.Namespace/IsAvailable", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -244,32 +173,19 @@ func (c *namespaceClient) Log(ctx context.Context, in *LogRequest, opts ...grpc.
 // Server API for Namespace service
 
 type NamespaceServer interface {
-	Check(context.Context, *CheckRequest) (*CheckResponse, error)
+	//
+	// Creates a new namespace, if name is valid and no namespace with same name exists.
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
-	Status(context.Context, *StatusRequest) (*StatusResponse, error)
-	Log(context.Context, *LogRequest) (*LogResponse, error)
+	//
+	// Gets a namespace, if exists. This can be used to check existence of a namespace.
+	Get(context.Context, *GetRequest) (*GetResponse, error)
+	//
+	// Check if a namespace name is available meaning name is valid and no namespace with same name exists.
+	IsAvailable(context.Context, *IsAvailableRequest) (*dtypes.VoidResponse, error)
 }
 
 func RegisterNamespaceServer(s *grpc.Server, srv NamespaceServer) {
 	s.RegisterService(&_Namespace_serviceDesc, srv)
-}
-
-func _Namespace_Check_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NamespaceServer).Check(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/namespace.Namespace/Check",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NamespaceServer).Check(ctx, req.(*CheckRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _Namespace_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -290,38 +206,38 @@ func _Namespace_Create_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Namespace_Status_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StatusRequest)
+func _Namespace_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NamespaceServer).Status(ctx, in)
+		return srv.(NamespaceServer).Get(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/namespace.Namespace/Status",
+		FullMethod: "/namespace.Namespace/Get",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NamespaceServer).Status(ctx, req.(*StatusRequest))
+		return srv.(NamespaceServer).Get(ctx, req.(*GetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Namespace_Log_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LogRequest)
+func _Namespace_IsAvailable_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(IsAvailableRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NamespaceServer).Log(ctx, in)
+		return srv.(NamespaceServer).IsAvailable(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/namespace.Namespace/Log",
+		FullMethod: "/namespace.Namespace/IsAvailable",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NamespaceServer).Log(ctx, req.(*LogRequest))
+		return srv.(NamespaceServer).IsAvailable(ctx, req.(*IsAvailableRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -331,58 +247,49 @@ var _Namespace_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*NamespaceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Check",
-			Handler:    _Namespace_Check_Handler,
-		},
-		{
 			MethodName: "Create",
 			Handler:    _Namespace_Create_Handler,
 		},
 		{
-			MethodName: "Status",
-			Handler:    _Namespace_Status_Handler,
+			MethodName: "Get",
+			Handler:    _Namespace_Get_Handler,
 		},
 		{
-			MethodName: "Log",
-			Handler:    _Namespace_Log_Handler,
+			MethodName: "IsAvailable",
+			Handler:    _Namespace_IsAvailable_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{},
 }
 
 var fileDescriptor0 = []byte{
-	// 515 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x94, 0x94, 0xc1, 0x6e, 0xd3, 0x40,
-	0x10, 0x86, 0x95, 0x26, 0x71, 0x92, 0x49, 0x5b, 0x60, 0x05, 0xad, 0x31, 0x1c, 0xc2, 0x56, 0x40,
-	0x69, 0x91, 0x0d, 0xe9, 0x01, 0xc4, 0x15, 0x71, 0x40, 0x42, 0x3d, 0x04, 0x2e, 0x9c, 0xa2, 0x6d,
-	0xbc, 0x98, 0x15, 0x89, 0x77, 0xeb, 0x75, 0x8a, 0x2a, 0xc4, 0x85, 0x57, 0xe0, 0x79, 0x78, 0x0a,
-	0x5e, 0x81, 0xe7, 0x40, 0xec, 0xce, 0xae, 0x4b, 0x5c, 0x90, 0xd5, 0x5c, 0x22, 0xcf, 0xfc, 0xb3,
-	0xff, 0xe7, 0x99, 0x1d, 0x07, 0xae, 0xe5, 0x6c, 0xc1, 0xb5, 0x62, 0x33, 0x1e, 0xab, 0x42, 0x96,
-	0x92, 0x0c, 0x2e, 0x12, 0xd1, 0xdd, 0x4c, 0xca, 0x6c, 0xce, 0x13, 0xa6, 0x44, 0xc2, 0xf2, 0x5c,
-	0x96, 0xac, 0x14, 0x32, 0xd7, 0xae, 0x30, 0xda, 0xb1, 0xe9, 0xb4, 0x3c, 0x57, 0x5c, 0x27, 0xf8,
-	0xeb, 0xf2, 0x94, 0xc2, 0xe6, 0xcb, 0x8f, 0x7c, 0xf6, 0x69, 0xc2, 0x4f, 0x97, 0x5c, 0x97, 0x84,
-	0x40, 0xc7, 0x5a, 0x86, 0xad, 0x51, 0x6b, 0x7f, 0x30, 0xc1, 0x67, 0xfa, 0x0c, 0xb6, 0x7c, 0x8d,
-	0x56, 0xc6, 0x91, 0x93, 0x07, 0x10, 0x68, 0x63, 0xbf, 0xd4, 0x58, 0x36, 0x1c, 0x6f, 0xc7, 0xce,
-	0x39, 0x7e, 0x8b, 0xd9, 0x89, 0x57, 0xe9, 0xef, 0x96, 0x39, 0x59, 0x70, 0x56, 0xf2, 0x06, 0x7b,
-	0x72, 0x0f, 0x36, 0x53, 0xa1, 0xd5, 0x9c, 0x9d, 0x4f, 0x51, 0xdb, 0x40, 0x6d, 0xe8, 0x73, 0xc7,
-	0xb6, 0xe4, 0x26, 0x74, 0xf9, 0x82, 0x89, 0x79, 0xd8, 0x46, 0xcd, 0x05, 0xe4, 0x0e, 0x0c, 0x96,
-	0x9a, 0x17, 0xee, 0x54, 0x07, 0x95, 0xbe, 0x4d, 0xe0, 0x91, 0x08, 0xfa, 0x8a, 0x69, 0xfd, 0x59,
-	0x16, 0x69, 0xd8, 0x75, 0x5a, 0x15, 0x5b, 0xa2, 0xc8, 0xcf, 0x44, 0xc9, 0xa7, 0xce, 0x35, 0x18,
-	0xb5, 0x2d, 0xd1, 0xe5, 0x5e, 0xa1, 0xf7, 0x2e, 0xf4, 0xd0, 0x5b, 0xa8, 0xb0, 0x87, 0xa7, 0x03,
-	0x1b, 0xbe, 0x56, 0xe4, 0x10, 0x6e, 0xe8, 0xe5, 0x89, 0x9e, 0x15, 0x42, 0xd9, 0xf9, 0x4e, 0x6d,
-	0xe3, 0x61, 0x1f, 0x4b, 0xae, 0xaf, 0x0a, 0xef, 0x4c, 0x9e, 0x3e, 0x87, 0xed, 0xaa, 0xff, 0x35,
-	0x47, 0x37, 0x02, 0x78, 0x23, 0xb3, 0xa6, 0x5b, 0x79, 0x0f, 0x43, 0xac, 0x58, 0xcf, 0x98, 0x50,
-	0xe8, 0xcc, 0x65, 0xa6, 0xcd, 0x94, 0xdb, 0x58, 0xf5, 0x77, 0xa3, 0xac, 0x1b, 0x6a, 0xf4, 0x08,
-	0xda, 0x26, 0xb0, 0x54, 0x91, 0x7f, 0x90, 0x15, 0xd5, 0x3e, 0x93, 0x10, 0x7a, 0x29, 0x2f, 0xcd,
-	0x84, 0xb4, 0xbf, 0xa7, 0x2a, 0xa4, 0x7b, 0xb0, 0xe5, 0x51, 0x0d, 0x2f, 0x6d, 0x06, 0x52, 0x15,
-	0xad, 0xf7, 0xde, 0xe3, 0x1f, 0x6d, 0x18, 0x1c, 0x57, 0xef, 0x4a, 0x32, 0xe8, 0xe2, 0x4a, 0x92,
-	0xdd, 0x95, 0x06, 0x56, 0x17, 0x39, 0x0a, 0xff, 0x15, 0x1c, 0x91, 0x1e, 0x7e, 0xfb, 0xf9, 0xeb,
-	0xfb, 0xc6, 0x7d, 0xb2, 0x67, 0x3e, 0x15, 0xa5, 0x67, 0x32, 0x75, 0xdf, 0xcc, 0x45, 0x79, 0x72,
-	0xf6, 0x24, 0x7e, 0x9a, 0x7c, 0xb1, 0xf1, 0x57, 0xb2, 0x80, 0xc0, 0xdd, 0x20, 0xa9, 0x19, 0xae,
-	0x2e, 0x75, 0x74, 0xfb, 0x3f, 0x8a, 0x67, 0xc5, 0xc8, 0xda, 0x8f, 0xae, 0xc2, 0x7a, 0xd1, 0x3a,
-	0x20, 0xa7, 0x10, 0xb8, 0xbe, 0x6b, 0xb8, 0xda, 0x5c, 0x6b, 0xb8, 0xfa, 0x30, 0xe9, 0x18, 0x71,
-	0x8f, 0xc9, 0x41, 0x23, 0xce, 0x4d, 0xb4, 0xea, 0x90, 0xbb, 0xcb, 0xbe, 0x75, 0x69, 0x13, 0x3c,
-	0x6c, 0xe7, 0x72, 0xda, 0x93, 0x12, 0x24, 0x3d, 0x22, 0x0f, 0x1b, 0x49, 0x66, 0x9b, 0x3c, 0xe6,
-	0x24, 0xc0, 0xff, 0x9b, 0xa3, 0x3f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x2b, 0x14, 0xcd, 0x26, 0xc3,
-	0x04, 0x00, 0x00,
+	// 437 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x94, 0x53, 0xcf, 0x6f, 0xd3, 0x30,
+	0x18, 0x55, 0xda, 0x2d, 0x2c, 0x5f, 0x60, 0x80, 0x35, 0xa6, 0x10, 0x40, 0x2a, 0x41, 0xa0, 0x8a,
+	0x89, 0x64, 0x94, 0xcb, 0xc4, 0x0d, 0x21, 0x84, 0x76, 0xd9, 0xa1, 0x20, 0xae, 0x95, 0xdb, 0x58,
+	0xc3, 0x52, 0x1a, 0x9b, 0x7c, 0x4e, 0xd1, 0x04, 0x5c, 0xf8, 0x17, 0xf8, 0xd3, 0x38, 0x72, 0x85,
+	0xff, 0x83, 0xf8, 0x73, 0xd2, 0x85, 0x1f, 0x9a, 0xba, 0x4b, 0x65, 0xbf, 0xf7, 0xf9, 0xbd, 0xbe,
+	0x67, 0x07, 0xae, 0x97, 0x7c, 0x29, 0x50, 0xf3, 0x85, 0x48, 0x75, 0xa5, 0x8c, 0x62, 0xc1, 0x1a,
+	0x88, 0xef, 0x9e, 0x2a, 0x75, 0x5a, 0x88, 0x8c, 0x6b, 0x99, 0xf1, 0xb2, 0x54, 0x86, 0x1b, 0xa9,
+	0x4a, 0x74, 0x83, 0xf1, 0xbe, 0x85, 0x73, 0x73, 0xa6, 0x05, 0x66, 0xf4, 0xeb, 0xf0, 0xe4, 0x97,
+	0x07, 0xd7, 0x5e, 0x56, 0x82, 0x1b, 0x31, 0x15, 0x1f, 0x6a, 0x81, 0x86, 0x31, 0xd8, 0xb2, 0xa2,
+	0x91, 0x37, 0xf2, 0xc6, 0xc1, 0x94, 0xd6, 0xec, 0x3e, 0x5c, 0xcd, 0x25, 0xea, 0x82, 0x9f, 0xcd,
+	0x88, 0x1b, 0x10, 0x17, 0xb6, 0xd8, 0x89, 0x1d, 0xd9, 0x83, 0x6d, 0xb1, 0xe4, 0xb2, 0x88, 0x86,
+	0xc4, 0xb9, 0x0d, 0xbb, 0x03, 0x41, 0x8d, 0xa2, 0x72, 0xa7, 0xb6, 0x88, 0xd9, 0xb1, 0x00, 0x1d,
+	0x89, 0x61, 0x47, 0x73, 0xc4, 0x8f, 0xaa, 0xca, 0xa3, 0x6d, 0xc7, 0x75, 0x7b, 0xeb, 0x28, 0xcb,
+	0x95, 0x34, 0x62, 0xe6, 0x54, 0xfd, 0xd1, 0xd0, 0x3a, 0x3a, 0xec, 0x15, 0x69, 0x1f, 0xc0, 0x4d,
+	0xac, 0xe7, 0xb8, 0xa8, 0xa4, 0xb6, 0x49, 0x67, 0x36, 0x56, 0x74, 0x85, 0x74, 0x6e, 0xf4, 0x89,
+	0xb7, 0x0d, 0x9e, 0x1c, 0xc1, 0x6e, 0x17, 0x13, 0x75, 0x53, 0x8b, 0x60, 0x8f, 0xc0, 0xc7, 0xa6,
+	0xa3, 0x1a, 0x29, 0x69, 0x38, 0xd9, 0x4d, 0x5d, 0x3d, 0xe9, 0x1b, 0x42, 0xa7, 0x2d, 0x9b, 0x8c,
+	0x00, 0x5e, 0x0b, 0x73, 0x41, 0x3b, 0xc9, 0x31, 0x84, 0x34, 0x71, 0x39, 0x61, 0x2b, 0xa5, 0xdf,
+	0xcb, 0xbc, 0x2d, 0x93, 0xd6, 0xc9, 0x18, 0xd8, 0x31, 0xbe, 0x58, 0x35, 0xf1, 0xf8, 0xbc, 0xb8,
+	0xe8, 0x4a, 0x26, 0x3f, 0x06, 0x10, 0x9c, 0x74, 0x97, 0xcf, 0x96, 0xe0, 0xbb, 0x78, 0x2c, 0x4a,
+	0xcf, 0xdf, 0xc8, 0x1f, 0x17, 0x1b, 0xdf, 0xfe, 0x0f, 0xe3, 0xfe, 0x72, 0x92, 0x7e, 0xfd, 0xfe,
+	0xf3, 0xdb, 0x60, 0x1c, 0x3f, 0x68, 0x5e, 0x8f, 0xc6, 0x85, 0xca, 0xdd, 0x33, 0x5a, 0xcf, 0x67,
+	0xab, 0xc3, 0xf4, 0x69, 0xf6, 0xc9, 0xee, 0xbf, 0x3c, 0xf7, 0x1e, 0x33, 0x0e, 0xc3, 0x26, 0x31,
+	0xbb, 0xd5, 0x53, 0x3c, 0xef, 0x28, 0xde, 0xff, 0x1b, 0x6e, 0x5d, 0x0e, 0xc8, 0xe5, 0x21, 0xdb,
+	0xc4, 0x85, 0x7d, 0x86, 0xb0, 0xd7, 0x04, 0xbb, 0xd7, 0xd3, 0xfc, 0xb7, 0xa1, 0x78, 0xaf, 0xeb,
+	0xf8, 0x9d, 0x92, 0xf9, 0xda, 0xf0, 0x88, 0x0c, 0x27, 0xec, 0x70, 0x03, 0xc3, 0x4c, 0xe2, 0x13,
+	0xde, 0xc9, 0xce, 0x7d, 0xfa, 0x3a, 0x9e, 0xfd, 0x0e, 0x00, 0x00, 0xff, 0xff, 0xbe, 0xc5, 0x04,
+	0x2b, 0x71, 0x03, 0x00, 0x00,
 }
