@@ -19,13 +19,12 @@ func init() {
       "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     },
-    "cluster_namespace": {
-      "type": "string"
-    },
     "instance_name": {
       "type": "string"
     },
-    "jenkins_namespace": {
+    "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
       "type": "string"
     }
   },

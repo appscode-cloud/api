@@ -125,15 +125,11 @@
           "type": "string",
           "format": "string"
         },
-        "cluster_namespace": {
-          "type": "string",
-          "format": "string"
-        },
         "instance_name": {
           "type": "string",
           "format": "string"
         },
-        "jenkins_namespace": {
+        "namespace": {
           "type": "string",
           "format": "string"
         }
