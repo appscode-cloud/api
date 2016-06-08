@@ -453,10 +453,6 @@
           "type": "string",
           "format": "string"
         },
-        "auto_snapshot": {
-          "type": "integer",
-          "format": "int32"
-        },
         "cluster": {
           "type": "string",
           "format": "string"
@@ -471,10 +467,6 @@
         },
         "kube": {
           "$ref": "#/definitions/dbkubeInfo"
-        },
-        "last_backup": {
-          "type": "string",
-          "format": "string"
         },
         "name": {
           "type": "string",
@@ -491,6 +483,9 @@
         "sku": {
           "type": "string",
           "format": "string"
+        },
+        "snapshot_info": {
+          "$ref": "#/definitions/dbSnapshotInfo"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -652,6 +647,35 @@
         "zone": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "dbSnapshotInfo": {
+      "type": "object",
+      "properties": {
+        "auto_snapshot": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "backup_attempt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "backup_success": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "last_backup": {
+          "type": "string",
+          "format": "string"
+        },
+        "restore_attempt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "restore_success": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },

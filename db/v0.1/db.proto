@@ -122,12 +122,20 @@ message DescribeResponse {
   string type = 6;
   string sku = 7;
   string version = 8;
-  int32 auto_snapshot = 9;
-  string last_backup = 10;
-  kubeInfo kube = 11;
-  string db_status = 12;
-  string auth_secret = 13;
-  string created = 14;
+  SnapshotInfo snapshot_info = 9;
+  kubeInfo kube = 10;
+  string db_status = 11;
+  string auth_secret = 12;
+  string created = 13;
+}
+
+message SnapshotInfo {
+  int32 auto_snapshot = 1;
+  string last_backup = 2;
+  int64 backup_attempt = 3;
+  int64 backup_success = 4;
+  int64 restore_attempt = 5;
+  int64 restore_success = 6;
 }
 
 message kubeInfo {
