@@ -644,6 +644,10 @@
           "type": "string",
           "format": "string"
         },
+        "type": {
+          "type": "string",
+          "format": "string"
+        },
         "zone": {
           "type": "string",
           "format": "string"

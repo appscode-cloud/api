@@ -191,7 +191,8 @@ message Snapshot {
   string zone = 9;
   string status = 10;
   string process = 11;
-  string restore_db = 12;
-  string restore_snap = 13;
-  string created = 14;
+  string type = 12;
+  string restore_db = 13;
+  string restore_snap = 14;
+  string created = 15;
 }
