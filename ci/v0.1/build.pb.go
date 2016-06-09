@@ -251,6 +251,8 @@ var _Builds_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
+func init() { proto.RegisterFile("build.proto", fileDescriptor0) }
+
 var fileDescriptor0 = []byte{
 	// 389 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x8c, 0x92, 0xcf, 0x4e, 0xdb, 0x40,

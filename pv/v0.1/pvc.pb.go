@@ -237,6 +237,8 @@ var _PersistentVolumeClaims_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
+func init() { proto.RegisterFile("pvc.proto", fileDescriptor1) }
+
 var fileDescriptor1 = []byte{
 	// 425 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x9c, 0x53, 0x5d, 0x8b, 0xd3, 0x40,

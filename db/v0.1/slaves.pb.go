@@ -106,6 +106,8 @@ var _Slaves_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
+func init() { proto.RegisterFile("slaves.proto", fileDescriptor1) }
+
 var fileDescriptor1 = []byte{
 	// 221 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0xe2, 0x29, 0xce, 0x49, 0x2c,

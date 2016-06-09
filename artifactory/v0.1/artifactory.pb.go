@@ -529,6 +529,8 @@ var _Artifactory_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
+func init() { proto.RegisterFile("artifactory.proto", fileDescriptor0) }
+
 var fileDescriptor0 = []byte{
 	// 611 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xac, 0x54, 0xdf, 0x6e, 0xd3, 0x3e,

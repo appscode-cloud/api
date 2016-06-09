@@ -16,7 +16,6 @@ authenticationInterceptor:
     - "/namespace.Namespace/Create"
     - "/namespace.Namespace/Get"
     - "/namespace.Namespace/IsAvailable"
-    - "/ssh.SecureShell/Get"
   systemAuthenticatedEndpoint:
     - "/ci.Master/Create"
     - "/ci.Master/Delete"

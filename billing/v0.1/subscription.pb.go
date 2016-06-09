@@ -104,6 +104,8 @@ var _Subscription_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
+func init() { proto.RegisterFile("subscription.proto", fileDescriptor4) }
+
 var fileDescriptor4 = []byte{
 	// 206 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0x12, 0x2a, 0x2e, 0x4d, 0x2a,

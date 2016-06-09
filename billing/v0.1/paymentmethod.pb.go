@@ -91,6 +91,8 @@ var _PaymentMethod_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
+func init() { proto.RegisterFile("paymentmethod.proto", fileDescriptor2) }
+
 var fileDescriptor2 = []byte{
 	// 175 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0x12, 0x2e, 0x48, 0xac, 0xcc,

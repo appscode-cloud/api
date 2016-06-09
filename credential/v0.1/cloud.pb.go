@@ -297,6 +297,8 @@ var _Cloud_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
+func init() { proto.RegisterFile("cloud.proto", fileDescriptor0) }
+
 var fileDescriptor0 = []byte{
 	// 433 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x94, 0xcf, 0xce, 0xd2, 0x40,

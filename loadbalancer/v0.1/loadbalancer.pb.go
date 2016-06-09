@@ -560,6 +560,8 @@ var _LoadBalancers_serviceDesc = grpc.ServiceDesc{
 	Streams: []grpc.StreamDesc{},
 }
 
+func init() { proto.RegisterFile("loadbalancer.proto", fileDescriptor0) }
+
 var fileDescriptor0 = []byte{
 	// 779 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xac, 0x56, 0xdf, 0x4e, 0x13, 0x4f,
