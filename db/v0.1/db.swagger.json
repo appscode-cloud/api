@@ -612,6 +612,10 @@
           "type": "string",
           "format": "string"
         },
+        "db_type": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
           "type": "string",
           "format": "string"
