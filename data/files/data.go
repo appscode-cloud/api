@@ -88,7 +88,7 @@ func dataFilesCiLatestJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/ci.latest.json", size: 3261, mode: os.FileMode(436), modTime: time.Unix(1464579604, 0)}
+	info := bindataFileInfo{name: "data/files/ci.latest.json", size: 3261, mode: os.FileMode(436), modTime: time.Unix(1465530909, 0)}
 	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
@@ -148,7 +148,7 @@ func dataFilesConfigsYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/configs.yaml", size: 804, mode: os.FileMode(436), modTime: time.Unix(1464267026, 0)}
+	info := bindataFileInfo{name: "data/files/configs.yaml", size: 804, mode: os.FileMode(436), modTime: time.Unix(1465530909, 0)}
 	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
