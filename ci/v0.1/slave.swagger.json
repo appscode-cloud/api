@@ -177,6 +177,10 @@
             "$ref": "#/definitions/ciPortInfo"
           }
         },
+        "role": {
+          "type": "string",
+          "format": "string"
+        },
         "saltbase_version": {
           "type": "string",
           "format": "string"

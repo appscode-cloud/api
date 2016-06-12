@@ -87,6 +87,9 @@ func init() {
       },
       "type": "array"
     },
+    "role": {
+      "type": "string"
+    },
     "saltbase_version": {
       "type": "string"
     },
