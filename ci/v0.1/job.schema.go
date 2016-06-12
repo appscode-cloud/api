@@ -20,7 +20,7 @@ func init() {
   "properties": {
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -34,7 +34,7 @@ func init() {
   "properties": {
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -63,7 +63,7 @@ func init() {
   "properties": {
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "sh_file": {
@@ -80,7 +80,7 @@ func init() {
   "properties": {
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "param": {

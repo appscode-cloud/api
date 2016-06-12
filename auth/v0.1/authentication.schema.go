@@ -18,7 +18,7 @@ func init() {
   "properties": {
     "namespace": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "token": {
@@ -36,7 +36,7 @@ func init() {
   "properties": {
     "namespace": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "token": {
@@ -56,7 +56,7 @@ func init() {
     },
     "namespace": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "secret": {

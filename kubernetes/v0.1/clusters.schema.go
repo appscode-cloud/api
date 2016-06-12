@@ -23,7 +23,7 @@ func init() {
   "properties": {
     "cluster_name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -37,7 +37,7 @@ func init() {
   "properties": {
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "node_changes": {
@@ -63,7 +63,7 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "saltbase_version": {
@@ -80,7 +80,7 @@ func init() {
   "properties": {
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "release_reserved_ip": {
@@ -97,7 +97,7 @@ func init() {
   "properties": {
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -123,7 +123,7 @@ func init() {
   "properties": {
     "cloud_credential": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "cloud_credential_data": {
@@ -140,7 +140,7 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     },
     "node_set": {
@@ -169,7 +169,7 @@ func init() {
   "properties": {
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
     }
   },

@@ -4,12 +4,12 @@
       "properties": {
         "auth_secret_name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "bucket_name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "cluster": {
@@ -23,7 +23,7 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "region": {
@@ -31,7 +31,7 @@
         },
         "snapshot_name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "type": {
@@ -47,12 +47,12 @@
       "properties": {
         "auth_secret_name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "bucket_name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "cluster": {
@@ -63,7 +63,7 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "node": {
@@ -97,7 +97,7 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "type": {
@@ -113,7 +113,7 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -123,12 +123,12 @@
       "properties": {
         "auth_secret_name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "bucket_name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "cluster": {
@@ -142,7 +142,7 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "node": {
@@ -179,7 +179,7 @@
       "properties": {
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         }
       },
