@@ -28,7 +28,6 @@ func DBGenericName(dbName, sku string) (string, error) {
 	return "", fmt.Errorf("Unknown SKU provided")
 }
 
-
 func DBGenericNameMap() (map[string]string, error) {
 	bytes, err := files.Asset("data/files/db.latest.json")
 	if err != nil {
@@ -136,7 +135,7 @@ func ClusterMachineType(cloud, sku string) (*InstanceType, error) {
 	if err != nil {
 		return nil, err
 	}
-	for _, instance := range provider.Provider[cloud].InstanceTypes{
+	for _, instance := range provider.Provider[cloud].InstanceTypes {
 		if instance.Sku == sku {
 			return instance, nil
 		}

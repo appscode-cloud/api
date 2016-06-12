@@ -28,4 +28,3 @@ func (m *SubscriptionSubscribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionSubscribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SubscriptionSubscribeRequest) IsRequest() {}
-
