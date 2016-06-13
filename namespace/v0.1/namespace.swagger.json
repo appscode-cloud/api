@@ -15,64 +15,15 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/namespace/v0.1/log/{name}": {
-      "get": {
-        "operationId": "Log",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/namespaceLogResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Namespace"
-        ]
-      }
-    },
-    "/appscode/api/namespace/v0.1/status/{name}": {
-      "get": {
-        "operationId": "Status",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/namespaceStatusResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Namespace"
-        ]
-      }
-    },
     "/appscode/api/namespace/v0.1/{name}": {
       "get": {
-        "operationId": "Check",
+        "summary": "Gets a namespace, if exists. This can be used to check existence of a namespace.",
+        "operationId": "Get",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/namespaceCheckResponse"
+              "$ref": "#/definitions/namespaceGetResponse"
             }
           }
         },
@@ -90,6 +41,7 @@
         ]
       },
       "put": {
+        "summary": "Creates a new namespace, if name is valid and no namespace with same name exists.",
         "operationId": "Create",
         "responses": {
           "200": {
@@ -114,6 +66,32 @@
             "schema": {
               "$ref": "#/definitions/namespaceCreateRequest"
             }
+          }
+        ],
+        "tags": [
+          "Namespace"
+        ]
+      }
+    },
+    "/appscode/api/namespace/v0.1/{name}/is-available": {
+      "get": {
+        "summary": "Check if a namespace name is available meaning name is valid and no namespace with same name exists.",
+        "operationId": "IsAvailable",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
           }
         ],
         "tags": [
@@ -171,16 +149,7 @@
       },
       "description": "Next Id 5."
     },
-    "namespaceCheckRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "namespaceCheckResponse": {
+    "dtypesVoidResponse": {
       "type": "object",
       "properties": {
         "status": {
@@ -218,10 +187,6 @@
           "type": "string",
           "format": "string"
         },
-        "user_ip": {
-          "type": "string",
-          "format": "string"
-        },
         "user_name": {
           "type": "string",
           "format": "string"
@@ -236,20 +201,7 @@
         }
       }
     },
-    "namespaceLog": {
-      "type": "object",
-      "properties": {
-        "details": {
-          "type": "string",
-          "format": "string"
-        },
-        "info": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "namespaceLogRequest": {
+    "namespaceGetRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -258,34 +210,24 @@
         }
       }
     },
-    "namespaceLogResponse": {
+    "namespaceGetResponse": {
       "type": "object",
       "properties": {
-        "logs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/namespaceLog"
-          }
+        "phid": {
+          "type": "string",
+          "format": "string"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
       }
     },
-    "namespaceStatusRequest": {
+    "namespaceIsAvailableRequest": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
           "format": "string"
-        }
-      }
-    },
-    "namespaceStatusResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
         }
       }
     },

@@ -8,6 +8,8 @@ import (
 var (
 	Name            string
 	Version         string
+	Os              string
+	Arch            string
 	CommitHash      string
 	GitBranch       string
 	GitTag          string
@@ -21,6 +23,9 @@ var (
 func Print() {
 	fmt.Printf("%v\n", Name)
 	fmt.Printf("Version = %v\n", Version)
+	fmt.Printf("Os = %v\n", Os)
+	fmt.Printf("Arch = %v\n", Arch)
+
 	fmt.Printf("CommitHash = %v\n", CommitHash)
 	fmt.Printf("GitBranch = %v\n", GitBranch)
 	fmt.Printf("GitTag = %v\n", GitTag)
@@ -35,6 +40,9 @@ func Print() {
 func String() string {
 	var buf bytes.Buffer
 	buf.WriteString(fmt.Sprintf("Version = %v\n", Version))
+	buf.WriteString(fmt.Sprintf("Os = %v\n", Os))
+	buf.WriteString(fmt.Sprintf("Arch = %v\n", Arch))
+
 	buf.WriteString(fmt.Sprintf("CommitHash = %v\n", CommitHash))
 	buf.WriteString(fmt.Sprintf("GitBranch = %v\n", GitBranch))
 	buf.WriteString(fmt.Sprintf("GitTag = %v\n", GitTag))

@@ -56,6 +56,7 @@ message SlaveCreateRequest {
     string saltbase_version = 5;
     string ci_starter_version = 6;
     repeated PortInfo ports = 7;
+    string role = 8;
 }
 
 message PortInfo {

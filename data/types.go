@@ -42,7 +42,7 @@ type BuildAgent struct {
 		RAM                  int    `json:"ram"`
 		Disk                 int    `json:"disk"`
 		RecommendedExecutors int    `json:"recommended_executors"`
-		ExternalID           string `json:"external_id"`
+		ExternalSKU          string `json:"external_sku"`
 	} `json:"metadata"`
 	Quota       map[string]int `json:"quota"`
 	DateStarted time.Time      `json:"date_started"`

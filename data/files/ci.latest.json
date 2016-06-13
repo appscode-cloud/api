@@ -20,7 +20,7 @@
         "ram":1,
         "disk":30,
         "recommended_executors":1,
-        "external_id":"1gb",
+        "external_sku":"1gb",
         "quota_req":"ci.build_agent"
       },
       "date_started":"2016-01-01T00:00:00.000Z",
@@ -46,7 +46,7 @@
         "ram":2,
         "disk":40,
         "recommended_executors":2,
-        "external_id":"2gb"
+        "external_sku":"2gb"
       },
       "date_started":"2016-01-01T00:00:00.000Z",
       "date_ended":"2030-01-01T00:00:00.000Z"
@@ -71,7 +71,7 @@
         "ram":4,
         "disk":60,
         "recommended_executors":2,
-        "external_id":"4gb"
+        "external_sku":"4gb"
       },
       "date_started":"2016-01-01T00:00:00.000Z",
       "date_ended":"2030-01-01T00:00:00.000Z"
@@ -96,7 +96,7 @@
         "ram":8,
         "disk":80,
         "recommended_executors":2,
-        "external_id":"8gb"
+        "external_sku":"8gb"
       },
       "date_started":"2016-01-01T00:00:00.000Z",
       "date_ended":"2030-01-01T00:00:00.000Z"
@@ -121,7 +121,7 @@
         "ram":16,
         "disk":160,
         "recommended_executors":4,
-        "external_id":"16gb"
+        "external_sku":"16gb"
       },
       "date_started":"2016-01-01T00:00:00.000Z",
       "date_ended":"2030-01-01T00:00:00.000Z"

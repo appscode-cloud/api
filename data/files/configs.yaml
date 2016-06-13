@@ -13,11 +13,9 @@ authenticationInterceptor:
     - "/mailinglist.MailingList/SendEmail"
     - "/mailinglist.MailingList/Subscribe"
     - "/mailinglist.MailingList/Unsubscribe"
-    - "/namespace.Namespace/Check"
     - "/namespace.Namespace/Create"
-    - "/namespace.Namespace/Status"
-    - "/namespace.Namespace/Log"
-    - "/ssh.SecureShell/Get"
+    - "/namespace.Namespace/Get"
+    - "/namespace.Namespace/IsAvailable"
   systemAuthenticatedEndpoint:
     - "/ci.Master/Create"
     - "/ci.Master/Delete"
