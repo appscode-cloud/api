@@ -71,6 +71,38 @@
         ]
       }
     },
+    "/appscode/api/db/v0.1/describe/{cluster}/{name}": {
+      "get": {
+        "operationId": "Describe",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dbDescribeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cluster",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "string"
+          }
+        ],
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
     "/appscode/api/db/v0.1/restore/{cluster}/{type}": {
       "put": {
         "operationId": "Restore",
@@ -111,7 +143,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/snapshots/{name}": {
+    "/appscode/api/db/v0.1/snapshots/{uid}": {
       "get": {
         "operationId": "SnapshotList",
         "responses": {
@@ -124,39 +156,7 @@
         },
         "parameters": [
           {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Databases"
-        ]
-      }
-    },
-    "/appscode/api/db/v0.1/{cluster}/{name}": {
-      "get": {
-        "operationId": "Describe",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dbDescribeResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
+            "name": "uid",
             "in": "path",
             "required": true,
             "type": "string",
@@ -267,6 +267,10 @@
         "credential": {
           "type": "string",
           "format": "string"
+        },
+        "dump": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "force": {
           "type": "boolean",
@@ -449,10 +453,6 @@
           "type": "string",
           "format": "string"
         },
-        "auto_snapshot": {
-          "type": "integer",
-          "format": "int32"
-        },
         "cluster": {
           "type": "string",
           "format": "string"
@@ -468,10 +468,6 @@
         "kube": {
           "$ref": "#/definitions/dbkubeInfo"
         },
-        "last_backup": {
-          "type": "string",
-          "format": "string"
-        },
         "name": {
           "type": "string",
           "format": "string"
@@ -480,9 +476,16 @@
           "type": "string",
           "format": "string"
         },
+        "provider": {
+          "type": "string",
+          "format": "string"
+        },
         "sku": {
           "type": "string",
           "format": "string"
+        },
+        "snapshot_info": {
+          "$ref": "#/definitions/dbSnapshotInfo"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -535,6 +538,10 @@
         "credential": {
           "type": "string",
           "format": "string"
+        },
+        "dump": {
+          "type": "boolean",
+          "format": "boolean"
         },
         "force": {
           "type": "boolean",
@@ -605,6 +612,10 @@
           "type": "string",
           "format": "string"
         },
+        "db_type": {
+          "type": "string",
+          "format": "string"
+        },
         "name": {
           "type": "string",
           "format": "string"
@@ -637,16 +648,49 @@
           "type": "string",
           "format": "string"
         },
+        "type": {
+          "type": "string",
+          "format": "string"
+        },
         "zone": {
           "type": "string",
           "format": "string"
         }
       }
     },
+    "dbSnapshotInfo": {
+      "type": "object",
+      "properties": {
+        "auto_snapshot": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "backup_attempt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "backup_success": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "last_backup": {
+          "type": "string",
+          "format": "string"
+        },
+        "restore_attempt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "restore_success": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
     "dbSnapshotListRequest": {
       "type": "object",
       "properties": {
-        "name": {
+        "uid": {
           "type": "string",
           "format": "string"
         }

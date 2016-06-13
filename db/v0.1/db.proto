@@ -28,7 +28,7 @@ service Databases {
 
   rpc SnapshotList(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v0.1/snapshots/{name}"
+      get: "/appscode/api/db/v0.1/snapshots/{uid}"
     };
   }
 
@@ -41,7 +41,7 @@ service Databases {
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v0.1/{cluster}/{name}"
+      get: "/appscode/api/db/v0.1/describe/{cluster}/{name}"
     };
   }
 
@@ -84,7 +84,8 @@ message BackupRequest {
   string region = 7;
   string auth_secret_name = 8;
   bool wal = 9;
-  bool force = 10;
+  bool dump = 10;
+  bool force = 11;
 
 }
 
@@ -103,7 +104,8 @@ message RestoreRequest {
   string version = 12;
   string auth_secret_name = 13;
   bool wal = 14;
-  bool force = 15;
+  bool dump = 15;
+  bool force = 16;
 }
 
 message DescribeRequest {
@@ -116,15 +118,24 @@ message DescribeResponse {
   string name = 2;
   string phid = 3;
   string cluster = 4;
-  string type = 5;
-  string sku = 6;
-  string version = 7;
-  int32 auto_snapshot = 8;
-  string last_backup = 9;
+  string provider = 5;
+  string type = 6;
+  string sku = 7;
+  string version = 8;
+  SnapshotInfo snapshot_info = 9;
   kubeInfo kube = 10;
   string db_status = 11;
   string auth_secret = 12;
   string created = 13;
+}
+
+message SnapshotInfo {
+  int32 auto_snapshot = 1;
+  string last_backup = 2;
+  int64 backup_attempt = 3;
+  int64 backup_success = 4;
+  int64 restore_attempt = 5;
+  int64 restore_success = 6;
 }
 
 message kubeInfo {
@@ -160,7 +171,7 @@ message Database {
 }
 
 message SnapshotListRequest {
-  string name = 1;
+  string uid = 1;
 }
 
 message SnapshotListResponse {
@@ -172,15 +183,17 @@ message Snapshot {
   string name = 1;
   string phid = 2;
   string db_name = 3;
-  string db_cluster = 4;
-  string provider = 5;
-  string cloud_cred = 6;
-  string bucket = 7;
-  string region = 8;
-  string zone = 9;
-  string status = 10;
-  string process = 11;
-  string restore_db = 12;
-  string restore_snap = 13;
-  string created = 14;
+  string db_type = 4;
+  string db_cluster = 5;
+  string provider = 6;
+  string cloud_cred = 7;
+  string bucket = 8;
+  string region = 9;
+  string zone = 10;
+  string status = 11;
+  string process = 12;
+  string type = 13;
+  string restore_db = 14;
+  string restore_snap = 15;
+  string created = 16;
 }
