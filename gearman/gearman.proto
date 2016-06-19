@@ -28,6 +28,7 @@ enum OperationType {
   BUILD_AGENT_DELETE = 6;
   CHECK_DNS = 7;
   NAMESPACE_CREATE = 8;
+  DATA_BUCKET_PREFIX_DELETE = 9;
 }
 
 // Next Id: 10
@@ -45,5 +46,12 @@ message Operation {
     ci.SlaveCreateRequest ci_slave_create_request = 10;
     ci.SlaveDeleteRequest ci_slave_delete_request = 11;
     certificate.DNSCheckRequest dns_check_request = 12;
+    DataBucketPrefixDeleteRequest data_bucket_prefix_delete_request = 13;
   }
+}
+
+message DataBucketPrefixDeleteRequest {
+  string data_type = 1;
+  string namespace = 2;
+  string prefix = 3;
 }
