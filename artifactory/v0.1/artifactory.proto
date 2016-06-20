@@ -8,7 +8,7 @@ import "api/dtypes/types.proto";
 service Artifactory {
   rpc Search(SearchRequest) returns(SearchResponse) {
     option(google.api.http) = {
-      get: "/appscode/api/artifactory/v0.1/search/{type}"
+      get: "/appscode/api/artifactory/v0.1/search"
     };
   }
 
