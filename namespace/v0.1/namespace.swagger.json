@@ -160,6 +160,10 @@
     "namespaceCreateRequest": {
       "type": "object",
       "properties": {
+        "client_ip": {
+          "type": "string",
+          "format": "string"
+        },
         "display_name": {
           "type": "string",
           "format": "string"
