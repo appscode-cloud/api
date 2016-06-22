@@ -17,6 +17,12 @@ func init() {
   "properties": {
     "job_name": {
       "type": "string"
+    },
+    "parents": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
     }
   },
   "type": "object"
@@ -35,6 +41,12 @@ func init() {
     },
     "number": {
       "type": "integer"
+    },
+    "parents": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
     }
   },
   "type": "object"
