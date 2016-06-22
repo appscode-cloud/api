@@ -6,7 +6,7 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Jobs {
-  rpc List(dtypes.VoidRequest) returns (JobListResponse) {
+  rpc List(JobListRequest) returns (JobListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/ci/v0.1/jobs"
     };
@@ -46,45 +46,57 @@ service Jobs {
   }
 }
 
+message JobListRequest {
+  repeated string parents = 1;
+}
+
 message JobListResponse {
   dtypes.Status status = 1;
   repeated Job jobs = 2;
 }
 
 message JobBuildRequest {
-    string name = 1;
-    string param = 2;
+  string name = 1;
+  repeated string parents = 2;
+  string param = 3;
 }
 
 message JobDescribeRequest {
-    string name = 1;
+  string name = 1;
+  repeated string parents = 2;
 }
 
 message JobDescribeResponse {
-    dtypes.Status status = 1;
-    string name = 2;
-    string description = 3;
-    string display_name = 4;
-    int64 build_count = 5;
-    string job_color = 6;
-    string builds_command = 7;
+  dtypes.Status status = 1;
+  string name = 2;
+  repeated string parents = 3;
+  string description = 4;
+  string display_name = 5;
+  int64 build_count = 6;
+  string job_color = 7;
+  string builds_command = 8;
 }
 
 message JobDeleteRequest {
-    string name = 1;
+  string name = 1;
+  repeated string parents = 2;
 }
 
 message JobCreateRequest {
-    string name = 1;
-    string sh_file = 2;
+  string name = 1;
+  repeated string parents = 2;
+  string sh_file = 3;
 }
 
 message JobCopyRequest {
-    string source = 1;
-    string destination = 2;
+  string source = 1;
+  string destination = 2;
 }
 
 message Job {
-    string name = 1;
-    string color = 2;
+  string name = 1;
+  repeated string parents = 2;
+  string job_type = 3;
+  string color = 4;
+  string url = 5;
 }

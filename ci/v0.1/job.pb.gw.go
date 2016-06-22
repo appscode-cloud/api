@@ -13,7 +13,6 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/appscode/api/dtypes"
 	"github.com/gengo/grpc-gateway/runtime"
 	"github.com/gengo/grpc-gateway/utilities"
 	"github.com/golang/protobuf/proto"
@@ -28,14 +27,26 @@ var _ io.Reader
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
+var (
+	filter_Jobs_List_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
 func request_Jobs_List_0(ctx context.Context, marshaler runtime.Marshaler, client JobsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq dtypes.VoidRequest
+	var protoReq JobListRequest
 	var metadata runtime.ServerMetadata
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Jobs_List_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
 
 	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
+
+var (
+	filter_Jobs_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+)
 
 func request_Jobs_Describe_0(ctx context.Context, marshaler runtime.Marshaler, client JobsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq JobDescribeRequest
@@ -57,6 +68,10 @@ func request_Jobs_Describe_0(ctx context.Context, marshaler runtime.Marshaler, c
 
 	if err != nil {
 		return nil, metadata, err
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Jobs_Describe_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Describe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -168,6 +183,10 @@ func request_Jobs_Build_0(ctx context.Context, marshaler runtime.Marshaler, clie
 
 }
 
+var (
+	filter_Jobs_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+)
+
 func request_Jobs_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client JobsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq JobDeleteRequest
 	var metadata runtime.ServerMetadata
@@ -188,6 +207,10 @@ func request_Jobs_Delete_0(ctx context.Context, marshaler runtime.Marshaler, cli
 
 	if err != nil {
 		return nil, metadata, err
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Jobs_Delete_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))

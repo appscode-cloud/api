@@ -28,30 +28,12 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 var (
-	filter_Artifactory_Search_0 = &utilities.DoubleArray{Encoding: map[string]int{"type": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_Artifactory_Search_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
 func request_Artifactory_Search_0(ctx context.Context, marshaler runtime.Marshaler, client ArtifactoryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq SearchRequest
 	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["type"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
-	}
-
-	protoReq.Type, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Artifactory_Search_0); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
@@ -233,7 +215,7 @@ func RegisterArtifactoryHandler(ctx context.Context, mux *runtime.ServeMux, conn
 }
 
 var (
-	pattern_Artifactory_Search_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "artifactory", "v0.1", "search", "type"}, ""))
+	pattern_Artifactory_Search_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "artifactory", "v0.1", "search"}, ""))
 
 	pattern_Artifactory_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"appscode", "api", "artifactory", "v0.1", "type"}, ""))
 
