@@ -44,6 +44,7 @@ message CreateRequest {
   string password = 5;
   repeated string invite_email = 6;
   string subscription_type = 7;
+  string client_ip = 8;
 }
 
 message CreateResponse {

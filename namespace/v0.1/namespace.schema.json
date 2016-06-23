@@ -2,6 +2,9 @@
   "definitions": {
     "namespaceCreateRequest": {
       "properties": {
+        "client_ip": {
+          "type": "string"
+        },
         "display_name": {
           "type": "string"
         },
