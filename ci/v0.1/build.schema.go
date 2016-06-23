@@ -19,10 +19,7 @@ func init() {
       "type": "string"
     },
     "parents": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+      "type": "string"
     }
   },
   "type": "object"
@@ -43,10 +40,7 @@ func init() {
       "type": "integer"
     },
     "parents": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+      "type": "string"
     }
   },
   "type": "object"

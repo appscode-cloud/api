@@ -20,10 +20,7 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "parents": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+      "type": "string"
     }
   },
   "type": "object"
@@ -55,10 +52,7 @@ func init() {
       "type": "string"
     },
     "parents": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+      "type": "string"
     }
   },
   "type": "object"
@@ -75,10 +69,7 @@ func init() {
       "type": "string"
     },
     "parents": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+      "type": "string"
     },
     "sh_file": {
       "type": "string"
@@ -101,10 +92,7 @@ func init() {
       "type": "string"
     },
     "parents": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+      "type": "string"
     }
   },
   "type": "object"
@@ -121,10 +109,7 @@ func init() {
       "type": "string"
     },
     "parents": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+      "type": "string"
     }
   },
   "type": "object"

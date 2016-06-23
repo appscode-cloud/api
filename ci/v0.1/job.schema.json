@@ -11,10 +11,7 @@
           "type": "string"
         },
         "parents": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
+          "type": "string"
         }
       },
       "type": "object"
@@ -38,10 +35,7 @@
           "type": "string"
         },
         "parents": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
+          "type": "string"
         },
         "sh_file": {
           "type": "string"
@@ -57,10 +51,7 @@
           "type": "string"
         },
         "parents": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
+          "type": "string"
         }
       },
       "type": "object"
@@ -73,10 +64,7 @@
           "type": "string"
         },
         "parents": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
+          "type": "string"
         }
       },
       "type": "object"
@@ -84,10 +72,7 @@
     "ciJobListRequest": {
       "properties": {
         "parents": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
+          "type": "string"
         }
       },
       "type": "object"
