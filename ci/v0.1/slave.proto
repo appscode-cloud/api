@@ -98,6 +98,9 @@ message SlaveDescribeResponse {
   string startup_script = 9;
 
   string created_at = 10;
+  string updated_at = 11;
+  bool is_deleted = 12;
+  bool is_refreshed = 13;
 }
 
 message SlaveDeleteRequest {
