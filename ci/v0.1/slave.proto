@@ -59,8 +59,8 @@ message SlaveListResponse {
 message Slave {
   string name = 1;
   string status = 2;
-  bool is_deleted = 3;
-  bool is_refreshed = 4;
+  int32 is_deleted = 3;
+  int32 is_refreshed = 4;
   string created_at = 5;
   string updated_at = 6;
 }
@@ -99,8 +99,8 @@ message SlaveDescribeResponse {
 
   string created_at = 10;
   string updated_at = 11;
-  bool is_deleted = 12;
-  bool is_refreshed = 13;
+  int32 is_deleted = 12;
+  int32 is_refreshed = 13;
 }
 
 message SlaveDeleteRequest {
