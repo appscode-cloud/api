@@ -63,6 +63,20 @@
       },
       "type": "object"
     },
+    "ciSlaveListRequest": {
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ciSlaveType"
+        }
+      },
+      "type": "object"
+    },
     "ciSlaveRestartRequest": {
       "properties": {
         "name": {
@@ -73,9 +87,15 @@
       },
       "type": "object"
     },
-    "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
-      "type": "object"
+    "ciSlaveType": {
+      "default": "ALL",
+      "enum": [
+        "ALL",
+        "CRETAED",
+        "DELETED",
+        "REFRESHED"
+      ],
+      "type": "string"
     }
   }
 }

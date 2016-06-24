@@ -6,7 +6,7 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Slaves {
-  rpc List(dtypes.VoidRequest) returns (SlaveListResponse) {
+  rpc List(SlaveListRequest) returns (SlaveListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/ci/v0.1/slaves"
     };
@@ -38,59 +38,76 @@ service Slaves {
   }
 }
 
+enum SlaveType {
+  ALL = 0;
+  CRETAED = 1;
+  DELETED = 2;
+  REFRESHED = 3;
+}
+
+message SlaveListRequest {
+  string from = 1;
+  string to = 2;
+  SlaveType type = 3;
+}
+
 message SlaveListResponse {
-    dtypes.Status status = 1;
-    repeated Slave slaves = 2;
+  dtypes.Status status = 1;
+  repeated Slave slaves = 2;
 }
 
 message Slave {
-    string name = 1;
-    string status = 2;
+  string name = 1;
+  string status = 2;
+  bool is_deleted = 3;
+  bool is_refreshed = 4;
+  string created_at = 5;
+  string updated_at = 6;
 }
 
 message SlaveCreateRequest {
-    string sku = 1;
-    int32 executors = 2;
-    string labels = 3;
-    string user_startup_script = 4;
-    string saltbase_version = 5;
-    string ci_starter_version = 6;
-    repeated PortInfo ports = 7;
-    string role = 8;
+  string sku = 1;
+  int32 executors = 2;
+  string labels = 3;
+  string user_startup_script = 4;
+  string saltbase_version = 5;
+  string ci_starter_version = 6;
+  repeated PortInfo ports = 7;
+  string role = 8;
 }
 
 message PortInfo {
-    string protocol = 1;
-    string port_range = 2;
+  string protocol = 1;
+  string port_range = 2;
 }
 
 message SlaveDescribeRequest {
-    string name = 1;
+  string name = 1;
 }
 
 message SlaveDescribeResponse {
-    dtypes.Status status = 1;
-    string name = 2;
-    int64 executors = 3;
-    string node_status = 4;
-    string offline_reason = 5;
+  dtypes.Status status = 1;
+  string name = 2;
+  int64 executors = 3;
+  string node_status = 4;
+  string offline_reason = 5;
 
-    string label = 6;
-    string provider = 7;
-    string sku = 8;
-    string startup_script = 9;
+  string label = 6;
+  string provider = 7;
+  string sku = 8;
+  string startup_script = 9;
 
-    string created_at = 10;
+  string created_at = 10;
 }
 
 message SlaveDeleteRequest {
-    string name = 1;
+  string name = 1;
 }
 
 message SlaveRestartRequest {
-    string name = 1;
+  string name = 1;
 }
 
 message SlaveRestartResponse {
-    dtypes.Status status = 1;
+  dtypes.Status status = 1;
 }

@@ -146,11 +146,27 @@
     "ciSlave": {
       "type": "object",
       "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "string"
+        },
+        "is_deleted": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "is_refreshed": {
+          "type": "boolean",
+          "format": "boolean"
+        },
         "name": {
           "type": "string",
           "format": "string"
         },
         "status": {
+          "type": "string",
+          "format": "string"
+        },
+        "updated_at": {
           "type": "string",
           "format": "string"
         }
@@ -257,6 +273,22 @@
         }
       }
     },
+    "ciSlaveListRequest": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string",
+          "format": "string"
+        },
+        "to": {
+          "type": "string",
+          "format": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ciSlaveType"
+        }
+      }
+    },
     "ciSlaveListResponse": {
       "type": "object",
       "properties": {
@@ -287,6 +319,16 @@
           "$ref": "#/definitions/dtypesStatus"
         }
       }
+    },
+    "ciSlaveType": {
+      "type": "string",
+      "enum": [
+        "ALL",
+        "CRETAED",
+        "DELETED",
+        "REFRESHED"
+      ],
+      "default": "ALL"
     },
     "dtypesHelp": {
       "type": "object",
@@ -356,10 +398,6 @@
         }
       },
       "description": "Next Id 5."
-    },
-    "dtypesVoidRequest": {
-      "type": "object",
-      "description": "Void Requests and response to use with other types."
     },
     "protobufAny": {
       "type": "object",

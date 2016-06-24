@@ -9,6 +9,7 @@ import (
 
 var slaveDeleteRequestSchema *gojsonschema.Schema
 var slaveRestartRequestSchema *gojsonschema.Schema
+var slaveListRequestSchema *gojsonschema.Schema
 var slaveDescribeRequestSchema *gojsonschema.Schema
 var slaveCreateRequestSchema *gojsonschema.Schema
 
@@ -35,6 +36,36 @@ func init() {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
       "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	slaveListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "ciSlaveType": {
+      "default": "ALL",
+      "enum": [
+        "ALL",
+        "CRETAED",
+        "DELETED",
+        "REFRESHED"
+      ],
+      "type": "string"
+    }
+  },
+  "properties": {
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/definitions/ciSlaveType"
     }
   },
   "type": "object"
@@ -116,6 +147,11 @@ func (m *SlaveRestartRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveRestartRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SlaveRestartRequest) IsRequest() {}
+
+func (m *SlaveListRequest) IsValid() (*gojsonschema.Result, error) {
+	return slaveListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *SlaveListRequest) IsRequest() {}
 
 func (m *SlaveDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return slaveDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))

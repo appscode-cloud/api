@@ -30,6 +30,7 @@ It has these top-level messages:
 	MasterCreateResponse
 	MasterDeleteRequest
 	MasterDeleteResponse
+	SlaveListRequest
 	SlaveListResponse
 	Slave
 	SlaveCreateRequest
