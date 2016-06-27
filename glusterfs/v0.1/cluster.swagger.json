@@ -232,6 +232,10 @@
     "glusterfsClusterCreateRequest": {
       "type": "object",
       "properties": {
+        "bacula_metadata_disk": {
+          "type": "string",
+          "format": "string"
+        },
         "bucket": {
           "type": "string",
           "format": "string",

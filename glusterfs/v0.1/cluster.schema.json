@@ -2,6 +2,9 @@
   "definitions": {
     "glusterfsClusterCreateRequest": {
       "properties": {
+        "bacula_metadata_disk": {
+          "type": "string"
+        },
         "bucket": {
           "description": "if bacula is enabled the following two fields are\nrequired.",
           "type": "string"

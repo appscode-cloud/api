@@ -63,6 +63,9 @@ func init() {
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "bacula_metadata_disk": {
+      "type": "string"
+    },
     "bucket": {
       "description": "if bacula is enabled the following two fields are\nrequired.",
       "type": "string"
