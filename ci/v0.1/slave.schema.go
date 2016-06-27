@@ -45,18 +45,6 @@ func init() {
 	}
 	slaveListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "ciSlaveType": {
-      "default": "ALL",
-      "enum": [
-        "ALL",
-        "CRETAED",
-        "DELETED",
-        "REFRESHED"
-      ],
-      "type": "string"
-    }
-  },
   "properties": {
     "from": {
       "type": "string"
@@ -65,7 +53,7 @@ func init() {
       "type": "string"
     },
     "type": {
-      "$ref": "#/definitions/ciSlaveType"
+      "type": "string"
     }
   },
   "type": "object"

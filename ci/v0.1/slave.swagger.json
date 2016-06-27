@@ -297,7 +297,8 @@
           "format": "string"
         },
         "type": {
-          "$ref": "#/definitions/ciSlaveType"
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -331,16 +332,6 @@
           "$ref": "#/definitions/dtypesStatus"
         }
       }
-    },
-    "ciSlaveType": {
-      "type": "string",
-      "enum": [
-        "ALL",
-        "CRETAED",
-        "DELETED",
-        "REFRESHED"
-      ],
-      "default": "ALL"
     },
     "dtypesHelp": {
       "type": "object",

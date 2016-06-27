@@ -72,7 +72,7 @@
           "type": "string"
         },
         "type": {
-          "$ref": "#/definitions/ciSlaveType"
+          "type": "string"
         }
       },
       "type": "object"
@@ -86,16 +86,6 @@
         }
       },
       "type": "object"
-    },
-    "ciSlaveType": {
-      "default": "ALL",
-      "enum": [
-        "ALL",
-        "CRETAED",
-        "DELETED",
-        "REFRESHED"
-      ],
-      "type": "string"
     }
   }
 }
