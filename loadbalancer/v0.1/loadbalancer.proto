@@ -104,6 +104,8 @@ message LoadBalancer {
 
   Spec spec = 6;
   Status status = 7;
+
+  string json = 8;
 }
 
 message Spec {

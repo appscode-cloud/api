@@ -334,6 +334,10 @@
           "type": "string",
           "format": "string"
         },
+        "json": {
+          "type": "string",
+          "format": "string"
+        },
         "kind": {
           "type": "string",
           "format": "string",
