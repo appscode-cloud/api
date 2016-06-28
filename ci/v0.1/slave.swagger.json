@@ -1,19 +1,303 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "slave.proto",
-    "version": "version not set"
-  },
-  "schemes": [
-    "http",
-    "https"
-  ],
+  "basePath": "/",
   "consumes": [
     "application/json"
   ],
-  "produces": [
-    "application/json"
-  ],
+  "definitions": {
+    "ciPortInfo": {
+      "properties": {
+        "port_range": {
+          "format": "string",
+          "type": "string"
+        },
+        "protocol": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciSlave": {
+      "properties": {
+        "created_at": {
+          "format": "string",
+          "type": "string"
+        },
+        "is_deleted": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "is_refreshed": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "format": "string",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciSlaveCreateRequest": {
+      "properties": {
+        "ci_starter_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "executors": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "labels": {
+          "format": "string",
+          "type": "string"
+        },
+        "ports": {
+          "items": {
+            "$ref": "#/definitions/ciPortInfo"
+          },
+          "type": "array"
+        },
+        "role": {
+          "format": "string",
+          "type": "string"
+        },
+        "saltbase_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "user_startup_script": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciSlaveDeleteRequest": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciSlaveDescribeRequest": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciSlaveDescribeResponse": {
+      "properties": {
+        "created_at": {
+          "format": "string",
+          "type": "string"
+        },
+        "executors": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "is_deleted": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "is_refreshed": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "label": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "node_status": {
+          "format": "string",
+          "type": "string"
+        },
+        "offline_reason": {
+          "format": "string",
+          "type": "string"
+        },
+        "provider": {
+          "format": "string",
+          "type": "string"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "startup_script": {
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "updated_at": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciSlaveListRequest": {
+      "properties": {
+        "from": {
+          "format": "string",
+          "type": "string"
+        },
+        "to": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciSlaveListResponse": {
+      "properties": {
+        "slaves": {
+          "items": {
+            "$ref": "#/definitions/ciSlave"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "ciSlaveRestartRequest": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciSlaveRestartResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "format": "string",
+          "title": "Describe what link offers",
+          "type": "string"
+        },
+        "url": {
+          "description": "The URL of The link.",
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;",
+      "type": "object"
+    },
+    "dtypesLongRunningResponse": {
+      "properties": {
+        "job_id": {
+          "format": "string",
+          "type": "string"
+        },
+        "job_type": {
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "type_id": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Available Next ID: 6",
+      "type": "object"
+    },
+    "dtypesStatus": {
+      "description": "Next Id 5.",
+      "properties": {
+        "code": {
+          "format": "string",
+          "title": "Response status code",
+          "type": "string"
+        },
+        "details": {
+          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use.",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          },
+          "type": "array"
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp",
+          "description": "Optional. Help link if there is an error."
+        },
+        "message": {
+          "description": "User facing message.",
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "description": "Response status code string.",
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "protobufAny": {
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }",
+      "properties": {
+        "type_url": {
+          "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the schema `http`, `https`, or no schema, the\nfollowing restrictions and interpretations apply:\n\n* If no schema is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemas other than `http`, `https` (or the empty schema) might be\nused with implementation specific semantics.",
+          "format": "string",
+          "type": "string"
+        },
+        "value": {
+          "description": "Must be a valid serialized protocol buffer of the above specified type.",
+          "format": "byte",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.appscode.com",
+  "info": {
+    "title": "slave.proto",
+    "version": "0.1"
+  },
   "paths": {
     "/appscode/api/ci/v0.1/slaves": {
       "get": {
@@ -32,6 +316,16 @@
       },
       "put": {
         "operationId": "Create",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ciSlaveCreateRequest"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Description",
@@ -40,24 +334,46 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ciSlaveCreateRequest"
-            }
-          }
-        ],
         "tags": [
           "Slaves"
         ]
       }
     },
     "/appscode/api/ci/v0.1/slaves/{name}": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Slaves"
+        ]
+      },
       "get": {
         "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Description",
@@ -66,38 +382,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Slaves"
-        ]
-      },
-      "delete": {
-        "operationId": "Delete",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesLongRunningResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
         "tags": [
           "Slaves"
         ]
@@ -106,6 +390,15 @@
     "/appscode/api/ci/v0.1/slaves/{name}/reboot": {
       "get": {
         "operationId": "Restart",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Description",
@@ -114,309 +407,17 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
         "tags": [
           "Slaves"
         ]
       }
     }
   },
-  "definitions": {
-    "ciPortInfo": {
-      "type": "object",
-      "properties": {
-        "port_range": {
-          "type": "string",
-          "format": "string"
-        },
-        "protocol": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlave": {
-      "type": "object",
-      "properties": {
-        "created_at": {
-          "type": "string",
-          "format": "string"
-        },
-        "is_deleted": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "is_refreshed": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "name": {
-          "type": "string",
-          "format": "string"
-        },
-        "status": {
-          "type": "string",
-          "format": "string"
-        },
-        "updated_at": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveCreateRequest": {
-      "type": "object",
-      "properties": {
-        "ci_starter_version": {
-          "type": "string",
-          "format": "string"
-        },
-        "executors": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "labels": {
-          "type": "string",
-          "format": "string"
-        },
-        "ports": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ciPortInfo"
-          }
-        },
-        "role": {
-          "type": "string",
-          "format": "string"
-        },
-        "saltbase_version": {
-          "type": "string",
-          "format": "string"
-        },
-        "sku": {
-          "type": "string",
-          "format": "string"
-        },
-        "user_startup_script": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveDescribeRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveDescribeResponse": {
-      "type": "object",
-      "properties": {
-        "created_at": {
-          "type": "string",
-          "format": "string"
-        },
-        "executors": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "is_deleted": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "is_refreshed": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "label": {
-          "type": "string",
-          "format": "string"
-        },
-        "name": {
-          "type": "string",
-          "format": "string"
-        },
-        "node_status": {
-          "type": "string",
-          "format": "string"
-        },
-        "offline_reason": {
-          "type": "string",
-          "format": "string"
-        },
-        "provider": {
-          "type": "string",
-          "format": "string"
-        },
-        "sku": {
-          "type": "string",
-          "format": "string"
-        },
-        "startup_script": {
-          "type": "string",
-          "format": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "updated_at": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveListRequest": {
-      "type": "object",
-      "properties": {
-        "from": {
-          "type": "string",
-          "format": "string"
-        },
-        "to": {
-          "type": "string",
-          "format": "string"
-        },
-        "type": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveListResponse": {
-      "type": "object",
-      "properties": {
-        "slaves": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ciSlave"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "ciSlaveRestartRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "ciSlaveRestartResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      }
-    },
-    "dtypesHelp": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string",
-          "format": "string",
-          "title": "Describe what link offers"
-        },
-        "url": {
-          "type": "string",
-          "format": "string",
-          "description": "The URL of The link."
-        }
-      },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;"
-    },
-    "dtypesLongRunningResponse": {
-      "type": "object",
-      "properties": {
-        "job_id": {
-          "type": "string",
-          "format": "string"
-        },
-        "job_type": {
-          "type": "string",
-          "format": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "type_id": {
-          "type": "string",
-          "format": "string"
-        }
-      },
-      "title": "Available Next ID: 6"
-    },
-    "dtypesStatus": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string",
-          "format": "string",
-          "title": "Response status code"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use."
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp",
-          "description": "Optional. Help link if there is an error."
-        },
-        "message": {
-          "type": "string",
-          "format": "string",
-          "description": "User facing message."
-        },
-        "status": {
-          "type": "string",
-          "format": "string",
-          "description": "Response status code string."
-        }
-      },
-      "description": "Next Id 5."
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string",
-          "format": "string",
-          "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the schema `http`, `https`, or no schema, the\nfollowing restrictions and interpretations apply:\n\n* If no schema is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemas other than `http`, `https` (or the empty schema) might be\nused with implementation specific semantics."
-        },
-        "value": {
-          "type": "string",
-          "format": "byte",
-          "description": "Must be a valid serialized protocol buffer of the above specified type."
-        }
-      },
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
-    }
-  }
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
 }
