@@ -1,5 +1,21 @@
 {
   "definitions": {
+    "dbAddStandbyRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "config": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "dbBackupRequest": {
       "properties": {
         "auth_secret_name": {
@@ -122,6 +138,9 @@
       },
       "type": "object"
     },
+    "dbListRequest": {
+      "type": "object"
+    },
     "dbRestoreRequest": {
       "properties": {
         "auth_secret_name": {
@@ -187,10 +206,6 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
       "type": "object"
     }
   }
