@@ -2,6 +2,7 @@
   "cloud_provider":{
     "aws":{
       "name":"aws",
+      "public": true,
       "regions":[
         {
           "location":"Virginia",
@@ -308,6 +309,7 @@
     },
     "gce":{
       "name":"gce",
+      "public": true,
       "regions":[
         {
           "region":"Eastern US",
@@ -449,6 +451,148 @@
           "sku":"n1-highcpu-326",
           "cpu":32,
           "memory":"28.80GB"
+        }
+      ]
+    },
+    "digitalocean":{
+      "name":"digitalocean",
+      "public": false,
+      "regions":[
+        {
+          "location":"New York 1",
+          "region":"nyc1",
+          "zones":[
+            "nyc1"
+          ]
+        },
+        {
+          "location":"San Francisco 1",
+          "region":"sfo1",
+          "zones":[
+            "sfo1"
+          ]
+        },
+        {
+          "location":"New York 2",
+          "region":"nyc2",
+          "zones":[
+            "nyc2"
+          ]
+        },
+        {
+          "location":"Amsterdam 2",
+          "region":"ams2",
+          "zones":[
+            "ams2"
+          ]
+        },
+        {
+          "location":"Singapore 1",
+          "region":"sgp1",
+          "zones":[
+            "sgp1"
+          ]
+        },
+        {
+          "location":"London 1",
+          "region":"lon1",
+          "zones":[
+            "lon1"
+          ]
+        },
+        {
+          "location":"New York 3",
+          "region":"nyc3",
+          "zones":[
+            "nyc3"
+          ]
+        },
+        {
+          "location":"Frankfurt 1",
+          "region":"fra1",
+          "zones":[
+            "fra1"
+          ]
+        },
+        {
+          "location":"Toronto 1",
+          "region":"tor1",
+          "zones":[
+            "tor1"
+          ]
+        },
+        {
+          "location":"Bangalore 1",
+          "region":"blr1",
+          "zones":[
+            "blr1"
+          ]
+        }
+      ],
+      "instance_types":[
+        {
+          "category":"General Purpose",
+          "sku":"do.1gb",
+          "external_sku":"1gb",
+          "cpu":1,
+          "ram":1,
+          "disk":30
+        },
+        {
+          "category":"General Purpose",
+          "sku":"do.2gb",
+          "external_sku":"2gb",
+          "cpu":2,
+          "ram":2,
+          "disk":40
+        },
+        {
+          "category":"General Purpose",
+          "sku":"do.4gb",
+          "external_sku":"4gb",
+          "cpu":2,
+          "ram":4,
+          "disk":60
+        },
+        {
+          "category":"General Purpose",
+          "sku":"do.8gb",
+          "external_sku":"8gb",
+          "cpu":4,
+          "ram":8,
+          "disk":80
+        },
+        {
+          "category":"General Purpose",
+          "sku":"do.16gb",
+          "external_sku":"16gb",
+          "cpu":8,
+          "ram":16,
+          "disk":160
+        },
+        {
+          "category":"General Purpose",
+          "sku":"do.32gb",
+          "external_sku":"32gb",
+          "cpu":12,
+          "ram":32,
+          "disk":320
+        },
+        {
+          "category":"General Purpose",
+          "sku":"do.48gb",
+          "external_sku":"48gb",
+          "cpu":16,
+          "ram":48,
+          "disk":480
+        },
+        {
+          "category":"General Purpose",
+          "sku":"do.64gb",
+          "external_sku":"64gb",
+          "cpu":20,
+          "ram":64,
+          "disk":640
         }
       ]
     }
