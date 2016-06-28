@@ -79,229 +79,229 @@
       "instance_types":[
         {
           "category":"General Purpose",
-          "sku":"t2.micro",
+          "external_sku":"t2.micro",
           "cpu":1,
           "memory":1
         },
         {
           "category":"General Purpose",
-          "sku":"t2.small",
+          "external_sku":"t2.small",
           "cpu":1,
           "memory":2
         },
         {
           "category":"General Purpose",
-          "sku":"t2.medium",
+          "external_sku":"t2.medium",
           "cpu":2,
           "memory":4
         },
         {
           "category":"General Purpose",
-          "sku":"t2.large",
+          "external_sku":"t2.large",
           "cpu":2,
           "memory":8
         },
         {
           "category":"General Purpose",
-          "sku":"m4.large",
+          "external_sku":"m4.large",
           "cpu":2,
           "memory":8
         },
         {
           "category":"General Purpose",
-          "sku":"m4.xlarge",
+          "external_sku":"m4.xlarge",
           "cpu":4,
           "memory":16
         },
         {
           "category":"General Purpose",
-          "sku":"m4.2xlarge",
+          "external_sku":"m4.2xlarge",
           "cpu":8,
           "memory":32
         },
         {
           "category":"General Purpose",
-          "sku":"m4.4xlarge",
+          "external_sku":"m4.4xlarge",
           "cpu":16,
           "memory":64
         },
         {
           "category":"General Purpose",
-          "sku":"m4.10xlarge",
+          "external_sku":"m4.10xlarge",
           "cpu":40,
           "memory":160
         },
         {
           "category":"General Purpose",
-          "sku":"m3.medium",
+          "external_sku":"m3.medium",
           "cpu":1,
           "memory":3.75
         },
         {
           "category":"General Purpose",
-          "sku":"m3.large",
+          "external_sku":"m3.large",
           "cpu":2,
           "memory":7.5
         },
         {
           "category":"General Purpose",
-          "sku":"m3.xlarge",
+          "external_sku":"m3.xlarge",
           "cpu":4,
           "memory":15
         },
         {
           "category":"General Purpose",
-          "sku":"m3.2xlarge",
+          "external_sku":"m3.2xlarge",
           "cpu":8,
           "memory":30
         },
         {
           "category":"Compute Optimized",
-          "sku":"c4.large",
+          "external_sku":"c4.large",
           "cpu":2,
           "memory":3.75
         },
         {
           "category":"Compute Optimized",
-          "sku":"c4.xlarge",
+          "external_sku":"c4.xlarge",
           "cpu":4,
           "memory":7.5
         },
         {
           "category":"Compute Optimized",
-          "sku":"c4.2xlarge",
+          "external_sku":"c4.2xlarge",
           "cpu":8,
           "memory":15
         },
         {
           "category":"Compute Optimized",
-          "sku":"c4.4xlarge",
+          "external_sku":"c4.4xlarge",
           "cpu":16,
           "memory":30
         },
         {
           "category":"Compute Optimized",
-          "sku":"c4.8xlarge",
+          "external_sku":"c4.8xlarge",
           "cpu":36,
           "memory":60
         },
         {
           "category":"Compute Optimized",
-          "sku":"c3.large",
+          "external_sku":"c3.large",
           "cpu":2,
           "memory":3.75
         },
         {
           "category":"Compute Optimized",
-          "sku":"c3.xlarge",
+          "external_sku":"c3.xlarge",
           "cpu":4,
           "memory":7.5
         },
         {
           "category":"Compute Optimized",
-          "sku":"c3.2xlarge",
+          "external_sku":"c3.2xlarge",
           "cpu":8,
           "memory":15
         },
         {
           "category":"Compute Optimized",
-          "sku":"c3.4xlarge",
+          "external_sku":"c3.4xlarge",
           "cpu":16,
           "memory":30
         },
         {
           "category":"Compute Optimized",
-          "sku":"c3.8xlarge",
+          "external_sku":"c3.8xlarge",
           "cpu":32,
           "memory":60
         },
         {
           "category":"GPU Instances",
-          "sku":"g2.2xlarge",
+          "external_sku":"g2.2xlarge",
           "cpu":8,
           "memory":15
         },
         {
           "category":"GPU Instances",
-          "sku":"g2.8xlarge",
+          "external_sku":"g2.8xlarge",
           "cpu":32,
           "memory":60
         },
         {
           "category":"Memory optimized",
-          "sku":"r3.large",
+          "external_sku":"r3.large",
           "cpu":2,
           "memory":15
         },
         {
           "category":"Memory optimized",
-          "sku":"r3.xlarge",
+          "external_sku":"r3.xlarge",
           "cpu":4,
           "memory":30.5
         },
         {
           "category":"Memory optimized",
-          "sku":"r3.2xlarge",
+          "external_sku":"r3.2xlarge",
           "cpu":8,
           "memory":61
         },
         {
           "category":"Memory optimized",
-          "sku":"r3.4xlarge",
+          "external_sku":"r3.4xlarge",
           "cpu":16,
           "memory":122
         },
         {
           "category":"Memory optimized",
-          "sku":"r3.8xlarge",
+          "external_sku":"r3.8xlarge",
           "cpu":32,
           "memory":244
         },
         {
           "category":"Storage Optimized",
-          "sku":"i2.xlarge",
+          "external_sku":"i2.xlarge",
           "cpu":4,
           "memory":30.5
         },
         {
           "category":"Storage Optimized",
-          "sku":"i2.2xlarge",
+          "external_sku":"i2.2xlarge",
           "cpu":8,
           "memory":61
         },
         {
           "category":"Storage Optimized",
-          "sku":"i2.4xlarge",
+          "external_sku":"i2.4xlarge",
           "cpu":16,
           "memory":122
         },
         {
           "category":"Storage Optimized",
-          "sku":"i2.8xlarge",
+          "external_sku":"i2.8xlarge",
           "cpu":32,
           "memory":244
         },
         {
           "category":"Storage Optimized",
-          "sku":"d2.xlarge",
+          "external_sku":"d2.xlarge",
           "cpu":4,
           "memory":30.5
         },
         {
           "category":"Storage Optimized",
-          "sku":"d2.2xlarge",
+          "external_sku":"d2.2xlarge",
           "cpu":8,
           "memory":61
         },
         {
           "category":"Storage Optimized",
-          "sku":"d2.4xlarge",
+          "external_sku":"d2.4xlarge",
           "cpu":16,
           "memory":122
         },
         {
           "category":"Storage Optimized",
-          "sku":"d2.8xlarge",
+          "external_sku":"d2.8xlarge",
           "cpu":36,
           "memory":244
         }
@@ -352,105 +352,105 @@
       "instance_types":[
         {
           "category":"Small",
-          "sku":"g1-small",
+          "external_sku":"g1-small",
           "cpu":1,
-          "memory":"1.70GB"
+          "memory":1.7
         },
         {
           "category":"Standard",
-          "sku":"n1-standard-1",
+          "external_sku":"n1-standard-1",
           "cpu":1,
-          "memory":"3.75GB"
+          "memory":3.75
         },
         {
           "category":"Standard",
-          "sku":"n1-standard-2",
+          "external_sku":"n1-standard-2",
           "cpu":2,
-          "memory":"7.5GB"
+          "memory":7.5
         },
         {
           "category":"Standard",
-          "sku":"n1-standard-4",
+          "external_sku":"n1-standard-4",
           "cpu":4,
-          "memory":"15GB"
+          "memory":15
         },
         {
           "category":"Standard",
-          "sku":"n1-standard-8",
+          "external_sku":"n1-standard-8",
           "cpu":8,
-          "memory":"30GB"
+          "memory":30
         },
         {
           "category":"Standard",
-          "sku":"n1-standard-16",
+          "external_sku":"n1-standard-16",
           "cpu":16,
-          "memory":"60GB"
+          "memory":60
         },
         {
           "category":"Standard",
-          "sku":"n1-standard-326",
+          "external_sku":"n1-standard-326",
           "cpu":32,
-          "memory":"120GB"
+          "memory":120
         },
         {
           "category":"High Memory",
-          "sku":"n1-highmem-2",
+          "external_sku":"n1-highmem-2",
           "cpu":2,
-          "memory":"13GB"
+          "memory":13
         },
         {
           "category":"High Memory",
-          "sku":"n1-highmem-4",
+          "external_sku":"n1-highmem-4",
           "cpu":4,
-          "memory":"26GB"
+          "memory":26
         },
         {
           "category":"High Memory",
-          "sku":"n1-highmem-8",
+          "external_sku":"n1-highmem-8",
           "cpu":8,
-          "memory":"52GB"
+          "memory":52
         },
         {
           "category":"High Memory",
-          "sku":"n1-highmem-16",
+          "external_sku":"n1-highmem-16",
           "cpu":16,
-          "memory":"104GB"
+          "memory":104
         },
         {
           "category":"High Memory",
-          "sku":"n1-highmem-326",
+          "external_sku":"n1-highmem-326",
           "cpu":32,
-          "memory":"208GB"
+          "memory":208
         },
         {
           "category":"High CPU",
-          "sku":"n1-highcpu-2",
+          "external_sku":"n1-highcpu-2",
           "cpu":2,
-          "memory":"1.80GB"
+          "memory":1.8
         },
         {
           "category":"High CPU",
-          "sku":"n1-highcpu-4",
+          "external_sku":"n1-highcpu-4",
           "cpu":4,
-          "memory":"3.60GB"
+          "memory":3.6
         },
         {
           "category":"High CPU",
-          "sku":"n1-highcpu-8",
+          "external_sku":"n1-highcpu-8",
           "cpu":8,
-          "memory":"7.20GB"
+          "memory":7.2
         },
         {
           "category":"High CPU",
-          "sku":"n1-highcpu-16",
+          "external_sku":"n1-highcpu-16",
           "cpu":16,
-          "memory":"14.40GB"
+          "memory":14.4
         },
         {
           "category":"High CPU",
-          "sku":"n1-highcpu-326",
+          "external_sku":"n1-highcpu-326",
           "cpu":32,
-          "memory":"28.80GB"
+          "memory":28.8
         }
       ]
     },
@@ -532,7 +532,6 @@
       "instance_types":[
         {
           "category":"General Purpose",
-          "sku":"do.1gb",
           "external_sku":"1gb",
           "cpu":1,
           "ram":1,
@@ -540,7 +539,6 @@
         },
         {
           "category":"General Purpose",
-          "sku":"do.2gb",
           "external_sku":"2gb",
           "cpu":2,
           "ram":2,
@@ -548,7 +546,6 @@
         },
         {
           "category":"General Purpose",
-          "sku":"do.4gb",
           "external_sku":"4gb",
           "cpu":2,
           "ram":4,
@@ -556,7 +553,6 @@
         },
         {
           "category":"General Purpose",
-          "sku":"do.8gb",
           "external_sku":"8gb",
           "cpu":4,
           "ram":8,
@@ -564,7 +560,6 @@
         },
         {
           "category":"General Purpose",
-          "sku":"do.16gb",
           "external_sku":"16gb",
           "cpu":8,
           "ram":16,
@@ -572,7 +567,6 @@
         },
         {
           "category":"General Purpose",
-          "sku":"do.32gb",
           "external_sku":"32gb",
           "cpu":12,
           "ram":32,
@@ -580,7 +574,6 @@
         },
         {
           "category":"General Purpose",
-          "sku":"do.48gb",
           "external_sku":"48gb",
           "cpu":16,
           "ram":48,
@@ -588,7 +581,6 @@
         },
         {
           "category":"General Purpose",
-          "sku":"do.64gb",
           "external_sku":"64gb",
           "cpu":20,
           "ram":64,

@@ -130,11 +130,10 @@ type PackageProduct struct {
 }
 
 type InstanceType struct {
-	Category    string `json:"category"`
-	Sku         string `json:"sku"`
-	ExternalSku string `json:"external_sku"`
-	CPU         int    `json:"cpu"`
-	Memory      string `json:"memory"`
+	Category    string      `json:"category"`
+	ExternalSku string      `json:"external_sku"`
+	CPU         int         `json:"cpu"`
+	Memory      interface{} `json:"memory"`
 }
 
 type CloudInstance struct {
