@@ -35,5 +35,6 @@ func TestGenericParsing(t *testing.T) {
 }
 
 func TestName(t *testing.T) {
+	ClusterMachineType("digitalocean", "do.8gb")
 	ClusterMachineType("gce", "n1-standard-2")
 }
