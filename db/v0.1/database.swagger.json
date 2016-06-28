@@ -768,7 +768,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{uid}/snapshots": {
+    "/appscode/api/db/v0.1/{uid}/snapshot": {
       "get": {
         "operationId": "SnapshotList",
         "parameters": [
