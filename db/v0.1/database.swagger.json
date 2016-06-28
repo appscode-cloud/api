@@ -464,6 +464,10 @@
     },
     "dbSnapshotListRequest": {
       "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
         "uid": {
           "format": "string",
           "type": "string"
@@ -595,10 +599,19 @@
         "tags": [
           "Databases"
         ]
-      },
+      }
+    },
+    "/appscode/api/db/v0.1/{cluster}": {
       "put": {
         "operationId": "Create",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "body",
@@ -621,10 +634,17 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{name}": {
+    "/appscode/api/db/v0.1/{cluster}/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "format": "string",
             "in": "path",
@@ -651,6 +671,13 @@
           {
             "format": "string",
             "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
             "name": "name",
             "required": true,
             "type": "string"
@@ -669,10 +696,17 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{name}/backup": {
+    "/appscode/api/db/v0.1/{cluster}/{name}/backup": {
       "post": {
         "operationId": "Backup",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "format": "string",
             "in": "path",
@@ -702,10 +736,17 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{name}/restore": {
+    "/appscode/api/db/v0.1/{cluster}/{name}/restore": {
       "put": {
         "operationId": "Restore",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "format": "string",
             "in": "path",
@@ -735,10 +776,17 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{name}/standby": {
+    "/appscode/api/db/v0.1/{cluster}/{name}/standby": {
       "post": {
         "operationId": "AddStandby",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "format": "string",
             "in": "path",
@@ -768,10 +816,17 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{uid}/snapshot": {
+    "/appscode/api/db/v0.1/{cluster}/{uid}/snapshot": {
       "get": {
         "operationId": "SnapshotList",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "format": "string",
             "in": "path",

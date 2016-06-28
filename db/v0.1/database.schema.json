@@ -202,6 +202,9 @@
     },
     "dbSnapshotListRequest": {
       "properties": {
+        "cluster": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }

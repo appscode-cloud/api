@@ -14,47 +14,47 @@ service Databases {
 
   rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put : "/appscode/api/db/v0.1"
+      put : "/appscode/api/db/v0.1/{cluster}"
       body : "*"
     };
   }
 
   rpc AddStandby(AddStandbyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/db/v0.1/{name}/standby"
+      post: "/appscode/api/db/v0.1/{cluster}/{name}/standby"
       body: "*"
     };
   }
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v0.1/{name}"
+      get: "/appscode/api/db/v0.1/{cluster}/{name}"
     };
   }
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/db/v0.1/{name}"
+      delete: "/appscode/api/db/v0.1/{cluster}/{name}"
     };
   }
 
   rpc Backup(BackupRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/db/v0.1/{name}/backup"
+      post: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
       body: "*"
     };
   }
 
   rpc Restore(RestoreRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/db/v0.1/{name}/restore"
+      put: "/appscode/api/db/v0.1/{cluster}/{name}/restore"
       body: "*"
     };
   }
 
   rpc SnapshotList(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v0.1/{uid}/snapshot"
+      get: "/appscode/api/db/v0.1/{cluster}/{uid}/snapshot"
     };
   }
 }
@@ -201,7 +201,8 @@ message RestoreRequest {
 }
 
 message SnapshotListRequest {
-  string uid = 1;
+  string cluster = 1;
+  string uid = 2;
 }
 
 message SnapshotListResponse {

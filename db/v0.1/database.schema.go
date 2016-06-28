@@ -186,6 +186,9 @@ func init() {
 	snapshotListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "cluster": {
+      "type": "string"
+    },
     "uid": {
       "type": "string"
     }
