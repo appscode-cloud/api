@@ -11,7 +11,8 @@ var deleteRequestSchema *gojsonschema.Schema
 var describeRequestSchema *gojsonschema.Schema
 var addStandbyRequestSchema *gojsonschema.Schema
 var listRequestSchema *gojsonschema.Schema
-var backupRequestSchema *gojsonschema.Schema
+var backupScheduleRequestSchema *gojsonschema.Schema
+var backupUnscheduleRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
 var snapshotListRequestSchema *gojsonschema.Schema
 var restoreRequestSchema *gojsonschema.Schema
@@ -27,9 +28,6 @@ func init() {
     "name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
-      "type": "string"
-    },
-    "type": {
       "type": "string"
     }
   },
@@ -82,7 +80,7 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	backupRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	backupScheduleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "auth_secret_name": {
@@ -115,6 +113,9 @@ func init() {
     "region": {
       "type": "string"
     },
+    "schedule_cron_expr": {
+      "type": "string"
+    },
     "snapshot_name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
@@ -125,6 +126,23 @@ func init() {
     },
     "wal": {
       "type": "boolean"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	backupUnscheduleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
+      "type": "string"
     }
   },
   "type": "object"
@@ -283,10 +301,15 @@ func (m *ListRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ListRequest) IsRequest() {}
 
-func (m *BackupRequest) IsValid() (*gojsonschema.Result, error) {
-	return backupRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *BackupScheduleRequest) IsValid() (*gojsonschema.Result, error) {
+	return backupScheduleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *BackupRequest) IsRequest() {}
+func (m *BackupScheduleRequest) IsRequest() {}
+
+func (m *BackupUnscheduleRequest) IsValid() (*gojsonschema.Result, error) {
+	return backupUnscheduleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *BackupUnscheduleRequest) IsRequest() {}
 
 func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))

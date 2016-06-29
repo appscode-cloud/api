@@ -5,6 +5,7 @@ package gearman;
 import "api/certificate/v0.1/certificate.proto";
 import "api/ci/v0.1/slave.proto";
 import "api/kubernetes/v0.1/clusters.proto";
+import "api/db/v0.1/database.proto";
 
 message Auth {
   string namespace = 1;
@@ -29,6 +30,7 @@ enum OperationType {
   CHECK_DNS = 7;
   NAMESPACE_CREATE = 8;
   DATA_BUCKET_DELETE = 9;
+  DATABASE_BACKUP = 10;
 }
 
 // Next Id: 10
@@ -47,6 +49,7 @@ message Operation {
     ci.SlaveDeleteRequest ci_slave_delete_request = 11;
     certificate.DNSCheckRequest dns_check_request = 12;
     DataBucketDeleteRequest data_bucket_delete_request = 13;
+    db.BackupScheduleRequest db_backup_schedule_request = 14;
   }
 }
 

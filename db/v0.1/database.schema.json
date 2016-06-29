@@ -16,7 +16,7 @@
       },
       "type": "object"
     },
-    "dbBackupRequest": {
+    "dbBackupScheduleRequest": {
       "properties": {
         "auth_secret_name": {
           "maxLength": 63,
@@ -48,6 +48,9 @@
         "region": {
           "type": "string"
         },
+        "schedule_cron_expr": {
+          "type": "string"
+        },
         "snapshot_name": {
           "maxLength": 63,
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
@@ -58,6 +61,19 @@
         },
         "wal": {
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "dbBackupUnscheduleRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
+          "type": "string"
         }
       },
       "type": "object"
@@ -117,9 +133,6 @@
         "name": {
           "maxLength": 63,
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
-          "type": "string"
-        },
-        "type": {
           "type": "string"
         }
       },
