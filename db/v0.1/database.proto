@@ -166,7 +166,7 @@ message DescribeResponse {
   string sku = 7;
   string version = 8;
   SnapshotInfo snapshot_info = 9;
-  kubeInfo kube = 10;
+  KubeInfo kube = 10;
   string db_status = 11;
   string auth_secret = 12;
   string created = 13;
@@ -192,8 +192,8 @@ message BackupRequest {
 }
 
 message StopBackupRequest {
-  string database = 1;
-  string type = 2;
+  string cluster = 1;
+  string name = 2;
 }
 
 message RestoreRequest {

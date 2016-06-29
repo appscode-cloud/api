@@ -108,7 +108,7 @@ func dataFilesCloud_providerJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/files/cloud_provider.json", size: 13215, mode: os.FileMode(436), modTime: time.Unix(1467101686, 0)}
+	info := bindataFileInfo{name: "data/files/cloud_provider.json", size: 13215, mode: os.FileMode(436), modTime: time.Unix(1467189484, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }

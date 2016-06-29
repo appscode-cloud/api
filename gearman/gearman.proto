@@ -5,7 +5,7 @@ package gearman;
 import "api/certificate/v0.1/certificate.proto";
 import "api/ci/v0.1/slave.proto";
 import "api/kubernetes/v0.1/clusters.proto";
-import "api/db/v0.1/db.proto";
+import "api/db/v0.1/database.proto";
 
 message Auth {
   string namespace = 1;
