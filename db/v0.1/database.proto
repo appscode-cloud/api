@@ -97,9 +97,10 @@ message Snapshot {
   string status = 11;
   string process = 12;
   string type = 13;
-  string restore_db = 14;
-  string restore_snap = 15;
-  string created = 16;
+  int32 is_scheduled_backup = 14;
+  string restore_db = 15;
+  string restore_snap = 16;
+  string created = 17;
 }
 
 message SnapshotInfo {
@@ -181,9 +182,10 @@ message BackupScheduleRequest {
   string credential = 6;
   string region = 7;
   string auth_secret_name = 8;
-  bool wal = 9;
-  bool dump = 10;
-  bool force = 11;
+  string schedule_cron_expr = 9;
+  bool wal = 10;
+  bool dump = 11;
+  bool force = 12;
 }
 
 message BackupUnscheduleRequest {
@@ -208,7 +210,6 @@ message RestoreRequest {
   bool wal = 14;
   bool dump = 15;
   bool force = 16;
-  string schedule_cron_expr = 17;
 }
 
 message SnapshotListRequest {

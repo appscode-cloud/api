@@ -113,6 +113,9 @@ func init() {
     "region": {
       "type": "string"
     },
+    "schedule_cron_expr": {
+      "type": "string"
+    },
     "snapshot_name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
@@ -253,9 +256,6 @@ func init() {
       "type": "integer"
     },
     "region": {
-      "type": "string"
-    },
-    "schedule_cron_expr": {
       "type": "string"
     },
     "sku": {
