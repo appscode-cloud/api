@@ -52,6 +52,12 @@ service Databases {
     };
   }
 
+  rpc StopBackup(StopBackupRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
+    };
+  }
+
   rpc SnapshotList(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/db/v0.1/{cluster}/{uid}/snapshot"
@@ -97,7 +103,7 @@ message Snapshot {
 }
 
 message SnapshotInfo {
-  int32 auto_snapshot = 1;
+  map<string, BackupCronInfo> schedule = 1;
   string last_backup = 2;
   int64 backup_attempt = 3;
   int64 backup_success = 4;
@@ -105,7 +111,12 @@ message SnapshotInfo {
   int64 restore_success = 6;
 }
 
-message kubeInfo {
+message BackupCronInfo {
+  string job_name = 1;
+  string cron_expr = 2;
+}
+
+message KubeInfo {
   int64 svc = 1;
   int64 pods = 2;
   int64 rc = 3;
@@ -162,9 +173,8 @@ message DescribeResponse {
 }
 
 message DeleteRequest {
-  string type = 1;
+  string cluster = 1;
   string name = 2;
-  string cluster = 3;
 }
 
 message BackupRequest {
@@ -179,6 +189,11 @@ message BackupRequest {
   bool wal = 9;
   bool dump = 10;
   bool force = 11;
+}
+
+message StopBackupRequest {
+  string database = 1;
+  string type = 2;
 }
 
 message RestoreRequest {
@@ -198,6 +213,7 @@ message RestoreRequest {
   bool wal = 14;
   bool dump = 15;
   bool force = 16;
+  string schedule_cron_expr = 17;
 }
 
 message SnapshotListRequest {
