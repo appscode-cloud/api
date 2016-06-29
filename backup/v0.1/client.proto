@@ -13,9 +13,16 @@ service Client {
     };
   }
 
-  rpc AddDisk(DiskAddRequest) returns (dtypes.VoidResponse) {
+  rpc Mount(MountRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/backup/v0.1/client/adddisk"
+      put: "/appscode/api/backup/v0.1/client/mount"
+      body: "*"
+    };
+  }
+
+  rpc UnMount(UnMountRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/backup/v0.1/client/unmount"
       body: "*"
     };
   }
@@ -27,11 +34,18 @@ message ClientReConfigureRequest {
   string cluster_name = 3;
 }
 
-message DiskAddRequest {
+message MountRequest {
   string name = 1;
   string namespace = 2;
   string cluster_name = 3;
   string disk_type = 4;
   string disk_name = 5;
   string mount_path = 6;
+}
+
+message UnMountRequest {
+  string name = 1;
+  string namespace = 2;
+  string cluster_name = 3;
+  string disk_name = 5;
 }

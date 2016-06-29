@@ -7,6 +7,7 @@ func Patterns() []runtime.Pattern {
 	patterns = append(patterns, pattern_Server_Create_0)
 	patterns = append(patterns, pattern_Server_Delete_0)
 	patterns = append(patterns, pattern_Client_ReConfigure_0)
-	patterns = append(patterns, pattern_Client_AddDisk_0)
+	patterns = append(patterns, pattern_Client_Mount_0)
+	patterns = append(patterns, pattern_Client_UnMount_0)
 	return patterns
 }

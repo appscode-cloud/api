@@ -40,15 +40,28 @@ func request_Client_ReConfigure_0(ctx context.Context, marshaler runtime.Marshal
 
 }
 
-func request_Client_AddDisk_0(ctx context.Context, marshaler runtime.Marshaler, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DiskAddRequest
+func request_Client_Mount_0(ctx context.Context, marshaler runtime.Marshaler, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq MountRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.AddDisk(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Mount(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func request_Client_UnMount_0(ctx context.Context, marshaler runtime.Marshaler, client ClientClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UnMountRequest
+	var metadata runtime.ServerMetadata
+
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.UnMount(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -107,7 +120,7 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 
 	})
 
-	mux.Handle("PUT", pattern_Client_AddDisk_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_Client_Mount_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -120,14 +133,38 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 			}(ctx.Done(), cn.CloseNotify())
 		}
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		resp, md, err := request_Client_AddDisk_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Client_Mount_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Client_AddDisk_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Client_Mount_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("PUT", pattern_Client_UnMount_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		resp, md, err := request_Client_UnMount_0(runtime.AnnotateContext(ctx, req), inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_Client_UnMount_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -137,11 +174,15 @@ func RegisterClientHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 var (
 	pattern_Client_ReConfigure_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "backup", "v0.1", "client", "reconfigure"}, ""))
 
-	pattern_Client_AddDisk_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "backup", "v0.1", "client", "adddisk"}, ""))
+	pattern_Client_Mount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "backup", "v0.1", "client", "mount"}, ""))
+
+	pattern_Client_UnMount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "backup", "v0.1", "client", "unmount"}, ""))
 )
 
 var (
 	forward_Client_ReConfigure_0 = runtime.ForwardResponseMessage
 
-	forward_Client_AddDisk_0 = runtime.ForwardResponseMessage
+	forward_Client_Mount_0 = runtime.ForwardResponseMessage
+
+	forward_Client_UnMount_0 = runtime.ForwardResponseMessage
 )
