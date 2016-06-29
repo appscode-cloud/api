@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package backup;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Server {
+  rpc Create(ServerCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/backup/v0.1/server"
+      body: "*"
+    };
+  }
+
+  rpc Delete(ServerDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/appscode/api/backup/v0.1/server"
+    };
+  }
+}
+
+message ServerCreateRequest {
+  string name = 1;
+  string namespace = 2;
+  string cluster_name = 3;
+  string credential = 4;
+  string bucket_name = 5;
+}
+
+message ServerDeleteRequest {
+  string name = 1;
+  string namespace = 2;
+  string cluster_name = 3;
+}
