@@ -103,17 +103,12 @@ message Snapshot {
 }
 
 message SnapshotInfo {
-  map<string, BackupCronInfo> schedule = 1;
+  string schedule_cron_expr = 1;
   string last_backup = 2;
   int64 backup_attempt = 3;
   int64 backup_success = 4;
   int64 restore_attempt = 5;
   int64 restore_success = 6;
-}
-
-message BackupCronInfo {
-  string job_name = 1;
-  string cron_expr = 2;
 }
 
 message KubeInfo {

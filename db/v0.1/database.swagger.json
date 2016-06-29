@@ -21,19 +21,6 @@
       },
       "type": "object"
     },
-    "dbBackupCronInfo": {
-      "properties": {
-        "cron_expr": {
-          "format": "string",
-          "type": "string"
-        },
-        "job_name": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "dbBackupRequest": {
       "properties": {
         "auth_secret_name": {
@@ -485,11 +472,9 @@
           "format": "int64",
           "type": "integer"
         },
-        "schedule": {
-          "additionalProperties": {
-            "$ref": "#/definitions/dbBackupCronInfo"
-          },
-          "type": "object"
+        "schedule_cron_expr": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
