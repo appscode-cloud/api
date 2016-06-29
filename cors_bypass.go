@@ -16,6 +16,7 @@ import (
 	namespace "github.com/appscode/api/namespace/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
 	"github.com/gengo/grpc-gateway/runtime"
+	backup "github.com/appscode/api/backup/v0.1"
 )
 
 // This is a hackish method to add support javascript
@@ -38,5 +39,6 @@ func Patterens() []runtime.Pattern {
 	ps = append(ps, loadbalancer.Patterns()...)
 	ps = append(ps, artifactory.Patterns()...)
 	ps = append(ps, billing.Patterns()...)
+	ps = append(ps, backup.Patterns()...)
 	return ps
 }

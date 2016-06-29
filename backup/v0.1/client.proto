@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package backup;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Client {
+  rpc ReConfigure(ClientReConfigureRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/backup/v0.1/client/reconfigure"
+      body: "*"
+    };
+  }
+
+  rpc AddDisk(DiskAddRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/backup/v0.1/client/adddisk"
+      body: "*"
+    };
+  }
+}
+
+message ClientReConfigureRequest {
+  string name = 1;
+  string namespace = 2;
+  string cluster_name = 3;
+}
+
+message DiskAddRequest {
+  string name = 1;
+  string namespace = 2;
+  string cluster_name = 3;
+  string disk_type = 4;
+  string disk_name = 5;
+  string mount_path = 6;
+}

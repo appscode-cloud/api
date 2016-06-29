@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "health.proto",
+    "title": "server.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,24 +15,94 @@
     "application/json"
   ],
   "paths": {
-    "/appscode/api/healthz": {
-      "get": {
-        "operationId": "Status",
+    "/appscode/api/backup/v0.1/server": {
+      "delete": {
+        "operationId": "Delete",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/healthResponse"
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
         "tags": [
-          "Health"
+          "Server"
+        ]
+      },
+      "put": {
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/backupServerCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Server"
         ]
       }
     }
   },
   "definitions": {
+    "backupServerCreateRequest": {
+      "type": "object",
+      "properties": {
+        "bucket_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "cluster_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "credential": {
+          "type": "string",
+          "format": "string"
+        },
+        "disk": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "backupServerDeleteRequest": {
+      "type": "object",
+      "properties": {
+        "cluster_name": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
     "dtypesHelp": {
       "type": "object",
       "properties": {
@@ -81,60 +151,11 @@
       },
       "description": "Next Id 5."
     },
-    "dtypesVoidRequest": {
-      "type": "object",
-      "description": "Void Requests and response to use with other types."
-    },
-    "healthResponse": {
+    "dtypesVoidResponse": {
       "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        },
-        "version": {
-          "$ref": "#/definitions/healthVersion"
-        }
-      }
-    },
-    "healthVersion": {
-      "type": "object",
-      "properties": {
-        "Name": {
-          "type": "string",
-          "format": "string",
-          "description": "Only development mode informations."
-        },
-        "build_timestamp": {
-          "type": "string",
-          "format": "string"
-        },
-        "commit_hash": {
-          "type": "string",
-          "format": "string"
-        },
-        "commit_timestamp": {
-          "type": "string",
-          "format": "string"
-        },
-        "endpoint": {
-          "type": "string",
-          "format": "string"
-        },
-        "git_branch": {
-          "type": "string",
-          "format": "string"
-        },
-        "git_tag": {
-          "type": "string",
-          "format": "string"
-        },
-        "status": {
-          "type": "string",
-          "format": "string"
-        },
-        "version": {
-          "type": "string",
-          "format": "string"
         }
       }
     },

@@ -1,17 +1,21 @@
 {
   "definitions": {
-    "glusterfsClusterCreateRequest": {
+    "backupServerCreateRequest": {
       "properties": {
-        "disks": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "kube_cluster": {
+        "bucket_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
-        "mood": {
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "disk": {
           "type": "string"
         },
         "name": {
@@ -19,18 +23,7 @@
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
-        "node": {
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "glusterfsClusterDeleteRequest": {
-      "properties": {
-        "kube_cluster": {
-          "type": "string"
-        },
-        "name": {
+        "namespace": {
           "maxLength": 63,
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
@@ -38,22 +31,21 @@
       },
       "type": "object"
     },
-    "glusterfsClusterDescribeRequest": {
+    "backupServerDeleteRequest": {
       "properties": {
-        "kube_cluster": {
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         },
         "name": {
           "maxLength": 63,
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "glusterfsClusterListRequest": {
-      "properties": {
-        "kube_cluster": {
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         }
       },

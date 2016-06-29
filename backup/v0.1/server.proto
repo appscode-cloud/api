@@ -26,6 +26,7 @@ message ServerCreateRequest {
   string cluster_name = 3;
   string credential = 4;
   string bucket_name = 5;
+  string disk = 9;
 }
 
 message ServerDeleteRequest {
