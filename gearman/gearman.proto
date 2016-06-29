@@ -49,7 +49,7 @@ message Operation {
     ci.SlaveDeleteRequest ci_slave_delete_request = 11;
     certificate.DNSCheckRequest dns_check_request = 12;
     DataBucketDeleteRequest data_bucket_delete_request = 13;
-    db.BackupRequest db_backup_request = 14;
+    db.BackupScheduleRequest db_backup_schedule_request = 14;
   }
 }
 

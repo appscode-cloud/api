@@ -21,7 +21,7 @@
       },
       "type": "object"
     },
-    "dbBackupRequest": {
+    "dbBackupScheduleRequest": {
       "properties": {
         "auth_secret_name": {
           "format": "string",
@@ -66,6 +66,19 @@
         "wal": {
           "format": "boolean",
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "dbBackupUnscheduleRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -506,19 +519,6 @@
       },
       "type": "object"
     },
-    "dbStopBackupRequest": {
-      "properties": {
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "dtypesHelp": {
       "properties": {
         "description": {
@@ -710,38 +710,8 @@
       }
     },
     "/appscode/api/db/v0.1/{cluster}/{name}/backup": {
-      "delete": {
-        "operationId": "StopBackup",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Databases"
-        ]
-      },
       "post": {
-        "operationId": "Backup",
+        "operationId": "BackupSchedule",
         "parameters": [
           {
             "format": "string",
@@ -762,8 +732,38 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/dbBackupRequest"
+              "$ref": "#/definitions/dbBackupScheduleRequest"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      },
+      "put": {
+        "operationId": "BackupUnschedule",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {

@@ -16,7 +16,7 @@
       },
       "type": "object"
     },
-    "dbBackupRequest": {
+    "dbBackupScheduleRequest": {
       "properties": {
         "auth_secret_name": {
           "maxLength": 63,
@@ -58,6 +58,19 @@
         },
         "wal": {
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "dbBackupUnscheduleRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
+          "type": "string"
         }
       },
       "type": "object"
@@ -206,19 +219,6 @@
           "type": "string"
         },
         "uid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "dbStopBackupRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
           "type": "string"
         }
       },

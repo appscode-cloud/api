@@ -38,10 +38,16 @@ service Databases {
     };
   }
 
-  rpc Backup(BackupRequest) returns (dtypes.VoidResponse) {
+  rpc BackupSchedule(BackupScheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
       body: "*"
+    };
+  }
+
+  rpc BackupUnschedule(BackupUnscheduleRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
     };
   }
 
@@ -49,12 +55,6 @@ service Databases {
     option (google.api.http) = {
       put: "/appscode/api/db/v0.1/{cluster}/{name}/restore"
       body: "*"
-    };
-  }
-
-  rpc StopBackup(StopBackupRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      delete: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
     };
   }
 
@@ -172,7 +172,7 @@ message DeleteRequest {
   string name = 2;
 }
 
-message BackupRequest {
+message BackupScheduleRequest {
   string cluster = 1;
   string name = 2;
   string type = 3;
@@ -186,7 +186,7 @@ message BackupRequest {
   bool force = 11;
 }
 
-message StopBackupRequest {
+message BackupUnscheduleRequest {
   string cluster = 1;
   string name = 2;
 }
