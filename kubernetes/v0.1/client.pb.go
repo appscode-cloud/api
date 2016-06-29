@@ -63,7 +63,7 @@ import fmt "fmt"
 import math "math"
 import _ "github.com/gengo/grpc-gateway/third_party/googleapis/google/api"
 import dtypes "github.com/appscode/api/dtypes"
-import alert "api/alert/v0.1"
+import alert "github.com/appscode/api/alert/v0.1"
 
 import (
 	context "golang.org/x/net/context"

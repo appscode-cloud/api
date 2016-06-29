@@ -21,6 +21,19 @@
       },
       "type": "object"
     },
+    "dbBackupCronInfo": {
+      "properties": {
+        "cron_expr": {
+          "format": "string",
+          "type": "string"
+        },
+        "job_name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "dbBackupRequest": {
       "properties": {
         "auth_secret_name": {
@@ -197,10 +210,6 @@
         "name": {
           "format": "string",
           "type": "string"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
         }
       },
       "type": "object"
@@ -237,7 +246,7 @@
           "type": "string"
         },
         "kube": {
-          "$ref": "#/definitions/dbkubeInfo"
+          "$ref": "#/definitions/dbKubeInfo"
         },
         "name": {
           "format": "string",
@@ -268,6 +277,23 @@
         "version": {
           "format": "string",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dbKubeInfo": {
+      "properties": {
+        "pods": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "rc": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "svc": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -338,6 +364,10 @@
           "type": "integer"
         },
         "region": {
+          "format": "string",
+          "type": "string"
+        },
+        "schedule_cron_expr": {
           "format": "string",
           "type": "string"
         },
@@ -435,10 +465,6 @@
     },
     "dbSnapshotInfo": {
       "properties": {
-        "auto_snapshot": {
-          "format": "int32",
-          "type": "integer"
-        },
         "backup_attempt": {
           "format": "int64",
           "type": "integer"
@@ -458,6 +484,12 @@
         "restore_success": {
           "format": "int64",
           "type": "integer"
+        },
+        "schedule": {
+          "additionalProperties": {
+            "$ref": "#/definitions/dbBackupCronInfo"
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -489,19 +521,15 @@
       },
       "type": "object"
     },
-    "dbkubeInfo": {
+    "dbStopBackupRequest": {
       "properties": {
-        "pods": {
-          "format": "int64",
-          "type": "integer"
+        "cluster": {
+          "format": "string",
+          "type": "string"
         },
-        "rc": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "svc": {
-          "format": "int64",
-          "type": "integer"
+        "name": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -697,6 +725,36 @@
       }
     },
     "/appscode/api/db/v0.1/{cluster}/{name}/backup": {
+      "delete": {
+        "operationId": "StopBackup",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      },
       "post": {
         "operationId": "Backup",
         "parameters": [

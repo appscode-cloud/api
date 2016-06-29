@@ -22,7 +22,7 @@ import math "math"
 import certificate "github.com/appscode/api/certificate/v0.1"
 import ci "github.com/appscode/api/ci/v0.1"
 import kubernetes "github.com/appscode/api/kubernetes/v0.1"
-import db "api/db/v0.1"
+import db "github.com/appscode/api/db/v0.1"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
