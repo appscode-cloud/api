@@ -109,6 +109,8 @@ gen_swagger_defs() {
       fi
       popd
     done
+    # fix host, schemes
+    python $DIR/schema.py fix_swagger_schema
 }
 
 gen_py() {

@@ -1,0 +1,211 @@
+syntax = "proto3";
+
+package db;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Databases {
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/db/v0.1"
+    };
+  }
+
+  rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put : "/appscode/api/db/v0.1/{cluster}"
+      body : "*"
+    };
+  }
+
+  rpc AddStandby(AddStandbyRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/db/v0.1/{cluster}/{name}/standby"
+      body: "*"
+    };
+  }
+
+  rpc Describe(DescribeRequest) returns (DescribeResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/db/v0.1/{cluster}/{name}"
+    };
+  }
+
+  rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/appscode/api/db/v0.1/{cluster}/{name}"
+    };
+  }
+
+  rpc Backup(BackupRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
+      body: "*"
+    };
+  }
+
+  rpc Restore(RestoreRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/db/v0.1/{cluster}/{name}/restore"
+      body: "*"
+    };
+  }
+
+  rpc SnapshotList(SnapshotListRequest) returns (SnapshotListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/db/v0.1/{cluster}/{uid}/snapshot"
+    };
+  }
+}
+
+message Database {
+  string phid = 1;
+  string cluster_name = 2;
+  string name = 3;
+  string namespace = 4;
+  string type = 5;
+  string sku = 6;
+  string mode = 7;
+  string version = 8;
+  string auth_secret = 9;
+  int32 auto_snapshot = 10;
+  int64 pv_size = 11;
+  string last_backup = 12;
+  string status = 13;
+  string created = 14;
+  string deleted = 15;
+}
+
+message Snapshot {
+  string name = 1;
+  string phid = 2;
+  string db_name = 3;
+  string db_type = 4;
+  string db_cluster = 5;
+  string provider = 6;
+  string cloud_cred = 7;
+  string bucket = 8;
+  string region = 9;
+  string zone = 10;
+  string status = 11;
+  string process = 12;
+  string type = 13;
+  string restore_db = 14;
+  string restore_snap = 15;
+  string created = 16;
+}
+
+message SnapshotInfo {
+  int32 auto_snapshot = 1;
+  string last_backup = 2;
+  int64 backup_attempt = 3;
+  int64 backup_success = 4;
+  int64 restore_attempt = 5;
+  int64 restore_success = 6;
+}
+
+message kubeInfo {
+  int64 svc = 1;
+  int64 pods = 2;
+  int64 rc = 3;
+}
+
+message ListRequest {}
+
+message ListResponse {
+  dtypes.Status status = 1;
+  repeated Database databases = 2;
+  repeated Database deleted_databases = 3;
+}
+
+message CreateRequest {
+  string cluster = 1;
+  string name = 2;
+  string type = 3;
+  string sku = 4;
+  string version = 5;
+  string pv = 6;
+  int64 pv_size = 7;
+  string auth_secret_name = 8;
+  int64 node = 9;
+  string credential = 10;
+  string bucket_name = 11;
+  string region = 12;
+}
+
+message AddStandbyRequest {
+  string cluster = 1;
+  string name = 2;
+  string config = 3;
+}
+
+message DescribeRequest {
+  string cluster = 1;
+  string name = 2;
+}
+
+message DescribeResponse {
+  dtypes.Status status = 1;
+  string name = 2;
+  string phid = 3;
+  string cluster = 4;
+  string provider = 5;
+  string type = 6;
+  string sku = 7;
+  string version = 8;
+  SnapshotInfo snapshot_info = 9;
+  kubeInfo kube = 10;
+  string db_status = 11;
+  string auth_secret = 12;
+  string created = 13;
+}
+
+message DeleteRequest {
+  string type = 1;
+  string name = 2;
+  string cluster = 3;
+}
+
+message BackupRequest {
+  string cluster = 1;
+  string name = 2;
+  string type = 3;
+  string bucket_name = 4;
+  string snapshot_name = 5;
+  string credential = 6;
+  string region = 7;
+  string auth_secret_name = 8;
+  bool wal = 9;
+  bool dump = 10;
+  bool force = 11;
+}
+
+message RestoreRequest {
+  string cluster = 1;
+  string name = 2;
+  string type = 3;
+  string pv = 4;
+  int64 pv_size = 5;
+  string sku = 6;
+  int64 node = 7;
+  string snapshot_phid = 8;
+  string bucket_name = 9;
+  string credential = 10;
+  string region = 11;
+  string version = 12;
+  string auth_secret_name = 13;
+  bool wal = 14;
+  bool dump = 15;
+  bool force = 16;
+}
+
+message SnapshotListRequest {
+  string cluster = 1;
+  string uid = 2;
+}
+
+message SnapshotListResponse {
+  dtypes.Status status = 1;
+  repeated Snapshot list = 2;
+}

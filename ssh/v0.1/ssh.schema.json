@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "sshSecureShellGetRequest": {
+    "sshSSHGetRequest": {
       "properties": {
         "cluster_name": {
           "maxLength": 63,

@@ -1,339 +1,189 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "disk.proto",
-    "version": "version not set"
-  },
-  "schemes": [
-    "http",
-    "https"
-  ],
+  "basePath": "/",
   "consumes": [
     "application/json"
   ],
-  "produces": [
-    "application/json"
-  ],
-  "paths": {
-    "/appscode/api/pv/v0.1/disks/{cluster}": {
-      "get": {
-        "operationId": "List",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/pvDiskListResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Disks"
-        ]
-      }
-    },
-    "/appscode/api/pv/v0.1/disks/{cluster}/{identifier}": {
-      "delete": {
-        "operationId": "Delete",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "identifier",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Disks"
-        ]
-      }
-    },
-    "/appscode/api/pv/v0.1/disks/{cluster}/{name}": {
-      "put": {
-        "operationId": "Create",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pvDiskCreateRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Disks"
-        ]
-      }
-    },
-    "/appscode/api/pv/v0.1/disks/{cluster}/{name}/{plugin}": {
-      "get": {
-        "operationId": "Describe",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/pvDiskDescribeResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "cluster",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "plugin",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "tags": [
-          "Disks"
-        ]
-      }
-    }
-  },
   "definitions": {
     "dtypesHelp": {
-      "type": "object",
       "properties": {
         "description": {
-          "type": "string",
           "format": "string",
-          "title": "Describe what link offers"
+          "title": "Describe what link offers",
+          "type": "string"
         },
         "url": {
-          "type": "string",
+          "description": "The URL of The link.",
           "format": "string",
-          "description": "The URL of The link."
+          "type": "string"
         }
       },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;"
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;",
+      "type": "object"
     },
     "dtypesStatus": {
-      "type": "object",
+      "description": "Next Id 5.",
       "properties": {
         "code": {
-          "type": "string",
           "format": "string",
-          "title": "Response status code"
+          "title": "Response status code",
+          "type": "string"
         },
         "details": {
-          "type": "array",
+          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use.",
           "items": {
             "$ref": "#/definitions/protobufAny"
           },
-          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use."
+          "type": "array"
         },
         "help": {
           "$ref": "#/definitions/dtypesHelp",
           "description": "Optional. Help link if there is an error."
         },
         "message": {
-          "type": "string",
+          "description": "User facing message.",
           "format": "string",
-          "description": "User facing message."
+          "type": "string"
         },
         "status": {
-          "type": "string",
+          "description": "Response status code string.",
           "format": "string",
-          "description": "Response status code string."
+          "type": "string"
         }
       },
-      "description": "Next Id 5."
+      "type": "object"
     },
     "dtypesVoidResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "protobufAny": {
-      "type": "object",
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }",
       "properties": {
         "type_url": {
-          "type": "string",
+          "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the schema `http`, `https`, or no schema, the\nfollowing restrictions and interpretations apply:\n\n* If no schema is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemas other than `http`, `https` (or the empty schema) might be\nused with implementation specific semantics.",
           "format": "string",
-          "description": "A URL/resource name whose content describes the type of the\nserialized message.\n\nFor URLs which use the schema `http`, `https`, or no schema, the\nfollowing restrictions and interpretations apply:\n\n* If no schema is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][google.protobuf.Type]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemas other than `http`, `https` (or the empty schema) might be\nused with implementation specific semantics."
+          "type": "string"
         },
         "value": {
-          "type": "string",
+          "description": "Must be a valid serialized protocol buffer of the above specified type.",
           "format": "byte",
-          "description": "Must be valid serialized data of the above specified type."
+          "type": "string"
         }
       },
-      "description": "`Any` contains an arbitrary serialized message along with a URL\nthat describes the type of the serialized message.\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the the `@type`\nfield. Example (for message [google.protobuf.Duration][google.protobuf.Duration]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "type": "object"
     },
     "pvDisk": {
-      "type": "object",
       "properties": {
         "endpoint": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "iops": {
-          "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "kind": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "plugin": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "size": {
-          "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "status": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "users": {
-          "type": "array",
           "items": {
-            "type": "string",
-            "format": "string"
-          }
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
         },
         "zone": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvDiskCreateRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "disk_type": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "size": {
-          "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "zone": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvDiskDeleteRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "identifier": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvDiskDescribeRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "plugin": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvDiskDescribeResponse": {
-      "type": "object",
       "properties": {
         "disk": {
           "$ref": "#/definitions/pvDisk"
@@ -341,95 +191,95 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "pvDiskListRequest": {
-      "type": "object",
       "properties": {
         "cluster": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvDiskListResponse": {
-      "type": "object",
       "properties": {
         "kube": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "result": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/pvResult"
-          }
+          },
+          "type": "array"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPV": {
-      "type": "object",
       "properties": {
         "claim": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "plugin": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "size": {
-          "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "status": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "volume": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvPVC": {
-      "type": "object",
       "properties": {
         "name": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "namespace": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "size": {
-          "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "status": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         },
         "volume": {
-          "type": "string",
-          "format": "string"
+          "format": "string",
+          "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "pvResult": {
-      "type": "object",
       "properties": {
         "disk": {
           "$ref": "#/definitions/pvDisk"
@@ -440,7 +290,158 @@
         "pvc": {
           "$ref": "#/definitions/pvPVC"
         }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.appscode.com",
+  "info": {
+    "title": "disk.proto",
+    "version": "0.1"
+  },
+  "paths": {
+    "/appscode/api/pv/v0.1/disks/{cluster}": {
+      "get": {
+        "operationId": "List",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/pvDiskListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/appscode/api/pv/v0.1/disks/{cluster}/{identifier}": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "identifier",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/appscode/api/pv/v0.1/disks/{cluster}/{name}": {
+      "put": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pvDiskCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/appscode/api/pv/v0.1/disks/{cluster}/{name}/{plugin}": {
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "plugin",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/pvDiskDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
       }
     }
-  }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
 }

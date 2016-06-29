@@ -4,28 +4,87 @@
     "application/json"
   ],
   "definitions": {
-    "alertAcknowledgeRequest": {
+    "dbAddStandbyRequest": {
       "properties": {
-        "comment": {
+        "cluster": {
           "format": "string",
           "type": "string"
         },
-        "phid": {
+        "config": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "alertAlert": {
+    "dbBackupRequest": {
       "properties": {
-        "alert_spec": {
-          "$ref": "#/definitions/alertAlertSpec"
+        "auth_secret_name": {
+          "format": "string",
+          "type": "string"
         },
-        "icinga_service": {
-          "$ref": "#/definitions/alertIcingaService"
+        "bucket_name": {
+          "format": "string",
+          "type": "string"
         },
-        "icinga_url": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "credential": {
+          "format": "string",
+          "type": "string"
+        },
+        "dump": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "force": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "region": {
+          "format": "string",
+          "type": "string"
+        },
+        "snapshot_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "wal": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "dbCreateRequest": {
+      "properties": {
+        "auth_secret_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "bucket_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "credential": {
           "format": "string",
           "type": "string"
         },
@@ -33,47 +92,64 @@
           "format": "string",
           "type": "string"
         },
-        "phid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertAlertSpec": {
-      "properties": {
-        "alert_interval": {
+        "node": {
           "format": "int64",
           "type": "integer"
         },
-        "critical_method": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "critical_user": {
+        "pv": {
           "format": "string",
           "type": "string"
         },
-        "warning_method": {
-          "format": "int32",
+        "pv_size": {
+          "format": "int64",
           "type": "integer"
         },
-        "warning_user": {
+        "region": {
+          "format": "string",
+          "type": "string"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "version": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "alertCreateRequest": {
+    "dbDatabase": {
       "properties": {
-        "alert_spec": {
-          "$ref": "#/definitions/alertAlertSpec"
+        "auth_secret": {
+          "format": "string",
+          "type": "string"
         },
-        "icinga_service": {
-          "$ref": "#/definitions/alertIcingaService"
+        "auto_snapshot": {
+          "format": "int32",
+          "type": "integer"
         },
-        "icinga_service_phid": {
+        "cluster_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "created": {
+          "format": "string",
+          "type": "string"
+        },
+        "deleted": {
+          "format": "string",
+          "type": "string"
+        },
+        "last_backup": {
+          "format": "string",
+          "type": "string"
+        },
+        "mode": {
           "format": "string",
           "type": "string"
         },
@@ -81,39 +157,40 @@
           "format": "string",
           "type": "string"
         },
-        "spec": {
-          "$ref": "#/definitions/alertSpec"
-        }
-      },
-      "type": "object"
-    },
-    "alertDeleteRequest": {
-      "properties": {
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
         "phid": {
           "format": "string",
           "type": "string"
         },
-        "spec": {
-          "$ref": "#/definitions/alertSpec"
+        "pv_size": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "version": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
     },
-    "alertIcingaService": {
+    "dbDeleteRequest": {
       "properties": {
-        "check_command": {
-          "format": "string",
-          "type": "string"
-        },
-        "check_interval": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "critical_condition": {
-          "format": "string",
-          "type": "string"
-        },
-        "formula_r": {
+        "cluster": {
           "format": "string",
           "type": "string"
         },
@@ -121,33 +198,94 @@
           "format": "string",
           "type": "string"
         },
-        "query": {
-          "additionalProperties": {
-            "format": "string",
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "warning_condition": {
+        "type": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "alertListRequest": {
+    "dbDescribeRequest": {
       "properties": {
-        "spec": {
-          "$ref": "#/definitions/alertSpec"
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
     },
-    "alertListResponse": {
+    "dbDescribeResponse": {
       "properties": {
-        "alerts": {
+        "auth_secret": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "created": {
+          "format": "string",
+          "type": "string"
+        },
+        "db_status": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube": {
+          "$ref": "#/definitions/dbkubeInfo"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "provider": {
+          "format": "string",
+          "type": "string"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "snapshot_info": {
+          "$ref": "#/definitions/dbSnapshotInfo"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "version": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dbListRequest": {
+      "type": "object"
+    },
+    "dbListResponse": {
+      "properties": {
+        "databases": {
           "items": {
-            "$ref": "#/definitions/alertAlert"
+            "$ref": "#/definitions/dbDatabase"
+          },
+          "type": "array"
+        },
+        "deleted_databases": {
+          "items": {
+            "$ref": "#/definitions/dbDatabase"
           },
           "type": "array"
         },
@@ -157,65 +295,98 @@
       },
       "type": "object"
     },
-    "alertNotificationRequest": {
+    "dbRestoreRequest": {
       "properties": {
-        "alert_phid": {
+        "auth_secret_name": {
           "format": "string",
           "type": "string"
         },
-        "host_name": {
+        "bucket_name": {
           "format": "string",
           "type": "string"
         },
-        "service_output": {
-          "format": "string",
-          "type": "string"
-        },
-        "state": {
-          "format": "string",
-          "type": "string"
-        },
-        "state_type": {
-          "format": "string",
-          "type": "string"
-        },
-        "time": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertSpec": {
-      "properties": {
         "cluster": {
           "format": "string",
           "type": "string"
         },
-        "namespace": {
+        "credential": {
           "format": "string",
           "type": "string"
         },
-        "object_name": {
+        "dump": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "force": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "name": {
           "format": "string",
           "type": "string"
         },
-        "object_type": {
+        "node": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "pv": {
           "format": "string",
           "type": "string"
+        },
+        "pv_size": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "region": {
+          "format": "string",
+          "type": "string"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "snapshot_phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "version": {
+          "format": "string",
+          "type": "string"
+        },
+        "wal": {
+          "format": "boolean",
+          "type": "boolean"
         }
       },
       "type": "object"
     },
-    "alertUpdateRequest": {
+    "dbSnapshot": {
       "properties": {
-        "alert_spec": {
-          "$ref": "#/definitions/alertAlertSpec"
+        "bucket": {
+          "format": "string",
+          "type": "string"
         },
-        "icinga_service": {
-          "$ref": "#/definitions/alertIcingaService"
+        "cloud_cred": {
+          "format": "string",
+          "type": "string"
         },
-        "icinga_service_phid": {
+        "created": {
+          "format": "string",
+          "type": "string"
+        },
+        "db_cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "db_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "db_type": {
           "format": "string",
           "type": "string"
         },
@@ -227,8 +398,110 @@
           "format": "string",
           "type": "string"
         },
-        "spec": {
-          "$ref": "#/definitions/alertSpec"
+        "process": {
+          "format": "string",
+          "type": "string"
+        },
+        "provider": {
+          "format": "string",
+          "type": "string"
+        },
+        "region": {
+          "format": "string",
+          "type": "string"
+        },
+        "restore_db": {
+          "format": "string",
+          "type": "string"
+        },
+        "restore_snap": {
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "zone": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dbSnapshotInfo": {
+      "properties": {
+        "auto_snapshot": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "backup_attempt": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "backup_success": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_backup": {
+          "format": "string",
+          "type": "string"
+        },
+        "restore_attempt": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "restore_success": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "dbSnapshotListRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dbSnapshotListResponse": {
+      "properties": {
+        "list": {
+          "items": {
+            "$ref": "#/definitions/dbSnapshot"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "dbkubeInfo": {
+      "properties": {
+        "pods": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "rc": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "svc": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -308,187 +581,34 @@
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "alert.proto",
+    "title": "database.proto",
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/alert/v0.1/acknowledge": {
-      "post": {
-        "operationId": "Acknowledge",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/alertAcknowledgeRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Alerts"
-        ]
-      }
-    },
-    "/appscode/api/alert/v0.1/notify": {
-      "post": {
-        "operationId": "Notify",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/alertNotificationRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Alerts"
-        ]
-      }
-    },
-    "/appscode/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}": {
+    "/appscode/api/db/v0.1": {
       "get": {
         "operationId": "List",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.namespace",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.object_type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.object_name",
-            "required": true,
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/alertListResponse"
+              "$ref": "#/definitions/dbListResponse"
             }
           }
         },
         "tags": [
-          "Alerts"
+          "Databases"
         ]
-      },
-      "post": {
-        "operationId": "Update",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.namespace",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.object_type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.object_name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/alertUpdateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Alerts"
-        ]
-      },
+      }
+    },
+    "/appscode/api/db/v0.1/{cluster}": {
       "put": {
         "operationId": "Create",
         "parameters": [
           {
             "format": "string",
             "in": "path",
-            "name": "spec.cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.namespace",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.object_type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.object_name",
+            "name": "cluster",
             "required": true,
             "type": "string"
           },
@@ -497,7 +617,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/alertCreateRequest"
+              "$ref": "#/definitions/dbCreateRequest"
             }
           }
         ],
@@ -510,46 +630,25 @@
           }
         },
         "tags": [
-          "Alerts"
+          "Databases"
         ]
       }
     },
-    "/appscode/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}/{phid}": {
+    "/appscode/api/db/v0.1/{cluster}/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
           {
             "format": "string",
             "in": "path",
-            "name": "spec.cluster",
+            "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
             "format": "string",
             "in": "path",
-            "name": "spec.namespace",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.object_type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "spec.object_name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "phid",
+            "name": "name",
             "required": true,
             "type": "string"
           }
@@ -563,7 +662,189 @@
           }
         },
         "tags": [
-          "Alerts"
+          "Databases"
+        ]
+      },
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dbDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
+    "/appscode/api/db/v0.1/{cluster}/{name}/backup": {
+      "post": {
+        "operationId": "Backup",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dbBackupRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
+    "/appscode/api/db/v0.1/{cluster}/{name}/restore": {
+      "put": {
+        "operationId": "Restore",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dbRestoreRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
+    "/appscode/api/db/v0.1/{cluster}/{name}/standby": {
+      "post": {
+        "operationId": "AddStandby",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dbAddStandbyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
+    "/appscode/api/db/v0.1/{cluster}/{uid}/snapshot": {
+      "get": {
+        "operationId": "SnapshotList",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dbSnapshotListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
         ]
       }
     }

@@ -9,6 +9,8 @@ import (
 
 var deleteRequestSchema *gojsonschema.Schema
 var describeRequestSchema *gojsonschema.Schema
+var addStandbyRequestSchema *gojsonschema.Schema
+var listRequestSchema *gojsonschema.Schema
 var backupRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
 var snapshotListRequestSchema *gojsonschema.Schema
@@ -48,6 +50,33 @@ func init() {
       "type": "string"
     }
   },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	addStandbyRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "config": {
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	listRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object"
 }`))
 	if err != nil {
@@ -157,6 +186,9 @@ func init() {
 	snapshotListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "cluster": {
+      "type": "string"
+    },
     "uid": {
       "type": "string"
     }
@@ -240,6 +272,16 @@ func (m *DescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return describeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DescribeRequest) IsRequest() {}
+
+func (m *AddStandbyRequest) IsValid() (*gojsonschema.Result, error) {
+	return addStandbyRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *AddStandbyRequest) IsRequest() {}
+
+func (m *ListRequest) IsValid() (*gojsonschema.Result, error) {
+	return listRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *ListRequest) IsRequest() {}
 
 func (m *BackupRequest) IsValid() (*gojsonschema.Result, error) {
 	return backupRequestSchema.Validate(gojsonschema.NewGoLoader(m))

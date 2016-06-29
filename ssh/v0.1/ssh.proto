@@ -5,23 +5,23 @@ package ssh;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-service SecureShell {
-  rpc Get(SecureShellGetRequest) returns (SecureShellGetResponse) {
+service SSH {
+  rpc Get(SSHGetRequest) returns (SSHGetResponse) {
 	  option (google.api.http) = {
-	    get: "/appscode/api/sshkey/v0.1"
+	    get: "/appscode/api/ssh/v0.1"
 	  };
   }
 }
 
 // Use specific requests for protos
-message SecureShellGetRequest {
+message SSHGetRequest {
   string namespace = 1;
   string cluster_name = 2;
   string instance_name = 3;
 }
 
 // return phid ?
-message SecureShellGetResponse {
+message SSHGetResponse {
   dtypes.Status status = 1;
   SSHKey ssh_key = 2;
   string instance_addr = 3;

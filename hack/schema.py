@@ -62,6 +62,26 @@ def gen_assets():
     call('go-bindata -ignore=\\.go -o data/files/data.go -pkg files data/files/...')
 
 
+def fix_swagger_schema():
+    for root, dirnames, filenames in os.walk(API_ROOT):
+        for filename in fnmatch.filter(filenames, '*.swagger.json'):
+
+            rel_path = root[len(API_ROOT) + 1:]
+            parts = rel_path.split('/', 2)
+            if len(parts) != 2:
+                continue
+            # api_name = parts[0]
+            # api_version = parts[1]
+
+            swagger = os.path.join(root, filename)
+            spec = read_json(swagger)
+            spec["basePath"] = "/"
+            spec["host"] = "api.appscode.com"
+            spec["info"]["version"] = parts[1][1:]
+            spec["schemes"] = ["https"]
+            write_json(spec, swagger)
+
+
 def swagger_defs(defs):
     stack = []
     result = {
