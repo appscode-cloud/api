@@ -68,28 +68,7 @@
       },
       "type": "object"
     },
-    "sshSSHKey": {
-      "properties": {
-        "aws_fingerprint": {
-          "format": "string",
-          "type": "string"
-        },
-        "openssh_fingerprint": {
-          "format": "string",
-          "type": "string"
-        },
-        "private_key": {
-          "format": "byte",
-          "type": "string"
-        },
-        "public_key": {
-          "format": "byte",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "sshSecureShellGetRequest": {
+    "sshSSHGetRequest": {
       "properties": {
         "cluster_name": {
           "format": "string",
@@ -107,7 +86,7 @@
       "title": "Use specific requests for protos",
       "type": "object"
     },
-    "sshSecureShellGetResponse": {
+    "sshSSHGetResponse": {
       "properties": {
         "instance_addr": {
           "format": "string",
@@ -130,6 +109,27 @@
       },
       "title": "return phid ?",
       "type": "object"
+    },
+    "sshSSHKey": {
+      "properties": {
+        "aws_fingerprint": {
+          "format": "string",
+          "type": "string"
+        },
+        "openssh_fingerprint": {
+          "format": "string",
+          "type": "string"
+        },
+        "private_key": {
+          "format": "byte",
+          "type": "string"
+        },
+        "public_key": {
+          "format": "byte",
+          "type": "string"
+        }
+      },
+      "type": "object"
     }
   },
   "host": "api.appscode.com",
@@ -138,19 +138,19 @@
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/sshkey/v0.1": {
+    "/appscode/api/ssh/v0.1": {
       "get": {
         "operationId": "Get",
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/sshSecureShellGetResponse"
+              "$ref": "#/definitions/sshSSHGetResponse"
             }
           }
         },
         "tags": [
-          "SecureShell"
+          "SSH"
         ]
       }
     }

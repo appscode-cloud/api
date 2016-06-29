@@ -7,11 +7,11 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var secureShellGetRequestSchema *gojsonschema.Schema
+var sSHGetRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	secureShellGetRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	sSHGetRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster_name": {
@@ -36,11 +36,11 @@ func init() {
 	}
 }
 
-func (m *SecureShellGetRequest) IsValid() (*gojsonschema.Result, error) {
-	return secureShellGetRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *SSHGetRequest) IsValid() (*gojsonschema.Result, error) {
+	return sSHGetRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *SecureShellGetRequest) IsRequest() {}
+func (m *SSHGetRequest) IsRequest() {}
 
-func (m *SecureShellGetResponse) SetStatus(s *dtypes.Status) {
+func (m *SSHGetResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
