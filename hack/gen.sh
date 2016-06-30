@@ -15,7 +15,9 @@ ALIAS+="Mapi/certificate/v0.1/certificate.proto=github.com/appscode/api/certific
 ALIAS+="Mapi/kubernetes/v0.1/clusters.proto=github.com/appscode/api/kubernetes/v0.1,"
 ALIAS+="Mapi/ssh/v0.1/ssh.proto=github.com/appscode/api/ssh/v0.1,"
 ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any,"
-ALIAS+="Mapi/artifactory/model_artifacts.proto=github.com/appscode/api/artifactory"
+ALIAS+="Mapi/artifactory/model_artifacts.proto=github.com/appscode/api/artifactory,"
+ALIAS+="Mapi/db/v0.1/database.proto=github.com/appscode/api/db/v0.1,"
+ALIAS+="Mapi/alert/v0.1/alert.proto=github.com/appscode/api/alert/v0.1"
 
 clean() {
 	(find . | grep pb.go | xargs rm) || true

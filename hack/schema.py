@@ -268,7 +268,7 @@ def apply_naming_policy():
                             if 'maxLength' not in v:
                                 v['maxLength'] = 63
                             if 'pattern' not in v:
-                                v['pattern'] = "^[a-z0-9](?:[a-z0-9\-]{3,61}[a-z0-9])?$"
+                                v['pattern'] = "^[a-z0-9](?:[a-z0-9\-]{0,61}[a-z0-9])?$"
             write_json(content, schema)
 
 

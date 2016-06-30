@@ -21,7 +21,7 @@
       },
       "type": "object"
     },
-    "dbBackupRequest": {
+    "dbBackupScheduleRequest": {
       "properties": {
         "auth_secret_name": {
           "format": "string",
@@ -55,6 +55,10 @@
           "format": "string",
           "type": "string"
         },
+        "schedule_cron_expr": {
+          "format": "string",
+          "type": "string"
+        },
         "snapshot_name": {
           "format": "string",
           "type": "string"
@@ -66,6 +70,19 @@
         "wal": {
           "format": "boolean",
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "dbBackupUnscheduleRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -197,10 +214,6 @@
         "name": {
           "format": "string",
           "type": "string"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
         }
       },
       "type": "object"
@@ -237,7 +250,7 @@
           "type": "string"
         },
         "kube": {
-          "$ref": "#/definitions/dbkubeInfo"
+          "$ref": "#/definitions/dbKubeInfo"
         },
         "name": {
           "format": "string",
@@ -268,6 +281,23 @@
         "version": {
           "format": "string",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dbKubeInfo": {
+      "properties": {
+        "pods": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "rc": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "svc": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -390,6 +420,10 @@
           "format": "string",
           "type": "string"
         },
+        "is_scheduled_backup": {
+          "format": "int32",
+          "type": "integer"
+        },
         "name": {
           "format": "string",
           "type": "string"
@@ -435,10 +469,6 @@
     },
     "dbSnapshotInfo": {
       "properties": {
-        "auto_snapshot": {
-          "format": "int32",
-          "type": "integer"
-        },
         "backup_attempt": {
           "format": "int64",
           "type": "integer"
@@ -458,6 +488,10 @@
         "restore_success": {
           "format": "int64",
           "type": "integer"
+        },
+        "schedule_cron_expr": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -485,23 +519,6 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "dbkubeInfo": {
-      "properties": {
-        "pods": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "rc": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "svc": {
-          "format": "int64",
-          "type": "integer"
         }
       },
       "type": "object"
@@ -698,7 +715,7 @@
     },
     "/appscode/api/db/v0.1/{cluster}/{name}/backup": {
       "post": {
-        "operationId": "Backup",
+        "operationId": "BackupSchedule",
         "parameters": [
           {
             "format": "string",
@@ -719,8 +736,38 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/dbBackupRequest"
+              "$ref": "#/definitions/dbBackupScheduleRequest"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      },
+      "put": {
+        "operationId": "BackupUnschedule",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {

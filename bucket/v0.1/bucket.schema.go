@@ -16,7 +16,7 @@ func init() {
   "properties": {
     "cloud_credential": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{3,61}[a-z0-9])?$",
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     }
   },

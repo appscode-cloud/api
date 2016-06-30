@@ -38,10 +38,16 @@ service Databases {
     };
   }
 
-  rpc Backup(BackupRequest) returns (dtypes.VoidResponse) {
+  rpc BackupSchedule(BackupScheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
       body: "*"
+    };
+  }
+
+  rpc BackupUnschedule(BackupUnscheduleRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
     };
   }
 
@@ -91,13 +97,14 @@ message Snapshot {
   string status = 11;
   string process = 12;
   string type = 13;
-  string restore_db = 14;
-  string restore_snap = 15;
-  string created = 16;
+  int32 is_scheduled_backup = 14;
+  string restore_db = 15;
+  string restore_snap = 16;
+  string created = 17;
 }
 
 message SnapshotInfo {
-  int32 auto_snapshot = 1;
+  string schedule_cron_expr = 1;
   string last_backup = 2;
   int64 backup_attempt = 3;
   int64 backup_success = 4;
@@ -105,7 +112,7 @@ message SnapshotInfo {
   int64 restore_success = 6;
 }
 
-message kubeInfo {
+message KubeInfo {
   int64 svc = 1;
   int64 pods = 2;
   int64 rc = 3;
@@ -155,19 +162,18 @@ message DescribeResponse {
   string sku = 7;
   string version = 8;
   SnapshotInfo snapshot_info = 9;
-  kubeInfo kube = 10;
+  KubeInfo kube = 10;
   string db_status = 11;
   string auth_secret = 12;
   string created = 13;
 }
 
 message DeleteRequest {
-  string type = 1;
+  string cluster = 1;
   string name = 2;
-  string cluster = 3;
 }
 
-message BackupRequest {
+message BackupScheduleRequest {
   string cluster = 1;
   string name = 2;
   string type = 3;
@@ -176,9 +182,15 @@ message BackupRequest {
   string credential = 6;
   string region = 7;
   string auth_secret_name = 8;
-  bool wal = 9;
-  bool dump = 10;
-  bool force = 11;
+  string schedule_cron_expr = 9;
+  bool wal = 10;
+  bool dump = 11;
+  bool force = 12;
+}
+
+message BackupUnscheduleRequest {
+  string cluster = 1;
+  string name = 2;
 }
 
 message RestoreRequest {

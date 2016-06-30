@@ -125,3 +125,10 @@ message IcingaService {
   string critical_condition  = 6;
   int64 check_interval = 7;
 }
+
+message IcingaState {
+  int32 OK = 1;
+  int32 Warning = 2;
+  int32 Critical = 3;
+  int32 Unknown = 4;
+}

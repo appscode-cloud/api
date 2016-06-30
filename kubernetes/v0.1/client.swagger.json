@@ -59,6 +59,27 @@
       },
       "type": "object"
     },
+    "alertIcingaState": {
+      "properties": {
+        "Critical": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OK": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Unknown": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Warning": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "dtypesHelp": {
       "properties": {
         "description": {
@@ -153,6 +174,9 @@
       "properties": {
         "app": {
           "$ref": "#/definitions/kubernetesService"
+        },
+        "icinga_state": {
+          "$ref": "#/definitions/alertIcingaState"
         },
         "links": {
           "additionalProperties": {
