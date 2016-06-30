@@ -258,10 +258,10 @@ def apply_naming_policy():
                         if p in [
                             'cluster_name',
                             'namespace', 'name',
-                            'bucket_name',
+                            # 'bucket_name',
                             'secret_name',
                             'snapshot_name',
-                            'auth_secret_name',
+                            # 'auth_secret_name',
                             'cloud_credential'
                         ]:
                             print '====>>>> ' + p
