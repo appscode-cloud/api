@@ -55,7 +55,7 @@
         "schedule_cron_expr": {
           "type": "string"
         },
-        "snapshot_name":  {
+        "snapshot_name": {
           "oneOf": [
             { "maxLength": 0 },
             { "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$" }
@@ -87,13 +87,17 @@
     "dbCreateRequest": {
       "properties": {
         "auth_secret_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "oneOf": [
+            { "maxLength": 0 },
+            { "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$" }
+          ],
           "type": "string"
         },
         "bucket_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "oneOf": [
+            { "maxLength": 0 },
+            { "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$" }
+          ],
           "type": "string"
         },
         "cluster": {
@@ -162,14 +166,14 @@
     },
     "dbRestoreRequest": {
       "properties": {
-        "auth_secret_name":  {
+        "auth_secret_name": {
           "oneOf": [
             { "maxLength": 0 },
             { "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$" }
           ],
           "type": "string"
         },
-        "bucket_name":  {
+        "bucket_name": {
           "oneOf": [
             { "maxLength": 0 },
             { "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$" }
