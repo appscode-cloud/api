@@ -31,7 +31,6 @@ message VolumeCreateRequest {
   string glusterfs_cluster = 2;
   string volume = 3;
   int32 enable_bacula = 4;
-  string bacula_name = 5;
 }
 
 message VolumeDeleteRequest {

@@ -2,9 +2,6 @@
   "definitions": {
     "glusterfsVolumeCreateRequest": {
       "properties": {
-        "bacula_name": {
-          "type": "string"
-        },
         "enable_bacula": {
           "type": "integer"
         },

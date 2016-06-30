@@ -21,16 +21,12 @@ service Server {
 }
 
 message ServerCreateRequest {
-  string name = 1;
-  string namespace = 2;
-  string cluster_name = 3;
-  string credential = 4;
-  string bucket_name = 5;
-  string disk = 9;
+  string cluster_name = 1;
+  string credential = 2;
+  string bucket_name = 3;
+  string disk = 4;
 }
 
 message ServerDeleteRequest {
-  string name = 1;
-  string namespace = 2;
-  string cluster_name = 3;
+  string cluster_name = 5;
 }

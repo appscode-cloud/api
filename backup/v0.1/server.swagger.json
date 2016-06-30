@@ -21,14 +21,6 @@
         "disk": {
           "format": "string",
           "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "namespace": {
-          "format": "string",
-          "type": "string"
         }
       },
       "type": "object"
@@ -36,14 +28,6 @@
     "backupServerDeleteRequest": {
       "properties": {
         "cluster_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "namespace": {
           "format": "string",
           "type": "string"
         }

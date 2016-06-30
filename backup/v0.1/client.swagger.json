@@ -9,64 +9,6 @@
         "cluster_name": {
           "format": "string",
           "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "namespace": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "backupMountRequest": {
-      "properties": {
-        "cluster_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "disk_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "disk_type": {
-          "format": "string",
-          "type": "string"
-        },
-        "mount_path": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "namespace": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "backupUnMountRequest": {
-      "properties": {
-        "cluster_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "disk_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "namespace": {
-          "format": "string",
-          "type": "string"
         }
       },
       "type": "object"
@@ -150,32 +92,6 @@
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/backup/v0.1/client/mount": {
-      "put": {
-        "operationId": "Mount",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/backupMountRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Client"
-        ]
-      }
-    },
     "/appscode/api/backup/v0.1/client/reconfigure": {
       "put": {
         "operationId": "ReConfigure",
@@ -186,32 +102,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/backupClientReConfigureRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Client"
-        ]
-      }
-    },
-    "/appscode/api/backup/v0.1/client/unmount": {
-      "put": {
-        "operationId": "UnMount",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/backupUnMountRequest"
             }
           }
         ],
