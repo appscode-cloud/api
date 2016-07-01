@@ -29,6 +29,9 @@ func init() {
     "body": {
       "type": "string"
     },
+    "receiver_email": {
+      "type": "string"
+    },
     "sender_email": {
       "type": "string"
     },

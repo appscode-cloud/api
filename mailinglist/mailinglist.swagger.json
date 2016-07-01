@@ -132,6 +132,10 @@
           "type": "string",
           "format": "string"
         },
+        "receiver_email": {
+          "type": "string",
+          "format": "string"
+        },
         "sender_email": {
           "type": "string",
           "format": "string"
