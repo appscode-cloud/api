@@ -12,7 +12,7 @@ import (
 	glusterfs "github.com/appscode/api/glusterfs/v0.1"
 	kubernetes "github.com/appscode/api/kubernetes/v0.1"
 	loadbalancer "github.com/appscode/api/loadbalancer/v0.1"
-	"github.com/appscode/api/mailinglist"
+	mailinglist "github.com/appscode/api/mailinglist/v0.1"
 	namespace "github.com/appscode/api/namespace/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
 	"github.com/gengo/grpc-gateway/runtime"
