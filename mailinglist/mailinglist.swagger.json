@@ -41,7 +41,7 @@
         ]
       }
     },
-    "/appscode/api/mailinglist/v0.1/subscribe/{email}": {
+    "/appscode/api/mailinglist/v0.1/subscribe": {
       "put": {
         "operationId": "Subscribe",
         "responses": {
@@ -54,44 +54,12 @@
         },
         "parameters": [
           {
-            "name": "email",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
               "$ref": "#/definitions/mailinglistSubscribeRequest"
             }
-          }
-        ],
-        "tags": [
-          "MailingList"
-        ]
-      }
-    },
-    "/appscode/api/mailinglist/v0.1/unsubscribe/{magic_code}": {
-      "get": {
-        "operationId": "Unsubscribe",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "magic_code",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "string"
           }
         ],
         "tags": [
@@ -182,15 +150,6 @@
       "type": "object",
       "properties": {
         "email": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "mailinglistUnsubscribeRequest": {
-      "type": "object",
-      "properties": {
-        "magic_code": {
           "type": "string",
           "format": "string"
         }

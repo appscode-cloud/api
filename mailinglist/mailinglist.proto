@@ -14,13 +14,8 @@ service MailingList {
   }
   rpc Subscribe(SubscribeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/mailinglist/v0.1/subscribe/{email}"
+      put: "/appscode/api/mailinglist/v0.1/subscribe"
       body: "*"
-    };
-  }
-  rpc Unsubscribe(UnsubscribeRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      get: "/appscode/api/mailinglist/v0.1/unsubscribe/{magic_code}"
     };
   }
 }
@@ -34,8 +29,4 @@ message SendEmailRequest {
 
 message SubscribeRequest {
   string email = 1;
-}
-
-message UnsubscribeRequest {
-  string magic_code = 1;
 }

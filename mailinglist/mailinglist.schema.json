@@ -24,14 +24,6 @@
         }
       },
       "type": "object"
-    },
-    "mailinglistUnsubscribeRequest": {
-      "properties": {
-        "magic_code": {
-          "type": "string"
-        }
-      },
-      "type": "object"
     }
   }
 }

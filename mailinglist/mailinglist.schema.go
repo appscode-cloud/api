@@ -7,7 +7,6 @@ import (
 )
 
 var subscribeRequestSchema *gojsonschema.Schema
-var unsubscribeRequestSchema *gojsonschema.Schema
 var sendEmailRequestSchema *gojsonschema.Schema
 
 func init() {
@@ -16,18 +15,6 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "email": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	unsubscribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "magic_code": {
       "type": "string"
     }
   },
@@ -63,11 +50,6 @@ func (m *SubscribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SubscribeRequest) IsRequest() {}
-
-func (m *UnsubscribeRequest) IsValid() (*gojsonschema.Result, error) {
-	return unsubscribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *UnsubscribeRequest) IsRequest() {}
 
 func (m *SendEmailRequest) IsValid() (*gojsonschema.Result, error) {
 	return sendEmailRequestSchema.Validate(gojsonschema.NewGoLoader(m))
