@@ -18,6 +18,11 @@ func init() {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
+    },
+    "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
     }
   },
   "type": "object"
@@ -42,6 +47,12 @@ func init() {
       "type": "string"
     },
     "disk": {
+      "type": "string"
+    },
+    "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "title": "TODO will be removed",
       "type": "string"
     }
   },
