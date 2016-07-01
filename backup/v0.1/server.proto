@@ -25,8 +25,12 @@ message ServerCreateRequest {
   string credential = 2;
   string bucket_name = 3;
   string disk = 4;
+
+  // TODO will be removed
+  string namespace = 5;
 }
 
 message ServerDeleteRequest {
-  string cluster_name = 5;
+  string cluster_name = 1;
+  string namespace = 2;
 }
