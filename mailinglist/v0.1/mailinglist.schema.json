@@ -5,6 +5,9 @@
         "body": {
           "type": "string"
         },
+        "receiver_email": {
+          "type": "string"
+        },
         "sender_email": {
           "type": "string"
         },
@@ -20,14 +23,6 @@
     "mailinglistSubscribeRequest": {
       "properties": {
         "email": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "mailinglistUnsubscribeRequest": {
-      "properties": {
-        "magic_code": {
           "type": "string"
         }
       },

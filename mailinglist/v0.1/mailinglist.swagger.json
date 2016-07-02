@@ -60,88 +60,36 @@
       },
       "type": "object"
     },
-    "glusterfsVolume": {
+    "mailinglistSendEmailRequest": {
       "properties": {
-        "bricks": {
+        "body": {
           "format": "string",
           "type": "string"
         },
-        "endpoint": {
+        "receiver_email": {
           "format": "string",
           "type": "string"
         },
-        "path": {
+        "sender_email": {
           "format": "string",
           "type": "string"
         },
-        "replica": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "glusterfsVolumeCreateRequest": {
-      "properties": {
-        "enable_bacula": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "glusterfs_cluster": {
+        "sender_name": {
           "format": "string",
           "type": "string"
         },
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "volume": {
+        "subject": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "glusterfsVolumeDeleteRequest": {
+    "mailinglistSubscribeRequest": {
       "properties": {
-        "glusterfs_cluster": {
+        "email": {
           "format": "string",
           "type": "string"
-        },
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "volume": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "glusterfsVolumeListRequest": {
-      "properties": {
-        "glusterfs_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "glusterfsVolumeListResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "volumes": {
-          "items": {
-            "$ref": "#/definitions/glusterfsVolume"
-          },
-          "type": "array"
         }
       },
       "type": "object"
@@ -165,27 +113,20 @@
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "volume.proto",
+    "title": "mailinglist.proto",
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}": {
-      "put": {
-        "operationId": "Create",
+    "/appscode/api/mail/v0.1": {
+      "post": {
+        "operationId": "SendEmail",
         "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "kube_cluster",
-            "required": true,
-            "type": "string"
-          },
           {
             "in": "body",
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/glusterfsVolumeCreateRequest"
+              "$ref": "#/definitions/mailinglistSendEmailRequest"
             }
           }
         ],
@@ -198,66 +139,21 @@
           }
         },
         "tags": [
-          "Volumes"
+          "MailingList"
         ]
       }
     },
-    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}": {
-      "get": {
-        "operationId": "List",
+    "/appscode/api/mailinglist/v0.1/subscribe": {
+      "put": {
+        "operationId": "Subscribe",
         "parameters": [
           {
-            "format": "string",
-            "in": "path",
-            "name": "kube_cluster",
+            "in": "body",
+            "name": "body",
             "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "glusterfs_cluster",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
             "schema": {
-              "$ref": "#/definitions/glusterfsVolumeListResponse"
+              "$ref": "#/definitions/mailinglistSubscribeRequest"
             }
-          }
-        },
-        "tags": [
-          "Volumes"
-        ]
-      }
-    },
-    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}/{volume}": {
-      "delete": {
-        "operationId": "Delete",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "kube_cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "glusterfs_cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "volume",
-            "required": true,
-            "type": "string"
           }
         ],
         "responses": {
@@ -269,7 +165,7 @@
           }
         },
         "tags": [
-          "Volumes"
+          "MailingList"
         ]
       }
     }

@@ -99,29 +99,12 @@
     },
     "glusterfsClusterCreateRequest": {
       "properties": {
-        "bacula_metadata_disk": {
-          "format": "string",
-          "type": "string"
-        },
-        "bucket": {
-          "description": "if bacula is enabled the following two fields are\nrequired.",
-          "format": "string",
-          "type": "string"
-        },
-        "credential": {
-          "format": "string",
-          "type": "string"
-        },
         "disks": {
           "items": {
             "format": "string",
             "type": "string"
           },
           "type": "array"
-        },
-        "enable_bacula": {
-          "format": "int32",
-          "type": "integer"
         },
         "kube_cluster": {
           "format": "string",

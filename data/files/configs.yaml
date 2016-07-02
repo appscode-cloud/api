@@ -19,6 +19,9 @@ authenticationInterceptor:
   systemAuthenticatedEndpoint:
     - "/ci.Master/Create"
     - "/ci.Master/Delete"
+    - "/backup.Client/ReConfigure"
+    - "/backup.Server/Create"
+    - "/backup.Server/Delete"
 validationInterceptor:
   order: 2
   noValidation:
