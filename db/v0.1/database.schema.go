@@ -84,13 +84,25 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "auth_secret_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "oneOf": [
+        {
+          "maxLength": 0
+        },
+        {
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$"
+        }
+      ],
       "type": "string"
     },
     "bucket_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "oneOf": [
+        {
+          "maxLength": 0
+        },
+        {
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$"
+        }
+      ],
       "type": "string"
     },
     "cluster": {
@@ -117,8 +129,14 @@ func init() {
       "type": "string"
     },
     "snapshot_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "oneOf": [
+        {
+          "maxLength": 0
+        },
+        {
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$"
+        }
+      ],
       "type": "string"
     },
     "type": {
@@ -154,13 +172,25 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "auth_secret_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "oneOf": [
+        {
+          "maxLength": 0
+        },
+        {
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$"
+        }
+      ],
       "type": "string"
     },
     "bucket_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "oneOf": [
+        {
+          "maxLength": 0
+        },
+        {
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$"
+        }
+      ],
       "type": "string"
     },
     "cluster": {
@@ -220,13 +250,25 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "auth_secret_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "oneOf": [
+        {
+          "maxLength": 0
+        },
+        {
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$"
+        }
+      ],
       "type": "string"
     },
     "bucket_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "oneOf": [
+        {
+          "maxLength": 0
+        },
+        {
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$"
+        }
+      ],
       "type": "string"
     },
     "cluster": {
