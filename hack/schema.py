@@ -123,10 +123,15 @@ def generate_json_schema():
             swagger = os.path.join(root, filename)
             schema = os.path.join(root, filename.replace('.swagger.', '.schema.'))
             print schema
-            defs = swagger_defs(read_json(swagger)['definitions'])['requests']
+            gen_defs = swagger_defs(read_json(swagger)['definitions'])['requests']
             if os.path.exists(schema):
-                defs.update(read_json(schema)['definitions'])
-            write_json({'definitions': defs}, schema)
+                # merge
+                ext_defs = read_json(schema)['definitions']
+                for m, mspec in gen_defs.iteritems():
+                    for f, fspec in mspec['properties'].iteritems():
+                        if fspec != ext_defs[m]['properties'][f]:
+                            mspec['properties'][f] = ext_defs[m]['properties'][fspec]
+            write_json({'definitions': gen_defs}, schema)
 
 
 def schema_go(pkg, defs):
@@ -279,5 +284,5 @@ if __name__ == "__main__":
         globals()[sys.argv[1]](*sys.argv[2:])
     else:
         generate_json_schema()
-        # apply_naming_policy()
+        apply_naming_policy()
         generate_go_schema()
