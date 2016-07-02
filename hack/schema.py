@@ -129,6 +129,21 @@ def generate_json_schema():
                 for m, mspec in gen_defs.iteritems():
                     if 'properties' in mspec.keys():
                         for f, fspec in mspec['properties'].iteritems():
+                            if f in [
+                                'cluster_name',
+                                'namespace', 'name',
+                                'bucket_name',
+                                'secret_name',
+                                'snapshot_name',
+                                'auth_secret_name',
+                                'cloud_credential'
+                            ]:
+                                # print '====>>>> ' + f
+                                if 'maxLength' not in fspec:
+                                    fspec['maxLength'] = 63
+                                if 'pattern' not in fspec:
+                                    fspec['pattern'] = "^[a-z0-9](?:[a-z0-9\-]{0,61}[a-z0-9])?$"
+
                             if fspec != ext_defs[m]['properties'][f]:
                                 print mspec['properties'][f]
                                 print ext_defs[m]['properties'][f]
@@ -286,5 +301,5 @@ if __name__ == "__main__":
         globals()[sys.argv[1]](*sys.argv[2:])
     else:
         generate_json_schema()
-        apply_naming_policy()
+        # apply_naming_policy()
         generate_go_schema()
