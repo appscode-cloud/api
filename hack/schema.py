@@ -130,6 +130,8 @@ def generate_json_schema():
                     if 'properties' in mspec.keys():
                         for f, fspec in mspec['properties'].iteritems():
                             if fspec != ext_defs[m]['properties'][f]:
+                                print mspec['properties'][f]
+                                print ext_defs[m]['properties'][f]
                                 mspec['properties'][f] = ext_defs[m]['properties'][f]
             write_json({'definitions': gen_defs}, schema)
 
