@@ -122,15 +122,15 @@ def generate_json_schema():
         for filename in fnmatch.filter(filenames, '*.swagger.json'):
             swagger = os.path.join(root, filename)
             schema = os.path.join(root, filename.replace('.swagger.', '.schema.'))
-            print schema
             gen_defs = swagger_defs(read_json(swagger)['definitions'])['requests']
             if os.path.exists(schema):
                 # merge
                 ext_defs = read_json(schema)['definitions']
                 for m, mspec in gen_defs.iteritems():
-                    for f, fspec in mspec['properties'].iteritems():
-                        if fspec != ext_defs[m]['properties'][f]:
-                            mspec['properties'][f] = ext_defs[m]['properties'][fspec]
+                    if 'properties' in mspec.keys():
+                        for f, fspec in mspec['properties'].iteritems():
+                            if fspec != ext_defs[m]['properties'][f]:
+                                mspec['properties'][f] = ext_defs[m]['properties'][f]
             write_json({'definitions': gen_defs}, schema)
 
 
