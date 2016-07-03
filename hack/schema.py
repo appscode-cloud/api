@@ -118,14 +118,16 @@ def swagger_defs(defs):
 
 
 def generate_json_schema():
+    call("find . | grep schema.json | xargs rename 's/schema.json/schema.json.old/' {}")
     for root, dirnames, filenames in os.walk(API_ROOT):
         for filename in fnmatch.filter(filenames, '*.swagger.json'):
             swagger = os.path.join(root, filename)
             schema = os.path.join(root, filename.replace('.swagger.', '.schema.'))
+            ext_schema = os.path.join(root, filename.replace('.swagger.json', '.schema.json.old'))
             gen_defs = swagger_defs(read_json(swagger)['definitions'])['requests']
-            if os.path.exists(schema):
+            if os.path.exists(ext_schema):
                 # merge
-                ext_defs = read_json(schema)['definitions']
+                ext_defs = read_json(ext_schema)['definitions']
                 for m, mspec in gen_defs.iteritems():
                     if 'properties' in mspec.keys():
                         for f, fspec in mspec['properties'].iteritems():
@@ -149,6 +151,7 @@ def generate_json_schema():
                                 print ext_defs[m]['properties'][f]
                                 mspec['properties'][f] = ext_defs[m]['properties'][f]
             write_json({'definitions': gen_defs}, schema)
+    call("(find . | grep schema.json.old | xargs rm) || true")
 
 
 def schema_go(pkg, defs):
