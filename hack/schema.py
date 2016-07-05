@@ -60,6 +60,7 @@ def write_json(obj, name):
 def gen_assets():
     call('go get github.com/jteeuwen/go-bindata/...')
     call('go-bindata -ignore=\\.go -o data/files/data.go -pkg files data/files/...')
+    call('go-bindata -ignore=\\.go -o meta/data.go -pkg meta meta/...')
 
 
 def fix_swagger_schema():
@@ -140,7 +141,6 @@ def generate_json_schema():
                                 'auth_secret_name',
                                 'cloud_credential'
                             ]:
-                                # print '====>>>> ' + f
                                 if 'maxLength' not in fspec:
                                     fspec['maxLength'] = 63
                                 if 'pattern' not in fspec:
