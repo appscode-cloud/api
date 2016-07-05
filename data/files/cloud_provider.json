@@ -587,6 +587,126 @@
           "disk":640
         }
       ]
+    },
+    "linode":{
+      "name":"linode",
+      "public": false,
+      "regions":[
+        {
+          "location":"Dallas, TX, USA",
+          "region":"dallas",
+          "zones":[
+            "dallas"
+          ]
+        },
+        {
+          "location":"Fremont, CA, USA",
+          "region":"fremont",
+          "zones":[
+            "fremont"
+          ]
+        },
+        {
+          "location":"Atlanta, GA, USA",
+          "region":"atlanta",
+          "zones":[
+            "atlanta"
+          ]
+        },
+        {
+          "location":"Newark, NJ, USA",
+          "region":"newark",
+          "zones":[
+            "newark"
+          ]
+        },
+        {
+          "location":"London, England, UK",
+          "region":"london",
+          "zones":[
+            "london"
+          ]
+        },
+        {
+          "location":"Tokyo, JP",
+          "region":"tokyo",
+          "zones":[
+            "tokyo"
+          ]
+        },
+        {
+          "location":"Singapore, SG",
+          "region":"singapore",
+          "zones":[
+            "singapore"
+          ]
+        },
+        {
+          "location":"Frankfurt, DE",
+          "region":"frankfurt",
+          "zones":[
+            "frankfurt"
+          ]
+        }
+      ],
+      "instance_types":[
+        {
+          "category":"Linode 2048",
+          "external_sku":"1",
+          "cpu":1,
+          "ram":2,
+          "disk":24
+        },
+        {
+          "category":"Linode 4096",
+          "external_sku":"2",
+          "cpu":2,
+          "ram":4,
+          "disk":48
+        },
+        {
+          "category":"Linode 8192",
+          "external_sku":"4",
+          "cpu":4,
+          "ram":8,
+          "disk":96
+        },
+        {
+          "category":"Linode 12288",
+          "external_sku":"6",
+          "cpu":6,
+          "ram":12,
+          "disk":192
+        },
+        {
+          "category":"Linode 24576",
+          "external_sku":"7",
+          "cpu":8,
+          "ram":24,
+          "disk":384
+        },
+        {
+          "category":"Linode 49152",
+          "external_sku":"8",
+          "cpu":12,
+          "ram":48,
+          "disk":768
+        },
+        {
+          "category":"Linode 65536",
+          "external_sku":"9",
+          "cpu":16,
+          "ram":64,
+          "disk":1152
+        },
+        {
+          "category":"Linode 81920",
+          "external_sku":"10",
+          "cpu":20,
+          "ram":80,
+          "disk":1536
+        }
+      ]
     }
   }
 }
