@@ -707,6 +707,140 @@
           "disk":1536
         }
       ]
+    },
+    "vultr":{
+      "name":"vultr",
+      "public": false,
+      "regions":[
+        {
+          "location":"Atlanta",
+          "region":"atlanta",
+          "zones":[
+            "atlanta"
+          ]
+        },
+        {
+          "location":"Tokyo",
+          "region":"tokyo",
+          "zones":[
+            "tokyo"
+          ]
+        },
+        {
+          "location":"Sydney",
+          "region":"sydney",
+          "zones":[
+            "sydney"
+          ]
+        },
+        {
+          "location":"Chicago",
+          "region":"chicago",
+          "zones":[
+            "chicago"
+          ]
+        },
+        {
+          "location":"Dallas",
+          "region":"dallas",
+          "zones":[
+            "dallas"
+          ]
+        },
+        {
+          "location":"Seattle",
+          "region":"seattle",
+          "zones":[
+            "seattle"
+          ]
+        },
+        {
+          "location":"New Jersey",
+          "region":"newjersey",
+          "zones":[
+            "newjersey"
+          ]
+        },
+        {
+          "location":"Silicon Valley",
+          "region":"siliconvalley",
+          "zones":[
+            "siliconvalley"
+          ]
+        },
+        {
+          "location":"Paris",
+          "region":"paris",
+          "zones":[
+            "paris"
+          ]
+        },
+        {
+          "location":"Miami",
+          "region":"miami",
+          "zones":[
+            "miami"
+          ]
+        },
+        {
+          "location":"Amsterdam",
+          "region":"amsterdam",
+          "zones":[
+            "amsterdam"
+          ]
+        },
+        {
+          "location":"London",
+          "region":"london",
+          "zones":[
+            "london"
+          ]
+        },
+        {
+          "location":"Frankfurt",
+          "region":"frankfurt",
+          "zones":[
+            "frankfurt"
+          ]
+        }
+      ],
+      "instance_types":[
+        {
+          "category":"Compute Instance",
+          "external_sku":"93",
+          "cpu":1,
+          "ram":2,
+          "disk":20
+        },
+        {
+          "category":"Compute Instance",
+          "external_sku":"94",
+          "cpu":2,
+          "ram":2,
+          "disk":45
+        },
+        {
+          "category":"Compute Instance",
+          "external_sku":"95",
+          "cpu":2,
+          "ram":4,
+          "disk":90
+        },
+        {
+          "category":"Compute Instance",
+          "external_sku":"96",
+          "cpu":4,
+          "ram":8,
+          "disk":150
+        },
+        {
+          "category":"Compute Instance",
+          "external_sku":"7",
+          "cpu":8,
+          "ram":16,
+          "disk":300
+        }
+      ]
     }
   }
 }
