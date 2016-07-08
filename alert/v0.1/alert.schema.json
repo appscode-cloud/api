@@ -1,0 +1,174 @@
+{
+  "definitions": {
+    "alertAcknowledgeRequest": {
+      "properties": {
+        "comment": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertSpec": {
+      "properties": {
+        "alert_interval": {
+          "type": "integer"
+        },
+        "critical_method": {
+          "type": "integer"
+        },
+        "critical_user": {
+          "type": "string"
+        },
+        "warning_method": {
+          "type": "integer"
+        },
+        "warning_user": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCreateRequest": {
+      "properties": {
+        "alert_spec": {
+          "$ref": "#/definitions/alertAlertSpec"
+        },
+        "icinga_service": {
+          "$ref": "#/definitions/alertIcingaService"
+        },
+        "icinga_service_phid": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "alertDeleteRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "alertIcingaService": {
+      "properties": {
+        "check_command": {
+          "type": "string"
+        },
+        "check_interval": {
+          "type": "integer"
+        },
+        "critical_condition": {
+          "type": "string"
+        },
+        "formula_r": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "query": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "warning_condition": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertListRequest": {
+      "properties": {
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "alertNotificationRequest": {
+      "properties": {
+        "alert_phid": {
+          "type": "string"
+        },
+        "host_name": {
+          "type": "string"
+        },
+        "service_output": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "state_type": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertSpec": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "object_name": {
+          "type": "string"
+        },
+        "object_type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertUpdateRequest": {
+      "properties": {
+        "alert_spec": {
+          "$ref": "#/definitions/alertAlertSpec"
+        },
+        "icinga_service": {
+          "$ref": "#/definitions/alertIcingaService"
+        },
+        "icinga_service_phid": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/definitions/alertSpec"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
