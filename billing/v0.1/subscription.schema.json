@@ -1,0 +1,12 @@
+{
+  "definitions": {
+    "billingSubscriptionSubscribeRequest": {
+      "properties": {
+        "product_id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
