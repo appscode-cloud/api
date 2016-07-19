@@ -132,20 +132,24 @@ def generate_json_schema():
                     if 'properties' in mspec.keys():
                         for f, fspec in mspec['properties'].iteritems():
                             if f in [
-                                'cluster_name',
-                                'namespace', 'name',
-                                'bucket_name',
-                                'secret_name',
-                                'snapshot_name',
                                 'auth_secret_name',
-                                'cloud_credential'
+                                'bucket_name',
+                                'cloud_credential',
+                                'cluster_name',
+                                'name',
+                                'namespace',
+                                'secret_name',
+                                'service_name',
+                                'snapshot_name'
                             ]:
                                 if 'maxLength' not in fspec:
                                     fspec['maxLength'] = 63
                                 if 'pattern' not in fspec:
                                     fspec['pattern'] = "^[a-z0-9](?:[a-z0-9\-]{0,61}[a-z0-9])?$"
 
-                            if f in ext_defs[m]['properties'] and fspec != ext_defs[m]['properties'][f]:
+                            if 'properties' in ext_defs[m] \
+                                    and f in ext_defs[m]['properties'] \
+                                    and not set(fspec.keys()).issuperset(set(ext_defs[m]['properties'][f].keys())):
                                 print mspec['properties'][f]
                                 print ext_defs[m]['properties'][f]
                                 mspec['properties'][f] = ext_defs[m]['properties'][f]

@@ -73,6 +73,11 @@ func init() {
 	}
 	listRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "type": {
+      "type": "string"
+    }
+  },
   "type": "object"
 }`))
 	if err != nil {
@@ -197,11 +202,6 @@ func init() {
     "credential": {
       "type": "string"
     },
-    "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    },
     "node": {
       "type": "integer"
     },
@@ -212,6 +212,11 @@ func init() {
       "type": "integer"
     },
     "region": {
+      "type": "string"
+    },
+    "service_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "sku": {
@@ -296,6 +301,11 @@ func init() {
       "type": "integer"
     },
     "region": {
+      "type": "string"
+    },
+    "service_name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "sku": {

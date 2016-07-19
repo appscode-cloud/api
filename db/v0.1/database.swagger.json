@@ -105,10 +105,6 @@
           "format": "string",
           "type": "string"
         },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
         "node": {
           "format": "int64",
           "type": "integer"
@@ -122,6 +118,10 @@
           "type": "integer"
         },
         "region": {
+          "format": "string",
+          "type": "string"
+        },
+        "service_name": {
           "format": "string",
           "type": "string"
         },
@@ -311,6 +311,12 @@
       "type": "object"
     },
     "dbListRequest": {
+      "properties": {
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "dbListResponse": {
@@ -379,6 +385,10 @@
           "format": "string",
           "type": "string"
         },
+        "service_name": {
+          "format": "string",
+          "type": "string"
+        },
         "sku": {
           "format": "string",
           "type": "string"
@@ -413,18 +423,6 @@
           "type": "string"
         },
         "created": {
-          "format": "string",
-          "type": "string"
-        },
-        "db_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "db_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "db_type": {
           "format": "string",
           "type": "string"
         },
@@ -519,6 +517,9 @@
     },
     "dbSnapshotListResponse": {
       "properties": {
+        "database_info": {
+          "$ref": "#/definitions/dbDatabase"
+        },
         "list": {
           "items": {
             "$ref": "#/definitions/dbSnapshot"

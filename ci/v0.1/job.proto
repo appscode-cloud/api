@@ -72,9 +72,9 @@ message JobDescribeResponse {
   string parents = 3;
   string description = 4;
   string display_name = 5;
-  int64 build_count = 6;
+  string job_type = 6;
   string job_color = 7;
-  string builds_command = 8;
+  int64 build_count = 8;
 }
 
 message JobDeleteRequest {

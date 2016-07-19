@@ -126,11 +126,6 @@
         "credential": {
           "type": "string"
         },
-        "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "string"
-        },
         "node": {
           "type": "integer"
         },
@@ -141,6 +136,11 @@
           "type": "integer"
         },
         "region": {
+          "type": "string"
+        },
+        "service_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "sku": {
@@ -180,6 +180,11 @@
       "type": "object"
     },
     "dbListRequest": {
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "dbRestoreRequest": {
@@ -233,6 +238,11 @@
           "type": "integer"
         },
         "region": {
+          "type": "string"
+        },
+        "service_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "sku": {

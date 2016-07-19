@@ -87,21 +87,18 @@ message Database {
 message Snapshot {
   string name = 1;
   string phid = 2;
-  string db_name = 3;
-  string db_type = 4;
-  string db_cluster = 5;
-  string provider = 6;
-  string cloud_cred = 7;
-  string bucket = 8;
-  string region = 9;
-  string zone = 10;
-  string status = 11;
-  string process = 12;
-  string type = 13;
-  int32 is_scheduled_backup = 14;
-  string restore_db = 15;
-  string restore_snap = 16;
-  string created = 17;
+  string provider = 3;
+  string cloud_cred = 4;
+  string bucket = 5;
+  string region = 6;
+  string zone = 7;
+  string status = 8;
+  string process = 9;
+  string type = 10;
+  int32 is_scheduled_backup = 11;
+  string restore_db = 12;
+  string restore_snap = 13;
+  string created = 14;
 }
 
 message SnapshotInfo {
@@ -119,7 +116,9 @@ message KubeInfo {
   int64 rc = 3;
 }
 
-message ListRequest {}
+message ListRequest {
+  string type = 1;
+}
 
 message ListResponse {
   dtypes.Status status = 1;
@@ -129,7 +128,7 @@ message ListResponse {
 
 message CreateRequest {
   string cluster = 1;
-  string name = 2;
+  string service_name = 2;
   string type = 3;
   string sku = 4;
   string version = 5;
@@ -179,9 +178,9 @@ message BackupScheduleRequest {
   string cluster = 1;
   string name = 2;
   string type = 3;
-  string bucket_name = 4;
-  string snapshot_name = 5;
-  string credential = 6;
+  string credential = 4;
+  string bucket_name = 5;
+  string snapshot_name = 6;
   string region = 7;
   string auth_secret_name = 8;
   string schedule_cron_expr = 9;
@@ -212,6 +211,7 @@ message RestoreRequest {
   bool wal = 14;
   bool dump = 15;
   bool force = 16;
+  string service_name = 17;
 }
 
 message SnapshotListRequest {
@@ -221,5 +221,6 @@ message SnapshotListRequest {
 
 message SnapshotListResponse {
   dtypes.Status status = 1;
-  repeated Snapshot list = 2;
+  Database database_info =2;
+  repeated Snapshot list = 3;
 }
