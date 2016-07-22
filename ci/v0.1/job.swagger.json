@@ -108,6 +108,17 @@
           "format": "int64",
           "type": "integer"
         },
+        "build_ids": {
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "buildable": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "description": {
           "format": "string",
           "type": "string"
@@ -115,6 +126,16 @@
         "display_name": {
           "format": "string",
           "type": "string"
+        },
+        "first_build_id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "health_report": {
+          "items": {
+            "$ref": "#/definitions/ciJobHealth"
+          },
+          "type": "array"
         },
         "job_color": {
           "format": "string",
@@ -124,9 +145,29 @@
           "format": "string",
           "type": "string"
         },
+        "last_build_id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_completed_build_id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_failed_build_id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_successful_build_id": {
+          "format": "int64",
+          "type": "integer"
+        },
         "name": {
           "format": "string",
           "type": "string"
+        },
+        "next_build_number": {
+          "format": "int64",
+          "type": "integer"
         },
         "parents": {
           "format": "string",
@@ -134,6 +175,19 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "ciJobHealth": {
+      "properties": {
+        "description": {
+          "format": "string",
+          "type": "string"
+        },
+        "score": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"

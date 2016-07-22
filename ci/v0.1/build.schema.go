@@ -30,9 +30,6 @@ func init() {
 	buildDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "console": {
-      "type": "string"
-    },
     "job_name": {
       "type": "string"
     },

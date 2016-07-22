@@ -32,6 +32,7 @@ It has these top-level messages:
 	JobBuildRequest
 	JobDescribeRequest
 	JobDescribeResponse
+	JobHealth
 	JobDeleteRequest
 	JobCreateRequest
 	JobCopyRequest

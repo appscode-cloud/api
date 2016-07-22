@@ -10,6 +10,7 @@ authenticationInterceptor:
     - "/auth.Authentication/Login"
     - "/auth.Authentication/Logout"
     - "/auth.Authentication/Token"
+    - "/kubernetes.Clusters/StartupScript"
     - "/mailinglist.MailingList/SendEmail"
     - "/mailinglist.MailingList/Subscribe"
     - "/mailinglist.MailingList/Unsubscribe"

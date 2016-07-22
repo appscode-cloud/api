@@ -57,6 +57,42 @@ def write_json(obj, name):
         return json.dump(obj, f, sort_keys=True, indent=2, separators=(',', ': '))
 
 
+def deps():
+    # specify git commit_hash to pin to specific version
+    get_pkgs = [
+        {
+            'pkg': 'github.com/golang/protobuf/protoc-gen-go',
+            'commit_hash': '5386fff85b00d237cd7d34b2d6ecbb403eb42eb8',
+            'install': True
+        },
+        {
+            'pkg': 'google.golang.org/grpc',
+            'commit_hash': 'aecdccadd24d03e42d00ec82f6774a428fc63c30'
+        },
+        {
+            'pkg': 'github.com/golang/glog',
+            'commit_hash': '44145f04b68cf362d9c4df2182967c2275eaefed'
+        },
+        {'pkg': 'github.com/jteeuwen/go-bindata/...'},
+        {'pkg': 'github.com/xeipuuv/gojsonschema'},
+    ]
+    for cfg in get_pkgs:
+        call('go get -u ' + cfg['pkg'])
+        if cfg.get('commit_hash', ''):
+            call('git checkout ' + cfg['commit_hash'], cwd=expandvars('$GOPATH/src/' + cfg['pkg'].rstrip('/...')))
+        if cfg.get('install', False):
+            call('go install ./...', cwd=expandvars('$GOPATH/src/' + cfg['pkg'].rstrip('/...')))
+    # special treatment for grc-gateway
+    call('rm -rf $GOPATH/src/github.com/gengo/grpc-gateway')
+    call('mkdir -p $GOPATH/src/github.com/gengo')
+    call('git clone https://github.com/appscode/grpc-gateway.git', cwd=expandvars('$GOPATH/src/github.com/gengo'))
+    call('go install github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway')
+    call('go install github.com/gengo/grpc-gateway/protoc-gen-swagger')
+    # Copy google http apis proto files
+    call('mkdir -p $GOPATH/src/github.com/google')
+    call('git clone https://github.com/googleapis/googleapis.git', cwd=expandvars('$GOPATH/src/github.com/google'))
+
+
 def gen_assets():
     call('go get github.com/jteeuwen/go-bindata/...')
     call('go-bindata -ignore=\\.go -o meta/data.go -pkg meta meta/...')

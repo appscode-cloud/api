@@ -6,23 +6,23 @@
   "definitions": {
     "ciBuild": {
       "properties": {
-        "build_number": {
+        "number": {
           "format": "int64",
           "type": "integer"
         },
-        "result": {
+        "status": {
           "format": "string",
           "type": "string"
+        },
+        "timestamp": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
     },
     "ciBuildDescribeRequest": {
       "properties": {
-        "console": {
-          "format": "string",
-          "type": "string"
-        },
         "job_name": {
           "format": "string",
           "type": "string"
@@ -48,7 +48,27 @@
           "format": "int64",
           "type": "integer"
         },
+        "building": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "built_on": {
+          "format": "string",
+          "type": "string"
+        },
         "console_output": {
+          "format": "string",
+          "type": "string"
+        },
+        "duration": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "estimated_duration": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "full_display_name": {
           "format": "string",
           "type": "string"
         },

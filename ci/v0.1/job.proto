@@ -74,7 +74,21 @@ message JobDescribeResponse {
   string display_name = 5;
   string job_type = 6;
   string job_color = 7;
-  int64 build_count = 8;
+  bool buildable = 8;
+  int64 build_count = 9;
+  repeated int64 build_ids = 10;
+  int64 first_build_id = 11;
+  int64 last_build_id = 12;
+  int64 last_completed_build_id = 13;
+  int64 last_failed_build_id = 14;
+  int64 last_successful_build_id = 15;
+  int64 next_build_number = 16;
+  repeated JobHealth health_report = 17;
+}
+
+message JobHealth {
+  string description = 1;
+  int64 score = 4;
 }
 
 message JobDeleteRequest {
