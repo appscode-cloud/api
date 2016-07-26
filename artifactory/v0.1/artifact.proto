@@ -37,6 +37,7 @@ message SearchResponse {
 
 message ListRequest {
   string type = 1;
+  string name = 2;
 }
 
 message ListResponse {
