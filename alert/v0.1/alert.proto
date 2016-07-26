@@ -5,102 +5,93 @@ package alert;
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
-// alert service protobufs for clusters alerts.
+// Alert service protobufs for cluster alerts.
 service Alerts {
-  rpc Notify(NotificationRequest) returns (dtypes.VoidResponse) {
+  rpc List(ListRequest) returns (ListResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/alert/v0.1/notify"
-      body : "*"
-    };
-  }
-
-  rpc Acknowledge(AcknowledgeRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      post : "/appscode/api/alert/v0.1/acknowledge"
-      body : "*"
+      get: "/appscode/api/alert/v0.1/alerts"
     };
   }
 
   rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
+      put: "/appscode/api/alert/v0.1/alerts"
       body: "*"
     };
   }
 
   rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
+      post: "/appscode/api/alert/v0.1/alerts/{phid}"
       body: "*"
     };
   }
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}/{phid}"
-    };
-  }
-
-  rpc List(ListRequest) returns (ListResponse) {
-    option (google.api.http) = {
-      get: "/appscode/api/alert/v0.1/{spec.cluster}/{spec.namespace}/{spec.object_type}/{spec.object_name}"
+      delete: "/appscode/api/alert/v0.1/alerts/{phid}"
     };
   }
 }
 
-message NotificationRequest {
-  string state_type = 1;
-  string state = 2;
-  string time = 3;
-  string service_output = 4;
-  string alert_phid = 5;
-  string host_name = 6;
+message IcingaParam {
+  int64 check_interval_sec = 1;
+  int64 alert_interval_sec = 2;
 }
 
-message AcknowledgeRequest {
-  string phid = 1;
-  string comment = 2;
+message CheckInfluxData {
+  string kubernetes_namespace  = 1;
+  string object_name = 2;
+  map<string, string> query = 3;
+  string r  = 4;
+  string warning_condition = 5;
+  string critical_condition  = 6;
 }
 
-message CreateRequest {
-  string name = 1;
-  Spec spec = 2;
-  string icinga_service_phid = 3;
-  IcingaService icinga_service = 4;
-  AlertSpec alert_spec = 5;
+message CheckKubernetes {
+  string type = 1;
+  int64 count = 2;
+  string selector = 3;
 }
 
-message UpdateRequest {
+message CommandParam {
+  CheckInfluxData check_influx_data = 1;
+  CheckKubernetes check_kubernetes = 2;
+}
+
+// This one is used in kubernetes/v0.1/client.proto
+// To send information if alert is set for app/pod
+message IcingaState {
+  int32 OK = 1;
+  int32 Warning = 2;
+  int32 Critical = 3;
+  int32 Unknown = 4;
+}
+
+message NotifierParam {
+  string state = 1;
+  string user_phid = 2;
+  string method = 3;
+}
+
+message Alert {
   string phid = 1;
   string name = 2;
-  Spec spec = 3;
-  string icinga_service_phid = 4;
-  IcingaService icinga_service = 5;
-  AlertSpec alert_spec = 6;
-}
-
-message Spec {
-  string cluster = 1;
-  string namespace  = 2;
-  string object_type = 3;
-  string object_name = 4;
-}
-
-message AlertSpec {
-  string warning_user = 1;
-  int32 warning_method = 2;
-  string critical_user  = 3;
-  int32 critical_method  = 4;
-  int64 alert_interval = 5;
+  string cluster = 3;
+  string plugin = 4;
+  string icinga_service = 5;
+  IcingaParam icinga_param = 6;
+  string check_command = 7;
+  CommandParam command_param = 8;
+  repeated NotifierParam notifier_param = 9;
+  string icingaweb_url = 10;
 }
 
 message ListRequest {
-  Spec spec = 1;
-}
-
-message DeleteRequest {
-  string phid = 1;
-  Spec spec = 2;
+  string cluster = 1;
+  string plugin = 2;
+  string kubernetes_namespace  = 3;
+  string object_name = 4;
 }
 
 message ListResponse {
@@ -108,27 +99,25 @@ message ListResponse {
   repeated Alert alerts = 2;
 }
 
-message Alert {
+message CreateRequest {
+  string cluster = 1;
+  string plugin = 2;
+  string name = 3;
+  string icinga_service = 4;
+  IcingaParam icinga_param = 5;
+  string check_command = 6;
+  CommandParam command_param = 7;
+  repeated NotifierParam notifier_param = 8;
+}
+
+message UpdateRequest {
   string phid = 1;
   string name = 2;
-  string icinga_url = 3;
-  IcingaService icinga_service = 4;
-  AlertSpec alert_spec = 5;
+  IcingaParam icinga_param = 3;
+  CommandParam command_param = 4;
+  repeated NotifierParam notifier_param = 5;
 }
 
-message IcingaService {
-  string name = 1;
-  string check_command = 2;
-  map<string, string> query = 3;
-  string formula_r  = 4;
-  string warning_condition = 5;
-  string critical_condition  = 6;
-  int64 check_interval = 7;
-}
-
-message IcingaState {
-  int32 OK = 1;
-  int32 Warning = 2;
-  int32 Critical = 3;
-  int32 Unknown = 4;
+message DeleteRequest {
+  string phid = 1;
 }

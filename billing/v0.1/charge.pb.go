@@ -10,6 +10,7 @@ It is generated from these files:
 	invoice.proto
 	paymentmethod.proto
 	purchase.proto
+	quota.proto
 	subscription.proto
 
 It has these top-level messages:
@@ -20,6 +21,7 @@ It has these top-level messages:
 	PurchaseBeginResponse
 	PurchaseCompleteRequest
 	PurchaseCloseRequest
+	QuotaGetResponse
 	SubscriptionSubscribeRequest
 */
 package billing

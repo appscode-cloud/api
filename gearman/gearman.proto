@@ -31,6 +31,7 @@ enum OperationType {
   NAMESPACE_CREATE = 8;
   DATA_BUCKET_DELETE = 9;
   DATABASE_BACKUP = 10;
+  NAMESPACE_ADMIN_TASK = 11;
 }
 
 // Next Id: 10

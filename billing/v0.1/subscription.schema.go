@@ -15,6 +15,9 @@ func init() {
   "properties": {
     "product_id": {
       "type": "string"
+    },
+    "start_time": {
+      "type": "integer"
     }
   },
   "type": "object"

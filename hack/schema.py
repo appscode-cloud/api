@@ -183,7 +183,8 @@ def generate_json_schema():
                                 if 'pattern' not in fspec:
                                     fspec['pattern'] = "^[a-z0-9](?:[a-z0-9\-]{0,61}[a-z0-9])?$"
 
-                            if 'properties' in ext_defs[m] \
+                            if m in ext_defs \
+                                    and 'properties' in ext_defs[m] \
                                     and f in ext_defs[m]['properties'] \
                                     and not set(fspec.keys()).issuperset(set(ext_defs[m]['properties'][f].keys())):
                                 print mspec['properties'][f]

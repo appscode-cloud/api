@@ -7,77 +7,27 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var deleteRequestSchema *gojsonschema.Schema
 var listRequestSchema *gojsonschema.Schema
-var acknowledgeRequestSchema *gojsonschema.Schema
-var updateRequestSchema *gojsonschema.Schema
+var deleteRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
-var notificationRequestSchema *gojsonschema.Schema
+var updateRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "alertSpec": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "string"
-        },
-        "object_name": {
-          "type": "string"
-        },
-        "object_type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    }
-  },
-  "properties": {
-    "phid": {
-      "type": "string"
-    },
-    "spec": {
-      "$ref": "#/definitions/alertSpec"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 	listRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "alertSpec": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "string"
-        },
-        "object_name": {
-          "type": "string"
-        },
-        "object_type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    }
-  },
   "properties": {
-    "spec": {
-      "$ref": "#/definitions/alertSpec"
+    "cluster": {
+      "type": "string"
+    },
+    "kubernetes_namespace": {
+      "type": "string"
+    },
+    "object_name": {
+      "type": "string"
+    },
+    "plugin": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -85,13 +35,126 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	acknowledgeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "comment": {
+    "phid": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "alertCheckInfluxData": {
+      "properties": {
+        "critical_condition": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "object_name": {
+          "type": "string"
+        },
+        "query": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "r": {
+          "type": "string"
+        },
+        "warning_condition": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCheckKubernetes": {
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCommandParam": {
+      "properties": {
+        "check_influx_data": {
+          "$ref": "#/definitions/alertCheckInfluxData"
+        },
+        "check_kubernetes": {
+          "$ref": "#/definitions/alertCheckKubernetes"
+        }
+      },
+      "type": "object"
+    },
+    "alertIcingaParam": {
+      "properties": {
+        "alert_interval_sec": {
+          "type": "integer"
+        },
+        "check_interval_sec": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "alertNotifierParam": {
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "user_phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "properties": {
+    "check_command": {
       "type": "string"
     },
-    "phid": {
+    "cluster": {
+      "type": "string"
+    },
+    "command_param": {
+      "$ref": "#/definitions/alertCommandParam"
+    },
+    "icinga_param": {
+      "$ref": "#/definitions/alertIcingaParam"
+    },
+    "icinga_service": {
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "notifier_param": {
+      "items": {
+        "$ref": "#/definitions/alertNotifierParam"
+      },
+      "type": "array"
+    },
+    "plugin": {
       "type": "string"
     }
   },
@@ -103,43 +166,15 @@ func init() {
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "alertAlertSpec": {
+    "alertCheckInfluxData": {
       "properties": {
-        "alert_interval": {
-          "type": "integer"
-        },
-        "critical_method": {
-          "type": "integer"
-        },
-        "critical_user": {
-          "type": "string"
-        },
-        "warning_method": {
-          "type": "integer"
-        },
-        "warning_user": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertIcingaService": {
-      "properties": {
-        "check_command": {
-          "type": "string"
-        },
-        "check_interval": {
-          "type": "integer"
-        },
         "critical_condition": {
           "type": "string"
         },
-        "formula_r": {
+        "kubernetes_namespace": {
           "type": "string"
         },
-        "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+        "object_name": {
           "type": "string"
         },
         "query": {
@@ -148,26 +183,60 @@ func init() {
           },
           "type": "object"
         },
+        "r": {
+          "type": "string"
+        },
         "warning_condition": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "alertSpec": {
+    "alertCheckKubernetes": {
       "properties": {
-        "cluster": {
+        "count": {
+          "type": "integer"
+        },
+        "selector": {
           "type": "string"
         },
-        "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCommandParam": {
+      "properties": {
+        "check_influx_data": {
+          "$ref": "#/definitions/alertCheckInfluxData"
+        },
+        "check_kubernetes": {
+          "$ref": "#/definitions/alertCheckKubernetes"
+        }
+      },
+      "type": "object"
+    },
+    "alertIcingaParam": {
+      "properties": {
+        "alert_interval_sec": {
+          "type": "integer"
+        },
+        "check_interval_sec": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "alertNotifierParam": {
+      "properties": {
+        "method": {
           "type": "string"
         },
-        "object_name": {
+        "state": {
           "type": "string"
         },
-        "object_type": {
+        "user_phid": {
           "type": "string"
         }
       },
@@ -175,150 +244,25 @@ func init() {
     }
   },
   "properties": {
-    "alert_spec": {
-      "$ref": "#/definitions/alertAlertSpec"
+    "command_param": {
+      "$ref": "#/definitions/alertCommandParam"
     },
-    "icinga_service": {
-      "$ref": "#/definitions/alertIcingaService"
-    },
-    "icinga_service_phid": {
-      "type": "string"
+    "icinga_param": {
+      "$ref": "#/definitions/alertIcingaParam"
     },
     "name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
+    },
+    "notifier_param": {
+      "items": {
+        "$ref": "#/definitions/alertNotifierParam"
+      },
+      "type": "array"
     },
     "phid": {
       "type": "string"
-    },
-    "spec": {
-      "$ref": "#/definitions/alertSpec"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "alertAlertSpec": {
-      "properties": {
-        "alert_interval": {
-          "type": "integer"
-        },
-        "critical_method": {
-          "type": "integer"
-        },
-        "critical_user": {
-          "type": "string"
-        },
-        "warning_method": {
-          "type": "integer"
-        },
-        "warning_user": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertIcingaService": {
-      "properties": {
-        "check_command": {
-          "type": "string"
-        },
-        "check_interval": {
-          "type": "integer"
-        },
-        "critical_condition": {
-          "type": "string"
-        },
-        "formula_r": {
-          "type": "string"
-        },
-        "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "string"
-        },
-        "query": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "warning_condition": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertSpec": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "string"
-        },
-        "object_name": {
-          "type": "string"
-        },
-        "object_type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    }
-  },
-  "properties": {
-    "alert_spec": {
-      "$ref": "#/definitions/alertAlertSpec"
-    },
-    "icinga_service": {
-      "$ref": "#/definitions/alertIcingaService"
-    },
-    "icinga_service_phid": {
-      "type": "string"
-    },
-    "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    },
-    "spec": {
-      "$ref": "#/definitions/alertSpec"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	notificationRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "alert_phid": {
-      "type": "string"
-    },
-    "host_name": {
-      "type": "string"
-    },
-    "service_output": {
-      "type": "string"
-    },
-    "state": {
-      "type": "string"
-    },
-    "state_type": {
-      "type": "string"
-    },
-    "time": {
-      "type": "string"
     }
   },
   "type": "object"
@@ -327,36 +271,26 @@ func init() {
 		glog.Fatal(err)
 	}
 }
-
-func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
-	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *DeleteRequest) IsRequest() {}
 
 func (m *ListRequest) IsValid() (*gojsonschema.Result, error) {
 	return listRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ListRequest) IsRequest() {}
 
-func (m *AcknowledgeRequest) IsValid() (*gojsonschema.Result, error) {
-	return acknowledgeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
+	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *AcknowledgeRequest) IsRequest() {}
-
-func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
-	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *UpdateRequest) IsRequest() {}
+func (m *DeleteRequest) IsRequest() {}
 
 func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CreateRequest) IsRequest() {}
 
-func (m *NotificationRequest) IsValid() (*gojsonschema.Result, error) {
-	return notificationRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
+	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *NotificationRequest) IsRequest() {}
+func (m *UpdateRequest) IsRequest() {}
 
 func (m *ListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s

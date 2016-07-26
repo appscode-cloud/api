@@ -16,4 +16,5 @@ service Subscription {
 
 message SubscriptionSubscribeRequest {
     string product_id = 1;
+    int64 start_time = 2;
 }
